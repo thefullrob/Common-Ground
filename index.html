@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Ground</title>
+  <style>
+    :root {
+      --bg: #f1efe9;
+      --panel: #fcfbf8;
+      --line: #d9d2c4;
+      --ink: #121b2d;
+      --muted: #5d6779;
+      --a-alpha: 0;
+      --b-alpha: 0;
+      --c-alpha: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 8% 0%, #f9f6ef 0, transparent 40%), var(--bg);
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .app {
+      width: min(470px, 100%);
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      grid-auto-rows: max-content;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.05);
+    }
+
+    .top { padding: 14px; display: grid; gap: 8px; align-content: start; height: fit-content; }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      letter-spacing: 0.04em;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 2px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .hud {
+      margin-top: 4px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .lives-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lives-label {
+      font-size: 0.95rem;
+      font-weight: 900;
+    }
+
+    .lives {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      width: 200px;
+      gap: 5px;
+    }
+
+    .life {
+      height: 9px;
+      border-radius: 999px;
+      border: 1px solid #cabfa8;
+      background: #e2d8c7;
+    }
+
+    .life.on {
+      background: #2f855a;
+      border-color: #2f855a;
+    }
+
+    .message {
+      min-height: 20px;
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .game {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .board {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      border-radius: 14px;
+      border: 1px solid #ddd5c7;
+      background: #f8f5ef;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 3px solid #1f2937;
+      transition: background-color 260ms ease;
+      pointer-events: none;
+    }
+
+    #circle-A { top: 24px; left: 50%; transform: translateX(-50%); background: rgba(96, 165, 250, var(--a-alpha)); }
+    #circle-B { top: 130px; left: 72px; background: rgba(244, 114, 182, var(--b-alpha)); }
+    #circle-C { top: 130px; right: 72px; background: rgba(134, 239, 172, var(--c-alpha)); }
+
+    .label {
+      position: absolute;
+      text-align: center;
+      font-size: 0.78rem;
+      line-height: 1.1;
+      font-weight: 900;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    #label-A { top: 76px; left: 50%; transform: translateX(-50%); }
+    #label-B { top: 222px; left: 70px; width: 110px; }
+    #label-C { top: 222px; right: 70px; width: 110px; }
+
+    .slot {
+      position: absolute;
+      width: 94px;
+      height: 66px;
+      border: 2px dashed #b8ad95;
+      border-radius: 12px;
+      background: #ffffff;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 130ms ease, transform 130ms ease, background-color 200ms ease;
+    }
+    #slot-S1 { top: 132px; left: 88px; }
+    #slot-S2 { top: 132px; right: 88px; }
+    #slot-S3 { top: 266px; left: 50%; transform: translateX(-50%); }
+    #slot-S4 { top: 184px; left: 50%; transform: translateX(-50%); }
+
+    .slot.drag-target { border-color: #111827; }
+    .slot.revealed { border-style: solid; border-color: #111827; }
+    .slot.locked { border-color: #a16207; box-shadow: inset 0 0 0 2px #a1620730; }
+
+    #slot-S1.revealed { background: #f5d0fe; }
+    #slot-S2.revealed { background: #bae6fd; }
+    #slot-S3.revealed { background: #fde68a; }
+    #slot-S4.revealed { background: #fdba74; }
+
+    .bank {
+      border: 1px solid #ddd2c0;
+      border-radius: 14px;
+      padding: 9px;
+      background: #f7f4ed;
+    }
+
+    .bank-title {
+      margin-bottom: 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .bank-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      min-height: 68px;
+    }
+
+    .tile {
+      border: 2px solid #aa9c83;
+      border-radius: 12px;
+      background: #fff;
+      padding: 7px 6px;
+      display: grid;
+      justify-items: center;
+      gap: 4px;
+      cursor: grab;
+      user-select: none;
+      transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+    }
+
+    .tile:hover {
+      border-color: #7b6d54;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(15, 23, 42, 0.08);
+    }
+
+    .tile.selected { border-color: #111827; box-shadow: 0 0 0 2px #11182722; }
+    .tile.locked { border-color: #a16207; background: #fff7df; cursor: default; }
+    .text {
+      font-size: 0.68rem;
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    button {
+      border: 1px solid #b8ad96;
+      border-radius: 999px;
+      background: #fff;
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 9px 7px;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: 0.48; cursor: not-allowed; }
+    #check-btn.ready { background: #111827; color: #fff; border-color: #111827; }
+    #hint-btn { background: #f59e0b; border-color: #f59e0b; }
+
+    .summary {
+      min-height: 18px;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .shake { animation: shake 260ms ease; }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      30% { transform: translateX(-4px); }
+      60% { transform: translateX(4px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media (max-width: 430px) {
+      .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="card top">
+      <h1>COMMON GROUND</h1>
+      <div class="subtitle">Famous Actors + Famous Movies</div>
+      <div class="hud">
+        <div class="lives-label" id="lives-label">Lives: 5</div>
+        <div class="lives" id="lives"></div>
+      </div>
+      <div class="message" id="message">Place 4 movies. Correct ones lock and wrong ones return to pool on Check.</div>
+    </section>
+
+    <section class="card game">
+      <div class="board" id="board">
+        <div id="circle-A" class="circle"></div>
+        <div id="circle-B" class="circle"></div>
+        <div id="circle-C" class="circle"></div>
+
+        <div id="label-A" class="label">Ben Stiller</div>
+        <div id="label-B" class="label">Owen Wilson</div>
+        <div id="label-C" class="label">Vince Vaughn</div>
+
+        <div id="slot-S1" class="slot" data-slot="S1"></div>
+        <div id="slot-S2" class="slot" data-slot="S2"></div>
+        <div id="slot-S3" class="slot" data-slot="S3"></div>
+        <div id="slot-S4" class="slot" data-slot="S4"></div>
+      </div>
+
+      <div class="bank" id="bank">
+        <div class="bank-title">Movie Pool (8 total, exactly 4 correct)</div>
+        <div class="bank-grid" id="bank-grid"></div>
+      </div>
+
+      <div class="controls">
+        <button id="undo-btn" disabled>Undo</button>
+        <button id="check-btn" disabled>Check</button>
+        <button id="hint-btn">Hint (2)</button>
+        <button id="clear-btn">Clear</button>
+        <button id="restart-btn">New Game</button>
+      </div>
+
+      <div class="summary" id="summary"></div>
+    </section>
+  </div>
+
+  <script>
+    const SLOTS = ["S1", "S2", "S3", "S4"];
+    const MAX_LIVES = 5;
+    const MAX_HINTS = 2;
+    const tiles = [
+      { id: "t1", label: "Zoolander", correctSlot: "S1" },
+      { id: "t2", label: "Dodgeball", correctSlot: "S2" },
+      { id: "t3", label: "Wedding Crashers", correctSlot: "S3" },
+      { id: "t4", label: "Starsky & Hutch", correctSlot: "S4" },
+      { id: "t5", label: "Titanic", correctSlot: null },
+      { id: "t6", label: "The Dark Knight", correctSlot: null },
+      { id: "t7", label: "Avatar", correctSlot: null },
+      { id: "t8", label: "Forrest Gump", correctSlot: null }
+    ];
+
+    const tileById = Object.fromEntries(tiles.map((t) => [t.id, t]));
+
+    function createState() {
+      return {
+        placements: Object.fromEntries(SLOTS.map((s) => [s, null])),
+        tileLocation: Object.fromEntries(tiles.map((t) => [t.id, null])),
+        selectedTileId: null,
+        lockedTiles: new Set(),
+        revealedSlots: new Set(),
+        livesUsed: 0,
+        hintsRemaining: MAX_HINTS,
+        tries: 0,
+        solved: false,
+        history: [],
+        bankOrder: shuffle(tiles.map((t) => t.id))
+      };
+    }
+
+    let state = createState();
+
+    const boardEl = document.getElementById("board");
+    const slots = Array.from(document.querySelectorAll(".slot"));
+    const bankEl = document.getElementById("bank");
+    const bankGridEl = document.getElementById("bank-grid");
+    const messageEl = document.getElementById("message");
+    const livesEl = document.getElementById("lives");
+    const livesLabelEl = document.getElementById("lives-label");
+    const summaryEl = document.getElementById("summary");
+
+    const undoBtn = document.getElementById("undo-btn");
+    const checkBtn = document.getElementById("check-btn");
+    const hintBtn = document.getElementById("hint-btn");
+    const clearBtn = document.getElementById("clear-btn");
+    const restartBtn = document.getElementById("restart-btn");
+
+    function deepClone(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    }
+
+    function setMessage(text, color = "#172033") {
+      messageEl.textContent = text;
+      messageEl.style.color = color;
+    }
+
+    function shuffle(arr) {
+      const out = [...arr];
+      for (let i = out.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [out[i], out[j]] = [out[j], out[i]];
+      }
+      return out;
+    }
+
+    function snap() {
+      return {
+        placements: deepClone(state.placements),
+        tileLocation: deepClone(state.tileLocation),
+        selectedTileId: state.selectedTileId,
+        bankOrder: [...state.bankOrder]
+      };
+    }
+
+    function pushUndo() {
+      state.history.push(snap());
+      if (state.history.length > 100) state.history.shift();
+    }
+
+    function undo() {
+      if (!state.history.length || state.solved) return;
+      const s = state.history.pop();
+      state.placements = s.placements;
+      state.tileLocation = s.tileLocation;
+      state.selectedTileId = s.selectedTileId;
+      state.bankOrder = s.bankOrder;
+      setMessage("Undid last move.");
+      render();
+    }
+
+    function makeTile(tileId) {
+      const tile = tileById[tileId];
+      const el = document.createElement("div");
+      el.className = "tile";
+      el.dataset.tileId = tile.id;
+      el.draggable = !state.lockedTiles.has(tile.id) && !state.solved;
+      el.innerHTML = `<div class="text">${tile.label}</div>`;
+
+      if (state.selectedTileId === tile.id) el.classList.add("selected");
+      if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
+
+      el.addEventListener("click", () => {
+        if (state.solved || state.lockedTiles.has(tile.id)) return;
+        const placed = state.tileLocation[tile.id] !== null;
+
+        if (state.selectedTileId === tile.id) {
+          if (placed) {
+            pushUndo();
+            moveTileToPool(tile.id);
+            state.selectedTileId = null;
+            setMessage(`Moved "${tile.label}" back to pool.`);
+          } else {
+            state.selectedTileId = null;
+          }
+        } else {
+          state.selectedTileId = tile.id;
+        }
+        render();
+      });
+
+      el.addEventListener("dragstart", (e) => {
+        if (state.solved || state.lockedTiles.has(tile.id)) {
+          e.preventDefault();
+          return;
+        }
+        state.selectedTileId = tile.id;
+        e.dataTransfer.setData("text/plain", tile.id);
+        e.dataTransfer.effectAllowed = "move";
+        render();
+      });
+
+      return el;
+    }
+
+    function moveTileToSlot(tileId, slot) {
+      if (!tileById[tileId] || !SLOTS.includes(slot)) return false;
+      if (state.solved || state.lockedTiles.has(tileId)) return false;
+
+      const from = state.tileLocation[tileId];
+      if (from === slot) return true;
+
+      const occupant = state.placements[slot];
+      if (occupant && state.lockedTiles.has(occupant)) {
+        setMessage("That slot is locked.", "#a16207");
+        return false;
+      }
+
+      state.placements[slot] = tileId;
+      state.tileLocation[tileId] = slot;
+
+      if (from) {
+        state.placements[from] = occupant || null;
+        if (occupant) state.tileLocation[occupant] = from;
+      } else if (occupant) {
+        state.tileLocation[occupant] = null;
+      }
+
+      return true;
+    }
+
+    function moveTileToPool(tileId) {
+      if (!tileById[tileId] || state.solved || state.lockedTiles.has(tileId)) return false;
+      const slot = state.tileLocation[tileId];
+      if (!slot) return true;
+      state.placements[slot] = null;
+      state.tileLocation[tileId] = null;
+      return true;
+    }
+
+    function allPlaced() {
+      return SLOTS.every((s) => Boolean(state.placements[s]));
+    }
+
+    function correctSlots() {
+      return SLOTS.filter((slot) => {
+        const id = state.placements[slot];
+        return id && tileById[id].correctSlot === slot;
+      });
+    }
+
+    function updateColorProgress() {
+      const a = ["S1", "S2", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+      const b = ["S1", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+      const c = ["S2", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+
+      const base = state.revealedSlots.size === 0 ? 0 : 0.1;
+      document.documentElement.style.setProperty("--a-alpha", String(base + (a / 3) * 0.38));
+      document.documentElement.style.setProperty("--b-alpha", String(base + (b / 3) * 0.38));
+      document.documentElement.style.setProperty("--c-alpha", String(base + (c / 3) * 0.38));
+
+      if (state.revealedSlots.size === 0) {
+        document.documentElement.style.setProperty("--a-alpha", "0");
+        document.documentElement.style.setProperty("--b-alpha", "0");
+        document.documentElement.style.setProperty("--c-alpha", "0");
+      }
+    }
+
+    function updateLives() {
+      const left = MAX_LIVES - state.livesUsed;
+      livesLabelEl.textContent = `Lives: ${left}`;
+      livesEl.innerHTML = "";
+      for (let i = 0; i < MAX_LIVES; i++) {
+        const seg = document.createElement("div");
+        seg.className = "life" + (i < left ? " on" : "");
+        livesEl.appendChild(seg);
+      }
+    }
+
+    function updateButtons() {
+      const ready = allPlaced() && !state.solved && state.livesUsed < MAX_LIVES;
+      checkBtn.disabled = !ready;
+      checkBtn.classList.toggle("ready", ready);
+
+      hintBtn.disabled = state.hintsRemaining <= 0 || state.solved || state.livesUsed >= MAX_LIVES;
+      hintBtn.textContent = `Hint (${state.hintsRemaining})`;
+
+      undoBtn.disabled = !state.history.length || state.solved;
+      clearBtn.disabled = !state.selectedTileId || state.solved;
+    }
+
+    function render() {
+      bankGridEl.innerHTML = "";
+      const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : tiles.map((t) => t.id);
+      order.forEach((tileId) => {
+        if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId));
+      });
+
+      slots.forEach((slotEl) => {
+        const slot = slotEl.dataset.slot;
+        slotEl.classList.remove("revealed", "locked", "drag-target");
+
+        const oldTile = slotEl.querySelector(".tile");
+        const oldHint = slotEl.querySelector(".hint");
+        if (oldTile) oldTile.remove();
+        if (oldHint) oldHint.remove();
+
+        const tileId = state.placements[slot];
+        if (tileId) {
+          slotEl.appendChild(makeTile(tileId));
+        }
+
+        if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed");
+        if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked");
+      });
+
+      updateColorProgress();
+      updateLives();
+      updateButtons();
+    }
+
+    function shakeBoard() {
+      boardEl.classList.remove("shake");
+      void boardEl.offsetWidth;
+      boardEl.classList.add("shake");
+    }
+
+    function applyHint() {
+      if (state.solved || state.hintsRemaining <= 0 || state.livesUsed >= MAX_LIVES) return;
+
+      const candidate = tiles.find((t) => {
+        if (!t.correctSlot) return false;
+        if (state.lockedTiles.has(t.id)) return false;
+        return state.tileLocation[t.id] !== t.correctSlot;
+      });
+
+      if (!candidate) {
+        setMessage("No useful hint left.", "#1f7a4f");
+        return;
+      }
+
+      moveTileToSlot(candidate.id, candidate.correctSlot);
+      state.lockedTiles.add(candidate.id);
+      state.revealedSlots.add(candidate.correctSlot);
+      state.hintsRemaining -= 1;
+      state.selectedTileId = null;
+      state.history = [];
+      setMessage("Hint locked one correct movie.", "#a16207");
+      render();
+    }
+
+    function finishWin() {
+      state.solved = true;
+      SLOTS.forEach((slot) => {
+        state.revealedSlots.add(slot);
+        const tileId = state.placements[slot];
+        if (tileId) state.lockedTiles.add(tileId);
+      });
+      setMessage(`Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}.`, "#1f7a4f");
+      summaryEl.textContent = `Score\nCommon Ground ${state.tries}/${MAX_LIVES}`;
+      render();
+    }
+
+    function checkAnswers() {
+      if (!allPlaced() || state.solved || state.livesUsed >= MAX_LIVES) return;
+      state.tries += 1;
+
+      const correctSet = new Set(correctSlots());
+
+      SLOTS.forEach((slot) => {
+        const tileId = state.placements[slot];
+        if (!tileId) return;
+
+        if (correctSet.has(slot)) {
+          state.revealedSlots.add(slot);
+          state.lockedTiles.add(tileId);
+        } else {
+          state.placements[slot] = null;
+          state.tileLocation[tileId] = null;
+        }
+      });
+
+      const remaining = SLOTS.filter((s) => !state.revealedSlots.has(s)).length;
+      if (remaining === 0) {
+        finishWin();
+        return;
+      }
+
+      state.livesUsed += 1;
+      state.history = [];
+      shakeBoard();
+      setMessage(`${remaining} ${remaining === 1 ? "slot is" : "slots are"} still wrong.`, "#b91c1c");
+
+      if (state.livesUsed >= MAX_LIVES) {
+        setMessage("Out of lives. Tap New Game to reset.", "#7f1d1d");
+        summaryEl.textContent = `Final\nCommon Ground X/${MAX_LIVES}`;
+      }
+      render();
+    }
+
+    function newGame() {
+      state = createState();
+      summaryEl.textContent = "";
+      setMessage("New game started. Find the 4 correct movies.");
+      render();
+    }
+
+    slots.forEach((slotEl) => {
+      slotEl.addEventListener("click", () => {
+        if (state.solved) return;
+        const slot = slotEl.dataset.slot;
+
+        if (!state.selectedTileId) {
+          const occupant = state.placements[slot];
+          if (occupant && !state.lockedTiles.has(occupant)) {
+            pushUndo();
+            moveTileToPool(occupant);
+            setMessage("Moved tile back to pool.");
+            render();
+          }
+          return;
+        }
+
+        pushUndo();
+        const moved = moveTileToSlot(state.selectedTileId, slot);
+        if (moved) {
+          state.selectedTileId = null;
+          setMessage("Placement updated. Fill all 4 slots, then check.");
+          render();
+        }
+      });
+
+      slotEl.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        slotEl.classList.add("drag-target");
+      });
+
+      slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target"));
+
+      slotEl.addEventListener("drop", (e) => {
+        e.preventDefault();
+        slotEl.classList.remove("drag-target");
+        const tileId = e.dataTransfer.getData("text/plain");
+        if (!tileId) return;
+
+        pushUndo();
+        const moved = moveTileToSlot(tileId, slotEl.dataset.slot);
+        if (moved) {
+          state.selectedTileId = null;
+          setMessage("Placement updated. Fill all 4 slots, then check.");
+          render();
+        }
+      });
+    });
+
+    bankEl.addEventListener("dragover", (e) => e.preventDefault());
+    bankEl.addEventListener("drop", (e) => {
+      e.preventDefault();
+      const tileId = e.dataTransfer.getData("text/plain");
+      if (!tileId) return;
+
+      pushUndo();
+      if (moveTileToPool(tileId)) {
+        state.selectedTileId = null;
+        setMessage("Moved tile back to pool.");
+        render();
+      }
+    });
+
+    undoBtn.addEventListener("click", undo);
+    checkBtn.addEventListener("click", checkAnswers);
+    hintBtn.addEventListener("click", applyHint);
+    clearBtn.addEventListener("click", () => {
+      if (!state.selectedTileId || state.solved) return;
+      state.selectedTileId = null;
+      setMessage("Selection cleared.");
+      render();
+    });
+    restartBtn.addEventListener("click", newGame);
+
+    render();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
