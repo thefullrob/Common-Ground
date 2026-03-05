@@ -153,8 +153,8 @@
     }
 
     #label-A { top: 76px; left: 50%; transform: translateX(-50%); }
-    #label-B { top: 248px; left: 54px; width: 126px; }
-    #label-C { top: 248px; right: 54px; width: 126px; }
+    #label-B { top: 224px; left: 24px; width: 112px; text-align: left; }
+    #label-C { top: 224px; right: 24px; width: 112px; text-align: right; }
 
     .slot {
       position: absolute;
@@ -216,6 +216,7 @@
       gap: 4px;
       cursor: grab;
       user-select: none;
+      touch-action: none;
       transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
     }
 
@@ -265,6 +266,23 @@
       color: #334155;
     }
 
+    .drag-ghost {
+      position: fixed;
+      z-index: 3000;
+      pointer-events: none;
+      border: 2px solid #111827;
+      border-radius: 12px;
+      background: #fff;
+      color: #0f172a;
+      font-size: 0.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      padding: 8px 10px;
+      box-shadow: 0 12px 20px rgba(15, 23, 42, 0.2);
+      max-width: 180px;
+      text-align: center;
+    }
+
     .shake { animation: shake 260ms ease; }
     @keyframes shake {
       0% { transform: translateX(0); }
@@ -274,8 +292,23 @@
     }
 
     @media (max-width: 430px) {
+      body { padding: 8px; }
+      .app { gap: 12px; }
+      .top { padding: 12px; gap: 6px; }
+      h1 { font-size: 1.85rem; }
+      .subtitle { font-size: 0.82rem; }
+      .message { font-size: 0.86rem; }
+      .game { padding: 9px; gap: 12px; }
+      .board { height: 332px; }
+      .label { font-size: 0.75rem; }
+      #label-B { top: 220px; left: 18px; width: 108px; }
+      #label-C { top: 220px; right: 18px; width: 108px; }
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bank { padding: 10px; }
+      .tile { padding: 9px 8px; }
+      .text { font-size: 0.78rem; }
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      button { font-size: 0.82rem; padding: 10px 8px; }
     }
   </style>
 </head>
@@ -288,7 +321,7 @@
         <div class="lives-label" id="lives-label">Lives: 5</div>
         <div class="lives" id="lives"></div>
       </div>
-      <div class="message" id="message">Place 4 movies. Correct ones lock and wrong ones return to pool on Check.</div>
+      <div class="message" id="message">Place 4 items. Correct ones lock and wrong ones return to pool on Check.</div>
     </section>
 
     <section class="card game">
@@ -540,6 +573,9 @@
   const restartBtn = document.getElementById("restart-btn");
   const gameCard = document.querySelector(".game");
 
+  let touchDrag = null;
+  let suppressClickUntil = 0;
+
   function deepClone(obj) {
     return JSON.parse(JSON.stringify(obj));
   }
@@ -595,6 +631,7 @@
     if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
 
     el.addEventListener("click", () => {
+      if (Date.now() < suppressClickUntil) return;
       if (state.solved || state.lockedTiles.has(tile.id)) return;
       const placed = state.tileLocation[tile.id] !== null;
 
@@ -613,6 +650,10 @@
       render();
     });
 
+    el.addEventListener("pointerdown", (e) => {
+      startTouchDrag(e, tile.id);
+    });
+
     el.addEventListener("dragstart", (e) => {
       if (state.solved || state.lockedTiles.has(tile.id)) {
         e.preventDefault();
@@ -627,6 +668,93 @@
     return el;
   }
 
+  function getDropTarget(clientX, clientY) {
+    const hit = document.elementFromPoint(clientX, clientY);
+    if (!hit) return null;
+    const slot = hit.closest(".slot");
+    if (slot) return slot;
+    if (hit.closest("#bank")) return bankEl;
+    return null;
+  }
+
+  function createGhost(tileId) {
+    const ghost = document.createElement("div");
+    ghost.className = "drag-ghost";
+    ghost.textContent = tileById[tileId].label;
+    document.body.appendChild(ghost);
+    return ghost;
+  }
+
+  function positionGhost(ghost, clientX, clientY) {
+    ghost.style.left = `${clientX - ghost.offsetWidth / 2}px`;
+    ghost.style.top = `${clientY - ghost.offsetHeight / 2}px`;
+  }
+
+  function startTouchDrag(e, tileId) {
+    if (e.pointerType !== "touch") return;
+    if (state.solved || state.lockedTiles.has(tileId)) return;
+
+    touchDrag = {
+      tileId,
+      startX: e.clientX,
+      startY: e.clientY,
+      moved: false,
+      ghost: null
+    };
+
+    window.addEventListener("pointermove", onTouchDragMove);
+    window.addEventListener("pointerup", onTouchDragEnd);
+    window.addEventListener("pointercancel", onTouchDragEnd);
+  }
+
+  function onTouchDragMove(e) {
+    if (!touchDrag || e.pointerType !== "touch") return;
+    const dx = e.clientX - touchDrag.startX;
+    const dy = e.clientY - touchDrag.startY;
+    const distance = Math.hypot(dx, dy);
+
+    if (!touchDrag.moved && distance > 6) {
+      touchDrag.moved = true;
+      touchDrag.ghost = createGhost(touchDrag.tileId);
+    }
+
+    if (touchDrag.moved && touchDrag.ghost) {
+      positionGhost(touchDrag.ghost, e.clientX, e.clientY);
+    }
+  }
+
+  function onTouchDragEnd(e) {
+    if (!touchDrag || e.pointerType !== "touch") return;
+
+    window.removeEventListener("pointermove", onTouchDragMove);
+    window.removeEventListener("pointerup", onTouchDragEnd);
+    window.removeEventListener("pointercancel", onTouchDragEnd);
+
+    if (touchDrag.moved) {
+      suppressClickUntil = Date.now() + 350;
+      const target = getDropTarget(e.clientX, e.clientY);
+      let moved = false;
+
+      if (target && target.classList.contains("slot")) {
+        pushUndo();
+        moved = moveTileToSlot(touchDrag.tileId, target.dataset.slot);
+      } else if (target === bankEl) {
+        pushUndo();
+        moved = moveTileToPool(touchDrag.tileId);
+      }
+
+      if (moved) {
+        state.selectedTileId = null;
+        setMessage("Placement updated.");
+      }
+      render();
+    }
+
+    if (touchDrag.ghost) {
+      touchDrag.ghost.remove();
+    }
+    touchDrag = null;
+  }
   function moveTileToSlot(tileId, slot) {
     if (!tileById[tileId] || !SLOTS.includes(slot)) return false;
     if (state.solved || state.lockedTiles.has(tileId)) return false;
@@ -960,6 +1088,12 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
