@@ -110,6 +110,12 @@
       padding: 10px;
       display: grid;
       gap: 10px;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .game.transitioning {
+      opacity: 0.35;
+      transform: translateY(6px);
     }
 
     .board {
@@ -277,7 +283,7 @@
   <div class="app">
     <section class="card top">
       <h1>COMMON GROUND</h1>
-      <div class="subtitle">Famous Actors + Famous Movies</div>
+      <div class="subtitle" id="subtitle">Puzzle 1 of 10</div>
       <div class="hud">
         <div class="lives-label" id="lives-label">Lives: 5</div>
         <div class="lives" id="lives"></div>
@@ -311,7 +317,7 @@
         <button id="check-btn" disabled>Check</button>
         <button id="hint-btn">Hint (2)</button>
         <button id="clear-btn">Clear</button>
-        <button id="restart-btn">New Game</button>
+        <button id="restart-btn">Next Game</button>
       </div>
 
       <div class="summary" id="summary"></div>
@@ -319,421 +325,598 @@
   </div>
 
   <script>
-    const SLOTS = ["S1", "S2", "S3", "S4"];
-    const MAX_LIVES = 5;
-    const MAX_HINTS = 2;
-    const tiles = [
-      { id: "t1", label: "Zoolander", correctSlot: "S1" },
-      { id: "t2", label: "Dodgeball", correctSlot: "S2" },
-      { id: "t3", label: "Wedding Crashers", correctSlot: "S3" },
-      { id: "t4", label: "Starsky & Hutch", correctSlot: "S4" },
-      { id: "t5", label: "Titanic", correctSlot: null },
-      { id: "t6", label: "The Dark Knight", correctSlot: null },
-      { id: "t7", label: "Avatar", correctSlot: null },
-      { id: "t8", label: "Forrest Gump", correctSlot: null }
-    ];
+  const SLOTS = ["S1", "S2", "S3", "S4"];
+  const MAX_LIVES = 5;
+  const MAX_HINTS = 2;
 
-    const tileById = Object.fromEntries(tiles.map((t) => [t.id, t]));
-
-    function createState() {
-      return {
-        placements: Object.fromEntries(SLOTS.map((s) => [s, null])),
-        tileLocation: Object.fromEntries(tiles.map((t) => [t.id, null])),
-        selectedTileId: null,
-        lockedTiles: new Set(),
-        revealedSlots: new Set(),
-        livesUsed: 0,
-        hintsRemaining: MAX_HINTS,
-        tries: 0,
-        solved: false,
-        history: [],
-        bankOrder: shuffle(tiles.map((t) => t.id))
-      };
+  const PUZZLES = [
+    {
+      title: "Actors + Movies",
+      difficulty: "Easy",
+      labels: { A: "Ben Stiller", B: "Owen Wilson", C: "Vince Vaughn" },
+      tiles: [
+        { label: "Zoolander", correctSlot: "S1" },
+        { label: "Dodgeball", correctSlot: "S2" },
+        { label: "Wedding Crashers", correctSlot: "S3" },
+        { label: "Starsky & Hutch", correctSlot: "S4" },
+        { label: "Titanic", correctSlot: null },
+        { label: "Avatar", correctSlot: null },
+        { label: "Forrest Gump", correctSlot: null },
+        { label: "The Dark Knight", correctSlot: null }
+      ]
+    },
+    {
+      title: "Office + Everyday",
+      difficulty: "Easy",
+      labels: { A: "Office", B: "Digital", C: "Portable" },
+      tiles: [
+        { label: "Monitor", correctSlot: "S1" },
+        { label: "Pen", correctSlot: "S2" },
+        { label: "USB Drive", correctSlot: "S3" },
+        { label: "Laptop", correctSlot: "S4" },
+        { label: "Pillow", correctSlot: null },
+        { label: "Banana", correctSlot: null },
+        { label: "Shampoo", correctSlot: null },
+        { label: "Hammer", correctSlot: null }
+      ]
+    },
+    {
+      title: "Breakfast + Sweet + Baked",
+      difficulty: "Easy",
+      labels: { A: "Breakfast", B: "Sweet", C: "Baked" },
+      tiles: [
+        { label: "Pancakes", correctSlot: "S1" },
+        { label: "Toast", correctSlot: "S2" },
+        { label: "Brownie", correctSlot: "S3" },
+        { label: "Muffin", correctSlot: "S4" },
+        { label: "Sushi", correctSlot: null },
+        { label: "Burger", correctSlot: null },
+        { label: "Salad", correctSlot: null },
+        { label: "Taco", correctSlot: null }
+      ]
+    },
+    {
+      title: "Water + Nature + Tourist",
+      difficulty: "Medium",
+      labels: { A: "Water", B: "Nature", C: "Tourist" },
+      tiles: [
+        { label: "Lake", correctSlot: "S1" },
+        { label: "Aquarium", correctSlot: "S2" },
+        { label: "National Park", correctSlot: "S3" },
+        { label: "Waterfall", correctSlot: "S4" },
+        { label: "Parking Lot", correctSlot: null },
+        { label: "Garage", correctSlot: null },
+        { label: "Office", correctSlot: null },
+        { label: "Warehouse", correctSlot: null }
+      ]
+    },
+    {
+      title: "Music + Dance + Party",
+      difficulty: "Medium",
+      labels: { A: "Music", B: "Dance", C: "Party" },
+      tiles: [
+        { label: "Club Remix", correctSlot: "S1" },
+        { label: "Party Playlist", correctSlot: "S2" },
+        { label: "Dance Floor", correctSlot: "S3" },
+        { label: "DJ Set", correctSlot: "S4" },
+        { label: "Podcast", correctSlot: null },
+        { label: "Chess", correctSlot: null },
+        { label: "Lecture", correctSlot: null },
+        { label: "Spreadsheet", correctSlot: null }
+      ]
+    },
+    {
+      title: "Road + Public + Electric",
+      difficulty: "Medium",
+      labels: { A: "Road", B: "Public", C: "Electric" },
+      tiles: [
+        { label: "Bus", correctSlot: "S1" },
+        { label: "Electric Car", correctSlot: "S2" },
+        { label: "Subway", correctSlot: "S3" },
+        { label: "Electric Bus", correctSlot: "S4" },
+        { label: "Sailboat", correctSlot: null },
+        { label: "Helicopter", correctSlot: null },
+        { label: "Skateboard", correctSlot: null },
+        { label: "Hot Air Balloon", correctSlot: null }
+      ]
+    },
+    {
+      title: "Kitchen + Electric + Cleans",
+      difficulty: "Medium",
+      labels: { A: "Kitchen", B: "Electric", C: "Cleans" },
+      tiles: [
+        { label: "Sponge", correctSlot: "S1" },
+        { label: "Blender", correctSlot: "S2" },
+        { label: "Vacuum", correctSlot: "S3" },
+        { label: "Dishwasher", correctSlot: "S4" },
+        { label: "Vase", correctSlot: null },
+        { label: "Curtain", correctSlot: null },
+        { label: "Book", correctSlot: null },
+        { label: "Lamp Shade", correctSlot: null }
+      ]
+    },
+    {
+      title: "Writing + Art + Color",
+      difficulty: "Tricky",
+      labels: { A: "Writing", B: "Art", C: "Color" },
+      tiles: [
+        { label: "Marker", correctSlot: "S1" },
+        { label: "Pencil", correctSlot: "S2" },
+        { label: "Paint", correctSlot: "S3" },
+        { label: "Colored Pencil", correctSlot: "S4" },
+        { label: "Calculator", correctSlot: null },
+        { label: "Stapler", correctSlot: null },
+        { label: "Paper Clip", correctSlot: null },
+        { label: "Ruler", correctSlot: null }
+      ]
+    },
+    {
+      title: "Words + Time",
+      difficulty: "Tricky",
+      labels: { A: "Fast", B: "Late", C: "Energy" },
+      tiles: [
+        { label: "Rush Hour", correctSlot: "S1" },
+        { label: "Adrenaline", correctSlot: "S2" },
+        { label: "Night Shift", correctSlot: "S3" },
+        { label: "Deadline", correctSlot: "S4" },
+        { label: "Pillow", correctSlot: null },
+        { label: "Backpack", correctSlot: null },
+        { label: "Umbrella", correctSlot: null },
+        { label: "Calendar", correctSlot: null }
+      ]
+    },
+    {
+      title: "City + Weekend + Friends",
+      difficulty: "Tricky",
+      labels: { A: "City", B: "Weekend", C: "Friends" },
+      tiles: [
+        { label: "Brunch Spot", correctSlot: "S1" },
+        { label: "Rooftop Hangout", correctSlot: "S2" },
+        { label: "Game Night", correctSlot: "S3" },
+        { label: "Dinner Reservation", correctSlot: "S4" },
+        { label: "Tax Form", correctSlot: null },
+        { label: "Laundry Basket", correctSlot: null },
+        { label: "Alarm Clock", correctSlot: null },
+        { label: "Parking Ticket", correctSlot: null }
+      ]
     }
+  ];
 
-    let state = createState();
+  let puzzleIndex = 0;
+  let isTransitioning = false;
+  let currentTiles = [];
+  let tileById = {};
 
-    const boardEl = document.getElementById("board");
-    const slots = Array.from(document.querySelectorAll(".slot"));
-    const bankEl = document.getElementById("bank");
-    const bankGridEl = document.getElementById("bank-grid");
-    const messageEl = document.getElementById("message");
-    const livesEl = document.getElementById("lives");
-    const livesLabelEl = document.getElementById("lives-label");
-    const summaryEl = document.getElementById("summary");
+  function loadPuzzle(index) {
+    puzzleIndex = (index + PUZZLES.length) % PUZZLES.length;
+    const puzzle = PUZZLES[puzzleIndex];
 
-    const undoBtn = document.getElementById("undo-btn");
-    const checkBtn = document.getElementById("check-btn");
-    const hintBtn = document.getElementById("hint-btn");
-    const clearBtn = document.getElementById("clear-btn");
-    const restartBtn = document.getElementById("restart-btn");
+    currentTiles = puzzle.tiles.map((tile, i) => ({
+      id: `t${i + 1}`,
+      label: tile.label,
+      correctSlot: tile.correctSlot
+    }));
+    tileById = Object.fromEntries(currentTiles.map((t) => [t.id, t]));
 
-    function deepClone(obj) {
-      return JSON.parse(JSON.stringify(obj));
+    document.getElementById("label-A").textContent = puzzle.labels.A;
+    document.getElementById("label-B").textContent = puzzle.labels.B;
+    document.getElementById("label-C").textContent = puzzle.labels.C;
+    document.getElementById("subtitle").textContent = `Puzzle ${puzzleIndex + 1} of ${PUZZLES.length} - ${puzzle.difficulty} - ${puzzle.title}`;
+  }
+
+  function createState() {
+    return {
+      placements: Object.fromEntries(SLOTS.map((s) => [s, null])),
+      tileLocation: Object.fromEntries(currentTiles.map((t) => [t.id, null])),
+      selectedTileId: null,
+      lockedTiles: new Set(),
+      revealedSlots: new Set(),
+      livesUsed: 0,
+      hintsRemaining: MAX_HINTS,
+      tries: 0,
+      solved: false,
+      history: [],
+      bankOrder: shuffle(currentTiles.map((t) => t.id))
+    };
+  }
+
+  loadPuzzle(0);
+  let state = createState();
+
+  const boardEl = document.getElementById("board");
+  const slots = Array.from(document.querySelectorAll(".slot"));
+  const bankEl = document.getElementById("bank");
+  const bankGridEl = document.getElementById("bank-grid");
+  const messageEl = document.getElementById("message");
+  const livesEl = document.getElementById("lives");
+  const livesLabelEl = document.getElementById("lives-label");
+  const summaryEl = document.getElementById("summary");
+
+  const undoBtn = document.getElementById("undo-btn");
+  const checkBtn = document.getElementById("check-btn");
+  const hintBtn = document.getElementById("hint-btn");
+  const clearBtn = document.getElementById("clear-btn");
+  const restartBtn = document.getElementById("restart-btn");
+  const gameCard = document.querySelector(".game");
+
+  function deepClone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+  }
+
+  function setMessage(text, color = "#172033") {
+    messageEl.textContent = text;
+    messageEl.style.color = color;
+  }
+
+  function shuffle(arr) {
+    const out = [...arr];
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [out[i], out[j]] = [out[j], out[i]];
     }
+    return out;
+  }
 
-    function setMessage(text, color = "#172033") {
-      messageEl.textContent = text;
-      messageEl.style.color = color;
-    }
+  function snap() {
+    return {
+      placements: deepClone(state.placements),
+      tileLocation: deepClone(state.tileLocation),
+      selectedTileId: state.selectedTileId,
+      bankOrder: [...state.bankOrder]
+    };
+  }
 
-    function shuffle(arr) {
-      const out = [...arr];
-      for (let i = out.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [out[i], out[j]] = [out[j], out[i]];
-      }
-      return out;
-    }
+  function pushUndo() {
+    state.history.push(snap());
+    if (state.history.length > 100) state.history.shift();
+  }
 
-    function snap() {
-      return {
-        placements: deepClone(state.placements),
-        tileLocation: deepClone(state.tileLocation),
-        selectedTileId: state.selectedTileId,
-        bankOrder: [...state.bankOrder]
-      };
-    }
+  function undo() {
+    if (!state.history.length || state.solved) return;
+    const s = state.history.pop();
+    state.placements = s.placements;
+    state.tileLocation = s.tileLocation;
+    state.selectedTileId = s.selectedTileId;
+    state.bankOrder = s.bankOrder;
+    setMessage("Undid last move.");
+    render();
+  }
 
-    function pushUndo() {
-      state.history.push(snap());
-      if (state.history.length > 100) state.history.shift();
-    }
+  function makeTile(tileId) {
+    const tile = tileById[tileId];
+    const el = document.createElement("div");
+    el.className = "tile";
+    el.dataset.tileId = tile.id;
+    el.draggable = !state.lockedTiles.has(tile.id) && !state.solved;
+    el.innerHTML = `<div class="text">${tile.label}</div>`;
 
-    function undo() {
-      if (!state.history.length || state.solved) return;
-      const s = state.history.pop();
-      state.placements = s.placements;
-      state.tileLocation = s.tileLocation;
-      state.selectedTileId = s.selectedTileId;
-      state.bankOrder = s.bankOrder;
-      setMessage("Undid last move.");
-      render();
-    }
+    if (state.selectedTileId === tile.id) el.classList.add("selected");
+    if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
 
-    function makeTile(tileId) {
-      const tile = tileById[tileId];
-      const el = document.createElement("div");
-      el.className = "tile";
-      el.dataset.tileId = tile.id;
-      el.draggable = !state.lockedTiles.has(tile.id) && !state.solved;
-      el.innerHTML = `<div class="text">${tile.label}</div>`;
+    el.addEventListener("click", () => {
+      if (state.solved || state.lockedTiles.has(tile.id)) return;
+      const placed = state.tileLocation[tile.id] !== null;
 
-      if (state.selectedTileId === tile.id) el.classList.add("selected");
-      if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
-
-      el.addEventListener("click", () => {
-        if (state.solved || state.lockedTiles.has(tile.id)) return;
-        const placed = state.tileLocation[tile.id] !== null;
-
-        if (state.selectedTileId === tile.id) {
-          if (placed) {
-            pushUndo();
-            moveTileToPool(tile.id);
-            state.selectedTileId = null;
-            setMessage(`Moved "${tile.label}" back to pool.`);
-          } else {
-            state.selectedTileId = null;
-          }
+      if (state.selectedTileId === tile.id) {
+        if (placed) {
+          pushUndo();
+          moveTileToPool(tile.id);
+          state.selectedTileId = null;
+          setMessage(`Moved "${tile.label}" back to pool.`);
         } else {
-          state.selectedTileId = tile.id;
+          state.selectedTileId = null;
         }
-        render();
-      });
-
-      el.addEventListener("dragstart", (e) => {
-        if (state.solved || state.lockedTiles.has(tile.id)) {
-          e.preventDefault();
-          return;
-        }
+      } else {
         state.selectedTileId = tile.id;
-        e.dataTransfer.setData("text/plain", tile.id);
-        e.dataTransfer.effectAllowed = "move";
-        render();
-      });
-
-      return el;
-    }
-
-    function moveTileToSlot(tileId, slot) {
-      if (!tileById[tileId] || !SLOTS.includes(slot)) return false;
-      if (state.solved || state.lockedTiles.has(tileId)) return false;
-
-      const from = state.tileLocation[tileId];
-      if (from === slot) return true;
-
-      const occupant = state.placements[slot];
-      if (occupant && state.lockedTiles.has(occupant)) {
-        setMessage("That slot is locked.", "#a16207");
-        return false;
-      }
-
-      state.placements[slot] = tileId;
-      state.tileLocation[tileId] = slot;
-
-      if (from) {
-        state.placements[from] = occupant || null;
-        if (occupant) state.tileLocation[occupant] = from;
-      } else if (occupant) {
-        state.tileLocation[occupant] = null;
-      }
-
-      return true;
-    }
-
-    function moveTileToPool(tileId) {
-      if (!tileById[tileId] || state.solved || state.lockedTiles.has(tileId)) return false;
-      const slot = state.tileLocation[tileId];
-      if (!slot) return true;
-      state.placements[slot] = null;
-      state.tileLocation[tileId] = null;
-      return true;
-    }
-
-    function allPlaced() {
-      return SLOTS.every((s) => Boolean(state.placements[s]));
-    }
-
-    function correctSlots() {
-      return SLOTS.filter((slot) => {
-        const id = state.placements[slot];
-        return id && tileById[id].correctSlot === slot;
-      });
-    }
-
-    function updateColorProgress() {
-      const a = ["S1", "S2", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-      const b = ["S1", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-      const c = ["S2", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-
-      const base = state.revealedSlots.size === 0 ? 0 : 0.1;
-      document.documentElement.style.setProperty("--a-alpha", String(base + (a / 3) * 0.38));
-      document.documentElement.style.setProperty("--b-alpha", String(base + (b / 3) * 0.38));
-      document.documentElement.style.setProperty("--c-alpha", String(base + (c / 3) * 0.38));
-
-      if (state.revealedSlots.size === 0) {
-        document.documentElement.style.setProperty("--a-alpha", "0");
-        document.documentElement.style.setProperty("--b-alpha", "0");
-        document.documentElement.style.setProperty("--c-alpha", "0");
-      }
-    }
-
-    function updateLives() {
-      const left = MAX_LIVES - state.livesUsed;
-      livesLabelEl.textContent = `Lives: ${left}`;
-      livesEl.innerHTML = "";
-      for (let i = 0; i < MAX_LIVES; i++) {
-        const seg = document.createElement("div");
-        seg.className = "life" + (i < left ? " on" : "");
-        livesEl.appendChild(seg);
-      }
-    }
-
-    function updateButtons() {
-      const ready = allPlaced() && !state.solved && state.livesUsed < MAX_LIVES;
-      checkBtn.disabled = !ready;
-      checkBtn.classList.toggle("ready", ready);
-
-      hintBtn.disabled = state.hintsRemaining <= 0 || state.solved || state.livesUsed >= MAX_LIVES;
-      hintBtn.textContent = `Hint (${state.hintsRemaining})`;
-
-      undoBtn.disabled = !state.history.length || state.solved;
-      clearBtn.disabled = !state.selectedTileId || state.solved;
-    }
-
-    function render() {
-      bankGridEl.innerHTML = "";
-      const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : tiles.map((t) => t.id);
-      order.forEach((tileId) => {
-        if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId));
-      });
-
-      slots.forEach((slotEl) => {
-        const slot = slotEl.dataset.slot;
-        slotEl.classList.remove("revealed", "locked", "drag-target");
-
-        const oldTile = slotEl.querySelector(".tile");
-        const oldHint = slotEl.querySelector(".hint");
-        if (oldTile) oldTile.remove();
-        if (oldHint) oldHint.remove();
-
-        const tileId = state.placements[slot];
-        if (tileId) {
-          slotEl.appendChild(makeTile(tileId));
-        }
-
-        if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed");
-        if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked");
-      });
-
-      updateColorProgress();
-      updateLives();
-      updateButtons();
-    }
-
-    function shakeBoard() {
-      boardEl.classList.remove("shake");
-      void boardEl.offsetWidth;
-      boardEl.classList.add("shake");
-    }
-
-    function applyHint() {
-      if (state.solved || state.hintsRemaining <= 0 || state.livesUsed >= MAX_LIVES) return;
-
-      const candidate = tiles.find((t) => {
-        if (!t.correctSlot) return false;
-        if (state.lockedTiles.has(t.id)) return false;
-        return state.tileLocation[t.id] !== t.correctSlot;
-      });
-
-      if (!candidate) {
-        setMessage("No useful hint left.", "#1f7a4f");
-        return;
-      }
-
-      moveTileToSlot(candidate.id, candidate.correctSlot);
-      state.lockedTiles.add(candidate.id);
-      state.revealedSlots.add(candidate.correctSlot);
-      state.hintsRemaining -= 1;
-      state.selectedTileId = null;
-      state.history = [];
-      setMessage("Hint locked one correct movie.", "#a16207");
-      render();
-    }
-
-    function finishWin() {
-      state.solved = true;
-      SLOTS.forEach((slot) => {
-        state.revealedSlots.add(slot);
-        const tileId = state.placements[slot];
-        if (tileId) state.lockedTiles.add(tileId);
-      });
-      setMessage(`Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}.`, "#1f7a4f");
-      summaryEl.textContent = `Score\nCommon Ground ${state.tries}/${MAX_LIVES}`;
-      render();
-    }
-
-    function checkAnswers() {
-      if (!allPlaced() || state.solved || state.livesUsed >= MAX_LIVES) return;
-      state.tries += 1;
-
-      const correctSet = new Set(correctSlots());
-
-      SLOTS.forEach((slot) => {
-        const tileId = state.placements[slot];
-        if (!tileId) return;
-
-        if (correctSet.has(slot)) {
-          state.revealedSlots.add(slot);
-          state.lockedTiles.add(tileId);
-        } else {
-          state.placements[slot] = null;
-          state.tileLocation[tileId] = null;
-        }
-      });
-
-      const remaining = SLOTS.filter((s) => !state.revealedSlots.has(s)).length;
-      if (remaining === 0) {
-        finishWin();
-        return;
-      }
-
-      state.livesUsed += 1;
-      state.history = [];
-      shakeBoard();
-      setMessage(`${remaining} ${remaining === 1 ? "slot is" : "slots are"} still wrong.`, "#b91c1c");
-
-      if (state.livesUsed >= MAX_LIVES) {
-        setMessage("Out of lives. Tap New Game to reset.", "#7f1d1d");
-        summaryEl.textContent = `Final\nCommon Ground X/${MAX_LIVES}`;
       }
       render();
-    }
-
-    function newGame() {
-      state = createState();
-      summaryEl.textContent = "";
-      setMessage("New game started. Find the 4 correct movies.");
-      render();
-    }
-
-    slots.forEach((slotEl) => {
-      slotEl.addEventListener("click", () => {
-        if (state.solved) return;
-        const slot = slotEl.dataset.slot;
-
-        if (!state.selectedTileId) {
-          const occupant = state.placements[slot];
-          if (occupant && !state.lockedTiles.has(occupant)) {
-            pushUndo();
-            moveTileToPool(occupant);
-            setMessage("Moved tile back to pool.");
-            render();
-          }
-          return;
-        }
-
-        pushUndo();
-        const moved = moveTileToSlot(state.selectedTileId, slot);
-        if (moved) {
-          state.selectedTileId = null;
-          setMessage("Placement updated. Fill all 4 slots, then check.");
-          render();
-        }
-      });
-
-      slotEl.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        slotEl.classList.add("drag-target");
-      });
-
-      slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target"));
-
-      slotEl.addEventListener("drop", (e) => {
-        e.preventDefault();
-        slotEl.classList.remove("drag-target");
-        const tileId = e.dataTransfer.getData("text/plain");
-        if (!tileId) return;
-
-        pushUndo();
-        const moved = moveTileToSlot(tileId, slotEl.dataset.slot);
-        if (moved) {
-          state.selectedTileId = null;
-          setMessage("Placement updated. Fill all 4 slots, then check.");
-          render();
-        }
-      });
     });
 
-    bankEl.addEventListener("dragover", (e) => e.preventDefault());
-    bankEl.addEventListener("drop", (e) => {
+    el.addEventListener("dragstart", (e) => {
+      if (state.solved || state.lockedTiles.has(tile.id)) {
+        e.preventDefault();
+        return;
+      }
+      state.selectedTileId = tile.id;
+      e.dataTransfer.setData("text/plain", tile.id);
+      e.dataTransfer.effectAllowed = "move";
+      render();
+    });
+
+    return el;
+  }
+
+  function moveTileToSlot(tileId, slot) {
+    if (!tileById[tileId] || !SLOTS.includes(slot)) return false;
+    if (state.solved || state.lockedTiles.has(tileId)) return false;
+
+    const from = state.tileLocation[tileId];
+    if (from === slot) return true;
+
+    const occupant = state.placements[slot];
+    if (occupant && state.lockedTiles.has(occupant)) {
+      setMessage("That slot is locked.", "#a16207");
+      return false;
+    }
+
+    state.placements[slot] = tileId;
+    state.tileLocation[tileId] = slot;
+
+    if (from) {
+      state.placements[from] = occupant || null;
+      if (occupant) state.tileLocation[occupant] = from;
+    } else if (occupant) {
+      state.tileLocation[occupant] = null;
+    }
+
+    return true;
+  }
+
+  function moveTileToPool(tileId) {
+    if (!tileById[tileId] || state.solved || state.lockedTiles.has(tileId)) return false;
+    const slot = state.tileLocation[tileId];
+    if (!slot) return true;
+    state.placements[slot] = null;
+    state.tileLocation[tileId] = null;
+    return true;
+  }
+
+  function allPlaced() {
+    return SLOTS.every((s) => Boolean(state.placements[s]));
+  }
+
+  function correctSlots() {
+    return SLOTS.filter((slot) => {
+      const id = state.placements[slot];
+      return id && tileById[id].correctSlot === slot;
+    });
+  }
+
+  function updateColorProgress() {
+    const a = ["S1", "S2", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+    const b = ["S1", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+    const c = ["S2", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
+
+    const base = state.revealedSlots.size === 0 ? 0 : 0.1;
+    document.documentElement.style.setProperty("--a-alpha", String(base + (a / 3) * 0.38));
+    document.documentElement.style.setProperty("--b-alpha", String(base + (b / 3) * 0.38));
+    document.documentElement.style.setProperty("--c-alpha", String(base + (c / 3) * 0.38));
+
+    if (state.revealedSlots.size === 0) {
+      document.documentElement.style.setProperty("--a-alpha", "0");
+      document.documentElement.style.setProperty("--b-alpha", "0");
+      document.documentElement.style.setProperty("--c-alpha", "0");
+    }
+  }
+
+  function updateLives() {
+    const left = MAX_LIVES - state.livesUsed;
+    livesLabelEl.textContent = `Lives: ${left}`;
+    livesEl.innerHTML = "";
+    for (let i = 0; i < MAX_LIVES; i++) {
+      const seg = document.createElement("div");
+      seg.className = "life" + (i < left ? " on" : "");
+      livesEl.appendChild(seg);
+    }
+  }
+
+  function updateButtons() {
+    const ready = allPlaced() && !state.solved && state.livesUsed < MAX_LIVES;
+    checkBtn.disabled = !ready;
+    checkBtn.classList.toggle("ready", ready);
+
+    hintBtn.disabled = state.hintsRemaining <= 0 || state.solved || state.livesUsed >= MAX_LIVES;
+    hintBtn.textContent = `Hint (${state.hintsRemaining})`;
+
+    undoBtn.disabled = !state.history.length || state.solved;
+    clearBtn.disabled = !state.selectedTileId || state.solved;
+  }
+
+  function render() {
+    bankGridEl.innerHTML = "";
+    const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((t) => t.id);
+    order.forEach((tileId) => {
+      if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId));
+    });
+
+    slots.forEach((slotEl) => {
+      const slot = slotEl.dataset.slot;
+      slotEl.classList.remove("revealed", "locked", "drag-target");
+
+      const oldTile = slotEl.querySelector(".tile");
+      if (oldTile) oldTile.remove();
+
+      const tileId = state.placements[slot];
+      if (tileId) {
+        slotEl.appendChild(makeTile(tileId));
+      }
+
+      if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed");
+      if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked");
+    });
+
+    updateColorProgress();
+    updateLives();
+    updateButtons();
+  }
+
+  function shakeBoard() {
+    boardEl.classList.remove("shake");
+    void boardEl.offsetWidth;
+    boardEl.classList.add("shake");
+  }
+
+  function applyHint() {
+    if (state.solved || state.hintsRemaining <= 0 || state.livesUsed >= MAX_LIVES) return;
+
+    const candidate = currentTiles.find((t) => {
+      if (!t.correctSlot) return false;
+      if (state.lockedTiles.has(t.id)) return false;
+      return state.tileLocation[t.id] !== t.correctSlot;
+    });
+
+    if (!candidate) {
+      setMessage("No useful hint left.", "#1f7a4f");
+      return;
+    }
+
+    moveTileToSlot(candidate.id, candidate.correctSlot);
+    state.lockedTiles.add(candidate.id);
+    state.revealedSlots.add(candidate.correctSlot);
+    state.hintsRemaining -= 1;
+    state.selectedTileId = null;
+    state.history = [];
+    setMessage("Hint locked one correct tile.", "#a16207");
+    render();
+  }
+
+  function finishWin() {
+    state.solved = true;
+    SLOTS.forEach((slot) => {
+      state.revealedSlots.add(slot);
+      const tileId = state.placements[slot];
+      if (tileId) state.lockedTiles.add(tileId);
+    });
+    setMessage(`Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}.`, "#1f7a4f");
+    summaryEl.textContent = `Score\nPuzzle ${puzzleIndex + 1}/${PUZZLES.length} in ${state.tries} tries`;
+    render();
+  }
+
+  function checkAnswers() {
+    if (!allPlaced() || state.solved || state.livesUsed >= MAX_LIVES) return;
+    state.tries += 1;
+
+    const correctSet = new Set(correctSlots());
+
+    SLOTS.forEach((slot) => {
+      const tileId = state.placements[slot];
+      if (!tileId) return;
+
+      if (correctSet.has(slot)) {
+        state.revealedSlots.add(slot);
+        state.lockedTiles.add(tileId);
+      } else {
+        state.placements[slot] = null;
+        state.tileLocation[tileId] = null;
+      }
+    });
+
+    const remaining = SLOTS.filter((s) => !state.revealedSlots.has(s)).length;
+    if (remaining === 0) {
+      finishWin();
+      return;
+    }
+
+    state.livesUsed += 1;
+    state.history = [];
+    shakeBoard();
+    setMessage(`${remaining} ${remaining === 1 ? "slot is" : "slots are"} still wrong.`, "#b91c1c");
+
+    if (state.livesUsed >= MAX_LIVES) {
+      setMessage("Out of lives. Tap Next Game for a new puzzle.", "#7f1d1d");
+      summaryEl.textContent = `Final\nPuzzle ${puzzleIndex + 1}/${PUZZLES.length} - no solve`;
+    }
+    render();
+  }
+
+  function nextGame() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    gameCard.classList.add("transitioning");
+
+    setTimeout(() => {
+      loadPuzzle(puzzleIndex + 1);
+      state = createState();
+      summaryEl.textContent = "";
+      setMessage(`Puzzle ${puzzleIndex + 1} loaded. Find the 4 correct items.`);
+      render();
+      gameCard.classList.remove("transitioning");
+      isTransitioning = false;
+    }, 180);
+  }
+
+  slots.forEach((slotEl) => {
+    slotEl.addEventListener("click", () => {
+      if (state.solved) return;
+      const slot = slotEl.dataset.slot;
+
+      if (!state.selectedTileId) {
+        const occupant = state.placements[slot];
+        if (occupant && !state.lockedTiles.has(occupant)) {
+          pushUndo();
+          moveTileToPool(occupant);
+          setMessage("Moved tile back to pool.");
+          render();
+        }
+        return;
+      }
+
+      pushUndo();
+      const moved = moveTileToSlot(state.selectedTileId, slot);
+      if (moved) {
+        state.selectedTileId = null;
+        setMessage("Placement updated. Fill all 4 slots, then check.");
+        render();
+      }
+    });
+
+    slotEl.addEventListener("dragover", (e) => {
       e.preventDefault();
+      slotEl.classList.add("drag-target");
+    });
+
+    slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target"));
+
+    slotEl.addEventListener("drop", (e) => {
+      e.preventDefault();
+      slotEl.classList.remove("drag-target");
       const tileId = e.dataTransfer.getData("text/plain");
       if (!tileId) return;
 
       pushUndo();
-      if (moveTileToPool(tileId)) {
+      const moved = moveTileToSlot(tileId, slotEl.dataset.slot);
+      if (moved) {
         state.selectedTileId = null;
-        setMessage("Moved tile back to pool.");
+        setMessage("Placement updated. Fill all 4 slots, then check.");
         render();
       }
     });
+  });
 
-    undoBtn.addEventListener("click", undo);
-    checkBtn.addEventListener("click", checkAnswers);
-    hintBtn.addEventListener("click", applyHint);
-    clearBtn.addEventListener("click", () => {
-      if (!state.selectedTileId || state.solved) return;
+  bankEl.addEventListener("dragover", (e) => e.preventDefault());
+  bankEl.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const tileId = e.dataTransfer.getData("text/plain");
+    if (!tileId) return;
+
+    pushUndo();
+    if (moveTileToPool(tileId)) {
       state.selectedTileId = null;
-      setMessage("Selection cleared.");
+      setMessage("Moved tile back to pool.");
       render();
-    });
-    restartBtn.addEventListener("click", newGame);
+    }
+  });
 
+  undoBtn.addEventListener("click", undo);
+  checkBtn.addEventListener("click", checkAnswers);
+  hintBtn.addEventListener("click", applyHint);
+  clearBtn.addEventListener("click", () => {
+    if (!state.selectedTileId || state.solved) return;
+    state.selectedTileId = null;
+    setMessage("Selection cleared.");
     render();
-  </script>
+  });
+  restartBtn.addEventListener("click", nextGame);
+
+  setMessage("Puzzle 1 loaded. Find the 4 correct items.");
+  render();
+</script>
 </body>
 </html>
+
+
+
+
 
 
 
