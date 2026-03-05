@@ -308,7 +308,7 @@
       </div>
 
       <div class="bank" id="bank">
-        <div class="bank-title">Movie Pool (8 total, exactly 4 correct)</div>
+        <div class="bank-title">Tile Pool (8 total, exactly 4 correct)</div>
         <div class="bank-grid" id="bank-grid"></div>
       </div>
 
@@ -329,22 +329,7 @@
   const MAX_LIVES = 5;
   const MAX_HINTS = 2;
 
-  const PUZZLES = [
-    {
-      title: "Actors + Movies",
-      difficulty: "Easy",
-      labels: { A: "Ben Stiller", B: "Owen Wilson", C: "Vince Vaughn" },
-      tiles: [
-        { label: "Zoolander", correctSlot: "S1" },
-        { label: "Dodgeball", correctSlot: "S2" },
-        { label: "Wedding Crashers", correctSlot: "S3" },
-        { label: "Starsky & Hutch", correctSlot: "S4" },
-        { label: "Titanic", correctSlot: null },
-        { label: "Avatar", correctSlot: null },
-        { label: "Forrest Gump", correctSlot: null },
-        { label: "The Dark Knight", correctSlot: null }
-      ]
-    },
+    const PUZZLES = [
     {
       title: "Office + Everyday",
       difficulty: "Easy",
@@ -354,7 +339,7 @@
         { label: "Pen", correctSlot: "S2" },
         { label: "USB Drive", correctSlot: "S3" },
         { label: "Laptop", correctSlot: "S4" },
-        { label: "Pillow", correctSlot: null },
+        { label: "Cactus", correctSlot: null },
         { label: "Banana", correctSlot: null },
         { label: "Shampoo", correctSlot: null },
         { label: "Hammer", correctSlot: null }
@@ -377,13 +362,13 @@
     },
     {
       title: "Water + Nature + Tourist",
-      difficulty: "Medium",
+      difficulty: "Easy",
       labels: { A: "Water", B: "Nature", C: "Tourist" },
       tiles: [
-        { label: "Lake", correctSlot: "S1" },
-        { label: "Aquarium", correctSlot: "S2" },
-        { label: "National Park", correctSlot: "S3" },
-        { label: "Waterfall", correctSlot: "S4" },
+        { label: "River", correctSlot: "S1" },
+        { label: "Ferry Ride", correctSlot: "S2" },
+        { label: "Scenic Lookout", correctSlot: "S3" },
+        { label: "Niagara Falls", correctSlot: "S4" },
         { label: "Parking Lot", correctSlot: null },
         { label: "Garage", correctSlot: null },
         { label: "Office", correctSlot: null },
@@ -391,33 +376,33 @@
       ]
     },
     {
-      title: "Music + Dance + Party",
+      title: "Hot + Drink + Morning",
       difficulty: "Medium",
-      labels: { A: "Music", B: "Dance", C: "Party" },
+      labels: { A: "Hot", B: "Drink", C: "Morning" },
       tiles: [
-        { label: "Club Remix", correctSlot: "S1" },
-        { label: "Party Playlist", correctSlot: "S2" },
-        { label: "Dance Floor", correctSlot: "S3" },
-        { label: "DJ Set", correctSlot: "S4" },
-        { label: "Podcast", correctSlot: null },
-        { label: "Chess", correctSlot: null },
-        { label: "Lecture", correctSlot: null },
-        { label: "Spreadsheet", correctSlot: null }
+        { label: "Spicy Margarita", correctSlot: "S1" },
+        { label: "Oatmeal", correctSlot: "S2" },
+        { label: "Orange Juice", correctSlot: "S3" },
+        { label: "Coffee", correctSlot: "S4" },
+        { label: "Headphones", correctSlot: null },
+        { label: "Cactus", correctSlot: null },
+        { label: "Flashlight", correctSlot: null },
+        { label: "Backpack", correctSlot: null }
       ]
     },
     {
-      title: "Road + Public + Electric",
+      title: "Draft + Work + Drink",
       difficulty: "Medium",
-      labels: { A: "Road", B: "Public", C: "Electric" },
+      labels: { A: "Draft", B: "Work", C: "Drink" },
       tiles: [
-        { label: "Bus", correctSlot: "S1" },
-        { label: "Electric Car", correctSlot: "S2" },
-        { label: "Subway", correctSlot: "S3" },
-        { label: "Electric Bus", correctSlot: "S4" },
-        { label: "Sailboat", correctSlot: null },
-        { label: "Helicopter", correctSlot: null },
-        { label: "Skateboard", correctSlot: null },
-        { label: "Hot Air Balloon", correctSlot: null }
+        { label: "Rough Draft", correctSlot: "S1" },
+        { label: "Draft Beer", correctSlot: "S2" },
+        { label: "Coffee Break", correctSlot: "S3" },
+        { label: "Happy Hour Pitch", correctSlot: "S4" },
+        { label: "Parking Meter", correctSlot: null },
+        { label: "Desk Lamp", correctSlot: null },
+        { label: "Power Drill", correctSlot: null },
+        { label: "Backpack", correctSlot: null }
       ]
     },
     {
@@ -425,59 +410,74 @@
       difficulty: "Medium",
       labels: { A: "Kitchen", B: "Electric", C: "Cleans" },
       tiles: [
-        { label: "Sponge", correctSlot: "S1" },
-        { label: "Blender", correctSlot: "S2" },
-        { label: "Vacuum", correctSlot: "S3" },
+        { label: "Toaster", correctSlot: "S1" },
+        { label: "Dish Soap", correctSlot: "S2" },
+        { label: "Robot Vacuum", correctSlot: "S3" },
         { label: "Dishwasher", correctSlot: "S4" },
-        { label: "Vase", correctSlot: null },
-        { label: "Curtain", correctSlot: null },
-        { label: "Book", correctSlot: null },
-        { label: "Lamp Shade", correctSlot: null }
+        { label: "Cactus", correctSlot: null },
+        { label: "Treadmill", correctSlot: null },
+        { label: "Notebook", correctSlot: null },
+        { label: "Sneakers", correctSlot: null }
       ]
     },
     {
-      title: "Writing + Art + Color",
-      difficulty: "Tricky",
-      labels: { A: "Writing", B: "Art", C: "Color" },
+      title: "Pop Star + Filthy Rich + Beauty Brand",
+      difficulty: "Medium",
+      labels: { A: "Pop Star", B: "Filthy Rich", C: "Beauty Brand" },
       tiles: [
-        { label: "Marker", correctSlot: "S1" },
-        { label: "Pencil", correctSlot: "S2" },
-        { label: "Paint", correctSlot: "S3" },
-        { label: "Colored Pencil", correctSlot: "S4" },
-        { label: "Calculator", correctSlot: null },
-        { label: "Stapler", correctSlot: null },
-        { label: "Paper Clip", correctSlot: null },
-        { label: "Ruler", correctSlot: null }
+        { label: "Taylor Swift", correctSlot: "S1" },
+        { label: "Halsey", correctSlot: "S2" },
+        { label: "Kylie Jenner", correctSlot: "S3" },
+        { label: "Rihanna", correctSlot: "S4" },
+        { label: "Tom Holland", correctSlot: null },
+        { label: "Nike", correctSlot: null },
+        { label: "Netflix", correctSlot: null },
+        { label: "Tom Hanks", correctSlot: null }
       ]
     },
     {
-      title: "Words + Time",
+      title: "Cold + Sweet + Drink",
       difficulty: "Tricky",
-      labels: { A: "Fast", B: "Late", C: "Energy" },
+      labels: { A: "Cold", B: "Sweet", C: "Drink" },
       tiles: [
-        { label: "Rush Hour", correctSlot: "S1" },
-        { label: "Adrenaline", correctSlot: "S2" },
-        { label: "Night Shift", correctSlot: "S3" },
-        { label: "Deadline", correctSlot: "S4" },
-        { label: "Pillow", correctSlot: null },
+        { label: "Ice Cream", correctSlot: "S1" },
+        { label: "Iced Water", correctSlot: "S2" },
+        { label: "Hot Chocolate", correctSlot: "S3" },
+        { label: "Milkshake", correctSlot: "S4" },
+        { label: "Cactus", correctSlot: null },
+        { label: "Treadmill", correctSlot: null },
+        { label: "Notebook", correctSlot: null },
+        { label: "Shampoo", correctSlot: null }
+      ]
+    },
+    {
+      title: "Phone + Social + Photos",
+      difficulty: "Tricky",
+      labels: { A: "Phone", B: "Social", C: "Photos" },
+      tiles: [
+        { label: "DM", correctSlot: "S1" },
+        { label: "Camera Roll", correctSlot: "S2" },
+        { label: "Selfie Post", correctSlot: "S3" },
+        { label: "Instagram Story", correctSlot: "S4" },
+        { label: "Blender", correctSlot: null },
         { label: "Backpack", correctSlot: null },
-        { label: "Umbrella", correctSlot: null },
-        { label: "Calendar", correctSlot: null }
+        { label: "Newspaper", correctSlot: null },
+        { label: "Sneakers", correctSlot: null }
       ]
     },
     {
-      title: "City + Weekend + Friends",
+      title: "U.S. Gov + Historic + Tourist",
       difficulty: "Tricky",
-      labels: { A: "City", B: "Weekend", C: "Friends" },
+      labels: { A: "U.S. Gov", B: "Historic", C: "Tourist" },
       tiles: [
-        { label: "Brunch Spot", correctSlot: "S1" },
-        { label: "Rooftop Hangout", correctSlot: "S2" },
-        { label: "Game Night", correctSlot: "S3" },
-        { label: "Dinner Reservation", correctSlot: "S4" },
-        { label: "Tax Form", correctSlot: null },
-        { label: "Laundry Basket", correctSlot: null },
-        { label: "Alarm Clock", correctSlot: null },
-        { label: "Parking Ticket", correctSlot: null }
+        { label: "Independence Hall", correctSlot: "S1" },
+        { label: "U.S. Capitol", correctSlot: "S2" },
+        { label: "Alcatraz", correctSlot: "S3" },
+        { label: "White House", correctSlot: "S4" },
+        { label: "Shopping Mall", correctSlot: null },
+        { label: "Gas Station", correctSlot: null },
+        { label: "Parking Garage", correctSlot: null },
+        { label: "Apartment Lobby", correctSlot: null }
       ]
     }
   ];
@@ -522,6 +522,7 @@
 
   loadPuzzle(0);
   let state = createState();
+  let sessionResults = Array(PUZZLES.length).fill(null);
 
   const boardEl = document.getElementById("board");
   const slots = Array.from(document.querySelectorAll(".slot"));
@@ -770,8 +771,37 @@
     render();
   }
 
+  function finalizeCurrentPuzzle(status) {
+    if (sessionResults[puzzleIndex]) return;
+    sessionResults[puzzleIndex] = {
+      status,
+      tries: state.tries,
+      hintsUsed: MAX_HINTS - state.hintsRemaining,
+      livesUsed: state.livesUsed
+    };
+  }
+
+  function allPuzzlesFinalized() {
+    return sessionResults.every((r) => r !== null);
+  }
+
+  function buildSessionRating() {
+    const solved = sessionResults.filter((r) => r && r.status === "solved").length;
+    const failed = sessionResults.filter((r) => r && r.status !== "solved").length;
+    const tries = sessionResults.reduce((sum, r) => sum + (r ? r.tries : 0), 0);
+    const hints = sessionResults.reduce((sum, r) => sum + (r ? r.hintsUsed : 0), 0);
+
+    const score = Math.max(0, Math.round((solved * 14) - (tries * 1.3) - (hints * 2.2) - (failed * 5)));
+
+    if (score >= 95) return { title: "Pattern Grandmaster", score, solved, tries, hints };
+    if (score >= 75) return { title: "Connection Architect", score, solved, tries, hints };
+    if (score >= 55) return { title: "Sharp Spotter", score, solved, tries, hints };
+    if (score >= 35) return { title: "Logic Explorer", score, solved, tries, hints };
+    return { title: "Wildcard Guesser", score, solved, tries, hints };
+  }
   function finishWin() {
     state.solved = true;
+    finalizeCurrentPuzzle("solved");
     SLOTS.forEach((slot) => {
       state.revealedSlots.add(slot);
       const tileId = state.placements[slot];
@@ -813,6 +843,7 @@
     setMessage(`${remaining} ${remaining === 1 ? "slot is" : "slots are"} still wrong.`, "#b91c1c");
 
     if (state.livesUsed >= MAX_LIVES) {
+      finalizeCurrentPuzzle("failed");
       setMessage("Out of lives. Tap Next Game for a new puzzle.", "#7f1d1d");
       summaryEl.textContent = `Final\nPuzzle ${puzzleIndex + 1}/${PUZZLES.length} - no solve`;
     }
@@ -821,14 +852,30 @@
 
   function nextGame() {
     if (isTransitioning) return;
+
+    if (!sessionResults[puzzleIndex]) {
+      finalizeCurrentPuzzle(state.solved ? "solved" : (state.livesUsed >= MAX_LIVES ? "failed" : "skipped"));
+    }
+
+    const wrappingToStart = puzzleIndex === PUZZLES.length - 1;
+
     isTransitioning = true;
     gameCard.classList.add("transitioning");
 
     setTimeout(() => {
       loadPuzzle(puzzleIndex + 1);
       state = createState();
-      summaryEl.textContent = "";
-      setMessage(`Puzzle ${puzzleIndex + 1} loaded. Find the 4 correct items.`);
+
+      if (wrappingToStart && allPuzzlesFinalized()) {
+        const rating = buildSessionRating();
+        summaryEl.textContent = `10 Puzzle Rating\n${rating.title} (${rating.score})\nSolved: ${rating.solved}/10 | Tries: ${rating.tries} | Hints: ${rating.hints}`;
+        setMessage(`Pack complete. Your rating: ${rating.title}. Starting a fresh run.`);
+        sessionResults = Array(PUZZLES.length).fill(null);
+      } else {
+        summaryEl.textContent = "";
+        setMessage(`Puzzle ${puzzleIndex + 1} loaded. Find the 4 correct items.`);
+      }
+
       render();
       gameCard.classList.remove("transitioning");
       isTransitioning = false;
@@ -913,6 +960,34 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
