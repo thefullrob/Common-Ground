@@ -4,13 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Common Ground</title>
-  <style>
+      <style>
     :root {
-      --bg: #f1efe9;
-      --panel: #fcfbf8;
-      --line: #d9d2c4;
-      --ink: #121b2d;
-      --muted: #5d6779;
+      --bg: #f3efe6;
+      --panel: #fcfaf5;
+      --line: #d8cfbe;
+      --line-soft: #e8e0d3;
+      --ink: #162033;
+      --muted: #667188;
+      --cream: #f6f1e7;
       --a-alpha: 0;
       --b-alpha: 0;
       --c-alpha: 0;
@@ -21,10 +23,12 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at 8% 0%, #f9f6ef 0, transparent 40%), var(--bg);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.75) 0, transparent 32%),
+        linear-gradient(180deg, #f7f4ed 0%, var(--bg) 100%);
       color: var(--ink);
       font-family: "Avenir Next", "Segoe UI", sans-serif;
-      padding: 12px;
+      padding: 10px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -33,7 +37,7 @@
     .app {
       width: min(470px, 100%);
       display: grid;
-      gap: 10px;
+      gap: 8px;
       align-content: start;
       grid-auto-rows: max-content;
     }
@@ -41,55 +45,56 @@
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04);
     }
 
-    .top { padding: 14px; display: grid; gap: 8px; align-content: start; height: fit-content; }
+    .top {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 6px 6px 0;
+      display: grid;
+      gap: 6px;
+      align-content: start;
+      height: fit-content;
+    }
 
     h1 {
       margin: 0;
       text-align: center;
       letter-spacing: 0.04em;
-      font-size: 2rem;
-      line-height: 1;
+      font-size: 2.25rem;
+      line-height: 0.95;
     }
 
     .subtitle {
-      margin-top: 2px;
       text-align: center;
       color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.88rem;
+      font-weight: 800;
     }
 
     .hud {
-      margin-top: 4px;
       display: grid;
-      gap: 8px;
-    }
-
-    .lives-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+      gap: 6px;
     }
 
     .lives-label {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 900;
+      letter-spacing: 0.01em;
     }
 
     .lives {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      width: 200px;
-      gap: 5px;
+      grid-template-columns: repeat(3, 1fr);
+      width: 108px;
+      gap: 6px;
     }
 
     .life {
-      height: 9px;
+      height: 8px;
       border-radius: 999px;
       border: 1px solid #cabfa8;
       background: #e2d8c7;
@@ -101,15 +106,23 @@
     }
 
     .message {
-      min-height: 20px;
-      font-size: 0.92rem;
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(252, 250, 245, 0.9);
+      padding: 9px 12px;
+      font-size: 0.9rem;
       font-weight: 800;
     }
 
+    .message:empty {
+      display: none;
+    }
+
     .game {
-      padding: 10px;
+      padding: 12px;
       display: grid;
-      gap: 10px;
+      gap: 12px;
       transition: opacity 180ms ease, transform 180ms ease;
     }
 
@@ -121,10 +134,12 @@
     .board {
       position: relative;
       width: 100%;
-      height: 340px;
-      border-radius: 14px;
-      border: 1px solid #ddd5c7;
-      background: #f8f5ef;
+      height: 352px;
+      border-radius: 18px;
+      border: 1px solid var(--line-soft);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.75) 0, transparent 48%),
+        var(--cream);
       overflow: hidden;
     }
 
@@ -133,8 +148,8 @@
       width: 190px;
       height: 190px;
       border-radius: 50%;
-      border: 3px solid #1f2937;
-      transition: background-color 260ms ease;
+      border: 3px solid #243042;
+      transition: background-color 260ms ease, border-color 260ms ease;
       pointer-events: none;
     }
 
@@ -142,61 +157,105 @@
     #circle-B { top: 130px; left: 72px; background: rgba(244, 114, 182, var(--b-alpha)); }
     #circle-C { top: 130px; right: 72px; background: rgba(134, 239, 172, var(--c-alpha)); }
 
+    .board.failed .circle {
+      border-color: #7f1d1d;
+    }
+
+    .board.failed #circle-A,
+    .board.failed #circle-B,
+    .board.failed #circle-C {
+      background: rgba(220, 38, 38, 0.18);
+    }
+
     .label {
       position: absolute;
       text-align: center;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       line-height: 1.1;
       font-weight: 900;
       text-transform: uppercase;
+      letter-spacing: 0.03em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(216, 207, 190, 0.95);
+      background: rgba(248, 244, 236, 0.96);
       pointer-events: none;
     }
 
-    #label-A { top: 76px; left: 50%; transform: translateX(-50%); }
-    #label-B { top: 224px; left: 24px; width: 112px; text-align: left; }
-    #label-C { top: 224px; right: 24px; width: 112px; text-align: right; }
+    #label-A { top: 74px; left: 50%; transform: translateX(-50%); }
+    #label-B { top: 220px; left: 30px; text-align: center; }
+    #label-C { top: 220px; right: 30px; text-align: center; }
 
     .slot {
       position: absolute;
-      width: 94px;
-      height: 66px;
-      border: 2px dashed #b8ad95;
-      border-radius: 12px;
-      background: #ffffff;
-      padding: 4px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 130ms ease, transform 130ms ease, background-color 200ms ease;
+      overflow: visible;
+      transition: transform 130ms ease;
     }
-    #slot-S1 { top: 132px; left: 88px; }
-    #slot-S2 { top: 132px; right: 88px; }
-    #slot-S3 { top: 266px; left: 50%; transform: translateX(-50%); }
-    #slot-S4 { top: 184px; left: 50%; transform: translateX(-50%); }
 
-    .slot.drag-target { border-color: #111827; }
-    .slot.revealed { border-style: solid; border-color: #111827; }
-    .slot.locked { border-color: #a16207; box-shadow: inset 0 0 0 2px #a1620730; }
+    .slot::before,
+    .slot::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #bba985;
+      border-radius: 999px;
+      transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+    }
 
-    #slot-S1.revealed { background: #f5d0fe; }
-    #slot-S2.revealed { background: #bae6fd; }
-    #slot-S3.revealed { background: #fde68a; }
-    #slot-S4.revealed { background: #fdba74; }
+    .slot::before {
+      transform: rotate(45deg);
+    }
+
+    .slot::after {
+      transform: rotate(-45deg);
+    }
+
+    .slot.drag-target::before,
+    .slot.drag-target::after {
+      background: #111827;
+    }
+
+    .slot.drag-target::before {
+      transform: rotate(45deg) scale(1.15);
+    }
+
+    .slot.drag-target::after {
+      transform: rotate(-45deg) scale(1.15);
+    }
+
+    .slot.has-tile::before,
+    .slot.has-tile::after,
+    .slot.revealed::before,
+    .slot.revealed::after {
+      opacity: 0;
+    }
+
+    #slot-S1 { top: 136px; left: 154px; }
+    #slot-S2 { top: 136px; right: 154px; }
+    #slot-S3 { top: 220px; left: 50%; transform: translateX(-50%); }
+    #slot-S4 { top: 160px; left: 50%; transform: translateX(-50%); }
 
     .bank {
-      border: 1px solid #ddd2c0;
-      border-radius: 14px;
-      padding: 9px;
-      background: #f7f4ed;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      padding: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(247,244,237,0.92));
     }
 
     .bank-title {
-      margin-bottom: 8px;
-      font-size: 0.75rem;
-      font-weight: 900;
-      color: #475569;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
+      display: none;
     }
 
     .bank-grid {
@@ -207,29 +266,47 @@
     }
 
     .tile {
-      border: 2px solid #aa9c83;
-      border-radius: 12px;
-      background: #fff;
-      padding: 7px 6px;
+      border: 1.5px solid #af9f83;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #fcfaf6 100%);
+      padding: 9px 7px;
       display: grid;
       justify-items: center;
       gap: 4px;
       cursor: grab;
       user-select: none;
       touch-action: none;
-      transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+      min-height: 56px;
+      transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
     }
 
     .tile:hover {
       border-color: #7b6d54;
       transform: translateY(-1px);
-      box-shadow: 0 5px 10px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.08);
     }
 
-    .tile.selected { border-color: #111827; box-shadow: 0 0 0 2px #11182722; }
-    .tile.locked { border-color: #a16207; background: #fff7df; cursor: default; }
+    .tile.selected { border-color: #111827; box-shadow: 0 0 0 2px #11182718; }
+    .tile.locked { border-color: #b7791f; background: #fff1bf; cursor: default; }
+    .slot .tile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 74px;
+      min-height: 46px;
+      transform: translate(-50%, -50%);
+      border-radius: 13px;
+      padding: 4px 4px;
+      box-shadow: 0 7px 10px rgba(15, 23, 42, 0.06);
+    }
+
+    #slot-S1 .tile { transform: translate(-104%, -92%); }
+    #slot-S2 .tile { transform: translate(4%, -92%); }
+    #slot-S3 .tile { transform: translate(-50%, 6%); }
+    #slot-S4 .tile { transform: translate(-50%, -112%); }
+
     .text {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       line-height: 1.1;
       font-weight: 900;
       text-align: center;
@@ -239,29 +316,29 @@
     .controls {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 7px;
+      gap: 8px;
     }
 
     button {
-      border: 1px solid #b8ad96;
+      border: 1px solid #c6b89f;
       border-radius: 999px;
-      background: #fff;
+      background: rgba(255,255,255,0.9);
       color: #0f172a;
       font-size: 0.78rem;
       font-weight: 900;
-      padding: 9px 7px;
+      padding: 10px 8px;
       cursor: pointer;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.65) inset;
     }
 
     button:disabled { opacity: 0.48; cursor: not-allowed; }
-    #check-btn.ready { background: #111827; color: #fff; border-color: #111827; }
-    #hint-btn { background: #f59e0b; border-color: #f59e0b; }
+    #submit-btn.ready { background: #111827; color: #fff; border-color: #111827; }
 
     .summary {
       min-height: 18px;
       text-align: center;
       white-space: pre-line;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       font-weight: 800;
       color: #334155;
     }
@@ -283,7 +360,75 @@
       text-align: center;
     }
 
+    .tutorial {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 32, 51, 0.52);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 4000;
+    }
+
+    .tutorial[hidden] {
+      display: none;
+    }
+
+    .tutorial-card {
+      width: min(420px, 100%);
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      display: grid;
+      gap: 12px;
+    }
+
+    .tutorial-card h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+
+    .tutorial-copy {
+      color: #435066;
+      font-size: 0.94rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .tutorial-steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tutorial-step {
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      padding: 12px;
+      background: #faf6ee;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .tutorial-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tutorial-primary {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
     .shake { animation: shake 260ms ease; }
+
     @keyframes shake {
       0% { transform: translateX(0); }
       30% { transform: translateX(-4px); }
@@ -293,22 +438,39 @@
 
     @media (max-width: 430px) {
       body { padding: 8px; }
-      .app { gap: 12px; }
-      .top { padding: 12px; gap: 6px; }
-      h1 { font-size: 1.85rem; }
-      .subtitle { font-size: 0.82rem; }
-      .message { font-size: 0.86rem; }
-      .game { padding: 9px; gap: 12px; }
-      .board { height: 332px; }
-      .label { font-size: 0.75rem; }
-      #label-B { top: 220px; left: 18px; width: 108px; }
-      #label-C { top: 220px; right: 18px; width: 108px; }
+      .app { gap: 6px; }
+      .top { padding: 4px 4px 0; gap: 5px; }
+      h1 { font-size: 1.95rem; }
+      .subtitle { font-size: 0.8rem; }
+      .lives-label { font-size: 0.82rem; }
+      .lives { width: 108px; gap: 5px; }
+      .message { padding: 8px 10px; font-size: 0.84rem; }
+      .game { padding: 10px; gap: 10px; }
+      .board { height: 318px; }
+      .circle { width: 180px; height: 180px; }
+      #circle-A { top: 20px; }
+      #circle-B { top: 122px; left: 62px; }
+      #circle-C { top: 122px; right: 62px; }
+      .label { font-size: 0.69rem; }
+      #label-A { top: 72px; }
+      #label-B { top: 216px; left: 20px; }
+      #label-C { top: 216px; right: 20px; }
+      #slot-S1 { top: 126px; left: 132px; }
+      #slot-S2 { top: 126px; right: 132px; }
+      #slot-S4 { top: 150px; }
+      #slot-S3 { top: 206px; }
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .bank { padding: 10px; }
-      .tile { padding: 9px 8px; }
-      .text { font-size: 0.78rem; }
+      .tile { padding: 8px 7px; min-height: 48px; }
+      .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px; }
+      #slot-S1 .tile { transform: translate(-98%, -90%); }
+      #slot-S2 .tile { transform: translate(-2%, -90%); }
+      #slot-S3 .tile { transform: translate(-50%, 4%); }
+      #slot-S4 .tile { transform: translate(-50%, -106%); }
+      .text { font-size: 0.76rem; }
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      button { font-size: 0.82rem; padding: 10px 8px; }
+      button { font-size: 0.8rem; padding: 10px 8px; }
+      .summary { font-size: 0.76rem; }
+      .tutorial-card { padding: 16px; }
     }
   </style>
 </head>
@@ -318,10 +480,10 @@
       <h1>COMMON GROUND</h1>
       <div class="subtitle" id="subtitle">Puzzle 1 of 10</div>
       <div class="hud">
-        <div class="lives-label" id="lives-label">Lives: 5</div>
+        <div class="lives-label" id="lives-label">Tries Left: 3</div>
         <div class="lives" id="lives"></div>
       </div>
-      <div class="message" id="message">Place 4 items. Correct ones lock and wrong ones return to pool on Check.</div>
+      <div class="message" id="message"></div>
     </section>
 
     <section class="card game">
@@ -341,14 +503,14 @@
       </div>
 
       <div class="bank" id="bank">
-        <div class="bank-title">Tile Pool (8 total, exactly 4 correct)</div>
+        <div class="bank-title">Tile Pool</div>
         <div class="bank-grid" id="bank-grid"></div>
       </div>
 
       <div class="controls">
+        <button id="prev-btn">Previous</button>
         <button id="undo-btn" disabled>Undo</button>
-        <button id="check-btn" disabled>Check</button>
-        <button id="hint-btn">Hint (2)</button>
+        <button id="submit-btn" disabled>Submit</button>
         <button id="clear-btn">Clear</button>
         <button id="restart-btn">Next Game</button>
       </div>
@@ -357,10 +519,26 @@
     </section>
   </div>
 
+  <div class="tutorial" id="tutorial" hidden>
+    <div class="tutorial-card">
+      <h2>How To Play</h2>
+      <div class="tutorial-copy">Pick the 4 correct tiles from the pool. Drag each one into the Venn diagram and submit your full board.</div>
+      <div class="tutorial-steps">
+        <div class="tutorial-step">1. Each spot belongs to a different overlap of the 3 categories.</div>
+        <div class="tutorial-step">2. Correct tiles lock in place. Wrong tiles return to the pool after you submit.</div>
+        <div class="tutorial-step">3. You get 3 tries. If you miss all 3, the answer is revealed in red.</div>
+      </div>
+      <div class="tutorial-actions">
+        <button id="tutorial-skip">Skip</button>
+        <button class="tutorial-primary" id="tutorial-start">Start Playing</button>
+      </div>
+    </div>
+  </div>
+
   <script>
   const SLOTS = ["S1", "S2", "S3", "S4"];
-  const MAX_LIVES = 5;
-  const MAX_HINTS = 2;
+  const MAX_LIVES = 3;
+  const TUTORIAL_KEY = "common-ground-tutorial-seen";
 
     const PUZZLES = [
     {
@@ -519,43 +697,9 @@
   let isTransitioning = false;
   let currentTiles = [];
   let tileById = {};
-
-  function loadPuzzle(index) {
-    puzzleIndex = (index + PUZZLES.length) % PUZZLES.length;
-    const puzzle = PUZZLES[puzzleIndex];
-
-    currentTiles = puzzle.tiles.map((tile, i) => ({
-      id: `t${i + 1}`,
-      label: tile.label,
-      correctSlot: tile.correctSlot
-    }));
-    tileById = Object.fromEntries(currentTiles.map((t) => [t.id, t]));
-
-    document.getElementById("label-A").textContent = puzzle.labels.A;
-    document.getElementById("label-B").textContent = puzzle.labels.B;
-    document.getElementById("label-C").textContent = puzzle.labels.C;
-    document.getElementById("subtitle").textContent = `Puzzle ${puzzleIndex + 1} of ${PUZZLES.length} - ${puzzle.difficulty} - ${puzzle.title}`;
-  }
-
-  function createState() {
-    return {
-      placements: Object.fromEntries(SLOTS.map((s) => [s, null])),
-      tileLocation: Object.fromEntries(currentTiles.map((t) => [t.id, null])),
-      selectedTileId: null,
-      lockedTiles: new Set(),
-      revealedSlots: new Set(),
-      livesUsed: 0,
-      hintsRemaining: MAX_HINTS,
-      tries: 0,
-      solved: false,
-      history: [],
-      bankOrder: shuffle(currentTiles.map((t) => t.id))
-    };
-  }
-
-  loadPuzzle(0);
-  let state = createState();
+  let state;
   let sessionResults = Array(PUZZLES.length).fill(null);
+  let puzzleStates = Array(PUZZLES.length).fill(null);
 
   const boardEl = document.getElementById("board");
   const slots = Array.from(document.querySelectorAll(".slot"));
@@ -565,13 +709,16 @@
   const livesEl = document.getElementById("lives");
   const livesLabelEl = document.getElementById("lives-label");
   const summaryEl = document.getElementById("summary");
-
+  const subtitleEl = document.getElementById("subtitle");
   const undoBtn = document.getElementById("undo-btn");
-  const checkBtn = document.getElementById("check-btn");
-  const hintBtn = document.getElementById("hint-btn");
+  const submitBtn = document.getElementById("submit-btn");
   const clearBtn = document.getElementById("clear-btn");
   const restartBtn = document.getElementById("restart-btn");
+  const prevBtn = document.getElementById("prev-btn");
   const gameCard = document.querySelector(".game");
+  const tutorialEl = document.getElementById("tutorial");
+  const tutorialStartBtn = document.getElementById("tutorial-start");
+  const tutorialSkipBtn = document.getElementById("tutorial-skip");
 
   let touchDrag = null;
   let suppressClickUntil = 0;
@@ -580,9 +727,41 @@
     return JSON.parse(JSON.stringify(obj));
   }
 
-  function setMessage(text, color = "#172033") {
+  function setMessage(text = "", color = "#172033") {
     messageEl.textContent = text;
     messageEl.style.color = color;
+  }
+
+  function setSummary(text = "") {
+    summaryEl.textContent = text;
+  }
+
+  function loadPuzzle(index) {
+    puzzleIndex = (index + PUZZLES.length) % PUZZLES.length;
+    const puzzle = PUZZLES[puzzleIndex];
+    currentTiles = puzzle.tiles.map((tile, i) => ({ id: `t${i + 1}`, label: tile.label, correctSlot: tile.correctSlot }));
+    tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile]));
+    document.getElementById("label-A").textContent = puzzle.labels.A;
+    document.getElementById("label-B").textContent = puzzle.labels.B;
+    document.getElementById("label-C").textContent = puzzle.labels.C;
+    subtitleEl.textContent = `Puzzle ${puzzleIndex + 1} of ${PUZZLES.length}`;
+    state = restoreState(puzzleStates[puzzleIndex]);
+  }
+
+  function createState() {
+    return {
+      placements: Object.fromEntries(SLOTS.map((slot) => [slot, null])),
+      tileLocation: Object.fromEntries(currentTiles.map((tile) => [tile.id, null])),
+      selectedTileId: null,
+      lockedTiles: new Set(),
+      revealedSlots: new Set(),
+      livesUsed: 0,
+      tries: 0,
+      solved: false,
+      failed: false,
+      history: [],
+      bankOrder: shuffle(currentTiles.map((tile) => tile.id))
+    };
   }
 
   function shuffle(arr) {
@@ -599,8 +778,35 @@
       placements: deepClone(state.placements),
       tileLocation: deepClone(state.tileLocation),
       selectedTileId: state.selectedTileId,
+      lockedTiles: [...state.lockedTiles],
+      revealedSlots: [...state.revealedSlots],
+      livesUsed: state.livesUsed,
+      tries: state.tries,
+      solved: state.solved,
+      failed: state.failed,
       bankOrder: [...state.bankOrder]
     };
+  }
+
+  function restoreState(snapshot) {
+    if (!snapshot) return createState();
+    return {
+      placements: deepClone(snapshot.placements),
+      tileLocation: deepClone(snapshot.tileLocation),
+      selectedTileId: snapshot.selectedTileId,
+      lockedTiles: new Set(snapshot.lockedTiles || []),
+      revealedSlots: new Set(snapshot.revealedSlots || []),
+      livesUsed: snapshot.livesUsed || 0,
+      tries: snapshot.tries || 0,
+      solved: Boolean(snapshot.solved),
+      failed: Boolean(snapshot.failed),
+      history: [],
+      bankOrder: [...(snapshot.bankOrder || currentTiles.map((tile) => tile.id))]
+    };
+  }
+
+  function saveCurrentPuzzleState() {
+    puzzleStates[puzzleIndex] = snap();
   }
 
   function pushUndo() {
@@ -609,13 +815,9 @@
   }
 
   function undo() {
-    if (!state.history.length || state.solved) return;
-    const s = state.history.pop();
-    state.placements = s.placements;
-    state.tileLocation = s.tileLocation;
-    state.selectedTileId = s.selectedTileId;
-    state.bankOrder = s.bankOrder;
-    setMessage("Undid last move.");
+    if (!state.history.length || state.solved || state.failed) return;
+    state = restoreState(state.history.pop());
+    setMessage();
     render();
   }
 
@@ -624,7 +826,7 @@
     const el = document.createElement("div");
     el.className = "tile";
     el.dataset.tileId = tile.id;
-    el.draggable = !state.lockedTiles.has(tile.id) && !state.solved;
+    el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed;
     el.innerHTML = `<div class="text">${tile.label}</div>`;
 
     if (state.selectedTileId === tile.id) el.classList.add("selected");
@@ -632,30 +834,26 @@
 
     el.addEventListener("click", () => {
       if (Date.now() < suppressClickUntil) return;
-      if (state.solved || state.lockedTiles.has(tile.id)) return;
+      if (state.solved || state.failed || state.lockedTiles.has(tile.id)) return;
       const placed = state.tileLocation[tile.id] !== null;
-
       if (state.selectedTileId === tile.id) {
         if (placed) {
           pushUndo();
           moveTileToPool(tile.id);
           state.selectedTileId = null;
-          setMessage(`Moved "${tile.label}" back to pool.`);
         } else {
           state.selectedTileId = null;
         }
       } else {
         state.selectedTileId = tile.id;
       }
+      setMessage();
       render();
     });
 
-    el.addEventListener("pointerdown", (e) => {
-      startTouchDrag(e, tile.id);
-    });
-
+    el.addEventListener("pointerdown", (e) => startTouchDrag(e, tile.id));
     el.addEventListener("dragstart", (e) => {
-      if (state.solved || state.lockedTiles.has(tile.id)) {
+      if (state.solved || state.failed || state.lockedTiles.has(tile.id)) {
         e.preventDefault();
         return;
       }
@@ -692,16 +890,8 @@
 
   function startTouchDrag(e, tileId) {
     if (e.pointerType !== "touch") return;
-    if (state.solved || state.lockedTiles.has(tileId)) return;
-
-    touchDrag = {
-      tileId,
-      startX: e.clientX,
-      startY: e.clientY,
-      moved: false,
-      ghost: null
-    };
-
+    if (state.solved || state.failed || state.lockedTiles.has(tileId)) return;
+    touchDrag = { tileId, startX: e.clientX, startY: e.clientY, moved: false, ghost: null };
     window.addEventListener("pointermove", onTouchDragMove);
     window.addEventListener("pointerup", onTouchDragEnd);
     window.addEventListener("pointercancel", onTouchDragEnd);
@@ -712,29 +902,22 @@
     const dx = e.clientX - touchDrag.startX;
     const dy = e.clientY - touchDrag.startY;
     const distance = Math.hypot(dx, dy);
-
     if (!touchDrag.moved && distance > 6) {
       touchDrag.moved = true;
       touchDrag.ghost = createGhost(touchDrag.tileId);
     }
-
-    if (touchDrag.moved && touchDrag.ghost) {
-      positionGhost(touchDrag.ghost, e.clientX, e.clientY);
-    }
+    if (touchDrag.moved && touchDrag.ghost) positionGhost(touchDrag.ghost, e.clientX, e.clientY);
   }
 
   function onTouchDragEnd(e) {
     if (!touchDrag || e.pointerType !== "touch") return;
-
     window.removeEventListener("pointermove", onTouchDragMove);
     window.removeEventListener("pointerup", onTouchDragEnd);
     window.removeEventListener("pointercancel", onTouchDragEnd);
-
     if (touchDrag.moved) {
       suppressClickUntil = Date.now() + 350;
       const target = getDropTarget(e.clientX, e.clientY);
       let moved = false;
-
       if (target && target.classList.contains("slot")) {
         pushUndo();
         moved = moveTileToSlot(touchDrag.tileId, target.dataset.slot);
@@ -742,56 +925,51 @@
         pushUndo();
         moved = moveTileToPool(touchDrag.tileId);
       }
-
       if (moved) {
         state.selectedTileId = null;
-        setMessage("Placement updated.");
+        setMessage();
+        render();
       }
-      render();
     }
-
-    if (touchDrag.ghost) {
-      touchDrag.ghost.remove();
-    }
+    if (touchDrag.ghost) touchDrag.ghost.remove();
     touchDrag = null;
   }
+
   function moveTileToSlot(tileId, slot) {
     if (!tileById[tileId] || !SLOTS.includes(slot)) return false;
-    if (state.solved || state.lockedTiles.has(tileId)) return false;
-
+    if (state.solved || state.failed || state.lockedTiles.has(tileId)) return false;
     const from = state.tileLocation[tileId];
     if (from === slot) return true;
-
     const occupant = state.placements[slot];
-    if (occupant && state.lockedTiles.has(occupant)) {
-      setMessage("That slot is locked.", "#a16207");
-      return false;
-    }
-
+    if (occupant && state.lockedTiles.has(occupant)) return false;
     state.placements[slot] = tileId;
     state.tileLocation[tileId] = slot;
-
     if (from) {
       state.placements[from] = occupant || null;
       if (occupant) state.tileLocation[occupant] = from;
     } else if (occupant) {
       state.tileLocation[occupant] = null;
     }
-
+    saveCurrentPuzzleState();
     return true;
   }
 
   function moveTileToPool(tileId) {
-    if (!tileById[tileId] || state.solved || state.lockedTiles.has(tileId)) return false;
+    if (!tileById[tileId] || state.solved || state.failed || state.lockedTiles.has(tileId)) return false;
     const slot = state.tileLocation[tileId];
     if (!slot) return true;
     state.placements[slot] = null;
     state.tileLocation[tileId] = null;
+    saveCurrentPuzzleState();
     return true;
   }
 
   function allPlaced() {
-    return SLOTS.every((s) => Boolean(state.placements[s]));
+    return SLOTS.every((slot) => Boolean(state.placements[slot]));
+  }
+
+  function hasProgress() {
+    return state.tries > 0 || Object.values(state.tileLocation).some((value) => value !== null) || state.revealedSlots.size > 0;
   }
 
   function correctSlots() {
@@ -801,16 +979,47 @@
     });
   }
 
+  function playTone(type) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    try {
+      const ctx = new AudioCtx();
+      const notes = type === "success" ? [523.25, 659.25, 783.99] : [220, 180, 140];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type === "success" ? "triangle" : "sawtooth";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime + i * 0.08);
+        gain.gain.exponentialRampToValueAtTime(type === "success" ? 0.03 : 0.02, ctx.currentTime + i * 0.08 + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i * 0.08 + 0.17);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + i * 0.08);
+        osc.stop(ctx.currentTime + i * 0.08 + 0.18);
+      });
+    } catch (err) {
+    }
+  }
+
+  function vibrate(pattern) {
+    if (navigator.vibrate) navigator.vibrate(pattern);
+  }
+
   function updateColorProgress() {
-    const a = ["S1", "S2", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-    const b = ["S1", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-    const c = ["S2", "S3", "S4"].filter((s) => state.revealedSlots.has(s)).length;
-
-    const base = state.revealedSlots.size === 0 ? 0 : 0.1;
-    document.documentElement.style.setProperty("--a-alpha", String(base + (a / 3) * 0.38));
-    document.documentElement.style.setProperty("--b-alpha", String(base + (b / 3) * 0.38));
-    document.documentElement.style.setProperty("--c-alpha", String(base + (c / 3) * 0.38));
-
+    if (state.failed) {
+      document.documentElement.style.setProperty("--a-alpha", "0");
+      document.documentElement.style.setProperty("--b-alpha", "0");
+      document.documentElement.style.setProperty("--c-alpha", "0");
+      return;
+    }
+    const a = ["S1", "S2", "S4"].filter((slot) => state.revealedSlots.has(slot)).length;
+    const b = ["S1", "S3", "S4"].filter((slot) => state.revealedSlots.has(slot)).length;
+    const c = ["S2", "S3", "S4"].filter((slot) => state.revealedSlots.has(slot)).length;
+    const base = state.revealedSlots.size === 0 ? 0 : 0.08;
+    document.documentElement.style.setProperty("--a-alpha", String(base + (a / 3) * 0.42));
+    document.documentElement.style.setProperty("--b-alpha", String(base + (b / 3) * 0.42));
+    document.documentElement.style.setProperty("--c-alpha", String(base + (c / 3) * 0.42));
     if (state.revealedSlots.size === 0) {
       document.documentElement.style.setProperty("--a-alpha", "0");
       document.documentElement.style.setProperty("--b-alpha", "0");
@@ -819,8 +1028,8 @@
   }
 
   function updateLives() {
-    const left = MAX_LIVES - state.livesUsed;
-    livesLabelEl.textContent = `Lives: ${left}`;
+    const left = Math.max(0, MAX_LIVES - state.livesUsed);
+    livesLabelEl.textContent = `Tries Left: ${left}`;
     livesEl.innerHTML = "";
     for (let i = 0; i < MAX_LIVES; i++) {
       const seg = document.createElement("div");
@@ -830,43 +1039,37 @@
   }
 
   function updateButtons() {
-    const ready = allPlaced() && !state.solved && state.livesUsed < MAX_LIVES;
-    checkBtn.disabled = !ready;
-    checkBtn.classList.toggle("ready", ready);
-
-    hintBtn.disabled = state.hintsRemaining <= 0 || state.solved || state.livesUsed >= MAX_LIVES;
-    hintBtn.textContent = `Hint (${state.hintsRemaining})`;
-
-    undoBtn.disabled = !state.history.length || state.solved;
-    clearBtn.disabled = !state.selectedTileId || state.solved;
-  }
-
-  function render() {
+    const ready = allPlaced() && !state.solved && !state.failed && state.livesUsed < MAX_LIVES;
+    submitBtn.disabled = !ready;
+    submitBtn.classList.toggle("ready", ready);
+    undoBtn.disabled = !state.history.length || state.solved || state.failed;
+    clearBtn.disabled = !state.selectedTileId || state.solved || state.failed;
+  }  function render() {
     bankGridEl.innerHTML = "";
-    const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((t) => t.id);
+    const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id);
     order.forEach((tileId) => {
       if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId));
     });
 
     slots.forEach((slotEl) => {
       const slot = slotEl.dataset.slot;
-      slotEl.classList.remove("revealed", "locked", "drag-target");
-
+      slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile");
       const oldTile = slotEl.querySelector(".tile");
       if (oldTile) oldTile.remove();
-
       const tileId = state.placements[slot];
       if (tileId) {
+        slotEl.classList.add("has-tile");
         slotEl.appendChild(makeTile(tileId));
       }
-
       if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed");
       if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked");
     });
 
+    boardEl.classList.toggle("failed", state.failed);
     updateColorProgress();
     updateLives();
     updateButtons();
+    saveCurrentPuzzleState();
   }
 
   function shakeBoard() {
@@ -875,60 +1078,34 @@
     boardEl.classList.add("shake");
   }
 
-  function applyHint() {
-    if (state.solved || state.hintsRemaining <= 0 || state.livesUsed >= MAX_LIVES) return;
-
-    const candidate = currentTiles.find((t) => {
-      if (!t.correctSlot) return false;
-      if (state.lockedTiles.has(t.id)) return false;
-      return state.tileLocation[t.id] !== t.correctSlot;
-    });
-
-    if (!candidate) {
-      setMessage("No useful hint left.", "#1f7a4f");
-      return;
-    }
-
-    moveTileToSlot(candidate.id, candidate.correctSlot);
-    state.lockedTiles.add(candidate.id);
-    state.revealedSlots.add(candidate.correctSlot);
-    state.hintsRemaining -= 1;
-    state.selectedTileId = null;
-    state.history = [];
-    setMessage("Hint locked one correct tile.", "#a16207");
-    render();
-  }
-
   function finalizeCurrentPuzzle(status) {
-    if (sessionResults[puzzleIndex]) return;
     sessionResults[puzzleIndex] = {
       status,
       tries: state.tries,
-      hintsUsed: MAX_HINTS - state.hintsRemaining,
       livesUsed: state.livesUsed
     };
   }
 
   function allPuzzlesFinalized() {
-    return sessionResults.every((r) => r !== null);
+    return sessionResults.every((entry) => entry !== null);
   }
 
   function buildSessionRating() {
-    const solved = sessionResults.filter((r) => r && r.status === "solved").length;
-    const failed = sessionResults.filter((r) => r && r.status !== "solved").length;
-    const tries = sessionResults.reduce((sum, r) => sum + (r ? r.tries : 0), 0);
-    const hints = sessionResults.reduce((sum, r) => sum + (r ? r.hintsUsed : 0), 0);
-
-    const score = Math.max(0, Math.round((solved * 14) - (tries * 1.3) - (hints * 2.2) - (failed * 5)));
-
-    if (score >= 95) return { title: "Pattern Grandmaster", score, solved, tries, hints };
-    if (score >= 75) return { title: "Connection Architect", score, solved, tries, hints };
-    if (score >= 55) return { title: "Sharp Spotter", score, solved, tries, hints };
-    if (score >= 35) return { title: "Logic Explorer", score, solved, tries, hints };
-    return { title: "Wildcard Guesser", score, solved, tries, hints };
+    const solved = sessionResults.filter((entry) => entry && entry.status === "solved").length;
+    const failed = sessionResults.filter((entry) => entry && entry.status === "failed").length;
+    const skipped = sessionResults.filter((entry) => entry && entry.status === "skipped").length;
+    const tries = sessionResults.reduce((sum, entry) => sum + (entry ? entry.tries : 0), 0);
+    const score = Math.max(0, Math.round((solved * 16) - (tries * 1.5) - (failed * 6) - (skipped * 4)));
+    if (score >= 95) return { title: "Pattern Grandmaster", score, solved };
+    if (score >= 75) return { title: "Connection Architect", score, solved };
+    if (score >= 55) return { title: "Sharp Spotter", score, solved };
+    if (score >= 35) return { title: "Logic Explorer", score, solved };
+    return { title: "Wildcard Guesser", score, solved };
   }
+
   function finishWin() {
     state.solved = true;
+    state.failed = false;
     finalizeCurrentPuzzle("solved");
     SLOTS.forEach((slot) => {
       state.revealedSlots.add(slot);
@@ -936,20 +1113,42 @@
       if (tileId) state.lockedTiles.add(tileId);
     });
     setMessage(`Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}.`, "#1f7a4f");
-    summaryEl.textContent = `Score\nPuzzle ${puzzleIndex + 1}/${PUZZLES.length} in ${state.tries} tries`;
+    setSummary(`Solved ${puzzleIndex + 1}/${PUZZLES.length}`);
+    playTone("success");
+    vibrate([40, 30, 70]);
     render();
   }
 
-  function checkAnswers() {
-    if (!allPlaced() || state.solved || state.livesUsed >= MAX_LIVES) return;
-    state.tries += 1;
+  function revealFailureBoard() {
+    state.failed = true;
+    state.solved = false;
+    state.selectedTileId = null;
+    state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null]));
+    state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null]));
+    state.lockedTiles = new Set();
+    state.revealedSlots = new Set(SLOTS);
+    currentTiles.forEach((tile) => {
+      if (!tile.correctSlot) return;
+      state.placements[tile.correctSlot] = tile.id;
+      state.tileLocation[tile.id] = tile.correctSlot;
+      state.lockedTiles.add(tile.id);
+    });
+    finalizeCurrentPuzzle("failed");
+    setMessage("Out of tries. Solution revealed.", "#991b1b");
+    setSummary(`Missed ${puzzleIndex + 1}/${PUZZLES.length}`);
+    playTone("fail");
+    vibrate([120, 60, 120]);
+    render();
+  }
 
+  function submitAnswers() {
+    if (!allPlaced() || state.solved || state.failed || state.livesUsed >= MAX_LIVES) return;
+    state.tries += 1;
     const correctSet = new Set(correctSlots());
 
     SLOTS.forEach((slot) => {
       const tileId = state.placements[slot];
       if (!tileId) return;
-
       if (correctSet.has(slot)) {
         state.revealedSlots.add(slot);
         state.lockedTiles.add(tileId);
@@ -959,8 +1158,7 @@
       }
     });
 
-    const remaining = SLOTS.filter((s) => !state.revealedSlots.has(s)).length;
-    if (remaining === 0) {
+    if (state.revealedSlots.size === SLOTS.length) {
       finishWin();
       return;
     }
@@ -968,42 +1166,53 @@
     state.livesUsed += 1;
     state.history = [];
     shakeBoard();
-    setMessage(`${remaining} ${remaining === 1 ? "slot is" : "slots are"} still wrong.`, "#b91c1c");
 
     if (state.livesUsed >= MAX_LIVES) {
-      finalizeCurrentPuzzle("failed");
-      setMessage("Out of lives. Tap Next Game for a new puzzle.", "#7f1d1d");
-      summaryEl.textContent = `Final\nPuzzle ${puzzleIndex + 1}/${PUZZLES.length} - no solve`;
+      revealFailureBoard();
+      return;
     }
+
+    const remaining = SLOTS.length - state.revealedSlots.size;
+    setMessage(`${remaining} ${remaining === 1 ? "spot is" : "spots are"} still wrong.`, "#b91c1c");
     render();
   }
 
-  function nextGame() {
-    if (isTransitioning) return;
+  function maybeConfirmNavigation(targetIndex) {
+    if (targetIndex === puzzleIndex) return true;
+    if (!state.solved && !state.failed && hasProgress()) {
+      return window.confirm("Leave this puzzle before finishing it?");
+    }
+    return true;
+  }
 
-    if (!sessionResults[puzzleIndex]) {
-      finalizeCurrentPuzzle(state.solved ? "solved" : (state.livesUsed >= MAX_LIVES ? "failed" : "skipped"));
+  function changePuzzle(nextIndex) {
+    if (isTransitioning) return;
+    const normalized = (nextIndex + PUZZLES.length) % PUZZLES.length;
+    if (!maybeConfirmNavigation(normalized)) return;
+
+    if (!sessionResults[puzzleIndex] && (state.solved || state.failed)) {
+      finalizeCurrentPuzzle(state.solved ? "solved" : "failed");
+    } else if (!sessionResults[puzzleIndex] && !state.solved && !state.failed && hasProgress()) {
+      finalizeCurrentPuzzle("skipped");
     }
 
-    const wrappingToStart = puzzleIndex === PUZZLES.length - 1;
-
+    saveCurrentPuzzleState();
     isTransitioning = true;
     gameCard.classList.add("transitioning");
 
     setTimeout(() => {
-      loadPuzzle(puzzleIndex + 1);
-      state = createState();
-
-      if (wrappingToStart && allPuzzlesFinalized()) {
-        const rating = buildSessionRating();
-        summaryEl.textContent = `10 Puzzle Rating\n${rating.title} (${rating.score})\nSolved: ${rating.solved}/10 | Tries: ${rating.tries} | Hints: ${rating.hints}`;
-        setMessage(`Pack complete. Your rating: ${rating.title}. Starting a fresh run.`);
-        sessionResults = Array(PUZZLES.length).fill(null);
+      loadPuzzle(normalized);
+      setMessage();
+      const rating = allPuzzlesFinalized() ? buildSessionRating() : null;
+      if (rating) {
+        setSummary(`${rating.title} ${rating.score}`);
+      } else if (sessionResults[puzzleIndex]?.status === "solved") {
+        setSummary(`Solved ${puzzleIndex + 1}/${PUZZLES.length}`);
+      } else if (sessionResults[puzzleIndex]?.status === "failed") {
+        setSummary(`Missed ${puzzleIndex + 1}/${PUZZLES.length}`);
       } else {
-        summaryEl.textContent = "";
-        setMessage(`Puzzle ${puzzleIndex + 1} loaded. Find the 4 correct items.`);
+        setSummary("");
       }
-
       render();
       gameCard.classList.remove("transitioning");
       isTransitioning = false;
@@ -1012,25 +1221,23 @@
 
   slots.forEach((slotEl) => {
     slotEl.addEventListener("click", () => {
-      if (state.solved) return;
+      if (state.solved || state.failed) return;
       const slot = slotEl.dataset.slot;
-
       if (!state.selectedTileId) {
         const occupant = state.placements[slot];
         if (occupant && !state.lockedTiles.has(occupant)) {
           pushUndo();
           moveTileToPool(occupant);
-          setMessage("Moved tile back to pool.");
+          setMessage();
           render();
         }
         return;
       }
 
       pushUndo();
-      const moved = moveTileToSlot(state.selectedTileId, slot);
-      if (moved) {
+      if (moveTileToSlot(state.selectedTileId, slot)) {
         state.selectedTileId = null;
-        setMessage("Placement updated. Fill all 4 slots, then check.");
+        setMessage();
         render();
       }
     });
@@ -1047,12 +1254,10 @@
       slotEl.classList.remove("drag-target");
       const tileId = e.dataTransfer.getData("text/plain");
       if (!tileId) return;
-
       pushUndo();
-      const moved = moveTileToSlot(tileId, slotEl.dataset.slot);
-      if (moved) {
+      if (moveTileToSlot(tileId, slotEl.dataset.slot)) {
         state.selectedTileId = null;
-        setMessage("Placement updated. Fill all 4 slots, then check.");
+        setMessage();
         render();
       }
     });
@@ -1063,31 +1268,68 @@
     e.preventDefault();
     const tileId = e.dataTransfer.getData("text/plain");
     if (!tileId) return;
-
     pushUndo();
     if (moveTileToPool(tileId)) {
       state.selectedTileId = null;
-      setMessage("Moved tile back to pool.");
+      setMessage();
       render();
     }
   });
 
   undoBtn.addEventListener("click", undo);
-  checkBtn.addEventListener("click", checkAnswers);
-  hintBtn.addEventListener("click", applyHint);
+  submitBtn.addEventListener("click", submitAnswers);
   clearBtn.addEventListener("click", () => {
-    if (!state.selectedTileId || state.solved) return;
+    if (!state.selectedTileId || state.solved || state.failed) return;
     state.selectedTileId = null;
-    setMessage("Selection cleared.");
+    setMessage();
     render();
   });
-  restartBtn.addEventListener("click", nextGame);
+  restartBtn.addEventListener("click", () => changePuzzle(puzzleIndex + 1));
+  prevBtn.addEventListener("click", () => changePuzzle(puzzleIndex - 1));
 
-  setMessage("Puzzle 1 loaded. Find the 4 correct items.");
-  render();
-</script>
+  function dismissTutorial() {
+    tutorialEl.hidden = true;
+    localStorage.setItem(TUTORIAL_KEY, "1");
+  }
+
+  tutorialStartBtn.addEventListener("click", dismissTutorial);
+  tutorialSkipBtn.addEventListener("click", dismissTutorial);
+
+  loadPuzzle(0);
+  if (!localStorage.getItem(TUTORIAL_KEY)) tutorialEl.hidden = false;
+  render();</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
