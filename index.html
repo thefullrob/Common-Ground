@@ -212,6 +212,7 @@
       background: #bba985;
       border-radius: 999px;
       transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+      z-index: 3;
     }
 
     .slot::before {
@@ -298,6 +299,7 @@
       border-radius: 13px;
       padding: 4px 4px;
       box-shadow: 0 7px 10px rgba(15, 23, 42, 0.06);
+      z-index: 2;
     }
 
     #slot-S1 .tile { transform: translate(-104%, -92%); }
@@ -455,17 +457,17 @@
       #label-A { top: 72px; }
       #label-B { top: 216px; left: 20px; }
       #label-C { top: 216px; right: 20px; }
-      #slot-S1 { top: 126px; left: 132px; }
-      #slot-S2 { top: 126px; right: 132px; }
-      #slot-S4 { top: 150px; }
-      #slot-S3 { top: 206px; }
+      #slot-S1 { top: 132px; left: 122px; }
+      #slot-S2 { top: 132px; right: 122px; }
+      #slot-S4 { top: 158px; }
+      #slot-S3 { top: 198px; }
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tile { padding: 8px 7px; min-height: 48px; }
       .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px; }
-      #slot-S1 .tile { transform: translate(-98%, -90%); }
-      #slot-S2 .tile { transform: translate(-2%, -90%); }
-      #slot-S3 .tile { transform: translate(-50%, 4%); }
-      #slot-S4 .tile { transform: translate(-50%, -106%); }
+      #slot-S1 .tile { transform: translate(-106%, -92%); }
+      #slot-S2 .tile { transform: translate(6%, -92%); }
+      #slot-S3 .tile { transform: translate(-50%, 10%); }
+      #slot-S4 .tile { transform: translate(-50%, -116%); }
       .text { font-size: 0.76rem; }
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       button { font-size: 0.8rem; padding: 10px 8px; }
@@ -1300,6 +1302,8 @@
   render();</script>
 </body>
 </html>
+
+
 
 
 
