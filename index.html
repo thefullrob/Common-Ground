@@ -1385,11 +1385,21 @@
 
   undoBtn.addEventListener("click", undo);
   submitBtn.addEventListener("click", submitAnswers);
-  clearBtn.addEventListener("click", () => {
-    if (!state.selectedTileId || state.solved || state.failed) return;
-    state.selectedTileId = null;
+  function resetCurrentPuzzle() {
+    const tries = state.tries;
+    const livesUsed = state.livesUsed;
+    state = createState();
+    state.tries = tries;
+    state.livesUsed = livesUsed;
+    puzzleStates[puzzleIndex] = snap();
+    sessionResults[puzzleIndex] = null;
     setMessage();
+    setSummary("");
     render();
+  }
+
+  clearBtn.addEventListener("click", () => {
+    resetCurrentPuzzle();
   });
   restartBtn.addEventListener("click", () => changePuzzle(puzzleIndex + 1));
   prevBtn.addEventListener("click", () => changePuzzle(puzzleIndex - 1));
@@ -1410,6 +1420,8 @@
   render();</script>
 </body>
 </html>
+
+
 
 
 
