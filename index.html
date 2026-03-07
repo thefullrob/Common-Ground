@@ -849,15 +849,8 @@
     el.addEventListener("click", () => {
       if (Date.now() < suppressClickUntil) return;
       if (state.solved || state.failed || state.lockedTiles.has(tile.id)) return;
-      const placed = state.tileLocation[tile.id] !== null;
       if (state.selectedTileId === tile.id) {
-        if (placed) {
-          pushUndo();
-          moveTileToPool(tile.id);
-          state.selectedTileId = null;
-        } else {
-          state.selectedTileId = null;
-        }
+        state.selectedTileId = null;
       } else {
         state.selectedTileId = tile.id;
       }
@@ -886,7 +879,27 @@
     const slot = hit.closest(".slot");
     if (slot) return slot;
     if (hit.closest("#bank")) return bankEl;
-    return null;
+
+    const boardRect = boardEl.getBoundingClientRect();
+    const insideBoard = clientX >= boardRect.left && clientX <= boardRect.right && clientY >= boardRect.top && clientY <= boardRect.bottom;
+    if (!insideBoard) return null;
+
+    let nearestSlot = null;
+    let nearestDistance = Infinity;
+    slots.forEach((slotEl) => {
+      if (slotEl.classList.contains("has-tile") || slotEl.classList.contains("revealed")) return;
+      const rect = slotEl.getBoundingClientRect();
+      const centerX = rect.left + (rect.width / 2);
+      const centerY = rect.top + (rect.height / 2);
+      const distance = Math.hypot(clientX - centerX, clientY - centerY);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestSlot = slotEl;
+      }
+    });
+
+    const snapRadius = Math.max(42, Math.min(boardRect.width, boardRect.height) * 0.12);
+    return nearestDistance <= snapRadius ? nearestSlot : null;
   }
 
   function createGhost(tileId) {
@@ -1397,6 +1410,7 @@
   render();</script>
 </body>
 </html>
+
 
 
 
