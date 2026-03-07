@@ -735,6 +735,7 @@
 
   let touchDrag = null;
   let suppressClickUntil = 0;
+  let slotLayoutRaf = 0;
 
   function deepClone(obj) {
     return JSON.parse(JSON.stringify(obj));
@@ -1061,7 +1062,7 @@
 
   function computeSlotLayout() {
     const boardRect = boardEl.getBoundingClientRect();
-    if (!boardRect.width || !boardRect.height) return;
+    if (!boardRect.width || !boardRect.height) return false;
 
     const circles = Object.fromEntries(Object.entries(circleEls).map(([key, el]) => {
       const rect = el.getBoundingClientRect();
@@ -1071,6 +1072,8 @@
         r: rect.width / 2
       }];
     }));
+
+    if (Object.values(circles).some((circle) => !circle.r || circle.r < 20)) return false;
 
     const sums = {
       S1: { x: 0, y: 0, n: 0 },
@@ -1105,16 +1108,32 @@
       }
     }
 
+    if (Object.values(sums).some((sum) => sum.n === 0)) return false;
+
     slots.forEach((slotEl) => {
       const slot = slotEl.dataset.slot;
       const sum = sums[slot];
-      if (!sum || !sum.n) return;
       const width = slotEl.offsetWidth || 44;
       const height = slotEl.offsetHeight || 44;
       slotEl.style.left = `${(sum.x / sum.n) - (width / 2)}px`;
       slotEl.style.top = `${(sum.y / sum.n) - (height / 2)}px`;
       slotEl.style.right = "auto";
       slotEl.style.transform = "none";
+    });
+
+    return true;
+  }
+
+  function scheduleSlotLayout() {
+    if (slotLayoutRaf) cancelAnimationFrame(slotLayoutRaf);
+    slotLayoutRaf = requestAnimationFrame(() => {
+      slotLayoutRaf = 0;
+      if (!computeSlotLayout()) {
+        slotLayoutRaf = requestAnimationFrame(() => {
+          slotLayoutRaf = 0;
+          computeSlotLayout();
+        });
+      }
     });
   }
 
@@ -1143,6 +1162,7 @@
     updateColorProgress();
     updateLives();
     updateButtons();
+    scheduleSlotLayout();
     saveCurrentPuzzleState();
   }
 
@@ -1369,13 +1389,17 @@
   tutorialStartBtn.addEventListener("click", dismissTutorial);
   tutorialSkipBtn.addEventListener("click", dismissTutorial);
 
-  window.addEventListener("resize", computeSlotLayout);
+  window.addEventListener("resize", scheduleSlotLayout);
+  window.addEventListener("load", scheduleSlotLayout);
 
   loadPuzzle(0);
   if (!localStorage.getItem(TUTORIAL_KEY)) tutorialEl.hidden = false;
   render();</script>
 </body>
 </html>
+
+
+
 
 
 
