@@ -243,10 +243,7 @@
       opacity: 0;
     }
 
-    #slot-S1 { top: 136px; left: 154px; }
-    #slot-S2 { top: 136px; right: 154px; }
-    #slot-S3 { top: 220px; left: 50%; transform: translateX(-50%); }
-    #slot-S4 { top: 160px; left: 50%; transform: translateX(-50%); }
+    /* Slot positions are computed at runtime from the circle geometry. */
 
     .bank {
       border: 1px solid var(--line-soft);
@@ -469,10 +466,7 @@
       #label-A { top: 72px; }
       #label-B { top: 216px; left: 20px; }
       #label-C { top: 216px; right: 20px; }
-      #slot-S1 { top: 150px; left: 132px; }
-      #slot-S2 { top: 150px; right: 132px; }
-      #slot-S4 { top: 168px; }
-      #slot-S3 { top: 224px; }
+
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tile { padding: 8px 7px; min-height: 48px; }
       .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px; }
@@ -717,6 +711,11 @@
 
   const boardEl = document.getElementById("board");
   const slots = Array.from(document.querySelectorAll(".slot"));
+  const circleEls = {
+    A: document.getElementById("circle-A"),
+    B: document.getElementById("circle-B"),
+    C: document.getElementById("circle-C")
+  };
   const bankEl = document.getElementById("bank");
   const bankGridEl = document.getElementById("bank-grid");
   const messageEl = document.getElementById("message");
@@ -1058,7 +1057,68 @@
     submitBtn.classList.toggle("ready", ready);
     undoBtn.disabled = !state.history.length || state.solved || state.failed;
     clearBtn.disabled = !state.selectedTileId || state.solved || state.failed;
-  }  function render() {
+  }
+
+  function computeSlotLayout() {
+    const boardRect = boardEl.getBoundingClientRect();
+    if (!boardRect.width || !boardRect.height) return;
+
+    const circles = Object.fromEntries(Object.entries(circleEls).map(([key, el]) => {
+      const rect = el.getBoundingClientRect();
+      return [key, {
+        x: rect.left - boardRect.left + (rect.width / 2),
+        y: rect.top - boardRect.top + (rect.height / 2),
+        r: rect.width / 2
+      }];
+    }));
+
+    const sums = {
+      S1: { x: 0, y: 0, n: 0 },
+      S2: { x: 0, y: 0, n: 0 },
+      S3: { x: 0, y: 0, n: 0 },
+      S4: { x: 0, y: 0, n: 0 }
+    };
+
+    const inside = (pointX, pointY, circle) => {
+      const dx = pointX - circle.x;
+      const dy = pointY - circle.y;
+      return (dx * dx) + (dy * dy) <= circle.r * circle.r;
+    };
+
+    const step = Math.max(3, Math.round(boardRect.width / 110));
+    for (let y = step / 2; y < boardRect.height; y += step) {
+      for (let x = step / 2; x < boardRect.width; x += step) {
+        const inA = inside(x, y, circles.A);
+        const inB = inside(x, y, circles.B);
+        const inC = inside(x, y, circles.C);
+
+        let key = null;
+        if (inA && inB && !inC) key = "S1";
+        else if (inA && inC && !inB) key = "S2";
+        else if (inB && inC && !inA) key = "S3";
+        else if (inA && inB && inC) key = "S4";
+
+        if (!key) continue;
+        sums[key].x += x;
+        sums[key].y += y;
+        sums[key].n += 1;
+      }
+    }
+
+    slots.forEach((slotEl) => {
+      const slot = slotEl.dataset.slot;
+      const sum = sums[slot];
+      if (!sum || !sum.n) return;
+      const width = slotEl.offsetWidth || 44;
+      const height = slotEl.offsetHeight || 44;
+      slotEl.style.left = `${(sum.x / sum.n) - (width / 2)}px`;
+      slotEl.style.top = `${(sum.y / sum.n) - (height / 2)}px`;
+      slotEl.style.right = "auto";
+      slotEl.style.transform = "none";
+    });
+  }
+
+  function render() {
     bankGridEl.innerHTML = "";
     const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id);
     order.forEach((tileId) => {
@@ -1309,11 +1369,21 @@
   tutorialStartBtn.addEventListener("click", dismissTutorial);
   tutorialSkipBtn.addEventListener("click", dismissTutorial);
 
+  window.addEventListener("resize", computeSlotLayout);
+
   loadPuzzle(0);
   if (!localStorage.getItem(TUTORIAL_KEY)) tutorialEl.hidden = false;
   render();</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
