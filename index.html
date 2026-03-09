@@ -354,6 +354,32 @@
       color: #334155;
     }
 
+     .share-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .share-panel[hidden] {
+      display: none;
+    }
+
+    .share-preview {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: #162033;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7f0e2 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    #share-btn {
+      width: 100%;
+    }
+
     .drag-ghost {
       position: fixed;
       z-index: 3000;
@@ -524,6 +550,10 @@
       </div>
 
       <div class="summary" id="summary"></div>
+      <div class="share-panel" id="share-panel" hidden>
+        <pre class="share-preview" id="share-preview"></pre>
+        <button id="share-btn">Share Results</button>
+      </div>
     </section>
   </div>
 
@@ -722,6 +752,9 @@
   const livesEl = document.getElementById("lives");
   const livesLabelEl = document.getElementById("lives-label");
   const summaryEl = document.getElementById("summary");
+  const sharePanelEl = document.getElementById("share-panel");
+  const sharePreviewEl = document.getElementById("share-preview");
+  const shareBtn = document.getElementById("share-btn");
   const subtitleEl = document.getElementById("subtitle");
   const undoBtn = document.getElementById("undo-btn");
   const submitBtn = document.getElementById("submit-btn");
@@ -748,6 +781,66 @@
 
   function setSummary(text = "") {
     summaryEl.textContent = text;
+  }
+
+  function buildShareText() {
+    const square = state.solved ? "\uD83D\uDFE9" : "\uD83D\uDFE5";
+    const grid = `${square}${square}\n${square}${square}`;
+    const triesLine = state.solved ? `Solved in ${state.tries}/${MAX_LIVES} tries` : `Missed in ${state.tries}/${MAX_LIVES} tries`;
+    const host = window.location.hostname || "common-ground";
+    return `Common Ground #${puzzleIndex + 1}\n${grid}\n${triesLine}\n${host}`;
+  }
+
+  function updateShareUi() {
+    const finished = state.solved || state.failed;
+    sharePanelEl.hidden = !finished;
+    if (!finished) {
+      sharePreviewEl.textContent = "";
+      shareBtn.textContent = "Share Results";
+      return;
+    }
+    sharePreviewEl.textContent = buildShareText();
+  }
+
+  async function copyShareResults() {
+    const text = buildShareText();
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `Common Ground #${puzzleIndex + 1}`,
+          text,
+          url
+        });
+        setMessage("Share sheet opened.", "#1f7a4f");
+        return;
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const input = document.createElement("textarea");
+        input.value = text;
+        input.setAttribute("readonly", "true");
+        input.style.position = "absolute";
+        input.style.left = "-9999px";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      }
+      shareBtn.textContent = "Copied";
+      setMessage("Results copied to clipboard.", "#1f7a4f");
+      window.setTimeout(() => {
+        if (shareBtn) shareBtn.textContent = "Share Results";
+      }, 1400);
+    } catch (err) {
+      if (err && err.name === "AbortError") {
+        setMessage();
+        return;
+      }
+      setMessage("Could not share results on this device.", "#991b1b");
+    }
   }
 
   function loadPuzzle(index) {
@@ -1175,6 +1268,7 @@
     updateColorProgress();
     updateLives();
     updateButtons();
+    updateShareUi();
     scheduleSlotLayout();
     saveCurrentPuzzleState();
   }
@@ -1401,6 +1495,7 @@
   clearBtn.addEventListener("click", () => {
     resetCurrentPuzzle();
   });
+  shareBtn.addEventListener("click", copyShareResults);
   restartBtn.addEventListener("click", () => changePuzzle(puzzleIndex + 1));
   prevBtn.addEventListener("click", () => changePuzzle(puzzleIndex - 1));
 
@@ -1420,6 +1515,13 @@
   render();</script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
