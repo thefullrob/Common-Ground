@@ -357,7 +357,115 @@
       color: #334155;
     }
 
-     .share-panel {
+     .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .top-action {
+      min-width: 74px;
+      padding: 8px 12px;
+      font-size: 0.74rem;
+    }
+
+    .stats-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 32, 51, 0.52);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 3900;
+    }
+
+    .stats-modal[hidden] {
+      display: none;
+    }
+
+    .stats-card {
+      width: min(460px, 100%);
+      max-height: min(82vh, 760px);
+      overflow: auto;
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      display: grid;
+      gap: 14px;
+    }
+
+    .stats-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .stats-head h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.03em;
+    }
+
+    .stats-close,
+    .stats-reset {
+      min-height: 42px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stats-item,
+    .stats-puzzle-item {
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      background: #faf6ee;
+      padding: 12px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .stats-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #667188;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stats-value {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #162033;
+    }
+
+    .stats-puzzle-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .stats-puzzle-title {
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: #667188;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .stats-puzzle-meta {
+      font-size: 0.86rem;
+      color: #435066;
+      line-height: 1.35;
+    }
+    .share-panel {
       display: grid;
       gap: 10px;
     }
@@ -508,6 +616,10 @@
       button { font-size: 0.8rem; padding: 10px 8px; }
       .summary { font-size: 0.76rem; }
       .tutorial-card { padding: 16px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stats-head { align-items: start; }
+      .top-row { gap: 8px; }
+      .top-action { min-width: 68px; }
     }
   </style>
 </head>
@@ -515,7 +627,10 @@
   <div class="app">
     <section class="card top">
       <h1>COMMON GROUND</h1>
-      <div class="subtitle" id="subtitle">Puzzle 1 of 10</div>
+      <div class="top-row">
+        <div class="subtitle" id="subtitle">Puzzle 1 of 10</div>
+        <button id="stats-btn" class="top-action">Stats</button>
+      </div>
       <div class="hud">
         <div class="lives-label" id="lives-label">Tries Left: 3</div>
         <div class="lives" id="lives"></div>
@@ -560,6 +675,18 @@
     </section>
   </div>
 
+  <div class="stats-modal" id="stats-modal" hidden>
+    <div class="stats-card">
+      <div class="stats-head">
+        <h2>Your Stats</h2>
+        <button id="stats-close" class="stats-close">Close</button>
+      </div>
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="stats-puzzle-list" id="stats-puzzle-list"></div>
+      <button id="stats-reset" class="stats-reset">Reset Stats</button>
+    </div>
+  </div>
+
   <div class="tutorial" id="tutorial" hidden>
     <div class="tutorial-card">
       <h2>How To Play</h2>
@@ -580,6 +707,7 @@
   const SLOTS = ["S1", "S2", "S3", "S4"];
   const MAX_LIVES = 3;
   const TUTORIAL_KEY = "common-ground-tutorial-seen";
+  const STATS_KEY = "common-ground-stats-v1";
 
     const PUZZLES = [
     {
@@ -741,6 +869,7 @@
   let state;
   let sessionResults = Array(PUZZLES.length).fill(null);
   let puzzleStates = Array(PUZZLES.length).fill(null);
+  let stats = null;
 
   const boardEl = document.getElementById("board");
   const slots = Array.from(document.querySelectorAll(".slot"));
@@ -755,6 +884,12 @@
   const livesEl = document.getElementById("lives");
   const livesLabelEl = document.getElementById("lives-label");
   const summaryEl = document.getElementById("summary");
+  const statsModalEl = document.getElementById("stats-modal");
+  const statsGridEl = document.getElementById("stats-grid");
+  const statsPuzzleListEl = document.getElementById("stats-puzzle-list");
+  const statsBtn = document.getElementById("stats-btn");
+  const statsCloseBtn = document.getElementById("stats-close");
+  const statsResetBtn = document.getElementById("stats-reset");
   const sharePanelEl = document.getElementById("share-panel");
   const sharePreviewEl = document.getElementById("share-preview");
   const shareBtn = document.getElementById("share-btn");
@@ -775,6 +910,100 @@
 
   function deepClone(obj) {
     return JSON.parse(JSON.stringify(obj));
+  }
+
+  function createEmptyStats() {
+    return {
+      startedAt: new Date().toISOString(),
+      gamesPlayed: 0,
+      gamesSolved: 0,
+      gamesFailed: 0,
+      gamesSkipped: 0,
+      currentStreak: 0,
+      bestStreak: 0,
+      totalSolvedTries: 0,
+      lastPlayedAt: null,
+      puzzleHistory: {}
+    };
+  }
+
+  function loadStats() {
+    try {
+      const raw = localStorage.getItem(STATS_KEY);
+      if (!raw) return createEmptyStats();
+      const parsed = JSON.parse(raw);
+      return { ...createEmptyStats(), ...parsed, puzzleHistory: parsed.puzzleHistory || {} };
+    } catch (err) {
+      return createEmptyStats();
+    }
+  }
+
+  function saveStats() {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  }
+
+  function averageSolvedTries() {
+    if (!stats.gamesSolved) return "-";
+    return (stats.totalSolvedTries / stats.gamesSolved).toFixed(2);
+  }
+
+  function recordStats(status) {
+    stats.gamesPlayed += 1;
+    stats.lastPlayedAt = new Date().toISOString();
+    if (status === "solved") {
+      stats.gamesSolved += 1;
+      stats.currentStreak += 1;
+      stats.bestStreak = Math.max(stats.bestStreak, stats.currentStreak);
+      stats.totalSolvedTries += state.tries;
+    } else {
+      if (status === "failed") stats.gamesFailed += 1;
+      if (status === "skipped") stats.gamesSkipped += 1;
+      stats.currentStreak = 0;
+    }
+    const key = String(puzzleIndex + 1);
+    const puzzleStats = stats.puzzleHistory[key] || { title: PUZZLES[puzzleIndex].title, plays: 0, solves: 0, fails: 0, bestTries: null };
+    puzzleStats.title = PUZZLES[puzzleIndex].title;
+    puzzleStats.plays += 1;
+    if (status === "solved") {
+      puzzleStats.solves += 1;
+      puzzleStats.bestTries = puzzleStats.bestTries === null ? state.tries : Math.min(puzzleStats.bestTries, state.tries);
+    }
+    if (status === "failed") puzzleStats.fails += 1;
+    stats.puzzleHistory[key] = puzzleStats;
+    saveStats();
+  }
+
+  function renderStats() {
+    const winRate = stats.gamesPlayed ? Math.round((stats.gamesSolved / stats.gamesPlayed) * 100) : 0;
+    const items = [
+      ["Played", stats.gamesPlayed],
+      ["Solved", stats.gamesSolved],
+      ["Win Rate", `${winRate}%`],
+      ["Avg Solve", averageSolvedTries()],
+      ["Streak", stats.currentStreak],
+      ["Best Streak", stats.bestStreak]
+    ];
+    statsGridEl.innerHTML = items.map(([label, value]) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div></div>`).join("");
+    const rows = Object.entries(stats.puzzleHistory)
+      .sort((a, b) => Number(a[0]) - Number(b[0]))
+      .map(([key, value]) => `<div class="stats-puzzle-item"><div class="stats-puzzle-title">Puzzle ${key}</div><div class="stats-puzzle-meta">${value.title}</div><div class="stats-puzzle-meta">Played ${value.plays} · Solved ${value.solves} · Failed ${value.fails}${value.bestTries !== null ? ` · Best ${value.bestTries}/${MAX_LIVES}` : ""}</div></div>`)
+      .join("");
+    statsPuzzleListEl.innerHTML = rows || `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">No stats yet. Finish a puzzle and we will start tracking.</div></div>`;
+  }
+
+  function openStats() {
+    renderStats();
+    statsModalEl.hidden = false;
+  }
+
+  function closeStats() {
+    statsModalEl.hidden = true;
+  }
+
+  function resetStats() {
+    stats = createEmptyStats();
+    saveStats();
+    renderStats();
   }
 
   function setMessage(text = "", color = "#172033") {
@@ -1282,11 +1511,13 @@
   }
 
   function finalizeCurrentPuzzle(status) {
+    const existing = sessionResults[puzzleIndex];
     sessionResults[puzzleIndex] = {
       status,
       tries: state.tries,
       livesUsed: state.livesUsed
     };
+    if (!existing) recordStats(status);
   }
 
   function allPuzzlesFinalized() {
@@ -1508,15 +1739,33 @@
 
   tutorialStartBtn.addEventListener("click", dismissTutorial);
   tutorialSkipBtn.addEventListener("click", dismissTutorial);
+  statsBtn.addEventListener("click", openStats);
+  statsCloseBtn.addEventListener("click", closeStats);
+  statsResetBtn.addEventListener("click", () => {
+    if (window.confirm("Reset all local stats on this device?")) resetStats();
+  });
+  statsModalEl.addEventListener("click", (e) => {
+    if (e.target === statsModalEl) closeStats();
+  });
 
   window.addEventListener("resize", scheduleSlotLayout);
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !statsModalEl.hidden) closeStats();
+  });
   window.addEventListener("load", scheduleSlotLayout);
 
+  stats = loadStats();
   loadPuzzle(0);
   if (!localStorage.getItem(TUTORIAL_KEY)) tutorialEl.hidden = false;
   render();</script>
 </body>
 </html>
+</body>
+</html>
+
+
+
+
 
 
 
