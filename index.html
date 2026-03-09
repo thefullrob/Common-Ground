@@ -919,8 +919,9 @@
       gamesSolved: 0,
       gamesFailed: 0,
       gamesSkipped: 0,
-      currentStreak: 0,
-      bestStreak: 0,
+      dailyStreak: 0,
+      bestDailyStreak: 0,
+      lastSolvedDay: null,
       totalSolvedTries: 0,
       lastPlayedAt: null,
       puzzleHistory: {}
@@ -932,7 +933,14 @@
       const raw = localStorage.getItem(STATS_KEY);
       if (!raw) return createEmptyStats();
       const parsed = JSON.parse(raw);
-      return { ...createEmptyStats(), ...parsed, puzzleHistory: parsed.puzzleHistory || {} };
+      return {
+        ...createEmptyStats(),
+        ...parsed,
+        dailyStreak: parsed.dailyStreak ?? parsed.currentStreak ?? 0,
+        bestDailyStreak: parsed.bestDailyStreak ?? parsed.bestStreak ?? 0,
+        lastSolvedDay: parsed.lastSolvedDay || null,
+        puzzleHistory: parsed.puzzleHistory || {}
+      };
     } catch (err) {
       return createEmptyStats();
     }
@@ -947,18 +955,51 @@
     return (stats.totalSolvedTries / stats.gamesSolved).toFixed(2);
   }
 
+  function getLocalDayStamp(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function shiftDayStamp(dayStamp, amount) {
+    const [year, month, day] = dayStamp.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+    date.setDate(date.getDate() + amount);
+    return getLocalDayStamp(date);
+  }
+
+  function getVisibleDailyStreak() {
+    if (!stats.lastSolvedDay) return 0;
+    const today = getLocalDayStamp();
+    const yesterday = shiftDayStamp(today, -1);
+    if (stats.lastSolvedDay === today || stats.lastSolvedDay === yesterday) return stats.dailyStreak;
+    return 0;
+  }
+
+  function recordDailySolve() {
+    const today = getLocalDayStamp();
+    if (stats.lastSolvedDay === today) return;
+    const yesterday = shiftDayStamp(today, -1);
+    if (stats.lastSolvedDay === yesterday) {
+      stats.dailyStreak += 1;
+    } else {
+      stats.dailyStreak = 1;
+    }
+    stats.bestDailyStreak = Math.max(stats.bestDailyStreak, stats.dailyStreak);
+    stats.lastSolvedDay = today;
+  }
+
   function recordStats(status) {
     stats.gamesPlayed += 1;
     stats.lastPlayedAt = new Date().toISOString();
     if (status === "solved") {
       stats.gamesSolved += 1;
-      stats.currentStreak += 1;
-      stats.bestStreak = Math.max(stats.bestStreak, stats.currentStreak);
+      recordDailySolve();
       stats.totalSolvedTries += state.tries;
     } else {
       if (status === "failed") stats.gamesFailed += 1;
       if (status === "skipped") stats.gamesSkipped += 1;
-      stats.currentStreak = 0;
     }
     const key = String(puzzleIndex + 1);
     const puzzleStats = stats.puzzleHistory[key] || { title: PUZZLES[puzzleIndex].title, plays: 0, solves: 0, fails: 0, bestTries: null };
@@ -980,8 +1021,8 @@
       ["Solved", stats.gamesSolved],
       ["Win Rate", `${winRate}%`],
       ["Avg Solve", averageSolvedTries()],
-      ["Streak", stats.currentStreak],
-      ["Best Streak", stats.bestStreak]
+      ["Daily Streak", getVisibleDailyStreak()],
+      ["Best Daily", stats.bestDailyStreak]
     ];
     statsGridEl.innerHTML = items.map(([label, value]) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div></div>`).join("");
     const rows = Object.entries(stats.puzzleHistory)
