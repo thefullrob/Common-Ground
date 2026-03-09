@@ -577,6 +577,7 @@
   const SLOTS = ["S1", "S2", "S3", "S4"];
   const MAX_LIVES = 3;
   const TUTORIAL_KEY = "common-ground-tutorial-seen";
+  const SHARE_URL = "https://thefullrob.github.io/";
 
     const PUZZLES = [
     {
@@ -787,7 +788,7 @@
     const square = state.solved ? "\uD83D\uDFE9" : "\uD83D\uDFE5";
     const grid = `${square}${square}\n${square}${square}`;
     const triesLine = state.solved ? `Solved in ${state.tries}/${MAX_LIVES} tries` : `Missed in ${state.tries}/${MAX_LIVES} tries`;
-    const host = window.location.hostname || "common-ground";
+    const host = SHARE_URL.replace(/^https?:\/\//, "").replace(/\/$/, "");
     return `Common Ground #${puzzleIndex + 1}\n${grid}\n${triesLine}\n${host}`;
   }
 
@@ -804,7 +805,7 @@
 
   async function copyShareResults() {
     const text = buildShareText();
-    const url = window.location.href;
+    const url = SHARE_URL;
     try {
       if (navigator.share) {
         await navigator.share({
@@ -1163,7 +1164,7 @@
     submitBtn.disabled = !ready;
     submitBtn.classList.toggle("ready", ready);
     undoBtn.disabled = !state.history.length || state.solved || state.failed;
-    clearBtn.disabled = !state.selectedTileId || state.solved || state.failed;
+    clearBtn.disabled = !hasProgress();
   }
 
   function computeSlotLayout() {
@@ -1515,6 +1516,9 @@
   render();</script>
 </body>
 </html>
+
+
+
 
 
 
