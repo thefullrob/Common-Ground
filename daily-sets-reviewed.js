@@ -157,12 +157,12 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
     date: "2026-03-06",
     easy: {
-      title: "Los Angeles + Tourist + Heavy Traffic",
-      labels: { A: "Los Angeles", B: "Tourist", C: "Heavy Traffic" },
+      title: "Los Angeles + Tourist + Gridlock",
+      labels: { A: "Los Angeles", B: "Tourist", C: "Gridlock" },
       tiles: [
         { label: "Hollywood Sign", correctSlot: "S1" },
         { label: "405 Freeway", correctSlot: "S2" },
-        { label: "Tour Bus", correctSlot: "S3" },
+        { label: "Sightseeing Bus", correctSlot: "S3" },
         { label: "Hollywood Boulevard", correctSlot: "S4" },
         { label: "Mug", correctSlot: null },
         { label: "Stapler", correctSlot: null },
@@ -222,9 +222,9 @@ window.COMMON_GROUND_DAILY_SETS = [
       title: "New York + Tourist + Crowded",
       labels: { A: "New York", B: "Tourist", C: "Crowded" },
       tiles: [
-        { label: "Statue of Liberty", correctSlot: "S1" },
+        { label: "Empire State Building", correctSlot: "S1" },
         { label: "Subway Platform", correctSlot: "S2" },
-        { label: "Double-Decker Bus", correctSlot: "S3" },
+        { label: "Tour Group", correctSlot: "S3" },
         { label: "Times Square", correctSlot: "S4" },
         { label: "Toaster", correctSlot: null },
         { label: "Flashlight", correctSlot: null },
@@ -284,9 +284,9 @@ window.COMMON_GROUND_DAILY_SETS = [
       title: "London + Tourist + Crowded",
       labels: { A: "London", B: "Tourist", C: "Crowded" },
       tiles: [
-        { label: "Big Ben", correctSlot: "S1" },
+        { label: "Tower Bridge", correctSlot: "S1" },
         { label: "Tube Platform", correctSlot: "S2" },
-        { label: "London Eye Line", correctSlot: "S3" },
+        { label: "Walking Tour", correctSlot: "S3" },
         { label: "Piccadilly Circus", correctSlot: "S4" },
         { label: "Parking Lot", correctSlot: null },
         { label: "Garage", correctSlot: null },
@@ -341,3 +341,4 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
+
