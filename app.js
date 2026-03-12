@@ -277,7 +277,7 @@ function computeSlotLayout() {
 }
 function scheduleSlotLayout() { if (slotLayoutRaf) cancelAnimationFrame(slotLayoutRaf); slotLayoutRaf = requestAnimationFrame(() => { slotLayoutRaf = 0; if (!computeSlotLayout()) { slotLayoutRaf = requestAnimationFrame(() => { slotLayoutRaf = 0; computeSlotLayout(); }); } }); }
 function makeTile(tileId) {
-  const tile = tileById[tileId]; const el = document.createElement("div"); el.className = "tile"; el.dataset.tileId = tile.id; el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed; el.innerHTML = `<div class="text">${tile.label}</div>`;
+  const tile = tileById[tileId]; const el = document.createElement("div"); el.className = "tile"; if (tile.label.length >= 10) el.classList.add("long-text"); if (tile.label.length >= 14) el.classList.add("very-long-text"); el.dataset.tileId = tile.id; el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed; el.innerHTML = `<div class="text">${tile.label}</div>`;
   if (state.selectedTileId === tile.id) el.classList.add("selected"); if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
   el.addEventListener("click", () => { if (Date.now() < suppressClickUntil) return; if (state.solved || state.failed || state.lockedTiles.has(tile.id)) return; state.selectedTileId = state.selectedTileId === tile.id ? null : tile.id; setMessage(); render(); });
   el.addEventListener("pointerdown", (e) => startTouchDrag(e, tile.id));
@@ -316,6 +316,7 @@ stats = loadStats();
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 if (!safeGetStorage(TUTORIAL_KEY)) tutorialEl.hidden = false;
 if (state) render();
+
 
 
 

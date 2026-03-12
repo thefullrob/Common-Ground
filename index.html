@@ -82,7 +82,7 @@
 
     .lives-label {
       font-size: 0.88rem;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.01em;
     }
 
@@ -170,18 +170,19 @@
     .label {
       position: absolute;
       text-align: center;
-      font-size: 0.74rem;
+      font-size: 0.68rem;
       line-height: 1.1;
-      font-weight: 900;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.05em;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(216, 207, 190, 0.95);
-      background: rgba(248, 244, 236, 0.96);
+      border: 1px solid rgba(216, 207, 190, 0.78);
+      background: rgba(251, 248, 241, 0.82);
+      color: #3f4b61;
       pointer-events: none;
     }
 
@@ -290,24 +291,24 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 74px;
-      min-height: 46px;
+      width: 70px;
+      min-height: 44px;
       transform: translate(-50%, -50%);
       border-radius: 13px;
-      padding: 4px 4px;
+      padding: 4px 4px 5px;
       box-shadow: 0 7px 10px rgba(15, 23, 42, 0.06);
       z-index: 2;
     }
 
-    #slot-S1 .tile { transform: translate(-104%, -92%); }
-    #slot-S2 .tile { transform: translate(4%, -92%); }
-    #slot-S3 .tile { transform: translate(-50%, 6%); }
-    #slot-S4 .tile { transform: translate(-50%, -112%); }
+    #slot-S1 .tile { transform: translate(-114%, -96%); }
+    #slot-S2 .tile { transform: translate(14%, -96%); }
+    #slot-S3 .tile { transform: translate(-50%, 12%); }
+    #slot-S4 .tile { transform: translate(-50%, -122%); }
 
     .text {
       font-size: 0.72rem;
       line-height: 1.1;
-      font-weight: 900;
+      font-weight: 800;
       text-align: center;
       letter-spacing: 0.01em;
     }
@@ -324,7 +325,7 @@
       background: linear-gradient(180deg, #f8f1e2 0%, #f2e7d2 100%);
       color: #162033;
       font-size: 0.78rem;
-      font-weight: 900;
+      font-weight: 800;
       padding: 10px 8px;
       cursor: pointer;
       box-shadow: 0 1px 0 rgba(255,255,255,0.72) inset;
@@ -332,7 +333,7 @@
 
     button:disabled { opacity: 0.48; cursor: not-allowed; }
     .controls button {
-      min-height: 46px;
+      min-height: 44px;
     }
     #prev-btn,
     #restart-btn {
@@ -365,9 +366,9 @@
     }
 
     .top-action {
-      min-width: 74px;
+      min-width: 70px;
       padding: 8px 12px;
-      font-size: 0.74rem;
+      font-size: 0.68rem;
     }
 
     .stats-modal {
@@ -408,7 +409,7 @@
     .stats-head h2 {
       margin: 0;
       font-size: 1.35rem;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.05em;
     }
 
     .stats-close,
@@ -433,7 +434,7 @@
     }
 
     .stats-label {
-      font-size: 0.74rem;
+      font-size: 0.68rem;
       font-weight: 800;
       color: #667188;
       text-transform: uppercase;
@@ -442,7 +443,7 @@
 
     .stats-value {
       font-size: 1.15rem;
-      font-weight: 900;
+      font-weight: 800;
       color: #162033;
     }
 
@@ -453,7 +454,7 @@
 
     .stats-puzzle-title {
       font-size: 0.78rem;
-      font-weight: 900;
+      font-weight: 800;
       color: #667188;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -537,7 +538,7 @@
     .tutorial-card h2 {
       margin: 0;
       font-size: 1.4rem;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.05em;
       text-align: center;
     }
 
@@ -599,27 +600,29 @@
       #circle-A { top: 20px; }
       #circle-B { top: 122px; left: 62px; }
       #circle-C { top: 122px; right: 62px; }
-      .label { font-size: 0.69rem; }
+      .label { font-size: 0.62rem; padding: 3px 9px; }
       #label-A { top: 72px; }
       #label-B { top: 216px; left: 20px; }
       #label-C { top: 216px; right: 20px; }
 
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .tile { padding: 8px 7px; min-height: 48px; }
-      .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px; }
-      #slot-S1 .tile { transform: translate(-106%, -92%); }
-      #slot-S2 .tile { transform: translate(6%, -92%); }
-      #slot-S3 .tile { transform: translate(-50%, 10%); }
-      #slot-S4 .tile { transform: translate(-50%, -116%); }
-      .text { font-size: 0.76rem; }
+      .tile { padding: 7px 7px; min-height: 44px; }
+      .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px 5px; }
+      #slot-S1 .tile { transform: translate(-120%, -98%); }
+      #slot-S2 .tile { transform: translate(20%, -98%); }
+      #slot-S3 .tile { transform: translate(-50%, 16%); }
+      #slot-S4 .tile { transform: translate(-50%, -126%); }
+      .text { font-size: 0.74rem; }
+      .slot .tile.long-text .text { font-size: 0.64rem; }
+      .slot .tile.very-long-text .text { font-size: 0.59rem; }
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       button { font-size: 0.8rem; padding: 10px 8px; }
       .summary { font-size: 0.76rem; }
       .tutorial-card { padding: 16px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stats-head { align-items: start; }
-      .top-row { gap: 8px; }
-      .top-action { min-width: 68px; }
+      .top-row { gap: 7px; }
+      .top-action { min-width: 61px; padding: 7px 9px; font-size: 0.67rem; }
     }
   </style>
 </head>
