@@ -642,11 +642,18 @@
           <button id="archive-btn" class="top-action">Archive</button>
           <button id="stats-btn" class="top-action">Stats</button>
           <button id="badges-btn" class="top-action">Badges</button>
+          <button class="top-action" data-home-screen-trigger>Save App</button>
         </div>
       </div>
       <div class="hud">
         <div class="lives-label" id="lives-label">Tries Left: 3</div>
         <div class="lives" id="lives"></div>
+        <div class="timer-wrap" id="timer-wrap" hidden>
+          <div class="timer-label" id="timer-label">Time Left: 1:30</div>
+          <div class="timer-bar">
+            <div class="timer-fill" id="timer-fill"></div>
+          </div>
+        </div>
       </div>
       <div class="message" id="message"></div>
     </section>
@@ -778,7 +785,7 @@
       <h2>Keep Your Streak</h2>
       <div class="modal-copy">You are out of tries on Hard. Use your one extra lifeline try to protect today&apos;s run.</div>
       <div class="modal-actions">
-        <button id="home-screen-btn">Save To Home Screen</button>
+        <button id="home-screen-btn" data-home-screen-trigger>Save To Home Screen</button>
         <button id="use-lifeline-btn" class="modal-primary">Use Lifeline</button>
       </div>
     </div>
@@ -799,6 +806,8 @@
   <script src="app.js?v=20260313"></script>
 </body>
 </html>
+
+
 
 
 

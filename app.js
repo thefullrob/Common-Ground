@@ -11,6 +11,12 @@ runtimeStyle.textContent = `
   }
   .top-action.active, .stage-btn.active { background: #111827; color: #fff; border-color: #111827; }
   .top h1, #subtitle, #summary { display: none !important; }
+  .hud { display: grid; gap: 8px; justify-items: start; }
+  .timer-wrap { display: grid; gap: 6px; width: min(220px, 100%); }
+  .timer-wrap[hidden] { display: none; }
+  .timer-label { font-size: 0.85rem; font-weight: 900; color: #7a5a35; letter-spacing: 0.02em; }
+  .timer-bar { width: 100%; height: 10px; border-radius: 999px; overflow: hidden; background: #eadfc9; border: 1px solid rgba(122, 90, 53, 0.18); }
+  .timer-fill { width: 100%; height: 100%; background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%); transform-origin: left center; transition: transform 120ms linear, background 120ms linear; }
   .top { padding-top: 2px; }
   .top-row { justify-content: center; }
   .launch-screen {
@@ -191,6 +197,8 @@ runtimeStyle.textContent += `
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
 const BASE_LIVES = 3;
+const HARD_TIMER_MS = 90000;
+const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
 const DAILY_SETS = [...(window.COMMON_GROUND_DAILY_SETS || [])].sort((a, b) => a.date.localeCompare(b.date));
@@ -249,6 +257,7 @@ let badgeUnlockQueue = [];
 let activeBadgeUnlock = null;
 let currentCalendarDay = getLocalDayStamp();
 let deferredInstallPrompt = null;
+let hardTimerInterval = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -262,6 +271,9 @@ const bankGridEl = document.getElementById("bank-grid");
 const messageEl = document.getElementById("message");
 const livesEl = document.getElementById("lives");
 const livesLabelEl = document.getElementById("lives-label");
+const timerWrapEl = document.getElementById("timer-wrap");
+const timerLabelEl = document.getElementById("timer-label");
+const timerFillEl = document.getElementById("timer-fill");
 const summaryEl = document.getElementById("summary");
 const subtitleEl = document.getElementById("subtitle");
 const launchScreenEl = document.getElementById("launch-screen");
@@ -311,6 +323,7 @@ const badgeDetailCloseBtn = document.getElementById("badge-detail-close");
 const lifelineModalEl = document.getElementById("lifeline-modal");
 const homeScreenModalEl = document.getElementById("home-screen-modal");
 const homeScreenBtn = document.getElementById("home-screen-btn");
+const homeScreenTriggerEls = Array.from(document.querySelectorAll("[data-home-screen-trigger]"));
 const useLifelineBtn = document.getElementById("use-lifeline-btn");
 const homeScreenCloseBtn = document.getElementById("home-screen-close");
 const homeScreenUseBtn = document.getElementById("home-screen-use");
@@ -341,11 +354,11 @@ function getStageRecord(day = getActiveDate(), stage = activeStage) { const reco
 function isHardUnlocked(day = getActiveDate()) { return Boolean(getStageRecord(day, "easy")?.status === "solved"); }
 function getActiveMaxLives() { const record = getDayRecord(getActiveDate(), false); return BASE_LIVES + (activeStage === "hard" && record?.usedHardLifeline ? 1 : 0); }
 function shuffle(arr) { const out = [...arr]; for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; } return out; }
-function createState() { return { placements: Object.fromEntries(SLOTS.map((slot) => [slot, null])), tileLocation: Object.fromEntries(currentTiles.map((tile) => [tile.id, null])), selectedTileId: null, lockedTiles: new Set(), revealedSlots: new Set(), wrongSlots: new Set(), wrongCircles: new Set(), livesUsed: 0, tries: 0, solved: false, failed: false, history: [], bankOrder: shuffle(currentTiles.map((tile) => tile.id)) }; }
-function snap() { return { placements: deepClone(state.placements), tileLocation: deepClone(state.tileLocation), selectedTileId: state.selectedTileId, lockedTiles: [...state.lockedTiles], revealedSlots: [...state.revealedSlots], wrongSlots: [...state.wrongSlots], wrongCircles: [...state.wrongCircles], livesUsed: state.livesUsed, tries: state.tries, solved: state.solved, failed: state.failed, bankOrder: [...state.bankOrder] }; }
-function restorePlayableState(snapshot, history = []) { if (!snapshot) return createState(); return { placements: deepClone(snapshot.placements), tileLocation: deepClone(snapshot.tileLocation), selectedTileId: snapshot.selectedTileId, lockedTiles: new Set(snapshot.lockedTiles || []), revealedSlots: new Set(snapshot.revealedSlots || []), wrongSlots: new Set(snapshot.wrongSlots || []), wrongCircles: new Set(snapshot.wrongCircles || []), livesUsed: snapshot.livesUsed || 0, tries: snapshot.tries || 0, solved: Boolean(snapshot.solved), failed: Boolean(snapshot.failed), history: [...history], bankOrder: [...(snapshot.bankOrder || currentTiles.map((tile) => tile.id))] }; }
-function buildSolvedState(result) { const solvedState = createState(); solvedState.tries = result?.tries || 1; solvedState.livesUsed = Math.min(result?.tries || 1, getActiveMaxLives()); solvedState.solved = true; solvedState.wrongSlots = new Set(); solvedState.wrongCircles = new Set(); SLOTS.forEach((slot) => { solvedState.revealedSlots.add(slot); const tile = currentTiles.find((entry) => entry.correctSlot === slot); if (!tile) return; solvedState.placements[slot] = tile.id; solvedState.tileLocation[tile.id] = slot; solvedState.lockedTiles.add(tile.id); }); solvedState.bankOrder = currentTiles.map((tile) => tile.id).filter((id) => solvedState.tileLocation[id] === null); return solvedState; }
-function buildFailedState(result) { const failedState = buildSolvedState(result); failedState.solved = false; failedState.failed = true; failedState.livesUsed = getActiveMaxLives(); return failedState; }
+function createState() { return { placements: Object.fromEntries(SLOTS.map((slot) => [slot, null])), tileLocation: Object.fromEntries(currentTiles.map((tile) => [tile.id, null])), selectedTileId: null, lockedTiles: new Set(), revealedSlots: new Set(), wrongSlots: new Set(), wrongCircles: new Set(), livesUsed: 0, tries: 0, solved: false, failed: false, history: [], bankOrder: shuffle(currentTiles.map((tile) => tile.id)), timerRemainingMs: activeStage === "hard" ? HARD_TIMER_MS : null, lastTimerTickAt: null }; }
+function snap() { return { placements: deepClone(state.placements), tileLocation: deepClone(state.tileLocation), selectedTileId: state.selectedTileId, lockedTiles: [...state.lockedTiles], revealedSlots: [...state.revealedSlots], wrongSlots: [...state.wrongSlots], wrongCircles: [...state.wrongCircles], livesUsed: state.livesUsed, tries: state.tries, solved: state.solved, failed: state.failed, bankOrder: [...state.bankOrder], timerRemainingMs: state.timerRemainingMs, lastTimerTickAt: state.lastTimerTickAt }; }
+function restorePlayableState(snapshot, history = []) { if (!snapshot) return createState(); return { placements: deepClone(snapshot.placements), tileLocation: deepClone(snapshot.tileLocation), selectedTileId: snapshot.selectedTileId, lockedTiles: new Set(snapshot.lockedTiles || []), revealedSlots: new Set(snapshot.revealedSlots || []), wrongSlots: new Set(snapshot.wrongSlots || []), wrongCircles: new Set(snapshot.wrongCircles || []), livesUsed: snapshot.livesUsed || 0, tries: snapshot.tries || 0, solved: Boolean(snapshot.solved), failed: Boolean(snapshot.failed), history: [...history], bankOrder: [...(snapshot.bankOrder || currentTiles.map((tile) => tile.id))], timerRemainingMs: snapshot.timerRemainingMs ?? (activeStage === "hard" ? HARD_TIMER_MS : null), lastTimerTickAt: null }; }
+function buildSolvedState(result) { const solvedState = createState(); solvedState.timerRemainingMs = activeStage === "hard" ? (result?.timerRemainingMs ?? solvedState.timerRemainingMs) : null; solvedState.tries = result?.tries || 1; solvedState.livesUsed = Math.min(result?.tries || 1, getActiveMaxLives()); solvedState.solved = true; solvedState.wrongSlots = new Set(); solvedState.wrongCircles = new Set(); SLOTS.forEach((slot) => { solvedState.revealedSlots.add(slot); const tile = currentTiles.find((entry) => entry.correctSlot === slot); if (!tile) return; solvedState.placements[slot] = tile.id; solvedState.tileLocation[tile.id] = slot; solvedState.lockedTiles.add(tile.id); }); solvedState.bankOrder = currentTiles.map((tile) => tile.id).filter((id) => solvedState.tileLocation[id] === null); return solvedState; }
+function buildFailedState(result) { const failedState = buildSolvedState(result); failedState.solved = false; failedState.failed = true; failedState.livesUsed = getActiveMaxLives(); failedState.timerRemainingMs = activeStage === "hard" ? (result?.timerRemainingMs ?? 0) : null; return failedState; }
 function saveCurrentStageState() { const finalized = getStageRecord(); if (finalized && (finalized.status === "solved" || finalized.status === "failed")) return; dayStates[getStageKey()] = snap(); }
 function pushUndo() { state.history.push(snap()); if (state.history.length > 100) state.history.shift(); }
 function undo() { if (!state.history.length || state.solved || state.failed) return; const nextHistory = [...state.history]; const snapshot = nextHistory.pop(); state = restorePlayableState(snapshot, nextHistory); setMessage(); render(); }
@@ -527,7 +540,58 @@ function updateColorProgress() {
   document.documentElement.style.setProperty("--b-alpha", "0.42");
   document.documentElement.style.setProperty("--c-alpha", "0.42");
 }
-function updateLives() { const maxLives = getActiveMaxLives(); const left = Math.max(0, maxLives - state.livesUsed); livesLabelEl.textContent = `Tries Left: ${left}`; livesEl.style.gridTemplateColumns = `repeat(${maxLives}, 1fr)`; livesEl.style.width = `${maxLives * 34}px`; livesEl.innerHTML = ""; for (let i = 0; i < maxLives; i++) { const seg = document.createElement("div"); seg.className = "life" + (i < left ? " on" : ""); livesEl.appendChild(seg); } }
+function updateLives() { const maxLives = getActiveMaxLives(); const left = Math.max(0, maxLives - state.livesUsed); livesLabelEl.textContent = `Tries Left: ${left}`; livesEl.style.gridTemplateColumns = `repeat(${maxLives}, 1fr)`; livesEl.style.width = `${maxLives * 34}px`; livesEl.innerHTML = ""; for (let i = 0; i < maxLives; i++) { const seg = document.createElement("div"); seg.className = "life" + (i < left ? " on" : ""); livesEl.appendChild(seg); } updateTimerUi(); }
+function getHardTimerCap(day = getActiveDate()) {
+  const record = getDayRecord(day, false);
+  return HARD_TIMER_MS + (record?.usedHardLifeline ? HARD_LIFELINE_BONUS_MS : 0);
+}
+function formatTimerLabel(ms) {
+  const totalSeconds = Math.max(0, Math.ceil(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
+}
+function isTimerPaused() {
+  return document.hidden || !hardTimerInterval || !homeScreenModalEl.hidden || !lifelineModalEl.hidden || !statsModalEl.hidden || !archiveModalEl.hidden || !badgesModalEl.hidden || !badgeUnlockModalEl.hidden || !badgeDetailModalEl.hidden || !tutorialEl.hidden || !launchScreenEl.hidden;
+}
+function updateTimerUi() {
+  const showTimer = activeStage === "hard" && Boolean(timerWrapEl);
+  if (!timerWrapEl || !timerLabelEl || !timerFillEl) return;
+  timerWrapEl.hidden = !showTimer;
+  if (!showTimer) return;
+  const cap = getHardTimerCap();
+  const remaining = Math.max(0, state?.timerRemainingMs ?? cap);
+  timerLabelEl.textContent = `Time Left: ${formatTimerLabel(remaining)}`;
+  timerLabelEl.style.color = remaining <= 15000 ? "#b91c1c" : remaining <= 30000 ? "#b45309" : "#7a5a35";
+  timerFillEl.style.transform = `scaleX(${Math.max(0, Math.min(1, remaining / cap))})`;
+}
+function syncHardTimer() {
+  if (!state || activeStage !== "hard" || state.solved || state.failed) {
+    if (state) state.lastTimerTickAt = null;
+    return;
+  }
+  if (isTimerPaused()) {
+    state.lastTimerTickAt = null;
+    return;
+  }
+  const now = Date.now();
+  if (!state.lastTimerTickAt) {
+    state.lastTimerTickAt = now;
+    return;
+  }
+  const elapsed = now - state.lastTimerTickAt;
+  if (elapsed < 120) return;
+  state.lastTimerTickAt = now;
+  state.timerRemainingMs = Math.max(0, (state.timerRemainingMs ?? getHardTimerCap()) - elapsed);
+  if (state.timerRemainingMs <= 0) {
+    state.timerRemainingMs = 0;
+    if (getActiveMaxLives() === BASE_LIVES && maybeOfferLifeline()) {
+      render();
+      return;
+    }
+    revealFailureBoard("Time expired. Solution revealed.");
+  }
+}
 function updateHeaderUi() {
   const day = getActiveDate();
   if (subtitleEl) subtitleEl.textContent = `${activeSection === "today" ? "Today" : "Archive"} - ${formatLongDate(day)}`;
@@ -600,13 +664,13 @@ function onTouchDragEnd(e) { if (!touchDrag || e.pointerType !== "touch") return
 function moveTileToSlot(tileId, slot) { if (!tileById[tileId] || !SLOTS.includes(slot) || state.solved || state.failed || state.lockedTiles.has(tileId)) return false; const from = state.tileLocation[tileId]; if (from === slot) return true; const occupant = state.placements[slot]; if (occupant && state.lockedTiles.has(occupant)) return false; state.placements[slot] = tileId; state.tileLocation[tileId] = slot; if (from) { state.placements[from] = occupant || null; if (occupant) state.tileLocation[occupant] = from; } else if (occupant) { state.tileLocation[occupant] = null; } saveCurrentStageState(); return true; }
 function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state.failed || state.lockedTiles.has(tileId)) return false; const slot = state.tileLocation[tileId]; if (!slot) return true; state.placements[slot] = null; state.tileLocation[tileId] = null; saveCurrentStageState(); return true; }
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
-function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One last Hard try.", "#b45309"); render(); }
+function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; if (activeStage === "hard") state.timerRemainingMs = Math.min(HARD_TIMER_MS + HARD_LIFELINE_BONUS_MS, (state.timerRemainingMs ?? 0) + HARD_LIFELINE_BONUS_MS); stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One extra try and +15 seconds.", "#b45309"); render(); }
 function maybeOfferLifeline() { if (activeStage !== "hard") return false; const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return false; if (stats.firstLifelinePromptSeen) { activateHardLifeline(); return true; } lifelineModalEl.hidden = false; return true; }
 function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); if (activeStage === "easy" && !record?.completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !record?.completedDailySet ? "Easy cleared. Hard is unlocked." : record?.completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); }
-function revealFailureBoard() { state.failed = true; state.solved = false; state.selectedTileId = null; state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null])); state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null])); state.lockedTiles = new Set(); state.revealedSlots = new Set(SLOTS); currentTiles.forEach((tile) => { if (!tile.correctSlot) return; state.placements[tile.correctSlot] = tile.id; state.tileLocation[tile.id] = tile.correctSlot; state.lockedTiles.add(tile.id); }); updateProgressRecord(getActiveDate(), activeStage, "failed"); setMessage("Out of tries. Solution revealed.", "#991b1b"); playTone("fail"); vibrate([120, 60, 120]); render(); }
+function revealFailureBoard(reason = "Out of tries. Solution revealed.") { state.failed = true; state.solved = false; state.selectedTileId = null; state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null])); state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null])); state.lockedTiles = new Set(); state.revealedSlots = new Set(SLOTS); currentTiles.forEach((tile) => { if (!tile.correctSlot) return; state.placements[tile.correctSlot] = tile.id; state.tileLocation[tile.id] = tile.correctSlot; state.lockedTiles.add(tile.id); }); updateProgressRecord(getActiveDate(), activeStage, "failed"); setMessage(reason, "#991b1b"); playTone("fail"); vibrate([120, 60, 120]); render(); }
 function submitAnswers() { if (!allPlaced() || state.solved || state.failed || state.livesUsed >= getActiveMaxLives()) return; state.tries += 1; const correctSet = new Set(correctSlots()); const wrongSlots = []; const wrongCircles = new Set(); const slotToCircles = { S1: ["A", "B"], S2: ["A", "C"], S3: ["B", "C"], S4: ["A", "B", "C"] }; SLOTS.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; if (correctSet.has(slot)) { state.revealedSlots.add(slot); state.lockedTiles.add(tileId); } else { wrongSlots.push(slot); slotToCircles[slot].forEach((circle) => wrongCircles.add(circle)); } }); if (state.revealedSlots.size === SLOTS.length) { finishWin(); return; } state.livesUsed += 1; state.history = []; shakeBoard(); if (state.livesUsed >= BASE_LIVES && activeStage === "hard" && getActiveMaxLives() === BASE_LIVES && maybeOfferLifeline()) { render(); return; } if (state.livesUsed >= getActiveMaxLives()) { revealFailureBoard(); return; } state.wrongSlots = new Set(wrongSlots); state.wrongCircles = wrongCircles; playTone("incorrect"); vibrate([45, 35, 45]); render(); window.setTimeout(() => { wrongSlots.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; state.placements[slot] = null; state.tileLocation[tileId] = null; }); state.wrongSlots = new Set(); state.wrongCircles = new Set(); const remaining = SLOTS.length - state.revealedSlots.size; setMessage(`${remaining} ${remaining === 1 ? "spot is" : "spots are"} still wrong.`, "#b91c1c"); render(); }, 900); }
-function resetCurrentPuzzle() { if (getStageRecord()?.status) return; const tries = state.tries; const livesUsed = state.livesUsed; state = createState(); state.tries = tries; state.livesUsed = livesUsed; dayStates[getStageKey()] = snap(); setMessage(); render(); }
-function render() { bankGridEl.innerHTML = ""; const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id); order.forEach((tileId) => { if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId)); }); Object.entries(circleEls).forEach(([key, el]) => { el.classList.toggle("wrong-circle", state.wrongCircles?.has(key)); }); slots.forEach((slotEl) => { const slot = slotEl.dataset.slot; slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile", "wrong"); slotEl.querySelector(".tile")?.remove(); const tileId = state.placements[slot]; if (tileId) { slotEl.classList.add("has-tile"); slotEl.appendChild(makeTile(tileId)); } if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed"); if (state.wrongSlots?.has(slot)) slotEl.classList.add("wrong"); if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked"); }); boardEl.classList.toggle("failed", state.failed); updateHeaderUi(); updateColorProgress(); updateLives(); updateButtons(); updateShareUi(); scheduleSlotLayout(); saveCurrentStageState(); }
+function resetCurrentPuzzle() { if (getStageRecord()?.status) return; const tries = state.tries; const livesUsed = state.livesUsed; const timerRemainingMs = state.timerRemainingMs; state = createState(); state.tries = tries; state.livesUsed = livesUsed; state.timerRemainingMs = timerRemainingMs; dayStates[getStageKey()] = snap(); setMessage(); render(); }
+function render() { syncHardTimer(); bankGridEl.innerHTML = ""; const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id); order.forEach((tileId) => { if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId)); }); Object.entries(circleEls).forEach(([key, el]) => { el.classList.toggle("wrong-circle", state.wrongCircles?.has(key)); }); slots.forEach((slotEl) => { const slot = slotEl.dataset.slot; slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile", "wrong"); slotEl.querySelector(".tile")?.remove(); const tileId = state.placements[slot]; if (tileId) { slotEl.classList.add("has-tile"); slotEl.appendChild(makeTile(tileId)); } if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed"); if (state.wrongSlots?.has(slot)) slotEl.classList.add("wrong"); if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked"); }); boardEl.classList.toggle("failed", state.failed); updateHeaderUi(); updateColorProgress(); updateLives(); updateButtons(); updateShareUi(); scheduleSlotLayout(); saveCurrentStageState(); }
 function loadDay(dayIndex, stage = "easy", section = "today") { if (!DAILY_SETS.length) return; activeDayIndex = Math.max(0, Math.min(dayIndex, DAILY_SETS.length - 1)); activeSection = section; if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy"; activeStage = stage; const puzzle = getActivePuzzle(); currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, correctSlot: tile.correctSlot })); tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile])); labelAEl.textContent = puzzle.labels.A; labelBEl.textContent = puzzle.labels.B; labelCEl.textContent = puzzle.labels.C; const record = getStageRecord(); state = record?.status === "solved" ? buildSolvedState(record) : record?.status === "failed" ? buildFailedState(record) : restorePlayableState(dayStates[getStageKey()]); setMessage(); render(); }
 function switchStage(stage) { if (stage === activeStage) return; if (stage === "hard" && !isHardUnlocked()) return; if (stage === "hard") hardUnlockPulseActive = false; loadDay(activeDayIndex, stage, activeSection); }
 function goToToday() {
@@ -617,7 +681,7 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenBtn?.addEventListener("click", triggerAddToHomeScreen); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-item[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 badgeListEl?.addEventListener("click", (e) => { const button = e.target.closest(".badge-item.unlocked[data-badge-key]"); if (!button) return; openBadgeDetail(button.dataset.badgeKey); });
 function getPuzzleNumber(day = getLiveDayStamp()) {
@@ -659,11 +723,21 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+hardTimerInterval = window.setInterval(() => {
+  if (!state) return;
+  const before = state.timerRemainingMs;
+  syncHardTimer();
+  updateTimerUi();
+  if (activeStage === "hard" && before !== state.timerRemainingMs && !state.solved && !state.failed) saveCurrentStageState();
+}, 250);
+
 stats = loadStats();
 updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 if (state) render();
+
+
 
 
 
