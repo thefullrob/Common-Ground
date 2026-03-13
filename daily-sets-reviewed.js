@@ -1,5 +1,97 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-16",
+    easy: {
+      title: "Holiday + Character + Outfit",
+      labels: { A: "Holiday", B: "Character", C: "Outfit" },
+      tiles: [
+        { label: "Jack Skellington", correctSlot: "S1" },
+        { label: "Santa Hat", correctSlot: "S2" },
+        { label: "Cinderella Dress", correctSlot: "S3" },
+        { label: "Buddy the Elf", correctSlot: "S4" },
+        { label: "Pumpkin", correctSlot: null },
+        { label: "Storybook", correctSlot: null },
+        { label: "Bow Tie", correctSlot: null },
+        { label: "Reindeer", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Nautical + Adventure + Wealth",
+      labels: { A: "Nautical", B: "Adventure", C: "Wealth" },
+      tiles: [
+        { label: "Treasure Map", correctSlot: "S1" },
+        { label: "Superyacht", correctSlot: "S2" },
+        { label: "Lara Croft", correctSlot: "S3" },
+        { label: "Sunken Treasure", correctSlot: "S4" },
+        { label: "Anchor", correctSlot: null },
+        { label: "Explorer Hat", correctSlot: null },
+        { label: "Diamond Ring", correctSlot: null },
+        { label: "Dock Rope", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-03-15",
+    easy: {
+      title: "Florida + Tourist + Water",
+      labels: { A: "Florida", B: "Tourist", C: "Water" },
+      tiles: [
+        { label: "Disney World", correctSlot: "S1" },
+        { label: "Everglades", correctSlot: "S2" },
+        { label: "Boat Tour", correctSlot: "S3" },
+        { label: "Miami Beach", correctSlot: "S4" },
+        { label: "Disneyland", correctSlot: null },
+        { label: "Palm Tree", correctSlot: null },
+        { label: "Pool Float", correctSlot: null },
+        { label: "Theme Park Map", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Texas + Cowboy + Food",
+      labels: { A: "Texas", B: "Cowboy", C: "Food" },
+      tiles: [
+        { label: "Rodeo", correctSlot: "S1" },
+        { label: "Brisket", correctSlot: "S2" },
+        { label: "Canned Beans", correctSlot: "S3" },
+        { label: "Texas Chili", correctSlot: "S4" },
+        { label: "Boot Spurs", correctSlot: null },
+        { label: "BBQ Sauce", correctSlot: null },
+        { label: "Longhorn", correctSlot: null },
+        { label: "Campfire", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-03-14",
+    easy: {
+      title: "Britain + Royalty + Tourist",
+      labels: { A: "Britain", B: "Royalty", C: "Tourist" },
+      tiles: [
+        { label: "King Charles", correctSlot: "S1" },
+        { label: "Big Ben", correctSlot: "S2" },
+        { label: "Versailles", correctSlot: "S3" },
+        { label: "Buckingham Palace", correctSlot: "S4" },
+        { label: "Crown", correctSlot: null },
+        { label: "Tea Cup", correctSlot: null },
+        { label: "Postcard", correctSlot: null },
+        { label: "Castle Map", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Spring Break + Beach + Travel",
+      labels: { A: "Spring Break", B: "Beach", C: "Travel" },
+      tiles: [
+        { label: "Beach Bash", correctSlot: "S1" },
+        { label: "Road Trip", correctSlot: "S2" },
+        { label: "Surf Trip", correctSlot: "S3" },
+        { label: "Cancun", correctSlot: "S4" },
+        { label: "Flip-Flops", correctSlot: null },
+        { label: "Boarding Pass", correctSlot: null },
+        { label: "Beach Towel", correctSlot: null },
+        { label: "Hotel Key", correctSlot: null }
+      ]
+    }
+  },  {
     date: "2026-03-13",
     easy: {
       title: "Ireland + Drink + Green",
@@ -341,6 +433,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
+
+
+
+
+
 
 
 
