@@ -222,7 +222,17 @@ const BADGE_IMAGE_FILES = {
   { key: "puzzle-scout", title: "Puzzle Scout", copy: "Solve 10 total puzzles.", test: (m) => m.lifetimePuzzlesSolved >= 10 }
 ];
 
-let activeDayIndex = Math.max(0, DAILY_SETS.length - 1);
+function resolveLiveDayIndex(dayStamp = getLocalDayStamp()) {
+  if (!DAILY_SETS.length) return 0;
+  const exactIndex = DAILY_SETS.findIndex((entry) => entry.date === dayStamp);
+  if (exactIndex !== -1) return exactIndex;
+  for (let i = DAILY_SETS.length - 1; i >= 0; i -= 1) {
+    if (DAILY_SETS[i].date <= dayStamp) return i;
+  }
+  return 0;
+}
+
+let activeDayIndex = resolveLiveDayIndex();
 let activeStage = "easy";
 let activeSection = "today";
 let currentTiles = [];
@@ -237,6 +247,7 @@ let hardUnlockPulseActive = false;
 let sharedAudioCtx = null;
 let badgeUnlockQueue = [];
 let activeBadgeUnlock = null;
+let currentCalendarDay = getLocalDayStamp();
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -309,7 +320,10 @@ function formatLongDate(dayStamp) { const [y, m, d] = dayStamp.split("-").map(Nu
 function formatShortDate(dayStamp) { const [y, m, d] = dayStamp.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: "short", day: "numeric" }); }
 function getLocalDayStamp(date = new Date()) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`; }
 function shiftDayStamp(dayStamp, amount) { const [y, m, d] = dayStamp.split("-").map(Number); const date = new Date(y, m - 1, d); date.setDate(date.getDate() + amount); return getLocalDayStamp(date); }
-function getLiveDayStamp() { return DAILY_SETS.length ? DAILY_SETS[DAILY_SETS.length - 1].date : getLocalDayStamp(); }
+function getLiveDayStamp() {
+  if (!DAILY_SETS.length) return getLocalDayStamp();
+  return DAILY_SETS[resolveLiveDayIndex()].date;
+}
 function createEmptyStats() { return { startedAt: new Date().toISOString(), firstLifelinePromptSeen: false, seenBadgeKeys: [], dayHistory: {} }; }
 function safeGetStorage(key) { try { return localStorage.getItem(key); } catch (err) { return null; } }
 function safeSetStorage(key, value) { try { localStorage.setItem(key, value); } catch (err) {} }
@@ -424,7 +438,16 @@ function renderBadges() {
     }
   });
 }
-function renderArchive() { const archiveSets = DAILY_SETS.slice(0, -1).reverse(); archiveListEl.innerHTML = archiveSets.map((set) => { const record = getDayRecord(set.date, false); const easyStatus = record?.easy?.status ? capitalize(record.easy.status) : "Open"; const hardStatus = record?.hard?.status ? capitalize(record.hard.status) : (record?.easy?.status === "solved" ? "Open" : "Locked"); return `<button class="archive-item" data-date="${set.date}"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`; }).join("") || `<div class="archive-item"><div class="archive-meta">Archive days will appear here as your queue grows.</div></div>`; }
+function renderArchive() {
+  const liveIndex = resolveLiveDayIndex();
+  const archiveSets = DAILY_SETS.slice(0, liveIndex).reverse();
+  archiveListEl.innerHTML = archiveSets.map((set) => {
+    const record = getDayRecord(set.date, false);
+    const easyStatus = record?.easy?.status ? capitalize(record.easy.status) : "Open";
+    const hardStatus = record?.hard?.status ? capitalize(record.hard.status) : (record?.easy?.status === "solved" ? "Open" : "Locked");
+    return `<button class="archive-item" data-date="${set.date}"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`;
+  }).join("") || `<div class="archive-item"><div class="archive-meta">Archive days will appear here as your queue grows.</div></div>`;
+}
 function openStats() { renderStats(); statsModalEl.hidden = false; }
 function closeStats() { statsModalEl.hidden = true; }
 function openArchive() { renderArchive(); archiveModalEl.hidden = false; }
@@ -556,7 +579,10 @@ function resetCurrentPuzzle() { if (getStageRecord()?.status) return; const trie
 function render() { bankGridEl.innerHTML = ""; const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id); order.forEach((tileId) => { if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId)); }); Object.entries(circleEls).forEach(([key, el]) => { el.classList.toggle("wrong-circle", state.wrongCircles?.has(key)); }); slots.forEach((slotEl) => { const slot = slotEl.dataset.slot; slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile", "wrong"); slotEl.querySelector(".tile")?.remove(); const tileId = state.placements[slot]; if (tileId) { slotEl.classList.add("has-tile"); slotEl.appendChild(makeTile(tileId)); } if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed"); if (state.wrongSlots?.has(slot)) slotEl.classList.add("wrong"); if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked"); }); boardEl.classList.toggle("failed", state.failed); updateHeaderUi(); updateColorProgress(); updateLives(); updateButtons(); updateShareUi(); scheduleSlotLayout(); saveCurrentStageState(); }
 function loadDay(dayIndex, stage = "easy", section = "today") { if (!DAILY_SETS.length) return; activeDayIndex = Math.max(0, Math.min(dayIndex, DAILY_SETS.length - 1)); activeSection = section; if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy"; activeStage = stage; const puzzle = getActivePuzzle(); currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, correctSlot: tile.correctSlot })); tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile])); labelAEl.textContent = puzzle.labels.A; labelBEl.textContent = puzzle.labels.B; labelCEl.textContent = puzzle.labels.C; const record = getStageRecord(); state = record?.status === "solved" ? buildSolvedState(record) : record?.status === "failed" ? buildFailedState(record) : restorePlayableState(dayStates[getStageKey()]); setMessage(); render(); }
 function switchStage(stage) { if (stage === activeStage) return; if (stage === "hard" && !isHardUnlocked()) return; if (stage === "hard") hardUnlockPulseActive = false; loadDay(activeDayIndex, stage, activeSection); }
-function goToToday() { const todayIndex = Math.max(0, DAILY_SETS.length - 1); loadDay(todayIndex, isHardUnlocked(DAILY_SETS[todayIndex].date) ? "hard" : "easy", "today"); }
+function goToToday() {
+  const todayIndex = resolveLiveDayIndex();
+  loadDay(todayIndex, isHardUnlocked(DAILY_SETS[todayIndex].date) ? "hard" : "easy", "today");
+}
 function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => entry.date === day); if (index === -1) return; closeArchive(); loadDay(index, "easy", "archive"); }
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
@@ -573,6 +599,20 @@ function updateLaunchUi() {
   if (launchDateEl) launchDateEl.textContent = formatLongDate(liveDay);
   if (launchNumberEl) launchNumberEl.textContent = `No. ${getPuzzleNumber(liveDay)}`;
 }
+function handleCalendarDayChange() {
+  const localDay = getLocalDayStamp();
+  if (localDay === currentCalendarDay) return;
+  currentCalendarDay = localDay;
+  updateLaunchUi();
+  if (!DAILY_SETS.length) return;
+  if (activeSection === "today") {
+    goToToday();
+  } else {
+    updateHeaderUi();
+    renderArchive();
+  }
+}
+
 function dismissTutorial() {
   tutorialEl.hidden = true;
   safeSetStorage(TUTORIAL_KEY, "1");
@@ -581,12 +621,14 @@ function closeLaunchScreen() {
   if (launchScreenEl) launchScreenEl.hidden = true;
 }
 [statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); }); });
-window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", scheduleSlotLayout); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
+window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) handleCalendarDayChange(); }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
+window.setInterval(handleCalendarDayChange, 60000);
 stats = loadStats();
 updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 if (state) render();
+
 
 
 
