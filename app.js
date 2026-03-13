@@ -248,6 +248,7 @@ let sharedAudioCtx = null;
 let badgeUnlockQueue = [];
 let activeBadgeUnlock = null;
 let currentCalendarDay = getLocalDayStamp();
+let deferredInstallPrompt = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -313,6 +314,7 @@ const homeScreenBtn = document.getElementById("home-screen-btn");
 const useLifelineBtn = document.getElementById("use-lifeline-btn");
 const homeScreenCloseBtn = document.getElementById("home-screen-close");
 const homeScreenUseBtn = document.getElementById("home-screen-use");
+const homeScreenCopyEl = document.getElementById("home-screen-copy");
 
 function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 function capitalize(value) { return value.charAt(0).toUpperCase() + value.slice(1); }
@@ -465,6 +467,34 @@ function openBadges() {
 }
 function closeBadges() { badgesModalEl.hidden = true; }
 function closeLifelineModals() { lifelineModalEl.hidden = true; homeScreenModalEl.hidden = true; }
+function isStandaloneMode() { return window.matchMedia?.("(display-mode: standalone)")?.matches || window.navigator.standalone === true; }
+function isIosDevice() { return /iPad|iPhone|iPod/.test(window.navigator.userAgent) || (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1); }
+function openHomeScreenHelp(message = null) {
+  if (homeScreenCopyEl) {
+    homeScreenCopyEl.innerHTML = message || (isIosDevice()
+      ? "On iPhone, tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>."
+      : "Open your browser menu and choose <strong>Add to Home screen</strong> or <strong>Install app</strong>."
+    );
+  }
+  lifelineModalEl.hidden = true;
+  homeScreenModalEl.hidden = false;
+}
+async function triggerAddToHomeScreen() {
+  if (isStandaloneMode()) {
+    openHomeScreenHelp("This app is already on your home screen.");
+    return;
+  }
+  if (deferredInstallPrompt) {
+    const promptEvent = deferredInstallPrompt;
+    deferredInstallPrompt = null;
+    try {
+      await promptEvent.prompt();
+      await promptEvent.userChoice;
+    } catch (err) {}
+    return;
+  }
+  openHomeScreenHelp();
+}
 function resetStats() { stats = createEmptyStats(); dayStates = {}; badgeUnlockQueue = []; activeBadgeUnlock = null; saveStats(); closeBadgeUnlock(); closeBadgeDetail(); loadDay(activeDayIndex, "easy", activeSection); }
 function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); queueNewBadges(); }
 function buildShareText() { const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}"; const grid = `${square}${square}\n${square}${square}`; const triesLine = state.solved ? `Solved in ${state.tries}/${getActiveMaxLives()} tries` : `Missed in ${state.tries}/${getActiveMaxLives()} tries`; return `Common Ground ${formatShortDate(getActiveDate())} ${capitalize(activeStage)}\n${grid}\n${triesLine}`; }
@@ -587,7 +617,7 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenBtn?.addEventListener("click", () => { lifelineModalEl.hidden = true; homeScreenModalEl.hidden = false; }); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenBtn?.addEventListener("click", triggerAddToHomeScreen); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-item[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 badgeListEl?.addEventListener("click", (e) => { const button = e.target.closest(".badge-item.unlocked[data-badge-key]"); if (!button) return; openBadgeDetail(button.dataset.badgeKey); });
 function getPuzzleNumber(day = getLiveDayStamp()) {
@@ -621,13 +651,21 @@ function closeLaunchScreen() {
   if (launchScreenEl) launchScreenEl.hidden = true;
 }
 [statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); }); });
-window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) handleCalendarDayChange(); }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) handleCalendarDayChange(); }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
 window.setInterval(handleCalendarDayChange, 60000);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+
 stats = loadStats();
 updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 if (state) render();
+
+
 
 
 

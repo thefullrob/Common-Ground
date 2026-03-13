@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#51341f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
   <title>Common Ground</title>
       <style>
     :root {
@@ -782,7 +787,7 @@
   <div class="modal-overlay" id="home-screen-modal" hidden>
     <div class="modal-card">
       <h2>Save To Home Screen</h2>
-      <div class="modal-copy">On iPhone, tap Share then <strong>Add to Home Screen</strong>. On Android, open the browser menu and choose <strong>Add to Home screen</strong>.</div>
+      <div class="modal-copy" id="home-screen-copy">On iPhone, tap Share then <strong>Add to Home Screen</strong>. On Android, open the browser menu and choose <strong>Add to Home screen</strong>.</div>
       <div class="modal-actions">
         <button id="home-screen-close">Back</button>
         <button id="home-screen-use" class="modal-primary">Use Lifeline</button>
@@ -794,6 +799,8 @@
   <script src="app.js?v=20260313"></script>
 </body>
 </html>
+
+
 
 
 
