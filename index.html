@@ -180,8 +180,8 @@
       justify-content: center;
       padding: 4px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(216, 207, 190, 0.78);
-      background: rgba(251, 248, 241, 0.82);
+      border: 1px solid #d8cfbe;
+      background: #fcfaf5;
       color: #3f4b61;
       pointer-events: none;
     }
@@ -685,6 +685,22 @@
     </section>
   </div>
 
+  <div class="launch-screen" id="launch-screen">
+    <div class="launch-card">
+      <div class="launch-mark" aria-hidden="true"><span class="launch-circle launch-circle-a"></span><span class="launch-circle launch-circle-b"></span><span class="launch-circle launch-circle-c"></span></div>
+      <div class="launch-wordmark">COMMON GROUND</div>
+      <div class="launch-copy">Two daily Venn puzzles. Clear Easy first, then unlock Hard.</div>
+      <div class="launch-actions">
+        <button id="launch-play" class="launch-primary">Play</button>
+        <button id="launch-how" class="launch-secondary">How To Play</button>
+      </div>
+      <div class="launch-meta">
+        <div class="launch-date" id="launch-date">March 13, 2026</div>
+        <div class="launch-number" id="launch-number">No. 11</div>
+      </div>
+    </div>
+  </div>
+
   <div class="stats-modal" id="stats-modal" hidden>
     <div class="stats-card">
       <div class="stats-head">
@@ -714,6 +730,25 @@
         <button id="badges-close" class="modal-close">Close</button>
       </div>
       <div class="badge-list" id="badge-list"></div>
+    </div>
+  </div>
+
+    <div class="modal-overlay" id="badge-unlock-modal" hidden>
+    <div class="badge-reward-card">
+      <div class="badge-reward-kicker">Badge Unlocked</div>
+      <h2 id="badge-unlock-title">First Light</h2>
+      <div class="badge-reward-art" id="badge-unlock-art"></div>
+      <div class="badge-reward-copy" id="badge-unlock-copy"></div>
+      <button id="badge-unlock-close" class="modal-primary">Close</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="badge-detail-modal" hidden>
+    <div class="badge-detail-card">
+      <h2 id="badge-detail-title">First Light</h2>
+      <div class="badge-detail-art" id="badge-detail-art"></div>
+      <div class="badge-reward-copy" id="badge-detail-copy"></div>
+      <button id="badge-detail-close" class="modal-primary">Close</button>
     </div>
   </div>
 
@@ -759,3 +794,17 @@
   <script src="app.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,37 +1,37 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
-    date: "2026-03-11",
+    date: "2026-03-13",
     easy: {
-      title: "Office + Everyday",
-      labels: { A: "Office", B: "Digital", C: "Portable" },
+      title: "Ireland + Drink + Green",
+      labels: { A: "Ireland", B: "Drink", C: "Green" },
       tiles: [
-        { label: "Monitor", correctSlot: "S1" },
-        { label: "Pen", correctSlot: "S2" },
-        { label: "USB Drive", correctSlot: "S3" },
-        { label: "Laptop", correctSlot: "S4" },
-        { label: "Cactus", correctSlot: null },
-        { label: "Banana", correctSlot: null },
-        { label: "Shampoo", correctSlot: null },
-        { label: "Hammer", correctSlot: null }
+        { label: "Guinness", correctSlot: "S1" },
+        { label: "Shamrock", correctSlot: "S2" },
+        { label: "Kale Smoothie", correctSlot: "S3" },
+        { label: "Shamrock Shake", correctSlot: "S4" },
+        { label: "Kilt", correctSlot: null },
+        { label: "Tea Kettle", correctSlot: null },
+        { label: "Pickle", correctSlot: null },
+        { label: "Stone Castle", correctSlot: null }
       ]
     },
     hard: {
-      title: "Draft + Work + Drink",
-      labels: { A: "Draft", B: "Work", C: "Drink" },
+      title: "Space + Movie + Travel",
+      labels: { A: "Space", B: "Movie", C: "Travel" },
       tiles: [
-        { label: "Work-in Progress", correctSlot: "S1" },
-        { label: "Beer", correctSlot: "S2" },
-        { label: "Coffee Break", correctSlot: "S3" },
-        { label: "Happy Hour Pitch", correctSlot: "S4" },
-        { label: "Parking Meter", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Power Drill", correctSlot: null },
-        { label: "Backpack", correctSlot: null }
+        { label: "Star Wars", correctSlot: "S1" },
+        { label: "Rocket Launch", correctSlot: "S2" },
+        { label: "Road Trip", correctSlot: "S3" },
+        { label: "Interstellar", correctSlot: "S4" },
+        { label: "Astronaut", correctSlot: null },
+        { label: "Cinema Ticket", correctSlot: null },
+        { label: "Suitcase", correctSlot: null },
+        { label: "Moon", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-10",
+    date: "2026-03-12",
     easy: {
       title: "Breakfast + Sweet + Baked",
       labels: { A: "Breakfast", B: "Sweet", C: "Baked" },
@@ -40,10 +40,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Toast", correctSlot: "S2" },
         { label: "Brownie", correctSlot: "S3" },
         { label: "Muffin", correctSlot: "S4" },
-        { label: "Sushi", correctSlot: null },
-        { label: "Burger", correctSlot: null },
-        { label: "Salad", correctSlot: null },
-        { label: "Taco", correctSlot: null }
+        { label: "Bacon", correctSlot: null },
+        { label: "Candy Bar", correctSlot: null },
+        { label: "Pretzel", correctSlot: null },
+        { label: "Sausage", correctSlot: null }
       ]
     },
     hard: {
@@ -54,15 +54,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Dish Soap", correctSlot: "S2" },
         { label: "Robot Vacuum", correctSlot: "S3" },
         { label: "Dishwasher", correctSlot: "S4" },
-        { label: "Cactus", correctSlot: null },
-        { label: "Treadmill", correctSlot: null },
-        { label: "Notebook", correctSlot: null },
-        { label: "Sneakers", correctSlot: null }
+        { label: "Cutting Board", correctSlot: null },
+        { label: "Charging Cable", correctSlot: null },
+        { label: "Broom", correctSlot: null },
+        { label: "Oven Mitt", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-09",
+    date: "2026-03-11",
     easy: {
       title: "Red + Round + Food",
       labels: { A: "Red", B: "Round", C: "Food" },
@@ -71,10 +71,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Strawberry", correctSlot: "S2" },
         { label: "Bagel", correctSlot: "S3" },
         { label: "Tomato", correctSlot: "S4" },
-        { label: "Pillow", correctSlot: null },
-        { label: "Hammer", correctSlot: null },
-        { label: "Window", correctSlot: null },
-        { label: "Laptop", correctSlot: null }
+        { label: "Fire Truck", correctSlot: null },
+        { label: "Frisbee", correctSlot: null },
+        { label: "Pizza Slice", correctSlot: null },
+        { label: "Rose", correctSlot: null }
       ]
     },
     hard: {
@@ -85,15 +85,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Infinity Pool", correctSlot: "S2" },
         { label: "Cruise", correctSlot: "S3" },
         { label: "Yacht", correctSlot: "S4" },
-        { label: "Stapler", correctSlot: null },
-        { label: "Hammer", correctSlot: null },
-        { label: "Blanket", correctSlot: null },
-        { label: "Sneakers", correctSlot: null }
+        { label: "Resort", correctSlot: null },
+        { label: "Suitcase", correctSlot: null },
+        { label: "Surfboard", correctSlot: null },
+        { label: "Champagne", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-08",
+    date: "2026-03-10",
     easy: {
       title: "School + Write + Small",
       labels: { A: "School", B: "Write", C: "Small" },
@@ -102,10 +102,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Eraser", correctSlot: "S2" },
         { label: "Gift Tag", correctSlot: "S3" },
         { label: "Pencil", correctSlot: "S4" },
-        { label: "Toaster", correctSlot: null },
-        { label: "Shovel", correctSlot: null },
-        { label: "Helmet", correctSlot: null },
-        { label: "Cactus", correctSlot: null }
+        { label: "Backpack", correctSlot: null },
+        { label: "Essay", correctSlot: null },
+        { label: "Thumbtack", correctSlot: null },
+        { label: "Lunch Tray", correctSlot: null }
       ]
     },
     hard: {
@@ -116,15 +116,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Gym Bag", correctSlot: "S2" },
         { label: "Bluetooth Speaker", correctSlot: "S3" },
         { label: "Phone Armband", correctSlot: "S4" },
-        { label: "Toaster", correctSlot: null },
-        { label: "Banana", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Soap", correctSlot: null }
+        { label: "Dumbbell", correctSlot: null },
+        { label: "Vinyl Record", correctSlot: null },
+        { label: "Duffel Bag", correctSlot: null },
+        { label: "Protein Shake", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-07",
+    date: "2026-03-09",
     easy: {
       title: "Cold + Sweet + Party",
       labels: { A: "Cold", B: "Sweet", C: "Party" },
@@ -133,10 +133,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Cooler", correctSlot: "S2" },
         { label: "Birthday Cake", correctSlot: "S3" },
         { label: "Ice Cream Cake", correctSlot: "S4" },
-        { label: "Notebook", correctSlot: null },
-        { label: "Stapler", correctSlot: null },
-        { label: "Helmet", correctSlot: null },
-        { label: "Cactus", correctSlot: null }
+        { label: "Ice Cube", correctSlot: null },
+        { label: "Lollipop", correctSlot: null },
+        { label: "Streamers", correctSlot: null },
+        { label: "Confetti", correctSlot: null }
       ]
     },
     hard: {
@@ -147,15 +147,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Photo Booth", correctSlot: "S2" },
         { label: "Glamour Shot", correctSlot: "S3" },
         { label: "Wedding Portrait", correctSlot: "S4" },
-        { label: "Garden Hose", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Sneakers", correctSlot: null },
-        { label: "Toaster", correctSlot: null }
+        { label: "Bouquet", correctSlot: null },
+        { label: "Satin Gloves", correctSlot: null },
+        { label: "Selfie Stick", correctSlot: null },
+        { label: "Veil", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-06",
+    date: "2026-03-08",
     easy: {
       title: "Los Angeles + Tourist + Gridlock",
       labels: { A: "Los Angeles", B: "Tourist", C: "Gridlock" },
@@ -164,10 +164,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "405 Freeway", correctSlot: "S2" },
         { label: "Sightseeing Bus", correctSlot: "S3" },
         { label: "Hollywood Boulevard", correctSlot: "S4" },
-        { label: "Mug", correctSlot: null },
-        { label: "Stapler", correctSlot: null },
-        { label: "Umbrella", correctSlot: null },
-        { label: "Pillow", correctSlot: null }
+        { label: "Palm Tree", correctSlot: null },
+        { label: "Souvenir Stand", correctSlot: null },
+        { label: "Traffic Jam", correctSlot: null },
+        { label: "In-N-Out", correctSlot: null }
       ]
     },
     hard: {
@@ -178,15 +178,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Eiffel Tower", correctSlot: "S2" },
         { label: "Designer Travel Bag", correctSlot: "S3" },
         { label: "Champs-Elysees", correctSlot: "S4" },
-        { label: "Banana", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Toolbox", correctSlot: null },
-        { label: "Raincoat", correctSlot: null }
+        { label: "Baguette", correctSlot: null },
+        { label: "Silk Scarf", correctSlot: null },
+        { label: "Camera Strap", correctSlot: null },
+        { label: "Metro Map", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-05",
+    date: "2026-03-07",
     easy: {
       title: "Pet + Home + Sleep",
       labels: { A: "Pet", B: "Home", C: "Sleep" },
@@ -195,10 +195,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Crate Mat", correctSlot: "S2" },
         { label: "Pillow", correctSlot: "S3" },
         { label: "Dog Bed", correctSlot: "S4" },
-        { label: "Toaster", correctSlot: null },
-        { label: "Wrench", correctSlot: null },
-        { label: "Notebook", correctSlot: null },
-        { label: "Soccer Ball", correctSlot: null }
+        { label: "Chew Toy", correctSlot: null },
+        { label: "Welcome Mat", correctSlot: null },
+        { label: "Pajamas", correctSlot: null },
+        { label: "Leash", correctSlot: null }
       ]
     },
     hard: {
@@ -209,15 +209,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "First Class", correctSlot: "S2" },
         { label: "Airport Clock", correctSlot: "S3" },
         { label: "GMT Rolex", correctSlot: "S4" },
-        { label: "Shampoo", correctSlot: null },
-        { label: "Banana", correctSlot: null },
-        { label: "Toolbox", correctSlot: null },
-        { label: "Blanket", correctSlot: null }
+        { label: "Limousine", correctSlot: null },
+        { label: "Stopwatch", correctSlot: null },
+        { label: "Passport", correctSlot: null },
+        { label: "Suitcase", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-04",
+    date: "2026-03-06",
     easy: {
       title: "New York + Tourist + Crowded",
       labels: { A: "New York", B: "Tourist", C: "Crowded" },
@@ -226,10 +226,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Subway Platform", correctSlot: "S2" },
         { label: "Tour Group", correctSlot: "S3" },
         { label: "Times Square", correctSlot: "S4" },
-        { label: "Toaster", correctSlot: null },
-        { label: "Flashlight", correctSlot: null },
-        { label: "Banana", correctSlot: null },
-        { label: "Headphones", correctSlot: null }
+        { label: "NY Yankees", correctSlot: null },
+        { label: "Souvenir Magnet", correctSlot: null },
+        { label: "Rush Hour", correctSlot: null },
+        { label: "Pizza Slice", correctSlot: null }
       ]
     },
     hard: {
@@ -240,15 +240,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Home Alone 2", correctSlot: "S2" },
         { label: "Mob Hit", correctSlot: "S3" },
         { label: "Goodfellas", correctSlot: "S4" },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Garden Hose", correctSlot: null },
-        { label: "Pillow", correctSlot: null },
-        { label: "Shampoo", correctSlot: null }
+        { label: "Red Carpet", correctSlot: null },
+        { label: "Handcuffs", correctSlot: null },
+        { label: "Brooklyn Bridge", correctSlot: null },
+        { label: "Detective Badge", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-03",
+    date: "2026-03-05",
     easy: {
       title: "Basketball + Famous + Sneakers",
       labels: { A: "Basketball", B: "Famous", C: "Sneakers" },
@@ -257,10 +257,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "High-Tops", correctSlot: "S2" },
         { label: "Air Jordan", correctSlot: "S3" },
         { label: "Michael Jordan", correctSlot: "S4" },
-        { label: "Hammer", correctSlot: null },
-        { label: "Banana", correctSlot: null },
-        { label: "Backpack", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null }
+        { label: "NBA Jersey", correctSlot: null },
+        { label: "Paparazzi", correctSlot: null },
+        { label: "Running Shoes", correctSlot: null },
+        { label: "Sneaker Box", correctSlot: null }
       ]
     },
     hard: {
@@ -271,27 +271,27 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Millard Fillmore", correctSlot: "S2" },
         { label: "Eddie Murphy", correctSlot: "S3" },
         { label: "John F. Kennedy", correctSlot: "S4" },
-        { label: "Notebook", correctSlot: null },
-        { label: "Raincoat", correctSlot: null },
-        { label: "Snow Boots", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null }
+        { label: "Governor", correctSlot: null },
+        { label: "Celebrity Chef", correctSlot: null },
+        { label: "Bald Eagle", correctSlot: null },
+        { label: "Capitol Dome", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-02",
+    date: "2026-03-04",
     easy: {
       title: "London + Tourist + Crowded",
       labels: { A: "London", B: "Tourist", C: "Crowded" },
       tiles: [
-        { label: "Tower Bridge", correctSlot: "S1" },
+        { label: "Red Phone Booth", correctSlot: "S1" },
         { label: "Tube Platform", correctSlot: "S2" },
         { label: "Walking Tour", correctSlot: "S3" },
         { label: "Piccadilly Circus", correctSlot: "S4" },
-        { label: "Parking Lot", correctSlot: null },
-        { label: "Garage", correctSlot: null },
-        { label: "Office", correctSlot: null },
-        { label: "Warehouse", correctSlot: null }
+        { label: "Black Cab", correctSlot: null },
+        { label: "Souvenir Magnet", correctSlot: null },
+        { label: "Rush Hour", correctSlot: null },
+        { label: "Bowler Hat", correctSlot: null }
       ]
     },
     hard: {
@@ -302,15 +302,15 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Helpful", correctSlot: "S2" },
         { label: "Statement Necklace", correctSlot: "S3" },
         { label: "Elegant", correctSlot: "S4" },
-        { label: "Headphones", correctSlot: null },
-        { label: "Cactus", correctSlot: null },
-        { label: "Flashlight", correctSlot: null },
-        { label: "Backpack", correctSlot: null }
+        { label: "Adverb", correctSlot: null },
+        { label: "Blazer", correctSlot: null },
+        { label: "Nice Job", correctSlot: null },
+        { label: "Tailor", correctSlot: null }
       ]
     }
   },
   {
-    date: "2026-03-01",
+    date: "2026-03-03",
     easy: {
       title: "Famous Athlete + Tennis + Fashion",
       labels: { A: "Famous Athlete", B: "Tennis", C: "Fashion" },
@@ -319,10 +319,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Eileen Gu", correctSlot: "S2" },
         { label: "Wimbledon Whites", correctSlot: "S3" },
         { label: "Serena Williams", correctSlot: "S4" },
-        { label: "Hammer", correctSlot: null },
-        { label: "Laptop", correctSlot: null },
-        { label: "Blanket", correctSlot: null },
-        { label: "Shampoo", correctSlot: null }
+        { label: "Gold Medal", correctSlot: null },
+        { label: "Racket Bag", correctSlot: null },
+        { label: "Runway Show", correctSlot: null },
+        { label: "Tennis Ball", correctSlot: null }
       ]
     },
     hard: {
@@ -333,12 +333,21 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Dolly Parton", correctSlot: "S2" },
         { label: "Southern Rock", correctSlot: "S3" },
         { label: "Neil Young", correctSlot: "S4" },
-        { label: "Garden Hose", correctSlot: null },
-        { label: "Desk Lamp", correctSlot: null },
-        { label: "Sneaker", correctSlot: null },
-        { label: "Toaster", correctSlot: null }
+        { label: "Billboard Chart", correctSlot: null },
+        { label: "Guitar Solo", correctSlot: null },
+        { label: "Cowboy Boots", correctSlot: null },
+        { label: "Drum Kit", correctSlot: null }
       ]
     }
   }
 ];
+
+
+
+
+
+
+
+
+
 

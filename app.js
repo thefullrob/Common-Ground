@@ -10,6 +10,109 @@ runtimeStyle.textContent = `
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17, 24, 39, 0); }
   }
   .top-action.active, .stage-btn.active { background: #111827; color: #fff; border-color: #111827; }
+  .top h1, #subtitle, #summary { display: none !important; }
+  .top { padding-top: 2px; }
+  .top-row { justify-content: center; }
+  .launch-screen {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, rgba(255,255,255,0.72) 0, transparent 34%),
+      linear-gradient(180deg, #f7f0df 0%, #efe3cb 52%, #e6d5b7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 4200;
+  }
+  .launch-screen[hidden] { display: none; }
+  .launch-card {
+    width: min(420px, 100%);
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+    text-align: center;
+    color: #111827;
+  }
+  .launch-mark {
+    width: 190px;
+    height: 170px;
+    position: relative;
+    filter: drop-shadow(0 18px 30px rgba(91, 59, 24, 0.10));
+  }
+  .launch-circle {
+    position: absolute;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    border: 6px solid #5b3820;
+    background: rgba(255, 250, 240, 0.18);
+  }
+  .launch-circle-a {
+    top: 2px;
+    left: 41px;
+  }
+  .launch-circle-b {
+    left: 10px;
+    top: 60px;
+  }
+  .launch-circle-c {
+    right: 10px;
+    top: 60px;
+  }
+  .launch-title { display: none; }
+  .launch-wordmark {
+    color: #231815;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.3rem, 6vw, 3.2rem);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: -4px;
+  }  .launch-copy {
+    max-width: 28ch;
+    color: #5f4525;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+  .launch-actions {
+    width: min(240px, 100%);
+    display: grid;
+    gap: 18px;
+  }
+  .launch-primary, .launch-secondary {
+    min-height: 58px;
+    border-radius: 999px;
+    font-size: 1.02rem;
+    font-weight: 800;
+  }
+  .launch-primary {
+    background: #51341f;
+    color: #fffaf0;
+    border: 1px solid #51341f;
+  }
+  .launch-secondary {
+    background: rgba(255,249,240,0.62);
+    color: #51341f;
+    border: 1px solid rgba(81, 52, 31, 0.34);
+  }
+  .launch-meta {
+    display: grid;
+    gap: 4px;
+    color: #5f4525;
+  }
+  .launch-date {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .launch-number {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #7a5a35;
+  }
   #undo-btn { background: linear-gradient(180deg, #fffdf8 0%, #f5ead7 100%); color: #162033; }
   #undo-btn:disabled { background: linear-gradient(180deg, #f4eee3 0%, #ede3d2 100%); color: #6b7280; }
   .archive-list, .badge-list { display: grid; gap: 10px; }
@@ -35,12 +138,76 @@ runtimeStyle.textContent = `
   #slot-S4.revealed .tile { background: #fde7bf; border-color: #d97706; }
 `;
 document.head.appendChild(runtimeStyle);
+runtimeStyle.textContent += `
+  .badge-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .badge-item { background: #fffdf8; text-align: center; gap: 8px; padding: 12px 10px; }
+  .badge-item .pill-row { justify-content: center; }
+  .badge-item.unlocked { cursor: pointer; transition: transform 120ms ease, box-shadow 120ms ease; }
+  .badge-item.unlocked:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07); }
+  .badge-visual, .badge-reward-art, .badge-detail-art {
+    background-image: url("badges.png");
+    background-repeat: no-repeat;
+    background-size: 400% 300%;
+    background-color: #f4eee3;
+    box-shadow: inset 0 0 0 1px rgba(216, 207, 190, 0.7);
+  }
+  .badge-visual { width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; }
+  .badge-item.locked .badge-visual { filter: grayscale(1) saturate(0.5); opacity: 0.55; }
+  .badge-copy { min-height: 34px; }
+  .badge-reward-card, .badge-detail-card {
+    width: min(380px, 100%);
+    background: #fffdf8;
+    border: 1px solid #d8cfbe;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 0 24px 42px rgba(15, 23, 42, 0.22);
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+    text-align: center;
+  }
+  .badge-reward-card { animation: badgeRise 360ms ease; }
+  .badge-reward-kicker {
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b45309;
+  }
+  .badge-reward-card h2, .badge-detail-card h2 { margin: 0; font-size: 1.5rem; letter-spacing: 0.03em; }
+  .badge-reward-art { width: 220px; aspect-ratio: 1 / 1; border-radius: 26px; }
+  .badge-detail-card { width: min(460px, 100%); }
+  .badge-detail-art { width: min(300px, 74vw); aspect-ratio: 1 / 1; border-radius: 28px; }
+  .badge-reward-copy { color: #435066; font-size: 0.95rem; line-height: 1.45; }
+  @keyframes badgeRise {
+    0% { opacity: 0; transform: translateY(22px) scale(0.94); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 560px) {
+    .badge-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .badge-reward-art { width: 180px; }
+    .badge-detail-art { width: min(250px, 72vw); }
+  }
+`;
 const SLOTS = ["S1", "S2", "S3", "S4"];
 const BASE_LIVES = 3;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
 const DAILY_SETS = [...(window.COMMON_GROUND_DAILY_SETS || [])].sort((a, b) => a.date.localeCompare(b.date));
-const BADGES = [
+const BADGE_IMAGE_FILES = {
+  "first-light": "badges-first-light.png",
+  "threepeater": "badge-threepeater.png",
+  "ten-toes-down": "badge-ten-toes-down.png",
+  "quarter-club": "badge-quarter-club.png",
+  "on-a-roll": "badge-on-a-roll.png",
+  "weekender": "badge-weekender.png",
+  "monthly-momentum": "badge-monthly-momentum.png",
+  "clean-sheet": "badge-clean-sheet.png",
+  "hard-truths": "badge-hard-truths.png",
+  "pressure-player": "badge-pressure-player.png",
+  "no-net": "badge-no-net.png",
+  "puzzle-scout": "badge-puzzle-scout.png"
+};const BADGES = [
   { key: "first-light", title: "First Light", copy: "Complete your first daily set.", test: (m) => m.dailySetsCompleted >= 1 },
   { key: "threepeater", title: "Threepeater", copy: "Complete 3 daily sets.", test: (m) => m.dailySetsCompleted >= 3 },
   { key: "ten-toes-down", title: "Ten Toes Down", copy: "Complete 10 daily sets.", test: (m) => m.dailySetsCompleted >= 10 },
@@ -68,6 +235,8 @@ let suppressClickUntil = 0;
 let slotLayoutRaf = 0;
 let hardUnlockPulseActive = false;
 let sharedAudioCtx = null;
+let badgeUnlockQueue = [];
+let activeBadgeUnlock = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -83,6 +252,11 @@ const livesEl = document.getElementById("lives");
 const livesLabelEl = document.getElementById("lives-label");
 const summaryEl = document.getElementById("summary");
 const subtitleEl = document.getElementById("subtitle");
+const launchScreenEl = document.getElementById("launch-screen");
+const launchPlayBtn = document.getElementById("launch-play");
+const launchHowBtn = document.getElementById("launch-how");
+const launchDateEl = document.getElementById("launch-date");
+const launchNumberEl = document.getElementById("launch-number");
 const labelAEl = document.getElementById("label-A");
 const labelBEl = document.getElementById("label-B");
 const labelCEl = document.getElementById("label-C");
@@ -112,6 +286,16 @@ const archiveCloseBtn = document.getElementById("archive-close");
 const badgesModalEl = document.getElementById("badges-modal");
 const badgeListEl = document.getElementById("badge-list");
 const badgesCloseBtn = document.getElementById("badges-close");
+const badgeUnlockModalEl = document.getElementById("badge-unlock-modal");
+const badgeUnlockTitleEl = document.getElementById("badge-unlock-title");
+const badgeUnlockArtEl = document.getElementById("badge-unlock-art");
+const badgeUnlockCopyEl = document.getElementById("badge-unlock-copy");
+const badgeUnlockCloseBtn = document.getElementById("badge-unlock-close");
+const badgeDetailModalEl = document.getElementById("badge-detail-modal");
+const badgeDetailTitleEl = document.getElementById("badge-detail-title");
+const badgeDetailArtEl = document.getElementById("badge-detail-art");
+const badgeDetailCopyEl = document.getElementById("badge-detail-copy");
+const badgeDetailCloseBtn = document.getElementById("badge-detail-close");
 const lifelineModalEl = document.getElementById("lifeline-modal");
 const homeScreenModalEl = document.getElementById("home-screen-modal");
 const homeScreenBtn = document.getElementById("home-screen-btn");
@@ -126,11 +310,11 @@ function formatShortDate(dayStamp) { const [y, m, d] = dayStamp.split("-").map(N
 function getLocalDayStamp(date = new Date()) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`; }
 function shiftDayStamp(dayStamp, amount) { const [y, m, d] = dayStamp.split("-").map(Number); const date = new Date(y, m - 1, d); date.setDate(date.getDate() + amount); return getLocalDayStamp(date); }
 function getLiveDayStamp() { return DAILY_SETS.length ? DAILY_SETS[DAILY_SETS.length - 1].date : getLocalDayStamp(); }
-function createEmptyStats() { return { startedAt: new Date().toISOString(), firstLifelinePromptSeen: false, dayHistory: {} }; }
+function createEmptyStats() { return { startedAt: new Date().toISOString(), firstLifelinePromptSeen: false, seenBadgeKeys: [], dayHistory: {} }; }
 function safeGetStorage(key) { try { return localStorage.getItem(key); } catch (err) { return null; } }
 function safeSetStorage(key, value) { try { localStorage.setItem(key, value); } catch (err) {} }
 function normalizeDayRecord(day, value = {}) { return { date: day, easy: value.easy || null, hard: value.hard || null, usedHardLifeline: Boolean(value.usedHardLifeline), completedDailySet: Boolean(value.completedDailySet), completedWithoutLifeline: Boolean(value.completedWithoutLifeline), streakEligible: value.streakEligible ?? Boolean(value.completedDailySet && day === getLiveDayStamp()), lastPlayedAt: value.lastPlayedAt || null }; }
-function loadStats() { try { const raw = safeGetStorage(STATS_KEY); if (!raw) return createEmptyStats(); const parsed = JSON.parse(raw); const history = {}; Object.entries(parsed.dayHistory || {}).forEach(([day, value]) => { history[day] = normalizeDayRecord(day, value); }); return { ...createEmptyStats(), ...parsed, dayHistory: history }; } catch (err) { return createEmptyStats(); } }
+function loadStats() { try { const raw = safeGetStorage(STATS_KEY); if (!raw) return createEmptyStats(); const parsed = JSON.parse(raw); const history = {}; Object.entries(parsed.dayHistory || {}).forEach(([day, value]) => { history[day] = normalizeDayRecord(day, value); }); return { ...createEmptyStats(), ...parsed, seenBadgeKeys: Array.isArray(parsed.seenBadgeKeys) ? parsed.seenBadgeKeys : [], dayHistory: history }; } catch (err) { return createEmptyStats(); } }
 function saveStats() { safeSetStorage(STATS_KEY, JSON.stringify(stats)); }
 function getDayRecord(day, create = false) { if (!stats.dayHistory[day] && create) stats.dayHistory[day] = normalizeDayRecord(day); return stats.dayHistory[day] || null; }
 function getActiveSet() { return DAILY_SETS[activeDayIndex]; }
@@ -153,7 +337,7 @@ function hasProgress() { return state.tries > 0 || Object.values(state.tileLocat
 function allPlaced() { return SLOTS.every((slot) => Boolean(state.placements[slot])); }
 function correctSlots() { return SLOTS.filter((slot) => { const id = state.placements[slot]; return id && tileById[id].correctSlot === slot; }); }
 function setMessage(text = "", color = "#172033") { messageEl.textContent = text; messageEl.style.color = color; }
-function setSummary(text = "") { summaryEl.textContent = text; }
+function setSummary(text = "") { if (summaryEl) summaryEl.textContent = text; }
 function getDerivedStats() {
   const records = Object.values(stats.dayHistory || {}).map((entry) => normalizeDayRecord(entry.date || "", entry));
   const completedDays = records.filter((entry) => entry.streakEligible).map((entry) => entry.date).sort();
@@ -173,23 +357,93 @@ function getDerivedStats() {
   meta.records = records;
   return meta;
 }
+function applyBadgeArt(el, key) {
+  if (!el) return;
+  const file = BADGE_IMAGE_FILES[key];
+  const isModalBadge = el.classList.contains("badge-reward-art") || el.classList.contains("badge-detail-art");
+  el.style.backgroundImage = file ? `url("${file}")` : "none";
+  el.style.backgroundSize = isModalBadge ? "112% auto" : "118% auto";
+  el.style.backgroundPosition = isModalBadge ? "center 14%" : "center 12%";
+  el.style.backgroundRepeat = "no-repeat";
+  el.style.backgroundColor = "#f8f4ec";
+  el.style.border = "1px solid #e1d8c8";
+}
+function openBadgeDetail(key) {
+  const badge = BADGES.find((entry) => entry.key === key);
+  if (!badge) return;
+  badgeDetailTitleEl.textContent = badge.title;
+  badgeDetailCopyEl.textContent = badge.copy;
+  badgeDetailModalEl.hidden = false;
+  window.requestAnimationFrame(() => applyBadgeArt(badgeDetailArtEl, badge.key));
+}
+function closeBadgeDetail() { badgeDetailModalEl.hidden = true; }
+function showNextBadgeUnlock() {
+  if (activeBadgeUnlock || !badgeUnlockQueue.length) return;
+  activeBadgeUnlock = badgeUnlockQueue.shift();
+  badgeUnlockTitleEl.textContent = activeBadgeUnlock.title;
+  badgeUnlockCopyEl.textContent = activeBadgeUnlock.copy;
+  badgeUnlockModalEl.hidden = false;
+  window.requestAnimationFrame(() => applyBadgeArt(badgeUnlockArtEl, activeBadgeUnlock.key));
+  playTone("success");
+  vibrate([35, 25, 35, 25, 60]);
+}
+function closeBadgeUnlock() {
+  badgeUnlockModalEl.hidden = true;
+  activeBadgeUnlock = null;
+  if (badgeUnlockQueue.length) window.setTimeout(showNextBadgeUnlock, 120);
+}
+function queueNewBadges() {
+  const meta = getDerivedStats();
+  const seen = new Set(stats.seenBadgeKeys || []);
+  const queued = meta.unlockedBadges.filter((badge) => !seen.has(badge.key) && badge.key !== activeBadgeUnlock?.key && !badgeUnlockQueue.some((entry) => entry.key === badge.key));
+  if (!queued.length) return;
+  stats.seenBadgeKeys = [...new Set([...(stats.seenBadgeKeys || []), ...queued.map((badge) => badge.key)])];
+  saveStats();
+  badgeUnlockQueue.push(...queued);
+  showNextBadgeUnlock();
+}
 function renderStats() {
   const meta = getDerivedStats();
   const items = [["Daily Streak", meta.visibleDailyStreak], ["Best Daily", meta.bestDailyStreak], ["Daily Sets", meta.dailySetsCompleted], ["Hard Clears", meta.hardPuzzlesCompleted], ["Solved", meta.lifetimePuzzlesSolved], ["Badges", meta.badgeCount]];
   statsGridEl.innerHTML = items.map(([label, value]) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div></div>`).join("");
   statsPuzzleListEl.innerHTML = meta.records.sort((a, b) => b.date.localeCompare(a.date)).map((record) => { const easyStatus = record.easy ? capitalize(record.easy.status) : "Open"; const hardStatus = record.hard ? capitalize(record.hard.status) : (record.easy?.status === "solved" ? "Open" : "Locked"); return `<div class="stats-puzzle-item"><div class="stats-puzzle-title">${formatLongDate(record.date)}</div><div class="stats-puzzle-meta">Easy: ${easyStatus}${record.easy?.tries ? ` (${record.easy.tries}/${BASE_LIVES})` : ""}</div><div class="stats-puzzle-meta">Hard: ${hardStatus}${record.usedHardLifeline ? " - Lifeline used" : ""}</div></div>`; }).join("") || `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">No stats yet. Finish a day and we will track it here.</div></div>`;
 }
-function renderBadges() { const meta = getDerivedStats(); badgeListEl.innerHTML = BADGES.map((badge) => { const unlocked = badge.test(meta); return `<div class="badge-item${unlocked ? "" : " locked"}"><div class="badge-title">${badge.title}</div><div class="badge-copy">${badge.copy}</div><div class="pill-row"><span class="mini-pill">${unlocked ? "Unlocked" : "Locked"}</span></div></div>`; }).join(""); }
+function renderBadges() {
+  if (!badgeListEl) return;
+  const meta = getDerivedStats();
+  badgeListEl.innerHTML = BADGES.map((badge) => {
+    const unlocked = badge.test(meta);
+    return `<button type="button" class="badge-item${unlocked ? " unlocked" : " locked"}" data-badge-key="${badge.key}" ${unlocked ? "" : "disabled"}><div class="badge-title">${badge.title}</div><div class="badge-visual" data-badge-art="${badge.key}"></div><div class="badge-copy">${badge.copy}</div><div class="pill-row"><span class="mini-pill">${unlocked ? "Unlocked" : "Locked"}</span></div></button>`;
+  }).join("");
+  badgeListEl.querySelectorAll("[data-badge-art]").forEach((el) => {
+    try {
+      applyBadgeArt(el, el.dataset.badgeArt);
+    } catch (error) {
+      el.style.background = "linear-gradient(180deg, #faf6ee, #efe7d8)";
+      el.style.border = "1px solid #d8cfbe";
+    }
+  });
+}
 function renderArchive() { const archiveSets = DAILY_SETS.slice(0, -1).reverse(); archiveListEl.innerHTML = archiveSets.map((set) => { const record = getDayRecord(set.date, false); const easyStatus = record?.easy?.status ? capitalize(record.easy.status) : "Open"; const hardStatus = record?.hard?.status ? capitalize(record.hard.status) : (record?.easy?.status === "solved" ? "Open" : "Locked"); return `<button class="archive-item" data-date="${set.date}"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`; }).join("") || `<div class="archive-item"><div class="archive-meta">Archive days will appear here as your queue grows.</div></div>`; }
 function openStats() { renderStats(); statsModalEl.hidden = false; }
 function closeStats() { statsModalEl.hidden = true; }
 function openArchive() { renderArchive(); archiveModalEl.hidden = false; }
 function closeArchive() { archiveModalEl.hidden = true; }
-function openBadges() { renderBadges(); badgesModalEl.hidden = false; }
+function openBadges() {
+  if (!badgesModalEl) return;
+  badgesModalEl.hidden = false;
+  try {
+    renderBadges();
+  } catch (error) {
+    if (badgeListEl) {
+      badgeListEl.innerHTML = `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">Badges are loading, but the art could not be rendered in this browser state. Refresh once and try again.</div></div>`;
+    }
+  }
+}
 function closeBadges() { badgesModalEl.hidden = true; }
 function closeLifelineModals() { lifelineModalEl.hidden = true; homeScreenModalEl.hidden = true; }
-function resetStats() { stats = createEmptyStats(); dayStates = {}; saveStats(); loadDay(activeDayIndex, "easy", activeSection); }
-function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); }
+function resetStats() { stats = createEmptyStats(); dayStates = {}; badgeUnlockQueue = []; activeBadgeUnlock = null; saveStats(); closeBadgeUnlock(); closeBadgeDetail(); loadDay(activeDayIndex, "easy", activeSection); }
+function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); queueNewBadges(); }
 function buildShareText() { const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}"; const grid = `${square}${square}\n${square}${square}`; const triesLine = state.solved ? `Solved in ${state.tries}/${getActiveMaxLives()} tries` : `Missed in ${state.tries}/${getActiveMaxLives()} tries`; return `Common Ground ${formatShortDate(getActiveDate())} ${capitalize(activeStage)}\n${grid}\n${triesLine}`; }
 function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText(); }
 async function copyShareResults() {
@@ -223,7 +477,7 @@ function updateColorProgress() {
 function updateLives() { const maxLives = getActiveMaxLives(); const left = Math.max(0, maxLives - state.livesUsed); livesLabelEl.textContent = `Tries Left: ${left}`; livesEl.style.gridTemplateColumns = `repeat(${maxLives}, 1fr)`; livesEl.style.width = `${maxLives * 34}px`; livesEl.innerHTML = ""; for (let i = 0; i < maxLives; i++) { const seg = document.createElement("div"); seg.className = "life" + (i < left ? " on" : ""); livesEl.appendChild(seg); } }
 function updateHeaderUi() {
   const day = getActiveDate();
-  subtitleEl.textContent = `${activeSection === "today" ? "Today" : "Archive"} - ${formatLongDate(day)}`;
+  if (subtitleEl) subtitleEl.textContent = `${activeSection === "today" ? "Today" : "Archive"} - ${formatLongDate(day)}`;
   todayBtn?.classList.toggle("active", activeSection === "today");
   archiveBtn?.classList.toggle("active", activeSection === "archive");
   easyBtn?.classList.toggle("active", activeStage === "easy");
@@ -307,15 +561,64 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenBtn?.addEventListener("click", () => { lifelineModalEl.hidden = true; homeScreenModalEl.hidden = false; }); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenBtn?.addEventListener("click", () => { lifelineModalEl.hidden = true; homeScreenModalEl.hidden = false; }); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; lifelineModalEl.hidden = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline);
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-item[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
-function dismissTutorial() { tutorialEl.hidden = true; safeSetStorage(TUTORIAL_KEY, "1"); }
-[statsModalEl, archiveModalEl, badgesModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); }); });
-window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", scheduleSlotLayout); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); });
+badgeListEl?.addEventListener("click", (e) => { const button = e.target.closest(".badge-item.unlocked[data-badge-key]"); if (!button) return; openBadgeDetail(button.dataset.badgeKey); });
+function getPuzzleNumber(day = getLiveDayStamp()) {
+  const index = DAILY_SETS.findIndex((entry) => entry.date === day);
+  return index === -1 ? DAILY_SETS.length : index + 1;
+}
+function updateLaunchUi() {
+  const liveDay = getLiveDayStamp();
+  if (launchDateEl) launchDateEl.textContent = formatLongDate(liveDay);
+  if (launchNumberEl) launchNumberEl.textContent = `No. ${getPuzzleNumber(liveDay)}`;
+}
+function dismissTutorial() {
+  tutorialEl.hidden = true;
+  safeSetStorage(TUTORIAL_KEY, "1");
+}
+function closeLaunchScreen() {
+  if (launchScreenEl) launchScreenEl.hidden = true;
+}
+[statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); }); });
+window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", scheduleSlotLayout); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
 stats = loadStats();
+updateLaunchUi();
+tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
-if (!safeGetStorage(TUTORIAL_KEY)) tutorialEl.hidden = false;
 if (state) render();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
