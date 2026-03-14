@@ -49,6 +49,135 @@
       grid-auto-rows: max-content;
     }
 
+
+    body.app-loading .app {
+      visibility: hidden;
+    }
+
+    body.app-ready .app {
+      visibility: visible;
+    }
+
+    .launch-screen {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.72) 0, transparent 34%),
+        linear-gradient(180deg, #f7f0df 0%, #efe3cb 52%, #e6d5b7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 4200;
+    }
+
+    .launch-screen[hidden] {
+      display: none;
+    }
+
+    .launch-card {
+      width: min(420px, 100%);
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+      text-align: center;
+      color: #111827;
+    }
+
+    .launch-mark {
+      width: 190px;
+      height: 170px;
+      position: relative;
+      filter: drop-shadow(0 18px 30px rgba(91, 59, 24, 0.10));
+    }
+
+    .launch-circle {
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      border: 6px solid #5b3820;
+      background: rgba(255, 250, 240, 0.18);
+    }
+
+    .launch-circle-a {
+      top: 2px;
+      left: 41px;
+    }
+
+    .launch-circle-b {
+      left: 10px;
+      top: 60px;
+    }
+
+    .launch-circle-c {
+      right: 10px;
+      top: 60px;
+    }
+
+    .launch-wordmark {
+      color: #231815;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 6vw, 3.2rem);
+      line-height: 0.9;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+
+    .launch-copy {
+      max-width: 28ch;
+      color: #5f4525;
+      font-size: 1.05rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .launch-actions {
+      width: min(240px, 100%);
+      display: grid;
+      gap: 18px;
+    }
+
+    .launch-primary,
+    .launch-secondary {
+      min-height: 58px;
+      border-radius: 999px;
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .launch-primary {
+      background: #51341f;
+      color: #fffaf0;
+      border: 1px solid #51341f;
+    }
+
+    .launch-secondary {
+      background: rgba(255,249,240,0.62);
+      color: #51341f;
+      border: 1px solid rgba(81, 52, 31, 0.34);
+    }
+
+    .launch-meta {
+      display: grid;
+      gap: 4px;
+      color: #5f4525;
+    }
+
+    .launch-date {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .launch-number {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #7a5a35;
+    }
+
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -633,7 +762,7 @@
     }
   </style>
 </head>
-<body>
+<body class="app-loading">
   <div class="app">
     <section class="card top">
       <h1>COMMON GROUND</h1>
@@ -808,6 +937,7 @@
   <script src="app.js?v=20260313"></script>
 </body>
 </html>
+
 
 
 
