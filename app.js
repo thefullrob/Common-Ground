@@ -197,7 +197,7 @@ runtimeStyle.textContent += `
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
 const BASE_LIVES = 3;
-const HARD_TIMER_MS = 61000;
+const HARD_TIMER_MS = 45000;
 const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
@@ -755,6 +755,7 @@ if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage
 if (state) render();
 document.body.classList.remove("app-loading");
 document.body.classList.add("app-ready");
+
 
 
 
