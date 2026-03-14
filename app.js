@@ -197,7 +197,7 @@ runtimeStyle.textContent += `
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
 const BASE_LIVES = 3;
-const HARD_TIMER_MS = 90000;
+const HARD_TIMER_MS = 61000;
 const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
@@ -741,6 +741,9 @@ updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 if (state) render();
+document.body.classList.remove("app-loading");
+document.body.classList.add("app-ready");
+
 
 
 
