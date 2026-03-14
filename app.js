@@ -259,6 +259,7 @@ let currentCalendarDay = getLocalDayStamp();
 let deferredInstallPrompt = null;
 let homeScreenReturnToLifeline = false;
 let hardTimerInterval = null;
+let midnightRolloverTimeout = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -712,6 +713,17 @@ function handleCalendarDayChange() {
   }
 }
 
+function scheduleMidnightRollover() {
+  if (midnightRolloverTimeout) window.clearTimeout(midnightRolloverTimeout);
+  const now = new Date();
+  const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 50);
+  const delay = Math.max(250, nextMidnight.getTime() - now.getTime());
+  midnightRolloverTimeout = window.setTimeout(() => {
+    handleCalendarDayChange();
+    scheduleMidnightRollover();
+  }, delay);
+}
+
 function dismissTutorial() {
   tutorialEl.hidden = true;
   safeSetStorage(TUTORIAL_KEY, "1");
@@ -720,7 +732,7 @@ function closeLaunchScreen() {
   if (launchScreenEl) launchScreenEl.hidden = true;
 }
 [statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); }); });
-window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) handleCalendarDayChange(); }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); });
 window.setInterval(handleCalendarDayChange, 60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
