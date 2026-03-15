@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-17",
+    easy: {
+      title: "Hobbies + Sports + Collections",
+      labels: { A: "Hobbies", B: "Sports", C: "Collections" },
+      tiles: [
+        { label: "Golf", correctSlot: "S1" },
+        { label: "Stamp Album", correctSlot: "S2" },
+        { label: "Baseball Cards", correctSlot: "S3" },
+        { label: "Sneaker Collection", correctSlot: "S4" },
+        { label: "Chess Board", correctSlot: null },
+        { label: "Coin Jar", correctSlot: null },
+        { label: "Tennis Ball", correctSlot: null },
+        { label: "Whistle", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Banking + Risk + Power",
+      labels: { A: "Banking", B: "Risk", C: "Power" },
+      tiles: [
+        { label: "Big Short", correctSlot: "S1" },
+        { label: "Federal Reserve", correctSlot: "S2" },
+        { label: "Hostile Takeover", correctSlot: "S3" },
+        { label: "Wall Street", correctSlot: "S4" },
+        { label: "Gold Bar", correctSlot: null },
+        { label: "Casino Chip", correctSlot: null },
+        { label: "Private Jet", correctSlot: null },
+        { label: "Stock Photo", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-16",
     easy: {
       title: "Holiday + Character + Outfit",
@@ -91,7 +122,8 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Hotel Key", correctSlot: null }
       ]
     }
-  },  {
+  },
+  {
     date: "2026-03-13",
     easy: {
       title: "Ireland + Drink + Green",
@@ -433,6 +465,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
+
+
+
 
 
 
