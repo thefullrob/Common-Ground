@@ -201,6 +201,10 @@ const HARD_TIMER_MS = 45000;
 const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
+// Share metadata: update these three values if you ever refresh the public branding.
+const APP_URL = "https://thefullrob.github.io/Common-Ground/";
+const SHARE_TITLE = "Common Ground — The Daily Overlap Puzzle";
+const SHARE_DESCRIPTION = "Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes.";
 const DAILY_SETS = [...(window.COMMON_GROUND_DAILY_SETS || [])].sort((a, b) => a.date.localeCompare(b.date));
 const BADGE_IMAGE_FILES = {
   "first-light": "badges-first-light.png",
@@ -516,14 +520,29 @@ async function triggerAddToHomeScreen(event) {
 }
 function resetStats() { stats = createEmptyStats(); dayStates = {}; badgeUnlockQueue = []; activeBadgeUnlock = null; saveStats(); closeBadgeUnlock(); closeBadgeDetail(); loadDay(activeDayIndex, "easy", activeSection); }
 function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); queueNewBadges(); }
-function buildShareText() { const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}"; const grid = `${square}${square}\n${square}${square}`; const triesLine = state.solved ? `Solved in ${state.tries}/${getActiveMaxLives()} tries` : `Missed in ${state.tries}/${getActiveMaxLives()} tries`; return `Common Ground ${formatShortDate(getActiveDate())} ${capitalize(activeStage)}\n${grid}\n${triesLine}`; }
+function formatShareTryLine() {
+  if (!state) return "";
+  if (state.solved) return `Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}`;
+  return `Missed in ${state.tries} ${state.tries === 1 ? "try" : "tries"}`;
+}
+function buildShareTitle() {
+  return `Common Ground #${getPuzzleNumber(getActiveDate())} — ${capitalize(activeStage)}`;
+}
+function buildShareText() {
+  const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}";
+  const grid = `${square}${square}\n${square}${square}`;
+  const opener = state.solved
+    ? `I solved today’s Common Ground (${capitalize(activeStage)})`
+    : `I missed today’s Common Ground (${capitalize(activeStage)})`;
+  return `${buildShareTitle()}\n${grid}\n${opener}\n${formatShareTryLine()}\nFind the overlap:\n${APP_URL}`;
+}
 function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText(); }
 async function copyShareResults() {
   const text = buildShareText();
-  const url = `${window.location.origin}${window.location.pathname}`;
+  const url = APP_URL;
   try {
-    if (navigator.share) { await navigator.share({ title: `Common Ground ${formatShortDate(getActiveDate())} ${capitalize(activeStage)}`, text, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
-    const payload = `${text}\n${url}`;
+    if (navigator.share) { await navigator.share({ title: buildShareTitle(), text, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
+    const payload = text;
     if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(payload);
     else { const input = document.createElement("textarea"); input.value = payload; input.setAttribute("readonly", "true"); input.style.position = "absolute"; input.style.left = "-9999px"; document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove(); }
     shareBtn.textContent = "Copied"; setMessage("Results copied to clipboard.", "#1f7a4f"); window.setTimeout(() => { shareBtn.textContent = "Share Results"; }, 1400);
