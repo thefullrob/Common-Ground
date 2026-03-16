@@ -550,7 +550,7 @@ function buildShareText(mode = "web") {
   if (mode === "clipboard") {
     return `${grid}\n${summary}\n\nTry today's puzzle:\n${APP_URL}`;
   }
-  return `${grid}\n${summary}\n\nCan you solve it?\n${APP_URL}`;
+  return `${grid}\n${summary}\n\nCan you solve it?`;
 }
 function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText("web"); }
 async function copyShareResults() {
