@@ -549,7 +549,7 @@ function buildShareText(mode = "web") {
   }
   return `${grid}\n${summary}\n\nCan you solve it?\n${APP_URL}`;
 }
-function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText(); }
+function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText("web"); }
 async function copyShareResults() {
   const shareText = buildShareText("web");
   const clipboardText = buildShareText("clipboard");
