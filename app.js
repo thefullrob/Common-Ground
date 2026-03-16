@@ -1,4 +1,4 @@
-const runtimeStyle = document.createElement("style");
+﻿const runtimeStyle = document.createElement("style");
 runtimeStyle.textContent = `
   .top-row { display: grid; gap: 8px; justify-items: center; }
   .nav-row, .stage-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
@@ -203,8 +203,8 @@ const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
 // Share metadata: update these three values if you ever refresh the public branding.
 const APP_URL = "https://thefullrob.github.io/Common-Ground/";
-const SHARE_TITLE = "Common Ground — The Daily Overlap Puzzle";
-const SHARE_DESCRIPTION = "Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes.";
+const SHARE_TITLE = "Common Ground â€” The Daily Overlap Puzzle";
+const SHARE_DESCRIPTION = "Find the hidden overlap between three categories. Play todayâ€™s puzzle in under 2 minutes.";
 const DAILY_SETS = [...(window.COMMON_GROUND_DAILY_SETS || [])].sort((a, b) => a.date.localeCompare(b.date));
 const BADGE_IMAGE_FILES = {
   "first-light": "badges-first-light.png",
@@ -520,29 +520,43 @@ async function triggerAddToHomeScreen(event) {
 }
 function resetStats() { stats = createEmptyStats(); dayStates = {}; badgeUnlockQueue = []; activeBadgeUnlock = null; saveStats(); closeBadgeUnlock(); closeBadgeDetail(); loadDay(activeDayIndex, "easy", activeSection); }
 function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); queueNewBadges(); }
+function formatTryCount(count) {
+  return `${count} ${count === 1 ? "try" : "tries"}`;
+}
 function formatShareTryLine() {
   if (!state) return "";
-  if (state.solved) return `Solved in ${state.tries} ${state.tries === 1 ? "try" : "tries"}`;
-  return `Missed in ${state.tries} ${state.tries === 1 ? "try" : "tries"}`;
+  return state.solved
+    ? `Solved in ${formatTryCount(state.tries)}`
+    : `Missed in ${formatTryCount(state.tries)}`;
 }
 function buildShareTitle() {
-  return `Common Ground #${getPuzzleNumber(getActiveDate())} — ${capitalize(activeStage)}`;
+  return `Common Ground #${getPuzzleNumber(getActiveDate())} - ${capitalize(activeStage)}`;
 }
-function buildShareText() {
+function buildShareGrid() {
   const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}";
-  const grid = `${square}${square}\n${square}${square}`;
-  const opener = state.solved
-    ? `I solved today’s Common Ground (${capitalize(activeStage)})`
-    : `I missed today’s Common Ground (${capitalize(activeStage)})`;
-  return `${buildShareTitle()}\n${grid}\n${opener}\n${formatShareTryLine()}\nFind the overlap:\n${APP_URL}`;
+  return `${square}${square}\n${square}${square}`;
+}
+// Share-sheet text stays lean because rich previews already show the title and art.
+// Clipboard text keeps a slightly clearer CTA because it may travel without a preview.
+function buildShareText(mode = "web") {
+  const difficulty = capitalize(activeStage);
+  const grid = buildShareGrid();
+  const summary = state.solved
+    ? `Solved today's ${difficulty} in ${formatTryCount(state.tries)}`
+    : `Missed today's ${difficulty} in ${formatTryCount(state.tries)}`;
+  if (mode === "clipboard") {
+    return `${grid}\n${summary}\n\nTry today's puzzle:\n${APP_URL}`;
+  }
+  return `${grid}\n${summary}\n\nCan you solve it?\n${APP_URL}`;
 }
 function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText(); }
 async function copyShareResults() {
-  const text = buildShareText();
+  const shareText = buildShareText("web");
+  const clipboardText = buildShareText("clipboard");
   const url = APP_URL;
   try {
-    if (navigator.share) { await navigator.share({ title: buildShareTitle(), text, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
-    const payload = text;
+    if (navigator.share) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
+    const payload = clipboardText;
     if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(payload);
     else { const input = document.createElement("textarea"); input.value = payload; input.setAttribute("readonly", "true"); input.style.position = "absolute"; input.style.left = "-9999px"; document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove(); }
     shareBtn.textContent = "Copied"; setMessage("Results copied to clipboard.", "#1f7a4f"); window.setTimeout(() => { shareBtn.textContent = "Share Results"; }, 1400);
@@ -774,6 +788,7 @@ if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage
 if (state) render();
 document.body.classList.remove("app-loading");
 document.body.classList.add("app-ready");
+
 
 
 
