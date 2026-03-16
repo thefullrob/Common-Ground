@@ -533,8 +533,11 @@ function buildShareTitle() {
   return `Common Ground #${getPuzzleNumber(getActiveDate())} - ${capitalize(activeStage)}`;
 }
 function buildShareGrid() {
-  const square = state.solved ? "\u{1F7E9}" : "\u{1F7E5}";
-  return `${square}${square}\n${square}${square}`;
+  if (!state) return "";
+  if (!state.solved) return "\u{1F7E5}\u{1F7E5}\u{1F7E5}";
+  if (state.tries === 1) return "\u{1F7E9}\u{2B1C}\u{2B1C}";
+  if (state.tries === 2) return "\u{1F7E5}\u{1F7E9}\u{2B1C}";
+  return "\u{1F7E5}\u{1F7E5}\u{1F7E9}";
 }
 // Share-sheet text stays lean because rich previews already show the title and art.
 // Clipboard text keeps a slightly clearer CTA because it may travel without a preview.
