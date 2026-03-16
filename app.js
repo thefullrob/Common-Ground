@@ -727,8 +727,12 @@ undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", re
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-item[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 badgeListEl?.addEventListener("click", (e) => { const button = e.target.closest(".badge-item.unlocked[data-badge-key]"); if (!button) return; openBadgeDetail(button.dataset.badgeKey); });
 function getPuzzleNumber(day = getLiveDayStamp()) {
-  const index = DAILY_SETS.findIndex((entry) => entry.date === day);
-  return index === -1 ? DAILY_SETS.length : index + 1;
+  const orderedDates = DAILY_SETS
+    .map((entry) => entry.date)
+    .slice()
+    .sort((a, b) => a.localeCompare(b));
+  const index = orderedDates.indexOf(day);
+  return index === -1 ? orderedDates.length : index + 1;
 }
 function updateLaunchUi() {
   const liveDay = getLiveDayStamp();
