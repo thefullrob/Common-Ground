@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-18",
+    easy: {
+      title: "Fast Food Chains + Fried Food + Chicken",
+      labels: { A: "Fast Food Chains", B: "Fried Food", C: "Chicken" },
+      tiles: [
+        { label: "Captain D's", correctSlot: "S1" },
+        { label: "Kenny Rogers Roasters", correctSlot: "S2" },
+        { label: "Korean Chicken Drumstick", correctSlot: "S3" },
+        { label: "KFC", correctSlot: "S4" },
+        { label: "Milkshake", correctSlot: null },
+        { label: "Fish Sandwich", correctSlot: null },
+        { label: "Tater Tots", correctSlot: null },
+        { label: "Pizza Hut", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Canada + Winter + Sport",
+      labels: { A: "Canada", B: "Winter", C: "Sport" },
+      tiles: [
+        { label: "Quebec Winter Carnival", correctSlot: "S1" },
+        { label: "CFL", correctSlot: "S2" },
+        { label: "Snow Golf", correctSlot: "S3" },
+        { label: "Hockey", correctSlot: "S4" },
+        { label: "Maple Syrup", correctSlot: null },
+        { label: "Snow Boots", correctSlot: null },
+        { label: "Baseball Cap", correctSlot: null },
+        { label: "Ice Scraper", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-17",
     easy: {
       title: "Hobbies + Sports + Collections",
