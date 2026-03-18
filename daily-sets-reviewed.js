@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-19",
+    easy: {
+      title: "HBO + Show + Movie",
+      labels: { A: "HBO", B: "Show", C: "Movie" },
+      tiles: [
+        { label: "The Sopranos", correctSlot: "S1" },
+        { label: "Behind the Candelabra", correctSlot: "S2" },
+        { label: "Downton Abbey", correctSlot: "S3" },
+        { label: "Entourage", correctSlot: "S4" },
+        { label: "Netflix", correctSlot: null },
+        { label: "Blockbuster", correctSlot: null },
+        { label: "Movie Poster", correctSlot: null },
+        { label: "Grey's Anatomy", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Celebrity + Award Show + Scandal",
+      labels: { A: "Celebrity", B: "Award Show", C: "Scandal" },
+      tiles: [
+        { label: "Meryl Streep", correctSlot: "S1" },
+        { label: "Tiger Woods", correctSlot: "S2" },
+        { label: "Envelope Mix-Up", correctSlot: "S3" },
+        { label: "Kanye West", correctSlot: "S4" },
+        { label: "Red Carpet", correctSlot: null },
+        { label: "TMZ", correctSlot: null },
+        { label: "Golden Globe", correctSlot: null },
+        { label: "Bodyguard", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-18",
     easy: {
       title: "Fast Food Chains + Fried Food + Chicken",
