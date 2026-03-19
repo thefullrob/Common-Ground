@@ -1,12 +1,12 @@
-const CACHE_NAME = 'common-ground-v7';
+const CACHE_NAME = 'common-ground-v8';
 const ASSETS = [
-  '/Common-Ground/',
-  '/Common-Ground/index.html',
-  '/Common-Ground/app.js?v=20260319a',
-  '/Common-Ground/daily-sets-reviewed.js?v=20260319a',
-  '/Common-Ground/manifest.webmanifest?v=20260319a',
-  '/Common-Ground/icon-192.png?v=20260313c',
-  '/Common-Ground/icon-512.png?v=20260313c'
+  '/',
+  '/index.html',
+  '/app.js?v=20260319b',
+  '/daily-sets-reviewed.js?v=20260319b',
+  '/manifest.webmanifest?v=20260319b',
+  '/icon-192.png?v=20260319b',
+  '/icon-512.png?v=20260319b'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1,21 +1,21 @@
 {
   "name": "Common Ground",
   "short_name": "CG",
-  "start_url": "/Common-Ground/",
-  "scope": "/Common-Ground/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f7f0df",
   "theme_color": "#51341f",
   "description": "Two daily Venn puzzles. Clear Easy first, then unlock Hard.",
   "icons": [
     {
-      "src": "/Common-Ground/icon-192.png?v=20260313b",
+      "src": "/icon-192.png?v=20260319b",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/Common-Ground/icon-512.png?v=20260313b",
+      "src": "/icon-512.png?v=20260319b",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

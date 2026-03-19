@@ -202,7 +202,7 @@ const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
 // Share metadata: update these three values if you ever refresh the public branding.
-const APP_URL = "https://thefullrob.github.io/Common-Ground/";
+const APP_URL = "https://commongroundpuzzle.com/";
 const SHARE_TITLE = "Common Ground â€” The Daily Overlap Puzzle";
 const SHARE_DESCRIPTION = "Find the hidden overlap between three categories. Play todayâ€™s puzzle in under 2 minutes.";
 const DAILY_SETS = [...(window.COMMON_GROUND_DAILY_SETS || [])].sort((a, b) => a.date.localeCompare(b.date));
