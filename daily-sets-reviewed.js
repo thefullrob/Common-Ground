@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-20",
+    easy: {
+      title: "Cartoon + Animal + Yellow",
+      labels: { A: "Cartoon", B: "Animal", C: "Yellow" },
+      tiles: [
+        { label: "Snoopy", correctSlot: "S1" },
+        { label: "Bart Simpson", correctSlot: "S2" },
+        { label: "Big Bird", correctSlot: "S3" },
+        { label: "Tweety", correctSlot: "S4" },
+        { label: "Mickey Mouse", correctSlot: null },
+        { label: "Banana", correctSlot: null },
+        { label: "George Jetson", correctSlot: null },
+        { label: "Barney Rubble", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Politics + Media + Money",
+      labels: { A: "Politics", B: "Media", C: "Money" },
+      tiles: [
+        { label: "Press Secretary", correctSlot: "S1" },
+        { label: "Political Donor", correctSlot: "S2" },
+        { label: "Network Executive", correctSlot: "S3" },
+        { label: "Rupert Murdoch", correctSlot: "S4" },
+        { label: "Campaign Button", correctSlot: null },
+        { label: "Struggling Actor", correctSlot: null },
+        { label: "Bank Vault", correctSlot: null },
+        { label: "Photographer", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-19",
     easy: {
       title: "HBO + Show + Movie",
