@@ -22,7 +22,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Meryl Streep", correctSlot: "S1" },
         { label: "Tiger Woods", correctSlot: "S2" },
         { label: "Envelope Mix-Up", correctSlot: "S3" },
-        { label: "Kanye West", correctSlot: "S4" },
+        { label: "Will Smith", correctSlot: "S4" },
         { label: "Red Carpet", correctSlot: null },
         { label: "TMZ", correctSlot: null },
         { label: "Golden Globe", correctSlot: null },
