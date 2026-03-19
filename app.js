@@ -552,17 +552,22 @@ function buildShareText(mode = "web") {
   }
   return `${grid}\n${summary}\n\nCan you solve it?`;
 }
+function shouldUseNativeShare() {
+  const ua = navigator.userAgent || "";
+  const mobileLike = /Android|iPhone|iPad|iPod/i.test(ua);
+  return mobileLike && typeof navigator.share === "function";
+}
 function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText("web"); }
 async function copyShareResults() {
   const shareText = buildShareText("web");
   const clipboardText = buildShareText("clipboard");
   const url = APP_URL;
   try {
-    if (navigator.share) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
+    if (shouldUseNativeShare()) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
     const payload = clipboardText;
     if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(payload);
     else { const input = document.createElement("textarea"); input.value = payload; input.setAttribute("readonly", "true"); input.style.position = "absolute"; input.style.left = "-9999px"; document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove(); }
-    shareBtn.textContent = "Copied"; setMessage("Results copied to clipboard.", "#1f7a4f"); window.setTimeout(() => { shareBtn.textContent = "Share Results"; }, 1400);
+    shareBtn.textContent = "Copied"; setMessage("Results copied to clipboard. Paste anywhere.", "#1f7a4f"); window.setTimeout(() => { shareBtn.textContent = "Share Results"; }, 1400);
   } catch (err) { if (err?.name !== "AbortError") setMessage("Could not share results on this device.", "#991b1b"); }
 }
 function updateColorProgress() {
