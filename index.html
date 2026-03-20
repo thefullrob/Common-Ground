@@ -18,11 +18,11 @@
   <meta name="application-name" content="CG" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="manifest" href="/manifest.webmanifest?v=20260319b" />
+    <link rel="manifest" href="/manifest.webmanifest?v=20260320a" />
   <link rel="canonical" href="https://commongroundpuzzle.com/" />
   <meta property="og:title" content="Common Ground — The Daily Overlap Puzzle" />
   <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-  <meta property="og:image" content="https://commongroundpuzzle.com/social-preview-v3.png?v=20260319b" />
+  <meta property="og:image" content="https://commongroundpuzzle.com/social-preview-v3.png?v=20260320a" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://commongroundpuzzle.com/" />
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Common Ground — The Daily Overlap Puzzle" />
   <meta name="twitter:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-  <meta name="twitter:image" content="https://commongroundpuzzle.com/social-preview-v3.png?v=20260319b" />
+  <meta name="twitter:image" content="https://commongroundpuzzle.com/social-preview-v3.png?v=20260320a" />
   <title>Common Ground — The Daily Overlap Puzzle</title>
       <style>
     :root {
@@ -954,10 +954,40 @@
     </div>
   </div>
 
-    <script src="daily-sets-reviewed.js?v=20260319b"></script>
-    <script src="app.js?v=20260319b"></script>
-</body>
-</html>
+  <div class="modal-overlay" id="daily-complete-modal" hidden>
+    <div class="modal-card">
+      <h2>Today's Puzzle Complete</h2>
+      <div class="modal-copy" id="daily-complete-copy">You finished today's Common Ground set. Come back tomorrow for a new pair of categories.</div>
+      <div class="modal-actions">
+        <button id="daily-complete-stats">View Stats</button>
+        <button id="daily-complete-share" class="modal-primary">Share Results</button>
+      </div>
+      <div class="modal-actions">
+        <button id="daily-complete-archive">Browse Archive</button>
+        <button id="daily-complete-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="hard-missed-modal" hidden>
+    <div class="modal-card">
+      <h2>Today's Hard Got Away</h2>
+      <div class="modal-copy">You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.</div>
+      <div class="modal-actions">
+        <button id="hard-missed-stats">View Stats</button>
+        <button id="hard-missed-share" class="modal-primary">Share Results</button>
+      </div>
+      <div class="modal-actions">
+        <button id="hard-missed-archive">Browse Archive</button>
+        <button id="hard-missed-retry">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="daily-sets-reviewed.js?v=20260320a"></script>
+    <script src="app.js?v=20260320a"></script>
+  </body>
+  </html>
 
 
 

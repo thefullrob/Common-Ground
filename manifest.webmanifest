@@ -9,13 +9,13 @@
   "description": "Two daily Venn puzzles. Clear Easy first, then unlock Hard.",
   "icons": [
     {
-      "src": "/icon-192.png?v=20260319b",
+      "src": "/icon-192.png?v=20260320a",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png?v=20260319b",
+      "src": "/icon-512.png?v=20260320a",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
