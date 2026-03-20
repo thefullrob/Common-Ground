@@ -640,14 +640,24 @@ function buildShareGrid() {
   if (state.tries === 2) return "\u{1F7E5}\u{1F7E9}\u{2B1C}";
   return "\u{1F7E5}\u{1F7E5}\u{1F7E9}";
 }
+function getShareSummaryLine() {
+  const difficulty = capitalize(activeStage);
+  const verb = state.solved ? "Solved" : "Missed";
+  if (state.practiceMode) {
+    return `${verb} ${difficulty} in ${formatTryCount(state.tries)} (practice mode)`;
+  }
+  const activeDate = getActiveDate();
+  const isLiveToday = activeSection === "today" && activeDate === getLiveDayStamp();
+  if (isLiveToday) {
+    return `${verb} today's ${difficulty} in ${formatTryCount(state.tries)}`;
+  }
+  return `${verb} ${formatShortDate(activeDate)} ${difficulty} in ${formatTryCount(state.tries)}`;
+}
 // Share-sheet text stays lean because rich previews already show the title and art.
 // Clipboard text keeps a slightly clearer CTA because it may travel without a preview.
 function buildShareText(mode = "web") {
-  const difficulty = capitalize(activeStage);
   const grid = buildShareGrid();
-  const summary = state.solved
-    ? `Solved today's ${difficulty} in ${formatTryCount(state.tries)}`
-    : `Missed today's ${difficulty} in ${formatTryCount(state.tries)}`;
+  const summary = getShareSummaryLine();
   if (mode === "clipboard") {
     return `${grid}\n${summary}\n\nTry today's puzzle:\n${APP_URL}`;
   }
@@ -944,7 +954,6 @@ stats = loadStats();
 updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
-if (state) render();
 document.body.classList.remove("app-loading");
 document.body.classList.add("app-ready");
 

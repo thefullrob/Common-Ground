@@ -6,7 +6,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       labels: { A: "Home Amenities", B: "Recreation", C: "Basement" },
       tiles: [
         { label: "Basketball Hoop", correctSlot: "S1" },
-        { label: "Ping Pong Table", correctSlot: "S2" },
+        { label: "Dehumidifier", correctSlot: "S2" },
         { label: "Poker Night", correctSlot: "S3" },
         { label: "Game Room", correctSlot: "S4" },
         { label: "Garden Hose", correctSlot: null },
@@ -102,7 +102,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Bart Simpson", correctSlot: "S2" },
         { label: "Big Bird", correctSlot: "S3" },
         { label: "Tweety", correctSlot: "S4" },
-        { label: "Mickey Mouse", correctSlot: null },
+        { label: "Taxi Cab", correctSlot: null },
         { label: "Banana", correctSlot: null },
         { label: "George Jetson", correctSlot: null },
         { label: "Barney Rubble", correctSlot: null }
