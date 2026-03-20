@@ -262,6 +262,7 @@ let activeBadgeUnlock = null;
 let currentCalendarDay = getLocalDayStamp();
 let deferredInstallPrompt = null;
 let homeScreenReturnToLifeline = false;
+const trackedPuzzleStarts = new Set();
 let hardTimerInterval = null;
 let midnightRolloverTimeout = null;
 
@@ -352,6 +353,28 @@ function normalizeDayRecord(day, value = {}) { return { date: day, easy: value.e
 function loadStats() { try { const raw = safeGetStorage(STATS_KEY); if (!raw) return createEmptyStats(); const parsed = JSON.parse(raw); const history = {}; Object.entries(parsed.dayHistory || {}).forEach(([day, value]) => { history[day] = normalizeDayRecord(day, value); }); return { ...createEmptyStats(), ...parsed, seenBadgeKeys: Array.isArray(parsed.seenBadgeKeys) ? parsed.seenBadgeKeys : [], dayHistory: history }; } catch (err) { return createEmptyStats(); } }
 function saveStats() { safeSetStorage(STATS_KEY, JSON.stringify(stats)); }
 function getDayRecord(day, create = false) { if (!stats.dayHistory[day] && create) stats.dayHistory[day] = normalizeDayRecord(day); return stats.dayHistory[day] || null; }
+function trackEvent(name, params = {}) {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
+}
+function getAnalyticsParams(extra = {}) {
+  return {
+    puzzle_date: getActiveDate(),
+    difficulty: capitalize(activeStage),
+    section: activeSection,
+    ...extra
+  };
+}
+function trackPuzzleStart(day = getActiveDate(), stage = activeStage) {
+  const key = `${day}:${stage}`;
+  if (trackedPuzzleStarts.has(key)) return;
+  trackedPuzzleStarts.add(key);
+  trackEvent("puzzle_start", {
+    puzzle_date: day,
+    difficulty: capitalize(stage),
+    section: activeSection
+  });
+}
 function getActiveSet() { return DAILY_SETS[activeDayIndex]; }
 function getActiveDate() { return getActiveSet()?.date || null; }
 function getActivePuzzle() { return getActiveSet()?.[activeStage] || null; }
@@ -519,7 +542,27 @@ async function triggerAddToHomeScreen(event) {
   openHomeScreenHelp(null, returnToLifeline);
 }
 function resetStats() { stats = createEmptyStats(); dayStates = {}; badgeUnlockQueue = []; activeBadgeUnlock = null; saveStats(); closeBadgeUnlock(); closeBadgeDetail(); loadDay(activeDayIndex, "easy", activeSection); }
-function updateProgressRecord(date, stage, status) { const record = getDayRecord(date, true); if (record[stage]?.status === "solved") return; record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) }; record.lastPlayedAt = new Date().toISOString(); record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved"); record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline; record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp(); saveStats(); queueNewBadges(); }
+function updateProgressRecord(date, stage, status) {
+  const record = getDayRecord(date, true);
+  const wasCompletedDailySet = Boolean(record.completedDailySet);
+  if (record[stage]?.status === "solved") return;
+  record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) };
+  record.lastPlayedAt = new Date().toISOString();
+  record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved");
+  record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline;
+  record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp();
+  if (status === "solved" && record.completedDailySet && !wasCompletedDailySet) {
+    trackEvent("daily_complete", {
+      puzzle_date: date,
+      difficulty: capitalize(stage),
+      tries_used: state.tries,
+      used_lifeline: Boolean(record.usedHardLifeline),
+      section: activeSection
+    });
+  }
+  saveStats();
+  queueNewBadges();
+}
 function formatTryCount(count) {
   return `${count} ${count === 1 ? "try" : "tries"}`;
 }
@@ -562,6 +605,7 @@ async function copyShareResults() {
   const shareText = buildShareText("web");
   const clipboardText = buildShareText("clipboard");
   const url = APP_URL;
+  trackEvent("share_click", getAnalyticsParams({ tries_used: state?.tries ?? null }));
   try {
     if (shouldUseNativeShare()) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
     const payload = clipboardText;
@@ -713,12 +757,12 @@ function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
 function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; if (activeStage === "hard") state.timerRemainingMs = Math.min(HARD_TIMER_MS + HARD_LIFELINE_BONUS_MS, (state.timerRemainingMs ?? 0) + HARD_LIFELINE_BONUS_MS); stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One extra try and +15 seconds.", "#b45309"); render(); }
 function maybeOfferLifeline() { if (activeStage !== "hard") return false; const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return false; if (stats.firstLifelinePromptSeen) { activateHardLifeline(); return true; } lifelineModalEl.hidden = false; return true; }
-function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); if (activeStage === "easy" && !record?.completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !record?.completedDailySet ? "Easy cleared. Hard is unlocked." : record?.completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); }
+function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); trackEvent("puzzle_solved", getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null })); updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); if (activeStage === "easy" && !record?.completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !record?.completedDailySet ? "Easy cleared. Hard is unlocked." : record?.completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); }
 function revealFailureBoard(reason = "Out of tries. Solution revealed.") { state.failed = true; state.solved = false; state.selectedTileId = null; state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null])); state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null])); state.lockedTiles = new Set(); state.revealedSlots = new Set(SLOTS); currentTiles.forEach((tile) => { if (!tile.correctSlot) return; state.placements[tile.correctSlot] = tile.id; state.tileLocation[tile.id] = tile.correctSlot; state.lockedTiles.add(tile.id); }); updateProgressRecord(getActiveDate(), activeStage, "failed"); setMessage(reason, "#991b1b"); playTone("fail"); vibrate([120, 60, 120]); render(); }
 function submitAnswers() { if (!allPlaced() || state.solved || state.failed || state.livesUsed >= getActiveMaxLives()) return; state.tries += 1; const correctSet = new Set(correctSlots()); const wrongSlots = []; const wrongCircles = new Set(); const slotToCircles = { S1: ["A", "B"], S2: ["A", "C"], S3: ["B", "C"], S4: ["A", "B", "C"] }; SLOTS.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; if (correctSet.has(slot)) { state.revealedSlots.add(slot); state.lockedTiles.add(tileId); } else { wrongSlots.push(slot); slotToCircles[slot].forEach((circle) => wrongCircles.add(circle)); } }); if (state.revealedSlots.size === SLOTS.length) { finishWin(); return; } state.livesUsed += 1; state.history = []; shakeBoard(); if (state.livesUsed >= BASE_LIVES && activeStage === "hard" && getActiveMaxLives() === BASE_LIVES && maybeOfferLifeline()) { render(); return; } if (state.livesUsed >= getActiveMaxLives()) { revealFailureBoard(); return; } state.wrongSlots = new Set(wrongSlots); state.wrongCircles = wrongCircles; playTone("incorrect"); vibrate([45, 35, 45]); render(); window.setTimeout(() => { wrongSlots.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; state.placements[slot] = null; state.tileLocation[tileId] = null; }); state.wrongSlots = new Set(); state.wrongCircles = new Set(); const remaining = SLOTS.length - state.revealedSlots.size; setMessage(`${remaining} ${remaining === 1 ? "spot is" : "spots are"} still wrong.`, "#b91c1c"); render(); }, 900); }
 function resetCurrentPuzzle() { if (getStageRecord()?.status) return; const tries = state.tries; const livesUsed = state.livesUsed; const timerRemainingMs = state.timerRemainingMs; state = createState(); state.tries = tries; state.livesUsed = livesUsed; state.timerRemainingMs = timerRemainingMs; dayStates[getStageKey()] = snap(); setMessage(); render(); }
 function render() { syncHardTimer(); bankGridEl.innerHTML = ""; const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id); order.forEach((tileId) => { if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId)); }); Object.entries(circleEls).forEach(([key, el]) => { el.classList.toggle("wrong-circle", state.wrongCircles?.has(key)); }); slots.forEach((slotEl) => { const slot = slotEl.dataset.slot; slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile", "wrong"); slotEl.querySelector(".tile")?.remove(); const tileId = state.placements[slot]; if (tileId) { slotEl.classList.add("has-tile"); slotEl.appendChild(makeTile(tileId)); } if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed"); if (state.wrongSlots?.has(slot)) slotEl.classList.add("wrong"); if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked"); }); boardEl.classList.toggle("failed", state.failed); updateHeaderUi(); updateColorProgress(); updateLives(); updateButtons(); updateShareUi(); scheduleSlotLayout(); saveCurrentStageState(); }
-function loadDay(dayIndex, stage = "easy", section = "today") { if (!DAILY_SETS.length) return; activeDayIndex = Math.max(0, Math.min(dayIndex, DAILY_SETS.length - 1)); activeSection = section; if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy"; activeStage = stage; const puzzle = getActivePuzzle(); currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, correctSlot: tile.correctSlot })); tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile])); labelAEl.textContent = puzzle.labels.A; labelBEl.textContent = puzzle.labels.B; labelCEl.textContent = puzzle.labels.C; const record = getStageRecord(); state = record?.status === "solved" ? buildSolvedState(record) : record?.status === "failed" ? buildFailedState(record) : restorePlayableState(dayStates[getStageKey()]); setMessage(); render(); }
+function loadDay(dayIndex, stage = "easy", section = "today") { if (!DAILY_SETS.length) return; activeDayIndex = Math.max(0, Math.min(dayIndex, DAILY_SETS.length - 1)); activeSection = section; if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy"; activeStage = stage; const puzzle = getActivePuzzle(); currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, correctSlot: tile.correctSlot })); tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile])); labelAEl.textContent = puzzle.labels.A; labelBEl.textContent = puzzle.labels.B; labelCEl.textContent = puzzle.labels.C; const record = getStageRecord(); state = record?.status === "solved" ? buildSolvedState(record) : record?.status === "failed" ? buildFailedState(record) : restorePlayableState(dayStates[getStageKey()]); if (!record?.status) trackPuzzleStart(getActiveDate(), activeStage); setMessage(); render(); }
 function switchStage(stage) { if (stage === activeStage) return; if (stage === "hard" && !isHardUnlocked()) return; if (stage === "hard") hardUnlockPulseActive = false; loadDay(activeDayIndex, stage, activeSection); }
 function goToToday() {
   const todayIndex = resolveLiveDayIndex();

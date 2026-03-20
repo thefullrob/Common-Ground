@@ -1,5 +1,98 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-23",
+    easy: {
+      title: "Home Amenities + Recreation + Basement",
+      labels: { A: "Home Amenities", B: "Recreation", C: "Basement" },
+      tiles: [
+        { label: "Basketball Hoop", correctSlot: "S1" },
+        { label: "Ping Pong Table", correctSlot: "S2" },
+        { label: "Poker Night", correctSlot: "S3" },
+        { label: "Game Room", correctSlot: "S4" },
+        { label: "Garden Hose", correctSlot: null },
+        { label: "Bookshelf", correctSlot: null },
+        { label: "Sleeping Bag", correctSlot: null },
+        { label: "Driveway", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Golf + Elite + Event",
+      labels: { A: "Golf", B: "Elite", C: "Event" },
+      tiles: [
+        { label: "Country Club", correctSlot: "S1" },
+        { label: "PGA Tour", correctSlot: "S2" },
+        { label: "Black Tie Gala", correctSlot: "S3" },
+        { label: "The Masters", correctSlot: "S4" },
+        { label: "Tennis Bracelet", correctSlot: null },
+        { label: "Scoreboard", correctSlot: null },
+        { label: "Valet Parking", correctSlot: null },
+        { label: "Bowling Alley", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-03-22",
+    easy: {
+      title: "Famous Building + Washington D.C. + Tourist",
+      labels: { A: "Famous Building", B: "Washington D.C.", C: "Tourist" },
+      tiles: [
+        { label: "Pentagon", correctSlot: "S1" },
+        { label: "Eiffel Tower", correctSlot: "S2" },
+        { label: "National Mall", correctSlot: "S3" },
+        { label: "Lincoln Memorial", correctSlot: "S4" },
+        { label: "Beacon Hill", correctSlot: null },
+        { label: "Postcard", correctSlot: null },
+        { label: "Hotel Lobby", correctSlot: null },
+        { label: "Seattle", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Fast + Luxury + Transportation",
+      labels: { A: "Fast", B: "Luxury", C: "Transportation" },
+      tiles: [
+        { label: "Broken Rolex", correctSlot: "S1" },
+        { label: "Jet", correctSlot: "S2" },
+        { label: "Limousine", correctSlot: "S3" },
+        { label: "Private Jet", correctSlot: "S4" },
+        { label: "Diamond Ring", correctSlot: null },
+        { label: "Speedometer", correctSlot: null },
+        { label: "Bicycle", correctSlot: null },
+        { label: "Fur Coat", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-03-21",
+    easy: {
+      title: "Book + Disney Character + Animal",
+      labels: { A: "Book", B: "Disney Character", C: "Animal" },
+      tiles: [
+        { label: "Snow White", correctSlot: "S1" },
+        { label: "Charlotte's Web", correctSlot: "S2" },
+        { label: "Pluto", correctSlot: "S3" },
+        { label: "Baloo", correctSlot: "S4" },
+        { label: "Journal", correctSlot: null },
+        { label: "Buzz Lightyear", correctSlot: null },
+        { label: "Goldfish", correctSlot: null },
+        { label: "Lightning McQueen", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Zoo + Crime + TV",
+      labels: { A: "Zoo", B: "Crime", C: "TV" },
+      tiles: [
+        { label: "Animal Smuggling", correctSlot: "S1" },
+        { label: "Animal Planet", correctSlot: "S2" },
+        { label: "True Crime Series", correctSlot: "S3" },
+        { label: "Tiger King", correctSlot: "S4" },
+        { label: "Lion Cage", correctSlot: null },
+        { label: "Police Siren", correctSlot: null },
+        { label: "Sitcom", correctSlot: null },
+        { label: "Zoo Map", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-20",
     easy: {
       title: "Cartoon + Animal + Yellow",
