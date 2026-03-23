@@ -135,6 +135,26 @@ runtimeStyle.textContent = `
   .modal-copy { color: #435066; font-size: 0.94rem; line-height: 1.45; text-align: center; }
   .modal-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .modal-primary { background: #111827; color: #fff; border-color: #111827; }
+  .celebration-lights { display: flex; justify-content: center; gap: 10px; padding-top: 4px; }
+  .celebration-lights span { width: 10px; height: 10px; border-radius: 999px; background: #f59e0b; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.35); animation: celebrationGlow 1.4s ease-in-out infinite; }
+  .celebration-lights span:nth-child(2) { background: #10b981; animation-delay: 0.16s; }
+  .celebration-lights span:nth-child(3) { background: #3b82f6; animation-delay: 0.32s; }
+  .celebration-lights span:nth-child(4) { background: #ec4899; animation-delay: 0.48s; }
+  .celebration-lights span:nth-child(5) { background: #f59e0b; animation-delay: 0.64s; }
+  @keyframes celebrationGlow {
+    0%, 100% { transform: translateY(0) scale(0.92); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.14); opacity: 0.82; }
+    50% { transform: translateY(-4px) scale(1.18); box-shadow: 0 0 18px 4px rgba(245, 158, 11, 0.26); opacity: 1; }
+  }
+  .miss-lights { display: flex; justify-content: center; gap: 10px; padding-top: 4px; }
+  .miss-lights span { width: 10px; height: 10px; border-radius: 999px; background: #ef4444; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2); animation: missGlow 1.8s ease-in-out infinite; }
+  .miss-lights span:nth-child(2) { background: #f97316; animation-delay: 0.18s; }
+  .miss-lights span:nth-child(3) { background: #94a3b8; animation-delay: 0.36s; }
+  .miss-lights span:nth-child(4) { background: #f97316; animation-delay: 0.54s; }
+  .miss-lights span:nth-child(5) { background: #ef4444; animation-delay: 0.72s; }
+  @keyframes missGlow {
+    0%, 100% { transform: translateY(0) scale(0.94); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.1); opacity: 0.7; }
+    50% { transform: translateY(-2px) scale(1.08); box-shadow: 0 0 12px 2px rgba(239, 68, 68, 0.18); opacity: 0.92; }
+  }
   .slot.wrong .tile { background: #fee2e2; border-color: #dc2626; box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.12); }
   .circle.wrong-circle { border-color: #dc2626 !important; background: rgba(239, 68, 68, 0.12) !important; }
   .slot.wrong::before, .slot.wrong::after { background: #dc2626; }
@@ -265,6 +285,8 @@ let homeScreenReturnToLifeline = false;
 const trackedPuzzleStarts = new Set();
 let hardTimerInterval = null;
 let midnightRolloverTimeout = null;
+let dailyCompleteTimeout = null;
+let hardMissedTimeout = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -548,14 +570,38 @@ function openDailyCompleteModal() {
   dailyCompleteModalEl.hidden = false;
 }
 function closeDailyCompleteModal() {
+  if (dailyCompleteTimeout) {
+    window.clearTimeout(dailyCompleteTimeout);
+    dailyCompleteTimeout = null;
+  }
   if (dailyCompleteModalEl) dailyCompleteModalEl.hidden = true;
+}
+function scheduleDailyCompleteModal(delayMs = 3000) {
+  if (!dailyCompleteModalEl) return;
+  if (dailyCompleteTimeout) window.clearTimeout(dailyCompleteTimeout);
+  dailyCompleteTimeout = window.setTimeout(() => {
+    dailyCompleteTimeout = null;
+    openDailyCompleteModal();
+  }, delayMs);
 }
 function openHardMissedModal() {
   if (!hardMissedModalEl) return;
   hardMissedModalEl.hidden = false;
 }
 function closeHardMissedModal() {
+  if (hardMissedTimeout) {
+    window.clearTimeout(hardMissedTimeout);
+    hardMissedTimeout = null;
+  }
   if (hardMissedModalEl) hardMissedModalEl.hidden = true;
+}
+function scheduleHardMissedModal(delayMs = 3000) {
+  if (!hardMissedModalEl) return;
+  if (hardMissedTimeout) window.clearTimeout(hardMissedTimeout);
+  hardMissedTimeout = window.setTimeout(() => {
+    hardMissedTimeout = null;
+    openHardMissedModal();
+  }, delayMs);
 }
 function startHardPracticeMode() {
   if (activeStage !== "hard") return;
@@ -826,7 +872,7 @@ function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
 function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; if (activeStage === "hard") state.timerRemainingMs = Math.min(HARD_TIMER_MS + HARD_LIFELINE_BONUS_MS, (state.timerRemainingMs ?? 0) + HARD_LIFELINE_BONUS_MS); stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One extra try and +15 seconds.", "#b45309"); render(); }
 function maybeOfferLifeline() { if (activeStage !== "hard") return false; const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return false; if (stats.firstLifelinePromptSeen) { activateHardLifeline(); return true; } lifelineModalEl.hidden = false; return true; }
-function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); trackEvent("puzzle_solved", getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null, practice_mode: Boolean(state.practiceMode) })); if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); if (activeStage === "easy" && !completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !completedDailySet ? "Easy cleared. Hard is unlocked." : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) openDailyCompleteModal(); }
+function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); trackEvent("puzzle_solved", getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null, practice_mode: Boolean(state.practiceMode) })); if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); if (activeStage === "easy" && !completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !completedDailySet ? "Easy cleared. Hard is unlocked." : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
 function revealFailureBoard(reason = "Out of tries.") {
   state.failed = true;
   state.solved = false;
@@ -838,7 +884,7 @@ function revealFailureBoard(reason = "Out of tries.") {
     playTone("fail");
     vibrate([120, 60, 120]);
     render();
-    openHardMissedModal();
+    scheduleHardMissedModal(3000);
     return;
   }
   state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null]));
