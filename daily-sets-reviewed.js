@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-24",
+    easy: {
+      title: "Animal + Fictional Character + Nintendo",
+      labels: { A: "Animal", B: "Fictional Character", C: "Nintendo" },
+      tiles: [
+        { label: "Garfield", correctSlot: "S1" },
+        { label: "Nintendogs", correctSlot: "S2" },
+        { label: "Mario", correctSlot: "S3" },
+        { label: "Yoshi", correctSlot: "S4" },
+        { label: "Goldfish", correctSlot: null },
+        { label: "Elsa", correctSlot: null },
+        { label: "Game Boy", correctSlot: null },
+        { label: "Lightning McQueen", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Name + Place Name + Fiction",
+      labels: { A: "Name", B: "Place Name", C: "Fiction" },
+      tiles: [
+        { label: "Madison", correctSlot: "S1" },
+        { label: "Sherlock Holmes", correctSlot: "S2" },
+        { label: "West Egg", correctSlot: "S3" },
+        { label: "Dallas", correctSlot: "S4" },
+        { label: "Notebook", correctSlot: null },
+        { label: "Taxi", correctSlot: null },
+        { label: "Biography", correctSlot: null },
+        { label: "Broadway", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-23",
     easy: {
       title: "Home Amenities + Recreation + Basement",
