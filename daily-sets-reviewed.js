@@ -7,7 +7,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       tiles: [
         { label: "Basketball Hoop", correctSlot: "S1" },
         { label: "Dehumidifier", correctSlot: "S2" },
-        { label: "Poker Night", correctSlot: "S3" },
+        { label: "Ping Pong Match", correctSlot: "S3" },
         { label: "Game Room", correctSlot: "S4" },
         { label: "Garden Hose", correctSlot: null },
         { label: "Bookshelf", correctSlot: null },
@@ -19,8 +19,8 @@ window.COMMON_GROUND_DAILY_SETS = [
       title: "Golf + Elite + Event",
       labels: { A: "Golf", B: "Elite", C: "Event" },
       tiles: [
-        { label: "Country Club", correctSlot: "S1" },
-        { label: "PGA Tour", correctSlot: "S2" },
+        { label: "Country Club Membership", correctSlot: "S1" },
+        { label: "Charity Scramble", correctSlot: "S2" },
         { label: "Black Tie Gala", correctSlot: "S3" },
         { label: "The Masters", correctSlot: "S4" },
         { label: "Tennis Bracelet", correctSlot: null },
