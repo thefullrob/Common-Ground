@@ -123,8 +123,22 @@ runtimeStyle.textContent = `
   #undo-btn:disabled { background: linear-gradient(180deg, #f4eee3 0%, #ede3d2 100%); color: #6b7280; }
   .archive-list, .badge-list { display: grid; gap: 10px; }
   .archive-item, .badge-item { border: 1px solid #e8e0d3; border-radius: 16px; background: #faf6ee; padding: 12px; display: grid; gap: 6px; text-align: left; }
+  .archive-item { position: relative; overflow: hidden; transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease; }
+  .archive-item:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08); }
+  .archive-item.complete { background: linear-gradient(180deg, #f2fbf4 0%, #e5f7ea 100%); border-color: #9fd0ab; box-shadow: inset 0 0 0 1px rgba(86, 170, 102, 0.12); }
+  .archive-item.failed { background: linear-gradient(180deg, #fff3f1 0%, #fde5e1 100%); border-color: #e6b0a9; box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.08); }
+  .archive-item.open { background: #faf6ee; }
+  .archive-item-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .archive-status { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 5px 10px; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; }
+  .archive-status.complete { background: rgba(34, 197, 94, 0.14); color: #166534; }
+  .archive-status.failed { background: rgba(239, 68, 68, 0.12); color: #b91c1c; }
+  .archive-status.open { background: rgba(148, 163, 184, 0.12); color: #526074; }
   .archive-date, .badge-title { font-size: 0.88rem; font-weight: 900; color: #162033; }
   .archive-meta, .badge-copy { font-size: 0.84rem; color: #4b5563; line-height: 1.35; }
+  .archive-item.complete .archive-date { color: #14532d; }
+  .archive-item.failed .archive-date { color: #991b1b; }
+  .archive-item.complete .archive-meta { color: #2f5d3a; }
+  .archive-item.failed .archive-meta { color: #7f1d1d; }
   .badge-item.locked { opacity: 0.6; }
   .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
   .mini-pill { border-radius: 999px; border: 1px solid #d8cfbe; background: #fffdf8; padding: 4px 8px; font-size: 0.72rem; font-weight: 900; color: #435066; }
@@ -556,7 +570,12 @@ function renderArchive() {
     const record = getDayRecord(set.date, false);
     const easyStatus = record?.easy?.status ? capitalize(record.easy.status) : "Open";
     const hardStatus = record?.hard?.status ? capitalize(record.hard.status) : (record?.easy?.status === "solved" ? "Open" : "Locked");
-    return `<button class="archive-item" data-date="${set.date}"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`;
+    const isComplete = Boolean(record?.completedDailySet);
+    const isFailed = record?.easy?.status === "failed" || record?.hard?.status === "failed";
+    const stateClass = isComplete ? "complete" : isFailed ? "failed" : "open";
+    const icon = isComplete ? "&#9733;" : isFailed ? "&#128078;" : "&#9675;";
+    const label = isComplete ? "Cleared" : isFailed ? "Missed" : "Open";
+    return `<button class="archive-item ${stateClass}" data-date="${set.date}"><div class="archive-item-head"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-status ${stateClass}"><span aria-hidden="true">${icon}</span><span>${label}</span></div></div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`;
   }).join("") || `<div class="archive-item"><div class="archive-meta">Archive days will appear here as your queue grows.</div></div>`;
 }
 function openStats() { renderStats(); statsModalEl.hidden = false; }
