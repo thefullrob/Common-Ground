@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-25",
+    easy: {
+      title: "Spring + Music + Festival",
+      labels: { A: "Spring", B: "Music", C: "Festival" },
+      tiles: [
+        { label: "Spring Recital", correctSlot: "S1" },
+        { label: "Cherry Blossom Festival", correctSlot: "S2" },
+        { label: "LOLLAPALOOZA", correctSlot: "S3" },
+        { label: "COACHELLA", correctSlot: "S4" },
+        { label: "Tulip", correctSlot: null },
+        { label: "Guitar Pick", correctSlot: null },
+        { label: "Food Truck", correctSlot: null },
+        { label: "Maypole", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Film + Festival + Europe",
+      labels: { A: "Film", B: "Festival", C: "Europe" },
+      tiles: [
+        { label: "Sundance", correctSlot: "S1" },
+        { label: "Italian Cinema", correctSlot: "S2" },
+        { label: "Oktoberfest", correctSlot: "S3" },
+        { label: "Cannes", correctSlot: "S4" },
+        { label: "Popcorn", correctSlot: null },
+        { label: "Passport", correctSlot: null },
+        { label: "Parade Float", correctSlot: null },
+        { label: "Broadway", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-24",
     easy: {
       title: "Animal + Fictional Character + Nintendo",
