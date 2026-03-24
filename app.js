@@ -458,15 +458,22 @@ function getDerivedStats() {
   const liveDay = getLiveDayStamp(); const yesterday = shiftDayStamp(liveDay, -1);
   const visibleDailyStreak = runByDay[liveDay] || runByDay[yesterday] || 0;
   const dailySetsCompleted = completedDays.length;
+  const easyPuzzlesAttempted = records.filter((entry) => entry.easy?.status === "solved" || entry.easy?.status === "failed").length;
+  const hardPuzzlesAttempted = records.filter((entry) => entry.hard?.status === "solved" || entry.hard?.status === "failed").length;
+  const lifetimePuzzlesAttempted = easyPuzzlesAttempted + hardPuzzlesAttempted;
   const hardPuzzlesCompleted = records.filter((entry) => entry.hard?.status === "solved").length;
   const lifetimePuzzlesSolved = records.reduce((sum, entry) => sum + (entry.easy?.status === "solved" ? 1 : 0) + (entry.hard?.status === "solved" ? 1 : 0), 0);
   const cleanSheetDays = records.filter((entry) => entry.completedDailySet && !entry.usedHardLifeline).length;
   const hardWithoutLifeline = records.filter((entry) => entry.hard?.status === "solved" && !entry.usedHardLifeline).length;
-  const meta = { dailySetsCompleted, hardPuzzlesCompleted, lifetimePuzzlesSolved, cleanSheetDays, hardWithoutLifeline, visibleDailyStreak, bestDailyStreak: best };
+  const meta = { dailySetsCompleted, easyPuzzlesAttempted, hardPuzzlesAttempted, lifetimePuzzlesAttempted, hardPuzzlesCompleted, lifetimePuzzlesSolved, cleanSheetDays, hardWithoutLifeline, visibleDailyStreak, bestDailyStreak: best };
   meta.unlockedBadges = BADGES.filter((badge) => badge.test(meta));
   meta.badgeCount = meta.unlockedBadges.length;
   meta.records = records;
   return meta;
+}
+function formatSolveRate(solved, attempted) {
+  if (!attempted) return "—";
+  return `${Math.round((solved / attempted) * 100)}%`;
 }
 function applyBadgeArt(el, key) {
   if (!el) return;
@@ -515,8 +522,15 @@ function queueNewBadges() {
 }
 function renderStats() {
   const meta = getDerivedStats();
-  const items = [["Daily Streak", meta.visibleDailyStreak], ["Best Daily", meta.bestDailyStreak], ["Daily Sets", meta.dailySetsCompleted], ["Hard Clears", meta.hardPuzzlesCompleted], ["Solved", meta.lifetimePuzzlesSolved], ["Badges", meta.badgeCount]];
-  statsGridEl.innerHTML = items.map(([label, value]) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div></div>`).join("");
+  const items = [
+    { label: "Daily Streak", value: meta.visibleDailyStreak },
+    { label: "Best Daily", value: meta.bestDailyStreak },
+    { label: "Daily Sets", value: meta.dailySetsCompleted },
+    { label: "Overall Solve", value: formatSolveRate(meta.lifetimePuzzlesSolved, meta.lifetimePuzzlesAttempted), note: meta.lifetimePuzzlesAttempted ? `${meta.lifetimePuzzlesSolved} of ${meta.lifetimePuzzlesAttempted} tried` : "No completed attempts yet" },
+    { label: "Hard Solve", value: formatSolveRate(meta.hardPuzzlesCompleted, meta.hardPuzzlesAttempted), note: meta.hardPuzzlesAttempted ? `${meta.hardPuzzlesCompleted} of ${meta.hardPuzzlesAttempted} hard` : "No hard attempts yet" },
+    { label: "Badges", value: meta.badgeCount }
+  ];
+  statsGridEl.innerHTML = items.map(({ label, value, note = "" }) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div>${note ? `<div class="stats-note">${note}</div>` : ""}</div>`).join("");
   statsPuzzleListEl.innerHTML = meta.records.sort((a, b) => b.date.localeCompare(a.date)).map((record) => { const easyStatus = record.easy ? capitalize(record.easy.status) : "Open"; const hardStatus = record.hard ? capitalize(record.hard.status) : (record.easy?.status === "solved" ? "Open" : "Locked"); return `<div class="stats-puzzle-item"><div class="stats-puzzle-title">${formatLongDate(record.date)}</div><div class="stats-puzzle-meta">Easy: ${easyStatus}${record.easy?.tries ? ` (${record.easy.tries}/${BASE_LIVES})` : ""}</div><div class="stats-puzzle-meta">Hard: ${hardStatus}${record.usedHardLifeline ? " - Lifeline used" : ""}</div></div>`; }).join("") || `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">No stats yet. Finish a day and we will track it here.</div></div>`;
 }
 function renderBadges() {
