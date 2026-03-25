@@ -6,9 +6,9 @@ window.COMMON_GROUND_DAILY_SETS = [
       labels: { A: "Spring", B: "Music", C: "Festival" },
       tiles: [
         { label: "Spring Recital", correctSlot: "S1" },
-        { label: "Cherry Blossom Festival", correctSlot: "S2" },
-        { label: "LOLLAPALOOZA", correctSlot: "S3" },
-        { label: "COACHELLA", correctSlot: "S4" },
+        { label: "Cherry-Blossom Festival", correctSlot: "S2" },
+        { label: "Lolla-palooza", correctSlot: "S3" },
+        { label: "Coachella", correctSlot: "S4" },
         { label: "Tulip", correctSlot: null },
         { label: "Guitar Pick", correctSlot: null },
         { label: "Food Truck", correctSlot: null },
