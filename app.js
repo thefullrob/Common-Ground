@@ -139,6 +139,31 @@ runtimeStyle.textContent = `
   .archive-item.failed .archive-date { color: #991b1b; }
   .archive-item.complete .archive-meta { color: #2f5d3a; }
   .archive-item.failed .archive-meta { color: #7f1d1d; }
+  .archive-card { width: min(560px, 100%); }
+  .archive-toolbar { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; gap: 10px; align-items: center; }
+  .archive-nav { min-height: 48px; padding: 0; font-size: 1.6rem; line-height: 1; border-radius: 999px; }
+  .archive-month-label { min-height: 48px; border: 1px solid #d8cfbe; border-radius: 16px; background: #fffdf8; display: grid; place-items: center; font-size: 1.18rem; font-weight: 900; color: #162033; }
+  .archive-weekdays { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; padding: 0 4px; }
+  .archive-weekdays div { text-align: center; font-size: 0.74rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: #8a8f99; }
+  .archive-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px 8px; }
+  .archive-day-spacer { min-height: 82px; }
+  .archive-day { border: none; background: transparent; box-shadow: none; padding: 0; display: grid; justify-items: center; gap: 6px; border-radius: 16px; }
+  .archive-day:hover { transform: none; box-shadow: none; }
+  .archive-day:disabled { opacity: 1; cursor: default; }
+  .archive-day-number { font-size: 0.78rem; font-weight: 900; color: #7b818b; line-height: 1; }
+  .archive-day.muted .archive-day-number { color: #c0c4cc; }
+  .archive-marker { width: 42px; height: 36px; display: grid; place-items: center; }
+  .archive-venn { position: relative; width: 34px; height: 28px; }
+  .archive-venn-circle { position: absolute; width: 18px; height: 18px; border-radius: 999px; border: 2px solid #c9c2b6; background: transparent; }
+  .archive-venn-circle.a { top: 0; left: 8px; }
+  .archive-venn-circle.b { left: 0; top: 10px; }
+  .archive-venn-circle.c { right: 0; top: 10px; }
+  .archive-day.open .archive-venn-circle { border-color: #cfc7bb; background: rgba(255, 253, 248, 0.35); }
+  .archive-day.failed .archive-venn-circle { border-color: #dc2626; background: rgba(248, 113, 113, 0.38); }
+  .archive-day.complete .archive-venn-circle.a { border-color: #5b74a8; background: rgba(155, 188, 236, 0.92); }
+  .archive-day.complete .archive-venn-circle.b { border-color: #b54f88; background: rgba(233, 172, 203, 0.92); }
+  .archive-day.complete .archive-venn-circle.c { border-color: #56a774; background: rgba(191, 237, 194, 0.95); }
+  .archive-day.todayish .archive-day-number { color: #162033; }
   .badge-item.locked { opacity: 0.6; }
   .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
   .mini-pill { border-radius: 999px; border: 1px solid #d8cfbe; background: #fffdf8; padding: 4px 8px; font-size: 0.72rem; font-weight: 900; color: #435066; }
@@ -297,6 +322,7 @@ let currentCalendarDay = getLocalDayStamp();
 let deferredInstallPrompt = null;
 let homeScreenReturnToLifeline = false;
 const trackedPuzzleStarts = new Set();
+let archiveMonthKey = null;
 let hardTimerInterval = null;
 let midnightRolloverTimeout = null;
 let dailyCompleteTimeout = null;
@@ -350,6 +376,9 @@ const statsResetBtn = document.getElementById("stats-reset");
 const archiveModalEl = document.getElementById("archive-modal");
 const archiveListEl = document.getElementById("archive-list");
 const archiveCloseBtn = document.getElementById("archive-close");
+const archivePrevBtn = document.getElementById("archive-prev");
+const archiveNextBtn = document.getElementById("archive-next");
+const archiveMonthLabelEl = document.getElementById("archive-month-label");
 const badgesModalEl = document.getElementById("badges-modal");
 const badgeListEl = document.getElementById("badge-list");
 const badgesCloseBtn = document.getElementById("badges-close");
@@ -387,8 +416,12 @@ function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 function capitalize(value) { return value.charAt(0).toUpperCase() + value.slice(1); }
 function formatLongDate(dayStamp) { const [y, m, d] = dayStamp.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }); }
 function formatShortDate(dayStamp) { const [y, m, d] = dayStamp.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: "short", day: "numeric" }); }
+function formatMonthYear(monthKey) { const [y, m] = monthKey.split("-").map(Number); return new Date(y, m - 1, 1).toLocaleDateString(undefined, { month: "long", year: "numeric" }); }
 function getLocalDayStamp(date = new Date()) { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`; }
 function shiftDayStamp(dayStamp, amount) { const [y, m, d] = dayStamp.split("-").map(Number); const date = new Date(y, m - 1, d); date.setDate(date.getDate() + amount); return getLocalDayStamp(date); }
+function getMonthKey(dayStamp) { return dayStamp.slice(0, 7); }
+function shiftMonthKey(monthKey, amount) { const [y, m] = monthKey.split("-").map(Number); const date = new Date(y, m - 1 + amount, 1); return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`; }
+function getMonthDayStamp(monthKey, day) { return `${monthKey}-${String(day).padStart(2, "0")}`; }
 function getLiveDayStamp() {
   if (!DAILY_SETS.length) return getLocalDayStamp();
   return DAILY_SETS[resolveLiveDayIndex()].date;
@@ -564,19 +597,44 @@ function renderBadges() {
   });
 }
 function renderArchive() {
-  const liveIndex = resolveLiveDayIndex();
-  const archiveSets = DAILY_SETS.slice(0, liveIndex).reverse();
-  archiveListEl.innerHTML = archiveSets.map((set) => {
-    const record = getDayRecord(set.date, false);
-    const easyStatus = record?.easy?.status ? capitalize(record.easy.status) : "Open";
-    const hardStatus = record?.hard?.status ? capitalize(record.hard.status) : (record?.easy?.status === "solved" ? "Open" : "Locked");
+  const liveDay = getLiveDayStamp();
+  const archiveSets = DAILY_SETS.filter((set) => set.date < liveDay);
+  if (!archiveSets.length) {
+    if (archiveMonthLabelEl) archiveMonthLabelEl.textContent = "Archive";
+    if (archivePrevBtn) archivePrevBtn.disabled = true;
+    if (archiveNextBtn) archiveNextBtn.disabled = true;
+    archiveListEl.innerHTML = `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">Archive days will appear here as your queue grows.</div></div>`;
+    return;
+  }
+  const monthKeys = [...new Set(archiveSets.map((set) => getMonthKey(set.date)))].sort();
+  if (!archiveMonthKey || !monthKeys.includes(archiveMonthKey)) archiveMonthKey = monthKeys[monthKeys.length - 1];
+  const monthIndex = monthKeys.indexOf(archiveMonthKey);
+  if (archiveMonthLabelEl) archiveMonthLabelEl.textContent = formatMonthYear(archiveMonthKey);
+  if (archivePrevBtn) archivePrevBtn.disabled = monthIndex <= 0;
+  if (archiveNextBtn) archiveNextBtn.disabled = monthIndex === -1 || monthIndex >= monthKeys.length - 1;
+  const archiveSetMap = new Map(archiveSets.map((set) => [set.date, set]));
+  const [year, month] = archiveMonthKey.split("-").map(Number);
+  const firstDay = new Date(year, month - 1, 1);
+  const firstWeekday = firstDay.getDay();
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const cells = [];
+  for (let i = 0; i < firstWeekday; i += 1) cells.push(`<div class="archive-day-spacer" aria-hidden="true"></div>`);
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const dayStamp = getMonthDayStamp(archiveMonthKey, day);
+    const set = archiveSetMap.get(dayStamp);
+    const isPlayableArchiveDay = Boolean(set);
+    const record = isPlayableArchiveDay ? getDayRecord(dayStamp, false) : null;
     const isComplete = Boolean(record?.completedDailySet);
-    const isFailed = record?.easy?.status === "failed" || record?.hard?.status === "failed";
-    const stateClass = isComplete ? "complete" : isFailed ? "failed" : "open";
-    const icon = isComplete ? "&#9733;" : isFailed ? "&#128078;" : "&#9675;";
-    const label = isComplete ? "Cleared" : isFailed ? "Missed" : "Open";
-    return `<button class="archive-item ${stateClass}" data-date="${set.date}"><div class="archive-item-head"><div class="archive-date">${formatLongDate(set.date)}</div><div class="archive-status ${stateClass}"><span aria-hidden="true">${icon}</span><span>${label}</span></div></div><div class="archive-meta">Easy: ${easyStatus} - Hard: ${hardStatus}</div></button>`;
-  }).join("") || `<div class="archive-item"><div class="archive-meta">Archive days will appear here as your queue grows.</div></div>`;
+    const isAttempted = Boolean(record?.easy?.status || record?.hard?.status);
+    const stateClass = isComplete ? "complete" : isAttempted ? "failed" : "open";
+    const mutedClass = isPlayableArchiveDay ? "todayish" : "muted";
+    cells.push(
+      isPlayableArchiveDay
+        ? `<button class="archive-day ${stateClass} ${mutedClass}" data-date="${dayStamp}" aria-label="${formatLongDate(dayStamp)}"><div class="archive-marker"><div class="archive-venn" aria-hidden="true"><span class="archive-venn-circle a"></span><span class="archive-venn-circle b"></span><span class="archive-venn-circle c"></span></div></div><div class="archive-day-number">${day}</div></button>`
+        : `<button class="archive-day open muted" disabled aria-hidden="true"><div class="archive-marker"></div><div class="archive-day-number">${day}</div></button>`
+    );
+  }
+  archiveListEl.innerHTML = cells.join("");
 }
 function openStats() { renderStats(); statsModalEl.hidden = false; }
 function closeStats() { statsModalEl.hidden = true; }
@@ -965,7 +1023,9 @@ slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.s
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
 undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
-archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-item[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
+archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-day[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
+archivePrevBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, -1); renderArchive(); });
+archiveNextBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, 1); renderArchive(); });
 badgeListEl?.addEventListener("click", (e) => { const button = e.target.closest(".badge-item.unlocked[data-badge-key]"); if (!button) return; openBadgeDetail(button.dataset.badgeKey); });
 function getPuzzleNumber(day = getLiveDayStamp()) {
   const orderedDates = DAILY_SETS
