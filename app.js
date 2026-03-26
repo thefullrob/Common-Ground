@@ -348,6 +348,7 @@ const subtitleEl = document.getElementById("subtitle");
 const launchScreenEl = document.getElementById("launch-screen");
 const launchPlayBtn = document.getElementById("launch-play");
 const launchHowBtn = document.getElementById("launch-how");
+const launchCopyEl = document.getElementById("launch-copy");
 const launchDateEl = document.getElementById("launch-date");
 const launchNumberEl = document.getElementById("launch-number");
 const labelAEl = document.getElementById("label-A");
@@ -756,6 +757,7 @@ function updateProgressRecord(date, stage, status) {
     });
   }
   saveStats();
+  updateLaunchUi();
   queueNewBadges();
 }
 function formatTryCount(count) {
@@ -1037,8 +1039,10 @@ function getPuzzleNumber(day = getLiveDayStamp()) {
 }
 function updateLaunchUi() {
   const liveDay = getLiveDayStamp();
+  const streak = getDerivedStats().visibleDailyStreak;
   if (launchDateEl) launchDateEl.textContent = formatLongDate(liveDay);
   if (launchNumberEl) launchNumberEl.textContent = `No. ${getPuzzleNumber(liveDay)}`;
+  if (launchCopyEl) launchCopyEl.textContent = `Keep your ${streak}-day streak alive.`;
 }
 function handleCalendarDayChange() {
   const localDay = getLocalDayStamp();

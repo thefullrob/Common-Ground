@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-28",
+    easy: {
+      title: "Chicago + Pizza + Chain",
+      labels: { A: "Chicago", B: "Pizza", C: "Chain" },
+      tiles: [
+        { label: "Deep Dish", correctSlot: "S1" },
+        { label: "Portillo's", correctSlot: "S2" },
+        { label: "Domino's", correctSlot: "S3" },
+        { label: "Giordano's", correctSlot: "S4" },
+        { label: "Wrigley Field", correctSlot: null },
+        { label: "Ketchup", correctSlot: null },
+        { label: "Waiter", correctSlot: null },
+        { label: "Food Court", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Party + City + Night",
+      labels: { A: "Party", B: "City", C: "Night" },
+      tiles: [
+        { label: "Block Party", correctSlot: "S1" },
+        { label: "Rave", correctSlot: "S2" },
+        { label: "Nightlife", correctSlot: "S3" },
+        { label: "Nightclub District", correctSlot: "S4" },
+        { label: "Taxi", correctSlot: null },
+        { label: "Champagne", correctSlot: null },
+        { label: "Moonlight", correctSlot: null },
+        { label: "Skyscraper", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-27",
     easy: {
       title: "School + Spring + Sports",
