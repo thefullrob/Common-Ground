@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-27",
+    easy: {
+      title: "School + Spring + Sports",
+      labels: { A: "School", B: "Spring", C: "Sports" },
+      tiles: [
+        { label: "Spring Break", correctSlot: "S1" },
+        { label: "Hockey Team", correctSlot: "S2" },
+        { label: "Opening Day", correctSlot: "S3" },
+        { label: "Field Day", correctSlot: "S4" },
+        { label: "Report Card", correctSlot: null },
+        { label: "Tulip", correctSlot: null },
+        { label: "Baseball Cap", correctSlot: null },
+        { label: "Playground", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Weather + Event + Sports",
+      labels: { A: "Weather", B: "Event", C: "Sports" },
+      tiles: [
+        { label: "Hurricane", correctSlot: "S1" },
+        { label: "Rain Delay", correctSlot: "S2" },
+        { label: "Super Bowl", correctSlot: "S3" },
+        { label: "Snow Bowl", correctSlot: "S4" },
+        { label: "Forecast", correctSlot: null },
+        { label: "Whistle", correctSlot: null },
+        { label: "Parade", correctSlot: null },
+        { label: "Umbrella", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-26",
     easy: {
       title: "Sitcom + New York + Romance",
