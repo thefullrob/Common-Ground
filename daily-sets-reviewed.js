@@ -1,5 +1,36 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-03-26",
+    easy: {
+      title: "Sitcom + New York + Romance",
+      labels: { A: "Sitcom", B: "New York", C: "Romance" },
+      tiles: [
+        { label: "Seinfeld", correctSlot: "S1" },
+        { label: "Dharma & Greg", correctSlot: "S2" },
+        { label: "You've Got Mail", correctSlot: "S3" },
+        { label: "Mad About You", correctSlot: "S4" },
+        { label: "Full House", correctSlot: null },
+        { label: "Central Park", correctSlot: null },
+        { label: "The Notebook", correctSlot: null },
+        { label: "Cheers", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Movie + Romance + L.A.",
+      labels: { A: "Movie", B: "Romance", C: "L.A." },
+      tiles: [
+        { label: "The Notebook", correctSlot: "S1" },
+        { label: "Die Hard", correctSlot: "S2" },
+        { label: "New Girl", correctSlot: "S3" },
+        { label: "Pretty Woman", correctSlot: "S4" },
+        { label: "Popcorn", correctSlot: null },
+        { label: "Cupid", correctSlot: null },
+        { label: "Hollywood Sign", correctSlot: null },
+        { label: "Friends", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-25",
     easy: {
       title: "Spring + Music + Festival",
