@@ -3,6 +3,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-28",
     easy: {
       title: "Chicago + Pizza + Chain",
+      difficultyEstimate: 86,
       labels: { A: "Chicago", B: "Pizza", C: "Chain" },
       tiles: [
         { label: "Deep Dish", correctSlot: "S1" },
@@ -17,6 +18,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Party + City + Night",
+      difficultyEstimate: 58,
       labels: { A: "Party", B: "City", C: "Night" },
       tiles: [
         { label: "Block Party", correctSlot: "S1" },
@@ -34,6 +36,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-27",
     easy: {
       title: "School + Spring + Sports",
+      difficultyEstimate: 84,
       labels: { A: "School", B: "Spring", C: "Sports" },
       tiles: [
         { label: "Spring Break", correctSlot: "S1" },
@@ -48,6 +51,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Weather + Event + Sports",
+      difficultyEstimate: 47,
       labels: { A: "Weather", B: "Event", C: "Sports" },
       tiles: [
         { label: "Hurricane", correctSlot: "S1" },
@@ -65,6 +69,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-26",
     easy: {
       title: "Sitcom + New York + Romance",
+      difficultyEstimate: 81,
       labels: { A: "Sitcom", B: "New York", C: "Romance" },
       tiles: [
         { label: "Seinfeld", correctSlot: "S1" },
@@ -79,6 +84,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Movie + Romance + L.A.",
+      difficultyEstimate: 55,
       labels: { A: "Movie", B: "Romance", C: "L.A." },
       tiles: [
         { label: "The Notebook", correctSlot: "S1" },
@@ -96,6 +102,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-25",
     easy: {
       title: "Spring + Music + Festival",
+      difficultyEstimate: 79,
       labels: { A: "Spring", B: "Music", C: "Festival" },
       tiles: [
         { label: "Spring Recital", correctSlot: "S1" },
@@ -110,6 +117,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Film + Festival + Europe",
+      difficultyEstimate: 51,
       labels: { A: "Film", B: "Festival", C: "Europe" },
       tiles: [
         { label: "Sundance", correctSlot: "S1" },
@@ -127,6 +135,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-24",
     easy: {
       title: "Animal + Fictional Character + Nintendo",
+      difficultyEstimate: 83,
       labels: { A: "Animal", B: "Fictional Character", C: "Nintendo" },
       tiles: [
         { label: "Garfield", correctSlot: "S1" },
@@ -141,6 +150,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Name + Place Name + Fiction",
+      difficultyEstimate: 49,
       labels: { A: "Name", B: "Place Name", C: "Fiction" },
       tiles: [
         { label: "Madison", correctSlot: "S1" },
@@ -158,6 +168,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-23",
     easy: {
       title: "Home Amenities + Recreation + Basement",
+      difficultyEstimate: 86,
       labels: { A: "Home Amenities", B: "Recreation", C: "Basement" },
       tiles: [
         { label: "Basketball Hoop", correctSlot: "S1" },
@@ -172,6 +183,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Golf + Elite + Event",
+      difficultyEstimate: 44,
       labels: { A: "Golf", B: "Elite", C: "Event" },
       tiles: [
         { label: "Country Club Membership", correctSlot: "S1" },
@@ -189,6 +201,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-22",
     easy: {
       title: "Famous Building + Washington D.C. + Tourist",
+      difficultyEstimate: 82,
       labels: { A: "Famous Building", B: "Washington D.C.", C: "Tourist" },
       tiles: [
         { label: "Pentagon", correctSlot: "S1" },
@@ -203,6 +216,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Fast + Luxury + Transportation",
+      difficultyEstimate: 46,
       labels: { A: "Fast", B: "Luxury", C: "Transportation" },
       tiles: [
         { label: "Broken Rolex", correctSlot: "S1" },
@@ -220,6 +234,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-21",
     easy: {
       title: "Book + Disney Character + Animal",
+      difficultyEstimate: 80,
       labels: { A: "Book", B: "Disney Character", C: "Animal" },
       tiles: [
         { label: "Snow White", correctSlot: "S1" },
@@ -234,6 +249,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Zoo + Crime + TV",
+      difficultyEstimate: 43,
       labels: { A: "Zoo", B: "Crime", C: "TV" },
       tiles: [
         { label: "Animal Smuggling", correctSlot: "S1" },
@@ -251,6 +267,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-20",
     easy: {
       title: "Cartoon + Animal + Yellow",
+      difficultyEstimate: 88,
       labels: { A: "Cartoon", B: "Animal", C: "Yellow" },
       tiles: [
         { label: "Snoopy", correctSlot: "S1" },
@@ -265,6 +282,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Politics + Media + Money",
+      difficultyEstimate: 41,
       labels: { A: "Politics", B: "Media", C: "Money" },
       tiles: [
         { label: "Press Secretary", correctSlot: "S1" },
@@ -282,6 +300,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-19",
     easy: {
       title: "HBO + Show + Movie",
+      difficultyEstimate: 81,
       labels: { A: "HBO", B: "Show", C: "Movie" },
       tiles: [
         { label: "The Sopranos", correctSlot: "S1" },
@@ -296,6 +315,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Celebrity + Award Show + Scandal",
+      difficultyEstimate: 53,
       labels: { A: "Celebrity", B: "Award Show", C: "Scandal" },
       tiles: [
         { label: "Meryl Streep", correctSlot: "S1" },
@@ -313,6 +333,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-18",
     easy: {
       title: "Fast Food Chains + Fried Food + Chicken",
+      difficultyEstimate: 78,
       labels: { A: "Fast Food Chains", B: "Fried Food", C: "Chicken" },
       tiles: [
         { label: "Captain D's", correctSlot: "S1" },
@@ -327,6 +348,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Canada + Winter + Sport",
+      difficultyEstimate: 57,
       labels: { A: "Canada", B: "Winter", C: "Sport" },
       tiles: [
         { label: "Quebec Winter Carnival", correctSlot: "S1" },
@@ -344,6 +366,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-17",
     easy: {
       title: "Hobbies + Sports + Collections",
+      difficultyEstimate: 84,
       labels: { A: "Hobbies", B: "Sports", C: "Collections" },
       tiles: [
         { label: "Golf", correctSlot: "S1" },
@@ -358,6 +381,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Banking + Risk + Power",
+      difficultyEstimate: 39,
       labels: { A: "Banking", B: "Risk", C: "Power" },
       tiles: [
         { label: "Big Short", correctSlot: "S1" },
@@ -375,6 +399,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-16",
     easy: {
       title: "Holiday + Character + Outfit",
+      difficultyEstimate: 79,
       labels: { A: "Holiday", B: "Character", C: "Outfit" },
       tiles: [
         { label: "Jack Skellington", correctSlot: "S1" },
@@ -389,6 +414,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Nautical + Adventure + Wealth",
+      difficultyEstimate: 52,
       labels: { A: "Nautical", B: "Adventure", C: "Wealth" },
       tiles: [
         { label: "Treasure Map", correctSlot: "S1" },
@@ -406,6 +432,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-15",
     easy: {
       title: "Florida + Tourist + Water",
+      difficultyEstimate: 87,
       labels: { A: "Florida", B: "Tourist", C: "Water" },
       tiles: [
         { label: "Disney World", correctSlot: "S1" },
@@ -420,6 +447,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Texas + Cowboy + Food",
+      difficultyEstimate: 62,
       labels: { A: "Texas", B: "Cowboy", C: "Food" },
       tiles: [
         { label: "Rodeo", correctSlot: "S1" },
@@ -437,6 +465,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-14",
     easy: {
       title: "Britain + Royalty + Tourist",
+      difficultyEstimate: 83,
       labels: { A: "Britain", B: "Royalty", C: "Tourist" },
       tiles: [
         { label: "King Charles", correctSlot: "S1" },
@@ -451,6 +480,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Spring Break + Beach + Travel",
+      difficultyEstimate: 66,
       labels: { A: "Spring Break", B: "Beach", C: "Travel" },
       tiles: [
         { label: "Beach Bash", correctSlot: "S1" },
@@ -468,6 +498,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-13",
     easy: {
       title: "Ireland + Drink + Green",
+      difficultyEstimate: 82,
       labels: { A: "Ireland", B: "Drink", C: "Green" },
       tiles: [
         { label: "Guinness", correctSlot: "S1" },
@@ -482,6 +513,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Space + Movie + Travel",
+      difficultyEstimate: 56,
       labels: { A: "Space", B: "Movie", C: "Travel" },
       tiles: [
         { label: "Star Wars", correctSlot: "S1" },
@@ -499,6 +531,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-12",
     easy: {
       title: "Breakfast + Sweet + Baked",
+      difficultyEstimate: 90,
       labels: { A: "Breakfast", B: "Sweet", C: "Baked" },
       tiles: [
         { label: "Pancakes", correctSlot: "S1" },
@@ -513,6 +546,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Kitchen + Electric + Cleans",
+      difficultyEstimate: 68,
       labels: { A: "Kitchen", B: "Electric", C: "Cleans" },
       tiles: [
         { label: "Toaster", correctSlot: "S1" },
@@ -530,6 +564,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-11",
     easy: {
       title: "Red + Round + Food",
+      difficultyEstimate: 91,
       labels: { A: "Red", B: "Round", C: "Food" },
       tiles: [
         { label: "Stop Sign", correctSlot: "S1" },
@@ -544,6 +579,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Luxury + Travel + Water",
+      difficultyEstimate: 63,
       labels: { A: "Luxury", B: "Travel", C: "Water" },
       tiles: [
         { label: "First Class", correctSlot: "S1" },
@@ -561,6 +597,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-10",
     easy: {
       title: "School + Write + Small",
+      difficultyEstimate: 88,
       labels: { A: "School", B: "Write", C: "Small" },
       tiles: [
         { label: "Whiteboard", correctSlot: "S1" },
@@ -575,6 +612,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Workout + Music + Portable",
+      difficultyEstimate: 61,
       labels: { A: "Workout", B: "Music", C: "Portable" },
       tiles: [
         { label: "Running Playlist", correctSlot: "S1" },
@@ -592,6 +630,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-09",
     easy: {
       title: "Cold + Sweet + Party",
+      difficultyEstimate: 89,
       labels: { A: "Cold", B: "Sweet", C: "Party" },
       tiles: [
         { label: "Ice Cream", correctSlot: "S1" },
@@ -606,6 +645,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Wedding + Fancy + Photos",
+      difficultyEstimate: 59,
       labels: { A: "Wedding", B: "Fancy", C: "Photos" },
       tiles: [
         { label: "Champagne Tower", correctSlot: "S1" },
@@ -623,6 +663,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-08",
     easy: {
       title: "Los Angeles + Tourist + Gridlock",
+      difficultyEstimate: 86,
       labels: { A: "Los Angeles", B: "Tourist", C: "Gridlock" },
       tiles: [
         { label: "Hollywood Sign", correctSlot: "S1" },
@@ -637,6 +678,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "France + Fashion + Tourist",
+      difficultyEstimate: 57,
       labels: { A: "France", B: "Fashion", C: "Tourist" },
       tiles: [
         { label: "Paris Runway", correctSlot: "S1" },
@@ -654,6 +696,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-07",
     easy: {
       title: "Pet + Home + Sleep",
+      difficultyEstimate: 92,
       labels: { A: "Pet", B: "Home", C: "Sleep" },
       tiles: [
         { label: "Litter Box", correctSlot: "S1" },
@@ -668,6 +711,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Luxury + Watch + Travel",
+      difficultyEstimate: 65,
       labels: { A: "Luxury", B: "Watch", C: "Travel" },
       tiles: [
         { label: "Rolex", correctSlot: "S1" },
@@ -685,6 +729,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-06",
     easy: {
       title: "New York + Tourist + Crowded",
+      difficultyEstimate: 84,
       labels: { A: "New York", B: "Tourist", C: "Crowded" },
       tiles: [
         { label: "Empire State Building", correctSlot: "S1" },
@@ -699,6 +744,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Movie + Crime + New York",
+      difficultyEstimate: 48,
       labels: { A: "Movie", B: "Crime", C: "New York" },
       tiles: [
         { label: "Scarface", correctSlot: "S1" },
@@ -716,6 +762,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-05",
     easy: {
       title: "Basketball + Famous + Sneakers",
+      difficultyEstimate: 80,
       labels: { A: "Basketball", B: "Famous", C: "Sneakers" },
       tiles: [
         { label: "LeBron James", correctSlot: "S1" },
@@ -730,6 +777,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "President + Famous + American",
+      difficultyEstimate: 45,
       labels: { A: "President", B: "Famous", C: "American" },
       tiles: [
         { label: "Nelson Mandela", correctSlot: "S1" },
@@ -747,6 +795,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-04",
     easy: {
       title: "London + Tourist + Crowded",
+      difficultyEstimate: 85,
       labels: { A: "London", B: "Tourist", C: "Crowded" },
       tiles: [
         { label: "Red Phone Booth", correctSlot: "S1" },
@@ -761,6 +810,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Adjective + Fashion + Compliment",
+      difficultyEstimate: 54,
       labels: { A: "Adjective", B: "Fashion", C: "Compliment" },
       tiles: [
         { label: "Trendy", correctSlot: "S1" },
@@ -778,6 +828,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-03",
     easy: {
       title: "Famous Athlete + Tennis + Fashion",
+      difficultyEstimate: 78,
       labels: { A: "Famous Athlete", B: "Tennis", C: "Fashion" },
       tiles: [
         { label: "Venus Williams", correctSlot: "S1" },
@@ -792,6 +843,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Famous Musician + Rock + Country",
+      difficultyEstimate: 52,
       labels: { A: "Famous Musician", B: "Rock", C: "Country" },
       tiles: [
         { label: "Mick Jagger", correctSlot: "S1" },

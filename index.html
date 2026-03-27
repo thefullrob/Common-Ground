@@ -983,6 +983,10 @@
       </div>
       <h2>CONGRATULATIONS!</h2>
       <div class="modal-copy" id="daily-complete-copy">You finished today's Common Ground set. Come back tomorrow for a new pair of categories.</div>
+      <div class="difficulty-panel" id="daily-complete-difficulty" hidden>
+        <div class="difficulty-kicker">Common Ground Estimate</div>
+        <div class="difficulty-grid" id="daily-complete-difficulty-grid"></div>
+      </div>
       <div class="modal-actions">
         <button id="daily-complete-stats">View Stats</button>
         <button id="daily-complete-share" class="modal-primary">Share Results</button>
@@ -1000,7 +1004,11 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <h2>Too Bad, You Missed Today's Hard Puzzle</h2>
-      <div class="modal-copy">You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.</div>
+      <div class="modal-copy" id="hard-missed-copy">You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.</div>
+      <div class="difficulty-panel hard" id="hard-missed-difficulty" hidden>
+        <div class="difficulty-kicker">Common Ground Estimate</div>
+        <div class="difficulty-grid" id="hard-missed-difficulty-grid"></div>
+      </div>
       <div class="modal-actions">
         <button id="hard-missed-stats">View Stats</button>
         <button id="hard-missed-share" class="modal-primary">Share Results</button>
@@ -1012,8 +1020,8 @@
     </div>
   </div>
 
-    <script src="daily-sets-reviewed.js?v=20260328a"></script>
-    <script src="app.js?v=20260326a"></script>
+    <script src="daily-sets-reviewed.js?v=20260328c"></script>
+    <script src="app.js?v=20260327a"></script>
   </body>
   </html>
 

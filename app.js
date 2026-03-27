@@ -174,6 +174,25 @@ runtimeStyle.textContent = `
   .modal-copy { color: #435066; font-size: 0.94rem; line-height: 1.45; text-align: center; }
   .modal-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .modal-primary { background: #111827; color: #fff; border-color: #111827; }
+  .difficulty-panel { border: 1px solid #e3d8c6; border-radius: 18px; background: linear-gradient(180deg, #fffcf5 0%, #f7efe0 100%); padding: 12px; display: grid; gap: 10px; }
+  .difficulty-panel[hidden] { display: none; }
+  .difficulty-kicker { font-size: 0.72rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; color: #7a5a35; }
+  .difficulty-grid { display: grid; gap: 8px; }
+  .difficulty-item { border: 1px solid rgba(216, 207, 190, 0.82); border-radius: 14px; background: rgba(255, 255, 255, 0.72); padding: 10px; display: grid; gap: 6px; }
+  .difficulty-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .difficulty-label { font-size: 0.82rem; font-weight: 900; color: #162033; }
+  .difficulty-rate { font-size: 1.25rem; font-weight: 900; color: #162033; line-height: 1; }
+  .difficulty-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .difficulty-note { font-size: 0.78rem; color: #5a6476; line-height: 1.25; }
+  .difficulty-meter { display: inline-flex; align-items: center; gap: 5px; }
+  .difficulty-dot { width: 14px; height: 14px; border-radius: 999px; border: 2px solid #d4ccbf; background: transparent; }
+  .difficulty-dot.filled.easy-a { border-color: #8b5cf6; background: rgba(168, 85, 247, 0.72); }
+  .difficulty-dot.filled.easy-b { border-color: #10b981; background: rgba(16, 185, 129, 0.72); }
+  .difficulty-dot.filled.easy-c { border-color: #3b82f6; background: rgba(59, 130, 246, 0.72); }
+  .difficulty-dot.filled.hard-a { border-color: #d97706; background: rgba(245, 158, 11, 0.72); }
+  .difficulty-dot.filled.hard-b { border-color: #ef4444; background: rgba(239, 68, 68, 0.72); }
+  .difficulty-dot.filled.hard-c { border-color: #a855f7; background: rgba(168, 85, 247, 0.72); }
+  .difficulty-tier { font-size: 0.78rem; font-weight: 900; color: #7a5a35; white-space: nowrap; }
   .celebration-lights { display: flex; justify-content: center; gap: 10px; padding-top: 4px; }
   .celebration-lights span { width: 10px; height: 10px; border-radius: 999px; background: #f59e0b; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.35); animation: celebrationGlow 1.4s ease-in-out infinite; }
   .celebration-lights span:nth-child(2) { background: #10b981; animation-delay: 0.16s; }
@@ -403,11 +422,16 @@ const homeScreenUseBtn = document.getElementById("home-screen-use");
 const homeScreenCopyEl = document.getElementById("home-screen-copy");
 const dailyCompleteModalEl = document.getElementById("daily-complete-modal");
 const dailyCompleteCopyEl = document.getElementById("daily-complete-copy");
+const dailyCompleteDifficultyEl = document.getElementById("daily-complete-difficulty");
+const dailyCompleteDifficultyGridEl = document.getElementById("daily-complete-difficulty-grid");
 const dailyCompleteStatsBtn = document.getElementById("daily-complete-stats");
 const dailyCompleteShareBtn = document.getElementById("daily-complete-share");
 const dailyCompleteArchiveBtn = document.getElementById("daily-complete-archive");
 const dailyCompleteCloseBtn = document.getElementById("daily-complete-close");
 const hardMissedModalEl = document.getElementById("hard-missed-modal");
+const hardMissedCopyEl = document.getElementById("hard-missed-copy");
+const hardMissedDifficultyEl = document.getElementById("hard-missed-difficulty");
+const hardMissedDifficultyGridEl = document.getElementById("hard-missed-difficulty-grid");
 const hardMissedStatsBtn = document.getElementById("hard-missed-stats");
 const hardMissedShareBtn = document.getElementById("hard-missed-share");
 const hardMissedArchiveBtn = document.getElementById("hard-missed-archive");
@@ -459,6 +483,10 @@ function trackPuzzleStart(day = getActiveDate(), stage = activeStage) {
 function getActiveSet() { return DAILY_SETS[activeDayIndex]; }
 function getActiveDate() { return getActiveSet()?.date || null; }
 function getActivePuzzle() { return getActiveSet()?.[activeStage] || null; }
+function getPuzzleByStage(day = getActiveDate(), stage = activeStage) {
+  const set = DAILY_SETS.find((entry) => entry.date === day);
+  return set?.[stage] || null;
+}
 function getStageKey(day = getActiveDate(), stage = activeStage) { return `${day}:${stage}`; }
 function getStageRecord(day = getActiveDate(), stage = activeStage) { const record = getDayRecord(day, false); return record ? record[stage] : null; }
 function isHardUnlocked(day = getActiveDate()) { return Boolean(getStageRecord(day, "easy")?.status === "solved"); }
@@ -522,6 +550,37 @@ function getDerivedStats() {
 function formatSolveRate(solved, attempted) {
   if (!attempted) return "—";
   return `${Math.round((solved / attempted) * 100)}%`;
+}
+function getDifficultyPercent(day = getActiveDate(), stage = activeStage) {
+  const percent = Number(getPuzzleByStage(day, stage)?.difficultyEstimate);
+  return Number.isFinite(percent) ? Math.max(0, Math.min(100, Math.round(percent))) : null;
+}
+function getDifficultyBars(percent, stage) {
+  if (!Number.isFinite(percent)) return 0;
+  const max = stage === "easy" ? 95 : 85;
+  const min = stage === "easy" ? 70 : 35;
+  const normalized = 1 - ((percent - min) / (max - min));
+  return Math.max(1, Math.min(5, Math.round((normalized * 4) + 1)));
+}
+function getDifficultyLabel(percent, stage) {
+  const bars = getDifficultyBars(percent, stage);
+  const labels = stage === "easy"
+    ? ["Gentle", "Friendly", "Tricky", "Tough", "Brutal"]
+    : ["Manageable", "Spicy", "Tough", "Brutal", "Savage"];
+  return labels[bars - 1];
+}
+function renderDifficultyItem(stage, percent) {
+  const bars = getDifficultyBars(percent, stage);
+  const dotClasses = stage === "easy"
+    ? ["easy-a", "easy-b", "easy-c", "easy-a", "easy-b"]
+    : ["hard-a", "hard-b", "hard-c", "hard-a", "hard-b"];
+  const dots = Array.from({ length: 5 }, (_, index) => `<span class="difficulty-dot${index < bars ? ` filled ${dotClasses[index]}` : ""}"></span>`).join("");
+  return `<div class="difficulty-item"><div class="difficulty-head"><div class="difficulty-label">${capitalize(stage)}</div><div class="difficulty-rate">${percent}%</div></div><div class="difficulty-meta"><div class="difficulty-note">Estimated clear rate</div><div class="difficulty-tier">${bars}/5 ${getDifficultyLabel(percent, stage)}</div></div><div class="difficulty-meter" aria-hidden="true">${dots}</div></div>`;
+}
+function renderDifficultyGrid(targetEl, items) {
+  if (!targetEl) return;
+  const visibleItems = items.filter((item) => Number.isFinite(item.percent));
+  targetEl.innerHTML = visibleItems.map((item) => renderDifficultyItem(item.stage, item.percent)).join("");
 }
 function applyBadgeArt(el, key) {
   if (!el) return;
@@ -659,6 +718,14 @@ function openDailyCompleteModal() {
   if (dailyCompleteCopyEl) {
     dailyCompleteCopyEl.textContent = `You finished today's Common Ground set for ${formatLongDate(getActiveDate())}. Come back tomorrow for a new pair of categories.`;
   }
+  if (dailyCompleteDifficultyEl && dailyCompleteDifficultyGridEl) {
+    const items = [
+      { stage: "easy", percent: getDifficultyPercent(getActiveDate(), "easy") },
+      { stage: "hard", percent: getDifficultyPercent(getActiveDate(), "hard") }
+    ];
+    renderDifficultyGrid(dailyCompleteDifficultyGridEl, items);
+    dailyCompleteDifficultyEl.hidden = items.every((item) => !Number.isFinite(item.percent));
+  }
   dailyCompleteModalEl.hidden = false;
 }
 function closeDailyCompleteModal() {
@@ -678,6 +745,12 @@ function scheduleDailyCompleteModal(delayMs = 3000) {
 }
 function openHardMissedModal() {
   if (!hardMissedModalEl) return;
+  if (hardMissedCopyEl) hardMissedCopyEl.textContent = "You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.";
+  if (hardMissedDifficultyEl && hardMissedDifficultyGridEl) {
+    const percent = getDifficultyPercent(getActiveDate(), "hard");
+    renderDifficultyGrid(hardMissedDifficultyGridEl, [{ stage: "hard", percent }]);
+    hardMissedDifficultyEl.hidden = !Number.isFinite(percent);
+  }
   hardMissedModalEl.hidden = false;
 }
 function closeHardMissedModal() {
