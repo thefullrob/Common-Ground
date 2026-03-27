@@ -39,23 +39,23 @@ const SERVICE_ACCT  = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 // ─── STEP 1: GET TODAY'S PUZZLE ──────────────────────────────────────────────
 
 async function getTodaysPuzzle() {
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const today = new Date().toISOString().split('T')[0];
 
-  // Fetch the puzzle data file from your live site
   const jsText = await fetch(
     `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/daily-sets-reviewed.js`
   ).then(r => r.text());
 
-  // Parse the JS array out of the file
-  const arrayText = jsText.replace('window.COMMON_GROUND_DAILY_SETS = ', '').replace(/;?\s*$/, '');
-  const sets = JSON.parse(arrayText);
+  // Use eval in a controlled way to parse the JS array
+  let sets;
+  const script = jsText.replace('window.COMMON_GROUND_DAILY_SETS = ', 'sets = ');
+  eval(script);
 
   const todaySet = sets.find(s => s.date === today);
   if (!todaySet) throw new Error(`No puzzle found for ${today}`);
 
   return {
     date: todaySet.date,
-    puzzleNumber: sets.indexOf(todaySet) + 1,
+    puzzleNumber: sets.length - sets.indexOf(todaySet),
     categoryA: todaySet.easy.labels.A,
     categoryB: todaySet.easy.labels.B,
     categoryC: todaySet.easy.labels.C,
