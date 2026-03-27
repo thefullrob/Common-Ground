@@ -2,6 +2,7 @@
 runtimeStyle.textContent = `
   .top-row { display: grid; gap: 8px; justify-items: center; }
   .nav-row, .stage-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+  .game-wordmark { text-align: center; color: #5f4525; font-family: Georgia, "Times New Roman", serif; font-size: 0.98rem; line-height: 1; letter-spacing: 0.16em; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; opacity: 0.88; }
   .stage-btn.locked { color: #8b94a7; }
   .stage-btn.unlocked-pulse { animation: hardUnlockPulse 1s ease-in-out infinite; box-shadow: 0 0 0 0 rgba(17, 24, 39, 0.2); }
   @keyframes hardUnlockPulse {
@@ -275,7 +276,7 @@ runtimeStyle.textContent += `
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
 const BASE_LIVES = 3;
-const HARD_TIMER_MS = 45000;
+const HARD_TIMER_MS = 30000;
 const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
@@ -420,6 +421,10 @@ const useLifelineBtn = document.getElementById("use-lifeline-btn");
 const homeScreenCloseBtn = document.getElementById("home-screen-close");
 const homeScreenUseBtn = document.getElementById("home-screen-use");
 const homeScreenCopyEl = document.getElementById("home-screen-copy");
+const hardReadyModalEl = document.getElementById("hard-ready-modal");
+const hardReadyCopyEl = document.getElementById("hard-ready-copy");
+const hardReadyStartBtn = document.getElementById("hard-ready-start");
+const hardReadyZenBtn = document.getElementById("hard-ready-zen");
 const dailyCompleteModalEl = document.getElementById("daily-complete-modal");
 const dailyCompleteCopyEl = document.getElementById("daily-complete-copy");
 const dailyCompleteDifficultyEl = document.getElementById("daily-complete-difficulty");
@@ -768,6 +773,14 @@ function scheduleHardMissedModal(delayMs = 3000) {
     openHardMissedModal();
   }, delayMs);
 }
+function openHardReadyModal() {
+  if (!hardReadyModalEl) return;
+  if (hardReadyCopyEl) hardReadyCopyEl.textContent = `You have ${Math.round(HARD_TIMER_MS / 1000)} seconds to complete this puzzle.`;
+  hardReadyModalEl.hidden = false;
+}
+function closeHardReadyModal() {
+  if (hardReadyModalEl) hardReadyModalEl.hidden = true;
+}
 function startHardPracticeMode() {
   if (activeStage !== "hard") return;
   closeHardMissedModal();
@@ -777,6 +790,28 @@ function startHardPracticeMode() {
   state.lastTimerTickAt = null;
   setMessage("Practice Mode - no timer, no streak or badge credit.", "#7a5a35");
   render();
+}
+function startHardZenMode() {
+  closeHardReadyModal();
+  loadDay(activeDayIndex, "hard", activeSection);
+  state.practiceMode = true;
+  state.timerRemainingMs = null;
+  state.lastTimerTickAt = null;
+  setMessage("Zen Mode - no timer, no streak or badge credit.", "#7a5a35");
+  render();
+}
+function beginHardTimedMode() {
+  closeHardReadyModal();
+  loadDay(activeDayIndex, "hard", activeSection);
+}
+function handleHardStageRequest() {
+  if (activeStage === "hard" || !isHardUnlocked()) return;
+  const hardRecord = getStageRecord(getActiveDate(), "hard");
+  if (hardRecord?.status) {
+    switchStage("hard");
+    return;
+  }
+  openHardReadyModal();
 }
 function isStandaloneMode() { return window.matchMedia?.("(display-mode: standalone)")?.matches || window.navigator.standalone === true; }
 function isIosDevice() { return /iPad|iPhone|iPod/.test(window.navigator.userAgent) || (window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1); }
@@ -923,7 +958,7 @@ function formatTimerLabel(ms) {
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 function isTimerPaused() {
-  return document.hidden || !hardTimerInterval || !homeScreenModalEl.hidden || !lifelineModalEl.hidden || !statsModalEl.hidden || !archiveModalEl.hidden || !badgesModalEl.hidden || !badgeUnlockModalEl.hidden || !badgeDetailModalEl.hidden || !tutorialEl.hidden || !launchScreenEl.hidden || !hardMissedModalEl.hidden;
+  return document.hidden || !hardTimerInterval || !homeScreenModalEl.hidden || !lifelineModalEl.hidden || !statsModalEl.hidden || !archiveModalEl.hidden || !badgesModalEl.hidden || !badgeUnlockModalEl.hidden || !badgeDetailModalEl.hidden || !tutorialEl.hidden || !launchScreenEl.hidden || !hardMissedModalEl.hidden || !hardReadyModalEl.hidden;
 }
 function updateTimerUi() {
   const showTimer = activeStage === "hard" && !state?.practiceMode && Boolean(timerWrapEl);
@@ -1097,7 +1132,7 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); submitBtn?.addEventListener("click", submitAnswers); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", handleHardStageRequest); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-day[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 archivePrevBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, -1); renderArchive(); });
 archiveNextBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, 1); renderArchive(); });
@@ -1149,8 +1184,8 @@ function dismissTutorial() {
 function closeLaunchScreen() {
   if (launchScreenEl) launchScreenEl.hidden = true;
 }
-[statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl, dailyCompleteModalEl, hardMissedModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); if (modal === dailyCompleteModalEl) closeDailyCompleteModal(); if (modal === hardMissedModalEl) closeHardMissedModal(); }); });
-window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); closeDailyCompleteModal(); closeHardMissedModal(); });
+[statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl, dailyCompleteModalEl, hardMissedModalEl, hardReadyModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); if (modal === dailyCompleteModalEl) closeDailyCompleteModal(); if (modal === hardMissedModalEl) closeHardMissedModal(); if (modal === hardReadyModalEl) closeHardReadyModal(); }); });
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); closeDailyCompleteModal(); closeHardMissedModal(); closeHardReadyModal(); });
 window.setInterval(handleCalendarDayChange, 60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

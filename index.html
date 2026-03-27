@@ -819,6 +819,7 @@
     </section>
 
     <section class="card game">
+      <div class="game-wordmark">COMMON GROUND</div>
       <div class="stage-row">
         <button id="easy-btn" class="stage-btn active">Easy</button>
         <button id="hard-btn" class="stage-btn locked" disabled>Hard</button>
@@ -976,6 +977,18 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="hard-ready-modal" hidden>
+    <div class="modal-card">
+      <h2>Get Ready!</h2>
+      <div class="modal-copy" id="hard-ready-copy">You have 30 seconds to complete this puzzle.</div>
+      <div class="modal-actions">
+        <button id="hard-ready-zen">Play In Zen Mode</button>
+        <button id="hard-ready-start" class="modal-primary">Play Timed</button>
+      </div>
+      <div class="modal-copy">Zen Mode has no timer and does not count toward streaks or badges.</div>
+    </div>
+  </div>
+
   <div class="modal-overlay" id="daily-complete-modal" hidden>
     <div class="modal-card">
       <div class="celebration-lights" aria-hidden="true">
@@ -1021,7 +1034,7 @@
   </div>
 
     <script src="daily-sets-reviewed.js?v=20260328c"></script>
-    <script src="app.js?v=20260327a"></script>
+    <script src="app.js?v=20260327d"></script>
   </body>
   </html>
 
