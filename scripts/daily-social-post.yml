@@ -1,0 +1,29 @@
+name: Daily Social Post
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs at 8am ET (12pm UTC) every day
+  workflow_dispatch:        # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @googleapis/sheets sharp
+
+      - name: Run daily social automation
+        run: node scripts/daily-social-automation.js
+        env:
+          GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
