@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install @googleapis/sheets sharp
+        run: npm install googleapis google-auth-library sharp
 
       - name: Run daily social automation
         run: node scripts/daily-social-automation.js
