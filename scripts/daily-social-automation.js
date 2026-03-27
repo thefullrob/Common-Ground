@@ -213,15 +213,16 @@ async function uploadToGitHub(pngBuffer) {
 
 async function updateGoogleSheet(puzzle, imageUrl) {
   const auth = new google.auth.GoogleAuth({
-    credentials: SERVICE_ACCT,
+    credentials: {
+      client_email: SERVICE_ACCT.client_email,
+      private_key: SERVICE_ACCT.private_key,
+    },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
-
-  const sheets = google.sheets({ version: 'v4', auth });
+const sheets = google.sheets({ version: 'v4', auth });
 
   const postCopy = `🧩 Puzzle #${puzzle.puzzleNumber} — Can you find the Common Ground between ${puzzle.categoryA}, ${puzzle.categoryB}, and ${puzzle.categoryC}? Play free at commongroundpuzzle.com`;
 
-  // Find first empty row and write today's data
   await sheets.spreadsheets.values.append({
     spreadsheetId: SHEET_ID,
     range: 'Daily Puzzle!A:G',
@@ -229,17 +230,16 @@ async function updateGoogleSheet(puzzle, imageUrl) {
     insertDataOption: 'INSERT_ROWS',
     requestBody: {
       values: [[
-        puzzle.date,           // A: Date
-        puzzle.puzzleNumber,   // B: Puzzle Number
-        puzzle.categoryA,      // C: Category A
-        puzzle.categoryB,      // D: Category B
-        puzzle.categoryC,      // E: Category C
-        postCopy,              // F: Post Copy
-        imageUrl,              // G: Post Link (image URL)
+        puzzle.date,
+        puzzle.puzzleNumber,
+        puzzle.categoryA,
+        puzzle.categoryB,
+        puzzle.categoryC,
+        postCopy,
+        imageUrl,
       ]]
     }
   });
-
   console.log(`✅ Sheet updated for ${puzzle.date}`);
 }
 
