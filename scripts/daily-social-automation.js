@@ -1,5 +1,5 @@
 const { GoogleAuth } = require('google-auth-library');
-const { google } = require('@googleapis/sheets');
+   const { google } = require('googleapis');
 const sharp = require('sharp');
 
 const GITHUB_USER   = 'thefullrob';
