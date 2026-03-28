@@ -132,6 +132,37 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   },
   {
+    date: "2026-03-29",
+    easy: {
+      title: "U.S. History + President + Monument",
+      labels: { A: "U.S. History", B: "President", C: "Monument" },
+      tiles: [
+        { label: "Abraham Lincoln", correctSlot: "S1" },
+        { label: "Bunker Hill Monument", correctSlot: "S2" },
+        { label: "Mount Rushmore", correctSlot: "S3" },
+        { label: "Jefferson Memorial", correctSlot: "S4" },
+        { label: "Paul Revere", correctSlot: null },
+        { label: "Capitol Building", correctSlot: null },
+        { label: "Marble Statue", correctSlot: null },
+        { label: "Oval Office", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "China + City + Landmark",
+      labels: { A: "China", B: "City", C: "Landmark" },
+      tiles: [
+        { label: "Shenzhen", correctSlot: "S1" },
+        { label: "Terracotta Army", correctSlot: "S2" },
+        { label: "Space Needle", correctSlot: "S3" },
+        { label: "Forbidden City", correctSlot: "S4" },
+        { label: "Silk Road", correctSlot: null },
+        { label: "Jade Palace", correctSlot: null },
+        { label: "Night Market", correctSlot: null },
+        { label: "Porcelain Vase", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-24",
     easy: {
       title: "Animal + Fictional Character + Nintendo",
