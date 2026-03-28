@@ -1,5 +1,5 @@
 const { GoogleAuth } = require('google-auth-library');
-   const { google } = require('googleapis');
+const { google } = require('googleapis');
 const sharp = require('sharp');
 
 const GITHUB_USER   = 'thefullrob';
@@ -13,18 +13,14 @@ const SERVICE_ACCT = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
 async function getTodaysPuzzle() {
   const today = new Date().toISOString().split('T')[0];
-
   const jsText = await fetch(
     `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/daily-sets-reviewed.js`
   ).then(r => r.text());
-
   let sets;
   const script = jsText.replace('window.COMMON_GROUND_DAILY_SETS = ', 'sets = ');
   eval(script);
-
   const todaySet = sets.find(s => s.date === today);
   if (!todaySet) throw new Error(`No puzzle found for ${today}`);
-
   return {
     date: todaySet.date,
     puzzleNumber: sets.length - sets.indexOf(todaySet),
@@ -38,10 +34,7 @@ async function getTodaysPuzzle() {
 function generateSVG(puzzle) {
   const { categoryA, categoryB, categoryC, date, puzzleNumber } = puzzle;
   const dateObj = new Date(date + 'T12:00:00');
-  const dateFormatted = dateObj.toLocaleDateString('en-US', {
-    month: 'long', day: 'numeric', year: 'numeric'
-  });
-
+  const dateFormatted = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   return `<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
   <rect width="1080" height="1080" fill="#E8DCC8"/>
   <text x="540" y="110" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#7a5c3a" text-anchor="middle" letter-spacing="8">DAILY PUZZLE · #${puzzleNumber}</text>
@@ -79,7 +72,6 @@ async function generatePNG(svgString) {
 async function uploadToGitHub(pngBuffer) {
   const base64 = pngBuffer.toString('base64');
   const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${IMAGE_PATH}`;
-
   let sha;
   try {
     const existing = await fetch(apiUrl, {
@@ -87,7 +79,6 @@ async function uploadToGitHub(pngBuffer) {
     }).then(r => r.json());
     sha = existing.sha;
   } catch (e) { sha = undefined; }
-
   const response = await fetch(apiUrl, {
     method: 'PUT',
     headers: {
@@ -102,7 +93,6 @@ async function uploadToGitHub(pngBuffer) {
       ...(sha ? { sha } : {})
     })
   });
-
   if (!response.ok) throw new Error(`GitHub upload failed: ${await response.text()}`);
   return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_PATH}`;
 }
@@ -115,11 +105,8 @@ async function updateGoogleSheet(puzzle, imageUrl) {
     },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
-
   const sheets = google.sheets({ version: 'v4', auth });
-
-  const postCopy = `🧩 Puzzle #${puzzle.puzzleNumber} — Can you find the Common Ground between ${puzzle.categoryA}, ${puzzle.categoryB}, and ${puzzle.categoryC}? Play free at commongroundpuzzle.com`;
-
+  const postCopy = `Puzzle #${puzzle.puzzleNumber} — Most people can't solve this in 3 tries.\n\nWhat do ${puzzle.categoryA}, ${puzzle.categoryB} and ${puzzle.categoryC} all have in common?\n\nThink you can find the Common Ground? commongroundpuzzle.com`;
   await sheets.spreadsheets.values.append({
     spreadsheetId: SHEET_ID,
     range: 'Daily Puzzle!A:G',
@@ -137,30 +124,25 @@ async function updateGoogleSheet(puzzle, imageUrl) {
       ]]
     }
   });
-
-  console.log(`✅ Sheet updated for ${puzzle.date}`);
+  console.log(`Sheet updated for ${puzzle.date}`);
 }
 
 async function main() {
   try {
-    console.log('🔍 Getting today\'s puzzle...');
+    console.log('Getting today puzzle...');
     const puzzle = await getTodaysPuzzle();
-    console.log(`📅 Found: ${puzzle.date} — ${puzzle.categoryA} + ${puzzle.categoryB} + ${puzzle.categoryC}`);
-
-    console.log('🎨 Generating social image...');
+    console.log(`Found: ${puzzle.date} - ${puzzle.categoryA} + ${puzzle.categoryB} + ${puzzle.categoryC}`);
+    console.log('Generating social image...');
     const svg = generateSVG(puzzle);
     const png = await generatePNG(svg);
-
-    console.log('📤 Uploading to GitHub...');
+    console.log('Uploading to GitHub...');
     const imageUrl = await uploadToGitHub(png);
-    console.log(`✅ Image live at: ${imageUrl}`);
-
-    console.log('📊 Updating Google Sheet...');
+    console.log(`Image live at: ${imageUrl}`);
+    console.log('Updating Google Sheet...');
     await updateGoogleSheet(puzzle, imageUrl);
-
-    console.log('🎉 All done! Make.com will post to Facebook at 9am.');
+    console.log('All done! Make.com will post to Facebook at 9am.');
   } catch (error) {
-    console.error('❌ Error:', error.message);
+    console.error('Error:', error.message);
     process.exit(1);
   }
 }
