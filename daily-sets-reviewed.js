@@ -132,6 +132,37 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   },
   {
+    date: "2026-03-30",
+    easy: {
+      title: "Light + Book + Travel",
+      labels: { A: "Light", B: "Book", C: "Travel" },
+      tiles: [
+        { label: "Book Light", correctSlot: "S1" },
+        { label: "Carry On Only", correctSlot: "S2" },
+        { label: "Guidebook", correctSlot: "S3" },
+        { label: "Kindle", correctSlot: "S4" },
+        { label: "Flashlight", correctSlot: null },
+        { label: "Passport", correctSlot: null },
+        { label: "Paperback", correctSlot: null },
+        { label: "Boarding Gate", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Pitch + Court + Match",
+      labels: { A: "Pitch", B: "Court", C: "Match" },
+      tiles: [
+        { label: "Pickup Line", correctSlot: "S1" },
+        { label: "Dating Profile", correctSlot: "S2" },
+        { label: "Speed Dating", correctSlot: "S3" },
+        { label: "Tinder", correctSlot: "S4" },
+        { label: "Microphone", correctSlot: null },
+        { label: "Jury", correctSlot: null },
+        { label: "Matchstick", correctSlot: null },
+        { label: "Love Letter", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-29",
     easy: {
       title: "U.S. History + President + Monument",
