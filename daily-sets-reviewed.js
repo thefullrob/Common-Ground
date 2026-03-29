@@ -135,6 +135,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-30",
     easy: {
       title: "Light + Book + Travel",
+      difficultyEstimate: 72,
       labels: { A: "Light", B: "Book", C: "Travel" },
       tiles: [
         { label: "Book Light", correctSlot: "S1" },
@@ -149,6 +150,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "Pitch + Court + Match",
+      difficultyEstimate: 34,
       labels: { A: "Pitch", B: "Court", C: "Match" },
       tiles: [
         { label: "Pickup Line", correctSlot: "S1" },
@@ -166,6 +168,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     date: "2026-03-29",
     easy: {
       title: "U.S. History + President + Monument",
+      difficultyEstimate: 79,
       labels: { A: "U.S. History", B: "President", C: "Monument" },
       tiles: [
         { label: "Abraham Lincoln", correctSlot: "S1" },
@@ -180,6 +183,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     hard: {
       title: "China + City + Landmark",
+      difficultyEstimate: 41,
       labels: { A: "China", B: "City", C: "Landmark" },
       tiles: [
         { label: "Shenzhen", correctSlot: "S1" },
