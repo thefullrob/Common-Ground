@@ -159,4 +159,18 @@ async function main() {
     const puzzle = await getTodaysPuzzle();
     console.log(`Found: ${puzzle.date} - ${puzzle.categoryA} + ${puzzle.categoryB} + ${puzzle.categoryC}`);
     console.log('Generating social image...');
-    con
+    const svg = generateSVG(puzzle);
+    const png = await generatePNG(svg);
+    console.log('Uploading to GitHub...');
+    const imageUrl = await uploadToGitHub(png);
+    console.log(`Image live at: ${imageUrl}`);
+    console.log('Updating Google Sheet...');
+    await updateGoogleSheet(puzzle, imageUrl);
+    console.log('All done! Make.com will post to Facebook at 9am.');
+  } catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
+  }
+}
+
+main();
