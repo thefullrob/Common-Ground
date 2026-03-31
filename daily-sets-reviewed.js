@@ -132,6 +132,39 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   },
   {
+    date: "2026-04-01",
+    easy: {
+      title: "Prank + Surprise + Sound",
+      difficultyEstimate: 74,
+      labels: { A: "Prank", B: "Surprise", C: "Sound" },
+      tiles: [
+        { label: "Jump Scare", correctSlot: "S1" },
+        { label: "Whoopee Cushion", correctSlot: "S2" },
+        { label: "Party Popper", correctSlot: "S3" },
+        { label: "Air Horn", correctSlot: "S4" },
+        { label: "Doorbell", correctSlot: null },
+        { label: "Confetti", correctSlot: null },
+        { label: "Banana Peel", correctSlot: null },
+        { label: "Glitter", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Prank + Message + Technology",
+      difficultyEstimate: 39,
+      labels: { A: "Prank", B: "Message", C: "Technology" },
+      tiles: [
+        { label: "Fake Text", correctSlot: "S1" },
+        { label: "Deepfake", correctSlot: "S2" },
+        { label: "Push Notification", correctSlot: "S3" },
+        { label: "Rickroll", correctSlot: "S4" },
+        { label: "Screenshot", correctSlot: null },
+        { label: "Spam Folder", correctSlot: null },
+        { label: "Webcam", correctSlot: null },
+        { label: "Airplane Mode", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-31",
     easy: {
       title: "Desert + Hotel + Night",
