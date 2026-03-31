@@ -132,6 +132,39 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   },
   {
+    date: "2026-03-31",
+    easy: {
+      title: "Desert + Hotel + Night",
+      difficultyEstimate: 76,
+      labels: { A: "Desert", B: "Hotel", C: "Night" },
+      tiles: [
+        { label: "Arizona Biltmore", correctSlot: "S1" },
+        { label: "Moonlit Mesa", correctSlot: "S2" },
+        { label: "Late Check-In", correctSlot: "S3" },
+        { label: "Las Vegas", correctSlot: "S4" },
+        { label: "Cactus", correctSlot: null },
+        { label: "Lobby", correctSlot: null },
+        { label: "Moonlight", correctSlot: null },
+        { label: "Mini Bar", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "80s Movie + Sci-Fi + Adventure",
+      difficultyEstimate: 44,
+      labels: { A: "80s Movie", B: "Sci-Fi", C: "Adventure" },
+      tiles: [
+        { label: "Blade Runner", correctSlot: "S1" },
+        { label: "Romancing the Stone", correctSlot: "S2" },
+        { label: "Avatar", correctSlot: "S3" },
+        { label: "Flight of the Navigator", correctSlot: "S4" },
+        { label: "Wall Street", correctSlot: null },
+        { label: "Arrival", correctSlot: null },
+        { label: "The Revenant", correctSlot: null },
+        { label: "Casablanca", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-30",
     easy: {
       title: "Light + Book + Travel",
