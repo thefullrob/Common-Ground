@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const GITHUB_USER   = 'thefullrob';
 const GITHUB_REPO   = 'Common-Ground';
 const GITHUB_BRANCH = 'main';
-const IMAGE_PATH    = 'social-post-today.png';
+const IMAGE_PATH    = 'social-post-today.jpg';
 
 const SHEET_ID     = process.env.GOOGLE_SHEETS_ID;
 const GH_TOKEN     = process.env.GH_TOKEN;
@@ -91,12 +91,12 @@ function generateSVG(puzzle) {
 </svg>`;
 }
 
-async function generatePNG(svgString) {
-  return await sharp(Buffer.from(svgString)).resize(1080, 1080).png().toBuffer();
+async function generateJPEG(svgString) {
+  return await sharp(Buffer.from(svgString)).resize(1080, 1080).jpeg({ quality: 90 }).toBuffer();
 }
 
-async function uploadToGitHub(pngBuffer) {
-  const base64 = pngBuffer.toString('base64');
+async function uploadToGitHub(jpgBuffer) {
+  const base64 = jpgBuffer.toString('base64');
   const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${IMAGE_PATH}`;
   let sha;
   try {
@@ -134,8 +134,8 @@ async function updateOGImageCache(today) {
 
   const updated = content
     .replace(
-      /social-post-today\.png\?v=[^"']*/g,
-      `social-post-today.png?v=${today}`
+      /social-post-today\.(png|jpg)\?v=[^"']*/g,
+      `social-post-today.jpg?v=${today}`
     );
 
   if (updated === content) {
@@ -201,10 +201,10 @@ async function main() {
 
     console.log('Generating social image...');
     const svg = generateSVG(puzzle);
-    const png = await generatePNG(svg);
+    const jpg = await generateJPEG(svg);
 
     console.log('Uploading to GitHub...');
-    const imageUrl = await uploadToGitHub(png);
+    const imageUrl = await uploadToGitHub(jpg);
     console.log(`Image live at: ${imageUrl}`);
 
     console.log('Updating OG image cache buster in index.html...');
