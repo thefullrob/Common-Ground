@@ -123,6 +123,46 @@ async function uploadToGitHub(pngBuffer) {
   return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_PATH}`;
 }
 
+async function updateOGImageCache(today) {
+  const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/index.html`;
+
+  const fileResponse = await fetch(apiUrl, {
+    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github+json' }
+  });
+  const fileData = await fileResponse.json();
+  const content = Buffer.from(fileData.content, 'base64').toString('utf8');
+
+  const updated = content
+    .replace(
+      /social-post-today\.png\?v=[^"']*/g,
+      `social-post-today.png?v=${today}`
+    );
+
+  if (updated === content) {
+    console.log('OG image URL already up to date');
+    return;
+  }
+
+  const updatedBase64 = Buffer.from(updated).toString('base64');
+  const putResponse = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${GH_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: `Update OG image cache buster — ${today}`,
+      content: updatedBase64,
+      sha: fileData.sha,
+      branch: GITHUB_BRANCH,
+    })
+  });
+
+  if (!putResponse.ok) throw new Error(`index.html update failed: ${await putResponse.text()}`);
+  console.log(`OG image cache buster updated to ?v=${today}`);
+}
+
 async function updateGoogleSheet(puzzle, imageUrl) {
   const auth = new GoogleAuth({
     credentials: {
@@ -158,14 +198,21 @@ async function main() {
     console.log('Getting today puzzle...');
     const puzzle = await getTodaysPuzzle();
     console.log(`Found: ${puzzle.date} - ${puzzle.categoryA} + ${puzzle.categoryB} + ${puzzle.categoryC}`);
+
     console.log('Generating social image...');
     const svg = generateSVG(puzzle);
     const png = await generatePNG(svg);
+
     console.log('Uploading to GitHub...');
     const imageUrl = await uploadToGitHub(png);
     console.log(`Image live at: ${imageUrl}`);
+
+    console.log('Updating OG image cache buster in index.html...');
+    await updateOGImageCache(puzzle.date);
+
     console.log('Updating Google Sheet...');
     await updateGoogleSheet(puzzle, imageUrl);
+
     console.log('All done! Make.com will post to Facebook at 9am.');
   } catch (error) {
     console.error('Error:', error.message);
