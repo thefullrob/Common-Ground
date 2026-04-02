@@ -18,11 +18,11 @@
   <meta name="application-name" content="CG" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="manifest" href="/manifest.webmanifest?v=20260330a" />
+    <link rel="manifest" href="/manifest.webmanifest?v=20260402b" />
   <link rel="canonical" href="https://commongroundpuzzle.com/" />
   <meta property="og:title" content="Common Ground: The Daily Connection Game" />
   <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-01" />
+<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-02" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="1080" />
   <meta property="og:url" content="https://commongroundpuzzle.com/" />
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Common Ground: The Daily Connection Game" />
   <meta name="twitter:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-01" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-02" />
   <title>Common Ground: The Daily Connection Game</title>
       <style>
     :root {
@@ -474,7 +474,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
     }
 
@@ -506,8 +506,6 @@
       background: linear-gradient(180deg, #fffdf8 0%, #f5ead7 100%);
       color: #162033;
     }
-    #submit-btn.ready { background: #111827; color: #fff; border-color: #111827; }
-
     .summary {
       min-height: 18px;
       text-align: center;
@@ -847,7 +845,6 @@
       <div class="controls">
         <button id="undo-btn" disabled>Undo</button>
         <button id="clear-btn">Clear</button>
-        <button id="submit-btn" disabled>Submit</button>
       </div>
 
       <div class="summary" id="summary"></div>
@@ -942,10 +939,10 @@
   <div class="tutorial" id="tutorial" hidden>
     <div class="tutorial-card">
       <h2>How To Play</h2>
-      <div class="tutorial-copy">Each day gives you 2 puzzles. Clear Easy first, then Hard unlocks. Drag the 4 correct tiles into the Venn diagram and submit your full board.</div>
+      <div class="tutorial-copy">Each day gives you 2 puzzles. Clear Easy first, then Hard unlocks. Drag the 4 correct tiles into the Venn diagram and the board checks automatically when your last tile lands.</div>
       <div class="tutorial-steps">
         <div class="tutorial-step">1. Each spot belongs to a different overlap of the 3 categories.</div>
-        <div class="tutorial-step">2. Correct tiles lock in place. Wrong tiles return to the pool after you submit.</div>
+        <div class="tutorial-step">2. Correct tiles lock in place. Wrong tiles return to the pool after the board checks.</div>
         <div class="tutorial-step">3. Each puzzle gives you 3 tries. Hard can get one extra lifeline try if you need it.</div>
       </div>
       <div class="tutorial-actions">
@@ -1033,8 +1030,8 @@
     </div>
   </div>
 
-    <script src="daily-sets-reviewed.js?v=20260330a"></script>
-    <script src="app.js?v=20260330a"></script>
+  <script src="daily-sets-reviewed.js?v=20260402a"></script>
+  <script src="app.js?v=20260402b"></script>
   </body>
   </html>
 

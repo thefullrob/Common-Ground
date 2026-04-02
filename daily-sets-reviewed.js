@@ -1,5 +1,38 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-02",
+    easy: {
+      title: "Animal + Fiction + Classic",
+      difficultyEstimate: 71,
+      labels: { A: "Animal", B: "Fiction", C: "Classic" },
+      tiles: [
+        { label: "War Horse", correctSlot: "S1" },
+        { label: "Seabiscuit", correctSlot: "S2" },
+        { label: "The Lone Ranger", correctSlot: "S3" },
+        { label: "The Black Stallion", correctSlot: "S4" },
+        { label: "Stallion", correctSlot: null },
+        { label: "Storybook", correctSlot: null },
+        { label: "Timeless", correctSlot: null },
+        { label: "Colt", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Mystery + Mansion + Dark",
+      difficultyEstimate: 44,
+      labels: { A: "Mystery", B: "Mansion", C: "Dark" },
+      tiles: [
+        { label: "Knives Out", correctSlot: "S1" },
+        { label: "Game Night", correctSlot: "S2" },
+        { label: "The Haunted Mansion", correctSlot: "S3" },
+        { label: "Clue", correctSlot: "S4" },
+        { label: "The Nice Guys", correctSlot: null },
+        { label: "Downton Abbey", correctSlot: null },
+        { label: "The Lost Boys", correctSlot: null },
+        { label: "Before Sunrise", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-03-28",
     easy: {
       title: "Chicago + Pizza + Chain",
