@@ -342,6 +342,7 @@ let currentCalendarDay = getLocalDayStamp();
 let deferredInstallPrompt = null;
 let homeScreenReturnToLifeline = false;
 const trackedPuzzleStarts = new Set();
+const puzzleStartTimes = new Map();
 let archiveMonthKey = null;
 let hardTimerInterval = null;
 let midnightRolloverTimeout = null;
@@ -474,8 +475,52 @@ function getAnalyticsParams(extra = {}) {
     ...extra
   };
 }
+function getPuzzleStartKey(day = getActiveDate(), stage = activeStage) {
+  return `${day}:${stage}`;
+}
+function rememberPuzzleStart(day = getActiveDate(), stage = activeStage) {
+  const key = getPuzzleStartKey(day, stage);
+  if (!puzzleStartTimes.has(key)) puzzleStartTimes.set(key, Date.now());
+}
+function getPuzzleElapsedMs(day = getActiveDate(), stage = activeStage) {
+  const startedAt = puzzleStartTimes.get(getPuzzleStartKey(day, stage));
+  return Number.isFinite(startedAt) ? Math.max(0, Date.now() - startedAt) : null;
+}
+function getDaysSinceLastPlay() {
+  const timestamps = Object.values(stats?.dayHistory || {})
+    .map((record) => record?.lastPlayedAt ? Date.parse(record.lastPlayedAt) : NaN)
+    .filter((value) => Number.isFinite(value))
+    .sort((a, b) => b - a);
+  if (!timestamps.length) return null;
+  return Math.max(0, Math.floor((Date.now() - timestamps[0]) / 86400000));
+}
+function trackReturnVisit() {
+  const liveDay = getLiveDayStamp();
+  const meta = getDerivedStats();
+  const visitKey = `common-ground-visit:${liveDay}`;
+  if (safeGetStorage(visitKey) === "1") return;
+  safeSetStorage(visitKey, "1");
+  const visitParams = {
+    puzzle_date: liveDay,
+    daily_streak: meta.visibleDailyStreak,
+    best_daily_streak: meta.bestDailyStreak,
+    daily_sets_completed: meta.dailySetsCompleted,
+    days_since_last_play: getDaysSinceLastPlay()
+  };
+  trackEvent("daily_streak", visitParams);
+  if (meta.lifetimePuzzlesAttempted > 0 || meta.dailySetsCompleted > 0) {
+    trackEvent("return_user", visitParams);
+  }
+}
+function normalizeFailureReason(reason = "") {
+  const normalized = String(reason).toLowerCase();
+  if (normalized.includes("time")) return "time_expired";
+  if (normalized.includes("give up")) return "give_up";
+  return "out_of_tries";
+}
 function trackPuzzleStart(day = getActiveDate(), stage = activeStage) {
   const key = `${day}:${stage}`;
+  rememberPuzzleStart(day, stage);
   if (trackedPuzzleStarts.has(key)) return;
   trackedPuzzleStarts.add(key);
   trackEvent("puzzle_start", {
@@ -919,7 +964,7 @@ async function copyShareResults() {
   const shareText = buildShareText("web");
   const clipboardText = buildShareText("clipboard");
   const url = APP_URL;
-  trackEvent("share_click", getAnalyticsParams({ tries_used: state?.tries ?? null }));
+  trackEvent("share_click", getAnalyticsParams({ tries_used: state?.tries ?? null, solved: Boolean(state?.solved), practice_mode: Boolean(state?.practiceMode) }));
   try {
     if (shouldUseNativeShare()) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
     const payload = clipboardText;
@@ -1078,11 +1123,18 @@ function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
 function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; if (activeStage === "hard") state.timerRemainingMs = Math.min(HARD_TIMER_MS + HARD_LIFELINE_BONUS_MS, (state.timerRemainingMs ?? 0) + HARD_LIFELINE_BONUS_MS); stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One extra try and +15 seconds.", "#b45309"); render(); }
 function maybeOfferLifeline() { if (activeStage !== "hard") return false; const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return false; if (stats.firstLifelinePromptSeen) { activateHardLifeline(); return true; } lifelineModalEl.hidden = false; return true; }
-function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); trackEvent("puzzle_solved", getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null, practice_mode: Boolean(state.practiceMode) })); if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); if (activeStage === "easy" && !completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !completedDailySet ? "Easy cleared. Hard is unlocked." : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
+function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); const elapsedMs = getPuzzleElapsedMs(); const baseParams = getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null, practice_mode: Boolean(state.practiceMode) }); trackEvent("puzzle_solved", baseParams); if (!state.practiceMode) { trackEvent("puzzle_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); if (Number.isFinite(elapsedMs)) trackEvent("time_to_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); } if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); if (activeStage === "easy" && !completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !completedDailySet ? "Easy cleared. Hard is unlocked." : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
 function revealFailureBoard(reason = "Out of tries.") {
   state.failed = true;
   state.solved = false;
   state.selectedTileId = null;
+  if (!state.practiceMode) {
+    trackEvent("puzzle_fail", getAnalyticsParams({
+      tries_used: state.tries,
+      timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null,
+      failure_reason: normalizeFailureReason(reason)
+    }));
+  }
   if (activeStage === "hard" && !state.practiceMode) {
     state.lastTimerTickAt = null;
     updateProgressRecord(getActiveDate(), activeStage, "failed");
@@ -1162,6 +1214,7 @@ function handleCalendarDayChange() {
   if (localDay === currentCalendarDay) return;
   currentCalendarDay = localDay;
   updateLaunchUi();
+  trackReturnVisit();
   if (!DAILY_SETS.length) return;
   if (activeSection === "today") {
     goToToday();
@@ -1207,6 +1260,7 @@ hardTimerInterval = window.setInterval(() => {
 }, 250);
 
 stats = loadStats();
+trackReturnVisit();
 updateLaunchUi();
 tutorialEl.hidden = true;
 if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
