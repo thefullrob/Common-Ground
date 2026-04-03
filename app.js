@@ -1098,8 +1098,20 @@ function computeSlotLayout() {
   return true;
 }
 function scheduleSlotLayout() { if (slotLayoutRaf) cancelAnimationFrame(slotLayoutRaf); slotLayoutRaf = requestAnimationFrame(() => { slotLayoutRaf = 0; if (!computeSlotLayout()) { slotLayoutRaf = requestAnimationFrame(() => { slotLayoutRaf = 0; computeSlotLayout(); }); } }); }
+function getTileFaceLabel(tile) {
+  if (!tile) return "";
+  return (state?.solved || state?.failed) && tile.revealLabel ? tile.revealLabel : tile.label;
+}
 function makeTile(tileId) {
-  const tile = tileById[tileId]; const el = document.createElement("div"); el.className = "tile"; if (tile.label.length >= 10) el.classList.add("long-text"); if (tile.label.length >= 14) el.classList.add("very-long-text"); el.dataset.tileId = tile.id; el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed; el.innerHTML = `<div class="text">${tile.label}</div>`;
+  const tile = tileById[tileId];
+  const displayLabel = getTileFaceLabel(tile);
+  const el = document.createElement("div");
+  el.className = "tile";
+  if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 10) el.classList.add("long-text");
+  if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 14) el.classList.add("very-long-text");
+  el.dataset.tileId = tile.id;
+  el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed;
+  el.innerHTML = `<div class="text">${displayLabel}</div>`;
   if (state.selectedTileId === tile.id) el.classList.add("selected"); if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
   el.addEventListener("click", () => { if (Date.now() < suppressClickUntil) return; if (state.solved || state.failed || state.lockedTiles.has(tile.id)) return; state.selectedTileId = state.selectedTileId === tile.id ? null : tile.id; setMessage(); render(); });
   el.addEventListener("pointerdown", (e) => startTouchDrag(e, tile.id));
@@ -1168,7 +1180,7 @@ function loadDay(dayIndex, stage = "easy", section = "today") {
   if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy";
   activeStage = stage;
   const puzzle = getActivePuzzle();
-  currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, correctSlot: tile.correctSlot }));
+  currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, revealLabel: tile.revealLabel || null, correctSlot: tile.correctSlot }));
   tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile]));
   labelAEl.textContent = puzzle.labels.A;
   labelBEl.textContent = puzzle.labels.B;

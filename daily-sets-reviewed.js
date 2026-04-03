@@ -1,5 +1,71 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-04",
+    easy: {
+      title: "Movie + Famous People + California",
+      difficultyEstimate: 78,
+      labels: { A: "Movie", B: "Famous People", C: "California" },
+      tiles: [
+        { label: "Tom Cruise", correctSlot: "S1" },
+        { label: "Hollywood", correctSlot: "S2" },
+        { label: "Kardashian", correctSlot: "S3" },
+        { label: "Arnold Schwarzenegger", correctSlot: "S4" },
+        { label: "Casablanca", correctSlot: null },
+        { label: "Jerry Seinfeld", correctSlot: null },
+        { label: "Redwood Forest", correctSlot: null },
+        { label: "Frank Sinatra", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Sports + Destination + Landmark",
+      difficultyEstimate: 56,
+      labels: { A: "Sports", B: "Destination", C: "Landmark" },
+      tiles: [
+        { label: "Aspen", correctSlot: "S1" },
+        { label: "Wrigley Field", correctSlot: "S2" },
+        { label: "Golden Gate Bridge", correctSlot: "S3" },
+        { label: "Pebble Beach", correctSlot: "S4" },
+        { label: "Skiing", correctSlot: null },
+        { label: "Cancun", correctSlot: null },
+        { label: "Monument", correctSlot: null },
+        { label: "Napa Valley", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-03",
+    easy: {
+      title: "Movie + Travel + Time",
+      difficultyEstimate: 83,
+      labels: { A: "Movie", B: "Travel", C: "Time" },
+      tiles: [
+        { label: "✈️🚆🚗", revealLabel: "Planes, Trains and Automobiles", correctSlot: "S1" },
+        { label: "🦫⏰🔁", revealLabel: "Groundhog Day", correctSlot: "S2" },
+        { label: "✈️😵‍💫", revealLabel: "Jet Lag", correctSlot: "S3" },
+        { label: "🌍✈️8️⃣0️⃣", revealLabel: "Around the World in 80 Days", correctSlot: "S4" },
+        { label: "🍿🎥", correctSlot: null },
+        { label: "🧳🛂", correctSlot: null },
+        { label: "⌛🕰️", correctSlot: null },
+        { label: "🚉🎫", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Science + People + Film",
+      difficultyEstimate: 48,
+      labels: { A: "Science", B: "People", C: "Film" },
+      tiles: [
+        { label: "Nikola Tesla", correctSlot: "S1" },
+        { label: "Interstellar", correctSlot: "S2" },
+        { label: "Tilda Swinton", correctSlot: "S3" },
+        { label: "Oppenheimer", correctSlot: "S4" },
+        { label: "Robert F. Kennedy Jr.", correctSlot: null },
+        { label: "Sundance", correctSlot: null },
+        { label: "Experiment", correctSlot: null },
+        { label: "Michael Jordan", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-02",
     easy: {
       title: "Animal + Fiction + Classic",
