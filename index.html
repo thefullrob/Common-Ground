@@ -18,7 +18,7 @@
   <meta name="application-name" content="CG" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="manifest" href="/manifest.webmanifest?v=20260403b" />
+    <link rel="manifest" href="/manifest.webmanifest?v=20260403d" />
   <link rel="canonical" href="https://commongroundpuzzle.com/" />
   <meta property="og:title" content="Common Ground: The Daily Connection Game" />
   <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
@@ -458,6 +458,15 @@
       box-shadow: 0 7px 10px rgba(15, 23, 42, 0.06);
       z-index: 2;
     }
+    .slot .tile.long-text {
+      width: 82px;
+      min-height: 46px;
+    }
+    .slot .tile.very-long-text {
+      width: 94px;
+      min-height: 48px;
+      padding: 4px 3px 5px;
+    }
 
     #slot-S1 .tile { transform: translate(-114%, -96%); }
     #slot-S2 .tile { transform: translate(14%, -96%); }
@@ -470,6 +479,15 @@
       font-weight: 800;
       text-align: center;
       letter-spacing: 0.01em;
+    }
+    .slot .tile.long-text .text {
+      font-size: 0.64rem;
+      line-height: 1.04;
+    }
+    .slot .tile.very-long-text .text {
+      font-size: 0.54rem;
+      line-height: 1.01;
+      letter-spacing: 0;
     }
 
     .controls {
@@ -771,13 +789,15 @@
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tile { padding: 7px 7px; min-height: 44px; }
       .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px 5px; }
+      .slot .tile.long-text { width: 82px; min-height: 46px; }
+      .slot .tile.very-long-text { width: 92px; min-height: 48px; padding: 4px 3px 5px; }
       #slot-S1 .tile { transform: translate(-120%, -98%); }
       #slot-S2 .tile { transform: translate(20%, -98%); }
       #slot-S3 .tile { transform: translate(-50%, 16%); }
       #slot-S4 .tile { transform: translate(-50%, -126%); }
       .text { font-size: 0.74rem; }
-      .slot .tile.long-text .text { font-size: 0.64rem; }
-      .slot .tile.very-long-text .text { font-size: 0.59rem; }
+      .slot .tile.long-text .text { font-size: 0.6rem; line-height: 1.03; }
+      .slot .tile.very-long-text .text { font-size: 0.5rem; line-height: 0.98; letter-spacing: 0; }
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       button { font-size: 0.8rem; padding: 10px 8px; }
       .summary { font-size: 0.76rem; }
@@ -1030,7 +1050,7 @@
     </div>
   </div>
 
-  <script src="daily-sets-reviewed.js?v=20260403b"></script>
+  <script src="daily-sets-reviewed.js?v=20260403c"></script>
   <script src="app.js?v=20260403a"></script>
   </body>
   </html>
