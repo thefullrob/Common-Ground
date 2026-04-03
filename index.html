@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D1V6P86GC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6D1V6P86GC');
+  </script>
+  <!-- Share preview metadata: edit title/description/image here when you want to refresh link previews. -->
+  <meta name="description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
+  <meta name="theme-color" content="#51341f" />
+  <meta name="apple-mobile-web-app-title" content="CG" />
+  <meta name="application-name" content="CG" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="/manifest.webmanifest?v=20260402b" />
+  <link rel="canonical" href="https://commongroundpuzzle.com/" />
+  <meta property="og:title" content="Common Ground: The Daily Connection Game" />
+  <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
+<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-02" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:url" content="https://commongroundpuzzle.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Common Ground: The Daily Connection Game" />
+  <meta name="twitter:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.jpg?v=2026-04-02" />
+  <title>Common Ground: The Daily Connection Game</title>
+      <style>
+    :root {
+      --bg: #f3efe6;
+      --panel: #fcfaf5;
+      --line: #d8cfbe;
+      --line-soft: #e8e0d3;
+      --ink: #162033;
+      --muted: #667188;
+      --cream: #f6f1e7;
+      --a-alpha: 0;
+      --b-alpha: 0;
+      --c-alpha: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.75) 0, transparent 32%),
+        linear-gradient(180deg, #f7f4ed 0%, var(--bg) 100%);
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .app {
+      width: min(470px, 100%);
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      grid-auto-rows: max-content;
+    }
+
+
+    body.app-loading .app {
+      visibility: hidden;
+    }
+
+    body.app-ready .app {
+      visibility: visible;
+    }
+
+    .launch-screen {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.72) 0, transparent 34%),
+        linear-gradient(180deg, #f7f0df 0%, #efe3cb 52%, #e6d5b7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 4200;
+    }
+
+    .launch-screen[hidden] {
+      display: none;
+    }
+
+    .launch-card {
+      width: min(420px, 100%);
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+      text-align: center;
+      color: #111827;
+    }
+
+    .launch-mark {
+      width: 190px;
+      height: 170px;
+      position: relative;
+      filter: drop-shadow(0 18px 30px rgba(91, 59, 24, 0.10));
+    }
+
+    .launch-circle {
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      border: 6px solid #5b3820;
+      background: rgba(255, 250, 240, 0.18);
+    }
+
+    .launch-circle-a {
+      top: 2px;
+      left: 41px;
+    }
+
+    .launch-circle-b {
+      left: 10px;
+      top: 60px;
+    }
+
+    .launch-circle-c {
+      right: 10px;
+      top: 60px;
+    }
+
+    .launch-wordmark {
+      color: #231815;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 6vw, 3.2rem);
+      line-height: 0.9;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+
+    .launch-copy {
+      max-width: 28ch;
+      color: #5f4525;
+      font-size: 1.05rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .launch-actions {
+      width: min(240px, 100%);
+      display: grid;
+      gap: 18px;
+    }
+
+    .launch-primary,
+    .launch-secondary {
+      min-height: 58px;
+      border-radius: 999px;
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .launch-primary {
+      background: #51341f;
+      color: #fffaf0;
+      border: 1px solid #51341f;
+    }
+
+    .launch-secondary {
+      background: rgba(255,249,240,0.62);
+      color: #51341f;
+      border: 1px solid rgba(81, 52, 31, 0.34);
+    }
+
+    .launch-meta {
+      display: grid;
+      gap: 4px;
+      color: #5f4525;
+    }
+
+    .launch-date {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .launch-number {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #7a5a35;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04);
+    }
+
+    .top {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 6px 6px 0;
+      display: grid;
+      gap: 6px;
+      align-content: start;
+      height: fit-content;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      letter-spacing: 0.04em;
+      font-size: 2.25rem;
+      line-height: 0.95;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .hud {
+      display: grid;
+      gap: 6px;
+    }
+
+    .lives-label {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .lives {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 108px;
+      gap: 6px;
+    }
+
+    .life {
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid #cabfa8;
+      background: #e2d8c7;
+    }
+
+    .life.on {
+      background: #2f855a;
+      border-color: #2f855a;
+    }
+
+    .message {
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(252, 250, 245, 0.9);
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .message:empty {
+      display: none;
+    }
+
+    .game {
+      padding: 12px;
+      display: grid;
+      gap: 12px;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .game.transitioning {
+      opacity: 0.35;
+      transform: translateY(6px);
+    }
+
+    .board {
+      position: relative;
+      width: 100%;
+      height: 352px;
+      border-radius: 18px;
+      border: 1px solid var(--line-soft);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.75) 0, transparent 48%),
+        var(--cream);
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 3px solid #243042;
+      transition: background-color 260ms ease, border-color 260ms ease;
+      pointer-events: none;
+    }
+
+    #circle-A { top: 24px; left: 50%; transform: translateX(-50%); background: rgba(96, 165, 250, var(--a-alpha)); }
+    #circle-B { top: 130px; left: 72px; background: rgba(244, 114, 182, var(--b-alpha)); }
+    #circle-C { top: 130px; right: 72px; background: rgba(134, 239, 172, var(--c-alpha)); }
+
+    .board.failed .circle {
+      border-color: #7f1d1d;
+    }
+
+    .board.failed #circle-A,
+    .board.failed #circle-B,
+    .board.failed #circle-C {
+      background: rgba(220, 38, 38, 0.18);
+    }
+
+    .label {
+      position: absolute;
+      text-align: center;
+      font-size: 0.68rem;
+      line-height: 1.1;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid #d8cfbe;
+      background: #fcfaf5;
+      color: #3f4b61;
+      pointer-events: none;
+    }
+
+    #label-A { top: 74px; left: 50%; transform: translateX(-50%); }
+    #label-B { top: 220px; left: 30px; text-align: center; }
+    #label-C { top: 220px; right: 30px; text-align: center; }
+
+    .slot {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      transition: transform 130ms ease;
+    }
+
+    .slot::before,
+    .slot::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #e11d48;
+      border-radius: 999px;
+      transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+      z-index: 3;
+    }
+
+    .slot::before {
+      transform: rotate(45deg);
+    }
+
+    .slot::after {
+      transform: rotate(-45deg);
+    }
+
+    .slot.drag-target::before,
+    .slot.drag-target::after {
+      background: #111827;
+    }
+
+    .slot.drag-target::before {
+      transform: rotate(45deg) scale(1.15);
+    }
+
+    .slot.drag-target::after {
+      transform: rotate(-45deg) scale(1.15);
+    }
+
+    .slot.has-tile::before,
+    .slot.has-tile::after,
+    .slot.revealed::before,
+    .slot.revealed::after {
+      opacity: 0;
+    }
+
+    /* Slot positions are computed at runtime from the circle geometry. */
+
+    .bank {
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      padding: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(247,244,237,0.92));
+    }
+
+    .bank-title {
+      display: none;
+    }
+
+    .bank-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      min-height: 68px;
+    }
+
+    .tile {
+      border: 1.5px solid #af9f83;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #fcfaf6 100%);
+      padding: 9px 7px;
+      display: grid;
+      justify-items: center;
+      gap: 4px;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      min-height: 56px;
+      transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .tile:hover {
+      border-color: #7b6d54;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .tile.selected { border-color: #111827; box-shadow: 0 0 0 2px #11182718; }
+    .tile.locked { border-color: #b7791f; background: #fff1bf; cursor: default; }
+    .slot .tile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      min-height: 44px;
+      transform: translate(-50%, -50%);
+      border-radius: 13px;
+      padding: 4px 4px 5px;
+      box-shadow: 0 7px 10px rgba(15, 23, 42, 0.06);
+      z-index: 2;
+    }
+
+    #slot-S1 .tile { transform: translate(-114%, -96%); }
+    #slot-S2 .tile { transform: translate(14%, -96%); }
+    #slot-S3 .tile { transform: translate(-50%, 12%); }
+    #slot-S4 .tile { transform: translate(-50%, -122%); }
+
+    .text {
+      font-size: 0.72rem;
+      line-height: 1.1;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    button {
+      border: 1px solid #ccb999;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #f8f1e2 0%, #f2e7d2 100%);
+      color: #162033;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 10px 8px;
+      cursor: pointer;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.72) inset;
+    }
+
+    button:disabled { opacity: 0.48; cursor: not-allowed; }
+    .controls button {
+      min-height: 44px;
+    }
+    #prev-btn,
+    #restart-btn {
+      background: linear-gradient(180deg, #fffdf8 0%, #f5ead7 100%);
+    }
+    #undo-btn {
+      background: linear-gradient(180deg, #f4eee3 0%, #ede3d2 100%);
+      color: #6b7280;
+    }
+    #clear-btn {
+      background: linear-gradient(180deg, #fffdf8 0%, #f5ead7 100%);
+      color: #162033;
+    }
+    .summary {
+      min-height: 18px;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+     .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .top-action {
+      min-width: 70px;
+      padding: 8px 12px;
+      font-size: 0.68rem;
+    }
+
+    .stats-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 32, 51, 0.52);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 3900;
+    }
+
+    .stats-modal[hidden] {
+      display: none;
+    }
+
+    .stats-card {
+      width: min(460px, 100%);
+      max-height: min(82vh, 760px);
+      overflow: auto;
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      display: grid;
+      gap: 14px;
+    }
+
+    .stats-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .stats-head h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .stats-close,
+    .stats-reset {
+      min-height: 42px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stats-item,
+    .stats-puzzle-item {
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      background: #faf6ee;
+      padding: 12px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .stats-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #667188;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stats-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #162033;
+    }
+
+    .stats-note {
+      font-size: 0.78rem;
+      color: #667188;
+      line-height: 1.3;
+    }
+
+    .stats-puzzle-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .stats-puzzle-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #667188;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .stats-puzzle-meta {
+      font-size: 0.86rem;
+      color: #435066;
+      line-height: 1.35;
+    }
+    .share-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .share-panel[hidden] {
+      display: none;
+    }
+
+    .share-preview {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: #162033;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7f0e2 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    #share-btn {
+      width: 100%;
+    }
+
+    .drag-ghost {
+      position: fixed;
+      z-index: 3000;
+      pointer-events: none;
+      border: 2px solid #111827;
+      border-radius: 12px;
+      background: #fff;
+      color: #0f172a;
+      font-size: 0.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      padding: 8px 10px;
+      box-shadow: 0 12px 20px rgba(15, 23, 42, 0.2);
+      max-width: 180px;
+      text-align: center;
+    }
+
+    .tutorial {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 32, 51, 0.52);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 4000;
+    }
+
+    .tutorial[hidden] {
+      display: none;
+    }
+
+    .tutorial-card {
+      width: min(420px, 100%);
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      display: grid;
+      gap: 12px;
+    }
+
+    .tutorial-card h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .tutorial-copy {
+      color: #435066;
+      font-size: 0.94rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .tutorial-steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tutorial-step {
+      border: 1px solid var(--line-soft);
+      border-radius: 16px;
+      padding: 12px;
+      background: #faf6ee;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .tutorial-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tutorial-primary {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
+    .shake { animation: shake 260ms ease; }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      30% { transform: translateX(-4px); }
+      60% { transform: translateX(4px); }
+      100% { transform: translateX(0); }
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 8px; }
+      .app { gap: 6px; }
+      .top { padding: 4px 4px 0; gap: 5px; }
+      h1 { font-size: 1.95rem; }
+      .subtitle { font-size: 0.8rem; }
+      .lives-label { font-size: 0.82rem; }
+      .lives { width: 108px; gap: 5px; }
+      .message { padding: 8px 10px; font-size: 0.84rem; }
+      .game { padding: 10px; gap: 10px; }
+      .board { height: 318px; }
+      .circle { width: 180px; height: 180px; }
+      #circle-A { top: 20px; }
+      #circle-B { top: 122px; left: 62px; }
+      #circle-C { top: 122px; right: 62px; }
+      .label { font-size: 0.62rem; padding: 3px 9px; }
+      #label-A { top: 72px; }
+      #label-B { top: 216px; left: 20px; }
+      #label-C { top: 216px; right: 20px; }
+
+      .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tile { padding: 7px 7px; min-height: 44px; }
+      .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px 5px; }
+      #slot-S1 .tile { transform: translate(-120%, -98%); }
+      #slot-S2 .tile { transform: translate(20%, -98%); }
+      #slot-S3 .tile { transform: translate(-50%, 16%); }
+      #slot-S4 .tile { transform: translate(-50%, -126%); }
+      .text { font-size: 0.74rem; }
+      .slot .tile.long-text .text { font-size: 0.64rem; }
+      .slot .tile.very-long-text .text { font-size: 0.59rem; }
+      .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      button { font-size: 0.8rem; padding: 10px 8px; }
+      .summary { font-size: 0.76rem; }
+      .tutorial-card { padding: 16px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stats-head { align-items: start; }
+      .top-row { gap: 7px; }
+      .top-action { min-width: 61px; padding: 7px 9px; font-size: 0.67rem; }
+    }
+  </style>
+</head>
+<body class="app-loading">
+  <div class="app">
+    <section class="card top">
+      <h1>COMMON GROUND</h1>
+      <div class="top-row">
+        <div class="subtitle" id="subtitle">Today</div>
+        <div class="nav-row">
+          <button id="today-btn" class="top-action active">Today</button>
+          <button id="archive-btn" class="top-action">Archive</button>
+          <button id="stats-btn" class="top-action">Stats</button>
+          <button id="badges-btn" class="top-action">Badges</button>
+          <button class="top-action" data-home-screen-trigger>Save App</button>
+        </div>
+      </div>
+      <div class="hud">
+        <div class="lives-label" id="lives-label">Tries Left: 3</div>
+        <div class="lives" id="lives"></div>
+        <div class="timer-wrap" id="timer-wrap" hidden>
+          <div class="timer-label" id="timer-label">Time Left: 1:30</div>
+          <div class="timer-bar">
+            <div class="timer-fill" id="timer-fill"></div>
+          </div>
+        </div>
+      </div>
+      <div class="message" id="message"></div>
+    </section>
+
+    <section class="card game">
+      <div class="game-wordmark">COMMON GROUND</div>
+      <div class="stage-row">
+        <button id="easy-btn" class="stage-btn active">Easy</button>
+        <button id="hard-btn" class="stage-btn locked" disabled>Hard</button>
+      </div>
+      <div class="board" id="board">
+        <div id="circle-A" class="circle"></div>
+        <div id="circle-B" class="circle"></div>
+        <div id="circle-C" class="circle"></div>
+
+        <div id="label-A" class="label">Ben Stiller</div>
+        <div id="label-B" class="label">Owen Wilson</div>
+        <div id="label-C" class="label">Vince Vaughn</div>
+
+        <div id="slot-S1" class="slot" data-slot="S1"></div>
+        <div id="slot-S2" class="slot" data-slot="S2"></div>
+        <div id="slot-S3" class="slot" data-slot="S3"></div>
+        <div id="slot-S4" class="slot" data-slot="S4"></div>
+      </div>
+
+      <div class="bank" id="bank">
+        <div class="bank-title">Tile Pool</div>
+        <div class="bank-grid" id="bank-grid"></div>
+      </div>
+
+      <div class="controls">
+        <button id="undo-btn" disabled>Undo</button>
+        <button id="clear-btn">Clear</button>
+      </div>
+
+      <div class="summary" id="summary"></div>
+      <div class="share-panel" id="share-panel" hidden>
+        <pre class="share-preview" id="share-preview"></pre>
+        <button id="share-btn">Share Results</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="launch-screen" id="launch-screen">
+    <div class="launch-card">
+      <div class="launch-mark" aria-hidden="true"><span class="launch-circle launch-circle-a"></span><span class="launch-circle launch-circle-b"></span><span class="launch-circle launch-circle-c"></span></div>
+      <div class="launch-wordmark">COMMON GROUND</div>
+      <div class="launch-copy" id="launch-copy">Keep your 0-day streak alive.</div>
+      <div class="launch-actions">
+        <button id="launch-play" class="launch-primary">Play</button>
+        <button id="launch-how" class="launch-secondary">How To Play</button>
+      </div>
+      <div class="launch-meta">
+        <div class="launch-date" id="launch-date">March 13, 2026</div>
+        <div class="launch-number" id="launch-number">No. 11</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-modal" id="stats-modal" hidden>
+    <div class="stats-card">
+      <div class="stats-head">
+        <h2>Your Stats</h2>
+        <button id="stats-close" class="stats-close">Close</button>
+      </div>
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="stats-puzzle-list" id="stats-puzzle-list"></div>
+        <button id="stats-reset" class="stats-reset" hidden>Reset Stats</button>
+    </div>
+  </div>
+
+  <div class="stats-modal" id="archive-modal" hidden>
+    <div class="stats-card archive-card">
+      <div class="stats-head">
+        <h2>Archive</h2>
+        <button id="archive-close" class="modal-close">Close</button>
+      </div>
+      <div class="archive-toolbar">
+        <button id="archive-prev" class="archive-nav" aria-label="Previous month">&#8249;</button>
+        <div class="archive-month-label" id="archive-month-label">March 2026</div>
+        <button id="archive-next" class="archive-nav" aria-label="Next month">&#8250;</button>
+      </div>
+      <div class="archive-weekdays" aria-hidden="true">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="archive-grid" id="archive-list"></div>
+    </div>
+  </div>
+
+  <div class="stats-modal" id="badges-modal" hidden>
+    <div class="stats-card">
+      <div class="stats-head">
+        <h2>Badges</h2>
+        <button id="badges-close" class="modal-close">Close</button>
+      </div>
+      <div class="badge-list" id="badge-list"></div>
+    </div>
+  </div>
+
+    <div class="modal-overlay" id="badge-unlock-modal" hidden>
+    <div class="badge-reward-card">
+      <div class="badge-reward-kicker">Badge Unlocked</div>
+      <h2 id="badge-unlock-title">First Light</h2>
+      <div class="badge-reward-art" id="badge-unlock-art"></div>
+      <div class="badge-reward-copy" id="badge-unlock-copy"></div>
+      <button id="badge-unlock-close" class="modal-primary">Close</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="badge-detail-modal" hidden>
+    <div class="badge-detail-card">
+      <h2 id="badge-detail-title">First Light</h2>
+      <div class="badge-detail-art" id="badge-detail-art"></div>
+      <div class="badge-reward-copy" id="badge-detail-copy"></div>
+      <button id="badge-detail-close" class="modal-primary">Close</button>
+    </div>
+  </div>
+
+  <div class="tutorial" id="tutorial" hidden>
+    <div class="tutorial-card">
+      <h2>How To Play</h2>
+      <div class="tutorial-copy">Each day gives you 2 puzzles. Clear Easy first, then Hard unlocks. Drag the 4 correct tiles into the Venn diagram and the board checks automatically when your last tile lands.</div>
+      <div class="tutorial-steps">
+        <div class="tutorial-step">1. Each spot belongs to a different overlap of the 3 categories.</div>
+        <div class="tutorial-step">2. Correct tiles lock in place. Wrong tiles return to the pool after the board checks.</div>
+        <div class="tutorial-step">3. Each puzzle gives you 3 tries. Hard can get one extra lifeline try if you need it.</div>
+      </div>
+      <div class="tutorial-actions">
+        <button id="tutorial-skip">Skip</button>
+        <button class="tutorial-primary" id="tutorial-start">Start Playing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="lifeline-modal" hidden>
+    <div class="modal-card">
+      <h2>Keep Your Streak</h2>
+      <div class="modal-copy">You are out of tries on Hard. Use your one extra lifeline try to protect today&apos;s run.</div>
+      <div class="modal-actions">
+        <button id="home-screen-btn" data-home-screen-trigger>Save To Home Screen</button>
+        <button id="use-lifeline-btn" class="modal-primary">Use Lifeline</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="home-screen-modal" hidden>
+    <div class="modal-card">
+      <h2>Save To Home Screen</h2>
+      <div class="modal-copy" id="home-screen-copy">On iPhone, tap Share then <strong>Add to Home Screen</strong>. On Android, open the browser menu and choose <strong>Add to Home screen</strong>.</div>
+      <div class="modal-actions">
+        <button id="home-screen-close">Back</button>
+        <button id="home-screen-use" class="modal-primary">Use Lifeline</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="hard-ready-modal" hidden>
+    <div class="modal-card">
+      <h2>Get Ready!</h2>
+      <div class="modal-copy" id="hard-ready-copy">You have 30 seconds to complete this puzzle.</div>
+      <div class="modal-actions">
+        <button id="hard-ready-zen">Play In Zen Mode</button>
+        <button id="hard-ready-start" class="modal-primary">Play Timed</button>
+      </div>
+      <div class="modal-copy">Zen Mode has no timer and does not count toward streaks or badges.</div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="daily-complete-modal" hidden>
+    <div class="modal-card">
+      <div class="celebration-lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h2>CONGRATULATIONS!</h2>
+      <div class="modal-copy" id="daily-complete-copy">You finished today's Common Ground set. Come back tomorrow for a new pair of categories.</div>
+      <div class="difficulty-panel" id="daily-complete-difficulty" hidden>
+        <div class="difficulty-kicker">Common Ground Estimate</div>
+        <div class="difficulty-grid" id="daily-complete-difficulty-grid"></div>
+      </div>
+      <div class="modal-actions">
+        <button id="daily-complete-stats">View Stats</button>
+        <button id="daily-complete-share" class="modal-primary">Share Results</button>
+      </div>
+      <div class="modal-actions">
+        <button id="daily-complete-archive">Browse Archive</button>
+        <button id="daily-complete-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="hard-missed-modal" hidden>
+    <div class="modal-card">
+      <div class="miss-lights" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h2>Too Bad, You Missed Today's Hard Puzzle</h2>
+      <div class="modal-copy" id="hard-missed-copy">You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.</div>
+      <div class="difficulty-panel hard" id="hard-missed-difficulty" hidden>
+        <div class="difficulty-kicker">Common Ground Estimate</div>
+        <div class="difficulty-grid" id="hard-missed-difficulty-grid"></div>
+      </div>
+      <div class="modal-actions">
+        <button id="hard-missed-stats">View Stats</button>
+        <button id="hard-missed-share" class="modal-primary">Share Results</button>
+      </div>
+      <div class="modal-actions">
+        <button id="hard-missed-archive">Browse Archive</button>
+        <button id="hard-missed-retry">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="daily-sets-reviewed.js?v=20260402a"></script>
+  <script src="app.js?v=20260402b"></script>
+  </body>
+  </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
