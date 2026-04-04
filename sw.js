@@ -1,10 +1,10 @@
-const CACHE_NAME = 'common-ground-v36';
+const CACHE_NAME = 'common-ground-v37';
 const ASSETS = [
   '/',
   '/index.html',
-  '/app.js?v=20260403a',
+  '/app.js?v=20260404a',
   '/daily-sets-reviewed.js?v=20260403c',
-  '/manifest.webmanifest?v=20260403d',
+  '/manifest.webmanifest?v=20260404a',
   '/icon-192.png?v=20260320a',
   '/icon-512.png?v=20260320a'
 ];

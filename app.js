@@ -1107,6 +1107,7 @@ function makeTile(tileId) {
   const displayLabel = getTileFaceLabel(tile);
   const el = document.createElement("div");
   el.className = "tile";
+  if (!/[A-Za-z]/.test(displayLabel)) el.classList.add("emoji-face");
   if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 10) el.classList.add("long-text");
   if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 14) el.classList.add("very-long-text");
   el.dataset.tileId = tile.id;
