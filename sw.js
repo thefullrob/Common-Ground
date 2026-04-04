@@ -1,8 +1,8 @@
-const CACHE_NAME = 'common-ground-v38';
+const CACHE_NAME = 'common-ground-v39';
 const ASSETS = [
   '/',
   '/index.html',
-  '/app.js?v=20260404a',
+  '/app.js?v=20260404b',
   '/daily-sets-reviewed.js?v=20260404b',
   '/manifest.webmanifest?v=20260404b',
   '/icon-192.png?v=20260320a',
@@ -35,9 +35,11 @@ self.addEventListener('fetch', (event) => {
       url.pathname.endsWith('/manifest.webmanifest'));
 
   if (isFreshnessCritical) {
+    const freshRequest = new Request(event.request, { cache: 'no-store' });
     event.respondWith(
-      fetch(event.request)
+      fetch(freshRequest)
         .then((response) => {
+          if (!response || !response.ok) throw new Error('Fresh fetch failed');
           const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;

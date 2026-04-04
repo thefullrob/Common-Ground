@@ -1260,7 +1260,15 @@ window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); defe
 window.setInterval(handleCalendarDayChange, 60000);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
+    let didRefreshForNewWorker = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (didRefreshForNewWorker) return;
+      didRefreshForNewWorker = true;
+      window.location.reload();
+    });
+    navigator.serviceWorker.register('./sw.js').then((registration) => {
+      registration.update().catch(() => {});
+    }).catch(() => {});
   });
 }
 
