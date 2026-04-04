@@ -1,5 +1,38 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-05",
+    easy: {
+      title: "Animal + Ocean + Danger",
+      difficultyEstimate: 82,
+      labels: { A: "Animal", B: "Ocean", C: "Danger" },
+      tiles: [
+        { label: "🐬", revealLabel: "Dolphin", correctSlot: "S1" },
+        { label: "🦂", revealLabel: "Scorpion", correctSlot: "S2" },
+        { label: "🌊⚠️", revealLabel: "Rip Current", correctSlot: "S3" },
+        { label: "🦈", revealLabel: "Shark", correctSlot: "S4" },
+        { label: "🐚", revealLabel: "Seashell", correctSlot: null },
+        { label: "⛵", revealLabel: "Sailboat", correctSlot: null },
+        { label: "🐢", revealLabel: "Turtle", correctSlot: null },
+        { label: "🛟", revealLabel: "Life Ring", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Night + Travel + City",
+      difficultyEstimate: 53,
+      labels: { A: "Night", B: "Travel", C: "City" },
+      tiles: [
+        { label: "🌙🚆", revealLabel: "Midnight Express", correctSlot: "S1" },
+        { label: "🌃✨", revealLabel: "City Lights", correctSlot: "S2" },
+        { label: "🚇🗺️", revealLabel: "Metro Map", correctSlot: "S3" },
+        { label: "😴✈️🗽", revealLabel: "Red-Eye to New York", correctSlot: "S4" },
+        { label: "🍸🌙", revealLabel: "Nightcap", correctSlot: null },
+        { label: "🧳🏨", revealLabel: "Hotel Stay", correctSlot: null },
+        { label: "🕰️🌆", revealLabel: "Twilight", correctSlot: null },
+        { label: "🚕💵", revealLabel: "Cab Fare", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-04",
     easy: {
       title: "Movie + Famous People + California",
@@ -43,10 +76,10 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "🦫⏰🔁", revealLabel: "Groundhog Day", correctSlot: "S2" },
         { label: "✈️😵‍💫", revealLabel: "Jet Lag", correctSlot: "S3" },
         { label: "🌍✈️8️⃣0️⃣", revealLabel: "Around the World in 80 Days", correctSlot: "S4" },
-        { label: "🍿🎥", correctSlot: null },
-        { label: "🧳🛂", correctSlot: null },
-        { label: "⌛🕰️", correctSlot: null },
-        { label: "🚉🎫", correctSlot: null }
+        { label: "🍿🎥", revealLabel: "Movie Night", correctSlot: null },
+        { label: "🧳🛂", revealLabel: "Passport Control", correctSlot: null },
+        { label: "⌛🕰️", revealLabel: "Timepiece", correctSlot: null },
+        { label: "🚉🎫", revealLabel: "Train Ticket", correctSlot: null }
       ]
     },
     hard: {
