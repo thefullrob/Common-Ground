@@ -1,5 +1,38 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-06",
+    easy: {
+      title: "Russia + City + Landmark",
+      difficultyEstimate: 77,
+      labels: { A: "Russia", B: "City", C: "Landmark" },
+      tiles: [
+        { label: "Saint Petersburg", correctSlot: "S1" },
+        { label: "Red Square", correctSlot: "S2" },
+        { label: "Space Needle", correctSlot: "S3" },
+        { label: "Kremlin", correctSlot: "S4" },
+        { label: "Siberia", correctSlot: null },
+        { label: "Times Square", correctSlot: null },
+        { label: "Passport", correctSlot: null },
+        { label: "Eiffel Tower", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "1980s + Fads + Toys",
+      difficultyEstimate: 52,
+      labels: { A: "1980s", B: "Fads", C: "Toys" },
+      tiles: [
+        { label: "Moonwalk", correctSlot: "S1" },
+        { label: "Cabbage Patch Kids", correctSlot: "S2" },
+        { label: "Fidget Spinner", correctSlot: "S3" },
+        { label: "Rubik's Cube", correctSlot: "S4" },
+        { label: "Boom Box", correctSlot: null },
+        { label: "Yo-Yo", correctSlot: null },
+        { label: "Neon", correctSlot: null },
+        { label: "Action Figure", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-05",
     easy: {
       title: "Animal + Ocean + Danger",
