@@ -389,6 +389,8 @@ const shareBtn = document.getElementById("share-btn");
 const tutorialEl = document.getElementById("tutorial");
 const tutorialStartBtn = document.getElementById("tutorial-start");
 const tutorialSkipBtn = document.getElementById("tutorial-skip");
+const tutorialVideoEl = document.getElementById("tutorial-video");
+const tutorialCaptionEl = document.getElementById("tutorial-caption");
 const statsModalEl = document.getElementById("stats-modal");
 const statsGridEl = document.getElementById("stats-grid");
 const statsPuzzleListEl = document.getElementById("stats-puzzle-list");
@@ -1202,7 +1204,7 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", handleHardStageRequest); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", () => { closeLaunchScreen(); tutorialEl.hidden = false; }); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", handleHardStageRequest); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", openTutorial); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-day[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 archivePrevBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, -1); renderArchive(); });
 archiveNextBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, 1); renderArchive(); });
@@ -1248,8 +1250,40 @@ function scheduleMidnightRollover() {
   }, delay);
 }
 
+function syncTutorialCaption() {
+  if (!tutorialCaptionEl || !tutorialVideoEl) return;
+  const track = tutorialVideoEl.textTracks?.[0];
+  const activeCue = track?.activeCues?.length ? track.activeCues[0] : null;
+  tutorialCaptionEl.textContent = activeCue ? activeCue.text : "";
+  tutorialCaptionEl.hidden = !activeCue;
+}
+function resetTutorialPlayback(shouldPlay = false) {
+  if (!tutorialVideoEl) return;
+  try {
+    const track = tutorialVideoEl.textTracks?.[0];
+    if (track) track.mode = "hidden";
+  } catch (error) {}
+  tutorialVideoEl.pause();
+  try {
+    tutorialVideoEl.currentTime = 0;
+  } catch (error) {}
+  if (tutorialCaptionEl) {
+    tutorialCaptionEl.textContent = "";
+    tutorialCaptionEl.hidden = true;
+  }
+  if (shouldPlay) {
+    tutorialVideoEl.play().catch(() => {});
+    window.setTimeout(syncTutorialCaption, 120);
+  }
+}
+function openTutorial() {
+  closeLaunchScreen();
+  tutorialEl.hidden = false;
+  resetTutorialPlayback(true);
+}
 function dismissTutorial() {
   tutorialEl.hidden = true;
+  resetTutorialPlayback(false);
   safeSetStorage(TUTORIAL_KEY, "1");
 }
 function closeLaunchScreen() {
@@ -1258,6 +1292,20 @@ function closeLaunchScreen() {
 [statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl, dailyCompleteModalEl, hardMissedModalEl, hardReadyModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); if (modal === dailyCompleteModalEl) closeDailyCompleteModal(); if (modal === hardMissedModalEl) closeHardMissedModal(); if (modal === hardReadyModalEl) closeHardReadyModal(); }); });
 window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); closeDailyCompleteModal(); closeHardMissedModal(); closeHardReadyModal(); });
 window.setInterval(handleCalendarDayChange, 60000);
+if (tutorialVideoEl) {
+  tutorialVideoEl.addEventListener("loadedmetadata", () => {
+    try {
+      const track = tutorialVideoEl.textTracks?.[0];
+      if (track) {
+        track.mode = "hidden";
+        track.addEventListener("cuechange", syncTutorialCaption);
+      }
+    } catch (error) {}
+    syncTutorialCaption();
+  });
+  tutorialVideoEl.addEventListener("timeupdate", syncTutorialCaption);
+  tutorialVideoEl.addEventListener("ended", syncTutorialCaption);
+}
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     let didRefreshForNewWorker = false;

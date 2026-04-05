@@ -703,9 +703,10 @@
       inset: 0;
       background: rgba(22, 32, 51, 0.52);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       padding: 18px;
+      overflow-y: auto;
       z-index: 4000;
     }
 
@@ -714,14 +715,16 @@
     }
 
     .tutorial-card {
-      width: min(420px, 100%);
+      width: min(460px, 100%);
+      max-height: min(92vh, 860px);
+      overflow-y: auto;
       background: #fffdf8;
       border: 1px solid var(--line);
       border-radius: 22px;
-      padding: 18px;
+      padding: 16px;
       box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .tutorial-card h2 {
@@ -738,6 +741,64 @@
       text-align: center;
     }
 
+    .tutorial-video-shell {
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7efe2 100%);
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tutorial-video-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111827;
+      aspect-ratio: 1320 / 2868;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .tutorial-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #111827;
+    }
+
+    .tutorial-caption {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(17, 24, 39, 0.82);
+      color: #fffdf8;
+      font-size: 0.84rem;
+      line-height: 1.35;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.24);
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .tutorial-caption[hidden] {
+      display: none;
+    }
+
+    .tutorial-support-copy {
+      font-size: 0.84rem;
+      color: #435066;
+      line-height: 1.35;
+      font-weight: 800;
+      text-align: center;
+      padding: 0 4px;
+    }
+
     .tutorial-steps {
       display: grid;
       gap: 10px;
@@ -748,9 +809,281 @@
       border-radius: 16px;
       padding: 12px;
       background: #faf6ee;
-      font-size: 0.9rem;
-      font-weight: 800;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tutorial-step-head {
+      display: grid;
+      gap: 3px;
+    }
+
+    .tutorial-step-title {
+      font-size: 0.94rem;
+      font-weight: 900;
+      color: #162033;
+      line-height: 1.2;
+    }
+
+    .tutorial-step-subtitle {
+      font-size: 0.82rem;
+      color: #5f6c83;
       line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .tutorial-step-copy {
+      font-size: 0.82rem;
+      color: #435066;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .tutorial-demo-legend {
+      display: grid;
+      gap: 6px;
+      justify-items: center;
+    }
+
+    .tutorial-demo-legend-title {
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #7a5a35;
+    }
+
+    .tutorial-demo-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .tutorial-demo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #d8cfbe;
+      background: rgba(255, 253, 248, 0.96);
+      color: #44516a;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .tutorial-demo-venn {
+      position: relative;
+      height: 118px;
+      border-radius: 16px;
+      border: 1px solid #e8e0d3;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7efe2 100%);
+      overflow: hidden;
+    }
+
+    .tutorial-demo-circle {
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 3px solid #23324a;
+      opacity: 0.95;
+    }
+
+    .tutorial-demo-circle.a {
+      top: 12px;
+      left: calc(50% - 34px);
+      background: rgba(155, 188, 236, 0.82);
+    }
+
+    .tutorial-demo-circle.b {
+      top: 48px;
+      left: calc(50% - 68px);
+      background: rgba(233, 172, 203, 0.82);
+    }
+
+    .tutorial-demo-circle.c {
+      top: 48px;
+      left: calc(50%);
+      background: rgba(191, 237, 194, 0.9);
+    }
+
+    .tutorial-demo-label {
+      position: absolute;
+      font-size: 0.56rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #44516a;
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid #d8cfbe;
+      border-radius: 999px;
+      padding: 3px 7px;
+    }
+
+    .tutorial-demo-label.a {
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tutorial-demo-label.b {
+      top: 81px;
+      left: 16px;
+    }
+
+    .tutorial-demo-label.c {
+      top: 81px;
+      right: 16px;
+    }
+
+    .tutorial-demo-tile {
+      position: absolute;
+      min-width: 68px;
+      min-height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      border: 2px solid #111827;
+      background: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #162033;
+      text-align: center;
+      padding: 6px 8px;
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+      line-height: 1.05;
+    }
+
+    .tutorial-demo-tile.overlap {
+      top: 48px;
+      left: calc(50% - 48px);
+      min-width: 96px;
+      border-color: #a855f7;
+      background: #f2e8ff;
+    }
+
+    .tutorial-demo-check {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tutorial-demo-lane {
+      border-radius: 14px;
+      border: 1px solid #e8e0d3;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7efe2 100%);
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+    }
+
+    .tutorial-demo-kicker {
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #7a5a35;
+    }
+
+    .tutorial-demo-tile.good {
+      position: static;
+      border-color: #10b981;
+      background: #dff5ec;
+      min-width: 88px;
+    }
+
+    .tutorial-demo-tile.bad {
+      position: static;
+      border-color: #ef4444;
+      background: #fee2e2;
+      min-width: 88px;
+    }
+
+    .tutorial-demo-lock {
+      font-size: 1rem;
+      color: #10b981;
+      line-height: 1;
+    }
+
+    .tutorial-demo-return {
+      font-size: 1rem;
+      color: #ef4444;
+      line-height: 1;
+    }
+
+    .tutorial-demo-flow {
+      border-radius: 16px;
+      border: 1px solid #e8e0d3;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7efe2 100%);
+      padding: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tutorial-flow-stages {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tutorial-stage-pill {
+      min-width: 78px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid #ccb999;
+      background: #fffdf8;
+      color: #162033;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .tutorial-stage-pill.primary {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
+    .tutorial-stage-arrow {
+      font-size: 0.96rem;
+      color: #7a5a35;
+      font-weight: 900;
+    }
+
+    .tutorial-flow-hud {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .tutorial-flow-chip {
+      border-radius: 14px;
+      border: 1px solid #e4dbc9;
+      background: rgba(255,255,255,0.78);
+      padding: 8px;
+      display: grid;
+      gap: 4px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .tutorial-flow-chip strong {
+      font-size: 0.76rem;
+      color: #162033;
+      line-height: 1.1;
+    }
+
+    .tutorial-flow-chip span {
+      font-size: 0.68rem;
+      color: #6a768b;
+      font-weight: 800;
     }
 
     .tutorial-actions {
@@ -811,7 +1144,16 @@
       .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       button { font-size: 0.8rem; padding: 10px 8px; }
       .summary { font-size: 0.76rem; }
-      .tutorial-card { padding: 16px; }
+      .tutorial { padding: 12px; }
+      .tutorial-card { padding: 14px; max-height: 94vh; }
+      .tutorial-caption { left: 10px; right: 10px; bottom: 10px; font-size: 0.78rem; padding: 8px 10px; }
+      .tutorial-flow-hud { grid-template-columns: 1fr; }
+      .tutorial-demo-check { grid-template-columns: 1fr; }
+      .tutorial-demo-venn { height: 112px; }
+      .tutorial-demo-circle { width: 64px; height: 64px; }
+      .tutorial-demo-circle.a { left: calc(50% - 34px); }
+      .tutorial-demo-circle.b { left: calc(50% - 68px); }
+      .tutorial-demo-tile.overlap { left: calc(50% - 46px); min-width: 92px; top: 46px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stats-head { align-items: start; }
       .top-row { gap: 7px; }
@@ -969,11 +1311,16 @@
   <div class="tutorial" id="tutorial" hidden>
     <div class="tutorial-card">
       <h2>How To Play</h2>
-      <div class="tutorial-copy">Each day gives you 2 puzzles. Clear Easy first, then Hard unlocks. Drag the 4 correct tiles into the Venn diagram and the board checks automatically when your last tile lands.</div>
-      <div class="tutorial-steps">
-        <div class="tutorial-step">1. Each spot belongs to a different overlap of the 3 categories.</div>
-        <div class="tutorial-step">2. Correct tiles lock in place. Wrong tiles return to the pool after the board checks.</div>
-        <div class="tutorial-step">3. Each puzzle gives you 3 tries. Hard can get one extra lifeline try if you need it.</div>
+      <div class="tutorial-copy">Watch one quick example, then try it yourself.</div>
+      <div class="tutorial-video-shell">
+        <div class="tutorial-video-wrap">
+          <video id="tutorial-video" class="tutorial-video" muted playsinline loop preload="metadata">
+            <source src="Tutorial.MP4?v=20260405c" type="video/mp4" />
+            <track id="tutorial-track" src="tutorial-subtitles.vtt?v=20260405c" kind="subtitles" srclang="en" label="English" default />
+          </video>
+          <div class="tutorial-caption" id="tutorial-caption" hidden></div>
+        </div>
+        <div class="tutorial-support-copy">Drag each tile to the overlap that matches the categories. When all 4 answers are placed, the board checks automatically.</div>
       </div>
       <div class="tutorial-actions">
         <button id="tutorial-skip">Skip</button>
@@ -1061,7 +1408,7 @@
   </div>
 
   <script src="daily-sets-reviewed.js?v=20260405a"></script>
-  <script src="app.js?v=20260404c"></script>
+  <script src="app.js?v=20260405b"></script>
   </body>
   </html>
 
