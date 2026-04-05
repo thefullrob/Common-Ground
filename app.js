@@ -1266,7 +1266,7 @@ if ('serviceWorker' in navigator) {
       didRefreshForNewWorker = true;
       window.location.reload();
     });
-    navigator.serviceWorker.register('./sw.js').then((registration) => {
+    navigator.serviceWorker.register('./sw.js?v=20260404c').then((registration) => {
       registration.update().catch(() => {});
     }).catch(() => {});
   });
