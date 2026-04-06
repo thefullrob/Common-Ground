@@ -1,5 +1,38 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-07",
+    easy: {
+      title: "Exercise + Technology + Home",
+      difficultyEstimate: 81,
+      labels: { A: "Exercise", B: "Technology", C: "Home" },
+      tiles: [
+        { label: "Fitness Tracker", correctSlot: "S1" },
+        { label: "Home Gym", correctSlot: "S2" },
+        { label: "Smart Speaker", correctSlot: "S3" },
+        { label: "Peloton", correctSlot: "S4" },
+        { label: "Yoga Mat", correctSlot: null },
+        { label: "Laptop", correctSlot: null },
+        { label: "Couch", correctSlot: null },
+        { label: "Air Fryer", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "1990s + Movie + Romance",
+      difficultyEstimate: 48,
+      labels: { A: "1990s", B: "Movie", C: "Romance" },
+      tiles: [
+        { label: "Fight Club", correctSlot: "S1" },
+        { label: "JFK Jr. and Carolyn Bessette", correctSlot: "S2" },
+        { label: "The Notebook", correctSlot: "S3" },
+        { label: "Cruel Intentions", correctSlot: "S4" },
+        { label: "Bennifer", correctSlot: null },
+        { label: "Brangelina", correctSlot: null },
+        { label: "Y2K", correctSlot: null },
+        { label: "Love Letter", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-06",
     easy: {
       title: "Russia + City + Landmark",
