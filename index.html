@@ -664,15 +664,47 @@
       display: none;
     }
 
+    .share-card {
+      display: grid;
+      gap: 8px;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7f0e2 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .share-kicker {
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a6b41;
+    }
+
+    .share-headline {
+      font-size: 1.02rem;
+      font-weight: 900;
+      color: #162033;
+      line-height: 1.2;
+    }
+
+    .share-subcopy,
+    .share-helper {
+      font-size: 0.88rem;
+      color: #526074;
+      line-height: 1.35;
+    }
+
     .share-preview {
       margin: 0;
       white-space: pre-wrap;
       font-family: "SFMono-Regular", Consolas, monospace;
-      font-size: 0.9rem;
-      line-height: 1.35;
+      font-size: 0.92rem;
+      line-height: 1.4;
       color: #162033;
-      background: linear-gradient(180deg, #fffdf8 0%, #f7f0e2 100%);
-      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.78);
+      border: 1px solid #e7dcc9;
       border-radius: 18px;
       padding: 14px 16px;
     }
@@ -1221,8 +1253,14 @@
 
       <div class="summary" id="summary"></div>
       <div class="share-panel" id="share-panel" hidden>
-        <pre class="share-preview" id="share-preview"></pre>
-        <button id="share-btn">Share Results</button>
+        <div class="share-card">
+          <div class="share-kicker" id="share-kicker">Share The Challenge</div>
+          <div class="share-headline" id="share-headline">Challenge a friend to beat your result.</div>
+          <div class="share-subcopy" id="share-subcopy">The best shares feel like a dare, not a receipt.</div>
+          <pre class="share-preview" id="share-preview"></pre>
+        </div>
+        <button id="share-btn">Challenge a Friend</button>
+        <div class="share-helper" id="share-helper">Send today’s puzzle and see who finds the overlap faster.</div>
       </div>
     </section>
   </div>
@@ -1369,14 +1407,14 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <h2>CONGRATULATIONS!</h2>
-      <div class="modal-copy" id="daily-complete-copy">You finished today's Common Ground set. Come back tomorrow for a new pair of categories.</div>
+      <div class="modal-copy" id="daily-complete-copy">You finished today's Common Ground set. Challenge a friend before tomorrow's categories drop.</div>
       <div class="difficulty-panel" id="daily-complete-difficulty" hidden>
         <div class="difficulty-kicker">Common Ground Estimate</div>
         <div class="difficulty-grid" id="daily-complete-difficulty-grid"></div>
       </div>
       <div class="modal-actions">
         <button id="daily-complete-stats">View Stats</button>
-        <button id="daily-complete-share" class="modal-primary">Share Results</button>
+        <button id="daily-complete-share" class="modal-primary">Challenge a Friend</button>
       </div>
       <div class="modal-actions">
         <button id="daily-complete-archive">Browse Archive</button>
@@ -1391,14 +1429,14 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <h2>Too Bad, You Missed Today's Hard Puzzle</h2>
-      <div class="modal-copy" id="hard-missed-copy">You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.</div>
+      <div class="modal-copy" id="hard-missed-copy">Today's Hard got away. Send it to a friend, or try again in Practice Mode just for fun.</div>
       <div class="difficulty-panel hard" id="hard-missed-difficulty" hidden>
         <div class="difficulty-kicker">Common Ground Estimate</div>
         <div class="difficulty-grid" id="hard-missed-difficulty-grid"></div>
       </div>
       <div class="modal-actions">
         <button id="hard-missed-stats">View Stats</button>
-        <button id="hard-missed-share" class="modal-primary">Share Results</button>
+        <button id="hard-missed-share" class="modal-primary">Challenge a Friend</button>
       </div>
       <div class="modal-actions">
         <button id="hard-missed-archive">Browse Archive</button>
@@ -1408,7 +1446,7 @@
   </div>
 
   <script src="daily-sets-reviewed.js?v=20260406b"></script>
-  <script src="app.js?v=20260405b"></script>
+  <script src="app.js?v=20260406c"></script>
   </body>
   </html>
 

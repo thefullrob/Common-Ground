@@ -275,7 +275,7 @@ runtimeStyle.textContent += `
   }
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
-const BASE_LIVES = 3;
+const BASE_LIVES = 2;
 const HARD_TIMER_MS = 30000;
 const HARD_LIFELINE_BONUS_MS = 15000;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
@@ -384,7 +384,11 @@ const hardBtn = document.getElementById("hard-btn");
 const undoBtn = document.getElementById("undo-btn");
 const clearBtn = document.getElementById("clear-btn");
 const sharePanelEl = document.getElementById("share-panel");
+const shareKickerEl = document.getElementById("share-kicker");
+const shareHeadlineEl = document.getElementById("share-headline");
+const shareSubcopyEl = document.getElementById("share-subcopy");
 const sharePreviewEl = document.getElementById("share-preview");
+const shareHelperEl = document.getElementById("share-helper");
 const shareBtn = document.getElementById("share-btn");
 const tutorialEl = document.getElementById("tutorial");
 const tutorialStartBtn = document.getElementById("tutorial-start");
@@ -767,7 +771,7 @@ function closeLifelineModals() { lifelineModalEl.hidden = true; homeScreenModalE
 function openDailyCompleteModal() {
   if (!dailyCompleteModalEl) return;
   if (dailyCompleteCopyEl) {
-    dailyCompleteCopyEl.textContent = `You finished today's Common Ground set for ${formatLongDate(getActiveDate())}. Come back tomorrow for a new pair of categories.`;
+    dailyCompleteCopyEl.textContent = `You finished today's Common Ground set for ${formatLongDate(getActiveDate())}. Challenge a friend and see if they can beat your result before tomorrow's puzzle.`;
   }
   if (dailyCompleteDifficultyEl && dailyCompleteDifficultyGridEl) {
     const items = [
@@ -796,7 +800,7 @@ function scheduleDailyCompleteModal(delayMs = 3000) {
 }
 function openHardMissedModal() {
   if (!hardMissedModalEl) return;
-  if (hardMissedCopyEl) hardMissedCopyEl.textContent = "You can try Hard again just for fun. Practice mode has no timer and does not count toward streaks or badges.";
+  if (hardMissedCopyEl) hardMissedCopyEl.textContent = "Today's Hard got away. Send it to a friend, or try again in Practice Mode just for fun. Practice mode has no timer and does not count toward streaks or badges.";
   if (hardMissedDifficultyEl && hardMissedDifficultyGridEl) {
     const percent = getDifficultyPercent(getActiveDate(), "hard");
     renderDifficultyGrid(hardMissedDifficultyGridEl, [{ stage: "hard", percent }]);
@@ -821,7 +825,7 @@ function scheduleHardMissedModal(delayMs = 3000) {
 }
 function openHardReadyModal() {
   if (!hardReadyModalEl) return;
-  if (hardReadyCopyEl) hardReadyCopyEl.textContent = `You have ${Math.round(HARD_TIMER_MS / 1000)} seconds to complete this puzzle.`;
+  if (hardReadyCopyEl) hardReadyCopyEl.textContent = `You have ${Math.round(HARD_TIMER_MS / 1000)} seconds and ${BASE_LIVES} tries to complete this puzzle.`;
   hardReadyModalEl.hidden = false;
 }
 function closeHardReadyModal() {
@@ -926,6 +930,28 @@ function formatShareTryLine() {
 function buildShareTitle() {
   return `Common Ground #${getPuzzleNumber(getActiveDate())} - ${capitalize(activeStage)}`;
 }
+function getShareCardContent() {
+  const difficulty = capitalize(activeStage);
+  const difficultyPercent = getDifficultyPercent(getActiveDate(), activeStage);
+  if (state.solved) {
+    return {
+      kicker: activeStage === "hard" ? "Hard Cleared" : "Easy Cleared",
+      headline: `Challenge a friend to beat your ${difficulty} result.`,
+      subcopy: Number.isFinite(difficultyPercent)
+        ? `${difficultyPercent}% estimated clear rate. See who solves it in fewer tries.`
+        : `Send today's ${difficulty} and see who solves it in fewer tries.`,
+      helper: "Share the puzzle, not just the score."
+    };
+  }
+  return {
+    kicker: `${difficulty} Challenge`,
+    headline: `Send today's ${difficulty} to someone who thinks they can crack it.`,
+    subcopy: Number.isFinite(difficultyPercent)
+      ? `${difficultyPercent}% estimated clear rate. Most players don't coast through this one.`
+      : "This one is tougher than it looks.",
+    helper: "A miss can still be a great challenge send."
+  };
+}
 function buildShareGrid() {
   if (!state) return "";
   if (!state.solved) return "\u{1F7E5}\u{1F7E5}\u{1F7E5}";
@@ -951,28 +977,75 @@ function getShareSummaryLine() {
 function buildShareText(mode = "web") {
   const grid = buildShareGrid();
   const summary = getShareSummaryLine();
+  const challenge = state?.solved ? "Think you can beat me?" : "Think you can crack it?";
   if (mode === "clipboard") {
-    return `${grid}\n${summary}\n\nTry today's puzzle:\n${APP_URL}`;
+    return `${grid}\n${summary}\n\n${challenge}\nPlay at:\n${APP_URL}`;
   }
-  return `${grid}\n${summary}\n\nCan you solve it?`;
+  return `${grid}\n${summary}\n\n${challenge}`;
 }
 function shouldUseNativeShare() {
   const ua = navigator.userAgent || "";
   const mobileLike = /Android|iPhone|iPad|iPod/i.test(ua);
   return mobileLike && typeof navigator.share === "function";
 }
-function updateShareUi() { const finished = state.solved || state.failed; sharePanelEl.hidden = !finished; if (!finished) { sharePreviewEl.textContent = ""; shareBtn.textContent = "Share Results"; return; } sharePreviewEl.textContent = buildShareText("web"); }
-async function copyShareResults() {
+function updateShareUi() {
+  const finished = state.solved || state.failed;
+  sharePanelEl.hidden = !finished;
+  if (!finished) {
+    if (sharePreviewEl) sharePreviewEl.textContent = "";
+    if (shareBtn) shareBtn.textContent = "Challenge a Friend";
+    return;
+  }
+  const card = getShareCardContent();
+  if (shareKickerEl) shareKickerEl.textContent = card.kicker;
+  if (shareHeadlineEl) shareHeadlineEl.textContent = card.headline;
+  if (shareSubcopyEl) shareSubcopyEl.textContent = card.subcopy;
+  if (shareHelperEl) shareHelperEl.textContent = card.helper;
+  if (sharePreviewEl) sharePreviewEl.textContent = buildShareText("web");
+  if (shareBtn) shareBtn.textContent = "Challenge a Friend";
+}
+async function copyShareResults(event) {
   const shareText = buildShareText("web");
   const clipboardText = buildShareText("clipboard");
   const url = APP_URL;
-  trackEvent("share_click", getAnalyticsParams({ tries_used: state?.tries ?? null, solved: Boolean(state?.solved), practice_mode: Boolean(state?.practiceMode) }));
+  const sourceMap = {
+    "share-btn": "share_panel",
+    "daily-complete-share": "daily_complete_modal",
+    "hard-missed-share": "hard_missed_modal"
+  };
+  const source = sourceMap[event?.currentTarget?.id] || "unknown";
+  trackEvent("share_click", getAnalyticsParams({
+    tries_used: state?.tries ?? null,
+    solved: Boolean(state?.solved),
+    practice_mode: Boolean(state?.practiceMode),
+    share_source: source
+  }));
   try {
-    if (shouldUseNativeShare()) { await navigator.share({ title: buildShareTitle(), text: shareText, url }); setMessage("Share sheet opened.", "#1f7a4f"); return; }
+    if (shouldUseNativeShare()) {
+      await navigator.share({ title: buildShareTitle(), text: shareText, url });
+      trackEvent("share_complete", getAnalyticsParams({
+        tries_used: state?.tries ?? null,
+        share_method: "native",
+        share_source: source
+      }));
+      setMessage("Share sheet opened. Challenge sent.", "#1f7a4f");
+      return;
+    }
     const payload = clipboardText;
     if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(payload);
     else { const input = document.createElement("textarea"); input.value = payload; input.setAttribute("readonly", "true"); input.style.position = "absolute"; input.style.left = "-9999px"; document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove(); }
-    shareBtn.textContent = "Copied"; setMessage("Results copied to clipboard. Paste anywhere.", "#1f7a4f"); window.setTimeout(() => { shareBtn.textContent = "Share Results"; }, 1400);
+    trackEvent("share_complete", getAnalyticsParams({
+      tries_used: state?.tries ?? null,
+      share_method: "clipboard",
+      share_source: source
+    }));
+    if (event?.currentTarget) event.currentTarget.textContent = "Copied";
+    else if (shareBtn) shareBtn.textContent = "Copied";
+    setMessage("Challenge copied to clipboard. Paste it anywhere.", "#1f7a4f");
+    window.setTimeout(() => {
+      if (event?.currentTarget) event.currentTarget.textContent = "Challenge a Friend";
+      else if (shareBtn) shareBtn.textContent = "Challenge a Friend";
+    }, 1400);
   } catch (err) { if (err?.name !== "AbortError") setMessage("Could not share results on this device.", "#991b1b"); }
 }
 function updateColorProgress() {
