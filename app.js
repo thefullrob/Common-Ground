@@ -954,6 +954,12 @@ function getShareCardContent() {
 }
 function buildShareGrid() {
   if (!state) return "";
+  const maxLives = getActiveMaxLives();
+  if (maxLives <= 2) {
+    if (!state.solved) return "\u{1F7E5}\u{1F7E5}";
+    if (state.tries === 1) return "\u{1F7E9}\u{2B1C}";
+    return "\u{1F7E5}\u{1F7E9}";
+  }
   if (!state.solved) return "\u{1F7E5}\u{1F7E5}\u{1F7E5}";
   if (state.tries === 1) return "\u{1F7E9}\u{2B1C}\u{2B1C}";
   if (state.tries === 2) return "\u{1F7E5}\u{1F7E9}\u{2B1C}";
