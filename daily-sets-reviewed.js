@@ -7,13 +7,13 @@ window.COMMON_GROUND_DAILY_SETS = [
       labels: { A: "Russia", B: "City", C: "Landmark" },
       tiles: [
         { label: "Saint Petersburg", correctSlot: "S1" },
-        { label: "Red Square", correctSlot: "S2" },
+        { label: "Volcanoes of Kamchatka", correctSlot: "S2" },
         { label: "Space Needle", correctSlot: "S3" },
         { label: "Kremlin", correctSlot: "S4" },
         { label: "Siberia", correctSlot: null },
-        { label: "Times Square", correctSlot: null },
+        { label: "Skyline", correctSlot: null },
         { label: "Passport", correctSlot: null },
-        { label: "Eiffel Tower", correctSlot: null }
+        { label: "Czar", correctSlot: null }
       ]
     },
     hard: {
