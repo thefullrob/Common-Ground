@@ -1,3 +1,4 @@
+```javascript
 const { GoogleAuth } = require('google-auth-library');
 const { google } = require('googleapis');
 const sharp = require('sharp');
@@ -5,7 +6,7 @@ const sharp = require('sharp');
 const GITHUB_USER   = 'thefullrob';
 const GITHUB_REPO   = 'Common-Ground';
 const GITHUB_BRANCH = 'main';
-const IMAGE_PATH    = 'social-post-today.jpg';
+const IMAGE_PATH    = 'social-post-today.png';
 
 const SHEET_ID     = process.env.GOOGLE_SHEETS_ID;
 const GH_TOKEN     = process.env.GH_TOKEN;
@@ -32,11 +33,12 @@ async function getTodaysPuzzle() {
 }
 
 function pillWidth(text) {
-  return Math.min(300, Math.max(180, text.length * 14 + 40));
+  return Math.min(340, Math.max(180, text.length * 18 + 40));
 }
 
 function pillFontSize(text) {
-  if (text.length > 12) return 20;
+  if (text.length > 14) return 18;
+  if (text.length > 10) return 22;
   if (text.length > 8) return 24;
   return 28;
 }
@@ -54,7 +56,7 @@ function generateSVG(puzzle) {
   const fsC = pillFontSize(categoryC);
 
   const totalWidth = wA + wB + wC;
-  const gap = Math.min(20, (940 - totalWidth) / 2);
+  const gap = Math.min(16, (1020 - totalWidth) / 2);
   const startX = (1080 - totalWidth - gap * 2) / 2;
 
   const xA = startX;
@@ -91,12 +93,12 @@ function generateSVG(puzzle) {
 </svg>`;
 }
 
-async function generateJPEG(svgString) {
-  return await sharp(Buffer.from(svgString)).resize(1080, 1080).jpeg({ quality: 90 }).toBuffer();
+async function generatePNG(svgString) {
+  return await sharp(Buffer.from(svgString)).resize(1080, 1080).png().toBuffer();
 }
 
-async function uploadToGitHub(jpgBuffer) {
-  const base64 = jpgBuffer.toString('base64');
+async function uploadToGitHub(pngBuffer) {
+  const base64 = pngBuffer.toString('base64');
   const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${IMAGE_PATH}`;
   let sha;
   try {
@@ -134,8 +136,8 @@ async function updateOGImageCache(today) {
 
   const updated = content
     .replace(
-      /social-post-today\.(png|jpg)\?v=[^"']*/g,
-      `social-post-today.jpg?v=${today}`
+      /social-post-today\.png\?v=[^"']*/g,
+      `social-post-today.png?v=${today}`
     );
 
   if (updated === content) {
@@ -201,10 +203,10 @@ async function main() {
 
     console.log('Generating social image...');
     const svg = generateSVG(puzzle);
-    const jpg = await generateJPEG(svg);
+    const png = await generatePNG(svg);
 
     console.log('Uploading to GitHub...');
-    const imageUrl = await uploadToGitHub(jpg);
+    const imageUrl = await uploadToGitHub(png);
     console.log(`Image live at: ${imageUrl}`);
 
     console.log('Updating OG image cache buster in index.html...');
@@ -221,3 +223,6 @@ async function main() {
 }
 
 main();
+```
+
+Paste this into GitHub replacing the existing file, then trigger a manual run from the Actions tab to test it. The pills should now size properly for longer words like LANDMARK.
