@@ -1,5 +1,71 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-09",
+    easy: {
+      title: "Middle East + Tourism + Structure",
+      difficultyEstimate: 73,
+      labels: { A: "Middle East", B: "Tourism", C: "Structure" },
+      tiles: [
+        { label: "Dubai Tour", correctSlot: "S1" },
+        { label: "Burj Khalifa", correctSlot: "S2" },
+        { label: "Observation Deck", correctSlot: "S3" },
+        { label: "Petra", correctSlot: "S4" },
+        { label: "Oasis", correctSlot: null },
+        { label: "Luggage", correctSlot: null },
+        { label: "Blueprint", correctSlot: null },
+        { label: "Sand Dune", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Space Race + Cold War + First",
+      difficultyEstimate: 42,
+      labels: { A: "Space Race", B: "Cold War", C: "First" },
+      tiles: [
+        { label: "Sputnik Satellite", correctSlot: "S1" },
+        { label: "First Spacewalk", correctSlot: "S2" },
+        { label: "First ICBM", correctSlot: "S3" },
+        { label: "First Moon Landing", correctSlot: "S4" },
+        { label: "Berlin Wall", correctSlot: null },
+        { label: "Launch Pad", correctSlot: null },
+        { label: "Silver Medal", correctSlot: null },
+        { label: "Space Suit", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-08",
+    easy: {
+      title: "College + Party + School",
+      difficultyEstimate: 78,
+      labels: { A: "College", B: "Party", C: "School" },
+      tiles: [
+        { label: "Frat House", correctSlot: "S1" },
+        { label: "Dorm Room", correctSlot: "S2" },
+        { label: "Student Mixer", correctSlot: "S3" },
+        { label: "Rush Week", correctSlot: "S4" },
+        { label: "Textbook", correctSlot: null },
+        { label: "Solo Cup", correctSlot: null },
+        { label: "Backpack", correctSlot: null },
+        { label: "Nightclub", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Pop Culture + Social Media + Trend",
+      difficultyEstimate: 43,
+      labels: { A: "Pop Culture", B: "Social Media", C: "Trend" },
+      tiles: [
+        { label: "Celebrity Post", correctSlot: "S1" },
+        { label: "Barbiecore", correctSlot: "S2" },
+        { label: "Hashtag", correctSlot: "S3" },
+        { label: "TikTok", correctSlot: "S4" },
+        { label: "Selfie", correctSlot: null },
+        { label: "Celebrity Gossip", correctSlot: null },
+        { label: "Neon", correctSlot: null },
+        { label: "Blue Check", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-07",
     easy: {
       title: "Exercise + Technology + Home",
