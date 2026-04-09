@@ -1,5 +1,137 @@
 window.COMMON_GROUND_DAILY_SETS = [
   {
+    date: "2026-04-13",
+    easy: {
+      title: "Artisan + Metal + Fire",
+      difficultyEstimate: 70,
+      labels: { A: "Artisan", B: "Metal", C: "Fire" },
+      tiles: [
+        { label: "Machinist", correctSlot: "S1" },
+        { label: "Glassblower", correctSlot: "S2" },
+        { label: "Forging", correctSlot: "S3" },
+        { label: "Blacksmith", correctSlot: "S4" },
+        { label: "Pottery Wheel", correctSlot: null },
+        { label: "Steel Beam", correctSlot: null },
+        { label: "Campfire", correctSlot: null },
+        { label: "Wood Chisel", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Mobster + 1920s + Liquor",
+      difficultyEstimate: 44,
+      labels: { A: "Mobster", B: "1920s", C: "Liquor" },
+      tiles: [
+        { label: "Al Capone", correctSlot: "S1" },
+        { label: "Rumrunner", correctSlot: "S2" },
+        { label: "Speakeasy", correctSlot: "S3" },
+        { label: "Bootlegger", correctSlot: "S4" },
+        { label: "Tommy Gun", correctSlot: null },
+        { label: "Flapper Dress", correctSlot: null },
+        { label: "Cocktail Shaker", correctSlot: null },
+        { label: "Pocket Watch", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-12",
+    easy: {
+      title: "Golf + The Masters + Sunday",
+      difficultyEstimate: 71,
+      labels: { A: "Golf", B: "The Masters", C: "Sunday" },
+      tiles: [
+        { label: "Green Jacket", correctSlot: "S1" },
+        { label: "Tiger's Red Shirt", correctSlot: "S2" },
+        { label: "Final Round", correctSlot: "S3" },
+        { label: "Back Nine", correctSlot: "S4" },
+        { label: "Scorecard", correctSlot: null },
+        { label: "Clubhouse", correctSlot: null },
+        { label: "Brunch", correctSlot: null },
+        { label: "Sand Trap", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Ireland + Pub + Celebration",
+      difficultyEstimate: 48,
+      labels: { A: "Ireland", B: "Pub", C: "Celebration" },
+      tiles: [
+        { label: "Guinness", correctSlot: "S1" },
+        { label: "St. Patrick's Parade", correctSlot: "S2" },
+        { label: "Round of Drinks", correctSlot: "S3" },
+        { label: "Temple Bar", correctSlot: "S4" },
+        { label: "Shamrock", correctSlot: null },
+        { label: "Bartender", correctSlot: null },
+        { label: "Birthday Cake", correctSlot: null },
+        { label: "Whiskey Glass", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-11",
+    easy: {
+      title: "Music + Protest + 1960s",
+      difficultyEstimate: 72,
+      labels: { A: "Music", B: "Protest", C: "1960s" },
+      tiles: [
+        { label: "Protest Anthem", correctSlot: "S1" },
+        { label: "The Beatles", correctSlot: "S2" },
+        { label: "Civil Rights Movement", correctSlot: "S3" },
+        { label: "Bob Dylan", correctSlot: "S4" },
+        { label: "Vinyl Record", correctSlot: null },
+        { label: "Peace Necklace", correctSlot: null },
+        { label: "Bell Bottoms", correctSlot: null },
+        { label: "Television Set", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Buddy Movie + Crime + Comedy",
+      difficultyEstimate: 46,
+      labels: { A: "Buddy Movie", B: "Crime", C: "Comedy" },
+      tiles: [
+        { label: "Lethal Weapon", correctSlot: "S1" },
+        { label: "Wayne's World", correctSlot: "S2" },
+        { label: "Fargo", correctSlot: "S3" },
+        { label: "Rush Hour", correctSlot: "S4" },
+        { label: "Top Gun", correctSlot: null },
+        { label: "Pulp Fiction", correctSlot: null },
+        { label: "The Godfather", correctSlot: null },
+        { label: "Pretty Woman", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-10",
+    easy: {
+      title: "Dance + Music + 1970s",
+      difficultyEstimate: 75,
+      labels: { A: "Dance", B: "Music", C: "1970s" },
+      tiles: [
+        { label: "Dance Floor", correctSlot: "S1" },
+        { label: "Disco Ball", correctSlot: "S2" },
+        { label: "Bee Gees", correctSlot: "S3" },
+        { label: "Saturday Night Fever", correctSlot: "S4" },
+        { label: "Cassette Tape", correctSlot: null },
+        { label: "Jukebox", correctSlot: null },
+        { label: "Vinyl Record", correctSlot: null },
+        { label: "Lava Lamp", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "World War I + World War II + Technology",
+      difficultyEstimate: 45,
+      labels: { A: "World War I", B: "World War II", C: "Technology" },
+      tiles: [
+        { label: "Allied Powers", correctSlot: "S1" },
+        { label: "Acoustic Locators", correctSlot: "S2" },
+        { label: "Radar", correctSlot: "S3" },
+        { label: "Tank", correctSlot: "S4" },
+        { label: "Trench Coat", correctSlot: null },
+        { label: "Victory Medal", correctSlot: null },
+        { label: "Helmet", correctSlot: null },
+        { label: "Periscope", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-09",
     easy: {
       title: "Middle East + Tourism + Structure",
