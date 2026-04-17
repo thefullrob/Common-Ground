@@ -1,6 +1,54 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+    date: "2026-04-18",
+    easy: {
+      title: "Movie + Animal + Family",
+      difficultyEstimate: 80,
+      labels: { A: "Movie", B: "Animal", C: "Family" },
+      tiles: [
+        { label: "Jaws", correctSlot: "S1" },
+        { label: "Toy Story", correctSlot: "S2" },
+        { label: "Zoo Trip", correctSlot: "S3" },
+        { label: "The Lion King", correctSlot: "S4" },
+        { label: "Popcorn", correctSlot: null },
+        { label: "Goldfish", correctSlot: null },
+        { label: "Family Photo", correctSlot: null },
+        { label: "Movie Ticket", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "Movie + New York + Comedy",
+      difficultyEstimate: 62,
+      labels: { A: "Movie", B: "New York", C: "Comedy" },
+      tiles: [
+        { label: "King Kong", correctSlot: "S1" },
+        { label: "Bridesmaids", correctSlot: "S2" },
+        { label: "Comedy Cellar", correctSlot: "S3" },
+        { label: "Ghostbusters", correctSlot: "S4" },
+        { label: "Taxi Cab", correctSlot: null },
+        { label: "Popcorn Tub", correctSlot: null },
+        { label: "Laugh Track", correctSlot: null },
+        { label: "Empire State", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Movie + 1990s + Crime",
+      difficultyEstimate: 41,
+      labels: { A: "Movie", B: "1990s", C: "Crime" },
+      tiles: [
+        { label: "Titanic", correctSlot: "S1" },
+        { label: "The Godfather", correctSlot: "S2" },
+        { label: "O.J. Trial", correctSlot: "S3" },
+        { label: "Pulp Fiction", correctSlot: "S4" },
+        { label: "Dial-Up Modem", correctSlot: null },
+        { label: "Courtroom", correctSlot: null },
+        { label: "Red Carpet", correctSlot: null },
+        { label: "Beeper", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-17",
     easy: {
       title: "TV Show + New York + Comedy",
