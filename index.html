@@ -1224,6 +1224,7 @@
       <div class="game-wordmark">COMMON GROUND</div>
       <div class="stage-row">
         <button id="easy-btn" class="stage-btn active">Easy</button>
+        <button id="medium-btn" class="stage-btn locked" disabled>Medium</button>
         <button id="hard-btn" class="stage-btn locked" disabled>Hard</button>
       </div>
       <div class="board" id="board">
@@ -1369,11 +1370,11 @@
 
   <div class="modal-overlay" id="lifeline-modal" hidden>
     <div class="modal-card">
-      <h2>Keep Your Streak</h2>
-      <div class="modal-copy">You are out of tries on Hard. Use your one extra lifeline try to protect today&apos;s run.</div>
+      <h2>No Timer Needed</h2>
+      <div class="modal-copy">Hard is untimed now. Take your time and trust the logic.</div>
       <div class="modal-actions">
         <button id="home-screen-btn" data-home-screen-trigger>Save To Home Screen</button>
-        <button id="use-lifeline-btn" class="modal-primary">Use Lifeline</button>
+        <button id="use-lifeline-btn" class="modal-primary">Got It</button>
       </div>
     </div>
   </div>
@@ -1384,7 +1385,7 @@
       <div class="modal-copy" id="home-screen-copy">On iPhone, tap Share then <strong>Add to Home Screen</strong>. On Android, open the browser menu and choose <strong>Add to Home screen</strong>.</div>
       <div class="modal-actions">
         <button id="home-screen-close">Back</button>
-        <button id="home-screen-use" class="modal-primary">Use Lifeline</button>
+        <button id="home-screen-use" class="modal-primary">Got It</button>
       </div>
     </div>
   </div>
@@ -1392,12 +1393,12 @@
   <div class="modal-overlay" id="hard-ready-modal" hidden>
     <div class="modal-card">
       <h2>Get Ready!</h2>
-      <div class="modal-copy" id="hard-ready-copy">You have 30 seconds to complete this puzzle.</div>
+      <div class="modal-copy" id="hard-ready-copy">Hard is unlocked. You get 1 try and no timer, so take your time.</div>
       <div class="modal-actions">
-        <button id="hard-ready-zen">Play In Zen Mode</button>
-        <button id="hard-ready-start" class="modal-primary">Play Timed</button>
+        <button id="hard-ready-zen">Practice Later</button>
+        <button id="hard-ready-start" class="modal-primary">Play Hard</button>
       </div>
-      <div class="modal-copy">Zen Mode has no timer and does not count toward streaks or badges.</div>
+      <div class="modal-copy">No timer. The challenge is the single official try.</div>
     </div>
   </div>
 
@@ -1446,7 +1447,7 @@
   </div>
 
   <script src="daily-sets-reviewed.js?v=20260406b"></script>
-  <script src="app.js?v=20260406c"></script>
+  <script src="app.js?v=20260417a"></script>
   </body>
   </html>
 

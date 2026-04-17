@@ -1,5 +1,197 @@
 window.COMMON_GROUND_DAILY_SETS = [
+
   {
+    date: "2026-04-17",
+    easy: {
+      title: "TV Show + New York + Comedy",
+      difficultyEstimate: 74,
+      labels: { A: "TV Show", B: "New York", C: "Comedy" },
+      tiles: [
+        { label: "Gossip Girl", correctSlot: "S1" },
+        { label: "The Office", correctSlot: "S2" },
+        { label: "Stand-Up Club", correctSlot: "S3" },
+        { label: "Seinfeld", correctSlot: "S4" },
+        { label: "Central Park", correctSlot: null },
+        { label: "Microphone", correctSlot: null },
+        { label: "Remote Control", correctSlot: null },
+        { label: "Drama Class", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "2010s + Streaming + TV Show",
+      difficultyEstimate: 58,
+      labels: { A: "2010s", B: "Streaming", C: "TV Show" },
+      tiles: [
+        { label: "Netflix Original", correctSlot: "S1" },
+        { label: "Game of Thrones", correctSlot: "S2" },
+        { label: "Hulu Series", correctSlot: "S3" },
+        { label: "Stranger Things", correctSlot: "S4" },
+        { label: "DVR", correctSlot: null },
+        { label: "Smartphone", correctSlot: null },
+        { label: "Red Carpet", correctSlot: null },
+        { label: "Channel Guide", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "TV Show + 2010s + Political",
+      difficultyEstimate: 38,
+      labels: { A: "TV Show", B: "2010s", C: "Political" },
+      tiles: [
+        { label: "Breaking Bad", correctSlot: "S1" },
+        { label: "The West Wing", correctSlot: "S2" },
+        { label: "Brexit", correctSlot: "S3" },
+        { label: "House of Cards", correctSlot: "S4" },
+        { label: "Campaign Sign", correctSlot: null },
+        { label: "Netflix Queue", correctSlot: null },
+        { label: "Oval Office", correctSlot: null },
+        { label: "Reality Show", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-16",
+    easy: {
+      title: "Country + Island + Vacation",
+      difficultyEstimate: 78,
+      labels: { A: "Country", B: "Island", C: "Vacation" },
+      tiles: [
+        { label: "Iceland", correctSlot: "S1" },
+        { label: "Mexico", correctSlot: "S2" },
+        { label: "Beach Resort", correctSlot: "S3" },
+        { label: "Jamaica", correctSlot: "S4" },
+        { label: "Atlas", correctSlot: null },
+        { label: "Suitcase", correctSlot: null },
+        { label: "Peninsula", correctSlot: null },
+        { label: "Airport", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "Desert + City + Famous",
+      difficultyEstimate: 65,
+      labels: { A: "Desert", B: "City", C: "Famous" },
+      tiles: [
+        { label: "Phoenix", correctSlot: "S1" },
+        { label: "Sahara", correctSlot: "S2" },
+        { label: "Hollywood", correctSlot: "S3" },
+        { label: "Las Vegas", correctSlot: "S4" },
+        { label: "Cactus", correctSlot: null },
+        { label: "Subway Map", correctSlot: null },
+        { label: "Postcard", correctSlot: null },
+        { label: "Sandcastle", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Island + Prison + Movie",
+      difficultyEstimate: 40,
+      labels: { A: "Island", B: "Prison", C: "Movie" },
+      tiles: [
+        { label: "Alcatraz", correctSlot: "S1" },
+        { label: "Shutter Island", correctSlot: "S2" },
+        { label: "The Shawshank Redemption", correctSlot: "S3" },
+        { label: "Escape from Alcatraz", correctSlot: "S4" },
+        { label: "Treasure Map", correctSlot: null },
+        { label: "Jail Cell", correctSlot: null },
+        { label: "Hawaii", correctSlot: null },
+        { label: "Movie Ticket", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-15",
+    easy: {
+      title: "Toy + Vehicle + Movie",
+      difficultyEstimate: 80,
+      labels: { A: "Toy", B: "Vehicle", C: "Movie" },
+      tiles: [
+        { label: "Hot Wheels", correctSlot: "S1" },
+        { label: "Barbie", correctSlot: "S2" },
+        { label: "Batmobile", correctSlot: "S3" },
+        { label: "Transformers", correctSlot: "S4" },
+        { label: "Dollhouse", correctSlot: null },
+        { label: "Bicycle", correctSlot: null },
+        { label: "Popcorn", correctSlot: null },
+        { label: "Board Game", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "Toy + Cartoon + Bear",
+      difficultyEstimate: 61,
+      labels: { A: "Toy", B: "Cartoon", C: "Bear" },
+      tiles: [
+        { label: "Mickey Mouse Plush", correctSlot: "S1" },
+        { label: "Teddy Bear", correctSlot: "S2" },
+        { label: "Yogi Bear", correctSlot: "S3" },
+        { label: "Care Bears", correctSlot: "S4" },
+        { label: "Robot", correctSlot: null },
+        { label: "Dollhouse", correctSlot: null },
+        { label: "Race Car", correctSlot: null },
+        { label: "Crayon", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Toy + Movie + Soldier",
+      difficultyEstimate: 42,
+      labels: { A: "Toy", B: "Movie", C: "Soldier" },
+      tiles: [
+        { label: "Toy Story", correctSlot: "S1" },
+        { label: "G.I. Joe", correctSlot: "S2" },
+        { label: "Saving Private Ryan", correctSlot: "S3" },
+        { label: "Small Soldiers", correctSlot: "S4" },
+        { label: "Barbie", correctSlot: null },
+        { label: "Army Helmet", correctSlot: null },
+        { label: "Cinema Ticket", correctSlot: null },
+        { label: "Nerf Gun", correctSlot: null }
+      ]
+    }
+  },
+  {
+    date: "2026-04-14",
+    easy: {
+      title: "1980s + Music + Movie",
+      difficultyEstimate: 77,
+      labels: { A: "1980s", B: "Music", C: "Movie" },
+      tiles: [
+        { label: "MTV", correctSlot: "S1" },
+        { label: "The Breakfast Club", correctSlot: "S2" },
+        { label: "Soundtrack", correctSlot: "S3" },
+        { label: "Footloose", correctSlot: "S4" },
+        { label: "Leg Warmers", correctSlot: null },
+        { label: "Director's Chair", correctSlot: null },
+        { label: "Guitar Pick", correctSlot: null },
+        { label: "Popcorn Tub", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "1980s + Toy + Cartoon",
+      difficultyEstimate: 58,
+      labels: { A: "1980s", B: "Toy", C: "Cartoon" },
+      tiles: [
+        { label: "Cabbage Patch Kid", correctSlot: "S1" },
+        { label: "The Smurfs", correctSlot: "S2" },
+        { label: "Mickey Mouse Plush", correctSlot: "S3" },
+        { label: "He-Man", correctSlot: "S4" },
+        { label: "VHS Tape", correctSlot: null },
+        { label: "Yo-Yo", correctSlot: null },
+        { label: "Comic Strip", correctSlot: null },
+        { label: "Crayon Box", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "1980s + Sci-Fi + Sequel",
+      difficultyEstimate: 39,
+      labels: { A: "1980s", B: "Sci-Fi", C: "Sequel" },
+      tiles: [
+        { label: "Blade Runner", correctSlot: "S1" },
+        { label: "Rocky III", correctSlot: "S2" },
+        { label: "Terminator 2", correctSlot: "S3" },
+        { label: "Return of the Jedi", correctSlot: "S4" },
+        { label: "Rubik's Cube", correctSlot: null },
+        { label: "Boxing Glove", correctSlot: null },
+        { label: "Laser Tag", correctSlot: null },
+        { label: "Movie Poster", correctSlot: null }
+      ]
+    }
+  },  {
     date: "2026-04-13",
     easy: {
       title: "Artisan + Metal + Fire",

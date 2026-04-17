@@ -190,6 +190,9 @@ runtimeStyle.textContent = `
   .difficulty-dot.filled.easy-a { border-color: #8b5cf6; background: rgba(168, 85, 247, 0.72); }
   .difficulty-dot.filled.easy-b { border-color: #10b981; background: rgba(16, 185, 129, 0.72); }
   .difficulty-dot.filled.easy-c { border-color: #3b82f6; background: rgba(59, 130, 246, 0.72); }
+  .difficulty-dot.filled.medium-a { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.72); }
+  .difficulty-dot.filled.medium-b { border-color: #14b8a6; background: rgba(20, 184, 166, 0.72); }
+  .difficulty-dot.filled.medium-c { border-color: #f59e0b; background: rgba(245, 158, 11, 0.72); }
   .difficulty-dot.filled.hard-a { border-color: #d97706; background: rgba(245, 158, 11, 0.72); }
   .difficulty-dot.filled.hard-b { border-color: #ef4444; background: rgba(239, 68, 68, 0.72); }
   .difficulty-dot.filled.hard-c { border-color: #a855f7; background: rgba(168, 85, 247, 0.72); }
@@ -275,9 +278,11 @@ runtimeStyle.textContent += `
   }
 `;
 const SLOTS = ["S1", "S2", "S3", "S4"];
-const BASE_LIVES = 2;
-const HARD_TIMER_MS = 30000;
-const HARD_LIFELINE_BONUS_MS = 15000;
+const STAGES = ["easy", "medium", "hard"];
+const STAGE_TRIES = { easy: 3, medium: 2, hard: 1 };
+const BASE_LIVES = STAGE_TRIES.medium;
+const HARD_TIMER_MS = 0;
+const HARD_LIFELINE_BONUS_MS = 0;
 const TUTORIAL_KEY = "common-ground-tutorial-seen";
 const STATS_KEY = "common-ground-stats-v2";
 // Share metadata: update these three values if you ever refresh the public branding.
@@ -308,8 +313,8 @@ const BADGE_IMAGE_FILES = {
   { key: "monthly-momentum", title: "Monthly Momentum", copy: "Hit a 30-day streak.", test: (m) => m.visibleDailyStreak >= 30 || m.bestDailyStreak >= 30 },
   { key: "hard-truths", title: "Hard Truths", copy: "Finish 10 hard puzzles.", test: (m) => m.hardPuzzlesCompleted >= 10 },
   { key: "pressure-player", title: "Pressure Player", copy: "Finish 25 hard puzzles.", test: (m) => m.hardPuzzlesCompleted >= 25 },
-  { key: "clean-sheet", title: "Clean Sheet", copy: "Complete a daily set without using the hard lifeline.", test: (m) => m.cleanSheetDays >= 1 },
-  { key: "no-net", title: "No Net", copy: "Finish 10 hard puzzles without lifeline.", test: (m) => m.hardWithoutLifeline >= 10 },
+  { key: "clean-sheet", title: "Clean Sheet", copy: "Complete every stage in a daily set.", test: (m) => m.cleanSheetDays >= 1 },
+  { key: "no-net", title: "No Net", copy: "Finish 10 hard puzzles.", test: (m) => m.hardWithoutLifeline >= 10 },
   { key: "puzzle-scout", title: "Puzzle Scout", copy: "Solve 10 total puzzles.", test: (m) => m.lifetimePuzzlesSolved >= 10 }
 ];
 
@@ -334,7 +339,7 @@ let dayStates = {};
 let touchDrag = null;
 let suppressClickUntil = 0;
 let slotLayoutRaf = 0;
-let hardUnlockPulseActive = false;
+let stageUnlockPulseActive = false;
 let sharedAudioCtx = null;
 let badgeUnlockQueue = [];
 let activeBadgeUnlock = null;
@@ -380,6 +385,7 @@ const archiveBtn = document.getElementById("archive-btn");
 const statsBtn = document.getElementById("stats-btn");
 const badgesBtn = document.getElementById("badges-btn");
 const easyBtn = document.getElementById("easy-btn");
+const mediumBtn = document.getElementById("medium-btn");
 const hardBtn = document.getElementById("hard-btn");
 const undoBtn = document.getElementById("undo-btn");
 const clearBtn = document.getElementById("clear-btn");
@@ -465,7 +471,7 @@ function getLiveDayStamp() {
 function createEmptyStats() { return { startedAt: new Date().toISOString(), firstLifelinePromptSeen: false, seenBadgeKeys: [], dayHistory: {} }; }
 function safeGetStorage(key) { try { return localStorage.getItem(key); } catch (err) { return null; } }
 function safeSetStorage(key, value) { try { localStorage.setItem(key, value); } catch (err) {} }
-function normalizeDayRecord(day, value = {}) { return { date: day, easy: value.easy || null, hard: value.hard || null, usedHardLifeline: Boolean(value.usedHardLifeline), completedDailySet: Boolean(value.completedDailySet), completedWithoutLifeline: Boolean(value.completedWithoutLifeline), streakEligible: value.streakEligible ?? Boolean(value.completedDailySet && day === getLiveDayStamp()), lastPlayedAt: value.lastPlayedAt || null }; }
+function normalizeDayRecord(day, value = {}) { return { date: day, easy: value.easy || null, medium: value.medium || null, hard: value.hard || null, usedHardLifeline: false, completedDailySet: Boolean(value.completedDailySet), completedWithoutLifeline: Boolean(value.completedWithoutLifeline), streakEligible: value.streakEligible ?? Boolean(value.completedDailySet && day === getLiveDayStamp()), lastPlayedAt: value.lastPlayedAt || null }; }
 function loadStats() { try { const raw = safeGetStorage(STATS_KEY); if (!raw) return createEmptyStats(); const parsed = JSON.parse(raw); const history = {}; Object.entries(parsed.dayHistory || {}).forEach(([day, value]) => { history[day] = normalizeDayRecord(day, value); }); return { ...createEmptyStats(), ...parsed, seenBadgeKeys: Array.isArray(parsed.seenBadgeKeys) ? parsed.seenBadgeKeys : [], dayHistory: history }; } catch (err) { return createEmptyStats(); } }
 function saveStats() { safeSetStorage(STATS_KEY, JSON.stringify(stats)); }
 function getDayRecord(day, create = false) { if (!stats.dayHistory[day] && create) stats.dayHistory[day] = normalizeDayRecord(day); return stats.dayHistory[day] || null; }
@@ -544,20 +550,26 @@ function getPuzzleByStage(day = getActiveDate(), stage = activeStage) {
 }
 function getStageKey(day = getActiveDate(), stage = activeStage) { return `${day}:${stage}`; }
 function getStageRecord(day = getActiveDate(), stage = activeStage) { const record = getDayRecord(day, false); return record ? record[stage] : null; }
-function isHardUnlocked(day = getActiveDate()) { return Boolean(getStageRecord(day, "easy")?.status === "solved"); }
-function getActiveMaxLives() { const record = getDayRecord(getActiveDate(), false); return BASE_LIVES + (activeStage === "hard" && record?.usedHardLifeline ? 1 : 0); }
+function getAvailableStages(day = getActiveDate()) { const set = DAILY_SETS.find((entry) => entry.date === day); return STAGES.filter((stage) => Boolean(set?.[stage])); }
+function isStageUnlocked(stage, day = getActiveDate()) { const stages = getAvailableStages(day); const index = stages.indexOf(stage); if (index <= 0) return index === 0; return Boolean(getStageRecord(day, stages[index - 1])?.status === "solved"); }
+function getFirstAvailableStage(day = getActiveDate()) { return getAvailableStages(day)[0] || "easy"; }
+function getNextAvailableStage(stage = activeStage, day = getActiveDate()) { const stages = getAvailableStages(day); const index = stages.indexOf(stage); return index === -1 ? null : stages[index + 1] || null; }
+function getBestStageForDay(day = getActiveDate()) { const stages = getAvailableStages(day); return stages.find((stage) => isStageUnlocked(stage, day) && getStageRecord(day, stage)?.status !== "solved") || stages.at(-1) || "easy"; }
+function isDailySetSolved(record, day = getActiveDate()) { const stages = getAvailableStages(day); return Boolean(stages.length && stages.every((stage) => record?.[stage]?.status === "solved")); }
+function isHardUnlocked(day = getActiveDate()) { return isStageUnlocked("hard", day); }
+function getActiveMaxLives() { return STAGE_TRIES[activeStage] || BASE_LIVES; }
 function shuffle(arr) { const out = [...arr]; for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; } return out; }
-function createState() { return { placements: Object.fromEntries(SLOTS.map((slot) => [slot, null])), tileLocation: Object.fromEntries(currentTiles.map((tile) => [tile.id, null])), selectedTileId: null, lockedTiles: new Set(), revealedSlots: new Set(), wrongSlots: new Set(), wrongCircles: new Set(), livesUsed: 0, tries: 0, solved: false, failed: false, practiceMode: false, history: [], bankOrder: shuffle(currentTiles.map((tile) => tile.id)), timerRemainingMs: activeStage === "hard" ? HARD_TIMER_MS : null, lastTimerTickAt: null }; }
+function createState() { return { placements: Object.fromEntries(SLOTS.map((slot) => [slot, null])), tileLocation: Object.fromEntries(currentTiles.map((tile) => [tile.id, null])), selectedTileId: null, lockedTiles: new Set(), revealedSlots: new Set(), wrongSlots: new Set(), wrongCircles: new Set(), livesUsed: 0, tries: 0, solved: false, failed: false, practiceMode: false, history: [], bankOrder: shuffle(currentTiles.map((tile) => tile.id)), timerRemainingMs: null, lastTimerTickAt: null }; }
 function snap() { return { placements: deepClone(state.placements), tileLocation: deepClone(state.tileLocation), selectedTileId: state.selectedTileId, lockedTiles: [...state.lockedTiles], revealedSlots: [...state.revealedSlots], wrongSlots: [...state.wrongSlots], wrongCircles: [...state.wrongCircles], livesUsed: state.livesUsed, tries: state.tries, solved: state.solved, failed: state.failed, practiceMode: state.practiceMode, bankOrder: [...state.bankOrder], timerRemainingMs: state.timerRemainingMs, lastTimerTickAt: state.lastTimerTickAt }; }
-function restorePlayableState(snapshot, history = []) { if (!snapshot) return createState(); return { placements: deepClone(snapshot.placements), tileLocation: deepClone(snapshot.tileLocation), selectedTileId: snapshot.selectedTileId, lockedTiles: new Set(snapshot.lockedTiles || []), revealedSlots: new Set(snapshot.revealedSlots || []), wrongSlots: new Set(snapshot.wrongSlots || []), wrongCircles: new Set(snapshot.wrongCircles || []), livesUsed: snapshot.livesUsed || 0, tries: snapshot.tries || 0, solved: Boolean(snapshot.solved), failed: Boolean(snapshot.failed), practiceMode: Boolean(snapshot.practiceMode), history: [...history], bankOrder: [...(snapshot.bankOrder || currentTiles.map((tile) => tile.id))], timerRemainingMs: snapshot.timerRemainingMs ?? (activeStage === "hard" ? HARD_TIMER_MS : null), lastTimerTickAt: null }; }
-function buildSolvedState(result) { const solvedState = createState(); solvedState.timerRemainingMs = activeStage === "hard" ? (result?.timerRemainingMs ?? solvedState.timerRemainingMs) : null; solvedState.tries = result?.tries || 1; solvedState.livesUsed = Math.min(result?.tries || 1, getActiveMaxLives()); solvedState.solved = true; solvedState.wrongSlots = new Set(); solvedState.wrongCircles = new Set(); SLOTS.forEach((slot) => { solvedState.revealedSlots.add(slot); const tile = currentTiles.find((entry) => entry.correctSlot === slot); if (!tile) return; solvedState.placements[slot] = tile.id; solvedState.tileLocation[tile.id] = slot; solvedState.lockedTiles.add(tile.id); }); solvedState.bankOrder = currentTiles.map((tile) => tile.id).filter((id) => solvedState.tileLocation[id] === null); return solvedState; }
+function restorePlayableState(snapshot, history = []) { if (!snapshot) return createState(); return { placements: deepClone(snapshot.placements), tileLocation: deepClone(snapshot.tileLocation), selectedTileId: snapshot.selectedTileId, lockedTiles: new Set(snapshot.lockedTiles || []), revealedSlots: new Set(snapshot.revealedSlots || []), wrongSlots: new Set(snapshot.wrongSlots || []), wrongCircles: new Set(snapshot.wrongCircles || []), livesUsed: snapshot.livesUsed || 0, tries: snapshot.tries || 0, solved: Boolean(snapshot.solved), failed: Boolean(snapshot.failed), practiceMode: Boolean(snapshot.practiceMode), history: [...history], bankOrder: [...(snapshot.bankOrder || currentTiles.map((tile) => tile.id))], timerRemainingMs: null, lastTimerTickAt: null }; }
+function buildSolvedState(result) { const solvedState = createState(); solvedState.timerRemainingMs = null; solvedState.tries = result?.tries || 1; solvedState.livesUsed = Math.min(result?.tries || 1, getActiveMaxLives()); solvedState.solved = true; solvedState.wrongSlots = new Set(); solvedState.wrongCircles = new Set(); SLOTS.forEach((slot) => { solvedState.revealedSlots.add(slot); const tile = currentTiles.find((entry) => entry.correctSlot === slot); if (!tile) return; solvedState.placements[slot] = tile.id; solvedState.tileLocation[tile.id] = slot; solvedState.lockedTiles.add(tile.id); }); solvedState.bankOrder = currentTiles.map((tile) => tile.id).filter((id) => solvedState.tileLocation[id] === null); return solvedState; }
 function buildFailedState(result) {
   const failedState = createState();
   failedState.solved = false;
   failedState.failed = true;
   failedState.tries = result?.tries || getActiveMaxLives();
   failedState.livesUsed = getActiveMaxLives();
-  failedState.timerRemainingMs = activeStage === "hard" ? (result?.timerRemainingMs ?? 0) : null;
+  failedState.timerRemainingMs = null;
   if (activeStage === "hard") {
     failedState.lastTimerTickAt = null;
     return failedState;
@@ -589,14 +601,16 @@ function getDerivedStats() {
   const liveDay = getLiveDayStamp(); const yesterday = shiftDayStamp(liveDay, -1);
   const visibleDailyStreak = runByDay[liveDay] || runByDay[yesterday] || 0;
   const dailySetsCompleted = completedDays.length;
-  const easyPuzzlesAttempted = records.filter((entry) => entry.easy?.status === "solved" || entry.easy?.status === "failed").length;
-  const hardPuzzlesAttempted = records.filter((entry) => entry.hard?.status === "solved" || entry.hard?.status === "failed").length;
-  const lifetimePuzzlesAttempted = easyPuzzlesAttempted + hardPuzzlesAttempted;
+  const stageAttempted = (entry, stage) => entry[stage]?.status === "solved" || entry[stage]?.status === "failed";
+  const easyPuzzlesAttempted = records.filter((entry) => stageAttempted(entry, "easy")).length;
+  const mediumPuzzlesAttempted = records.filter((entry) => stageAttempted(entry, "medium")).length;
+  const hardPuzzlesAttempted = records.filter((entry) => stageAttempted(entry, "hard")).length;
+  const lifetimePuzzlesAttempted = easyPuzzlesAttempted + mediumPuzzlesAttempted + hardPuzzlesAttempted;
   const hardPuzzlesCompleted = records.filter((entry) => entry.hard?.status === "solved").length;
-  const lifetimePuzzlesSolved = records.reduce((sum, entry) => sum + (entry.easy?.status === "solved" ? 1 : 0) + (entry.hard?.status === "solved" ? 1 : 0), 0);
-  const cleanSheetDays = records.filter((entry) => entry.completedDailySet && !entry.usedHardLifeline).length;
-  const hardWithoutLifeline = records.filter((entry) => entry.hard?.status === "solved" && !entry.usedHardLifeline).length;
-  const meta = { dailySetsCompleted, easyPuzzlesAttempted, hardPuzzlesAttempted, lifetimePuzzlesAttempted, hardPuzzlesCompleted, lifetimePuzzlesSolved, cleanSheetDays, hardWithoutLifeline, visibleDailyStreak, bestDailyStreak: best };
+  const lifetimePuzzlesSolved = records.reduce((sum, entry) => sum + STAGES.reduce((stageSum, stage) => stageSum + (entry[stage]?.status === "solved" ? 1 : 0), 0), 0);
+  const cleanSheetDays = records.filter((entry) => entry.completedDailySet).length;
+  const hardWithoutLifeline = hardPuzzlesCompleted;
+  const meta = { dailySetsCompleted, easyPuzzlesAttempted, mediumPuzzlesAttempted, hardPuzzlesAttempted, lifetimePuzzlesAttempted, hardPuzzlesCompleted, lifetimePuzzlesSolved, cleanSheetDays, hardWithoutLifeline, visibleDailyStreak, bestDailyStreak: best };
   meta.unlockedBadges = BADGES.filter((badge) => badge.test(meta));
   meta.badgeCount = meta.unlockedBadges.length;
   meta.records = records;
@@ -612,8 +626,12 @@ function getDifficultyPercent(day = getActiveDate(), stage = activeStage) {
 }
 function getDifficultyBars(percent, stage) {
   if (!Number.isFinite(percent)) return 0;
-  const max = stage === "easy" ? 95 : 85;
-  const min = stage === "easy" ? 70 : 35;
+  const ranges = {
+    easy: { min: 70, max: 95 },
+    medium: { min: 50, max: 80 },
+    hard: { min: 25, max: 60 }
+  };
+  const { min, max } = ranges[stage] || ranges.medium;
   const normalized = 1 - ((percent - min) / (max - min));
   return Math.max(1, Math.min(5, Math.round((normalized * 4) + 1)));
 }
@@ -621,14 +639,19 @@ function getDifficultyLabel(percent, stage) {
   const bars = getDifficultyBars(percent, stage);
   const labels = stage === "easy"
     ? ["Gentle", "Friendly", "Tricky", "Tough", "Brutal"]
-    : ["Manageable", "Spicy", "Tough", "Brutal", "Savage"];
+    : stage === "medium"
+      ? ["Smooth", "Steady", "Tricky", "Tough", "Brutal"]
+      : ["Manageable", "Spicy", "Tough", "Brutal", "Savage"];
   return labels[bars - 1];
 }
 function renderDifficultyItem(stage, percent) {
   const bars = getDifficultyBars(percent, stage);
-  const dotClasses = stage === "easy"
-    ? ["easy-a", "easy-b", "easy-c", "easy-a", "easy-b"]
-    : ["hard-a", "hard-b", "hard-c", "hard-a", "hard-b"];
+  const dotClassesByStage = {
+    easy: ["easy-a", "easy-b", "easy-c", "easy-a", "easy-b"],
+    medium: ["medium-a", "medium-b", "medium-c", "medium-a", "medium-b"],
+    hard: ["hard-a", "hard-b", "hard-c", "hard-a", "hard-b"]
+  };
+  const dotClasses = dotClassesByStage[stage] || dotClassesByStage.medium;
   const dots = Array.from({ length: 5 }, (_, index) => `<span class="difficulty-dot${index < bars ? ` filled ${dotClasses[index]}` : ""}"></span>`).join("");
   return `<div class="difficulty-item"><div class="difficulty-head"><div class="difficulty-label">${capitalize(stage)}</div><div class="difficulty-rate">${percent}%</div></div><div class="difficulty-meta"><div class="difficulty-note">Estimated clear rate</div><div class="difficulty-tier">${bars}/5 ${getDifficultyLabel(percent, stage)}</div></div><div class="difficulty-meter" aria-hidden="true">${dots}</div></div>`;
 }
@@ -693,7 +716,15 @@ function renderStats() {
     { label: "Badges", value: meta.badgeCount }
   ];
   statsGridEl.innerHTML = items.map(({ label, value, note = "" }) => `<div class="stats-item"><div class="stats-label">${label}</div><div class="stats-value">${value}</div>${note ? `<div class="stats-note">${note}</div>` : ""}</div>`).join("");
-  statsPuzzleListEl.innerHTML = meta.records.sort((a, b) => b.date.localeCompare(a.date)).map((record) => { const easyStatus = record.easy ? capitalize(record.easy.status) : "Open"; const hardStatus = record.hard ? capitalize(record.hard.status) : (record.easy?.status === "solved" ? "Open" : "Locked"); return `<div class="stats-puzzle-item"><div class="stats-puzzle-title">${formatLongDate(record.date)}</div><div class="stats-puzzle-meta">Easy: ${easyStatus}${record.easy?.tries ? ` (${record.easy.tries}/${BASE_LIVES})` : ""}</div><div class="stats-puzzle-meta">Hard: ${hardStatus}${record.usedHardLifeline ? " - Lifeline used" : ""}</div></div>`; }).join("") || `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">No stats yet. Finish a day and we will track it here.</div></div>`;
+  statsPuzzleListEl.innerHTML = meta.records.sort((a, b) => b.date.localeCompare(a.date)).map((record) => {
+    const stages = getAvailableStages(record.date).length ? getAvailableStages(record.date) : ["easy", "hard"];
+    const stageLines = stages.map((stage, index) => {
+      const status = record[stage] ? capitalize(record[stage].status) : (index === 0 || record[stages[index - 1]]?.status === "solved" ? "Open" : "Locked");
+      const tries = record[stage]?.tries ? ` (${record[stage].tries}/${STAGE_TRIES[stage] || BASE_LIVES})` : "";
+      return `<div class="stats-puzzle-meta">${capitalize(stage)}: ${status}${tries}</div>`;
+    }).join("");
+    return `<div class="stats-puzzle-item"><div class="stats-puzzle-title">${formatLongDate(record.date)}</div>${stageLines}</div>`;
+  }).join("") || `<div class="stats-puzzle-item"><div class="stats-puzzle-meta">No stats yet. Finish a day and we will track it here.</div></div>`;
 }
 function renderBadges() {
   if (!badgeListEl) return;
@@ -740,7 +771,7 @@ function renderArchive() {
     const isPlayableArchiveDay = Boolean(set);
     const record = isPlayableArchiveDay ? getDayRecord(dayStamp, false) : null;
     const isComplete = Boolean(record?.completedDailySet);
-    const isAttempted = Boolean(record?.easy?.status || record?.hard?.status);
+    const isAttempted = Boolean(record && getAvailableStages(dayStamp).some((stage) => record[stage]?.status));
     const stateClass = isComplete ? "complete" : isAttempted ? "failed" : "open";
     const mutedClass = isPlayableArchiveDay ? "todayish" : "muted";
     cells.push(
@@ -774,10 +805,7 @@ function openDailyCompleteModal() {
     dailyCompleteCopyEl.textContent = `You finished today's Common Ground set for ${formatLongDate(getActiveDate())}. Challenge a friend and see if they can beat your result before tomorrow's puzzle.`;
   }
   if (dailyCompleteDifficultyEl && dailyCompleteDifficultyGridEl) {
-    const items = [
-      { stage: "easy", percent: getDifficultyPercent(getActiveDate(), "easy") },
-      { stage: "hard", percent: getDifficultyPercent(getActiveDate(), "hard") }
-    ];
+    const items = getAvailableStages(getActiveDate()).map((stage) => ({ stage, percent: getDifficultyPercent(getActiveDate(), stage) }));
     renderDifficultyGrid(dailyCompleteDifficultyGridEl, items);
     dailyCompleteDifficultyEl.hidden = items.every((item) => !Number.isFinite(item.percent));
   }
@@ -800,7 +828,7 @@ function scheduleDailyCompleteModal(delayMs = 3000) {
 }
 function openHardMissedModal() {
   if (!hardMissedModalEl) return;
-  if (hardMissedCopyEl) hardMissedCopyEl.textContent = "Today's Hard got away. Send it to a friend, or try again in Practice Mode just for fun. Practice mode has no timer and does not count toward streaks or badges.";
+  if (hardMissedCopyEl) hardMissedCopyEl.textContent = "Today's Hard got away. Send it to a friend, or try again in Practice Mode just for fun. Practice Mode does not count toward streaks or badges.";
   if (hardMissedDifficultyEl && hardMissedDifficultyGridEl) {
     const percent = getDifficultyPercent(getActiveDate(), "hard");
     renderDifficultyGrid(hardMissedDifficultyGridEl, [{ stage: "hard", percent }]);
@@ -825,7 +853,7 @@ function scheduleHardMissedModal(delayMs = 3000) {
 }
 function openHardReadyModal() {
   if (!hardReadyModalEl) return;
-  if (hardReadyCopyEl) hardReadyCopyEl.textContent = `You have ${Math.round(HARD_TIMER_MS / 1000)} seconds and ${BASE_LIVES} tries to complete this puzzle.`;
+  if (hardReadyCopyEl) hardReadyCopyEl.textContent = "Hard is unlocked. You get 1 try and no timer, so take your time.";
   hardReadyModalEl.hidden = false;
 }
 function closeHardReadyModal() {
@@ -847,7 +875,7 @@ function startHardZenMode() {
   state.practiceMode = true;
   state.timerRemainingMs = null;
   state.lastTimerTickAt = null;
-  setMessage("Zen Mode - no timer, no streak or badge credit.", "#7a5a35");
+  setMessage("Practice Mode - no streak or badge credit.", "#7a5a35");
   render();
 }
 function beginHardTimedMode() {
@@ -900,17 +928,17 @@ function updateProgressRecord(date, stage, status) {
   const record = getDayRecord(date, true);
   const wasCompletedDailySet = Boolean(record.completedDailySet);
   if (record[stage]?.status === "solved") return;
-  record[stage] = { status, tries: state.tries, usedLifeline: Boolean(record.usedHardLifeline) };
+  record[stage] = { status, tries: state.tries, usedLifeline: false };
   record.lastPlayedAt = new Date().toISOString();
-  record.completedDailySet = Boolean(record.easy?.status === "solved" && record.hard?.status === "solved");
-  record.completedWithoutLifeline = record.completedDailySet && !record.usedHardLifeline;
+  record.completedDailySet = isDailySetSolved(record, date);
+  record.completedWithoutLifeline = record.completedDailySet;
   record.streakEligible = record.completedDailySet && activeSection === "today" && date === getLiveDayStamp();
   if (status === "solved" && record.completedDailySet && !wasCompletedDailySet) {
     trackEvent("daily_complete", {
       puzzle_date: date,
       difficulty: capitalize(stage),
       tries_used: state.tries,
-      used_lifeline: Boolean(record.usedHardLifeline),
+      used_lifeline: false,
       section: activeSection
     });
   }
@@ -935,7 +963,7 @@ function getShareCardContent() {
   const difficultyPercent = getDifficultyPercent(getActiveDate(), activeStage);
   if (state.solved) {
     return {
-      kicker: activeStage === "hard" ? "Hard Cleared" : "Easy Cleared",
+      kicker: `${difficulty} Cleared`,
       headline: `Challenge a friend to beat your ${difficulty} result.`,
       subcopy: Number.isFinite(difficultyPercent)
         ? `${difficultyPercent}% estimated clear rate. See who solves it in fewer tries.`
@@ -955,15 +983,8 @@ function getShareCardContent() {
 function buildShareGrid() {
   if (!state) return "";
   const maxLives = getActiveMaxLives();
-  if (maxLives <= 2) {
-    if (!state.solved) return "\u{1F7E5}\u{1F7E5}";
-    if (state.tries === 1) return "\u{1F7E9}\u{2B1C}";
-    return "\u{1F7E5}\u{1F7E9}";
-  }
-  if (!state.solved) return "\u{1F7E5}\u{1F7E5}\u{1F7E5}";
-  if (state.tries === 1) return "\u{1F7E9}\u{2B1C}\u{2B1C}";
-  if (state.tries === 2) return "\u{1F7E5}\u{1F7E9}\u{2B1C}";
-  return "\u{1F7E5}\u{1F7E5}\u{1F7E9}";
+  if (!state.solved) return "\u{1F7E5}".repeat(maxLives);
+  return Array.from({ length: maxLives }, (_, index) => index + 1 === state.tries ? "\u{1F7E9}" : index + 1 < state.tries ? "\u{1F7E5}" : "\u{2B1C}").join("");
 }
 function getShareSummaryLine() {
   const difficulty = capitalize(activeStage);
@@ -1086,59 +1107,37 @@ function isTimerPaused() {
   return document.hidden || !hardTimerInterval || !homeScreenModalEl.hidden || !lifelineModalEl.hidden || !statsModalEl.hidden || !archiveModalEl.hidden || !badgesModalEl.hidden || !badgeUnlockModalEl.hidden || !badgeDetailModalEl.hidden || !tutorialEl.hidden || !launchScreenEl.hidden || !hardMissedModalEl.hidden || !hardReadyModalEl.hidden;
 }
 function updateTimerUi() {
-  const showTimer = activeStage === "hard" && !state?.practiceMode && Boolean(timerWrapEl);
-  if (!timerWrapEl || !timerLabelEl || !timerFillEl) return;
-  timerWrapEl.hidden = !showTimer;
-  if (!showTimer) return;
-  const cap = getHardTimerCap();
-  const remaining = Math.max(0, state?.timerRemainingMs ?? cap);
-  timerLabelEl.textContent = `Time Left: ${formatTimerLabel(remaining)}`;
-  timerLabelEl.style.color = remaining <= 15000 ? "#b91c1c" : remaining <= 30000 ? "#b45309" : "#7a5a35";
-  timerFillEl.style.transform = `scaleX(${Math.max(0, Math.min(1, remaining / cap))})`;
+  if (timerWrapEl) timerWrapEl.hidden = true;
 }
 function syncHardTimer() {
-  if (!state || activeStage !== "hard" || state.solved || state.failed) {
-    if (state) state.lastTimerTickAt = null;
-    return;
-  }
-  if (isTimerPaused()) {
-    state.lastTimerTickAt = null;
-    return;
-  }
-  const now = Date.now();
-  if (!state.lastTimerTickAt) {
-    state.lastTimerTickAt = now;
-    return;
-  }
-  const elapsed = now - state.lastTimerTickAt;
-  if (elapsed < 120) return;
-  state.lastTimerTickAt = now;
-  state.timerRemainingMs = Math.max(0, (state.timerRemainingMs ?? getHardTimerCap()) - elapsed);
-  if (state.timerRemainingMs <= 0) {
-    state.timerRemainingMs = 0;
-    if (getActiveMaxLives() === BASE_LIVES && maybeOfferLifeline()) {
-      render();
-      return;
-    }
-    revealFailureBoard("Time expired.");
-  }
+  if (state) state.lastTimerTickAt = null;
 }
 function updateHeaderUi() {
   const day = getActiveDate();
   if (subtitleEl) subtitleEl.textContent = `${activeSection === "today" ? "Today" : "Archive"} - ${formatLongDate(day)}`;
   todayBtn?.classList.toggle("active", activeSection === "today");
   archiveBtn?.classList.toggle("active", activeSection === "archive");
-  easyBtn?.classList.toggle("active", activeStage === "easy");
-  const hardUnlocked = isHardUnlocked(day);
-  hardBtn.disabled = !hardUnlocked; hardBtn.classList.toggle("locked", !hardUnlocked); hardBtn.classList.toggle("active", activeStage === "hard");
-  hardBtn.classList.toggle("unlocked-pulse", hardUnlockPulseActive && hardUnlocked && activeStage !== "hard");
+  const stageButtons = { easy: easyBtn, medium: mediumBtn, hard: hardBtn };
+  Object.entries(stageButtons).forEach(([stage, button]) => {
+    if (!button) return;
+    const available = getAvailableStages(day).includes(stage);
+    const unlocked = available && isStageUnlocked(stage, day);
+    button.hidden = !available;
+    button.disabled = !unlocked;
+    button.classList.toggle("locked", !unlocked);
+    button.classList.toggle("active", activeStage === stage);
+    button.classList.toggle("unlocked-pulse", stageUnlockPulseActive && unlocked && activeStage !== stage && getStageRecord(day, stage)?.status !== "solved");
+  });
   const record = getDayRecord(day, false);
+  const nextStage = getNextAvailableStage(activeStage, day);
   if (state?.practiceMode) setSummary("Practice Mode - no streak or badge credit.");
-  else if (record?.completedDailySet) setSummary(`Daily set complete${record.usedHardLifeline ? " with lifeline" : ""}.`);
-  else if (record?.easy?.status === "solved" && !record?.hard) setSummary("Easy complete. Hard is unlocked.");
-  else if (record?.hard?.status === "failed") setSummary("Hard missed for this day.");
-  else if (record?.easy?.status === "failed") setSummary("Easy missed for this day.");
-  else setSummary(`${capitalize(activeStage)} puzzle - ${getActivePuzzle().title}`);
+  else if (record?.completedDailySet) setSummary("Daily set complete.");
+  else if (nextStage && record?.[activeStage]?.status === "solved") setSummary(`${capitalize(activeStage)} complete. ${capitalize(nextStage)} is unlocked.`);
+  else {
+    const failedStage = getAvailableStages(day).find((stage) => record?.[stage]?.status === "failed");
+    if (failedStage) setSummary(`${capitalize(failedStage)} missed for this day.`);
+    else setSummary(`${capitalize(activeStage)} puzzle - ${getActivePuzzle().title}`);
+  }
 }
 function updateButtons() { const finalized = Boolean(getStageRecord()?.status) && !state.practiceMode; undoBtn.disabled = !state.history.length || state.solved || state.failed || finalized; clearBtn.disabled = !hasProgress() || finalized; }
 function playTone(type) {
@@ -1215,9 +1214,9 @@ function onTouchDragEnd(e) { if (!touchDrag || e.pointerType !== "touch") return
 function moveTileToSlot(tileId, slot) { if (!tileById[tileId] || !SLOTS.includes(slot) || state.solved || state.failed || state.lockedTiles.has(tileId)) return false; const from = state.tileLocation[tileId]; if (from === slot) return true; const occupant = state.placements[slot]; if (occupant && state.lockedTiles.has(occupant)) return false; state.placements[slot] = tileId; state.tileLocation[tileId] = slot; if (from) { state.placements[from] = occupant || null; if (occupant) state.tileLocation[occupant] = from; } else if (occupant) { state.tileLocation[occupant] = null; } saveCurrentStageState(); return true; }
 function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state.failed || state.lockedTiles.has(tileId)) return false; const slot = state.tileLocation[tileId]; if (!slot) return true; state.placements[slot] = null; state.tileLocation[tileId] = null; saveCurrentStageState(); return true; }
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
-function activateHardLifeline() { const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return; record.usedHardLifeline = true; if (activeStage === "hard") state.timerRemainingMs = Math.min(HARD_TIMER_MS + HARD_LIFELINE_BONUS_MS, (state.timerRemainingMs ?? 0) + HARD_LIFELINE_BONUS_MS); stats.firstLifelinePromptSeen = true; saveStats(); closeLifelineModals(); setMessage("Lifeline activated. One extra try and +15 seconds.", "#b45309"); render(); }
-function maybeOfferLifeline() { if (activeStage !== "hard") return false; const record = getDayRecord(getActiveDate(), true); if (record.usedHardLifeline) return false; if (stats.firstLifelinePromptSeen) { activateHardLifeline(); return true; } lifelineModalEl.hidden = false; return true; }
-function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); const elapsedMs = getPuzzleElapsedMs(); const baseParams = getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null, practice_mode: Boolean(state.practiceMode) }); trackEvent("puzzle_solved", baseParams); if (!state.practiceMode) { trackEvent("puzzle_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); if (Number.isFinite(elapsedMs)) trackEvent("time_to_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); } if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); if (activeStage === "easy" && !completedDailySet) { hardUnlockPulseActive = true; window.setTimeout(() => { hardUnlockPulseActive = false; render(); }, 2200); } setMessage(activeStage === "easy" && !completedDailySet ? "Easy cleared. Hard is unlocked." : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
+function activateHardLifeline() { closeLifelineModals(); setMessage("No lifeline needed. Hard is untimed now.", "#7a5a35"); render(); }
+function maybeOfferLifeline() { return false; }
+function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); const elapsedMs = getPuzzleElapsedMs(); const baseParams = getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: null, practice_mode: Boolean(state.practiceMode) }); trackEvent("puzzle_solved", baseParams); if (!state.practiceMode) { trackEvent("puzzle_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); if (Number.isFinite(elapsedMs)) trackEvent("time_to_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); } if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); const nextStage = getNextAvailableStage(activeStage); if (nextStage && !completedDailySet) { stageUnlockPulseActive = true; window.setTimeout(() => { stageUnlockPulseActive = false; render(); }, 2200); } setMessage(nextStage && !completedDailySet ? `${capitalize(activeStage)} cleared. ${capitalize(nextStage)} is unlocked.` : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
 function revealFailureBoard(reason = "Out of tries.") {
   state.failed = true;
   state.solved = false;
@@ -1225,7 +1224,7 @@ function revealFailureBoard(reason = "Out of tries.") {
   if (!state.practiceMode) {
     trackEvent("puzzle_fail", getAnalyticsParams({
       tries_used: state.tries,
-      timer_remaining_ms: activeStage === "hard" ? state.timerRemainingMs : null,
+      timer_remaining_ms: null,
       failure_reason: normalizeFailureReason(reason)
     }));
   }
@@ -1250,8 +1249,8 @@ function revealFailureBoard(reason = "Out of tries.") {
   vibrate([120, 60, 120]);
   render();
 }
-function submitAnswers() { if (!allPlaced() || state.solved || state.failed || state.livesUsed >= getActiveMaxLives()) return; state.tries += 1; const correctSet = new Set(correctSlots()); const wrongSlots = []; const wrongCircles = new Set(); const slotToCircles = { S1: ["A", "B"], S2: ["A", "C"], S3: ["B", "C"], S4: ["A", "B", "C"] }; SLOTS.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; if (correctSet.has(slot)) { state.revealedSlots.add(slot); state.lockedTiles.add(tileId); } else { wrongSlots.push(slot); slotToCircles[slot].forEach((circle) => wrongCircles.add(circle)); } }); if (state.revealedSlots.size === SLOTS.length) { finishWin(); return; } state.livesUsed += 1; state.history = []; shakeBoard(); if (state.livesUsed >= BASE_LIVES && activeStage === "hard" && getActiveMaxLives() === BASE_LIVES && maybeOfferLifeline()) { render(); return; } if (state.livesUsed >= getActiveMaxLives()) { revealFailureBoard(); return; } state.wrongSlots = new Set(wrongSlots); state.wrongCircles = wrongCircles; playTone("incorrect"); vibrate([45, 35, 45]); render(); window.setTimeout(() => { wrongSlots.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; state.placements[slot] = null; state.tileLocation[tileId] = null; }); state.wrongSlots = new Set(); state.wrongCircles = new Set(); const remaining = SLOTS.length - state.revealedSlots.size; setMessage(`${remaining} ${remaining === 1 ? "spot is" : "spots are"} still wrong.`, "#b91c1c"); render(); }, 900); }
-function resetCurrentPuzzle() { if (getStageRecord()?.status && !state.practiceMode) return; const tries = state.tries; const livesUsed = state.livesUsed; const timerRemainingMs = state.timerRemainingMs; const practiceMode = state.practiceMode; state = createState(); state.tries = tries; state.livesUsed = livesUsed; state.practiceMode = practiceMode; state.timerRemainingMs = practiceMode ? null : timerRemainingMs; dayStates[getStageKey()] = snap(); setMessage(practiceMode ? "Practice Mode - no timer, no streak or badge credit." : ""); render(); }
+function submitAnswers() { if (!allPlaced() || state.solved || state.failed || state.livesUsed >= getActiveMaxLives()) return; state.tries += 1; const correctSet = new Set(correctSlots()); const wrongSlots = []; const wrongCircles = new Set(); const slotToCircles = { S1: ["A", "B"], S2: ["A", "C"], S3: ["B", "C"], S4: ["A", "B", "C"] }; SLOTS.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; if (correctSet.has(slot)) { state.revealedSlots.add(slot); state.lockedTiles.add(tileId); } else { wrongSlots.push(slot); slotToCircles[slot].forEach((circle) => wrongCircles.add(circle)); } }); if (state.revealedSlots.size === SLOTS.length) { finishWin(); return; } state.livesUsed += 1; state.history = []; shakeBoard(); if (state.livesUsed >= getActiveMaxLives()) { revealFailureBoard(); return; } state.wrongSlots = new Set(wrongSlots); state.wrongCircles = wrongCircles; playTone("incorrect"); vibrate([45, 35, 45]); render(); window.setTimeout(() => { wrongSlots.forEach((slot) => { const tileId = state.placements[slot]; if (!tileId) return; state.placements[slot] = null; state.tileLocation[tileId] = null; }); state.wrongSlots = new Set(); state.wrongCircles = new Set(); const remaining = SLOTS.length - state.revealedSlots.size; setMessage(`${remaining} ${remaining === 1 ? "spot is" : "spots are"} still wrong.`, "#b91c1c"); render(); }, 900); }
+function resetCurrentPuzzle() { if (getStageRecord()?.status && !state.practiceMode) return; const tries = state.tries; const livesUsed = state.livesUsed; const practiceMode = state.practiceMode; state = createState(); state.tries = tries; state.livesUsed = livesUsed; state.practiceMode = practiceMode; state.timerRemainingMs = null; dayStates[getStageKey()] = snap(); setMessage(practiceMode ? "Practice Mode - no streak or badge credit." : ""); render(); }
 function render() { syncHardTimer(); bankGridEl.innerHTML = ""; const order = Array.isArray(state.bankOrder) && state.bankOrder.length ? state.bankOrder : currentTiles.map((tile) => tile.id); order.forEach((tileId) => { if (state.tileLocation[tileId] === null) bankGridEl.appendChild(makeTile(tileId)); }); Object.entries(circleEls).forEach(([key, el]) => { el.classList.toggle("wrong-circle", state.wrongCircles?.has(key)); }); slots.forEach((slotEl) => { const slot = slotEl.dataset.slot; slotEl.classList.remove("revealed", "locked", "drag-target", "has-tile", "wrong"); slotEl.querySelector(".tile")?.remove(); const tileId = state.placements[slot]; if (tileId) { slotEl.classList.add("has-tile"); slotEl.appendChild(makeTile(tileId)); } if (state.revealedSlots.has(slot)) slotEl.classList.add("revealed"); if (state.wrongSlots?.has(slot)) slotEl.classList.add("wrong"); if (tileId && state.lockedTiles.has(tileId)) slotEl.classList.add("locked"); }); boardEl.classList.toggle("failed", state.failed); updateHeaderUi(); updateColorProgress(); updateLives(); updateButtons(); updateShareUi(); scheduleSlotLayout(); saveCurrentStageState(); }
 function loadDay(dayIndex, stage = "easy", section = "today") {
   if (!DAILY_SETS.length) return;
@@ -1259,9 +1258,11 @@ function loadDay(dayIndex, stage = "easy", section = "today") {
   closeHardMissedModal();
   activeDayIndex = Math.max(0, Math.min(dayIndex, DAILY_SETS.length - 1));
   activeSection = section;
-  if (stage === "hard" && !isHardUnlocked(DAILY_SETS[activeDayIndex].date)) stage = "easy";
+  const day = DAILY_SETS[activeDayIndex].date;
+  if (!getAvailableStages(day).includes(stage) || !isStageUnlocked(stage, day)) stage = getBestStageForDay(day);
   activeStage = stage;
   const puzzle = getActivePuzzle();
+  if (!puzzle) return;
   currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, revealLabel: tile.revealLabel || null, correctSlot: tile.correctSlot }));
   tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile]));
   labelAEl.textContent = puzzle.labels.A;
@@ -1274,16 +1275,16 @@ function loadDay(dayIndex, stage = "easy", section = "today") {
   render();
   if (record?.status === "failed" && activeStage === "hard") openHardMissedModal();
 }
-function switchStage(stage) { if (stage === activeStage) return; if (stage === "hard" && !isHardUnlocked()) return; if (stage === "hard") hardUnlockPulseActive = false; loadDay(activeDayIndex, stage, activeSection); }
+function switchStage(stage) { if (stage === activeStage) return; if (!isStageUnlocked(stage)) return; if (stageUnlockPulseActive) stageUnlockPulseActive = false; loadDay(activeDayIndex, stage, activeSection); }
 function goToToday() {
   const todayIndex = resolveLiveDayIndex();
-  loadDay(todayIndex, isHardUnlocked(DAILY_SETS[todayIndex].date) ? "hard" : "easy", "today");
+  loadDay(todayIndex, getBestStageForDay(DAILY_SETS[todayIndex].date), "today");
 }
 function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => entry.date === day); if (index === -1) return; closeArchive(); loadDay(index, "easy", "archive"); }
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
-undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); hardBtn?.addEventListener("click", handleHardStageRequest); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", openTutorial); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
+undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); mediumBtn?.addEventListener("click", () => switchStage("medium")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", openTutorial); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-day[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 archivePrevBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, -1); renderArchive(); });
 archiveNextBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, 1); renderArchive(); });
@@ -1399,19 +1400,11 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-hardTimerInterval = window.setInterval(() => {
-  if (!state) return;
-  const before = state.timerRemainingMs;
-  syncHardTimer();
-  updateTimerUi();
-  if (activeStage === "hard" && before !== state.timerRemainingMs && !state.solved && !state.failed) saveCurrentStageState();
-}, 250);
-
 stats = loadStats();
 trackReturnVisit();
 updateLaunchUi();
 tutorialEl.hidden = true;
-if (DAILY_SETS.length) loadDay(activeDayIndex, "easy", "today"); else setMessage("No daily sets are available yet.", "#991b1b");
+if (DAILY_SETS.length) loadDay(activeDayIndex, getBestStageForDay(DAILY_SETS[activeDayIndex].date), "today"); else setMessage("No daily sets are available yet.", "#991b1b");
 document.body.classList.remove("app-loading");
 document.body.classList.add("app-ready");
 
