@@ -1,6 +1,54 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+    date: "2026-04-19",
+    easy: {
+      title: "Movie + Space + Toy",
+      difficultyEstimate: 78,
+      labels: { A: "Movie", B: "Space", C: "Toy" },
+      tiles: [
+        { label: "Apollo 13", correctSlot: "S1" },
+        { label: "Barbie", correctSlot: "S2" },
+        { label: "Moon Rover", correctSlot: "S3" },
+        { label: "Buzz Lightyear", correctSlot: "S4" },
+        { label: "Popcorn", correctSlot: null },
+        { label: "Moon Rock", correctSlot: null },
+        { label: "Action Figure", correctSlot: null },
+        { label: "Board Game", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "TV Show + Lawyer + Boston",
+      difficultyEstimate: 59,
+      labels: { A: "TV Show", B: "Lawyer", C: "Boston" },
+      tiles: [
+        { label: "The Good Wife", correctSlot: "S1" },
+        { label: "Cheers", correctSlot: "S2" },
+        { label: "Boston Bar Association", correctSlot: "S3" },
+        { label: "Boston Legal", correctSlot: "S4" },
+        { label: "Remote Control", correctSlot: null },
+        { label: "Briefcase", correctSlot: null },
+        { label: "Fenway Park", correctSlot: null },
+        { label: "Clam Chowder", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Book + Witch + British",
+      difficultyEstimate: 44,
+      labels: { A: "Book", B: "Witch", C: "British" },
+      tiles: [
+        { label: "Wicked", correctSlot: "S1" },
+        { label: "Paddington", correctSlot: "S2" },
+        { label: "Pendle Witches", correctSlot: "S3" },
+        { label: "Harry Potter", correctSlot: "S4" },
+        { label: "Bookmark", correctSlot: null },
+        { label: "Cauldron", correctSlot: null },
+        { label: "Big Ben", correctSlot: null },
+        { label: "Teacup", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-18",
     easy: {
       title: "Movie + Animal + Family",
