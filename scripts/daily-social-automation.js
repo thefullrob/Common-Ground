@@ -9,7 +9,10 @@ const INDEX_PATH = path.join(ROOT, "index.html");
 const IMAGE_NAME = "social-post-today.png";
 const IMAGE_PATH = path.join(ROOT, IMAGE_NAME);
 const SITE_URL = "https://commongroundpuzzle.com/";
-const IMAGE_URL = `https://raw.githubusercontent.com/thefullrob/Common-Ground/main/${IMAGE_NAME}`;
+const GITHUB_OWNER = "thefullrob";
+const GITHUB_REPO = "Common-Ground";
+const GITHUB_BRANCH = "main";
+const IMAGE_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_NAME}`;
 
 function getEasternDateStamp(date = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -37,7 +40,6 @@ function getLivePuzzle(sets) {
   const today = getEasternDateStamp();
   const exact = sets.find((entry) => entry.date === today);
   if (exact) return exact;
-
   const past = sets
     .filter((entry) => entry.date <= today)
     .sort((a, b) => b.date.localeCompare(a.date));
@@ -111,7 +113,6 @@ function generateSvg(puzzle, puzzleNumber) {
   const categoryLayout = getCategoryLayout(labels);
   const dateText = formatDate(puzzle.date);
   const titleText = escapeXml(puzzle.easy.title);
-
   const pills = categoryLayout.map((item) => `
     <rect x="${item.x}" y="750" width="${item.width}" height="62" rx="31" fill="#2f2118"/>
     <text x="${item.x + item.width / 2}" y="782" font-family="Georgia, serif" font-size="${item.fontSize}" font-weight="700" fill="#f1e7d2" text-anchor="middle" dominant-baseline="middle">${item.safeText}</text>`).join("");
@@ -133,7 +134,6 @@ function generateSvg(puzzle, puzzleNumber) {
     <text x="540" y="208" font-family="Georgia, serif" font-size="126" font-weight="700" fill="#2f2118" text-anchor="middle" letter-spacing="4">COMMON</text>
     <text x="540" y="326" font-family="Georgia, serif" font-size="126" font-weight="700" fill="#2f2118" text-anchor="middle" letter-spacing="4">GROUND</text>
     <text x="540" y="386" font-family="Georgia, serif" font-size="34" font-style="italic" fill="#7a5c3a" text-anchor="middle">Can you find what they share?</text>
-
     <g filter="url(#shadow)">
       <ellipse cx="416" cy="586" rx="198" ry="198" fill="#6abf8f" opacity="0.22"/>
       <ellipse cx="664" cy="586" rx="198" ry="198" fill="#bfa7ef" opacity="0.22"/>
@@ -146,9 +146,8 @@ function generateSvg(puzzle, puzzleNumber) {
       <text x="540" y="552" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#2f2118" text-anchor="middle" opacity="0.62">GROUND</text>
       <text x="540" y="586" font-family="Georgia, serif" font-size="42" fill="#7a5c3a" text-anchor="middle">?</text>
     </g>
-
     ${pills}
-    <text x="540" y="862" font-family="Georgia, serif" font-size="25" fill="#7a5c3a" text-anchor="middle">${escapeXml(titleText)}</text>
+    <text x="540" y="862" font-family="Georgia, serif" font-size="25" fill="#7a5c3a" text-anchor="middle">${titleText}</text>
     <line x1="340" y1="900" x2="740" y2="900" stroke="#7a5c3a" stroke-width="1" opacity="0.35"/>
     <text x="540" y="940" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="#7a5c3a" text-anchor="middle">PLAY FREE TODAY</text>
     <text x="540" y="990" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2f2118" text-anchor="middle">commongroundpuzzle.com</text>
@@ -173,6 +172,41 @@ function updateIndex(puzzle) {
   fs.writeFileSync(INDEX_PATH, html, "utf8");
 }
 
+async function getRemoteSha(repoPath, token) {
+  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${repoPath}?ref=${GITHUB_BRANCH}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json"
+    }
+  });
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`Could not read ${repoPath}: ${await response.text()}`);
+  const data = await response.json();
+  return data.sha;
+}
+
+async function uploadFile(repoPath, localPath, message, token) {
+  const sha = await getRemoteSha(repoPath, token);
+  const content = fs.readFileSync(localPath).toString("base64");
+  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${repoPath}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message,
+      content,
+      branch: GITHUB_BRANCH,
+      ...(sha ? { sha } : {})
+    })
+  });
+  if (!response.ok) throw new Error(`Could not upload ${repoPath}: ${await response.text()}`);
+  const data = await response.json();
+  console.log(`Uploaded ${repoPath}: ${data.commit.sha}`);
+}
+
 async function main() {
   const sets = loadDailySets();
   const puzzle = getLivePuzzle(sets);
@@ -181,6 +215,13 @@ async function main() {
   updateIndex(puzzle);
   console.log(`Generated ${IMAGE_NAME} for ${puzzle.date} (#${puzzleNumber})`);
   console.log(`Categories: ${puzzle.easy.labels.A} + ${puzzle.easy.labels.B} + ${puzzle.easy.labels.C}`);
+
+  if (process.env.GH_TOKEN) {
+    await uploadFile(IMAGE_NAME, IMAGE_PATH, `Update social preview image for ${puzzle.date}`, process.env.GH_TOKEN);
+    await uploadFile("index.html", INDEX_PATH, `Update social preview metadata for ${puzzle.date}`, process.env.GH_TOKEN);
+  } else {
+    console.log("GH_TOKEN not set; wrote files locally only.");
+  }
 }
 
 main().catch((error) => {
