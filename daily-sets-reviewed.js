@@ -1,6 +1,54 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+    date: "2026-04-20",
+    easy: {
+      title: "Movie + Ocean + Creature",
+      difficultyEstimate: 76,
+      labels: { A: "Movie", B: "Ocean", C: "Creature" },
+      tiles: [
+        { label: "Titanic", correctSlot: "S1" },
+        { label: "Shrek", correctSlot: "S2" },
+        { label: "Hermit Crab", correctSlot: "S3" },
+        { label: "Finding Nemo", correctSlot: "S4" },
+        { label: "Movie Poster", correctSlot: null },
+        { label: "Life Preserver", correctSlot: null },
+        { label: "Mascot Head", correctSlot: null },
+        { label: "Beach Chair", correctSlot: null }
+      ]
+    },
+    medium: {
+      title: "Musician + Texas + Guitar",
+      difficultyEstimate: 61,
+      labels: { A: "Musician", B: "Texas", C: "Guitar" },
+      tiles: [
+        { label: "Beyonce", correctSlot: "S1" },
+        { label: "Prince", correctSlot: "S2" },
+        { label: "Austin Guitar Shop", correctSlot: "S3" },
+        { label: "Stevie Ray Vaughan", correctSlot: "S4" },
+        { label: "Microphone", correctSlot: null },
+        { label: "Cowboy Hat", correctSlot: null },
+        { label: "Amplifier", correctSlot: null },
+        { label: "Space Center", correctSlot: null }
+      ]
+    },
+    hard: {
+      title: "Actor + Doctor + Time Travel",
+      difficultyEstimate: 43,
+      labels: { A: "Actor", B: "Doctor", C: "Time Travel" },
+      tiles: [
+        { label: "Hugh Laurie", correctSlot: "S1" },
+        { label: "Michael J. Fox", correctSlot: "S2" },
+        { label: "TARDIS", correctSlot: "S3" },
+        { label: "David Tennant", correctSlot: "S4" },
+        { label: "Red Carpet", correctSlot: null },
+        { label: "Lab Coat", correctSlot: null },
+        { label: "Stopwatch", correctSlot: null },
+        { label: "Script Notes", correctSlot: null }
+      ]
+    }
+  },
+  {
     date: "2026-04-19",
     easy: {
       title: "Movie + Space + Toy",
