@@ -1,6 +1,930 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-04-27",
+  easy: {
+    title: "Comic Book + Animal + Movie",
+    difficultyEstimate: 79,
+    labels: {
+      A: "Comic Book",
+      B: "Animal",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Superman",
+        correctSlot: "S1"
+      },
+      {
+        label: "Garfield",
+        correctSlot: "S2"
+      },
+      {
+        label: "Free Willy",
+        correctSlot: "S3"
+      },
+      {
+        label: "Batman",
+        correctSlot: "S4"
+      },
+      {
+        label: "Speech Bubble",
+        correctSlot: null
+      },
+      {
+        label: "Dog Park",
+        correctSlot: null
+      },
+      {
+        label: "Popcorn",
+        correctSlot: null
+      },
+      {
+        label: "Cape",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Marvel + Doctor + Movie",
+    difficultyEstimate: 60,
+    labels: {
+      A: "Marvel",
+      B: "Doctor",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Spider-Man",
+        correctSlot: "S1"
+      },
+      {
+        label: "Doctor Doom",
+        correctSlot: "S2"
+      },
+      {
+        label: "The Fugitive",
+        correctSlot: "S3"
+      },
+      {
+        label: "Doctor Strange",
+        correctSlot: "S4"
+      },
+      {
+        label: "Comic Panel",
+        correctSlot: null
+      },
+      {
+        label: "Lab Coat",
+        correctSlot: null
+      },
+      {
+        label: "Red Carpet",
+        correctSlot: null
+      },
+      {
+        label: "Magic Wand",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "DC + City + Hero",
+    difficultyEstimate: 39,
+    labels: {
+      A: "DC",
+      B: "City",
+      C: "Hero"
+    },
+    tiles: [
+      {
+        label: "Gotham",
+        correctSlot: "S1"
+      },
+      {
+        label: "Wonder Woman",
+        correctSlot: "S2"
+      },
+      {
+        label: "Spider-Man",
+        correctSlot: "S3"
+      },
+      {
+        label: "Batman",
+        correctSlot: "S4"
+      },
+      {
+        label: "Comic Book",
+        correctSlot: null
+      },
+      {
+        label: "Skyline",
+        correctSlot: null
+      },
+      {
+        label: "Cape",
+        correctSlot: null
+      },
+      {
+        label: "Billionaire",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-26",
+  easy: {
+    title: "TV Show + Animal + Family",
+    difficultyEstimate: 82,
+    labels: {
+      A: "TV Show",
+      B: "Animal",
+      C: "Family"
+    },
+    tiles: [
+      {
+        label: "Full House",
+        correctSlot: "S1"
+      },
+      {
+        label: "Lassie",
+        correctSlot: "S2"
+      },
+      {
+        label: "Pet Portrait",
+        correctSlot: "S3"
+      },
+      {
+        label: "Bluey",
+        correctSlot: "S4"
+      },
+      {
+        label: "Remote",
+        correctSlot: null
+      },
+      {
+        label: "Zoo",
+        correctSlot: null
+      },
+      {
+        label: "Photo Album",
+        correctSlot: null
+      },
+      {
+        label: "Cartoonist",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "TV Show + School + Comedy",
+    difficultyEstimate: 59,
+    labels: {
+      A: "TV Show",
+      B: "School",
+      C: "Comedy"
+    },
+    tiles: [
+      {
+        label: "Euphoria",
+        correctSlot: "S1"
+      },
+      {
+        label: "The Office",
+        correctSlot: "S2"
+      },
+      {
+        label: "Class Clown",
+        correctSlot: "S3"
+      },
+      {
+        label: "Abbott Elementary",
+        correctSlot: "S4"
+      },
+      {
+        label: "Remote Control",
+        correctSlot: null
+      },
+      {
+        label: "Backpack",
+        correctSlot: null
+      },
+      {
+        label: "Joke Book",
+        correctSlot: null
+      },
+      {
+        label: "Drama Mask",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "TV Show + 1980s + Science",
+    difficultyEstimate: 41,
+    labels: {
+      A: "TV Show",
+      B: "1980s",
+      C: "Science"
+    },
+    tiles: [
+      {
+        label: "Cheers",
+        correctSlot: "S1"
+      },
+      {
+        label: "MythBusters",
+        correctSlot: "S2"
+      },
+      {
+        label: "Cold Fusion",
+        correctSlot: "S3"
+      },
+      {
+        label: "MacGyver",
+        correctSlot: "S4"
+      },
+      {
+        label: "VHS Tape",
+        correctSlot: null
+      },
+      {
+        label: "Lab Coat",
+        correctSlot: null
+      },
+      {
+        label: "Remote Control",
+        correctSlot: null
+      },
+      {
+        label: "Rubik's Cube",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-25",
+  easy: {
+    title: "City + Canal + Italy",
+    difficultyEstimate: 81,
+    labels: {
+      A: "City",
+      B: "Canal",
+      C: "Italy"
+    },
+    tiles: [
+      {
+        label: "Amsterdam",
+        correctSlot: "S1"
+      },
+      {
+        label: "Rome",
+        correctSlot: "S2"
+      },
+      {
+        label: "Grand Canal",
+        correctSlot: "S3"
+      },
+      {
+        label: "Venice",
+        correctSlot: "S4"
+      },
+      {
+        label: "Map",
+        correctSlot: null
+      },
+      {
+        label: "Gondola",
+        correctSlot: null
+      },
+      {
+        label: "Pizza Box",
+        correctSlot: null
+      },
+      {
+        label: "Bridge",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Place Name + Person Name + Movie",
+    difficultyEstimate: 58,
+    labels: {
+      A: "Place Name",
+      B: "Person Name",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Madison",
+        correctSlot: "S1"
+      },
+      {
+        label: "Casablanca",
+        correctSlot: "S2"
+      },
+      {
+        label: "Rocky",
+        correctSlot: "S3"
+      },
+      {
+        label: "Paris, Texas",
+        correctSlot: "S4"
+      },
+      {
+        label: "Atlas",
+        correctSlot: null
+      },
+      {
+        label: "Driver's License",
+        correctSlot: null
+      },
+      {
+        label: "Ticket Stub",
+        correctSlot: null
+      },
+      {
+        label: "Compass",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "Place + Food + Movie",
+    difficultyEstimate: 43,
+    labels: {
+      A: "Place",
+      B: "Food",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Philadelphia",
+        correctSlot: "S1"
+      },
+      {
+        label: "Fargo",
+        correctSlot: "S2"
+      },
+      {
+        label: "Ratatouille",
+        correctSlot: "S3"
+      },
+      {
+        label: "Mystic Pizza",
+        correctSlot: "S4"
+      },
+      {
+        label: "Road Map",
+        correctSlot: null
+      },
+      {
+        label: "Fork",
+        correctSlot: null
+      },
+      {
+        label: "Film Reel",
+        correctSlot: null
+      },
+      {
+        label: "Postcard",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-24",
+  easy: {
+    title: "Baseball + Animal + Team",
+    difficultyEstimate: 83,
+    labels: {
+      A: "Baseball",
+      B: "Animal",
+      C: "Team"
+    },
+    tiles: [
+      {
+        label: "Yankees",
+        correctSlot: "S1"
+      },
+      {
+        label: "Baseball Bat",
+        correctSlot: "S2"
+      },
+      {
+        label: "Detroit Lions",
+        correctSlot: "S3"
+      },
+      {
+        label: "Baltimore Orioles",
+        correctSlot: "S4"
+      },
+      {
+        label: "Glove",
+        correctSlot: null
+      },
+      {
+        label: "Zoo Map",
+        correctSlot: null
+      },
+      {
+        label: "Jersey",
+        correctSlot: null
+      },
+      {
+        label: "Mascot Head",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Basketball + Movie + Animal",
+    difficultyEstimate: 61,
+    labels: {
+      A: "Basketball",
+      B: "Movie",
+      C: "Animal"
+    },
+    tiles: [
+      {
+        label: "Chicago Bulls",
+        correctSlot: "S1"
+      },
+      {
+        label: "Hoosiers",
+        correctSlot: "S2"
+      },
+      {
+        label: "Happy Feet",
+        correctSlot: "S3"
+      },
+      {
+        label: "Air Bud",
+        correctSlot: "S4"
+      },
+      {
+        label: "Sneakers",
+        correctSlot: null
+      },
+      {
+        label: "Popcorn",
+        correctSlot: null
+      },
+      {
+        label: "Goldfish",
+        correctSlot: null
+      },
+      {
+        label: "Whistle",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "Sport + 1990s + Movie",
+    difficultyEstimate: 40,
+    labels: {
+      A: "Sport",
+      B: "1990s",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Dream Team",
+        correctSlot: "S1"
+      },
+      {
+        label: "Field of Dreams",
+        correctSlot: "S2"
+      },
+      {
+        label: "Titanic",
+        correctSlot: "S3"
+      },
+      {
+        label: "Space Jam",
+        correctSlot: "S4"
+      },
+      {
+        label: "Starter Jacket",
+        correctSlot: null
+      },
+      {
+        label: "Scoreboard",
+        correctSlot: null
+      },
+      {
+        label: "VHS Tape",
+        correctSlot: null
+      },
+      {
+        label: "Director's Chair",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-23",
+  easy: {
+    title: "Book + Animal + Movie",
+    difficultyEstimate: 80,
+    labels: {
+      A: "Book",
+      B: "Animal",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Charlotte's Web",
+        correctSlot: "S1"
+      },
+      {
+        label: "The Notebook",
+        correctSlot: "S2"
+      },
+      {
+        label: "Jaws",
+        correctSlot: "S3"
+      },
+      {
+        label: "The Jungle Book",
+        correctSlot: "S4"
+      },
+      {
+        label: "Library Card",
+        correctSlot: null
+      },
+      {
+        label: "Zoo Exhibit",
+        correctSlot: null
+      },
+      {
+        label: "Movie Ticket",
+        correctSlot: null
+      },
+      {
+        label: "Bookmark",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Book + Detective + London",
+    difficultyEstimate: 57,
+    labels: {
+      A: "Book",
+      B: "Detective",
+      C: "London"
+    },
+    tiles: [
+      {
+        label: "Nancy Drew",
+        correctSlot: "S1"
+      },
+      {
+        label: "Oliver Twist",
+        correctSlot: "S2"
+      },
+      {
+        label: "Scotland Yard",
+        correctSlot: "S3"
+      },
+      {
+        label: "Sherlock Holmes",
+        correctSlot: "S4"
+      },
+      {
+        label: "Tea Cup",
+        correctSlot: null
+      },
+      {
+        label: "Library Ladder",
+        correctSlot: null
+      },
+      {
+        label: "Police Tape",
+        correctSlot: null
+      },
+      {
+        label: "Double-Decker",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "Novel + Place Name + Person Name",
+    difficultyEstimate: 38,
+    labels: {
+      A: "Novel",
+      B: "Place Name",
+      C: "Person Name"
+    },
+    tiles: [
+      {
+        label: "West Egg",
+        correctSlot: "S1"
+      },
+      {
+        label: "Emma",
+        correctSlot: "S2"
+      },
+      {
+        label: "Madison",
+        correctSlot: "S3"
+      },
+      {
+        label: "Orlando",
+        correctSlot: "S4"
+      },
+      {
+        label: "Hardcover",
+        correctSlot: null
+      },
+      {
+        label: "Map Pin",
+        correctSlot: null
+      },
+      {
+        label: "Name Tag",
+        correctSlot: null
+      },
+      {
+        label: "Chapter One",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-22",
+  easy: {
+    title: "Environment + Holiday + Animal",
+    difficultyEstimate: 82,
+    labels: {
+      A: "Environment",
+      B: "Holiday",
+      C: "Animal"
+    },
+    tiles: [
+      {
+        label: "Earth Day",
+        correctSlot: "S1"
+      },
+      {
+        label: "Wildlife Rescue",
+        correctSlot: "S2"
+      },
+      {
+        label: "Groundhog Day",
+        correctSlot: "S3"
+      },
+      {
+        label: "World Wildlife Day",
+        correctSlot: "S4"
+      },
+      {
+        label: "Recycling Bin",
+        correctSlot: null
+      },
+      {
+        label: "Calendar",
+        correctSlot: null
+      },
+      {
+        label: "Squirrel",
+        correctSlot: null
+      },
+      {
+        label: "Party Hat",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Ocean + Animal + Movie",
+    difficultyEstimate: 63,
+    labels: {
+      A: "Ocean",
+      B: "Animal",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Dolphin",
+        correctSlot: "S1"
+      },
+      {
+        label: "Titanic",
+        correctSlot: "S2"
+      },
+      {
+        label: "Zootopia",
+        correctSlot: "S3"
+      },
+      {
+        label: "Jaws",
+        correctSlot: "S4"
+      },
+      {
+        label: "Seashell",
+        correctSlot: null
+      },
+      {
+        label: "Popcorn",
+        correctSlot: null
+      },
+      {
+        label: "Zoo Map",
+        correctSlot: null
+      },
+      {
+        label: "Sailboat",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "Green + Energy + Company",
+    difficultyEstimate: 45,
+    labels: {
+      A: "Green",
+      B: "Energy",
+      C: "Company"
+    },
+    tiles: [
+      {
+        label: "Green Energy",
+        correctSlot: "S1"
+      },
+      {
+        label: "Green Giant",
+        correctSlot: "S2"
+      },
+      {
+        label: "ExxonMobil",
+        correctSlot: "S3"
+      },
+      {
+        label: "Tesla",
+        correctSlot: "S4"
+      },
+      {
+        label: "Grass Stain",
+        correctSlot: null
+      },
+      {
+        label: "Battery Pack",
+        correctSlot: null
+      },
+      {
+        label: "Corporate Logo",
+        correctSlot: null
+      },
+      {
+        label: "Wind Turbine",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
+  date: "2026-04-21",
+  easy: {
+    title: "Music + Movie + Animal",
+    difficultyEstimate: 81,
+    labels: {
+      A: "Music",
+      B: "Movie",
+      C: "Animal"
+    },
+    tiles: [
+      {
+        label: "The Sound of Music",
+        correctSlot: "S1"
+      },
+      {
+        label: "Songbird",
+        correctSlot: "S2"
+      },
+      {
+        label: "Babe",
+        correctSlot: "S3"
+      },
+      {
+        label: "The Lion King",
+        correctSlot: "S4"
+      },
+      {
+        label: "Headphones",
+        correctSlot: null
+      },
+      {
+        label: "Popcorn",
+        correctSlot: null
+      },
+      {
+        label: "Goldfish",
+        correctSlot: null
+      },
+      {
+        label: "Microphone",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "TV Show + New York + Crime",
+    difficultyEstimate: 60,
+    labels: {
+      A: "TV Show",
+      B: "New York",
+      C: "Crime"
+    },
+    tiles: [
+      {
+        label: "Seinfeld",
+        correctSlot: "S1"
+      },
+      {
+        label: "Breaking Bad",
+        correctSlot: "S2"
+      },
+      {
+        label: "Times Square Heist",
+        correctSlot: "S3"
+      },
+      {
+        label: "Only Murders in the Building",
+        correctSlot: "S4"
+      },
+      {
+        label: "Remote Control",
+        correctSlot: null
+      },
+      {
+        label: "Subway Token",
+        correctSlot: null
+      },
+      {
+        label: "Handcuffs",
+        correctSlot: null
+      },
+      {
+        label: "Laugh Track",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "1990s + Animated + Movie",
+    difficultyEstimate: 42,
+    labels: {
+      A: "1990s",
+      B: "Animated",
+      C: "Movie"
+    },
+    tiles: [
+      {
+        label: "Animaniacs",
+        correctSlot: "S1"
+      },
+      {
+        label: "Titanic",
+        correctSlot: "S2"
+      },
+      {
+        label: "Frozen",
+        correctSlot: "S3"
+      },
+      {
+        label: "The Lion King",
+        correctSlot: "S4"
+      },
+      {
+        label: "Tamagotchi",
+        correctSlot: null
+      },
+      {
+        label: "Storyboard",
+        correctSlot: null
+      },
+      {
+        label: "Popcorn Tub",
+        correctSlot: null
+      },
+      {
+        label: "Dial-Up Modem",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
     date: "2026-04-20",
     easy: {
       title: "Movie + Ocean + Creature",
