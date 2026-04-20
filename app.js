@@ -624,12 +624,21 @@ function getDifficultyPercent(day = getActiveDate(), stage = activeStage) {
   const percent = Number(getPuzzleByStage(day, stage)?.difficultyEstimate);
   return Number.isFinite(percent) ? Math.max(0, Math.min(100, Math.round(percent))) : null;
 }
+function getDailyDifficultyPercent(day = getActiveDate()) {
+  const percents = getAvailableStages(day)
+    .map((stage) => getDifficultyPercent(day, stage))
+    .filter((percent) => Number.isFinite(percent));
+  if (!percents.length) return null;
+  const combined = percents.reduce((product, percent) => product * (percent / 100), 1) * 100;
+  return Math.max(1, Math.min(100, Math.round(combined)));
+}
 function getDifficultyBars(percent, stage) {
   if (!Number.isFinite(percent)) return 0;
   const ranges = {
     easy: { min: 70, max: 95 },
     medium: { min: 50, max: 80 },
-    hard: { min: 25, max: 60 }
+    hard: { min: 25, max: 60 },
+    daily: { min: 12, max: 50 }
   };
   const { min, max } = ranges[stage] || ranges.medium;
   const normalized = 1 - ((percent - min) / (max - min));
@@ -641,7 +650,9 @@ function getDifficultyLabel(percent, stage) {
     ? ["Gentle", "Friendly", "Tricky", "Tough", "Brutal"]
     : stage === "medium"
       ? ["Smooth", "Steady", "Tricky", "Tough", "Brutal"]
-      : ["Manageable", "Spicy", "Tough", "Brutal", "Savage"];
+      : stage === "daily"
+        ? ["Very Open", "Challenging", "Tough", "Brutal", "Tiny Club"]
+        : ["Manageable", "Spicy", "Tough", "Brutal", "Savage"];
   return labels[bars - 1];
 }
 function renderDifficultyItem(stage, percent) {
@@ -649,11 +660,14 @@ function renderDifficultyItem(stage, percent) {
   const dotClassesByStage = {
     easy: ["easy-a", "easy-b", "easy-c", "easy-a", "easy-b"],
     medium: ["medium-a", "medium-b", "medium-c", "medium-a", "medium-b"],
-    hard: ["hard-a", "hard-b", "hard-c", "hard-a", "hard-b"]
+    hard: ["hard-a", "hard-b", "hard-c", "hard-a", "hard-b"],
+    daily: ["easy-a", "medium-a", "hard-a", "medium-c", "hard-c"]
   };
   const dotClasses = dotClassesByStage[stage] || dotClassesByStage.medium;
   const dots = Array.from({ length: 5 }, (_, index) => `<span class="difficulty-dot${index < bars ? ` filled ${dotClasses[index]}` : ""}"></span>`).join("");
-  return `<div class="difficulty-item"><div class="difficulty-head"><div class="difficulty-label">${capitalize(stage)}</div><div class="difficulty-rate">${percent}%</div></div><div class="difficulty-meta"><div class="difficulty-note">Estimated clear rate</div><div class="difficulty-tier">${bars}/5 ${getDifficultyLabel(percent, stage)}</div></div><div class="difficulty-meter" aria-hidden="true">${dots}</div></div>`;
+  const label = stage === "daily" ? "Today's Full Set" : capitalize(stage);
+  const note = stage === "daily" ? "Estimated daily clear rate" : "Estimated clear rate";
+  return `<div class="difficulty-item"><div class="difficulty-head"><div class="difficulty-label">${label}</div><div class="difficulty-rate">${percent}%</div></div><div class="difficulty-meta"><div class="difficulty-note">${note}</div><div class="difficulty-tier">${bars}/5 ${getDifficultyLabel(percent, stage)}</div></div><div class="difficulty-meter" aria-hidden="true">${dots}</div></div>`;
 }
 function renderDifficultyGrid(targetEl, items) {
   if (!targetEl) return;
@@ -805,7 +819,7 @@ function openDailyCompleteModal() {
     dailyCompleteCopyEl.textContent = `You finished today's Common Ground set for ${formatLongDate(getActiveDate())}. Challenge a friend and see if they can beat your result before tomorrow's puzzle.`;
   }
   if (dailyCompleteDifficultyEl && dailyCompleteDifficultyGridEl) {
-    const items = getAvailableStages(getActiveDate()).map((stage) => ({ stage, percent: getDifficultyPercent(getActiveDate(), stage) }));
+    const items = [{ stage: "daily", percent: getDailyDifficultyPercent(getActiveDate()) }];
     renderDifficultyGrid(dailyCompleteDifficultyGridEl, items);
     dailyCompleteDifficultyEl.hidden = items.every((item) => !Number.isFinite(item.percent));
   }
@@ -830,8 +844,8 @@ function openHardMissedModal() {
   if (!hardMissedModalEl) return;
   if (hardMissedCopyEl) hardMissedCopyEl.textContent = "Today's Hard got away. Send it to a friend, or try again in Practice Mode just for fun. Practice Mode does not count toward streaks or badges.";
   if (hardMissedDifficultyEl && hardMissedDifficultyGridEl) {
-    const percent = getDifficultyPercent(getActiveDate(), "hard");
-    renderDifficultyGrid(hardMissedDifficultyGridEl, [{ stage: "hard", percent }]);
+    const percent = getDailyDifficultyPercent(getActiveDate());
+    renderDifficultyGrid(hardMissedDifficultyGridEl, [{ stage: "daily", percent }]);
     hardMissedDifficultyEl.hidden = !Number.isFinite(percent);
   }
   hardMissedModalEl.hidden = false;
