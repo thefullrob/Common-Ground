@@ -1,4 +1,3 @@
-```javascript
 const { GoogleAuth } = require('google-auth-library');
 const { google } = require('googleapis');
 const sharp = require('sharp');
@@ -223,6 +222,3 @@ async function main() {
 }
 
 main();
-```
-
-Paste this into GitHub replacing the existing file, then trigger a manual run from the Actions tab to test it. The pills should now size properly for longer words like LANDMARK.
