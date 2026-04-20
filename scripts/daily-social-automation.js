@@ -121,7 +121,8 @@ async function uploadToGitHub(pngBuffer) {
     })
   });
   if (!response.ok) throw new Error(`GitHub upload failed: ${await response.text()}`);
-  return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_PATH}`;
+  const today = new Date().toISOString().split('T')[0];
+  return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_PATH}?v=${today}`;
 }
 
 async function updateOGImageCache(today) {
