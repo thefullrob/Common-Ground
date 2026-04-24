@@ -1,230 +1,228 @@
-﻿const fs = require("fs");
-const path = require("path");
-const vm = require("vm");
-const sharp = require("sharp");
+```javascript
+const { GoogleAuth } = require('google-auth-library');
+const { google } = require('googleapis');
+const sharp = require('sharp');
 
-const ROOT = path.resolve(__dirname, "..");
-const DAILY_PATH = path.join(ROOT, "daily-sets-reviewed.js");
-const INDEX_PATH = path.join(ROOT, "index.html");
-const IMAGE_NAME = "social-post-today.png";
-const IMAGE_PATH = path.join(ROOT, IMAGE_NAME);
-const SITE_URL = "https://commongroundpuzzle.com/";
-const GITHUB_OWNER = "thefullrob";
-const GITHUB_REPO = "Common-Ground";
-const GITHUB_BRANCH = "main";
-const IMAGE_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_NAME}`;
+const GITHUB_USER   = 'thefullrob';
+const GITHUB_REPO   = 'Common-Ground';
+const GITHUB_BRANCH = 'main';
+const IMAGE_PATH    = 'social-post-today.png';
 
-function getEasternDateStamp(date = new Date()) {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/New_York",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  }).formatToParts(date);
-  const lookup = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${lookup.year}-${lookup.month}-${lookup.day}`;
-}
+const SHEET_ID     = process.env.GOOGLE_SHEETS_ID;
+const GH_TOKEN     = process.env.GH_TOKEN;
+const SERVICE_ACCT = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
-function loadDailySets() {
-  const code = fs.readFileSync(DAILY_PATH, "utf8");
-  const sandbox = { window: {} };
-  vm.createContext(sandbox);
-  vm.runInContext(code, sandbox, { filename: "daily-sets-reviewed.js" });
-  if (!Array.isArray(sandbox.window.COMMON_GROUND_DAILY_SETS)) {
-    throw new Error("COMMON_GROUND_DAILY_SETS was not found");
-  }
-  return sandbox.window.COMMON_GROUND_DAILY_SETS;
-}
-
-function getLivePuzzle(sets) {
-  const today = getEasternDateStamp();
-  const exact = sets.find((entry) => entry.date === today);
-  if (exact) return exact;
-  const past = sets
-    .filter((entry) => entry.date <= today)
-    .sort((a, b) => b.date.localeCompare(a.date));
-  if (!past.length) throw new Error(`No live puzzle found for ${today}`);
-  return past[0];
-}
-
-function getPuzzleNumber(sets, puzzle) {
-  const sorted = [...sets].sort((a, b) => a.date.localeCompare(b.date));
-  return sorted.findIndex((entry) => entry.date === puzzle.date) + 1;
-}
-
-function escapeXml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
+async function getTodaysPuzzle() {
+  const today = new Date().toISOString().split('T')[0];
+  const jsText = await fetch(
+    `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/daily-sets-reviewed.js`
+  ).then(r => r.text());
+  let sets;
+  const script = jsText.replace('window.COMMON_GROUND_DAILY_SETS = ', 'sets = ');
+  eval(script);
+  const todaySet = sets.find(s => s.date === today);
+  if (!todaySet) throw new Error(`No puzzle found for ${today}`);
+  return {
+    date: todaySet.date,
+    puzzleNumber: sets.length - sets.indexOf(todaySet),
+    categoryA: todaySet.easy.labels.A,
+    categoryB: todaySet.easy.labels.B,
+    categoryC: todaySet.easy.labels.C,
+    title: todaySet.easy.title,
+  };
 }
 
 function pillWidth(text) {
-  return Math.min(360, Math.max(190, text.length * 18 + 46));
+  return Math.min(340, Math.max(180, text.length * 18 + 40));
 }
 
 function pillFontSize(text) {
-  if (text.length > 17) return 17;
-  if (text.length > 13) return 20;
-  if (text.length > 10) return 23;
-  return 27;
+  if (text.length > 14) return 18;
+  if (text.length > 10) return 22;
+  if (text.length > 8) return 24;
+  return 28;
 }
 
-function formatDate(dateStamp) {
-  const date = new Date(`${dateStamp}T12:00:00-04:00`);
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "America/New_York"
-  }).format(date);
-}
+function generateSVG(puzzle) {
+  const { categoryA, categoryB, categoryC, date, puzzleNumber } = puzzle;
+  const dateObj = new Date(date + 'T12:00:00');
+  const dateFormatted = dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-function getCategoryLayout(labels) {
-  const items = [labels.A, labels.B, labels.C].map((text) => ({
-    text,
-    safeText: escapeXml(text.toUpperCase()),
-    width: pillWidth(text),
-    fontSize: pillFontSize(text)
-  }));
-  let gap = 16;
-  let total = items.reduce((sum, item) => sum + item.width, 0) + gap * 2;
-  if (total > 1000) {
-    gap = 10;
-    const overflow = total - 1000;
-    const shrink = Math.ceil(overflow / 3);
-    items.forEach((item) => {
-      item.width = Math.max(170, item.width - shrink);
-      item.fontSize = Math.max(15, item.fontSize - 2);
-    });
-    total = items.reduce((sum, item) => sum + item.width, 0) + gap * 2;
-  }
-  let x = (1080 - total) / 2;
-  return items.map((item) => {
-    const out = { ...item, x };
-    x += item.width + gap;
-    return out;
-  });
-}
+  const wA = pillWidth(categoryA);
+  const wB = pillWidth(categoryB);
+  const wC = pillWidth(categoryC);
+  const fsA = pillFontSize(categoryA);
+  const fsB = pillFontSize(categoryB);
+  const fsC = pillFontSize(categoryC);
 
-function generateSvg(puzzle, puzzleNumber) {
-  const labels = puzzle.easy.labels;
-  const categoryLayout = getCategoryLayout(labels);
-  const dateText = formatDate(puzzle.date);
-  const titleText = escapeXml(puzzle.easy.title);
-  const pills = categoryLayout.map((item) => `
-    <rect x="${item.x}" y="750" width="${item.width}" height="62" rx="31" fill="#2f2118"/>
-    <text x="${item.x + item.width / 2}" y="782" font-family="Georgia, serif" font-size="${item.fontSize}" font-weight="700" fill="#f1e7d2" text-anchor="middle" dominant-baseline="middle">${item.safeText}</text>`).join("");
+  const totalWidth = wA + wB + wC;
+  const gap = Math.min(16, (1020 - totalWidth) / 2);
+  const startX = (1080 - totalWidth - gap * 2) / 2;
+
+  const xA = startX;
+  const xB = xA + wA + gap;
+  const xC = xB + wB + gap;
 
   return `<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="glow" cx="50%" cy="36%" r="70%">
-        <stop offset="0%" stop-color="#fbf4df"/>
-        <stop offset="55%" stop-color="#e8dcc8"/>
-        <stop offset="100%" stop-color="#cdbb9c"/>
-      </radialGradient>
-      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2f2118" flood-opacity="0.18"/>
-      </filter>
-    </defs>
-    <rect width="1080" height="1080" fill="url(#glow)"/>
-    <rect x="56" y="56" width="968" height="968" rx="38" fill="none" stroke="#2f2118" stroke-width="3" opacity="0.12"/>
-    <text x="540" y="104" font-family="Georgia, serif" font-size="30" fill="#7a5c3a" text-anchor="middle" letter-spacing="7">DAILY PUZZLE · #${puzzleNumber}</text>
-    <text x="540" y="208" font-family="Georgia, serif" font-size="126" font-weight="700" fill="#2f2118" text-anchor="middle" letter-spacing="4">COMMON</text>
-    <text x="540" y="326" font-family="Georgia, serif" font-size="126" font-weight="700" fill="#2f2118" text-anchor="middle" letter-spacing="4">GROUND</text>
-    <text x="540" y="386" font-family="Georgia, serif" font-size="34" font-style="italic" fill="#7a5c3a" text-anchor="middle">Can you find what they share?</text>
-    <g filter="url(#shadow)">
-      <ellipse cx="416" cy="586" rx="198" ry="198" fill="#6abf8f" opacity="0.22"/>
-      <ellipse cx="664" cy="586" rx="198" ry="198" fill="#bfa7ef" opacity="0.22"/>
-      <ellipse cx="540" cy="446" rx="198" ry="198" fill="#8db8e8" opacity="0.22"/>
-      <ellipse cx="416" cy="586" rx="198" ry="198" fill="none" stroke="#2f2118" stroke-width="4" opacity="0.55"/>
-      <ellipse cx="664" cy="586" rx="198" ry="198" fill="none" stroke="#2f2118" stroke-width="4" opacity="0.55"/>
-      <ellipse cx="540" cy="446" rx="198" ry="198" fill="none" stroke="#2f2118" stroke-width="4" opacity="0.55"/>
-      <circle cx="540" cy="538" r="73" fill="#2f2118" opacity="0.1"/>
-      <text x="540" y="526" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#2f2118" text-anchor="middle" opacity="0.62">COMMON</text>
-      <text x="540" y="552" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#2f2118" text-anchor="middle" opacity="0.62">GROUND</text>
-      <text x="540" y="586" font-family="Georgia, serif" font-size="42" fill="#7a5c3a" text-anchor="middle">?</text>
-    </g>
-    ${pills}
-    <text x="540" y="862" font-family="Georgia, serif" font-size="25" fill="#7a5c3a" text-anchor="middle">${titleText}</text>
-    <line x1="340" y1="900" x2="740" y2="900" stroke="#7a5c3a" stroke-width="1" opacity="0.35"/>
-    <text x="540" y="940" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="#7a5c3a" text-anchor="middle">PLAY FREE TODAY</text>
-    <text x="540" y="990" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2f2118" text-anchor="middle">commongroundpuzzle.com</text>
-    <text x="540" y="1036" font-family="Georgia, serif" font-size="23" fill="#7a5c3a" text-anchor="middle" opacity="0.62">${dateText}</text>
-  </svg>`;
+  <rect width="1080" height="1080" fill="#E8DCC8"/>
+  <text x="540" y="110" font-family="Georgia, serif" font-size="32" font-weight="400" fill="#7a5c3a" text-anchor="middle" letter-spacing="8">DAILY PUZZLE · #${puzzleNumber}</text>
+  <text x="540" y="210" font-family="Georgia, serif" font-size="130" font-weight="700" fill="#2c1a0e" text-anchor="middle" letter-spacing="4">COMMON</text>
+  <text x="540" y="330" font-family="Georgia, serif" font-size="130" font-weight="700" fill="#2c1a0e" text-anchor="middle" letter-spacing="4">GROUND</text>
+  <text x="540" y="390" font-family="Georgia, serif" font-size="36" font-style="italic" fill="#7a5c3a" text-anchor="middle">Can you find what they share?</text>
+  <ellipse cx="420" cy="590" rx="200" ry="200" fill="#2c1a0e" opacity="0.08"/>
+  <ellipse cx="660" cy="590" rx="200" ry="200" fill="#2c1a0e" opacity="0.08"/>
+  <ellipse cx="540" cy="450" rx="200" ry="200" fill="#2c1a0e" opacity="0.08"/>
+  <ellipse cx="420" cy="590" rx="200" ry="200" fill="none" stroke="#2c1a0e" stroke-width="3.5" opacity="0.45"/>
+  <ellipse cx="660" cy="590" rx="200" ry="200" fill="none" stroke="#2c1a0e" stroke-width="3.5" opacity="0.45"/>
+  <ellipse cx="540" cy="450" rx="200" ry="200" fill="none" stroke="#2c1a0e" stroke-width="3.5" opacity="0.45"/>
+  <circle cx="540" cy="538" r="72" fill="#7a5c3a" opacity="0.12"/>
+  <text x="540" y="528" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#2c1a0e" text-anchor="middle" opacity="0.6">COMMON</text>
+  <text x="540" y="552" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#2c1a0e" text-anchor="middle" opacity="0.6">GROUND</text>
+  <text x="540" y="582" font-family="Georgia, serif" font-size="40" fill="#7a5c3a" text-anchor="middle">?</text>
+  <rect x="${xA}" y="752" width="${wA}" height="60" rx="30" fill="#2c1a0e"/>
+  <text x="${xA + wA / 2}" y="790" font-family="Georgia, serif" font-size="${fsA}" font-weight="700" fill="#E8DCC8" text-anchor="middle" dominant-baseline="central">${categoryA.toUpperCase()}</text>
+  <rect x="${xB}" y="752" width="${wB}" height="60" rx="30" fill="#2c1a0e"/>
+  <text x="${xB + wB / 2}" y="790" font-family="Georgia, serif" font-size="${fsB}" font-weight="700" fill="#E8DCC8" text-anchor="middle" dominant-baseline="central">${categoryB.toUpperCase()}</text>
+  <rect x="${xC}" y="752" width="${wC}" height="60" rx="30" fill="#2c1a0e"/>
+  <text x="${xC + wC / 2}" y="790" font-family="Georgia, serif" font-size="${fsC}" font-weight="700" fill="#E8DCC8" text-anchor="middle" dominant-baseline="central">${categoryC.toUpperCase()}</text>
+  <line x1="340" y1="870" x2="740" y2="870" stroke="#7a5c3a" stroke-width="1" opacity="0.4"/>
+  <text x="540" y="910" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="#7a5c3a" text-anchor="middle">PLAY FREE TODAY</text>
+  <text x="540" y="960" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#2c1a0e" text-anchor="middle">commongroundpuzzle.com</text>
+  <text x="540" y="1010" font-family="Georgia, serif" font-size="24" fill="#7a5c3a" text-anchor="middle" opacity="0.6">#CommonGround · #DailyPuzzle · #BrainTeaser</text>
+  <text x="540" y="1050" font-family="Georgia, serif" font-size="22" fill="#7a5c3a" text-anchor="middle" opacity="0.5">${dateFormatted}</text>
+</svg>`;
 }
 
-async function writeSocialImage(puzzle, puzzleNumber) {
-  const svg = generateSvg(puzzle, puzzleNumber);
-  await sharp(Buffer.from(svg)).resize(1080, 1080).png().toFile(IMAGE_PATH);
+async function generatePNG(svgString) {
+  return await sharp(Buffer.from(svgString)).resize(1080, 1080).png().toBuffer();
 }
 
-function updateIndex(puzzle) {
-  const cacheBust = puzzle.date.replace(/-/g, "");
-  let html = fs.readFileSync(INDEX_PATH, "utf8");
-  html = html
-    .replace(/<meta property="og:image" content="[^"]*"\s*\/>/, `<meta property="og:image" content="${IMAGE_URL}?v=${cacheBust}" />`)
-    .replace(/<meta name="twitter:image" content="[^"]*"\s*\/>/, `<meta name="twitter:image" content="${IMAGE_URL}?v=${cacheBust}" />`)
-    .replace(/<meta property="og:image:width" content="[^"]*"\s*\/>/, `<meta property="og:image:width" content="1080" />`)
-    .replace(/<meta property="og:image:height" content="[^"]*"\s*\/>/, `<meta property="og:image:height" content="1080" />`)
-    .replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${SITE_URL}" />`);
-  fs.writeFileSync(INDEX_PATH, html, "utf8");
-}
-
-async function getRemoteSha(repoPath, token) {
-  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${repoPath}?ref=${GITHUB_BRANCH}`, {
+async function uploadToGitHub(pngBuffer) {
+  const base64 = pngBuffer.toString('base64');
+  const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${IMAGE_PATH}`;
+  let sha;
+  try {
+    const existing = await fetch(apiUrl, {
+      headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github+json' }
+    }).then(r => r.json());
+    sha = existing.sha;
+  } catch (e) { sha = undefined; }
+  const response = await fetch(apiUrl, {
+    method: 'PUT',
     headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json"
-    }
-  });
-  if (response.status === 404) return null;
-  if (!response.ok) throw new Error(`Could not read ${repoPath}: ${await response.text()}`);
-  const data = await response.json();
-  return data.sha;
-}
-
-async function uploadFile(repoPath, localPath, message, token) {
-  const sha = await getRemoteSha(repoPath, token);
-  const content = fs.readFileSync(localPath).toString("base64");
-  const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${repoPath}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json"
+      'Authorization': `Bearer ${GH_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      message,
-      content,
+      message: `Daily social post image — ${new Date().toISOString().split('T')[0]}`,
+      content: base64,
       branch: GITHUB_BRANCH,
       ...(sha ? { sha } : {})
     })
   });
-  if (!response.ok) throw new Error(`Could not upload ${repoPath}: ${await response.text()}`);
-  const data = await response.json();
-  console.log(`Uploaded ${repoPath}: ${data.commit.sha}`);
+  if (!response.ok) throw new Error(`GitHub upload failed: ${await response.text()}`);
+  return `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${IMAGE_PATH}`;
+}
+
+async function updateOGImageCache(today) {
+  const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/index.html`;
+
+  const fileResponse = await fetch(apiUrl, {
+    headers: { 'Authorization': `Bearer ${GH_TOKEN}`, 'Accept': 'application/vnd.github+json' }
+  });
+  const fileData = await fileResponse.json();
+  const content = Buffer.from(fileData.content, 'base64').toString('utf8');
+
+  const updated = content
+    .replace(
+      /social-post-today\.png\?v=[^"']*/g,
+      `social-post-today.png?v=${today}`
+    );
+
+  if (updated === content) {
+    console.log('OG image URL already up to date');
+    return;
+  }
+
+  const updatedBase64 = Buffer.from(updated).toString('base64');
+  const putResponse = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${GH_TOKEN}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: `Update OG image cache buster — ${today}`,
+      content: updatedBase64,
+      sha: fileData.sha,
+      branch: GITHUB_BRANCH,
+    })
+  });
+
+  if (!putResponse.ok) throw new Error(`index.html update failed: ${await putResponse.text()}`);
+  console.log(`OG image cache buster updated to ?v=${today}`);
+}
+
+async function updateGoogleSheet(puzzle, imageUrl) {
+  const auth = new GoogleAuth({
+    credentials: {
+      client_email: SERVICE_ACCT.client_email,
+      private_key: SERVICE_ACCT.private_key,
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+  const sheets = google.sheets({ version: 'v4', auth });
+  const postCopy = `Puzzle #${puzzle.puzzleNumber} — Most people can't solve this in 3 tries.\n\nWhat do ${puzzle.categoryA}, ${puzzle.categoryB} and ${puzzle.categoryC} all have in common?\n\nThink you can find the Common Ground? commongroundpuzzle.com`;
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: SHEET_ID,
+    range: 'Daily Puzzle!A:G',
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS',
+    requestBody: {
+      values: [[
+        puzzle.date,
+        puzzle.puzzleNumber,
+        puzzle.categoryA,
+        puzzle.categoryB,
+        puzzle.categoryC,
+        postCopy,
+        imageUrl,
+      ]]
+    }
+  });
+  console.log(`Sheet updated for ${puzzle.date}`);
 }
 
 async function main() {
-  const sets = loadDailySets();
-  const puzzle = getLivePuzzle(sets);
-  const puzzleNumber = getPuzzleNumber(sets, puzzle);
-  await writeSocialImage(puzzle, puzzleNumber);
-  updateIndex(puzzle);
-  console.log(`Generated ${IMAGE_NAME} for ${puzzle.date} (#${puzzleNumber})`);
-  console.log(`Categories: ${puzzle.easy.labels.A} + ${puzzle.easy.labels.B} + ${puzzle.easy.labels.C}`);
+  try {
+    console.log('Getting today puzzle...');
+    const puzzle = await getTodaysPuzzle();
+    console.log(`Found: ${puzzle.date} - ${puzzle.categoryA} + ${puzzle.categoryB} + ${puzzle.categoryC}`);
 
-  if (process.env.GH_TOKEN) {
-    await uploadFile(IMAGE_NAME, IMAGE_PATH, `Update social preview image for ${puzzle.date}`, process.env.GH_TOKEN);
-    await uploadFile("index.html", INDEX_PATH, `Update social preview metadata for ${puzzle.date}`, process.env.GH_TOKEN);
-  } else {
-    console.log("GH_TOKEN not set; wrote files locally only.");
+    console.log('Generating social image...');
+    const svg = generateSVG(puzzle);
+    const png = await generatePNG(svg);
+
+    console.log('Uploading to GitHub...');
+    const imageUrl = await uploadToGitHub(png);
+    console.log(`Image live at: ${imageUrl}`);
+
+    console.log('Updating OG image cache buster in index.html...');
+    await updateOGImageCache(puzzle.date);
+
+    console.log('Updating Google Sheet...');
+    await updateGoogleSheet(puzzle, imageUrl);
+
+    console.log('All done! Make.com will post to Facebook at 9am.');
+  } catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
   }
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+main();
+```
+
+Paste this into GitHub replacing the existing file, then trigger a manual run from the Actions tab to test it. The pills should now size properly for longer words like LANDMARK.
