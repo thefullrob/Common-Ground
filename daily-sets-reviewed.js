@@ -13,11 +13,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       {
         label: "Superman",
-        correctSlot: "S1"
+        correctSlot: "S2"
       },
       {
         label: "Garfield",
-        correctSlot: "S2"
+        correctSlot: "S1"
       },
       {
         label: "Free Willy",
@@ -56,11 +56,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       {
         label: "Spider-Man",
-        correctSlot: "S1"
+        correctSlot: "S2"
       },
       {
         label: "Doctor Doom",
-        correctSlot: "S2"
+        correctSlot: "S1"
       },
       {
         label: "The Fugitive",
@@ -145,11 +145,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       {
         label: "Full House",
-        correctSlot: "S1"
+        correctSlot: "S2"
       },
       {
         label: "Lassie",
-        correctSlot: "S2"
+        correctSlot: "S1"
       },
       {
         label: "Pet Portrait",
@@ -362,7 +362,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     tiles: [
       {
-        label: "Philadelphia",
+        label: "Bologna",
         correctSlot: "S1"
       },
       {
@@ -409,11 +409,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       {
         label: "Yankees",
-        correctSlot: "S1"
+        correctSlot: "S2"
       },
       {
         label: "Baseball Bat",
-        correctSlot: "S2"
+        correctSlot: "S1"
       },
       {
         label: "Detroit Lions",
@@ -452,11 +452,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       {
         label: "Chicago Bulls",
-        correctSlot: "S1"
+        correctSlot: "S2"
       },
       {
         label: "Hoosiers",
-        correctSlot: "S2"
+        correctSlot: "S1"
       },
       {
         label: "Happy Feet",
@@ -531,28 +531,28 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-04-23",
   easy: {
-    title: "Book + Animal + Movie",
+    title: "Novel + Animal + Kids",
     difficultyEstimate: 80,
     labels: {
-      A: "Book",
+      A: "Novel",
       B: "Animal",
-      C: "Movie"
+      C: "Kids"
     },
     tiles: [
       {
-        label: "Charlotte's Web",
+        label: "Life of Pi",
         correctSlot: "S1"
       },
       {
-        label: "The Notebook",
+        label: "Diary of a Wimpy Kid",
         correctSlot: "S2"
       },
       {
-        label: "Jaws",
+        label: "Teddy Bear",
         correctSlot: "S3"
       },
       {
-        label: "The Jungle Book",
+        label: "Charlotte's Web",
         correctSlot: "S4"
       },
       {
@@ -564,7 +564,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: null
       },
       {
-        label: "Movie Ticket",
+        label: "Playground",
         correctSlot: null
       },
       {
@@ -1277,36 +1277,36 @@ window.COMMON_GROUND_DAILY_SETS = [
       ]
     },
     hard: {
-      title: "Mobster + 1920s + Liquor",
+      title: "Mobster + Movie + 1920s",
       difficultyEstimate: 44,
-      labels: { A: "Mobster", B: "1920s", C: "Liquor" },
+      labels: { A: "Mobster", B: "Movie", C: "1920s" },
       tiles: [
-        { label: "Al Capone", correctSlot: "S1" },
-        { label: "Rumrunner", correctSlot: "S2" },
-        { label: "Speakeasy", correctSlot: "S3" },
-        { label: "Bootlegger", correctSlot: "S4" },
+        { label: "The Godfather", correctSlot: "S1" },
+        { label: "Bootlegger", correctSlot: "S2" },
+        { label: "The Jazz Singer", correctSlot: "S3" },
+        { label: "The Untouchables", correctSlot: "S4" },
         { label: "Tommy Gun", correctSlot: null },
         { label: "Flapper Dress", correctSlot: null },
-        { label: "Cocktail Shaker", correctSlot: null },
-        { label: "Pocket Watch", correctSlot: null }
+        { label: "Popcorn", correctSlot: null },
+        { label: "Cocktail Shaker", correctSlot: null }
       ]
     }
   },
   {
     date: "2026-04-12",
     easy: {
-      title: "Golf + The Masters + Sunday",
+      title: "Golf + Sunday + Spring",
       difficultyEstimate: 71,
-      labels: { A: "Golf", B: "The Masters", C: "Sunday" },
+      labels: { A: "Golf", B: "Sunday", C: "Spring" },
       tiles: [
-        { label: "Green Jacket", correctSlot: "S1" },
-        { label: "Tiger's Red Shirt", correctSlot: "S2" },
-        { label: "Final Round", correctSlot: "S3" },
-        { label: "Back Nine", correctSlot: "S4" },
+        { label: "Sunday Tee Time", correctSlot: "S1" },
+        { label: "Spring Golf Trip", correctSlot: "S2" },
+        { label: "Easter Sunday", correctSlot: "S3" },
+        { label: "The Masters", correctSlot: "S4" },
         { label: "Scorecard", correctSlot: null },
         { label: "Clubhouse", correctSlot: null },
         { label: "Brunch", correctSlot: null },
-        { label: "Sand Trap", correctSlot: null }
+        { label: "Tulip", correctSlot: null }
       ]
     },
     hard: {
@@ -1399,7 +1399,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       labels: { A: "Middle East", B: "Tourism", C: "Structure" },
       tiles: [
         { label: "Dubai Tour", correctSlot: "S1" },
-        { label: "Burj Khalifa", correctSlot: "S2" },
+        { label: "Oil Refinery", correctSlot: "S2" },
         { label: "Observation Deck", correctSlot: "S3" },
         { label: "Petra", correctSlot: "S4" },
         { label: "Oasis", correctSlot: null },
@@ -1409,17 +1409,17 @@ window.COMMON_GROUND_DAILY_SETS = [
       ]
     },
     hard: {
-      title: "Space Race + Cold War + First",
+      title: "Space + Cold War + America",
       difficultyEstimate: 42,
-      labels: { A: "Space Race", B: "Cold War", C: "First" },
+      labels: { A: "Space", B: "Cold War", C: "America" },
       tiles: [
-        { label: "Sputnik Satellite", correctSlot: "S1" },
-        { label: "First Spacewalk", correctSlot: "S2" },
-        { label: "First ICBM", correctSlot: "S3" },
-        { label: "First Moon Landing", correctSlot: "S4" },
-        { label: "Berlin Wall", correctSlot: null },
+        { label: "Sputnik", correctSlot: "S1" },
+        { label: "SpaceX", correctSlot: "S2" },
+        { label: "Berlin Wall", correctSlot: "S3" },
+        { label: "Apollo 11 Moon Landing", correctSlot: "S4" },
         { label: "Launch Pad", correctSlot: null },
-        { label: "Silver Medal", correctSlot: null },
+        { label: "Iron Curtain", correctSlot: null },
+        { label: "Stars and Stripes", correctSlot: null },
         { label: "Space Suit", correctSlot: null }
       ]
     }
@@ -1427,18 +1427,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
     date: "2026-04-08",
     easy: {
-      title: "College + Party + School",
+      title: "College + Party + Spring",
       difficultyEstimate: 78,
-      labels: { A: "College", B: "Party", C: "School" },
+      labels: { A: "College", B: "Party", C: "Spring" },
       tiles: [
         { label: "Frat House", correctSlot: "S1" },
-        { label: "Dorm Room", correctSlot: "S2" },
-        { label: "Student Mixer", correctSlot: "S3" },
-        { label: "Rush Week", correctSlot: "S4" },
+        { label: "Spring Finals", correctSlot: "S2" },
+        { label: "Spring Fling", correctSlot: "S3" },
+        { label: "Spring Break", correctSlot: "S4" },
         { label: "Textbook", correctSlot: null },
         { label: "Solo Cup", correctSlot: null },
         { label: "Backpack", correctSlot: null },
-        { label: "Nightclub", correctSlot: null }
+        { label: "Tulip", correctSlot: null }
       ]
     },
     hard: {
@@ -1513,7 +1513,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       labels: { A: "1980s", B: "Fads", C: "Toys" },
       tiles: [
         { label: "Moonwalk", correctSlot: "S1" },
-        { label: "Cabbage Patch Kids", correctSlot: "S2" },
+        { label: "Speak & Spell", correctSlot: "S2" },
         { label: "Fidget Spinner", correctSlot: "S3" },
         { label: "Rubik's Cube", correctSlot: "S4" },
         { label: "Boom Box", correctSlot: null },
@@ -1809,7 +1809,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 39,
       labels: { A: "Prank", B: "Message", C: "Technology" },
       tiles: [
-        { label: "Fake Text", correctSlot: "S1" },
+        { label: "Fake Love Letter", correctSlot: "S1" },
         { label: "Deepfake", correctSlot: "S2" },
         { label: "Push Notification", correctSlot: "S3" },
         { label: "Rickroll", correctSlot: "S4" },
@@ -2007,7 +2007,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 46,
       labels: { A: "Fast", B: "Luxury", C: "Transportation" },
       tiles: [
-        { label: "Broken Rolex", correctSlot: "S1" },
+        { label: "Rolex Daytona", correctSlot: "S1" },
         { label: "Jet", correctSlot: "S2" },
         { label: "Limousine", correctSlot: "S3" },
         { label: "Private Jet", correctSlot: "S4" },
@@ -2553,9 +2553,9 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 80,
       labels: { A: "Basketball", B: "Famous", C: "Sneakers" },
       tiles: [
-        { label: "LeBron James", correctSlot: "S1" },
+        { label: "Larry Bird", correctSlot: "S1" },
         { label: "High-Tops", correctSlot: "S2" },
-        { label: "Air Jordan", correctSlot: "S3" },
+        { label: "Yeezy", correctSlot: "S3" },
         { label: "Michael Jordan", correctSlot: "S4" },
         { label: "NBA Jersey", correctSlot: null },
         { label: "Paparazzi", correctSlot: null },
@@ -2619,7 +2619,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 78,
       labels: { A: "Famous Athlete", B: "Tennis", C: "Fashion" },
       tiles: [
-        { label: "Venus Williams", correctSlot: "S1" },
+        { label: "Rafael Nadal", correctSlot: "S1" },
         { label: "Eileen Gu", correctSlot: "S2" },
         { label: "Wimbledon Whites", correctSlot: "S3" },
         { label: "Serena Williams", correctSlot: "S4" },
