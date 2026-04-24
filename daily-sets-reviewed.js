@@ -310,44 +310,44 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Place Name + Person Name + Movie",
+    title: "Weather + Song + Dance",
     difficultyEstimate: 58,
     labels: {
-      A: "Place Name",
-      B: "Person Name",
-      C: "Movie"
+      A: "Weather",
+      B: "Song",
+      C: "Dance"
     },
     tiles: [
       {
-        label: "Madison",
+        label: "Thunder",
         correctSlot: "S1"
       },
       {
-        label: "Casablanca",
+        label: "Rain Dance",
         correctSlot: "S2"
       },
       {
-        label: "Rocky",
+        label: "Macarena",
         correctSlot: "S3"
       },
       {
-        label: "Paris, Texas",
+        label: "Singin' in the Rain",
         correctSlot: "S4"
       },
       {
-        label: "Atlas",
+        label: "Forecast",
         correctSlot: null
       },
       {
-        label: "Driver's License",
+        label: "Vinyl Record",
         correctSlot: null
       },
       {
-        label: "Ticket Stub",
+        label: "Ballet Slippers",
         correctSlot: null
       },
       {
-        label: "Compass",
+        label: "Barometer",
         correctSlot: null
       }
     ]
