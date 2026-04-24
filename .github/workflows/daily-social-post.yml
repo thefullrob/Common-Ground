@@ -1,14 +1,17 @@
-name: Daily Social Post
+name: Daily Social Preview
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # Runs at 8am ET (12pm UTC) every day
-  workflow_dispatch:        # Allows manual trigger from GitHub Actions tab
+    # 8:00 AM Eastern. Handoff docs specify 8 AM ET = 12:00 UTC (EDT-correct).
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  generate-post:
+  generate-social-preview:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -16,14 +19,26 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "24"
 
       - name: Install dependencies
-        run: npm install googleapis google-auth-library sharp
+        run: npm install sharp googleapis google-auth-library
 
-      - name: Run daily social automation
+      - name: Generate social preview and update Google Sheet
         run: node scripts/daily-social-automation.js
         env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
           GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Commit social preview updates
+        run: |
+          if git diff --quiet -- social-post-today.png index.html; then
+            echo "Social preview already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add social-post-today.png index.html
+          git commit -m "Update daily social preview"
+          git push
