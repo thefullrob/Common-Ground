@@ -135,87 +135,87 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-04-26",
   easy: {
-    title: "TV Show + Animal + Family",
-    difficultyEstimate: 82,
+    title: "Italian + Cheese + Pasta",
+    difficultyEstimate: 81,
     labels: {
-      A: "TV Show",
-      B: "Animal",
-      C: "Family"
+      A: "Italian",
+      B: "Cheese",
+      C: "Pasta"
     },
     tiles: [
       {
-        label: "Full House",
-        correctSlot: "S2"
-      },
-      {
-        label: "Lassie",
+        label: "Mozzarella",
         correctSlot: "S1"
       },
       {
-        label: "Pet Portrait",
+        label: "Spaghetti",
+        correctSlot: "S2"
+      },
+      {
+        label: "Mac and Cheese",
         correctSlot: "S3"
       },
       {
-        label: "Bluey",
+        label: "Lasagna",
         correctSlot: "S4"
       },
       {
-        label: "Remote",
+        label: "Olive Oil",
         correctSlot: null
       },
       {
-        label: "Zoo",
+        label: "Cheddar",
         correctSlot: null
       },
       {
-        label: "Photo Album",
+        label: "Ramen",
         correctSlot: null
       },
       {
-        label: "Cartoonist",
+        label: "Vespa",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "TV Show + School + Comedy",
-    difficultyEstimate: 59,
+    title: "Album + Rock + 1970s",
+    difficultyEstimate: 58,
     labels: {
-      A: "TV Show",
-      B: "School",
-      C: "Comedy"
+      A: "Album",
+      B: "Rock",
+      C: "1970s"
     },
     tiles: [
       {
-        label: "Euphoria",
+        label: "Nevermind",
         correctSlot: "S1"
       },
       {
-        label: "The Office",
+        label: "Saturday Night Fever",
         correctSlot: "S2"
       },
       {
-        label: "Class Clown",
+        label: "CBGB",
         correctSlot: "S3"
       },
       {
-        label: "Abbott Elementary",
+        label: "Dark Side of the Moon",
         correctSlot: "S4"
       },
       {
-        label: "Remote Control",
+        label: "Compact Disc",
         correctSlot: null
       },
       {
-        label: "Backpack",
+        label: "Electric Guitar",
         correctSlot: null
       },
       {
-        label: "Joke Book",
+        label: "Bell-Bottoms",
         correctSlot: null
       },
       {
-        label: "Drama Mask",
+        label: "Mosh Pit",
         correctSlot: null
       }
     ]
