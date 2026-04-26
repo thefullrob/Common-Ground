@@ -3,130 +3,130 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-04-27",
   easy: {
-    title: "Comic Book + Animal + Movie",
-    difficultyEstimate: 79,
+    title: "French + Bread + Pastry",
+    difficultyEstimate: 78,
     labels: {
-      A: "Comic Book",
-      B: "Animal",
-      C: "Movie"
+      A: "French",
+      B: "Bread",
+      C: "Pastry"
     },
     tiles: [
       {
-        label: "Superman",
-        correctSlot: "S2"
-      },
-      {
-        label: "Garfield",
+        label: "Baguette",
         correctSlot: "S1"
       },
       {
-        label: "Free Willy",
+        label: "Macaron",
+        correctSlot: "S2"
+      },
+      {
+        label: "Cinnamon Roll",
         correctSlot: "S3"
       },
       {
-        label: "Batman",
+        label: "Croissant",
         correctSlot: "S4"
       },
       {
-        label: "Speech Bubble",
+        label: "Beret",
         correctSlot: null
       },
       {
-        label: "Dog Park",
+        label: "Bagel",
         correctSlot: null
       },
       {
-        label: "Popcorn",
+        label: "Apple Pie",
         correctSlot: null
       },
       {
-        label: "Cape",
+        label: "Eiffel Tower",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "Marvel + Doctor + Movie",
+    title: "Author + Female + American",
     difficultyEstimate: 60,
     labels: {
-      A: "Marvel",
-      B: "Doctor",
-      C: "Movie"
+      A: "Author",
+      B: "Female",
+      C: "American"
     },
     tiles: [
       {
-        label: "Spider-Man",
-        correctSlot: "S2"
-      },
-      {
-        label: "Doctor Doom",
+        label: "Jane Austen",
         correctSlot: "S1"
       },
       {
-        label: "The Fugitive",
+        label: "Mark Twain",
+        correctSlot: "S2"
+      },
+      {
+        label: "Marilyn Monroe",
         correctSlot: "S3"
       },
       {
-        label: "Doctor Strange",
+        label: "Toni Morrison",
         correctSlot: "S4"
       },
       {
-        label: "Comic Panel",
+        label: "Shakespeare",
         correctSlot: null
       },
       {
-        label: "Lab Coat",
+        label: "Statue of Liberty",
         correctSlot: null
       },
       {
-        label: "Red Carpet",
+        label: "Cleopatra",
         correctSlot: null
       },
       {
-        label: "Magic Wand",
+        label: "Library",
         correctSlot: null
       }
     ]
   },
   hard: {
-    title: "DC + City + Hero",
-    difficultyEstimate: 39,
+    title: "Founding Father + President + Inventor",
+    difficultyEstimate: 41,
     labels: {
-      A: "DC",
-      B: "City",
-      C: "Hero"
+      A: "Founding Father",
+      B: "President",
+      C: "Inventor"
     },
     tiles: [
       {
-        label: "Gotham",
+        label: "John Adams",
         correctSlot: "S1"
       },
       {
-        label: "Wonder Woman",
+        label: "Benjamin Franklin",
         correctSlot: "S2"
       },
       {
-        label: "Spider-Man",
+        label: "Abraham Lincoln",
         correctSlot: "S3"
       },
       {
-        label: "Batman",
+        label: "Thomas Jefferson",
         correctSlot: "S4"
       },
       {
-        label: "Comic Book",
+        label: "Liberty Bell",
         correctSlot: null
       },
       {
-        label: "Skyline",
+        label: "Oval Office",
         correctSlot: null
       },
       {
-        label: "Cape",
+        label: "Thomas Edison",
         correctSlot: null
       },
       {
-        label: "Billionaire",
+        label: "Constitution",
         correctSlot: null
       }
     ]
