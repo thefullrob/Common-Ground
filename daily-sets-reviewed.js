@@ -890,11 +890,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     tiles: [
       {
-        label: "Medusa",
+        label: "Poseidon",
         correctSlot: "S1"
       },
       {
-        label: "Poseidon",
+        label: "Medusa",
         correctSlot: "S2"
       },
       {
