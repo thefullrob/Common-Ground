@@ -329,87 +329,87 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Music + String + Wooden",
-    difficultyEstimate: 62,
+    title: "Capital + River + Europe",
+    difficultyEstimate: 60,
     labels: {
-      A: "Music",
-      B: "String",
-      C: "Wooden"
+      A: "Capital",
+      B: "River",
+      C: "Europe"
     },
     tiles: [
       {
-        label: "String Quartet",
+        label: "Cairo",
         correctSlot: "S1"
       },
       {
-        label: "Wooden Flute",
+        label: "Madrid",
         correctSlot: "S2"
       },
       {
-        label: "Marionette",
+        label: "Rhine",
         correctSlot: "S3"
       },
       {
-        label: "Violin",
+        label: "Vienna",
         correctSlot: "S4"
       },
       {
-        label: "Songbook",
+        label: "Riyadh",
         correctSlot: null
       },
       {
-        label: "Lumber",
+        label: "Mississippi River",
         correctSlot: null
       },
       {
-        label: "Shoelace",
+        label: "Alps",
         correctSlot: null
       },
       {
-        label: "Tambourine",
+        label: "Sahara",
         correctSlot: null
       }
     ]
   },
   hard: {
-    title: "Inventor + Telephone + Scottish",
-    difficultyEstimate: 42,
+    title: "Astronaut + Female + Russian",
+    difficultyEstimate: 43,
     labels: {
-      A: "Inventor",
-      B: "Telephone",
-      C: "Scottish"
+      A: "Astronaut",
+      B: "Female",
+      C: "Russian"
     },
     tiles: [
       {
-        label: "Elisha Gray",
+        label: "Sally Ride",
         correctSlot: "S1"
       },
       {
-        label: "James Watt",
+        label: "Yuri Gagarin",
         correctSlot: "S2"
       },
       {
-        label: "Edinburgh Area Code",
+        label: "Catherine the Great",
         correctSlot: "S3"
       },
       {
-        label: "Alexander Graham Bell",
+        label: "Valentina Tereshkova",
         correctSlot: "S4"
       },
       {
-        label: "Bagpipes",
+        label: "Neil Armstrong",
         correctSlot: null
       },
       {
-        label: "Light Bulb",
+        label: "Princess Diana",
         correctSlot: null
       },
       {
-        label: "Switchboard",
+        label: "Vodka",
         correctSlot: null
       },
       {
-        label: "Patent Office",
+        label: "Mount Everest",
         correctSlot: null
       }
     ]
