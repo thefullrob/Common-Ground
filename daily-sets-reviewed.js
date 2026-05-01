@@ -1,3 +1,22 @@
+/**
+ * COMMON GROUND DAILY SETS — Venn diagram puzzle data
+ *
+ * Each puzzle has 3 sets (A, B, C) and 4 placement slots that map to the
+ * Venn intersections as follows:
+ *
+ *   S1 = A ∩ B  (only A and B; NOT C)
+ *   S2 = A ∩ C  (only A and C; NOT B)
+ *   S3 = B ∩ C  (only B and C; NOT A)
+ *   S4 = A ∩ B ∩ C  (all three)
+ *
+ * Tiles with `correctSlot: null` are distractors — they belong outside the
+ * 4 intersection regions (single-set members or unrelated red herrings).
+ *
+ * IMPORTANT for editors: when designing or fixing a puzzle, verify EACH
+ * placed tile against its slot rule above by checking all three set
+ * memberships explicitly. Do not rely on intuition about which slot is
+ * which — confirm against this comment every time.
+ */
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
@@ -399,87 +418,87 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-01",
   easy: {
-    title: "Farm + Black-and-White + Animal",
-    difficultyEstimate: 79,
+    title: "Spring + Flower + Pink",
+    difficultyEstimate: 82,
     labels: {
-      A: "Farm",
-      B: "Black-and-White",
-      C: "Animal"
+      A: "Spring",
+      B: "Flower",
+      C: "Pink"
     },
     tiles: [
       {
-        label: "Piglet",
+        label: "Yellow Daffodil",
         correctSlot: "S1"
       },
       {
-        label: "Checkered Barn Quilt",
+        label: "Pink Easter Egg",
         correctSlot: "S2"
       },
       {
-        label: "Penguin",
+        label: "Pink Chrysanthemum",
         correctSlot: "S3"
       },
       {
-        label: "Holstein Cow",
+        label: "Pink Cherry Blossom",
         correctSlot: "S4"
       },
       {
-        label: "Tractor",
+        label: "April Showers",
         correctSlot: null
       },
       {
-        label: "Crossword Grid",
+        label: "Sunflower",
         correctSlot: null
       },
       {
-        label: "Zoo Ticket",
+        label: "Pink Bubblegum",
         correctSlot: null
       },
       {
-        label: "Milk Pail",
+        label: "Skyscraper",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "Japan + Food + Raw",
-    difficultyEstimate: 60,
+    title: "Music + Female + 2010s",
+    difficultyEstimate: 58,
     labels: {
-      A: "Japan",
-      B: "Food",
-      C: "Raw"
+      A: "Music",
+      B: "Female",
+      C: "2010s"
     },
     tiles: [
       {
-        label: "Okonomiyaki",
+        label: "Aretha Franklin's Respect",
         correctSlot: "S1"
       },
       {
-        label: "Japanese Raw Denim",
+        label: "Drake's Hotline Bling",
         correctSlot: "S2"
       },
       {
-        label: "Steak Tartare",
+        label: "Greta Thunberg's UN Speech",
         correctSlot: "S3"
       },
       {
-        label: "Sushi",
+        label: "Beyoncé's Lemonade",
         correctSlot: "S4"
       },
       {
-        label: "Origami",
+        label: "Frank Sinatra's My Way",
         correctSlot: null
       },
       {
-        label: "Boiled Egg",
+        label: "Cleopatra",
         correctSlot: null
       },
       {
-        label: "Raw Footage",
+        label: "iPhone 5 Launch",
         correctSlot: null
       },
       {
-        label: "Bamboo",
+        label: "Library Card",
         correctSlot: null
       }
     ]
@@ -607,7 +626,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: null
       },
       {
-        label: "Granola Bar",
+        label: "Microwave Dinner",
         correctSlot: null
       },
       {
@@ -617,44 +636,44 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Greek Letter + Math + Pandemic",
-    difficultyEstimate: 40,
+    title: "Painter + Spanish + 20th Century",
+    difficultyEstimate: 42,
     labels: {
-      A: "Greek Letter",
-      B: "Math",
-      C: "Pandemic"
+      A: "Painter",
+      B: "Spanish",
+      C: "20th Century"
     },
     tiles: [
       {
-        label: "Pi",
+        label: "Goya",
         correctSlot: "S1"
       },
       {
-        label: "Omicron",
+        label: "Andy Warhol",
         correctSlot: "S2"
       },
       {
-        label: "Exponential Curve",
+        label: "Francisco Franco",
         correctSlot: "S3"
       },
       {
-        label: "Delta Variant",
+        label: "Picasso",
         correctSlot: "S4"
       },
       {
-        label: "Mask Mandate",
+        label: "Mona Lisa",
         correctSlot: null
       },
       {
-        label: "Calculator",
+        label: "Don Quixote",
         correctSlot: null
       },
       {
-        label: "Alphabet Soup",
+        label: "Smartphone",
         correctSlot: null
       },
       {
-        label: "Quarantine",
+        label: "Rembrandt",
         correctSlot: null
       }
     ]
