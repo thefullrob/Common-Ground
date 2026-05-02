@@ -154,130 +154,130 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-03",
   easy: {
-    title: "Winter + Sport + Ice",
-    difficultyEstimate: 82,
+    title: "Halloween + Orange + Round",
+    difficultyEstimate: 84,
     labels: {
-      A: "Winter",
-      B: "Sport",
-      C: "Ice"
+      A: "Halloween",
+      B: "Orange",
+      C: "Round"
     },
     tiles: [
       {
-        label: "Snowboarding",
+        label: "Candy Corn",
         correctSlot: "S1"
       },
       {
-        label: "Icicle",
+        label: "Witch's Cauldron",
         correctSlot: "S2"
       },
       {
-        label: "Ice Skates",
+        label: "Basketball",
         correctSlot: "S3"
       },
       {
-        label: "Ice Hockey",
+        label: "Pumpkin",
         correctSlot: "S4"
       },
       {
-        label: "Snowman",
+        label: "Spider Web",
         correctSlot: null
       },
       {
-        label: "Baseball Glove",
+        label: "Carrot",
         correctSlot: null
       },
       {
-        label: "Ice Pack",
+        label: "Frisbee",
         correctSlot: null
       },
       {
-        label: "Sled",
+        label: "Skateboard",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "Movie + Robot + 1980s",
-    difficultyEstimate: 59,
+    title: "Cartoon + Talking Animal + 1990s",
+    difficultyEstimate: 60,
     labels: {
-      A: "Movie",
-      B: "Robot",
-      C: "1980s"
+      A: "Cartoon",
+      B: "Talking Animal",
+      C: "1990s"
     },
     tiles: [
       {
-        label: "WALL-E",
+        label: "Bugs Bunny",
         correctSlot: "S1"
       },
       {
-        label: "Ferris Bueller's Day Off",
+        label: "The Simpsons",
         correctSlot: "S2"
       },
       {
-        label: "Nintendo R.O.B.",
+        label: "Babe (the movie)",
         correctSlot: "S3"
       },
       {
-        label: "The Terminator",
+        label: "The Lion King",
         correctSlot: "S4"
       },
       {
-        label: "Cinema Lobby",
+        label: "Tamagotchi",
         correctSlot: null
       },
       {
-        label: "Circuit Board",
+        label: "Charlie Brown",
         correctSlot: null
       },
       {
-        label: "Walkman",
+        label: "Parrot",
         correctSlot: null
       },
       {
-        label: "Laser Pointer",
+        label: "Crayon",
         correctSlot: null
       }
     ]
   },
   hard: {
-    title: "Author + Doctor + Russian",
-    difficultyEstimate: 44,
+    title: "Renaissance + Italian + Inventor",
+    difficultyEstimate: 45,
     labels: {
-      A: "Author",
-      B: "Doctor",
-      C: "Russian"
+      A: "Renaissance",
+      B: "Italian",
+      C: "Inventor"
     },
     tiles: [
       {
-        label: "Arthur Conan Doyle",
+        label: "Raphael",
         correctSlot: "S1"
       },
       {
-        label: "Leo Tolstoy",
+        label: "Gutenberg",
         correctSlot: "S2"
       },
       {
-        label: "Doctor Zhivago",
+        label: "Marconi",
         correctSlot: "S3"
       },
       {
-        label: "Anton Chekhov",
+        label: "Leonardo da Vinci",
         correctSlot: "S4"
       },
       {
-        label: "Stethoscope",
+        label: "Pizza",
         correctSlot: null
       },
       {
-        label: "Dust Jacket",
+        label: "Espresso",
         correctSlot: null
       },
       {
-        label: "Cossack Hat",
+        label: "Smartphone",
         correctSlot: null
       },
       {
-        label: "Hospital Ward",
+        label: "Renaissance Fair",
         correctSlot: null
       }
     ]
