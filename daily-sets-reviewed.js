@@ -39,7 +39,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S2"
       },
       {
-        label: "The Iron Giant",
+        label: "Big Hero 6",
         correctSlot: "S3"
       },
       {
@@ -108,44 +108,44 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Mathematician + Computer + Woman",
-    difficultyEstimate: 43,
+    title: "Reptile + Venomous + Australia",
+    difficultyEstimate: 44,
     labels: {
-      A: "Mathematician",
-      B: "Computer",
-      C: "Woman"
+      A: "Reptile",
+      B: "Venomous",
+      C: "Australia"
     },
     tiles: [
       {
-        label: "Alan Turing",
+        label: "King Cobra",
         correctSlot: "S1"
       },
       {
-        label: "Emmy Noether",
+        label: "Frilled Lizard",
         correctSlot: "S2"
       },
       {
-        label: "Susan Kare",
+        label: "Box Jellyfish",
         correctSlot: "S3"
       },
       {
-        label: "Ada Lovelace",
+        label: "Inland Taipan",
         correctSlot: "S4"
       },
       {
-        label: "Slide Rule",
+        label: "Iguana",
         correctSlot: null
       },
       {
-        label: "Desktop Monitor",
+        label: "Dingo",
         correctSlot: null
       },
       {
-        label: "Geometry Book",
+        label: "Black Widow Spider",
         correctSlot: null
       },
       {
-        label: "Typewriter",
+        label: "Wombat",
         correctSlot: null
       }
     ]
