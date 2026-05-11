@@ -22,44 +22,44 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-12",
   easy: {
-    title: "Animal + Water + Striped",
+    title: "Cartoon + Yellow + Has Tail",
     difficultyEstimate: 82,
     labels: {
-      A: "Animal",
-      B: "Water",
-      C: "Striped"
+      A: "Cartoon",
+      B: "Yellow",
+      C: "Has Tail"
     },
     tiles: [
       {
-        label: "Sea Otter",
+        label: "Bart Simpson",
         correctSlot: "S1"
       },
       {
-        label: "Striped Beach Towel",
+        label: "Scooby-Doo",
         correctSlot: "S2"
       },
       {
-        label: "Zebra",
+        label: "Canary",
         correctSlot: "S3"
       },
       {
-        label: "Tiger Shark",
+        label: "Pikachu",
         correctSlot: "S4"
       },
       {
-        label: "Aquarium",
+        label: "Lemon",
         correctSlot: null
       },
       {
-        label: "Candy Cane",
+        label: "Hello Kitty",
         correctSlot: null
       },
       {
-        label: "House Cat",
+        label: "Squirrel",
         correctSlot: null
       },
       {
-        label: "Swimming Pool",
+        label: "Stop Sign",
         correctSlot: null
       }
     ]
@@ -78,7 +78,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S1"
       },
       {
-        label: "Coffee Maker",
+        label: "Keurig",
         correctSlot: "S2"
       },
       {
@@ -86,7 +86,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S3"
       },
       {
-        label: "Espresso Machine",
+        label: "Moka Pot",
         correctSlot: "S4"
       },
       {
@@ -121,11 +121,11 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S1"
       },
       {
-        label: "Hades",
+        label: "Persephone",
         correctSlot: "S2"
       },
       {
-        label: "Death Metal",
+        label: "Funeral March",
         correctSlot: "S3"
       },
       {
@@ -133,7 +133,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S4"
       },
       {
-        label: "Lyre",
+        label: "Bagpipes",
         correctSlot: null
       },
       {
@@ -154,44 +154,44 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-11",
   easy: {
-    title: "Dog + Food + Hot",
-    difficultyEstimate: 81,
+    title: "Tool + Sharp + Kitchen",
+    difficultyEstimate: 82,
     labels: {
-      A: "Dog",
-      B: "Food",
-      C: "Hot"
+      A: "Tool",
+      B: "Sharp",
+      C: "Kitchen"
     },
     tiles: [
       {
-        label: "Dog Biscuit",
+        label: "Hedge Shears",
         correctSlot: "S1"
       },
       {
-        label: "Panting Puppy",
+        label: "Whisk",
         correctSlot: "S2"
       },
       {
-        label: "Spicy Chili",
+        label: "Horseradish",
         correctSlot: "S3"
       },
       {
-        label: "Chili Dog",
+        label: "Chef's Knife",
         correctSlot: "S4"
       },
       {
-        label: "Collar Tag",
+        label: "Hammer",
         correctSlot: null
       },
       {
-        label: "Cold Pizza",
+        label: "Cookbook",
         correctSlot: null
       },
       {
-        label: "Boiler Room",
+        label: "Cactus Spike",
         correctSlot: null
       },
       {
-        label: "Kennel",
+        label: "Beach Ball",
         correctSlot: null
       }
     ]
@@ -210,7 +210,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S1"
       },
       {
-        label: "Surf Culture",
+        label: "Apollo 11 Splashdown",
         correctSlot: "S2"
       },
       {
@@ -303,7 +303,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S2"
       },
       {
-        label: "Rubber Boots",
+        label: "Wetsuit",
         correctSlot: "S3"
       },
       {
@@ -418,130 +418,130 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-09",
   easy: {
-    title: "Desert + Animal + Hump",
-    difficultyEstimate: 84,
+    title: "Dog + Small + Asia",
+    difficultyEstimate: 80,
     labels: {
-      A: "Desert",
-      B: "Animal",
-      C: "Hump"
+      A: "Dog",
+      B: "Small",
+      C: "Asia"
     },
     tiles: [
       {
-        label: "Scorpion",
+        label: "Chihuahua",
         correctSlot: "S1"
       },
       {
-        label: "Desert Dune",
+        label: "Akita",
         correctSlot: "S2"
       },
       {
-        label: "Humpback Whale",
+        label: "Bonsai Tree",
         correctSlot: "S3"
       },
       {
-        label: "Camel",
+        label: "Shih Tzu",
         correctSlot: "S4"
       },
       {
-        label: "Mirage",
+        label: "Great Dane",
         correctSlot: null
       },
       {
-        label: "Pet Collar",
+        label: "Mount Fuji",
         correctSlot: null
       },
       {
-        label: "Speed Bump",
+        label: "Mouse",
         correctSlot: null
       },
       {
-        label: "Hilltop",
+        label: "Pyramid",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "Movie + Dog + Space",
-    difficultyEstimate: 61,
+    title: "Beverage + Fermented + Asian",
+    difficultyEstimate: 58,
     labels: {
-      A: "Movie",
-      B: "Dog",
-      C: "Space"
+      A: "Beverage",
+      B: "Fermented",
+      C: "Asian"
     },
     tiles: [
       {
-        label: "Lassie",
+        label: "Beer",
         correctSlot: "S1"
       },
       {
-        label: "The Martian",
+        label: "Bubble Tea",
         correctSlot: "S2"
       },
       {
-        label: "Laika",
+        label: "Kimchi",
         correctSlot: "S3"
       },
       {
-        label: "Space Buddies",
+        label: "Sake",
         correctSlot: "S4"
       },
       {
-        label: "Movie Trailer",
+        label: "Soda Pop",
         correctSlot: null
       },
       {
-        label: "Dog Bowl",
+        label: "Sourdough Bread",
         correctSlot: null
       },
       {
-        label: "Planetarium",
+        label: "Chopsticks",
         correctSlot: null
       },
       {
-        label: "Comet Tail",
+        label: "Glass Mug",
         correctSlot: null
       }
     ]
   },
   hard: {
-    title: "Composer + Film Score + Italian",
-    difficultyEstimate: 41,
+    title: "Spanish + Painter + Surrealist",
+    difficultyEstimate: 42,
     labels: {
-      A: "Composer",
-      B: "Film Score",
-      C: "Italian"
+      A: "Spanish",
+      B: "Painter",
+      C: "Surrealist"
     },
     tiles: [
       {
-        label: "John Williams",
+        label: "Diego Velázquez",
         correctSlot: "S1"
       },
       {
-        label: "Giuseppe Verdi",
+        label: "Luis Buñuel",
         correctSlot: "S2"
       },
       {
-        label: "Cinema Paradiso Score",
+        label: "René Magritte",
         correctSlot: "S3"
       },
       {
-        label: "Ennio Morricone",
+        label: "Salvador Dalí",
         correctSlot: "S4"
       },
       {
-        label: "Orchestra Pit",
+        label: "Diego Rivera",
         correctSlot: null
       },
       {
-        label: "Spaghetti Western",
+        label: "André Breton",
         correctSlot: null
       },
       {
-        label: "Oscar Envelope",
+        label: "Flamenco Dancer",
         correctSlot: null
       },
       {
-        label: "Opera House",
+        label: "Sigmund Freud",
         correctSlot: null
       }
     ]
@@ -636,44 +636,44 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Astronomy + Woman + NASA",
+    title: "Dish + Spicy + Mexican",
     difficultyEstimate: 45,
     labels: {
-      A: "Astronomy",
-      B: "Woman",
-      C: "NASA"
+      A: "Dish",
+      B: "Spicy",
+      C: "Mexican"
     },
     tiles: [
       {
-        label: "Vera Rubin",
+        label: "Vindaloo",
         correctSlot: "S1"
       },
       {
-        label: "Hubble Space Telescope",
+        label: "Cheese Quesadilla",
         correctSlot: "S2"
       },
       {
-        label: "Katherine Johnson",
+        label: "Habanero Pepper",
         correctSlot: "S3"
       },
       {
-        label: "Nancy Grace Roman",
+        label: "Mole Poblano",
         correctSlot: "S4"
       },
       {
-        label: "Star Chart",
+        label: "Mac and Cheese",
         correctSlot: null
       },
       {
-        label: "Satellite Dish",
+        label: "Sombrero",
         correctSlot: null
       },
       {
-        label: "Mission Badge",
+        label: "Wasabi Paste",
         correctSlot: null
       },
       {
-        label: "Observatory Dome",
+        label: "Mariachi Band",
         correctSlot: null
       }
     ]
@@ -682,87 +682,87 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-07",
   easy: {
-    title: "Ocean + Food + Shell",
+    title: "Wood + Furniture + Has Legs",
     difficultyEstimate: 83,
     labels: {
-      A: "Ocean",
-      B: "Food",
-      C: "Shell"
+      A: "Wood",
+      B: "Furniture",
+      C: "Has Legs"
     },
     tiles: [
       {
-        label: "Seaweed",
+        label: "Wooden Bookshelf",
         correctSlot: "S1"
       },
       {
-        label: "Conch Shell",
+        label: "Wooden Stilts",
         correctSlot: "S2"
       },
       {
-        label: "Peanut",
+        label: "Metal Bar Stool",
         correctSlot: "S3"
       },
       {
-        label: "Oyster",
+        label: "Wooden Dining Table",
         correctSlot: "S4"
       },
       {
-        label: "Beach Sand",
+        label: "Pencil",
         correctSlot: null
       },
       {
-        label: "Cookbook",
+        label: "Beanbag Chair",
         correctSlot: null
       },
       {
-        label: "Hard Hat",
+        label: "Camera Tripod",
         correctSlot: null
       },
       {
-        label: "Ship Anchor",
+        label: "Cardboard Box",
         correctSlot: null
       }
     ]
   },
   medium: {
-    title: "Magic + School + Book",
+    title: "Pixar + Sequel + Animal",
     difficultyEstimate: 60,
     labels: {
-      A: "Magic",
-      B: "School",
-      C: "Book"
+      A: "Pixar",
+      B: "Sequel",
+      C: "Animal"
     },
     tiles: [
       {
-        label: "Hogwarts",
+        label: "Toy Story 2",
         correctSlot: "S1"
       },
       {
-        label: "Spellbook",
+        label: "Ratatouille",
         correctSlot: "S2"
       },
       {
-        label: "Yearbook",
+        label: "Madagascar 2",
         correctSlot: "S3"
       },
       {
-        label: "Harry Potter and the Sorcerer's Stone",
+        label: "Finding Dory",
         correctSlot: "S4"
       },
       {
-        label: "Magic Wand",
+        label: "Steve Jobs",
         correctSlot: null
       },
       {
-        label: "Class Schedule",
+        label: "The Godfather Part II",
         correctSlot: null
       },
       {
-        label: "Chapter Index",
+        label: "The Lion King (1994)",
         correctSlot: null
       },
       {
-        label: "Lunch Box",
+        label: "Coco",
         correctSlot: null
       }
     ]
