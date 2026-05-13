@@ -20,6 +20,620 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-05-23",
+  easy: {
+    title: "Red + Animal + Farm",
+    difficultyEstimate: 84,
+    labels: { A: "Red", B: "Animal", C: "Farm" },
+    tiles: [
+      { label: "Ladybug", correctSlot: "S1" },
+      { label: "Red Barn", correctSlot: "S2" },
+      { label: "Pig", correctSlot: "S3" },
+      { label: "Rhode Island Red Hen", correctSlot: "S4" },
+      { label: "Fire Hydrant", correctSlot: null },
+      { label: "Tractor Seat", correctSlot: null },
+      { label: "House Cat", correctSlot: null },
+      { label: "Mailbox", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Ocean + 1970s",
+    difficultyEstimate: 59,
+    labels: { A: "Movie", B: "Ocean", C: "1970s" },
+    tiles: [
+      { label: "Moana", correctSlot: "S1" },
+      { label: "Rocky", correctSlot: "S2" },
+      { label: "The Love Boat", correctSlot: "S3" },
+      { label: "Jaws (1975)", correctSlot: "S4" },
+      { label: "Ticket Stub", correctSlot: null },
+      { label: "Harbor Light", correctSlot: null },
+      { label: "Bell-Bottom Shirt", correctSlot: null },
+      { label: "Mountain Cabin", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Actor + Martial Artist + Hong Kong",
+    difficultyEstimate: 42,
+    labels: { A: "Actor", B: "Martial Artist", C: "Hong Kong" },
+    tiles: [
+      { label: "Chuck Norris", correctSlot: "S1" },
+      { label: "Tony Leung", correctSlot: "S2" },
+      { label: "Ip Man", correctSlot: "S3" },
+      { label: "Jackie Chan", correctSlot: "S4" },
+      { label: "Movie Set", correctSlot: null },
+      { label: "Karate Belt", correctSlot: null },
+      { label: "Victoria Harbour", correctSlot: null },
+      { label: "Stunt Double", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-22",
+  easy: {
+    title: "Morning + Drink + Hot",
+    difficultyEstimate: 82,
+    labels: { A: "Morning", B: "Drink", C: "Hot" },
+    tiles: [
+      { label: "Orange Juice", correctSlot: "S1" },
+      { label: "Morning Sun", correctSlot: "S2" },
+      { label: "Tea", correctSlot: "S3" },
+      { label: "Coffee", correctSlot: "S4" },
+      { label: "Alarm Clock", correctSlot: null },
+      { label: "Soda Can", correctSlot: null },
+      { label: "Fireplace Poker", correctSlot: null },
+      { label: "Nightlight", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Board Game + Money + Real Estate",
+    difficultyEstimate: 58,
+    labels: { A: "Board Game", B: "Money", C: "Real Estate" },
+    tiles: [
+      { label: "Payday", correctSlot: "S1" },
+      { label: "Settlers of Catan", correctSlot: "S2" },
+      { label: "Mortgage", correctSlot: "S3" },
+      { label: "Monopoly Board", correctSlot: "S4" },
+      { label: "Dice Tower", correctSlot: null },
+      { label: "Cash Drawer", correctSlot: null },
+      { label: "Open House Sign", correctSlot: null },
+      { label: "Chess Clock", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Novel + Dystopian + British",
+    difficultyEstimate: 43,
+    labels: { A: "Novel", B: "Dystopian", C: "British" },
+    tiles: [
+      { label: "Fahrenheit 451", correctSlot: "S1" },
+      { label: "Pride and Prejudice", correctSlot: "S2" },
+      { label: "Black Mirror", correctSlot: "S3" },
+      { label: "1984", correctSlot: "S4" },
+      { label: "Book Cart",
+        correctSlot: null },
+      { label: "Warning Siren", correctSlot: null },
+      { label: "Union Jack", correctSlot: null },
+      { label: "Ink Bottle", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-21",
+  easy: {
+    title: "Animal + Fast + Water",
+    difficultyEstimate: 84,
+    labels: { A: "Animal", B: "Fast", C: "Water" },
+    tiles: [
+      { label: "Cheetah", correctSlot: "S1" },
+      { label: "Speedboat", correctSlot: "S2" },
+      { label: "Sea Turtle", correctSlot: "S3" },
+      { label: "Sailfish", correctSlot: "S4" },
+      { label: "Safari Map", correctSlot: null },
+      { label: "Rocket Sled", correctSlot: null },
+      { label: "Fishing Net", correctSlot: null },
+      { label: "Sleepy Sloth", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Music + Computer + Apple",
+    difficultyEstimate: 60,
+    labels: { A: "Music", B: "Computer", C: "Apple" },
+    tiles: [
+      { label: "Spotify", correctSlot: "S1" },
+      { label: "Apple II", correctSlot: "S2" },
+      { label: "Apple Records", correctSlot: "S3" },
+      { label: "iTunes", correctSlot: "S4" },
+      { label: "Guitar Amp", correctSlot: null },
+      { label: "Keyboard Mouse", correctSlot: null },
+      { label: "Fruit Basket", correctSlot: null },
+      { label: "Studio Headphones", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Explorer + Italian + America",
+    difficultyEstimate: 42,
+    labels: { A: "Explorer", B: "Italian", C: "America" },
+    tiles: [
+      { label: "Marco Polo", correctSlot: "S1" },
+      { label: "Lewis and Clark", correctSlot: "S2" },
+      { label: "Italian-American Flag", correctSlot: "S3" },
+      { label: "Christopher Columbus", correctSlot: "S4" },
+      { label: "Compass Rose", correctSlot: null },
+      { label: "Pasta Bowl", correctSlot: null },
+      { label: "Liberty Torch", correctSlot: null },
+      { label: "Ship Manifest", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-20",
+  easy: {
+    title: "Yellow + Vehicle + School",
+    difficultyEstimate: 83,
+    labels: { A: "Yellow", B: "Vehicle", C: "School" },
+    tiles: [
+      { label: "Yellow Taxi", correctSlot: "S1" },
+      { label: "Highlighter", correctSlot: "S2" },
+      { label: "University Shuttle", correctSlot: "S3" },
+      { label: "School Bus", correctSlot: "S4" },
+      { label: "Banana Sticker", correctSlot: null },
+      { label: "Bicycle Bell", correctSlot: null },
+      { label: "Classroom Clock", correctSlot: null },
+      { label: "Parking Meter", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Crime + TV Show + Florida",
+    difficultyEstimate: 57,
+    labels: { A: "Crime", B: "TV Show", C: "Florida" },
+    tiles: [
+      { label: "CSI", correctSlot: "S1" },
+      { label: "Florida Man Heist", correctSlot: "S2" },
+      { label: "The Golden Girls", correctSlot: "S3" },
+      { label: "Dexter", correctSlot: "S4" },
+      { label: "Fingerprint Kit", correctSlot: null },
+      { label: "TV Antenna", correctSlot: null },
+      { label: "Orange Grove", correctSlot: null },
+      { label: "Vacation Brochure", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Director + Horror + Mexican",
+    difficultyEstimate: 41,
+    labels: { A: "Director", B: "Horror", C: "Mexican" },
+    tiles: [
+      { label: "Alfred Hitchcock", correctSlot: "S1" },
+      { label: "Alfonso Cuaron", correctSlot: "S2" },
+      { label: "La Llorona", correctSlot: "S3" },
+      { label: "Guillermo del Toro", correctSlot: "S4" },
+      { label: "Camera Crane", correctSlot: null },
+      { label: "Taco Stand", correctSlot: null },
+      { label: "Haunted Doll", correctSlot: null },
+      { label: "Awards Stage", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-19",
+  easy: {
+    title: "Tool + Garden + Sharp",
+    difficultyEstimate: 82,
+    labels: { A: "Tool", B: "Garden", C: "Sharp" },
+    tiles: [
+      { label: "Trowel", correctSlot: "S1" },
+      { label: "Scalpel", correctSlot: "S2" },
+      { label: "Rose Thorn", correctSlot: "S3" },
+      { label: "Pruning Knife", correctSlot: "S4" },
+      { label: "Toolbox", correctSlot: null },
+      { label: "Flower Pot", correctSlot: null },
+      { label: "Razor Blade", correctSlot: null },
+      { label: "Picnic Blanket", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Video Game + Animal + Blue",
+    difficultyEstimate: 61,
+    labels: { A: "Video Game", B: "Animal", C: "Blue" },
+    tiles: [
+      { label: "Donkey Kong", correctSlot: "S1" },
+      { label: "Mega Man", correctSlot: "S2" },
+      { label: "Blue Tang", correctSlot: "S3" },
+      { label: "Sonic the Hedgehog", correctSlot: "S4" },
+      { label: "Game Controller", correctSlot: null },
+      { label: "Safari Hat", correctSlot: null },
+      { label: "Blue Paint", correctSlot: null },
+      { label: "Speed Shoes", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Poet + Nobel + Irish",
+    difficultyEstimate: 43,
+    labels: { A: "Poet", B: "Nobel", C: "Irish" },
+    tiles: [
+      { label: "Pablo Neruda", correctSlot: "S1" },
+      { label: "Oscar Wilde", correctSlot: "S2" },
+      { label: "John Hume", correctSlot: "S3" },
+      { label: "W.B. Yeats", correctSlot: "S4" },
+      { label: "Manuscript Page", correctSlot: null },
+      { label: "Laurel Wreath", correctSlot: null },
+      { label: "Dublin Door", correctSlot: null },
+      { label: "Theater Curtain", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-18",
+  easy: {
+    title: "Cold + Food + White",
+    difficultyEstimate: 84,
+    labels: { A: "Cold", B: "Food", C: "White" },
+    tiles: [
+      { label: "Ice Pop", correctSlot: "S1" },
+      { label: "Snowball", correctSlot: "S2" },
+      { label: "Rice", correctSlot: "S3" },
+      { label: "Vanilla Ice Cream", correctSlot: "S4" },
+      { label: "Winter Coat", correctSlot: null },
+      { label: "Dinner Plate", correctSlot: null },
+      { label: "Chalk Dust", correctSlot: null },
+      { label: "Candle", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Country + Desert + Africa",
+    difficultyEstimate: 59,
+    labels: { A: "Country", B: "Desert", C: "Africa" },
+    tiles: [
+      { label: "Saudi Arabia", correctSlot: "S1" },
+      { label: "Nigeria", correctSlot: "S2" },
+      { label: "Kalahari Desert", correctSlot: "S3" },
+      { label: "Egypt", correctSlot: "S4" },
+      { label: "Flagpole", correctSlot: null },
+      { label: "Cactus Garden", correctSlot: null },
+      { label: "Safari Jeep", correctSlot: null },
+      { label: "Ocean Reef", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Composer + Russian + Ballet",
+    difficultyEstimate: 42,
+    labels: { A: "Composer", B: "Russian", C: "Ballet" },
+    tiles: [
+      { label: "Rachmaninoff", correctSlot: "S1" },
+      { label: "Aaron Copland", correctSlot: "S2" },
+      { label: "Bolshoi Ballet", correctSlot: "S3" },
+      { label: "Pyotr Ilyich Tchaikovsky", correctSlot: "S4" },
+      { label: "Symphony Score", correctSlot: null },
+      { label: "Matryoshka Doll", correctSlot: null },
+      { label: "Pointe Shoe", correctSlot: null },
+      { label: "Orchestra Tuning", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-17",
+  easy: {
+    title: "Round + Food + Hole",
+    difficultyEstimate: 83,
+    labels: { A: "Round", B: "Food", C: "Hole" },
+    tiles: [
+      { label: "Meatball", correctSlot: "S1" },
+      { label: "Tire", correctSlot: "S2" },
+      { label: "Swiss Cheese", correctSlot: "S3" },
+      { label: "Donut", correctSlot: "S4" },
+      { label: "Clock Face", correctSlot: null },
+      { label: "Soup Bowl", correctSlot: null },
+      { label: "Buttonhole", correctSlot: null },
+      { label: "Paper Square", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Chess + Movie + Queen",
+    difficultyEstimate: 56,
+    labels: { A: "Chess", B: "Movie", C: "Queen" },
+    tiles: [
+      { label: "Queen's Gambit", correctSlot: "S1" },
+      { label: "Searching for Bobby Fischer", correctSlot: "S2" },
+      { label: "Bohemian Rhapsody", correctSlot: "S3" },
+      { label: "Queen of Katwe", correctSlot: "S4" },
+      { label: "Checkmate", correctSlot: null },
+      { label: "Popcorn Bucket", correctSlot: null },
+      { label: "Crown Jewel", correctSlot: null },
+      { label: "Pawn Shop", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Nobel + President + South African",
+    difficultyEstimate: 44,
+    labels: { A: "Nobel", B: "President", C: "South African" },
+    tiles: [
+      { label: "Jimmy Carter", correctSlot: "S1" },
+      { label: "Desmond Tutu", correctSlot: "S2" },
+      { label: "Cyril Ramaphosa", correctSlot: "S3" },
+      { label: "Nelson Rolihlahla Mandela", correctSlot: "S4" },
+      { label: "Peace Dove", correctSlot: null },
+      { label: "Ballot Box", correctSlot: null },
+      { label: "Cape Town", correctSlot: null },
+      { label: "Rugby Jersey", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-16",
+  easy: {
+    title: "Sports + Ball + Orange",
+    difficultyEstimate: 85,
+    labels: { A: "Sports", B: "Ball", C: "Orange" },
+    tiles: [
+      { label: "Soccer", correctSlot: "S1" },
+      { label: "Orange Jersey", correctSlot: "S2" },
+      { label: "Orange Gumball", correctSlot: "S3" },
+      { label: "Orange Basketball", correctSlot: "S4" },
+      { label: "Referee Shirt", correctSlot: null },
+      { label: "Crystal Ball", correctSlot: null },
+      { label: "Citrus Peel", correctSlot: null },
+      { label: "Score Sheet", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Book + Dragon + Movie",
+    difficultyEstimate: 58,
+    labels: { A: "Book", B: "Dragon", C: "Movie" },
+    tiles: [
+      { label: "Dragonriders of Pern", correctSlot: "S1" },
+      { label: "The Great Gatsby", correctSlot: "S2" },
+      { label: "Reign of Fire", correctSlot: "S3" },
+      { label: "The Hobbit", correctSlot: "S4" },
+      { label: "Bookmark Tassel", correctSlot: null },
+      { label: "Castle Tower", correctSlot: null },
+      { label: "Cinema Pass", correctSlot: null },
+      { label: "Knight Helmet", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Painter + Mexican + Woman",
+    difficultyEstimate: 45,
+    labels: { A: "Painter", B: "Mexican", C: "Woman" },
+    tiles: [
+      { label: "Rufino Tamayo", correctSlot: "S1" },
+      { label: "Georgia O'Keeffe", correctSlot: "S2" },
+      { label: "Salma Hayek", correctSlot: "S3" },
+      { label: "Frida Kahlo", correctSlot: "S4" },
+      { label: "Easel Stand", correctSlot: null },
+      { label: "Cactus Flower", correctSlot: null },
+      { label: "Makeup Mirror", correctSlot: null },
+      { label: "Museum Wall", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-15",
+  easy: {
+    title: "Animal + Farm + Milk",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Farm", C: "Milk" },
+    tiles: [
+      { label: "Piglet", correctSlot: "S1" },
+      { label: "Whale Milk", correctSlot: "S2" },
+      { label: "Dairy Barn", correctSlot: "S3" },
+      { label: "Cow", correctSlot: "S4" },
+      { label: "Forest Trail", correctSlot: null },
+      { label: "Hay Bale", correctSlot: null },
+      { label: "Cream Pitcher", correctSlot: null },
+      { label: "Horse Saddle", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Island + Volcano + US",
+    difficultyEstimate: 60,
+    labels: { A: "Island", B: "Volcano", C: "US" },
+    tiles: [
+      { label: "Krakatoa", correctSlot: "S1" },
+      { label: "Puerto Rico", correctSlot: "S2" },
+      { label: "Mount St. Helens", correctSlot: "S3" },
+      { label: "Mauna Loa", correctSlot: "S4" },
+      { label: "Atoll", correctSlot: null },
+      { label: "Lava Rock", correctSlot: null },
+      { label: "Passport Control", correctSlot: null },
+      { label: "Mountain Trail", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Director + Horror + Canadian",
+    difficultyEstimate: 43,
+    labels: { A: "Director", B: "Horror", C: "Canadian" },
+    tiles: [
+      { label: "John Carpenter", correctSlot: "S1" },
+      { label: "Denis Villeneuve", correctSlot: "S2" },
+      { label: "Ginger Snaps", correctSlot: "S3" },
+      { label: "David Cronenberg", correctSlot: "S4" },
+      { label: "Maple Leaf", correctSlot: null },
+      { label: "Camera Lens", correctSlot: null },
+      { label: "Haunted Mask", correctSlot: null },
+      { label: "Film Festival", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-14",
+  easy: {
+    title: "Red + Fruit + Small",
+    difficultyEstimate: 86,
+    labels: { A: "Red", B: "Fruit", C: "Small" },
+    tiles: [
+      { label: "Watermelon Slice", correctSlot: "S1" },
+      { label: "Ladybug Dot", correctSlot: "S2" },
+      { label: "Green Grape", correctSlot: "S3" },
+      { label: "Cherry", correctSlot: "S4" },
+      { label: "Crimson Paint", correctSlot: null },
+      { label: "Fruit Sticker", correctSlot: null },
+      { label: "Pebble", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Office + Digital + Message",
+    difficultyEstimate: 62,
+    labels: { A: "Office", B: "Digital", C: "Message" },
+    tiles: [
+      { label: "Memo Pad", correctSlot: "S1" },
+      { label: "Spreadsheet", correctSlot: "S2" },
+      { label: "Text Message", correctSlot: "S3" },
+      { label: "Email", correctSlot: "S4" },
+      { label: "Stapler", correctSlot: null },
+      { label: "USB Drive", correctSlot: null },
+      { label: "Envelope", correctSlot: null },
+      { label: "Desk Plant", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Philosopher + German + 19th Century",
+    difficultyEstimate: 44,
+    labels: { A: "Philosopher", B: "German", C: "19th Century" },
+    tiles: [
+      { label: "Gottfried Leibniz", correctSlot: "S1" },
+      { label: "John Stuart Mill", correctSlot: "S2" },
+      { label: "Otto von Bismarck", correctSlot: "S3" },
+      { label: "Friedrich Nietzsche", correctSlot: "S4" },
+      { label: "Logic Book", correctSlot: null },
+      { label: "Berlin Opera", correctSlot: null },
+      { label: "Steam Engine", correctSlot: null },
+      { label: "Lecture Hall", correctSlot: null }
+    ]
+  }
+},
+
+  {
+  date: "2026-05-13",
+  easy: {
+    title: "Bird + Can Fly + Tropical",
+    difficultyEstimate: 82,
+    labels: {
+      A: "Bird",
+      B: "Can Fly",
+      C: "Tropical"
+    },
+    tiles: [
+      {
+        label: "Bald Eagle",
+        correctSlot: "S1"
+      },
+      {
+        label: "Cassowary",
+        correctSlot: "S2"
+      },
+      {
+        label: "Blue Morpho Butterfly",
+        correctSlot: "S3"
+      },
+      {
+        label: "Toucan",
+        correctSlot: "S4"
+      },
+      {
+        label: "Penguin",
+        correctSlot: null
+      },
+      {
+        label: "Airplane",
+        correctSlot: null
+      },
+      {
+        label: "Palm Tree",
+        correctSlot: null
+      },
+      {
+        label: "Pyramids of Giza",
+        correctSlot: null
+      }
+    ]
+  },
+  medium: {
+    title: "Country + Island + In Europe",
+    difficultyEstimate: 60,
+    labels: {
+      A: "Country",
+      B: "Island",
+      C: "In Europe"
+    },
+    tiles: [
+      {
+        label: "Madagascar",
+        correctSlot: "S1"
+      },
+      {
+        label: "Spain",
+        correctSlot: "S2"
+      },
+      {
+        label: "Sicily",
+        correctSlot: "S3"
+      },
+      {
+        label: "Iceland",
+        correctSlot: "S4"
+      },
+      {
+        label: "Mongolia",
+        correctSlot: null
+      },
+      {
+        label: "Hawaii",
+        correctSlot: null
+      },
+      {
+        label: "Athens",
+        correctSlot: null
+      },
+      {
+        label: "Sahara Desert",
+        correctSlot: null
+      }
+    ]
+  },
+  hard: {
+    title: "Author + Russian + 19th Century",
+    difficultyEstimate: 43,
+    labels: {
+      A: "Author",
+      B: "Russian",
+      C: "19th Century"
+    },
+    tiles: [
+      {
+        label: "Aleksandr Solzhenitsyn",
+        correctSlot: "S1"
+      },
+      {
+        label: "Charles Dickens",
+        correctSlot: "S2"
+      },
+      {
+        label: "Tchaikovsky",
+        correctSlot: "S3"
+      },
+      {
+        label: "Leo Tolstoy",
+        correctSlot: "S4"
+      },
+      {
+        label: "William Shakespeare",
+        correctSlot: null
+      },
+      {
+        label: "Vladimir Putin",
+        correctSlot: null
+      },
+      {
+        label: "Napoleon Bonaparte",
+        correctSlot: null
+      },
+      {
+        label: "Albert Einstein",
+        correctSlot: null
+      }
+    ]
+  }
+},
+  {
   date: "2026-05-12",
   easy: {
     title: "Cartoon + Yellow + Has Tail",
@@ -4647,9 +5261,6 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
-
-
-
 
 
 
