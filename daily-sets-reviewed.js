@@ -119,18 +119,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-21",
   easy: {
-    title: "Animal + Fast + Water",
+    title: "Outdoor + Wooden + Toy",
     difficultyEstimate: 84,
-    labels: { A: "Animal", B: "Fast", C: "Water" },
+    labels: { A: "Outdoor", B: "Wooden", C: "Toy" },
     tiles: [
-      { label: "Cheetah", correctSlot: "S1" },
-      { label: "Speedboat", correctSlot: "S2" },
-      { label: "Sea Turtle", correctSlot: "S3" },
-      { label: "Sailfish", correctSlot: "S4" },
-      { label: "Safari Map", correctSlot: null },
-      { label: "Rocket Sled", correctSlot: null },
-      { label: "Fishing Net", correctSlot: null },
-      { label: "Sleepy Sloth", correctSlot: null }
+      { label: "Picnic Table", correctSlot: "S1" },
+      { label: "Beach Ball", correctSlot: "S2" },
+      { label: "Rocking Horse", correctSlot: "S3" },
+      { label: "Treehouse", correctSlot: "S4" },
+      { label: "Hiking Trail", correctSlot: null },
+      { label: "Antique Dresser", correctSlot: null },
+      { label: "Stuffed Teddy Bear", correctSlot: null },
+      { label: "Refrigerator", correctSlot: null }
     ]
   },
   medium: {
@@ -139,28 +139,28 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Music", B: "Computer", C: "Apple" },
     tiles: [
       { label: "Spotify", correctSlot: "S1" },
-      { label: "Apple II", correctSlot: "S2" },
-      { label: "Apple Records", correctSlot: "S3" },
+      { label: "The Beatles", correctSlot: "S2" },
+      { label: "Macintosh", correctSlot: "S3" },
       { label: "iTunes", correctSlot: "S4" },
       { label: "Guitar Amp", correctSlot: null },
-      { label: "Keyboard Mouse", correctSlot: null },
-      { label: "Fruit Basket", correctSlot: null },
-      { label: "Studio Headphones", correctSlot: null }
+      { label: "Linux", correctSlot: null },
+      { label: "Granny Smith", correctSlot: null },
+      { label: "Coffee Bean", correctSlot: null }
     ]
   },
   hard: {
-    title: "Explorer + Italian + America",
-    difficultyEstimate: 42,
-    labels: { A: "Explorer", B: "Italian", C: "America" },
+    title: "King + French + Beheaded",
+    difficultyEstimate: 45,
+    labels: { A: "King", B: "French", C: "Beheaded" },
     tiles: [
-      { label: "Marco Polo", correctSlot: "S1" },
-      { label: "Lewis and Clark", correctSlot: "S2" },
-      { label: "Spaghetti Western", correctSlot: "S3" },
-      { label: "Christopher Columbus", correctSlot: "S4" },
-      { label: "Compass Rose", correctSlot: null },
-      { label: "Pasta Bowl", correctSlot: null },
-      { label: "Liberty Torch", correctSlot: null },
-      { label: "Ship Manifest", correctSlot: null }
+      { label: "Louis XIV", correctSlot: "S1" },
+      { label: "Charles I", correctSlot: "S2" },
+      { label: "Marie Antoinette", correctSlot: "S3" },
+      { label: "Louis XVI", correctSlot: "S4" },
+      { label: "Henry VIII", correctSlot: null },
+      { label: "Joan of Arc", correctSlot: null },
+      { label: "Anne Boleyn", correctSlot: null },
+      { label: "Robin Hood", correctSlot: null }
     ]
   }
 },
@@ -182,18 +182,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Crime + TV Show + Florida",
-    difficultyEstimate: 57,
-    labels: { A: "Crime", B: "TV Show", C: "Florida" },
+    title: "Inventor + Italian + Renaissance",
+    difficultyEstimate: 55,
+    labels: { A: "Inventor", B: "Italian", C: "Renaissance" },
     tiles: [
-      { label: "CSI", correctSlot: "S1" },
-      { label: "Florida Man Heist", correctSlot: "S2" },
-      { label: "The Golden Girls", correctSlot: "S3" },
-      { label: "Dexter", correctSlot: "S4" },
-      { label: "Fingerprint Kit", correctSlot: null },
-      { label: "TV Antenna", correctSlot: null },
-      { label: "Orange Grove", correctSlot: null },
-      { label: "Vacation Brochure", correctSlot: null }
+      { label: "Alessandro Volta", correctSlot: "S1" },
+      { label: "Johannes Gutenberg", correctSlot: "S2" },
+      { label: "Michelangelo", correctSlot: "S3" },
+      { label: "Leonardo da Vinci", correctSlot: "S4" },
+      { label: "Thomas Edison", correctSlot: null },
+      { label: "Gelato", correctSlot: null },
+      { label: "William Shakespeare", correctSlot: null },
+      { label: "Beethoven", correctSlot: null }
     ]
   },
   hard: {
@@ -215,18 +215,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-05-19",
   easy: {
-    title: "Tool + Garden + Sharp",
-    difficultyEstimate: 82,
-    labels: { A: "Tool", B: "Garden", C: "Sharp" },
+    title: "Dog + Big + Fluffy",
+    difficultyEstimate: 84,
+    labels: { A: "Dog", B: "Big", C: "Fluffy" },
     tiles: [
-      { label: "Trowel", correctSlot: "S1" },
-      { label: "Scalpel", correctSlot: "S2" },
-      { label: "Rose Thorn", correctSlot: "S3" },
-      { label: "Pruning Knife", correctSlot: "S4" },
-      { label: "Toolbox", correctSlot: null },
-      { label: "Flower Pot", correctSlot: null },
-      { label: "Razor Blade", correctSlot: null },
-      { label: "Picnic Blanket", correctSlot: null }
+      { label: "Great Dane", correctSlot: "S1" },
+      { label: "Pomeranian", correctSlot: "S2" },
+      { label: "Polar Bear", correctSlot: "S3" },
+      { label: "Saint Bernard", correctSlot: "S4" },
+      { label: "Pug", correctSlot: null },
+      { label: "Elephant", correctSlot: null },
+      { label: "Cotton Ball", correctSlot: null },
+      { label: "Lizard", correctSlot: null }
     ]
   },
   medium: {
@@ -236,11 +236,11 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Donkey Kong", correctSlot: "S1" },
       { label: "Mega Man", correctSlot: "S2" },
-      { label: "Blue Tang", correctSlot: "S3" },
+      { label: "Peacock", correctSlot: "S3" },
       { label: "Sonic the Hedgehog", correctSlot: "S4" },
       { label: "Game Controller", correctSlot: null },
       { label: "Safari Hat", correctSlot: null },
-      { label: "Blue Paint", correctSlot: null },
+      { label: "Denim Jeans", correctSlot: null },
       { label: "Speed Shoes", correctSlot: null }
     ]
   },
@@ -256,7 +256,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Walt Whitman", correctSlot: null },
       { label: "Marilyn Monroe", correctSlot: null },
       { label: "Martin Luther King Jr.", correctSlot: null },
-      { label: "Coffee Mug", correctSlot: null }
+      { label: "Library Card", correctSlot: null }
     ]
   }
 },
@@ -341,18 +341,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Nobel + President + South African",
-    difficultyEstimate: 44,
-    labels: { A: "Nobel", B: "President", C: "South African" },
+    title: "Painter + Spanish + Surrealist",
+    difficultyEstimate: 46,
+    labels: { A: "Painter", B: "Spanish", C: "Surrealist" },
     tiles: [
-      { label: "Jimmy Carter", correctSlot: "S1" },
-      { label: "Desmond Tutu", correctSlot: "S2" },
-      { label: "Cyril Ramaphosa", correctSlot: "S3" },
-      { label: "Nelson Rolihlahla Mandela", correctSlot: "S4" },
-      { label: "Peace Dove", correctSlot: null },
-      { label: "Ballot Box", correctSlot: null },
-      { label: "Cape Town", correctSlot: null },
-      { label: "Rugby Jersey", correctSlot: null }
+      { label: "Francisco Goya", correctSlot: "S1" },
+      { label: "René Magritte", correctSlot: "S2" },
+      { label: "Luis Buñuel", correctSlot: "S3" },
+      { label: "Salvador Dalí", correctSlot: "S4" },
+      { label: "Andy Warhol", correctSlot: null },
+      { label: "Flamenco Dance", correctSlot: null },
+      { label: "Daydream", correctSlot: null },
+      { label: "Lighthouse", correctSlot: null }
     ]
   }
 },
@@ -389,18 +389,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Painter + Mexican + Woman",
-    difficultyEstimate: 45,
-    labels: { A: "Painter", B: "Mexican", C: "Woman" },
+    title: "Dinosaur + Carnivore + Cretaceous",
+    difficultyEstimate: 48,
+    labels: { A: "Dinosaur", B: "Carnivore", C: "Cretaceous" },
     tiles: [
-      { label: "Rufino Tamayo", correctSlot: "S1" },
-      { label: "Georgia O'Keeffe", correctSlot: "S2" },
-      { label: "Salma Hayek", correctSlot: "S3" },
-      { label: "Frida Kahlo", correctSlot: "S4" },
-      { label: "Easel Stand", correctSlot: null },
-      { label: "Cactus Flower", correctSlot: null },
-      { label: "Makeup Mirror", correctSlot: null },
-      { label: "Museum Wall", correctSlot: null }
+      { label: "Allosaurus", correctSlot: "S1" },
+      { label: "Triceratops", correctSlot: "S2" },
+      { label: "Mosasaurus", correctSlot: "S3" },
+      { label: "Tyrannosaurus Rex", correctSlot: "S4" },
+      { label: "Apatosaurus", correctSlot: null },
+      { label: "Saber-Tooth Cat", correctSlot: null },
+      { label: "Asteroid Impact", correctSlot: null },
+      { label: "Fossil Footprint", correctSlot: null }
     ]
   }
 },
