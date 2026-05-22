@@ -22,7 +22,7 @@
   <link rel="canonical" href="https://commongroundpuzzle.com/" />
   <meta property="og:title" content="Common Ground: The Daily Connection Game" />
   <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260522" />
+<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260420" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="1080" />
   <meta property="og:url" content="https://commongroundpuzzle.com/" />
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Common Ground: The Daily Connection Game" />
   <meta name="twitter:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260522" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260420" />
   <title>Common Ground: The Daily Connection Game</title>
       <style>
     :root {
@@ -664,6 +664,58 @@
       display: none;
     }
 
+    .tile-info-panel {
+      display: grid;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf8 0%, #f7f0e2 100%);
+      padding: 14px;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .tile-info-panel[hidden] {
+      display: none;
+    }
+
+    .tile-info-kicker {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a6b41;
+    }
+
+    .tile-info-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #162033;
+      line-height: 1.2;
+    }
+
+    .tile-info-section {
+      display: grid;
+      gap: 3px;
+    }
+
+    .tile-info-section[hidden] {
+      display: none;
+    }
+
+    .tile-info-label {
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #7a5a35;
+    }
+
+    .tile-info-copy {
+      font-size: 0.9rem;
+      color: #435066;
+      line-height: 1.4;
+    }
+
     .share-card {
       display: grid;
       gap: 8px;
@@ -1253,6 +1305,18 @@
       </div>
 
       <div class="summary" id="summary"></div>
+      <div class="tile-info-panel" id="tile-info-panel" hidden>
+        <div class="tile-info-kicker">Learn The Logic</div>
+        <div class="tile-info-title" id="tile-info-title"></div>
+        <div class="tile-info-section" id="tile-info-logic-section">
+          <div class="tile-info-label">Why It Fits</div>
+          <div class="tile-info-copy" id="tile-info-logic"></div>
+        </div>
+        <div class="tile-info-section" id="tile-info-fact-section">
+          <div class="tile-info-label">Did You Know?</div>
+          <div class="tile-info-copy" id="tile-info-fact"></div>
+        </div>
+      </div>
       <div class="share-panel" id="share-panel" hidden>
         <div class="share-card">
           <div class="share-kicker" id="share-kicker">Share The Challenge</div>
@@ -1446,8 +1510,8 @@
     </div>
   </div>
 
-  <script src="daily-sets-reviewed.js?v=20260420b"></script>
-  <script src="app.js?v=20260420a"></script>
+  <script src="daily-sets-reviewed.js?v=20260522learn"></script>
+  <script src="app.js?v=20260522learn"></script>
   </body>
   </html>
 
