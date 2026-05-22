@@ -20,16 +20,353 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-05-30",
+  easy: {
+    title: "Camping + Food + Fire",
+    difficultyEstimate: 83,
+    labels: { A: "Camping", B: "Food", C: "Fire" },
+    tiles: [
+      { label: "Dehydrated Meal", correctSlot: "S1", logicNote: "A dehydrated meal is camping food, but it does not itself belong to fire." },
+      { label: "Fire Ring", correctSlot: "S2", logicNote: "A fire ring is used at campsites and contains fire, but it is not food." },
+      { label: "Charred Steak", correctSlot: "S3", logicNote: "Charred steak is food connected to fire, but it is not specifically a camping item." },
+      { label: "Roasted Marshmallow", correctSlot: "S4", logicNote: "A roasted marshmallow is food, it is made with fire, and it is a classic camping treat." },
+      { label: "Sleeping Bag", correctSlot: null },
+      { label: "Lunch Menu", correctSlot: null },
+      { label: "Matchbox", correctSlot: null },
+      { label: "City Apartment", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Robot + 2000s",
+    difficultyEstimate: 58,
+    labels: { A: "Movie", B: "Robot", C: "2000s" },
+    tiles: [
+      { label: "Chappie", correctSlot: "S1", logicNote: "Chappie is a movie about a robot, but it came out after the 2000s." },
+      { label: "Mean Girls", correctSlot: "S2", logicNote: "Mean Girls is a movie from the 2000s, but it is not about a robot." },
+      { label: "ASIMO", correctSlot: "S3", logicNote: "ASIMO is a robot introduced in the 2000s, but it is not a movie.", fact: "Honda introduced ASIMO in 2000 as a humanoid robot that could walk and run." },
+      { label: "Transformers (2007)", correctSlot: "S4", logicNote: "Transformers is a 2000s movie centered on robots, so it fits all three categories." },
+      { label: "Film Clapboard", correctSlot: null },
+      { label: "Servo Motor", correctSlot: null },
+      { label: "Flip Phone", correctSlot: null },
+      { label: "Drive-In Screen", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Nobel + Chemist + Woman",
+    difficultyEstimate: 43,
+    labels: { A: "Nobel", B: "Chemist", C: "Woman" },
+    tiles: [
+      { label: "Linus Pauling", correctSlot: "S1", logicNote: "Linus Pauling won Nobel Prizes and was a chemist, but he was not a woman.", fact: "Linus Pauling is one of the few people to receive two unshared Nobel Prizes." },
+      { label: "Malala Yousafzai", correctSlot: "S2", logicNote: "Malala Yousafzai is a woman Nobel laureate, but she is not a chemist." },
+      { label: "Alice Ball", correctSlot: "S3", logicNote: "Alice Ball was a woman chemist, but she did not receive a Nobel Prize.", fact: "Alice Ball developed an early injectable treatment for leprosy." },
+      { label: "Dorothy Hodgkin", correctSlot: "S4", logicNote: "Dorothy Hodgkin was a woman chemist who won the Nobel Prize in Chemistry.", fact: "Hodgkin used X-ray crystallography to determine structures of important biomolecules." },
+      { label: "Prize Ceremony", correctSlot: null },
+      { label: "Beaker Rack", correctSlot: null },
+      { label: "Suffrage Banner", correctSlot: null },
+      { label: "Lecture Notes", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-29",
+  easy: {
+    title: "Weather + White + Falling",
+    difficultyEstimate: 84,
+    labels: { A: "Weather", B: "White", C: "Falling" },
+    tiles: [
+      { label: "Cloud", correctSlot: "S1", logicNote: "A cloud is white weather, but it is not usually the thing falling." },
+      { label: "Rainfall", correctSlot: "S2", logicNote: "Rainfall is falling weather, but it is not white." },
+      { label: "White Confetti", correctSlot: "S3", logicNote: "White confetti is white and falls, but it is not weather." },
+      { label: "Snow", correctSlot: "S4", logicNote: "Snow is white, falls from the sky, and is a weather event.", fact: "No two snowflakes are exactly alike because of how their crystals form on the way down." },
+      { label: "Weather Vane", correctSlot: null },
+      { label: "Printer Paper", correctSlot: null },
+      { label: "Dropped Keys", correctSlot: null },
+      { label: "Sunglasses", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Animal + Mythical + Fire",
+    difficultyEstimate: 60,
+    labels: { A: "Animal", B: "Mythical", C: "Fire" },
+    tiles: [
+      { label: "Unicorn", correctSlot: "S1", logicNote: "A unicorn is a mythical animal, but it is not especially tied to fire." },
+      { label: "Firefly", correctSlot: "S2", logicNote: "A firefly is an animal with fire in the name, but it is not mythical." },
+      { label: "Prometheus", correctSlot: "S3", logicNote: "Prometheus is a mythic figure connected with fire, but he is not an animal." },
+      { label: "Dragon", correctSlot: "S4", logicNote: "A dragon is a mythical animal famously associated with fire." },
+      { label: "Horse Stable", correctSlot: null },
+      { label: "Magic Mirror", correctSlot: null },
+      { label: "Candle Flame", correctSlot: null },
+      { label: "Story Scroll", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Author + Detective + Woman",
+    difficultyEstimate: 44,
+    labels: { A: "Author", B: "Detective", C: "Woman" },
+    tiles: [
+      { label: "Raymond Chandler", correctSlot: "S1", logicNote: "Raymond Chandler was an author known for detective fiction, but he was not a woman." },
+      { label: "Virginia Woolf", correctSlot: "S2", logicNote: "Virginia Woolf was a woman author, but she is not known for detective fiction." },
+      { label: "Miss Marple", correctSlot: "S3", logicNote: "Miss Marple is a woman detective, but she is a fictional character rather than an author." },
+      { label: "Agatha Christie", correctSlot: "S4", logicNote: "Agatha Christie was a woman author famous for detective stories.", fact: "Agatha Christie created both Hercule Poirot and Miss Marple." },
+      { label: "Typewriter Ribbon", correctSlot: null },
+      { label: "Magnifying Glass", correctSlot: null },
+      { label: "Portrait Locket", correctSlot: null },
+      { label: "Crime Scene Tape", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-28",
+  easy: {
+    title: "Cold + Dessert + Stick",
+    difficultyEstimate: 85,
+    labels: { A: "Cold", B: "Dessert", C: "Stick" },
+    tiles: [
+      { label: "Sundae", correctSlot: "S1", logicNote: "A sundae is a cold dessert, but it is not served on a stick.", fact: "The ice cream sundae was invented in the late 1800s, with several American towns still arguing over which one served it first." },
+      { label: "Icicle", correctSlot: "S2", logicNote: "An icicle is cold and stick-like, but it is not dessert." },
+      { label: "Cake Pop", correctSlot: "S3", logicNote: "A cake pop is dessert on a stick, but it is not usually cold." },
+      { label: "Popsicle", correctSlot: "S4", logicNote: "A popsicle is cold, it is dessert, and it comes on a stick." },
+      { label: "Freezer Door", correctSlot: null },
+      { label: "Pie Tin", correctSlot: null },
+      { label: "Twig", correctSlot: null },
+      { label: "Soup Spoon", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Country + Mountain + Asia",
+    difficultyEstimate: 59,
+    labels: { A: "Country", B: "Mountain", C: "Asia" },
+    tiles: [
+      { label: "Switzerland", correctSlot: "S1", logicNote: "Switzerland is a country famous for mountains, but it is not in Asia." },
+      { label: "Singapore", correctSlot: "S2", logicNote: "Singapore is a country in Asia, but it is not known as a mountain place." },
+      { label: "Himalayas", correctSlot: "S3", logicNote: "The Himalayas are mountains in Asia, but they are not a country.", fact: "The Himalayas include Mount Everest, the highest mountain above sea level." },
+      { label: "Nepal", correctSlot: "S4", logicNote: "Nepal is an Asian country strongly associated with mountains." },
+      { label: "National Anthem", correctSlot: null },
+      { label: "Climbing Rope", correctSlot: null },
+      { label: "Bamboo Forest", correctSlot: null },
+      { label: "Coastal Lighthouse", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Band + Rock + British",
+    difficultyEstimate: 43,
+    labels: { A: "Band", B: "Rock", C: "British" },
+    tiles: [
+      { label: "Nirvana", correctSlot: "S1", logicNote: "Nirvana was a rock band, but it was American rather than British." },
+      { label: "Spice Girls", correctSlot: "S2", logicNote: "The Spice Girls were a British band, but they were not a rock band." },
+      { label: "Glam Rock", correctSlot: "S3", logicNote: "Glam rock is a rock style strongly tied to Britain, but it is not a band." },
+      { label: "The Rolling Stones", correctSlot: "S4", logicNote: "The Rolling Stones are a British rock band.", fact: "The Rolling Stones formed in London in 1962." },
+      { label: "Tour Van", correctSlot: null },
+      { label: "Amplifier Stack", correctSlot: null },
+      { label: "Tea Biscuit", correctSlot: null },
+      { label: "Backstage Pass", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-27",
+  easy: {
+    title: "Animal + Black + White",
+    difficultyEstimate: 84,
+    labels: { A: "Animal", B: "Black", C: "White" },
+    tiles: [
+      { label: "Crow", correctSlot: "S1", logicNote: "A crow is a dark, black animal, but it is not white.", fact: "Crows can recognize individual human faces and even hold grudges against people who treat them poorly." },
+      { label: "Polar Bear", correctSlot: "S2", logicNote: "A polar bear is an animal and white, but it is not black." },
+      { label: "Piano Keys", correctSlot: "S3", logicNote: "Piano keys are black and white, but they are not an animal." },
+      { label: "Panda", correctSlot: "S4", logicNote: "A panda is an animal with black-and-white coloring.", fact: "Giant pandas spend much of their day eating bamboo." },
+      { label: "Zoo Keeper", correctSlot: null },
+      { label: "Ink Bottle", correctSlot: null },
+      { label: "Cotton Ball", correctSlot: null },
+      { label: "Sand Dune", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Book + Magic + British",
+    difficultyEstimate: 58,
+    labels: { A: "Book", B: "Magic", C: "British" },
+    tiles: [
+      { label: "The Wizard of Oz", correctSlot: "S1", logicNote: "The Wizard of Oz is a book with magic, but it is American rather than British." },
+      { label: "Jane Eyre", correctSlot: "S2", logicNote: "Jane Eyre is a British book, but it is not a magic story." },
+      { label: "Merlin", correctSlot: "S3", logicNote: "Merlin is a British-linked magic figure, but he is not a book himself." },
+      { label: "Harry Potter", correctSlot: "S4", logicNote: "Harry Potter is a British book series centered on magic." },
+      { label: "Library Ladder", correctSlot: null },
+      { label: "Rabbit Hat", correctSlot: null },
+      { label: "Red Phone Box", correctSlot: null },
+      { label: "Quill Pen", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Inventor + Airplane + American",
+    difficultyEstimate: 42,
+    labels: { A: "Inventor", B: "Airplane", C: "American" },
+    tiles: [
+      { label: "Sir George Cayley", correctSlot: "S1", logicNote: "Sir George Cayley was an aviation inventor, but he was British rather than American.", fact: "Cayley is often called a father of aeronautics." },
+      { label: "George Washington Carver", correctSlot: "S2", logicNote: "George Washington Carver was an American inventor, but he is not associated with airplanes." },
+      { label: "Charles Lindbergh", correctSlot: "S3", logicNote: "Charles Lindbergh was an American aviation figure, but he was not primarily an inventor." },
+      { label: "Orville Wright", correctSlot: "S4", logicNote: "Orville Wright was an American inventor central to early airplane flight.", fact: "The Wright brothers' first powered flight took place in 1903." },
+      { label: "Patent Sketch", correctSlot: null },
+      { label: "Runway Light", correctSlot: null },
+      { label: "Baseball Cap", correctSlot: null },
+      { label: "Propeller Blade", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-26",
+  easy: {
+    title: "Animal + Pet + Small",
+    difficultyEstimate: 83,
+    labels: { A: "Animal", B: "Pet", C: "Small" },
+    tiles: [
+      { label: "Horse", correctSlot: "S1", logicNote: "A horse is an animal that can be a pet, but it is not small." },
+      { label: "Ant", correctSlot: "S2", logicNote: "An ant is a small animal, but it is not normally a pet." },
+      { label: "Tamagotchi", correctSlot: "S3", logicNote: "A Tamagotchi is a small handheld pet, but it is a digital toy rather than a living animal.", fact: "Tamagotchis launched in Japan in 1996 and sold over 80 million units worldwide." },
+      { label: "Hamster", correctSlot: "S4", logicNote: "A hamster is a small animal commonly kept as a pet." },
+      { label: "Barn Door", correctSlot: null },
+      { label: "Dog Bed", correctSlot: null },
+      { label: "Pebble Pile", correctSlot: null },
+      { label: "Elephant Statue", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + New York + Music",
+    difficultyEstimate: 60,
+    labels: { A: "Movie", B: "New York", C: "Music" },
+    tiles: [
+      { label: "You've Got Mail", correctSlot: "S1", logicNote: "You've Got Mail is a movie set in New York, but it is not a music movie." },
+      { label: "La La Land", correctSlot: "S2", logicNote: "La La Land is a movie musical, but it is not set in New York." },
+      { label: "Carnegie Hall", correctSlot: "S3", logicNote: "Carnegie Hall is a New York music venue, but it is not a movie.", fact: "Carnegie Hall opened in 1891." },
+      { label: "West Side Story", correctSlot: "S4", logicNote: "West Side Story is a New York-set musical movie." },
+      { label: "Cinema Marquee", correctSlot: null },
+      { label: "Subway Token", correctSlot: null },
+      { label: "Sheet Music", correctSlot: null },
+      { label: "Beach Resort", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "President + General + World War II",
+    difficultyEstimate: 43,
+    labels: { A: "President", B: "General", C: "World War II" },
+    tiles: [
+      { label: "Ulysses S. Grant", correctSlot: "S1", logicNote: "Ulysses S. Grant was both a president and a general, but he was not part of World War II." },
+      { label: "Franklin D. Roosevelt", correctSlot: "S2", logicNote: "Franklin D. Roosevelt was a president during World War II, but he was not a general." },
+      { label: "George Patton", correctSlot: "S3", logicNote: "George Patton was a World War II general, but he was not president." },
+      { label: "Dwight D. Eisenhower", correctSlot: "S4", logicNote: "Dwight D. Eisenhower was a World War II general who later became president.", fact: "Eisenhower was Supreme Allied Commander in Europe during World War II." },
+      { label: "Oval Desk", correctSlot: null },
+      { label: "Four-Star Insignia", correctSlot: null },
+      { label: "Ration Book", correctSlot: null },
+      { label: "Battle Map", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-25",
+  easy: {
+    title: "School + Yellow + Writing",
+    difficultyEstimate: 85,
+    labels: { A: "School", B: "Yellow", C: "Writing" },
+    tiles: [
+      { label: "Crossing Guard Vest", correctSlot: "S1", logicNote: "A crossing guard vest is school-related and bright yellow, but it is not used for writing." },
+      { label: "Essay Exam", correctSlot: "S2", logicNote: "An essay exam is school-related and involves writing, but it is not yellow." },
+      { label: "Legal Pad", correctSlot: "S3", logicNote: "A legal pad is yellow paper used for writing, but it belongs to law offices rather than schools.", fact: "Legal pads are dyed yellow by tradition; one popular story credits an 1888 paper-mill worker who bound scraps of yellow paper for lawyers." },
+      { label: "No. 2 Pencil", correctSlot: "S4", logicNote: "A No. 2 pencil is a yellow school tool used for writing.", fact: "Pencils were painted yellow starting in the 1890s to signal premium graphite from China, where yellow was an imperial color." },
+      { label: "Sun Lamp", correctSlot: null },
+      { label: "Chalkboard Eraser", correctSlot: null },
+      { label: "Signature Line", correctSlot: null },
+      { label: "Mountain Lake", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Singer + Actor + Canadian",
+    difficultyEstimate: 59,
+    labels: { A: "Singer", B: "Actor", C: "Canadian" },
+    tiles: [
+      { label: "Lady Gaga", correctSlot: "S1", logicNote: "Lady Gaga is both a singer and an actor, but she is American rather than Canadian." },
+      { label: "Celine Dion", correctSlot: "S2", logicNote: "Celine Dion is a Canadian singer, but she is not known primarily as an actor." },
+      { label: "Ryan Reynolds", correctSlot: "S3", logicNote: "Ryan Reynolds is a Canadian actor, but not a singer." },
+      { label: "Drake", correctSlot: "S4", logicNote: "Drake is a Canadian singer/rapper who also acted on Degrassi.", fact: "Before his music career, Drake played Jimmy Brooks on Degrassi: The Next Generation." },
+      { label: "Concert Ticket", correctSlot: null },
+      { label: "Casting Call", correctSlot: null },
+      { label: "Maple Cookie", correctSlot: null },
+      { label: "Tour Bus", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Founder + Tech + Woman",
+    difficultyEstimate: 42,
+    labels: { A: "Founder", B: "Tech", C: "Woman" },
+    tiles: [
+      { label: "Steve Jobs", correctSlot: "S1", logicNote: "Steve Jobs was a tech founder, but he was not a woman." },
+      { label: "Madam C.J. Walker", correctSlot: "S2", logicNote: "Madam C.J. Walker was a woman founder, but not a tech figure.", fact: "Walker is often cited as one of America's first self-made female millionaires." },
+      { label: "Grace Hopper", correctSlot: "S3", logicNote: "Grace Hopper was a woman in computing technology, but she is not known as a company founder." },
+      { label: "Whitney Wolfe Herd", correctSlot: "S4", logicNote: "Whitney Wolfe Herd is a woman tech founder, best known for Bumble.", fact: "Whitney Wolfe Herd became one of the youngest female CEOs to take a company public." },
+      { label: "Launch Deck", correctSlot: null },
+      { label: "Circuit Board", correctSlot: null },
+      { label: "Pearl Necklace", correctSlot: null },
+      { label: "Office Lease", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-24",
+  easy: {
+    title: "Water + Sport + Winter",
+    difficultyEstimate: 84,
+    labels: { A: "Water", B: "Sport", C: "Winter" },
+    tiles: [
+      { label: "Competitive Swimming", correctSlot: "S1", logicNote: "Competitive swimming is a water sport, but it is not a winter activity." },
+      { label: "Frozen Pond", correctSlot: "S2", logicNote: "A frozen pond is water in winter, but it is not a sport." },
+      { label: "Alpine Skiing", correctSlot: "S3", logicNote: "Alpine skiing is a winter sport, but it does not happen on water." },
+      { label: "Ice Hockey", correctSlot: "S4", logicNote: "Ice hockey is a winter sport played on frozen water." },
+      { label: "Water Bottle", correctSlot: null },
+      { label: "Scoreboard Light", correctSlot: null },
+      { label: "Wool Mittens", correctSlot: null },
+      { label: "Summer Picnic", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Lawyer + Chicago",
+    difficultyEstimate: 58,
+    labels: { A: "TV Show", B: "Lawyer", C: "Chicago" },
+    tiles: [
+      { label: "Ally McBeal", correctSlot: "S1", logicNote: "Ally McBeal is a TV show about lawyers, but it is set in Boston rather than Chicago." },
+      { label: "The Bear", correctSlot: "S2", logicNote: "The Bear is a TV show set in Chicago, but it is not about lawyers." },
+      { label: "Chicago Bar Association", correctSlot: "S3", logicNote: "The Chicago Bar Association connects lawyers and Chicago, but it is not a TV show." },
+      { label: "The Good Fight", correctSlot: "S4", logicNote: "The Good Fight is a TV legal drama set in Chicago." },
+      { label: "Streaming Queue", correctSlot: null },
+      { label: "Court Brief", correctSlot: null },
+      { label: "Deep Dish Pan", correctSlot: null },
+      { label: "Boston Common", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Scientist + Woman + Astronaut",
+    difficultyEstimate: 44,
+    labels: { A: "Scientist", B: "Woman", C: "Astronaut" },
+    tiles: [
+      { label: "Jane Goodall", correctSlot: "S1", logicNote: "Jane Goodall is a woman scientist, but she is not an astronaut.", fact: "Goodall is famous for her long-term study of chimpanzees." },
+      { label: "Harrison Schmitt", correctSlot: "S2", logicNote: "Harrison Schmitt was a scientist astronaut, but he is not a woman.", fact: "Schmitt was a geologist and walked on the Moon during Apollo 17." },
+      { label: "Eileen Collins", correctSlot: "S3", logicNote: "Eileen Collins is a woman astronaut, but she is not primarily known as a scientist.", fact: "Collins was the first woman to command a Space Shuttle mission." },
+      { label: "Mae Jemison", correctSlot: "S4", logicNote: "Mae Jemison is a woman, a physician-scientist, and a former astronaut.", fact: "Mae Jemison became the first Black woman to travel in space." },
+      { label: "Microscope Slide", correctSlot: null },
+      { label: "Space Capsule", correctSlot: null },
+      { label: "Evening Gown", correctSlot: null },
+      { label: "Mission Patch", correctSlot: null }
+    ]
+  }
+},
+
+  {
   date: "2026-05-23",
   easy: {
     title: "Red + Animal + Farm",
     difficultyEstimate: 84,
     labels: { A: "Red", B: "Animal", C: "Farm" },
     tiles: [
-      { label: "Ladybug", correctSlot: "S1" },
-      { label: "Strawberry Patch", correctSlot: "S2" },
-      { label: "Pig", correctSlot: "S3" },
-      { label: "Hereford Cow", correctSlot: "S4" },
+      { label: "Ladybug", correctSlot: "S1", logicNote: "A ladybug is an animal and is often red, but it is not a farm item.", fact: "Some ladybugs can eat dozens of aphids in a single day, which is why gardeners like having them around." },
+      { label: "Strawberry Patch", correctSlot: "S2", logicNote: "A strawberry patch is red and farm-related, but the patch itself is not an animal." },
+      { label: "Pig", correctSlot: "S3", logicNote: "A pig is an animal commonly found on farms, but it is not usually red." },
+      { label: "Hereford Cow", correctSlot: "S4", logicNote: "A Hereford cow is a red-and-white farm animal, so it belongs in all three groups.", fact: "Hereford cattle are named for Herefordshire, England, where the breed was developed." },
       { label: "Fire Hydrant", correctSlot: null },
       { label: "Tractor Seat", correctSlot: null },
       { label: "House Cat", correctSlot: null },
@@ -41,10 +378,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 59,
     labels: { A: "Movie", B: "Ocean", C: "1970s" },
     tiles: [
-      { label: "Moana", correctSlot: "S1" },
-      { label: "Rocky", correctSlot: "S2" },
-      { label: "The Love Boat", correctSlot: "S3" },
-      { label: "Jaws (1975)", correctSlot: "S4" },
+      { label: "Moana", correctSlot: "S1", logicNote: "Moana is a movie with ocean travel at its center, but it was not released in the 1970s." },
+      { label: "Rocky", correctSlot: "S2", logicNote: "Rocky is a 1970s movie, but it is not an ocean story.", fact: "Rocky won Best Picture for films released in 1976." },
+      { label: "The Love Boat", correctSlot: "S3", logicNote: "The Love Boat is a 1970s ocean-set TV show, but it is not a movie." },
+      { label: "Jaws (1975)", correctSlot: "S4", logicNote: "Jaws is a 1970s movie built around the ocean, so it hits all three categories.", fact: "Jaws helped create the modern summer blockbuster." },
       { label: "Ticket Stub", correctSlot: null },
       { label: "Harbor Light", correctSlot: null },
       { label: "Bell-Bottom Shirt", correctSlot: null },
@@ -56,10 +393,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 42,
     labels: { A: "Actor", B: "Martial Artist", C: "Hong Kong" },
     tiles: [
-      { label: "Chuck Norris", correctSlot: "S1" },
-      { label: "Tony Leung", correctSlot: "S2" },
-      { label: "Ip Man", correctSlot: "S3" },
-      { label: "Jackie Chan", correctSlot: "S4" },
+      { label: "Chuck Norris", correctSlot: "S1", logicNote: "Chuck Norris is both an actor and a martial artist, but he is not from Hong Kong." },
+      { label: "Tony Leung", correctSlot: "S2", logicNote: "Tony Leung is an actor strongly associated with Hong Kong cinema, but he is not known primarily as a martial artist.", fact: "Tony Leung won Best Actor at Cannes for In the Mood for Love." },
+      { label: "Ip Man", correctSlot: "S3", logicNote: "Ip Man was a Hong Kong martial artist, but he was not primarily an actor." },
+      { label: "Jackie Chan", correctSlot: "S4", logicNote: "Jackie Chan is a Hong Kong actor famous for martial arts action, so he belongs in all three groups.", fact: "Jackie Chan is known for doing many of his own stunts." },
       { label: "Movie Set", correctSlot: null },
       { label: "Karate Belt", correctSlot: null },
       { label: "Victoria Harbour", correctSlot: null },
@@ -74,10 +411,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 82,
     labels: { A: "Morning", B: "Drink", C: "Hot" },
     tiles: [
-      { label: "Orange Juice", correctSlot: "S1" },
-      { label: "Toaster", correctSlot: "S2" },
-      { label: "Tea", correctSlot: "S3" },
-      { label: "Coffee", correctSlot: "S4" },
+      { label: "Orange Juice", correctSlot: "S1", logicNote: "Orange juice is a morning drink, but it is not hot." },
+      { label: "Toaster", correctSlot: "S2", logicNote: "A toaster is associated with morning and gets hot, but it is not a drink." },
+      { label: "Mulled Wine", correctSlot: "S3", logicNote: "Mulled wine is a hot drink, but it is not a typical morning item." },
+      { label: "Coffee", correctSlot: "S4", logicNote: "Coffee is a hot drink strongly associated with morning.", fact: "Coffee beans are seeds from the fruit of coffee plants." },
       { label: "Alarm Clock", correctSlot: null },
       { label: "Soda Can", correctSlot: null },
       { label: "Fireplace Poker", correctSlot: null },
@@ -85,18 +422,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Board Game + Money + Real Estate",
+    title: "City + In USA + On a River",
     difficultyEstimate: 58,
-    labels: { A: "Board Game", B: "Money", C: "Real Estate" },
+    labels: { A: "City", B: "In USA", C: "On a River" },
     tiles: [
-      { label: "Payday", correctSlot: "S1" },
-      { label: "Settlers of Catan", correctSlot: "S2" },
-      { label: "Mortgage", correctSlot: "S3" },
-      { label: "Monopoly Board", correctSlot: "S4" },
-      { label: "Dice Tower", correctSlot: null },
-      { label: "Cash Drawer", correctSlot: null },
-      { label: "Open House Sign", correctSlot: null },
-      { label: "Chess Clock", correctSlot: null }
+      { label: "Las Vegas", correctSlot: "S1", logicNote: "Las Vegas is a city in the United States, but it is not known as a river city." },
+      { label: "Budapest", correctSlot: "S2", logicNote: "Budapest is a city on the Danube River, but it is not in the United States.", fact: "Budapest was formed in 1873 by uniting Buda, Pest, and Obuda." },
+      { label: "Hoover Dam", correctSlot: "S3", logicNote: "Hoover Dam is in the United States and sits on the Colorado River, but it is not a city.", fact: "Hoover Dam creates Lake Mead, one of the largest reservoirs in the United States." },
+      { label: "New Orleans", correctSlot: "S4", logicNote: "New Orleans is a U.S. city located on the Mississippi River." },
+      { label: "Reykjavik", correctSlot: null },
+      { label: "Mount Rushmore", correctSlot: null },
+      { label: "Fly Fishing", correctSlot: null },
+      { label: "Antarctica", correctSlot: null }
     ]
   },
   hard: {
@@ -104,10 +441,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 43,
     labels: { A: "Novel", B: "Dystopian", C: "British" },
     tiles: [
-      { label: "Fahrenheit 451", correctSlot: "S1" },
-      { label: "Pride and Prejudice", correctSlot: "S2" },
-      { label: "Black Mirror", correctSlot: "S3" },
-      { label: "1984", correctSlot: "S4" },
+      { label: "Fahrenheit 451", correctSlot: "S1", logicNote: "Fahrenheit 451 is a dystopian novel, but it is American rather than British.", fact: "Fahrenheit 451 was first published in 1953." },
+      { label: "Pride and Prejudice", correctSlot: "S2", logicNote: "Pride and Prejudice is a British novel, but it is not dystopian." },
+      { label: "Black Mirror", correctSlot: "S3", logicNote: "Black Mirror is British and often dystopian, but it is a TV series rather than a novel." },
+      { label: "1984", correctSlot: "S4", logicNote: "1984 is a British dystopian novel, so it fits all three categories.", fact: "George Orwell's 1984 was published in 1949." },
       { label: "Book Cart",
         correctSlot: null },
       { label: "Warning Siren", correctSlot: null },
@@ -5261,11 +5598,6 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
-
-
-
-
-
 
 
 
