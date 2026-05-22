@@ -224,6 +224,9 @@ runtimeStyle.textContent = `
   #slot-S2.revealed .tile { background: #dff5ec; border-color: #10b981; }
   #slot-S3.revealed .tile { background: #dbeafe; border-color: #3b82f6; }
   #slot-S4.revealed .tile { background: #fde7bf; border-color: #d97706; }
+  .tile.inspectable { cursor: pointer; position: relative; }
+  .tile.inspectable::after { content: "?"; position: absolute; top: -7px; right: -7px; width: 18px; height: 18px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(122, 90, 53, 0.3); background: #fffdf8; color: #7a5a35; font-size: 0.74rem; font-weight: 900; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08); }
+  .tile.inspecting { box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.14), 0 12px 20px rgba(15, 23, 42, 0.12); transform: translateY(-1px); }
 `;
 document.head.appendChild(runtimeStyle);
 runtimeStyle.textContent += `
@@ -353,6 +356,7 @@ let hardTimerInterval = null;
 let midnightRolloverTimeout = null;
 let dailyCompleteTimeout = null;
 let hardMissedTimeout = null;
+let activeTileInfoTileId = null;
 
 const boardEl = document.getElementById("board");
 const slots = Array.from(document.querySelectorAll(".slot"));
@@ -370,6 +374,12 @@ const timerWrapEl = document.getElementById("timer-wrap");
 const timerLabelEl = document.getElementById("timer-label");
 const timerFillEl = document.getElementById("timer-fill");
 const summaryEl = document.getElementById("summary");
+const tileInfoPanelEl = document.getElementById("tile-info-panel");
+const tileInfoTitleEl = document.getElementById("tile-info-title");
+const tileInfoLogicSectionEl = document.getElementById("tile-info-logic-section");
+const tileInfoLogicEl = document.getElementById("tile-info-logic");
+const tileInfoFactSectionEl = document.getElementById("tile-info-fact-section");
+const tileInfoFactEl = document.getElementById("tile-info-fact");
 const subtitleEl = document.getElementById("subtitle");
 const launchScreenEl = document.getElementById("launch-screen");
 const launchPlayBtn = document.getElementById("launch-play");
@@ -572,7 +582,6 @@ function buildFailedState(result) {
   failedState.timerRemainingMs = null;
   if (activeStage === "hard") {
     failedState.lastTimerTickAt = null;
-    return failedState;
   }
   failedState.revealedSlots = new Set(SLOTS);
   currentTiles.forEach((tile) => {
@@ -1154,6 +1163,38 @@ function updateHeaderUi() {
   }
 }
 function updateButtons() { const finalized = Boolean(getStageRecord()?.status) && !state.practiceMode; undoBtn.disabled = !state.history.length || state.solved || state.failed || finalized; clearBtn.disabled = !hasProgress() || finalized; }
+function hasTileInfo(tile) { return Boolean(tile?.logicNote || tile?.fact); }
+function stageHasTileInfo() { return currentTiles.some(hasTileInfo); }
+function getLearnHint() { return stageHasTileInfo() ? " Tap answer tiles to learn why they fit." : ""; }
+function hideTileInfo() {
+  activeTileInfoTileId = null;
+  if (tileInfoPanelEl) tileInfoPanelEl.hidden = true;
+}
+function showTileInfo(tile) {
+  if (!tile || !(state?.solved || state?.failed) || !hasTileInfo(tile)) return;
+  activeTileInfoTileId = tile.id;
+  const title = getTileFaceLabel(tile);
+  if (tileInfoTitleEl) tileInfoTitleEl.textContent = title;
+  if (tileInfoLogicEl) tileInfoLogicEl.textContent = tile.logicNote || "";
+  if (tileInfoLogicSectionEl) tileInfoLogicSectionEl.hidden = !tile.logicNote;
+  if (tileInfoFactEl) tileInfoFactEl.textContent = tile.fact || "";
+  if (tileInfoFactSectionEl) tileInfoFactSectionEl.hidden = !tile.fact;
+  if (tileInfoPanelEl) tileInfoPanelEl.hidden = false;
+  render();
+}
+function revealSolutionTiles() {
+  state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null]));
+  state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null]));
+  state.lockedTiles = new Set();
+  state.revealedSlots = new Set(SLOTS);
+  currentTiles.forEach((tile) => {
+    if (!tile.correctSlot) return;
+    state.placements[tile.correctSlot] = tile.id;
+    state.tileLocation[tile.id] = tile.correctSlot;
+    state.lockedTiles.add(tile.id);
+  });
+  state.bankOrder = currentTiles.map((tile) => tile.id).filter((id) => state.tileLocation[id] === null);
+}
 function playTone(type) {
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   if (!AudioCtx) return;
@@ -1199,18 +1240,28 @@ function getTileFaceLabel(tile) {
 function makeTile(tileId) {
   const tile = tileById[tileId];
   const displayLabel = getTileFaceLabel(tile);
+  const finished = state?.solved || state?.failed;
+  const inspectable = finished && hasTileInfo(tile);
   const el = document.createElement("div");
   el.className = "tile";
   if (!/[A-Za-z]/.test(displayLabel)) el.classList.add("emoji-face");
   if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 10) el.classList.add("long-text");
   if (/[A-Za-z]/.test(displayLabel) && displayLabel.length >= 14) el.classList.add("very-long-text");
   el.dataset.tileId = tile.id;
-  el.draggable = !state.lockedTiles.has(tile.id) && !state.solved && !state.failed;
+  el.draggable = !state.lockedTiles.has(tile.id) && !finished;
   el.innerHTML = `<div class="text">${displayLabel}</div>`;
   if (state.selectedTileId === tile.id) el.classList.add("selected"); if (state.lockedTiles.has(tile.id)) el.classList.add("locked");
-  el.addEventListener("click", () => { if (Date.now() < suppressClickUntil) return; if (state.solved || state.failed || state.lockedTiles.has(tile.id)) return; state.selectedTileId = state.selectedTileId === tile.id ? null : tile.id; setMessage(); render(); });
+  if (inspectable) {
+    el.classList.add("inspectable");
+    if (activeTileInfoTileId === tile.id) el.classList.add("inspecting");
+    el.setAttribute("role", "button");
+    el.tabIndex = 0;
+    el.setAttribute("aria-label", `Learn why ${displayLabel} fits`);
+  }
+  el.addEventListener("click", () => { if (Date.now() < suppressClickUntil) return; if (finished) { showTileInfo(tile); return; } if (state.lockedTiles.has(tile.id)) return; state.selectedTileId = state.selectedTileId === tile.id ? null : tile.id; setMessage(); render(); });
+  el.addEventListener("keydown", (e) => { if (!inspectable || (e.key !== "Enter" && e.key !== " ")) return; e.preventDefault(); showTileInfo(tile); });
   el.addEventListener("pointerdown", (e) => startTouchDrag(e, tile.id));
-  el.addEventListener("dragstart", (e) => { if (state.solved || state.failed || state.lockedTiles.has(tile.id)) { e.preventDefault(); return; } state.selectedTileId = tile.id; e.dataTransfer.setData("text/plain", tile.id); e.dataTransfer.effectAllowed = "move"; render(); });
+  el.addEventListener("dragstart", (e) => { if (finished || state.lockedTiles.has(tile.id)) { e.preventDefault(); return; } state.selectedTileId = tile.id; e.dataTransfer.setData("text/plain", tile.id); e.dataTransfer.effectAllowed = "move"; render(); });
   return el;
 }
 function getDropTarget(clientX, clientY) { const hit = document.elementFromPoint(clientX, clientY); if (!hit) return null; const slot = hit.closest(".slot"); if (slot) return slot; if (hit.closest("#bank")) return bankEl; const boardRect = boardEl.getBoundingClientRect(); const insideBoard = clientX >= boardRect.left && clientX <= boardRect.right && clientY >= boardRect.top && clientY <= boardRect.bottom; if (!insideBoard) return null; let nearestSlot = null; let nearestDistance = Infinity; slots.forEach((slotEl) => { if (slotEl.classList.contains("has-tile") || slotEl.classList.contains("revealed")) return; const rect = slotEl.getBoundingClientRect(); const centerX = rect.left + (rect.width / 2); const centerY = rect.top + (rect.height / 2); const distance = Math.hypot(clientX - centerX, clientY - centerY); if (distance < nearestDistance) { nearestDistance = distance; nearestSlot = slotEl; } }); const isTouchViewport = window.matchMedia?.("(max-width: 768px)")?.matches; const snapRadius = isTouchViewport ? Math.max(60, Math.min(boardRect.width, boardRect.height) * 0.16) : Math.max(42, Math.min(boardRect.width, boardRect.height) * 0.12); return nearestDistance <= snapRadius ? nearestSlot : null; }
@@ -1230,7 +1281,7 @@ function moveTileToPool(tileId) { if (!tileById[tileId] || state.solved || state
 function shakeBoard() { boardEl.classList.remove("shake"); void boardEl.offsetWidth; boardEl.classList.add("shake"); }
 function activateHardLifeline() { closeLifelineModals(); setMessage("No lifeline needed. Hard is untimed now.", "#7a5a35"); render(); }
 function maybeOfferLifeline() { return false; }
-function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); const elapsedMs = getPuzzleElapsedMs(); const baseParams = getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: null, practice_mode: Boolean(state.practiceMode) }); trackEvent("puzzle_solved", baseParams); if (!state.practiceMode) { trackEvent("puzzle_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); if (Number.isFinite(elapsedMs)) trackEvent("time_to_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); } if (state.practiceMode) { setMessage("Practice complete.", "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); const nextStage = getNextAvailableStage(activeStage); if (nextStage && !completedDailySet) { stageUnlockPulseActive = true; window.setTimeout(() => { stageUnlockPulseActive = false; render(); }, 2200); } setMessage(nextStage && !completedDailySet ? `${capitalize(activeStage)} cleared. ${capitalize(nextStage)} is unlocked.` : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
+function finishWin() { state.solved = true; state.failed = false; SLOTS.forEach((slot) => { state.revealedSlots.add(slot); const tileId = state.placements[slot]; if (tileId) state.lockedTiles.add(tileId); }); const elapsedMs = getPuzzleElapsedMs(); const baseParams = getAnalyticsParams({ tries_used: state.tries, timer_remaining_ms: null, practice_mode: Boolean(state.practiceMode) }); trackEvent("puzzle_solved", baseParams); if (!state.practiceMode) { trackEvent("puzzle_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); if (Number.isFinite(elapsedMs)) trackEvent("time_to_complete", { ...baseParams, time_to_complete_ms: elapsedMs }); } if (state.practiceMode) { setMessage(`Practice complete.${getLearnHint()}`, "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); return; } updateProgressRecord(getActiveDate(), activeStage, "solved"); const record = getDayRecord(getActiveDate(), false); const completedDailySet = Boolean(record?.completedDailySet); const nextStage = getNextAvailableStage(activeStage); if (nextStage && !completedDailySet) { stageUnlockPulseActive = true; window.setTimeout(() => { stageUnlockPulseActive = false; render(); }, 2200); } setMessage((nextStage && !completedDailySet ? `${capitalize(activeStage)} cleared. ${capitalize(nextStage)} is unlocked.` : completedDailySet ? "Daily set complete." : `${capitalize(activeStage)} solved.`) + getLearnHint(), "#1f7a4f"); playTone("success"); vibrate([40, 30, 70]); render(); if (completedDailySet) scheduleDailyCompleteModal(3000); }
 function revealFailureBoard(reason = "Out of tries.") {
   state.failed = true;
   state.solved = false;
@@ -1242,23 +1293,19 @@ function revealFailureBoard(reason = "Out of tries.") {
       failure_reason: normalizeFailureReason(reason)
     }));
   }
+  revealSolutionTiles();
   if (activeStage === "hard" && !state.practiceMode) {
     state.lastTimerTickAt = null;
     updateProgressRecord(getActiveDate(), activeStage, "failed");
-    setMessage("Today's Hard puzzle got away.", "#991b1b");
+    setMessage(`Today's Hard puzzle got away.${getLearnHint()}`, "#991b1b");
     playTone("fail");
     vibrate([120, 60, 120]);
     render();
     scheduleHardMissedModal(3000);
     return;
   }
-  state.placements = Object.fromEntries(SLOTS.map((slot) => [slot, null]));
-  state.tileLocation = Object.fromEntries(currentTiles.map((tile) => [tile.id, null]));
-  state.lockedTiles = new Set();
-  state.revealedSlots = new Set(SLOTS);
-  currentTiles.forEach((tile) => { if (!tile.correctSlot) return; state.placements[tile.correctSlot] = tile.id; state.tileLocation[tile.id] = tile.correctSlot; state.lockedTiles.add(tile.id); });
   if (!state.practiceMode) updateProgressRecord(getActiveDate(), activeStage, "failed");
-  setMessage(state.practiceMode ? "Practice over. Solution revealed." : reason, "#991b1b");
+  setMessage((state.practiceMode ? "Practice over. Solution revealed." : reason) + getLearnHint(), "#991b1b");
   playTone("fail");
   vibrate([120, 60, 120]);
   render();
@@ -1277,7 +1324,8 @@ function loadDay(dayIndex, stage = "easy", section = "today") {
   activeStage = stage;
   const puzzle = getActivePuzzle();
   if (!puzzle) return;
-  currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, revealLabel: tile.revealLabel || null, correctSlot: tile.correctSlot }));
+  hideTileInfo();
+  currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, revealLabel: tile.revealLabel || null, correctSlot: tile.correctSlot, logicNote: tile.logicNote || null, fact: tile.fact || null }));
   tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile]));
   labelAEl.textContent = puzzle.labels.A;
   labelBEl.textContent = puzzle.labels.B;
