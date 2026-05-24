@@ -1,4 +1,4 @@
-h/**
+/**
  * COMMON GROUND DAILY SETS — Venn diagram puzzle data
  *
  * Each puzzle has 3 sets (A, B, C) and 4 placement slots that map to the
@@ -340,18 +340,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-        title: "Brand + Animal + Luxury",
-        difficultyEstimate: 48,
-        labels: { A: "Brand", B: "Animal", C: "Luxury" },
-        tiles: [
-          { label: "Puma", correctSlot: "S1", logicNote: "Puma is a brand named after an animal, but it is not a luxury brand." },
-          { label: "Rolex", correctSlot: "S2", logicNote: "Rolex is a luxury brand, but it is not named after an animal." },
-          { label: "Mink", correctSlot: "S3", logicNote: "Mink is an animal associated with luxury (fur coats), but it is not a brand." },
-          { label: "Jaguar", correctSlot: "S4", logicNote: "Jaguar is a luxury car brand named after the big cat — it fits all three categories." },
-          { label: "Coca-Cola", correctSlot: null },
-          { label: "Goldfish", correctSlot: null },
-          { label: "Diamond", correctSlot: null },
-          { label: "Bicycle", correctSlot: null }
+    title: "Scientist + Woman + Astronaut",
+    difficultyEstimate: 44,
+    labels: { A: "Scientist", B: "Woman", C: "Astronaut" },
+    tiles: [
+      { label: "Jane Goodall", correctSlot: "S1", logicNote: "Jane Goodall is a woman scientist, but she is not an astronaut.", fact: "Goodall is famous for her long-term study of chimpanzees." },
+      { label: "Harrison Schmitt", correctSlot: "S2", logicNote: "Harrison Schmitt was a scientist astronaut, but he is not a woman.", fact: "Schmitt was a geologist and walked on the Moon during Apollo 17." },
+      { label: "Eileen Collins", correctSlot: "S3", logicNote: "Eileen Collins is a woman astronaut, but she is not primarily known as a scientist.", fact: "Collins was the first woman to command a Space Shuttle mission." },
+      { label: "Mae Jemison", correctSlot: "S4", logicNote: "Mae Jemison is a woman, a physician-scientist, and a former astronaut.", fact: "Mae Jemison became the first Black woman to travel in space." },
+      { label: "Microscope Slide", correctSlot: null },
+      { label: "Space Capsule", correctSlot: null },
+      { label: "Evening Gown", correctSlot: null },
+      { label: "Mission Patch", correctSlot: null }
     ]
   }
 },
