@@ -22,7 +22,7 @@
   <link rel="canonical" href="https://commongroundpuzzle.com/" />
   <meta property="og:title" content="Common Ground: The Daily Connection Game" />
   <meta property="og:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260525" />
+<meta property="og:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260420" />
   <meta property="og:image:width" content="1080" />
   <meta property="og:image:height" content="1080" />
   <meta property="og:url" content="https://commongroundpuzzle.com/" />
@@ -30,7 +30,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Common Ground: The Daily Connection Game" />
   <meta name="twitter:description" content="Find the hidden overlap between three categories. Play today’s puzzle in under 2 minutes." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260525" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thefullrob/Common-Ground/main/social-post-today.png?v=20260420" />
   <title>Common Ground: The Daily Connection Game</title>
       <style>
     :root {
@@ -1305,18 +1305,6 @@
       </div>
 
       <div class="summary" id="summary"></div>
-      <div class="tile-info-panel" id="tile-info-panel" hidden>
-        <div class="tile-info-kicker">Learn The Logic</div>
-        <div class="tile-info-title" id="tile-info-title"></div>
-        <div class="tile-info-section" id="tile-info-logic-section">
-          <div class="tile-info-label">Why It Fits</div>
-          <div class="tile-info-copy" id="tile-info-logic"></div>
-        </div>
-        <div class="tile-info-section" id="tile-info-fact-section">
-          <div class="tile-info-label">Did You Know?</div>
-          <div class="tile-info-copy" id="tile-info-fact"></div>
-        </div>
-      </div>
       <div class="share-panel" id="share-panel" hidden>
         <div class="share-card">
           <div class="share-kicker" id="share-kicker">Share The Challenge</div>
@@ -1328,6 +1316,26 @@
         <div class="share-helper" id="share-helper">Send today’s puzzle and see who finds the overlap faster.</div>
       </div>
     </section>
+  </div>
+
+  <div class="modal-overlay" id="tile-info-modal" hidden>
+    <div class="tile-info-panel tile-info-modal-card" id="tile-info-panel" role="dialog" aria-modal="true" aria-labelledby="tile-info-title">
+      <div class="tile-info-modal-head">
+        <div class="tile-info-modal-copy">
+          <div class="tile-info-kicker">Learn The Logic</div>
+          <div class="tile-info-title" id="tile-info-title"></div>
+        </div>
+        <button id="tile-info-close" class="tile-info-close" type="button">Close</button>
+      </div>
+      <div class="tile-info-section" id="tile-info-logic-section">
+        <div class="tile-info-label">Why It Fits</div>
+        <div class="tile-info-copy" id="tile-info-logic"></div>
+      </div>
+      <div class="tile-info-section" id="tile-info-fact-section">
+        <div class="tile-info-label">Did You Know?</div>
+        <div class="tile-info-copy" id="tile-info-fact"></div>
+      </div>
+    </div>
   </div>
 
   <div class="launch-screen" id="launch-screen">
@@ -1511,7 +1519,7 @@
   </div>
 
   <script src="daily-sets-reviewed-20260524restorea.js"></script>
-  <script src="app.js?v=20260522learn"></script>
+  <script src="app.js?v=20260525logicmodal"></script>
   </body>
   </html>
 
