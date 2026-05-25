@@ -175,6 +175,11 @@ runtimeStyle.textContent = `
   .modal-copy { color: #435066; font-size: 0.94rem; line-height: 1.45; text-align: center; }
   .modal-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .modal-primary { background: #111827; color: #fff; border-color: #111827; }
+  .tile-info-modal-card { width: min(420px, 100%); max-height: min(82vh, 720px); overflow-y: auto; padding: 18px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18); }
+  .tile-info-modal-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+  .tile-info-modal-copy { display: grid; gap: 6px; min-width: 0; }
+  .tile-info-modal-card .tile-info-title { font-size: 1.06rem; }
+  .tile-info-close { min-height: 40px; padding-inline: 14px; white-space: nowrap; }
   .difficulty-panel { border: 1px solid #e3d8c6; border-radius: 18px; background: linear-gradient(180deg, #fffcf5 0%, #f7efe0 100%); padding: 12px; display: grid; gap: 10px; }
   .difficulty-panel[hidden] { display: none; }
   .difficulty-kicker { font-size: 0.72rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; color: #7a5a35; }
@@ -275,6 +280,8 @@ runtimeStyle.textContent += `
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
   @media (max-width: 560px) {
+    .tile-info-modal-head { display: grid; }
+    .tile-info-close { width: 100%; }
     .badge-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .badge-reward-art { width: 180px; }
     .badge-detail-art { width: min(250px, 72vw); }
@@ -374,7 +381,9 @@ const timerWrapEl = document.getElementById("timer-wrap");
 const timerLabelEl = document.getElementById("timer-label");
 const timerFillEl = document.getElementById("timer-fill");
 const summaryEl = document.getElementById("summary");
+const tileInfoModalEl = document.getElementById("tile-info-modal");
 const tileInfoPanelEl = document.getElementById("tile-info-panel");
+const tileInfoCloseBtn = document.getElementById("tile-info-close");
 const tileInfoTitleEl = document.getElementById("tile-info-title");
 const tileInfoLogicSectionEl = document.getElementById("tile-info-logic-section");
 const tileInfoLogicEl = document.getElementById("tile-info-logic");
@@ -1166,9 +1175,11 @@ function updateButtons() { const finalized = Boolean(getStageRecord()?.status) &
 function hasTileInfo(tile) { return Boolean(tile?.logicNote || tile?.fact); }
 function stageHasTileInfo() { return currentTiles.some(hasTileInfo); }
 function getLearnHint() { return stageHasTileInfo() ? " Tap answer tiles to learn why they fit." : ""; }
-function hideTileInfo() {
+function hideTileInfo({ skipRender = false } = {}) {
+  const wasOpen = Boolean(activeTileInfoTileId);
   activeTileInfoTileId = null;
-  if (tileInfoPanelEl) tileInfoPanelEl.hidden = true;
+  if (tileInfoModalEl) tileInfoModalEl.hidden = true;
+  if (!skipRender && wasOpen && state) render();
 }
 function showTileInfo(tile) {
   if (!tile || !(state?.solved || state?.failed) || !hasTileInfo(tile)) return;
@@ -1179,7 +1190,8 @@ function showTileInfo(tile) {
   if (tileInfoLogicSectionEl) tileInfoLogicSectionEl.hidden = !tile.logicNote;
   if (tileInfoFactEl) tileInfoFactEl.textContent = tile.fact || "";
   if (tileInfoFactSectionEl) tileInfoFactSectionEl.hidden = !tile.fact;
-  if (tileInfoPanelEl) tileInfoPanelEl.hidden = false;
+  if (tileInfoModalEl) tileInfoModalEl.hidden = false;
+  if (tileInfoCloseBtn) tileInfoCloseBtn.focus();
   render();
 }
 function revealSolutionTiles() {
@@ -1324,7 +1336,7 @@ function loadDay(dayIndex, stage = "easy", section = "today") {
   activeStage = stage;
   const puzzle = getActivePuzzle();
   if (!puzzle) return;
-  hideTileInfo();
+  hideTileInfo({ skipRender: true });
   currentTiles = puzzle.tiles.map((tile, index) => ({ id: `t${index + 1}`, label: tile.label, revealLabel: tile.revealLabel || null, correctSlot: tile.correctSlot, logicNote: tile.logicNote || null, fact: tile.fact || null }));
   tileById = Object.fromEntries(currentTiles.map((tile) => [tile.id, tile]));
   labelAEl.textContent = puzzle.labels.A;
@@ -1346,6 +1358,7 @@ function openArchiveDay(day) { const index = DAILY_SETS.findIndex((entry) => ent
 slots.forEach((slotEl) => { slotEl.addEventListener("click", () => { if (state.solved || state.failed) return; const slot = slotEl.dataset.slot; if (!state.selectedTileId) { const occupant = state.placements[slot]; if (occupant && !state.lockedTiles.has(occupant)) { pushUndo(); moveTileToPool(occupant); setMessage(); render(); } return; } pushUndo(); if (moveTileToSlot(state.selectedTileId, slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); slotEl.addEventListener("dragover", (e) => { e.preventDefault(); slotEl.classList.add("drag-target"); }); slotEl.addEventListener("dragleave", () => slotEl.classList.remove("drag-target")); slotEl.addEventListener("drop", (e) => { e.preventDefault(); slotEl.classList.remove("drag-target"); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToSlot(tileId, slotEl.dataset.slot)) { state.selectedTileId = null; setMessage(); render(); maybeAutoSubmitAfterPlacement(); } }); });
 bankEl.addEventListener("dragover", (e) => e.preventDefault());
 bankEl.addEventListener("drop", (e) => { e.preventDefault(); const tileId = e.dataTransfer.getData("text/plain"); if (!tileId) return; pushUndo(); if (moveTileToPool(tileId)) { state.selectedTileId = null; setMessage(); render(); } });
+tileInfoCloseBtn?.addEventListener("click", () => hideTileInfo());
 undoBtn?.addEventListener("click", undo); clearBtn?.addEventListener("click", resetCurrentPuzzle); shareBtn?.addEventListener("click", copyShareResults); todayBtn?.addEventListener("click", goToToday); archiveBtn?.addEventListener("click", openArchive); statsBtn?.addEventListener("click", openStats); badgesBtn?.addEventListener("click", openBadges); easyBtn?.addEventListener("click", () => switchStage("easy")); mediumBtn?.addEventListener("click", () => switchStage("medium")); hardBtn?.addEventListener("click", () => switchStage("hard")); tutorialStartBtn?.addEventListener("click", dismissTutorial); tutorialSkipBtn?.addEventListener("click", dismissTutorial); launchPlayBtn?.addEventListener("click", closeLaunchScreen); launchHowBtn?.addEventListener("click", openTutorial); statsCloseBtn?.addEventListener("click", closeStats); archiveCloseBtn?.addEventListener("click", closeArchive); badgesCloseBtn?.addEventListener("click", closeBadges); badgeUnlockCloseBtn?.addEventListener("click", closeBadgeUnlock); badgeDetailCloseBtn?.addEventListener("click", closeBadgeDetail); statsResetBtn?.addEventListener("click", () => { if (window.confirm("Reset all local daily progress, stats, and badges on this device?")) resetStats(); }); homeScreenTriggerEls.forEach((button) => button?.addEventListener("click", triggerAddToHomeScreen)); useLifelineBtn?.addEventListener("click", activateHardLifeline); homeScreenCloseBtn?.addEventListener("click", () => { homeScreenModalEl.hidden = true; if (homeScreenReturnToLifeline) { lifelineModalEl.hidden = false; } homeScreenReturnToLifeline = false; }); homeScreenUseBtn?.addEventListener("click", activateHardLifeline); hardReadyStartBtn?.addEventListener("click", beginHardTimedMode); hardReadyZenBtn?.addEventListener("click", startHardZenMode); dailyCompleteCloseBtn?.addEventListener("click", closeDailyCompleteModal); dailyCompleteShareBtn?.addEventListener("click", copyShareResults); dailyCompleteStatsBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openStats(); }); dailyCompleteArchiveBtn?.addEventListener("click", () => { closeDailyCompleteModal(); openArchive(); }); hardMissedRetryBtn?.addEventListener("click", startHardPracticeMode); hardMissedShareBtn?.addEventListener("click", copyShareResults); hardMissedStatsBtn?.addEventListener("click", () => { closeHardMissedModal(); openStats(); }); hardMissedArchiveBtn?.addEventListener("click", () => { closeHardMissedModal(); openArchive(); });
 archiveListEl?.addEventListener("click", (e) => { const button = e.target.closest(".archive-day[data-date]"); if (!button) return; openArchiveDay(button.dataset.date); });
 archivePrevBtn?.addEventListener("click", () => { if (!archiveMonthKey) return; archiveMonthKey = shiftMonthKey(archiveMonthKey, -1); renderArchive(); });
@@ -1431,8 +1444,8 @@ function dismissTutorial() {
 function closeLaunchScreen() {
   if (launchScreenEl) launchScreenEl.hidden = true;
 }
-[statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl, dailyCompleteModalEl, hardMissedModalEl, hardReadyModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); if (modal === dailyCompleteModalEl) closeDailyCompleteModal(); if (modal === hardMissedModalEl) closeHardMissedModal(); if (modal === hardReadyModalEl) closeHardReadyModal(); }); });
-window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); closeDailyCompleteModal(); closeHardMissedModal(); closeHardReadyModal(); });
+[statsModalEl, archiveModalEl, badgesModalEl, badgeUnlockModalEl, badgeDetailModalEl, tileInfoModalEl, dailyCompleteModalEl, hardMissedModalEl, hardReadyModalEl].forEach((modal) => { modal?.addEventListener("click", (e) => { if (e.target !== modal) return; if (modal === statsModalEl) closeStats(); if (modal === archiveModalEl) closeArchive(); if (modal === badgesModalEl) closeBadges(); if (modal === badgeUnlockModalEl) closeBadgeUnlock(); if (modal === badgeDetailModalEl) closeBadgeDetail(); if (modal === tileInfoModalEl) hideTileInfo(); if (modal === dailyCompleteModalEl) closeDailyCompleteModal(); if (modal === hardMissedModalEl) closeHardMissedModal(); if (modal === hardReadyModalEl) closeHardReadyModal(); }); });
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredInstallPrompt = e; }); window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; }); window.addEventListener("resize", scheduleSlotLayout); window.addEventListener("load", () => { scheduleSlotLayout(); handleCalendarDayChange(); scheduleMidnightRollover(); }); window.addEventListener("visibilitychange", () => { if (!document.hidden) { handleCalendarDayChange(); scheduleMidnightRollover(); } }); window.addEventListener("keydown", (e) => { if (e.key !== "Escape") return; closeStats(); closeArchive(); closeBadges(); closeLifelineModals(); closeBadgeUnlock(); closeBadgeDetail(); hideTileInfo(); closeDailyCompleteModal(); closeHardMissedModal(); closeHardReadyModal(); });
 window.setInterval(handleCalendarDayChange, 60000);
 if (tutorialVideoEl) {
   tutorialVideoEl.addEventListener("loadedmetadata", () => {
