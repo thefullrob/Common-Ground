@@ -20,6 +20,582 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-06-11",
+  easy: {
+    title: "Breakfast + Hot + Drink",
+    difficultyEstimate: 85,
+    labels: { A: "Breakfast", B: "Hot", C: "Drink" },
+    tiles: [
+      { label: "Pancakes", correctSlot: "S1", logicNote: "Pancakes are a hot breakfast food, but they are not a drink.", fact: "Pancake-like flatbreads show up in ancient cooking traditions around the world." },
+      { label: "Orange Juice", correctSlot: "S2", logicNote: "Orange juice is a breakfast drink, but it is usually served cold rather than hot.", fact: "A small glass of orange juice became a classic American breakfast item in the 20th century." },
+      { label: "Hot Chocolate", correctSlot: "S3", logicNote: "Hot chocolate is a hot drink, but it is not mainly thought of as breakfast.", fact: "Chocolate drinks were enjoyed in Mesoamerica long before chocolate bars existed." },
+      { label: "Coffee", correctSlot: "S4", logicNote: "Coffee is a hot drink strongly associated with breakfast.", fact: "Coffee beans are seeds from the fruit of coffee plants." },
+      { label: "Cereal Bowl", correctSlot: null },
+      { label: "Fireplace", correctSlot: null },
+      { label: "Soda Can", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Sports + 1990s",
+    difficultyEstimate: 60,
+    labels: { A: "Movie", B: "Sports", C: "1990s" },
+    tiles: [
+      { label: "Hoosiers", correctSlot: "S1", logicNote: "Hoosiers is a sports movie, but it was released in the 1980s rather than the 1990s.", fact: "Hoosiers is loosely inspired by a real Indiana high school basketball championship run." },
+      { label: "Titanic", correctSlot: "S2", logicNote: "Titanic is a 1990s movie, but it is not a sports story.", fact: "Titanic was released in 1997 and won 11 Academy Awards." },
+      { label: "Michael Jordan", correctSlot: "S3", logicNote: "Michael Jordan dominated 1990s sports, but he is a person rather than a movie.", fact: "Jordan led the Chicago Bulls to six NBA championships in the 1990s." },
+      { label: "Space Jam", correctSlot: "S4", logicNote: "Space Jam is a 1990s movie built around basketball.", fact: "Space Jam paired Michael Jordan with Bugs Bunny and the Looney Tunes in 1996." },
+      { label: "Baseball Glove", correctSlot: null },
+      { label: "VHS Tape", correctSlot: null },
+      { label: "Popcorn Bucket", correctSlot: null },
+      { label: "The Godfather", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Actor + Oscar Winner + Superhero",
+    difficultyEstimate: 46,
+    labels: { A: "Actor", B: "Oscar Winner", C: "Superhero" },
+    tiles: [
+      { label: "Tom Hanks", correctSlot: "S1", logicNote: "Tom Hanks is an actor and Oscar winner, but he is not known for playing a superhero.", fact: "Tom Hanks won back-to-back Best Actor Oscars for Philadelphia and Forrest Gump." },
+      { label: "Chris Evans", correctSlot: "S2", logicNote: "Chris Evans is an actor who played Captain America, but he has not won an Oscar.", fact: "Evans first played Captain America in 2011's Captain America: The First Avenger." },
+      { label: "Spider-Verse", correctSlot: "S3", logicNote: "Spider-Man: Into the Spider-Verse is an Oscar-winning superhero movie, but it is not an actor.", fact: "Spider-Man: Into the Spider-Verse won the Oscar for Best Animated Feature." },
+      { label: "Halle Berry", correctSlot: "S4", logicNote: "Halle Berry is an Oscar-winning actor who played the superhero Storm in X-Men.", fact: "Halle Berry won Best Actress for Monster's Ball in 2002." },
+      { label: "Oscar Statue", correctSlot: null },
+      { label: "Captain America Shield", correctSlot: null },
+      { label: "Movie Ticket", correctSlot: null },
+      { label: "Director's Chair", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-10",
+  easy: {
+    title: "Animal + Black + White",
+    difficultyEstimate: 86,
+    labels: { A: "Animal", B: "Black", C: "White" },
+    tiles: [
+      { label: "Crow", correctSlot: "S1", logicNote: "A crow is an animal with jet-black feathers, but it is not white.", fact: "Crows are among the smartest birds, capable of using tools, recognizing individual human faces, and gathering around dead members of their flock in what scientists describe as 'funerals.'" },
+      { label: "Polar Bear", correctSlot: "S2", logicNote: "A polar bear is a white animal, but it is not black.", fact: "Polar bear fur looks white because it reflects visible light." },
+      { label: "Piano Keys", correctSlot: "S3", logicNote: "Piano keys are black and white, but they are not an animal.", fact: "Modern pianos usually have 88 keys." },
+      { label: "Panda", correctSlot: "S4", logicNote: "A panda is an animal with black-and-white coloring.", fact: "Giant pandas spend much of the day eating bamboo." },
+      { label: "Tiger", correctSlot: null },
+      { label: "Coal", correctSlot: null },
+      { label: "Milk", correctSlot: null },
+      { label: "Basketball", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "City + In USA + Starts With New",
+    difficultyEstimate: 61,
+    labels: { A: "City", B: "In USA", C: "Starts With New" },
+    tiles: [
+      { label: "Chicago", correctSlot: "S1", logicNote: "Chicago is a city in the United States, but it does not start with New.", fact: "Chicago sits on Lake Michigan and is famous for its architecture and deep-dish pizza." },
+      { label: "New Delhi", correctSlot: "S2", logicNote: "New Delhi is a city that starts with New, but it is in India rather than the United States.", fact: "New Delhi is the capital of India." },
+      { label: "New Jersey", correctSlot: "S3", logicNote: "New Jersey is in the United States and starts with New, but it is a state rather than a city.", fact: "New Jersey is nicknamed the Garden State." },
+      { label: "New York City", correctSlot: "S4", logicNote: "New York City is a U.S. city whose name starts with New.", fact: "New York City has five boroughs: Manhattan, Brooklyn, Queens, the Bronx, and Staten Island." },
+      { label: "Paris", correctSlot: null },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "New Shoes", correctSlot: null },
+      { label: "Coffee Cup", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "TV Show + Animated + 1990s",
+    difficultyEstimate: 48,
+    labels: { A: "TV Show", B: "Animated", C: "1990s" },
+    tiles: [
+      { label: "The Flintstones", correctSlot: "S1", logicNote: "The Flintstones is an animated TV show, but it first aired in the 1960s rather than the 1990s.", fact: "The Flintstones was one of prime-time television's first major animated sitcoms." },
+      { label: "Friends", correctSlot: "S2", logicNote: "Friends is a 1990s TV show, but it is live-action rather than animated.", fact: "Friends premiered in 1994 and ran for ten seasons." },
+      { label: "Toy Story", correctSlot: "S3", logicNote: "Toy Story is animated and from the 1990s, but it is a movie rather than a TV show.", fact: "Toy Story was the first feature-length film made entirely with computer animation." },
+      { label: "Rugrats", correctSlot: "S4", logicNote: "Rugrats is an animated TV show from the 1990s.", fact: "Rugrats became one of Nickelodeon's defining cartoons of the 1990s." },
+      { label: "Remote Control", correctSlot: null },
+      { label: "Cartoon Pencil", correctSlot: null },
+      { label: "Flannel Shirt", correctSlot: null },
+      { label: "Cookbook", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-09",
+  easy: {
+    title: "Water + Cold + Food",
+    difficultyEstimate: 84,
+    labels: { A: "Water", B: "Cold", C: "Food" },
+    tiles: [
+      { label: "Iceberg", correctSlot: "S1", logicNote: "An iceberg is frozen water and cold, but it is not food.", fact: "Most of an iceberg sits below the surface of the water." },
+      { label: "Soup", correctSlot: "S2", logicNote: "Soup is food made with water, but it is usually served hot rather than cold.", fact: "Chicken noodle soup became a pantry staple after canned soups became popular in the 20th century." },
+      { label: "Ice Cream", correctSlot: "S3", logicNote: "Ice cream is cold food, but it is not mainly thought of as water.", fact: "Ice cream needs air mixed in during freezing to get its smooth texture." },
+      { label: "Popsicle", correctSlot: "S4", logicNote: "A popsicle is frozen water-based food.", fact: "The Popsicle brand traces its origin to a frozen drink on a stick made by an 11-year-old in 1905." },
+      { label: "Lake", correctSlot: null },
+      { label: "Mittens", correctSlot: null },
+      { label: "Sandwich", correctSlot: null },
+      { label: "Chair", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Famous Person + Basketball + Chicago",
+    difficultyEstimate: 59,
+    labels: { A: "Famous Person", B: "Basketball", C: "Chicago" },
+    tiles: [
+      { label: "LeBron James", correctSlot: "S1", logicNote: "LeBron James is a famous basketball player, but he is not chiefly associated with Chicago.", fact: "LeBron James entered the NBA straight from high school in 2003." },
+      { label: "Oprah Winfrey", correctSlot: "S2", logicNote: "Oprah Winfrey is a famous person strongly tied to Chicago, but she is not known for basketball.", fact: "The Oprah Winfrey Show was taped in Chicago for most of its run." },
+      { label: "Chicago Bulls", correctSlot: "S3", logicNote: "The Chicago Bulls connect basketball and Chicago, but they are a team rather than a single famous person.", fact: "The Bulls won six NBA titles in the 1990s." },
+      { label: "Michael Jordan", correctSlot: "S4", logicNote: "Michael Jordan is a famous basketball figure forever linked with the Chicago Bulls.", fact: "Jordan won six Finals MVP awards with Chicago." },
+      { label: "Basketball Hoop", correctSlot: null },
+      { label: "Windy City Sign", correctSlot: null },
+      { label: "Celebrity Magazine", correctSlot: null },
+      { label: "Baseball Glove", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Holiday + Spring + American",
+    difficultyEstimate: 47,
+    labels: { A: "Holiday", B: "Spring", C: "American" },
+    tiles: [
+      { label: "Easter", correctSlot: "S1", logicNote: "Easter is a spring holiday, but it is a global Christian observance rather than something specifically American.", fact: "Easter does not fall on a fixed date — it lands on the first Sunday after the first full moon following the spring equinox, which is why it can move by more than a month between years." },
+      { label: "Thanksgiving", correctSlot: "S2", logicNote: "Thanksgiving is an American holiday, but it falls on the fourth Thursday of November rather than in spring.", fact: "President Abraham Lincoln declared the first national Thanksgiving in 1863, asking Americans to set aside the last Thursday in November even as the Civil War was still being fought." },
+      { label: "Kentucky Derby", correctSlot: "S3", logicNote: "The Kentucky Derby is a quintessentially American spring tradition, but it is a horse race rather than a holiday.", fact: "The Kentucky Derby has been run every year at Churchill Downs in Louisville since 1875, making it the longest continuously held major sporting event in the United States." },
+      { label: "Memorial Day", correctSlot: "S4", logicNote: "Memorial Day is an American holiday that falls in late May, so it fits all three categories.", fact: "Memorial Day grew out of post-Civil War remembrance ceremonies called Decoration Day, and Congress moved it to the last Monday in May in 1971 to create a reliable three-day weekend." },
+      { label: "Christmas", correctSlot: null },
+      { label: "Daffodils", correctSlot: null },
+      { label: "Apple Pie", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-08",
+  easy: {
+    title: "Color + Traffic + Light",
+    difficultyEstimate: 84,
+    labels: { A: "Color", B: "Traffic", C: "Light" },
+    tiles: [
+      { label: "Stop Sign", correctSlot: "S1", logicNote: "A stop sign is red and used in traffic, but it is not a light.", fact: "Modern stop signs are red octagons so drivers can recognize them quickly." },
+      { label: "Red Laser", correctSlot: "S2", logicNote: "A red laser is a colored light, but it is not part of traffic control.", fact: "Laser light is unusually focused, which is why laser pointers make sharp dots." },
+      { label: "Streetlight", correctSlot: "S3", logicNote: "A streetlight is a light used along roads and traffic routes, but it is not a color.", fact: "Streetlights help drivers and pedestrians see roads more clearly at night." },
+      { label: "Red Light", correctSlot: "S4", logicNote: "A red light is a color, a traffic signal, and a light.", fact: "Red is used for stop signals partly because it is easy to see from far away." },
+      { label: "Blue Paint", correctSlot: null },
+      { label: "Road Map", correctSlot: null },
+      { label: "Flashlight", correctSlot: null },
+      { label: "Banana Peel", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Food + Italian + Round",
+    difficultyEstimate: 60,
+    labels: { A: "Food", B: "Italian", C: "Round" },
+    tiles: [
+      { label: "Lasagna", correctSlot: "S1", logicNote: "Lasagna is Italian food, but it is usually baked in a rectangular pan rather than round.", fact: "Lasagna is made by layering pasta sheets with sauce, cheese, and fillings." },
+      { label: "Bagel", correctSlot: "S2", logicNote: "A bagel is round food, but it is not Italian.", fact: "Bagels are closely associated with Jewish communities in Poland and later New York." },
+      { label: "Colosseum", correctSlot: "S3", logicNote: "The Colosseum is an Italian landmark with a round or oval shape, but it is not food.", fact: "The Colosseum in Rome could hold tens of thousands of spectators." },
+      { label: "Pizza", correctSlot: "S4", logicNote: "Pizza is Italian food that is often round.", fact: "Modern pizza is strongly associated with Naples, Italy." },
+      { label: "Pasta Fork", correctSlot: null },
+      { label: "Basketball", correctSlot: null },
+      { label: "Salad Bowl", correctSlot: null },
+      { label: "Road Map", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. President + Mount Rushmore + On Money",
+    difficultyEstimate: 43,
+    labels: { A: "U.S. President", B: "Mount Rushmore", C: "On Money" },
+    tiles: [
+      { label: "Theodore Roosevelt", correctSlot: "S1", logicNote: "Theodore Roosevelt was a U.S. president on Mount Rushmore, but he is not on common everyday U.S. bills or coins.", fact: "Roosevelt helped create the modern national park system." },
+      { label: "Andrew Jackson", correctSlot: "S2", logicNote: "Andrew Jackson was a U.S. president on the twenty-dollar bill, but he is not on Mount Rushmore.", fact: "Jackson's image has appeared on the U.S. twenty-dollar bill since the 1920s." },
+      { label: "South Dakota Quarter", correctSlot: "S3", logicNote: "The South Dakota quarter shows Mount Rushmore and is money, but it is not a president.", fact: "South Dakota's state quarter features Mount Rushmore, wheat, and a pheasant." },
+      { label: "George Washington", correctSlot: "S4", logicNote: "George Washington was a U.S. president, appears on Mount Rushmore, and is on U.S. money.", fact: "Washington appears on the one-dollar bill and the quarter." },
+      { label: "White House", correctSlot: null },
+      { label: "Dollar Sign", correctSlot: null },
+      { label: "Black Hills", correctSlot: null },
+      { label: "Liberty Bell", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-07",
+  easy: {
+    title: "Animal + Pet + Fish",
+    difficultyEstimate: 85,
+    labels: { A: "Animal", B: "Pet", C: "Fish" },
+    tiles: [
+      { label: "Dog", correctSlot: "S1", logicNote: "A dog is an animal and a common pet, but it is not a fish.", fact: "Dogs were domesticated from wolves thousands of years ago." },
+      { label: "Salmon", correctSlot: "S2", logicNote: "A salmon is an animal and a fish, but it is not usually kept as a pet.", fact: "Many salmon swim from the ocean back to freshwater streams to spawn." },
+      { label: "Aquarium", correctSlot: "S3", logicNote: "An aquarium is used for pet fish, but it is a container rather than an animal.", fact: "Public aquariums became popular attractions in the 1800s." },
+      { label: "Goldfish", correctSlot: "S4", logicNote: "A goldfish is an animal, a fish, and a common pet.", fact: "Goldfish were first bred in China more than a thousand years ago." },
+      { label: "Zoo Sign", correctSlot: null },
+      { label: "Leash", correctSlot: null },
+      { label: "Fishing Rod", correctSlot: null },
+      { label: "Guitar", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + New York + Comedy",
+    difficultyEstimate: 59,
+    labels: { A: "Movie", B: "New York", C: "Comedy" },
+    tiles: [
+      { label: "King Kong", correctSlot: "S1", logicNote: "King Kong is a movie strongly tied to New York, but it is not a comedy.", fact: "The original King Kong was released in 1933." },
+      { label: "Bridesmaids", correctSlot: "S2", logicNote: "Bridesmaids is a comedy movie, but it is not a New York story.", fact: "Bridesmaids helped make Melissa McCarthy a breakout movie star." },
+      { label: "Comedy Cellar", correctSlot: "S3", logicNote: "The Comedy Cellar is a famous New York comedy club, but it is not a movie.", fact: "The Comedy Cellar in Greenwich Village is known for surprise drop-ins by major comedians." },
+      { label: "Elf", correctSlot: "S4", logicNote: "Elf is a comedy movie with major scenes in New York City.", fact: "Elf stars Will Ferrell as Buddy, who travels to New York to find his father." },
+      { label: "Subway Map", correctSlot: null },
+      { label: "Movie Camera", correctSlot: null },
+      { label: "Punchline", correctSlot: null },
+      { label: "Snow Boots", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Company + Tech + Fruit Word",
+    difficultyEstimate: 46,
+    labels: { A: "Company", B: "Tech", C: "Fruit Word" },
+    tiles: [
+      { label: "Microsoft", correctSlot: "S1", logicNote: "Microsoft is a technology company, but its name is not a fruit word.", fact: "Microsoft was founded by Bill Gates and Paul Allen in 1975." },
+      { label: "Banana Republic", correctSlot: "S2", logicNote: "Banana Republic is a company with a fruit word in its name, but it is not a technology company.", fact: "Banana Republic began as a safari-themed clothing store in California." },
+      { label: "Raspberry Pi", correctSlot: "S3", logicNote: "Raspberry Pi is a tech product with a fruit word in its name, but it is not the company itself.", fact: "Raspberry Pi computers are small, low-cost boards often used to learn programming." },
+      { label: "Apple", correctSlot: "S4", logicNote: "Apple is a technology company with a fruit word as its name.", fact: "Apple's first personal computer, the Apple I, was introduced in 1976." },
+      { label: "Laptop", correctSlot: null },
+      { label: "Banana Peel", correctSlot: null },
+      { label: "Office Building", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-06",
+  easy: {
+    title: "Sport + Ball + Water",
+    difficultyEstimate: 84,
+    labels: { A: "Sport", B: "Ball", C: "Water" },
+    tiles: [
+      { label: "Basketball", correctSlot: "S1", logicNote: "Basketball is a sport played with a ball, but it is not played in water.", fact: "A regulation basketball hoop is 10 feet high." },
+      { label: "Swimming", correctSlot: "S2", logicNote: "Swimming is a water sport, but it does not use a ball.", fact: "Swimming has been part of the modern Olympics since 1896." },
+      { label: "Beach Ball", correctSlot: "S3", logicNote: "A beach ball is a ball often used around water, but it is not a sport by itself.", fact: "Beach balls became popular lightweight toys in the 20th century." },
+      { label: "Water Polo", correctSlot: "S4", logicNote: "Water polo is a sport played in water with a ball.", fact: "Water polo is one of the oldest Olympic team sports." },
+      { label: "Tennis Racket", correctSlot: null },
+      { label: "Marble", correctSlot: null },
+      { label: "Lake", correctSlot: null },
+      { label: "Sandwich", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "City + Olympics + Greece",
+    difficultyEstimate: 58,
+    labels: { A: "City", B: "Olympics", C: "Greece" },
+    tiles: [
+      { label: "Paris", correctSlot: "S1", logicNote: "Paris is a city that has hosted the Olympics, but it is in France rather than Greece.", fact: "Paris hosted the Summer Olympics in 1900, 1924, and 2024." },
+      { label: "Sparta", correctSlot: "S2", logicNote: "Sparta is a Greek city, but it is not the main city associated with the modern Olympics.", fact: "Ancient Sparta was famous for its military culture." },
+      { label: "Olympic Flame", correctSlot: "S3", logicNote: "The Olympic flame connects the Olympics and Greece, but it is not a city.", fact: "The Olympic flame is lit in Olympia, Greece before each modern Games." },
+      { label: "Athens", correctSlot: "S4", logicNote: "Athens is a Greek city that hosted the modern Olympics.", fact: "Athens hosted the first modern Olympic Games in 1896." },
+      { label: "Marathon Medal", correctSlot: null },
+      { label: "Greek Salad", correctSlot: null },
+      { label: "City Hall", correctSlot: null },
+      { label: "Ski Jacket", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Actor + Comedy + Canadian",
+    difficultyEstimate: 47,
+    labels: { A: "Actor", B: "Comedy", C: "Canadian" },
+    tiles: [
+      { label: "Steve Carell", correctSlot: "S1", logicNote: "Steve Carell is an actor known for comedy, but he is American rather than Canadian.", fact: "Carell played Michael Scott on the U.S. version of The Office." },
+      { label: "Ryan Gosling", correctSlot: "S2", logicNote: "Ryan Gosling is a Canadian actor, but he is not mainly known as a comedy performer.", fact: "Gosling began as a child performer on The Mickey Mouse Club." },
+      { label: "SCTV", correctSlot: "S3", logicNote: "SCTV was a Canadian comedy show, but it is a program rather than an actor.", fact: "SCTV launched the careers of comedians including Eugene Levy and Catherine O'Hara." },
+      { label: "Jim Carrey", correctSlot: "S4", logicNote: "Jim Carrey is a Canadian actor famous for comedy.", fact: "Carrey starred in Ace Ventura, The Mask, and Dumb and Dumber in the same year, 1994." },
+      { label: "Movie Script", correctSlot: null },
+      { label: "Maple Leaf", correctSlot: null },
+      { label: "Laugh Track", correctSlot: null },
+      { label: "Hockey Puck", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-05",
+  easy: {
+    title: "Food + Yellow + Long",
+    difficultyEstimate: 85,
+    labels: { A: "Food", B: "Yellow", C: "Long" },
+    tiles: [
+      { label: "Lemon", correctSlot: "S1", logicNote: "A lemon is yellow food, but it is not long.", fact: "Lemons are high in vitamin C and are used in both sweet and savory cooking." },
+      { label: "Hot Dog", correctSlot: "S2", logicNote: "A hot dog is long food, but it is not yellow.", fact: "Hot dogs became closely tied to baseball parks and summer cookouts in the United States." },
+      { label: "Pencil", correctSlot: "S3", logicNote: "A pencil is often yellow and long, but it is not food.", fact: "The classic yellow pencil color became popular in the late 1800s." },
+      { label: "Banana", correctSlot: "S4", logicNote: "A banana is yellow, long, and food.", fact: "Bananas grow in clusters called hands." },
+      { label: "Apple", correctSlot: null },
+      { label: "Sunshine", correctSlot: null },
+      { label: "Rope", correctSlot: null },
+      { label: "Desk", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Family + Animated",
+    difficultyEstimate: 60,
+    labels: { A: "TV Show", B: "Family", C: "Animated" },
+    tiles: [
+      { label: "Modern Family", correctSlot: "S1", logicNote: "Modern Family is a TV show about a family, but it is live-action rather than animated.", fact: "Modern Family won multiple Emmy Awards for Outstanding Comedy Series." },
+      { label: "Looney Tunes", correctSlot: "S2", logicNote: "Looney Tunes is animated television entertainment, but it is not mainly about one family.", fact: "Bugs Bunny became one of the most recognizable cartoon characters in American pop culture." },
+      { label: "The Incredibles", correctSlot: "S3", logicNote: "The Incredibles is about an animated family, but it is a movie rather than a TV show.", fact: "The Incredibles follows a family of superheroes trying to live normal lives." },
+      { label: "The Simpsons", correctSlot: "S4", logicNote: "The Simpsons is an animated TV show about a family.", fact: "The Simpsons is one of the longest-running scripted shows in television history." },
+      { label: "Remote Control", correctSlot: null },
+      { label: "Family Photo", correctSlot: null },
+      { label: "Animation Desk", correctSlot: null },
+      { label: "Baseball Bat", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Island + In Europe",
+    difficultyEstimate: 45,
+    labels: { A: "Country", B: "Island", C: "In Europe" },
+    tiles: [
+      { label: "Madagascar", correctSlot: "S1", logicNote: "Madagascar is an island country, but it is near Africa rather than in Europe.", fact: "Madagascar is home to lemurs, which live naturally nowhere else." },
+      { label: "Germany", correctSlot: "S2", logicNote: "Germany is a country in Europe, but it is not an island.", fact: "Germany has the largest population in the European Union." },
+      { label: "Sicily", correctSlot: "S3", logicNote: "Sicily is an island in Europe, but it is part of Italy rather than a country.", fact: "Sicily is the largest island in the Mediterranean Sea." },
+      { label: "Ireland", correctSlot: "S4", logicNote: "Ireland is a European island country.", fact: "Ireland is often called the Emerald Isle because of its green landscape." },
+      { label: "Passport", correctSlot: null },
+      { label: "Beach Towel", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Volcano", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-04",
+  easy: {
+    title: "Clothing + Winter + Head",
+    difficultyEstimate: 84,
+    labels: { A: "Clothing", B: "Winter", C: "Head" },
+    tiles: [
+      { label: "Coat", correctSlot: "S1", logicNote: "A coat is winter clothing, but it is worn on the body rather than the head.", fact: "Wool coats stay warm partly because wool fibers trap air." },
+      { label: "Baseball Cap", correctSlot: "S2", logicNote: "A baseball cap is clothing worn on the head, but it is not specifically winter gear.", fact: "Baseball caps became everyday fashion after starting as part of team uniforms." },
+      { label: "Snowman's Head", correctSlot: "S3", logicNote: "A snowman's head connects winter and head, but it is not clothing.", fact: "Snowmen have appeared in European art for hundreds of years." },
+      { label: "Beanie", correctSlot: "S4", logicNote: "A beanie is winter clothing worn on the head.", fact: "Knit caps are called by different names around the world, including beanies and toques." },
+      { label: "Socks", correctSlot: null },
+      { label: "Snowflake", correctSlot: null },
+      { label: "Face", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Food + Mexican + Wrapped",
+    difficultyEstimate: 59,
+    labels: { A: "Food", B: "Mexican", C: "Wrapped" },
+    tiles: [
+      { label: "Salsa", correctSlot: "S1", logicNote: "Salsa is Mexican food, but it is served in a bowl or jar rather than wrapped.", fact: "Salsa simply means sauce in Spanish." },
+      { label: "Sushi Roll", correctSlot: "S2", logicNote: "A sushi roll is wrapped food, but it is Japanese rather than Mexican.", fact: "Many sushi rolls use nori, a sheet of dried seaweed." },
+      { label: "Serape", correctSlot: "S3", logicNote: "A serape is Mexican and can be wrapped around the body, but it is not food.", fact: "A serape is a colorful blanket-like garment associated with Mexican culture." },
+      { label: "Burrito", correctSlot: "S4", logicNote: "A burrito is Mexican food wrapped in a tortilla.", fact: "Burrito means little donkey in Spanish, though the food's name origin is debated." },
+      { label: "Tortilla Chip", correctSlot: null },
+      { label: "Wrapping Paper", correctSlot: null },
+      { label: "Sombrero", correctSlot: null },
+      { label: "Pencil Case", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Book + Movie + Fantasy",
+    difficultyEstimate: 47,
+    labels: { A: "Book", B: "Movie", C: "Fantasy" },
+    tiles: [
+      { label: "Pride and Prejudice", correctSlot: "S1", logicNote: "Pride and Prejudice is a famous book adapted into films many times, but it is a Regency-era romance rather than a fantasy.", fact: "Jane Austen's 1813 novel was first published anonymously as 'by the Author of Sense and Sensibility,' and the BBC's 1995 adaptation starring Colin Firth sparked a worldwide Austen revival." },
+      { label: "Game of Thrones", correctSlot: "S2", logicNote: "George R.R. Martin's Game of Thrones books are a sweeping fantasy series, but their only screen version is HBO's TV show — not a theatrical movie.", fact: "The first novel, A Game of Thrones, was published in 1996, and HBO's TV adaptation went on to win 59 Emmy Awards, more than any other prime-time scripted series." },
+      { label: "Pan's Labyrinth", correctSlot: "S3", logicNote: "Pan's Labyrinth is a dark fantasy movie, but it was an original screenplay by Guillermo del Toro rather than an adaptation of a book.", fact: "Set against the brutal aftermath of the Spanish Civil War in 1944, Pan's Labyrinth won three Academy Awards in 2007 for Cinematography, Art Direction, and Makeup." },
+      { label: "The Lord of the Rings", correctSlot: "S4", logicNote: "The Lord of the Rings is a celebrated book trilogy and movie trilogy, and it is a foundational work of fantasy, so it fits all three categories.", fact: "J.R.R. Tolkien spent more than a decade writing the trilogy, first published in 1954–55, and Peter Jackson's films ended their run by sweeping all 11 Oscars The Return of the King was nominated for in 2004." },
+      { label: "The Catcher in the Rye", correctSlot: null },
+      { label: "Casablanca", correctSlot: null },
+      { label: "Magic Wand", correctSlot: null },
+      { label: "Soccer Jersey", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-03",
+  easy: {
+    title: "Animal + Big + Gray",
+    difficultyEstimate: 86,
+    labels: { A: "Animal", B: "Big", C: "Gray" },
+    tiles: [
+      { label: "Giraffe", correctSlot: "S1", logicNote: "A giraffe is a big animal, but it is not gray.", fact: "Giraffes are the tallest land animals." },
+      { label: "Mouse", correctSlot: "S2", logicNote: "A mouse is a small animal that is typically gray, but it is the opposite of big.", fact: "House mice can squeeze through openings as narrow as a dime because their skeletons are flexible and their skulls are the widest part of their bodies." },
+      { label: "Parking Garage", correctSlot: "S3", logicNote: "A parking garage is often big and gray, but it is not an animal.", fact: "Multi-level parking garages became common as cities grew around cars." },
+      { label: "Elephant", correctSlot: "S4", logicNote: "An elephant is a big gray animal.", fact: "Elephants are the largest land animals alive today." },
+      { label: "Ant", correctSlot: null },
+      { label: "Skyscraper", correctSlot: null },
+      { label: "Silver Coin", correctSlot: null },
+      { label: "Toast", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Animal + Ocean",
+    difficultyEstimate: 59,
+    labels: { A: "Movie", B: "Animal", C: "Ocean" },
+    tiles: [
+      { label: "The Lion King", correctSlot: "S1", logicNote: "The Lion King is a movie about animals, but it is set mostly on land rather than in the ocean.", fact: "The Lion King was released by Disney in 1994." },
+      { label: "Titanic", correctSlot: "S2", logicNote: "Titanic is a movie set on the ocean, but it is not about animals.", fact: "Titanic won Best Picture at the Academy Awards." },
+      { label: "Dolphin", correctSlot: "S3", logicNote: "A dolphin is an ocean animal, but it is not a movie.", fact: "Dolphins are mammals, not fish." },
+      { label: "Finding Nemo", correctSlot: "S4", logicNote: "Finding Nemo is a movie about ocean animals.", fact: "Finding Nemo follows a clownfish searching across the ocean for his son." },
+      { label: "Movie Ticket", correctSlot: null },
+      { label: "Zoo Map", correctSlot: null },
+      { label: "Surfboard", correctSlot: null },
+      { label: "Baseball Cap", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Newspaper + American + Founded Before 1900",
+    difficultyEstimate: 46,
+    labels: { A: "Newspaper", B: "American", C: "Founded Before 1900" },
+    tiles: [
+      { label: "New York Daily News", correctSlot: "S1", logicNote: "The New York Daily News is a famous American newspaper, but it was founded in 1919 rather than before 1900.", fact: "The Daily News was the first U.S. paper printed in the tabloid format, and its 1975 headline 'FORD TO CITY: DROP DEAD' is often credited with reshaping the federal bailout debate during New York City's near-bankruptcy." },
+      { label: "The Times of London", correctSlot: "S2", logicNote: "The Times of London is a newspaper founded well before 1900, but it is British rather than American.", fact: "Founded in 1785, The Times of London was nicknamed 'The Thunderer' in the 19th century for its forceful editorials and has been one of Britain's papers of record ever since." },
+      { label: "Statue of Liberty", correctSlot: "S3", logicNote: "The Statue of Liberty is an American landmark dedicated in 1886, but it is a monument rather than a newspaper.", fact: "The statue was a gift from France marking the centennial of American independence, and her copper skin — once shiny like a penny — turned green over about 30 years as it weathered into a protective patina." },
+      { label: "The New York Times", correctSlot: "S4", logicNote: "The New York Times is an American newspaper founded in 1851, so it fits all three categories.", fact: "The Times has won more Pulitzer Prizes than any other news organization — well over 130 — and its motto 'All the News That's Fit to Print' has appeared on its front page since 1897." },
+      { label: "Le Monde", correctSlot: null },
+      { label: "Empire State Building", correctSlot: null },
+      { label: "Mona Lisa", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-02",
+  easy: {
+    title: "Plant + Sharp + Desert",
+    difficultyEstimate: 84,
+    labels: { A: "Plant", B: "Sharp", C: "Desert" },
+    tiles: [
+      { label: "Rose Bush", correctSlot: "S1", logicNote: "A rose bush is a plant with sharp thorns, but it grows in temperate gardens rather than the desert.", fact: "Rose thorns are technically called prickles — outgrowths of the stem's outer layer, distinct from the true thorns of plants like hawthorn that grow from the wood itself." },
+      { label: "Tumbleweed", correctSlot: "S2", logicNote: "A tumbleweed is a desert plant that rolls across dry land, but its dried branches are brittle rather than sharp.", fact: "The classic tumbleweed of Western movies is mostly Russian thistle, an invasive species that arrived in South Dakota around 1873, likely as a contaminant in flax seed shipments." },
+      { label: "Scorpion Stinger", correctSlot: "S3", logicNote: "A scorpion's stinger is sharp and lives in deserts around the world, but it is part of an animal rather than a plant.", fact: "A scorpion's venom-tipped stinger is called a telson, and the deathstalker of North African deserts is considered one of the most dangerous species, though its sting is rarely fatal to healthy adults." },
+      { label: "Cactus", correctSlot: "S4", logicNote: "A cactus is a plant covered in sharp spines that thrives in the desert, so it fits all three categories.", fact: "A saguaro cactus of the Sonoran Desert can live more than 150 years and grow over 40 feet tall, but a ten-year-old saguaro is often less than two inches high." },
+      { label: "Houseplant", correctSlot: null },
+      { label: "Kitchen Knife", correctSlot: null },
+      { label: "Camel", correctSlot: null },
+      { label: "Library Card", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Disney + Princess",
+    difficultyEstimate: 60,
+    labels: { A: "Movie", B: "Disney", C: "Princess" },
+    tiles: [
+      { label: "Toy Story", correctSlot: "S1", logicNote: "Toy Story is a Disney/Pixar movie, but its leads are talking toys rather than a princess.", fact: "Toy Story was released in 1995 as the first feature film made entirely with computer animation, and its success helped cement Pixar as a major animation studio." },
+      { label: "Shrek", correctSlot: "S2", logicNote: "Shrek is a movie featuring Princess Fiona, but it was made by DreamWorks rather than Disney.", fact: "Shrek opened in 2001 and won the very first Academy Award for Best Animated Feature, beating both Monsters, Inc. and Jimmy Neutron: Boy Genius." },
+      { label: "Cinderella Castle", correctSlot: "S3", logicNote: "Cinderella Castle is a Disney landmark themed around a princess, but it is a building in the Magic Kingdom rather than a movie.", fact: "Cinderella Castle at Walt Disney World stands 189 feet tall and uses forced perspective — each upper story is built progressively smaller — to look taller than it really is." },
+      { label: "Frozen", correctSlot: "S4", logicNote: "Frozen is a Disney movie centered on Princess Anna and her sister Queen Elsa, so it fits all three categories.", fact: "Released in 2013, Frozen became the highest-grossing animated film of its time, and its theme song 'Let It Go' won the Academy Award for Best Original Song." },
+      { label: "Citizen Kane", correctSlot: null },
+      { label: "Mickey Mouse Ears", correctSlot: null },
+      { label: "Tiara", correctSlot: null },
+      { label: "Bus Ticket", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Singer + Country Music + Texas",
+    difficultyEstimate: 44,
+    labels: { A: "Singer", B: "Country Music", C: "Texas" },
+    tiles: [
+      { label: "Dolly Parton", correctSlot: "S1", logicNote: "Dolly Parton is a celebrated country singer, but she grew up in the Smoky Mountains of east Tennessee rather than in Texas.", fact: "Parton was born in Sevier County, Tennessee in 1946, and her Imagination Library — launched there in 1995 — has now mailed more than 200 million free books to children around the world." },
+      { label: "Janis Joplin", correctSlot: "S2", logicNote: "Janis Joplin was a Texas-born singer, but her psychedelic rock and blues belt-outs were a world away from country music.", fact: "Joplin grew up in the oil refinery town of Port Arthur, Texas, and her brief, blazing career produced only four studio albums before her death in 1970 at age 27." },
+      { label: "Austin City Limits", correctSlot: "S3", logicNote: "Austin City Limits is a Texas institution showcasing country and Americana acts, but it is a television program and festival rather than a singer.", fact: "Austin City Limits debuted on PBS in 1976 with Willie Nelson as its very first guest, and it is now the longest-running music program in American television history." },
+      { label: "Willie Nelson", correctSlot: "S4", logicNote: "Willie Nelson is a country singer who was born and raised in Texas, so he fits all three categories.", fact: "Nelson was born in the tiny town of Abbott, Texas in 1933, and his trademark guitar, nicknamed 'Trigger,' has a hole worn through its top from decades of finger-picking." },
+      { label: "Adele", correctSlot: null },
+      { label: "Grand Ole Opry", correctSlot: null },
+      { label: "The Alamo", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-01",
+  easy: {
+    title: "Vehicle + Loud + Sky",
+    difficultyEstimate: 84,
+    labels: { A: "Vehicle", B: "Loud", C: "Sky" },
+    tiles: [
+      { label: "Motorcycle", correctSlot: "S1", logicNote: "A motorcycle is a loud vehicle, but it travels on the ground rather than through the sky.", fact: "The Harley-Davidson V-twin engine's distinctive uneven idle — the so-called 'potato-potato' sound — is so iconic the company once tried to register it as a trademarked sound mark." },
+      { label: "Hot Air Balloon", correctSlot: "S2", logicNote: "A hot air balloon is a vehicle that travels through the sky, but it drifts almost silently rather than loudly.", fact: "The first manned hot air balloon flight lifted off near Paris in 1783, carrying two passengers for about 25 minutes — a public spectacle that reportedly drew a crowd of around 400,000 onlookers." },
+      { label: "Thunder", correctSlot: "S3", logicNote: "Thunder is a loud sound that comes from the sky, but it is a weather phenomenon rather than a vehicle.", fact: "Thunder is the sound of air rapidly expanding along the path of a lightning bolt, which can briefly heat the surrounding atmosphere to about 50,000 degrees Fahrenheit — five times hotter than the surface of the Sun." },
+      { label: "Helicopter", correctSlot: "S4", logicNote: "A helicopter is a loud flying vehicle, so it fits all three categories.", fact: "Igor Sikorsky's VS-300, which first hovered in 1939, became the template for modern single-rotor helicopters — though Leonardo da Vinci had sketched a vertical-flight machine more than 450 years earlier." },
+      { label: "Bicycle", correctSlot: null },
+      { label: "Cymbals", correctSlot: null },
+      { label: "Cloud", correctSlot: null },
+      { label: "Library", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Drink + Coffee + Italian",
+    difficultyEstimate: 60,
+    labels: { A: "Drink", B: "Coffee", C: "Italian" },
+    tiles: [
+      { label: "Café au Lait", correctSlot: "S1", logicNote: "Café au lait is a coffee drink, but it is French rather than Italian.", fact: "Café au lait — literally 'coffee with milk' — became the standard Parisian breakfast in the 19th century, often served in shallow bowls wide enough to dunk a croissant in." },
+      { label: "Limoncello", correctSlot: "S2", logicNote: "Limoncello is a classic Italian drink, but it is a lemon liqueur rather than a coffee.", fact: "Limoncello is traditionally made from Sorrento lemons grown along Italy's Amalfi Coast, where the rind is steeped in alcohol for weeks before sugar syrup is added." },
+      { label: "Moka Pot", correctSlot: "S3", logicNote: "A Moka pot is an Italian device for brewing coffee, but it is a stovetop tool rather than a drink itself.", fact: "The eight-sided aluminum Moka pot was patented by Alfonso Bialetti in 1933, and one is reportedly still found in roughly 90 percent of Italian households." },
+      { label: "Espresso", correctSlot: "S4", logicNote: "Espresso is an Italian coffee drink, so it fits all three categories.", fact: "An espresso is brewed by forcing nearly boiling water through finely ground beans at about nine atmospheres of pressure, producing a concentrated shot in roughly 25 seconds." },
+      { label: "Tea", correctSlot: null },
+      { label: "Vespa", correctSlot: null },
+      { label: "French Press", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Author + Mystery + Female",
+    difficultyEstimate: 44,
+    labels: { A: "Author", B: "Mystery", C: "Female" },
+    tiles: [
+      { label: "Edgar Allan Poe", correctSlot: "S1", logicNote: "Edgar Allan Poe was an author who essentially invented the modern detective story, but he was not female.", fact: "Poe's 1841 tale 'The Murders in the Rue Morgue' introduced the detective C. Auguste Dupin and is widely credited as the first modern detective story, predating Sherlock Holmes by nearly half a century." },
+      { label: "Jane Austen", correctSlot: "S2", logicNote: "Jane Austen was a celebrated female author, but she wrote social romances rather than mysteries.", fact: "Austen published her novels anonymously during her lifetime — the title pages credited only 'A Lady' — and her authorship was confirmed publicly only after her death in 1817." },
+      { label: "Nancy Drew", correctSlot: "S3", logicNote: "Nancy Drew is a famous female mystery solver, but she is a fictional teenage detective rather than a real author.", fact: "Nancy Drew first appeared in 1930 and has been written over the decades by many different ghostwriters under the shared pen name Carolyn Keene, with the series selling more than 80 million copies worldwide." },
+      { label: "Agatha Christie", correctSlot: "S4", logicNote: "Agatha Christie was a female author of mystery novels, so she fits all three categories.", fact: "Agatha Christie is the best-selling novelist in history, with about 2 billion copies of her roughly 66 detective novels sold in more than 100 languages." },
+      { label: "Sherlock Holmes", correctSlot: null },
+      { label: "J.R.R. Tolkien", correctSlot: null },
+      { label: "Cleopatra", correctSlot: null },
+      { label: "Mt. Everest", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-05-31",
+  easy: {
+    title: "Fruit + Red + Round",
+    difficultyEstimate: 85,
+    labels: { A: "Fruit", B: "Red", C: "Round" },
+    tiles: [
+      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is a red fruit, but it is heart-shaped with a pointy tip rather than round.", fact: "Strawberries are the only common fruit with their seeds on the outside — a single berry carries around 200 of them, which are technically the plant's true fruits." },
+      { label: "Orange", correctSlot: "S2", logicNote: "An orange is a round fruit, but it is orange in color rather than red.", fact: "The color name 'orange' came from the fruit, not the other way around — before oranges spread through Europe, English speakers usually described the shade as 'yellow-red.'" },
+      { label: "Christmas Ornament", correctSlot: "S3", logicNote: "A red Christmas ornament is red and round, but it is a decoration rather than a fruit.", fact: "Glass Christmas ornaments were first crafted in the German town of Lauscha in the 1840s by glassblowers who had previously made bottles and beads." },
+      { label: "Cherry", correctSlot: "S4", logicNote: "A cherry is a red fruit and is round, so it fits all three categories.", fact: "Cherry trees bloom for only about two weeks in spring, and Washington, D.C.'s Tidal Basin holds roughly 3,800 of them — a gift from the city of Tokyo in 1912." },
+      { label: "Banana", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null },
+      { label: "Carrot", correctSlot: null },
+      { label: "Brick", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Building + Famous + White",
+    difficultyEstimate: 60,
+    labels: { A: "Building", B: "Famous", C: "White" },
+    tiles: [
+      { label: "Burj Khalifa", correctSlot: "S1", logicNote: "The Burj Khalifa is a famous building, but its glass-and-steel facade reads as silver rather than white.", fact: "At 2,717 feet, the Burj Khalifa in Dubai has been the world's tallest building since it opened in 2010, with more than 160 occupied floors above ground." },
+      { label: "Greek Villa", correctSlot: "S2", logicNote: "A Greek villa is a building traditionally painted bright white, but it is a vernacular style rather than a single famous landmark.", fact: "The whitewashed walls of the Cyclades, like those on Santorini, were widely required by Greek health regulations in the 1930s because lime wash acts as a natural disinfectant in hot weather." },
+      { label: "Moby Dick", correctSlot: "S3", logicNote: "Moby Dick is a famous white whale from Herman Melville's novel, but a whale is not a building.", fact: "Melville based the white whale partly on Mocha Dick, a real albino sperm whale that survived dozens of harpoon attacks off the coast of Chile in the early 1800s." },
+      { label: "Taj Mahal", correctSlot: "S4", logicNote: "The Taj Mahal is a building, it is world-famous, and it is made of gleaming white marble — so it fits all three categories.", fact: "The Taj Mahal was built by Mughal emperor Shah Jahan between 1632 and 1653 as a tomb for his wife Mumtaz Mahal, and its marble appears to shift color from pink at dawn to gold at dusk." },
+      { label: "Mt. Rushmore", correctSlot: null },
+      { label: "Snowflake", correctSlot: null },
+      { label: "Garden Shed", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Capital + European + Coastal",
+    difficultyEstimate: 44,
+    labels: { A: "Capital", B: "European", C: "Coastal" },
+    tiles: [
+      { label: "Madrid", correctSlot: "S1", logicNote: "Madrid is the European capital of Spain, but it sits inland on a high central plateau rather than on the coast.", fact: "At about 2,150 feet above sea level, Madrid is the highest capital city in the European Union, perched on the Meseta Central more than 200 miles from the nearest beach." },
+      { label: "Tokyo", correctSlot: "S2", logicNote: "Tokyo is a capital city on a coast, but it is in Asia rather than Europe.", fact: "Tokyo sits on Tokyo Bay along the Pacific Ocean, and its greater metropolitan area is the most populous on Earth, with about 37 million residents." },
+      { label: "Barcelona", correctSlot: "S3", logicNote: "Barcelona is a European city on the Mediterranean coast, but it is not a national capital — Spain's capital is Madrid.", fact: "Barcelona is the capital of the autonomous region of Catalonia, but not of Spain — a distinction at the heart of Catalan independence campaigns that flared repeatedly through the 2010s." },
+      { label: "Lisbon", correctSlot: "S4", logicNote: "Lisbon is the European capital of Portugal and sits on the Atlantic coast, so it fits all three categories.", fact: "Lisbon is one of the oldest cities in Western Europe, predating London and Paris by centuries, and was almost destroyed by an enormous earthquake and tsunami on All Saints' Day in 1755." },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Sydney Opera House", correctSlot: null },
+      { label: "Pyramid of Giza", correctSlot: null },
+      { label: "Cuckoo Clock", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-05-30",
   easy: {
     title: "Camping + Food + Fire",
@@ -37,33 +613,33 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Movie + Robot + 2000s",
-    difficultyEstimate: 58,
-    labels: { A: "Movie", B: "Robot", C: "2000s" },
+    title: "Bread + French + Long",
+    difficultyEstimate: 60,
+    labels: { A: "Bread", B: "French", C: "Long" },
     tiles: [
-      { label: "Chappie", correctSlot: "S1", logicNote: "Chappie is a movie about a robot, but it came out after the 2000s." },
-      { label: "Mean Girls", correctSlot: "S2", logicNote: "Mean Girls is a movie from the 2000s, but it is not about a robot." },
-      { label: "ASIMO", correctSlot: "S3", logicNote: "ASIMO is a robot introduced in the 2000s, but it is not a movie.", fact: "Honda introduced ASIMO in 2000 as a humanoid robot that could walk and run." },
-      { label: "Transformers (2007)", correctSlot: "S4", logicNote: "Transformers is a 2000s movie centered on robots, so it fits all three categories." },
-      { label: "Film Clapboard", correctSlot: null },
-      { label: "Servo Motor", correctSlot: null },
-      { label: "Flip Phone", correctSlot: null },
-      { label: "Drive-In Screen", correctSlot: null }
+      { label: "Croissant", correctSlot: "S1", logicNote: "A croissant is a French bread, but it is shaped like a crescent rather than long.", fact: "The crescent shape of the croissant is often linked to a 1683 victory over Ottoman forces in Vienna, though most food historians credit Parisian bakers in the 1830s with creating the buttery, layered pastry we know today." },
+      { label: "Submarine Roll", correctSlot: "S2", logicNote: "A submarine roll is a long type of bread, but it is associated with American sandwiches rather than France.", fact: "The submarine sandwich got its name from American dock workers in the early 1900s, who thought the long bread roll resembled the silhouette of a submarine." },
+      { label: "Seine River", correctSlot: "S3", logicNote: "The Seine is a long French river, but it is a waterway rather than a kind of bread.", fact: "The Seine winds about 482 miles across northern France and passes under 37 bridges as it flows through Paris on its way to the English Channel." },
+      { label: "Baguette", correctSlot: "S4", logicNote: "A baguette is a long French bread, so it fits all three categories.", fact: "UNESCO added the baguette to its list of intangible cultural heritage in 2022, recognizing the craft of the more than 30,000 French bakers who shape and score them by hand each morning." },
+      { label: "Hamburger Bun", correctSlot: null },
+      { label: "Camembert", correctSlot: null },
+      { label: "Spaghetti", correctSlot: null },
+      { label: "Cowboy Hat", correctSlot: null }
     ]
   },
   hard: {
-    title: "Nobel + Chemist + Woman",
-    difficultyEstimate: 43,
-    labels: { A: "Nobel", B: "Chemist", C: "Woman" },
+    title: "Brand + Auto + German",
+    difficultyEstimate: 45,
+    labels: { A: "Brand", B: "Auto", C: "German" },
     tiles: [
-      { label: "Linus Pauling", correctSlot: "S1", logicNote: "Linus Pauling won Nobel Prizes and was a chemist, but he was not a woman.", fact: "Linus Pauling is one of the few people to receive two unshared Nobel Prizes." },
-      { label: "Malala Yousafzai", correctSlot: "S2", logicNote: "Malala Yousafzai is a woman Nobel laureate, but she is not a chemist." },
-      { label: "Alice Ball", correctSlot: "S3", logicNote: "Alice Ball was a woman chemist, but she did not receive a Nobel Prize.", fact: "Alice Ball developed an early injectable treatment for leprosy." },
-      { label: "Dorothy Hodgkin", correctSlot: "S4", logicNote: "Dorothy Hodgkin was a woman chemist who won the Nobel Prize in Chemistry.", fact: "Hodgkin used X-ray crystallography to determine structures of important biomolecules." },
-      { label: "Prize Ceremony", correctSlot: null },
-      { label: "Beaker Rack", correctSlot: null },
-      { label: "Suffrage Banner", correctSlot: null },
-      { label: "Lecture Notes", correctSlot: null }
+      { label: "Ford", correctSlot: "S1", logicNote: "Ford is a well-known auto brand, but the company is American rather than German.", fact: "Henry Ford did not invent the automobile — he revolutionized how it was built, introducing the moving assembly line in 1913 and cutting the time to assemble a Model T from over 12 hours to about 90 minutes." },
+      { label: "Adidas", correctSlot: "S2", logicNote: "Adidas is a German brand, but it makes athletic shoes and apparel rather than automobiles.", fact: "Adidas was founded in 1949 by Adolf 'Adi' Dassler in the Bavarian town of Herzogenaurach — the same village where his estranged brother Rudolf founded the rival sportswear company Puma." },
+      { label: "Michael Schumacher", correctSlot: "S3", logicNote: "Michael Schumacher is a German figure of the auto world, but he is a racing driver rather than a brand.", fact: "Schumacher won seven Formula 1 world championships, a record held alone for 16 years until Britain's Lewis Hamilton matched it in 2020." },
+      { label: "BMW", correctSlot: "S4", logicNote: "BMW is a German brand of automobiles, so it fits all three categories.", fact: "BMW's blue-and-white roundel is often described as a spinning propeller — a nod to the company's roots building aircraft engines in Bavaria during the First World War." },
+      { label: "Bratwurst", correctSlot: null },
+      { label: "Speedometer", correctSlot: null },
+      { label: "Logo Design", correctSlot: null },
+      { label: "Karaoke Mic", correctSlot: null }
     ]
   }
 },
@@ -74,44 +650,44 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 84,
     labels: { A: "Weather", B: "White", C: "Falling" },
     tiles: [
-      { label: "Cloud", correctSlot: "S1", logicNote: "A cloud is white weather, but it is not usually the thing falling." },
-      { label: "Rainfall", correctSlot: "S2", logicNote: "Rainfall is falling weather, but it is not white." },
-      { label: "White Confetti", correctSlot: "S3", logicNote: "White confetti is white and falls, but it is not weather." },
-      { label: "Snow", correctSlot: "S4", logicNote: "Snow is white, falls from the sky, and is a weather event.", fact: "No two snowflakes are exactly alike because of how their crystals form on the way down." },
-      { label: "Weather Vane", correctSlot: null },
+      { label: "Cloud", correctSlot: "S1", logicNote: "A cloud is part of the weather and is typically pictured as white, but a cloud itself drifts on rising warm air rather than falling.", fact: "A medium cumulus cloud can weigh more than a million pounds, yet its water droplets are so tiny that rising warm air keeps them suspended in the sky." },
+      { label: "Rain", correctSlot: "S2", logicNote: "Rain is a weather event that comes down from the sky, but it is clear rather than white.", fact: "Raindrops are not actually teardrop-shaped — small ones are nearly spherical, and larger ones flatten on the bottom as they push through the air on the way down." },
+      { label: "Powdered Sugar", correctSlot: "S3", logicNote: "Powdered sugar is white and comes down in a soft shower when sifted onto food, but it is not a weather event.", fact: "Powdered sugar is regular granulated sugar ground into a fine dust, usually with a small amount of cornstarch mixed in to keep it from clumping." },
+      { label: "Snow", correctSlot: "S4", logicNote: "Snow is white, it comes down from the sky, and it is a weather event — so it fits all three categories.", fact: "Snowflakes form their distinctive six-sided shapes because of how water molecules bond as they freeze, and the largest flakes ever reported fell in Montana in 1887 — about 15 inches across." },
+      { label: "Heat Wave", correctSlot: null },
       { label: "Printer Paper", correctSlot: null },
       { label: "Dropped Keys", correctSlot: null },
-      { label: "Sunglasses", correctSlot: null }
+      { label: "Library Book", correctSlot: null }
     ]
   },
   medium: {
-    title: "Animal + Mythical + Fire",
+    title: "Animal + Mythical + Sea",
     difficultyEstimate: 60,
-    labels: { A: "Animal", B: "Mythical", C: "Fire" },
+    labels: { A: "Animal", B: "Mythical", C: "Sea" },
     tiles: [
-      { label: "Unicorn", correctSlot: "S1", logicNote: "A unicorn is a mythical animal, but it is not especially tied to fire." },
-      { label: "Firefly", correctSlot: "S2", logicNote: "A firefly is an animal with fire in the name, but it is not mythical." },
-      { label: "Prometheus", correctSlot: "S3", logicNote: "Prometheus is a mythic figure connected with fire, but he is not an animal." },
-      { label: "Dragon", correctSlot: "S4", logicNote: "A dragon is a mythical animal famously associated with fire." },
-      { label: "Horse Stable", correctSlot: null },
-      { label: "Magic Mirror", correctSlot: null },
-      { label: "Candle Flame", correctSlot: null },
-      { label: "Story Scroll", correctSlot: null }
+      { label: "Unicorn", correctSlot: "S1", logicNote: "A unicorn is a mythical animal, but it is pictured in forests and meadows rather than the ocean.", fact: "Medieval apothecaries sold powdered 'unicorn horn' as a costly cure-all; the powder almost always came from narwhal tusks brought back by Arctic traders." },
+      { label: "Octopus", correctSlot: "S2", logicNote: "An octopus is a sea-dwelling animal, but it is a real creature rather than a mythical one.", fact: "An octopus has three hearts and can change the color and texture of its skin in less than a second to match its surroundings." },
+      { label: "Atlantis", correctSlot: "S3", logicNote: "Atlantis is a mythical place said to lie beneath the waves, but it is a city rather than an animal.", fact: "The story of Atlantis comes from the Greek philosopher Plato, who described the lost island in two dialogues around 360 BCE." },
+      { label: "Kraken", correctSlot: "S4", logicNote: "The kraken is a mythical sea creature, so it fits all three categories.", fact: "Norwegian sailors in the 1700s described the kraken as a beast big enough to swallow ships whole, and modern scholars think the legend grew out of real encounters with giant squid." },
+      { label: "Magic Wand", correctSlot: null },
+      { label: "Pet Hamster", correctSlot: null },
+      { label: "Cruise Ship", correctSlot: null },
+      { label: "Office Chair", correctSlot: null }
     ]
   },
   hard: {
-    title: "Author + Detective + Woman",
+    title: "Invention + American + 1800s",
     difficultyEstimate: 44,
-    labels: { A: "Author", B: "Detective", C: "Woman" },
+    labels: { A: "Invention", B: "American", C: "1800s" },
     tiles: [
-      { label: "Raymond Chandler", correctSlot: "S1", logicNote: "Raymond Chandler was an author known for detective fiction, but he was not a woman." },
-      { label: "Virginia Woolf", correctSlot: "S2", logicNote: "Virginia Woolf was a woman author, but she is not known for detective fiction." },
-      { label: "Miss Marple", correctSlot: "S3", logicNote: "Miss Marple is a woman detective, but she is a fictional character rather than an author." },
-      { label: "Agatha Christie", correctSlot: "S4", logicNote: "Agatha Christie was a woman author famous for detective stories.", fact: "Agatha Christie created both Hercule Poirot and Miss Marple." },
-      { label: "Typewriter Ribbon", correctSlot: null },
-      { label: "Magnifying Glass", correctSlot: null },
-      { label: "Portrait Locket", correctSlot: null },
-      { label: "Crime Scene Tape", correctSlot: null }
+      { label: "iPhone", correctSlot: "S1", logicNote: "The iPhone is an American invention, but it was released in 2007 — long after the 1800s.", fact: "Apple unveiled the original iPhone in January 2007, and it went on sale that June with no app store and no copy-paste function." },
+      { label: "Bicycle", correctSlot: "S2", logicNote: "The bicycle was developed during the 1800s, but its earliest forms came from Germany and France rather than the United States.", fact: "Karl Drais of Germany patented the Draisine in 1817 — a two-wheeled push-along machine that historians consider the direct ancestor of the bicycle." },
+      { label: "Mark Twain", correctSlot: "S3", logicNote: "Mark Twain was an American figure of the 1800s, but he was a writer rather than an invention.", fact: "Twain was born in 1835, the year Halley's Comet appeared, and died in 1910 when it returned — a coincidence he had publicly predicted." },
+      { label: "Light Bulb", correctSlot: "S4", logicNote: "The light bulb is an American invention from the 1800s, so it fits all three categories.", fact: "Thomas Edison's 1879 design used a long-lasting carbonized bamboo filament, finally making electric lighting practical for ordinary homes." },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "Hoop Skirt", correctSlot: null },
+      { label: "The Wheel", correctSlot: null },
+      { label: "Sushi Roll", correctSlot: null }
     ]
   }
 },
@@ -148,36 +724,36 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Band + Rock + British",
-    difficultyEstimate: 43,
-    labels: { A: "Band", B: "Rock", C: "British" },
+    title: "Painter + Spanish + 20th Century",
+    difficultyEstimate: 44,
+    labels: { A: "Painter", B: "Spanish", C: "20th Century" },
     tiles: [
-      { label: "Nirvana", correctSlot: "S1", logicNote: "Nirvana was a rock band, but it was American rather than British." },
-      { label: "Spice Girls", correctSlot: "S2", logicNote: "The Spice Girls were a British band, but they were not a rock band." },
-      { label: "Glam Rock", correctSlot: "S3", logicNote: "Glam rock is a rock style strongly tied to Britain, but it is not a band." },
-      { label: "The Rolling Stones", correctSlot: "S4", logicNote: "The Rolling Stones are a British rock band.", fact: "The Rolling Stones formed in London in 1962." },
-      { label: "Tour Van", correctSlot: null },
-      { label: "Amplifier Stack", correctSlot: null },
-      { label: "Tea Biscuit", correctSlot: null },
-      { label: "Backstage Pass", correctSlot: null }
+      { label: "Francisco Goya", correctSlot: "S1", logicNote: "Goya was a Spanish painter, but he worked in the late 1700s and early 1800s — well before the 20th century.", fact: "Goya's haunting 'Black Paintings' were originally murals he applied directly to the walls of his own home outside Madrid, and were only later transferred to canvas after his death." },
+      { label: "Jackson Pollock", correctSlot: "S2", logicNote: "Pollock was a famous 20th-century painter, but he was American rather than Spanish.", fact: "Pollock pioneered the 'drip technique,' laying huge canvases flat on the floor and flinging or pouring paint across them from above." },
+      { label: "Antoni Gaudi", correctSlot: "S3", logicNote: "Gaudi was a celebrated Spanish creative figure working into the early 20th century, but he was an architect rather than a painter.", fact: "Gaudi spent more than 40 years on Barcelona's Sagrada Familia basilica, which is still under construction more than a century after his death." },
+      { label: "Salvador Dali", correctSlot: "S4", logicNote: "Dali was a Spanish painter whose most famous works belong to the 20th century, so he fits all three categories.", fact: "Dali's iconic 'The Persistence of Memory,' with its melting clocks draped across a desolate landscape, was completed in 1931." },
+      { label: "Rembrandt", correctSlot: null },
+      { label: "Don Quixote", correctSlot: null },
+      { label: "Charlie Chaplin", correctSlot: null },
+      { label: "Houseplant", correctSlot: null }
     ]
   }
 },
   {
   date: "2026-05-27",
   easy: {
-    title: "Animal + Black + White",
+    title: "Vegetable + Green + Leafy",
     difficultyEstimate: 84,
-    labels: { A: "Animal", B: "Black", C: "White" },
+    labels: { A: "Vegetable", B: "Green", C: "Leafy" },
     tiles: [
-      { label: "Crow", correctSlot: "S1", logicNote: "A crow is a dark, black animal, but it is not white.", fact: "Crows can recognize individual human faces and even hold grudges against people who treat them poorly." },
-      { label: "Polar Bear", correctSlot: "S2", logicNote: "A polar bear is an animal and white, but it is not black." },
-      { label: "Piano Keys", correctSlot: "S3", logicNote: "Piano keys are black and white, but they are not an animal." },
-      { label: "Panda", correctSlot: "S4", logicNote: "A panda is an animal with black-and-white coloring.", fact: "Giant pandas spend much of their day eating bamboo." },
-      { label: "Zoo Keeper", correctSlot: null },
-      { label: "Ink Bottle", correctSlot: null },
-      { label: "Cotton Ball", correctSlot: null },
-      { label: "Sand Dune", correctSlot: null }
+      { label: "Broccoli", correctSlot: "S1", logicNote: "Broccoli is a green vegetable, but its edible part is clusters of florets rather than leaves.", fact: "Broccoli belongs to the cabbage family and was first cultivated in the Mediterranean over 2,000 years ago." },
+      { label: "Red Cabbage", correctSlot: "S2", logicNote: "Red cabbage is a leafy vegetable, but it is purple-red rather than green.", fact: "Red cabbage gets its deep color from anthocyanins, the same pigments that color blueberries." },
+      { label: "Fern", correctSlot: "S3", logicNote: "A fern is green and leafy, but it is grown as a plant rather than eaten as a vegetable.", fact: "Ferns are one of the oldest plant groups on Earth, predating dinosaurs by more than 100 million years." },
+      { label: "Spinach", correctSlot: "S4", logicNote: "Spinach is a green vegetable made of leaves, so it belongs in all three groups.", fact: "Popeye's love of spinach is often credited with boosting American spinach sales by a third in the 1930s." },
+      { label: "Carrot", correctSlot: null },
+      { label: "Garden Hose", correctSlot: null },
+      { label: "Pine Cone", correctSlot: null },
+      { label: "Brick Wall", correctSlot: null }
     ]
   },
   medium: {
@@ -196,18 +772,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Inventor + Airplane + American",
-    difficultyEstimate: 42,
-    labels: { A: "Inventor", B: "Airplane", C: "American" },
+    title: "Athlete + Basketball + American",
+    difficultyEstimate: 44,
+    labels: { A: "Athlete", B: "Basketball", C: "American" },
     tiles: [
-      { label: "Sir George Cayley", correctSlot: "S1", logicNote: "Sir George Cayley was an aviation inventor, but he was British rather than American.", fact: "Cayley is often called a father of aeronautics." },
-      { label: "George Washington Carver", correctSlot: "S2", logicNote: "George Washington Carver was an American inventor, but he is not associated with airplanes." },
-      { label: "Charles Lindbergh", correctSlot: "S3", logicNote: "Charles Lindbergh was an American aviation figure, but he was not primarily an inventor." },
-      { label: "Orville Wright", correctSlot: "S4", logicNote: "Orville Wright was an American inventor central to early airplane flight.", fact: "The Wright brothers' first powered flight took place in 1903." },
-      { label: "Patent Sketch", correctSlot: null },
-      { label: "Runway Light", correctSlot: null },
-      { label: "Baseball Cap", correctSlot: null },
-      { label: "Propeller Blade", correctSlot: null }
+      { label: "Yao Ming", correctSlot: "S1", logicNote: "Yao Ming was a star basketball athlete, but he is Chinese rather than American.", fact: "Yao Ming was the first international player without U.S. college experience to be selected first overall in the NBA Draft, going to the Houston Rockets in 2002." },
+      { label: "Tom Brady", correctSlot: "S2", logicNote: "Tom Brady is an American athlete, but his sport is football rather than basketball.", fact: "Tom Brady won seven Super Bowl titles, more than any other player in NFL history." },
+      { label: "March Madness", correctSlot: "S3", logicNote: "March Madness is an American basketball event, but it is a tournament rather than an athlete.", fact: "The NCAA's March Madness bracket spans 68 teams and draws an audience that rivals the Super Bowl across its three-week run." },
+      { label: "Michael Jordan", correctSlot: "S4", logicNote: "Michael Jordan is an American athlete who played basketball, so he fits all three categories.", fact: "Michael Jordan led the Chicago Bulls to six NBA championships in the 1990s and never lost in the Finals." },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "Backboard", correctSlot: null },
+      { label: "Tennis Racket", correctSlot: null },
+      { label: "Cricket Bat", correctSlot: null }
     ]
   }
 },
@@ -5598,8 +6174,6 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
-
-
 
 
 
