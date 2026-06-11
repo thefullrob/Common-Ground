@@ -20,6 +20,294 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-06-17",
+  easy: {
+    title: "Food + Green + Comes in Bunches",
+    difficultyEstimate: 80,
+    labels: { A: "Food", B: "Green", C: "Comes in Bunches" },
+    tiles: [
+      { label: "Avocado", correctSlot: "S1", logicNote: "An avocado is a green food, but avocados are sold one at a time rather than in bunches.", fact: "Avocados do not ripen on the tree — they only begin to soften after they are picked." },
+      { label: "Carrots", correctSlot: "S2", logicNote: "Carrots are food classically sold in bunches, but the carrots themselves are orange, not green.", fact: "Centuries ago most carrots were purple or yellow; the orange carrot was popularized by Dutch growers." },
+      { label: "Cash", correctSlot: "S3", logicNote: "Cash is green and comes in bunches, but you cannot eat it.", fact: "U.S. bills are printed on a blend of cotton and linen rather than regular paper." },
+      { label: "Grapes", correctSlot: "S4", logicNote: "Grapes are food, the green variety fills supermarket shelves, and they grow in bunches.", fact: "A single grapevine can produce enough grapes each year to make dozens of bottles of wine." },
+      { label: "Steak", correctSlot: null },
+      { label: "Emerald", correctSlot: null },
+      { label: "Keys", correctSlot: null },
+      { label: "Bicycle", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Country + Capital Starts With B + South America",
+    difficultyEstimate: 50,
+    labels: { A: "Country", B: "Capital Starts With B", C: "South America" },
+    tiles: [
+      { label: "Germany", correctSlot: "S1", logicNote: "Germany is a country whose capital, Berlin, starts with B, but it is not in South America.", fact: "Berlin became the capital of reunified Germany after the Cold War." },
+      { label: "Peru", correctSlot: "S2", logicNote: "Peru is a South American country, but its capital is Lima, not a B-name.", fact: "Peru is home to Machu Picchu, one of the best-known Inca sites." },
+      { label: "Buenos Aires", correctSlot: "S3", logicNote: "Buenos Aires is a South American capital that starts with B, but it is a city rather than a country.", fact: "Buenos Aires is the capital of Argentina and one of South America's largest cities." },
+      { label: "Brazil", correctSlot: "S4", logicNote: "Brazil is a South American country whose capital, Brasilia, starts with B.", fact: "Brasilia was built inland and became Brazil's capital in 1960." },
+      { label: "France", correctSlot: null },
+      { label: "Berlin", correctSlot: null },
+      { label: "Patagonia", correctSlot: null },
+      { label: "Sofa", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Book + Movie + Color in Title",
+    difficultyEstimate: 37,
+    labels: { A: "Book", B: "Movie", C: "Color in Title" },
+    tiles: [
+      { label: "The Godfather", correctSlot: "S1", logicNote: "The Godfather is both a book and a movie, but its title does not contain a color.", fact: "Mario Puzo's novel The Godfather was adapted into Francis Ford Coppola's 1972 film." },
+      { label: "Green Eggs and Ham", correctSlot: "S2", logicNote: "Green Eggs and Ham is a book with a color in the title, but it is not mainly known as a movie.", fact: "Dr. Seuss wrote Green Eggs and Ham using only 50 different words." },
+      { label: "The Pink Panther", correctSlot: "S3", logicNote: "The Pink Panther is a movie with a color in the title, but it began on screen rather than on the page.", fact: "In the original 1963 film, the Pink Panther is actually a diamond with a panther-shaped flaw — the cartoon cat came from the title sequence." },
+      { label: "A Clockwork Orange", correctSlot: "S4", logicNote: "A Clockwork Orange is a novel and a movie, and its title sneaks in a color where you expect a fruit.", fact: "Anthony Burgess published the novel in 1962, and Stanley Kubrick's film adaptation arrived in 1971." },
+      { label: "Paperback", correctSlot: null },
+      { label: "Movie Ticket", correctSlot: null },
+      { label: "Red Paint", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-16",
+  easy: {
+    title: "Animal + Striped + Fast",
+    difficultyEstimate: 80,
+    labels: { A: "Animal", B: "Striped", C: "Fast" },
+    tiles: [
+      { label: "Skunk", correctSlot: "S1", logicNote: "A skunk is a striped animal, but it is not known for speed.", fact: "Skunks are better known for their strong defensive spray than for running fast." },
+      { label: "Cheetah", correctSlot: "S2", logicNote: "A cheetah is a fast animal, but it is spotted rather than striped.", fact: "Cheetahs are the fastest land animals over short distances." },
+      { label: "Race Car", correctSlot: "S3", logicNote: "A race car can be fast and have stripes, but it is not an animal.", fact: "Racing stripes became famous on cars partly because they helped teams identify cars quickly on the track." },
+      { label: "Tiger", correctSlot: "S4", logicNote: "A tiger is a fast animal with stripes.", fact: "No two tigers have exactly the same stripe pattern." },
+      { label: "Elephant", correctSlot: null },
+      { label: "Barcode", correctSlot: null },
+      { label: "Rocket", correctSlot: null },
+      { label: "Envelope", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Workplace + 2000s",
+    difficultyEstimate: 51,
+    labels: { A: "TV Show", B: "Workplace", C: "2000s" },
+    tiles: [
+      { label: "Cheers", correctSlot: "S1", logicNote: "Cheers is a workplace TV show, but it is mainly an 1980s and early 1990s show, not a 2000s show.", fact: "Cheers is set in a Boston bar where much of the action happens at work." },
+      { label: "Lost", correctSlot: "S2", logicNote: "Lost is a 2000s TV show, but its island setting is not a workplace.", fact: "Lost premiered in 2004 and became one of ABC's biggest dramas." },
+      { label: "Dunder Mifflin", correctSlot: "S3", logicNote: "Dunder Mifflin is a workplace tied to 2000s pop culture, but it is a fictional company rather than the TV show itself.", fact: "Dunder Mifflin is the paper company at the center of The Office." },
+      { label: "The Office", correctSlot: "S4", logicNote: "The Office is a 2000s TV show set largely in a workplace.", fact: "The U.S. version of The Office premiered in 2005." },
+      { label: "Seinfeld", correctSlot: null },
+      { label: "Cubicle", correctSlot: null },
+      { label: "Flip Phone", correctSlot: null },
+      { label: "Cookbook", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Island + Caribbean",
+    difficultyEstimate: 38,
+    labels: { A: "Country", B: "Island", C: "Caribbean" },
+    tiles: [
+      { label: "Japan", correctSlot: "S1", logicNote: "Japan is an island country, but it is in Asia rather than the Caribbean.", fact: "Japan is an archipelago made up of thousands of islands." },
+      { label: "Mexico", correctSlot: "S2", logicNote: "Mexico is a country with Caribbean coastline, but it is not an island.", fact: "Mexico's Caribbean coast includes Cancun and the Riviera Maya." },
+      { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico is a Caribbean island, but it is a U.S. territory rather than a country.", fact: "Puerto Rico became a U.S. territory after the Spanish-American War." },
+      { label: "Jamaica", correctSlot: "S4", logicNote: "Jamaica is a Caribbean island country.", fact: "Jamaica gained independence from the United Kingdom in 1962." },
+      { label: "Canada", correctSlot: null },
+      { label: "Greenland", correctSlot: null },
+      { label: "Bermuda", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-15",
+  easy: {
+    title: "Clothing + Has Buttons + Keeps You Warm",
+    difficultyEstimate: 78,
+    labels: { A: "Clothing", B: "Has Buttons", C: "Keeps You Warm" },
+    tiles: [
+      { label: "Hawaiian Shirt", correctSlot: "S1", logicNote: "A Hawaiian shirt is clothing that fastens with buttons, but it is made for staying cool, not warm.", fact: "Hawaiian shirts, also called aloha shirts, became popular in the 1930s and are accepted business wear in Hawaii on Aloha Fridays." },
+      { label: "Scarf", correctSlot: "S2", logicNote: "A scarf is clothing that keeps you warm, but it simply wraps around you, no buttons needed.", fact: "During both World Wars, volunteers knitted scarves by the thousands to send to soldiers overseas." },
+      { label: "Space Heater", correctSlot: "S3", logicNote: "A space heater has buttons and keeps you warm, but you cannot wear it.", fact: "Portable electric heaters became common in homes in the early 20th century as household wiring spread." },
+      { label: "Cardigan", correctSlot: "S4", logicNote: "A cardigan is warm clothing that fastens with a row of buttons.", fact: "The cardigan is named after the 7th Earl of Cardigan, a British officer from the era of the Charge of the Light Brigade." },
+      { label: "Flip-Flops", correctSlot: null },
+      { label: "Calculator", correctSlot: null },
+      { label: "Campfire", correctSlot: null },
+      { label: "Sunglasses", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "U.S. State + Has Coastline + Starts With N",
+    difficultyEstimate: 49,
+    labels: { A: "U.S. State", B: "Has Coastline", C: "Starts With N" },
+    tiles: [
+      { label: "California", correctSlot: "S1", logicNote: "California is a U.S. state with coastline, but it does not start with N.", fact: "California has more than 800 miles of Pacific coastline." },
+      { label: "Nebraska", correctSlot: "S2", logicNote: "Nebraska is a U.S. state that starts with N, but it has no coastline.", fact: "Nebraska is one of the Great Plains states and is landlocked." },
+      { label: "Newport", correctSlot: "S3", logicNote: "Newport starts with N and has coastline, but it is a city rather than a U.S. state.", fact: "Newport, Rhode Island, is famous for its harbor and Gilded Age mansions." },
+      { label: "North Carolina", correctSlot: "S4", logicNote: "North Carolina is a U.S. state with coastline and starts with N.", fact: "North Carolina's Outer Banks are a chain of barrier islands along the Atlantic." },
+      { label: "Colorado", correctSlot: null },
+      { label: "Island", correctSlot: null },
+      { label: "Nickel", correctSlot: null },
+      { label: "Flashlight", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Follow Black + Can Follow White + Food",
+    difficultyEstimate: 36,
+    labels: { A: "Can Follow Black", B: "Can Follow White", C: "Food" },
+    tiles: [
+      { label: "Berry", correctSlot: "S2", logicNote: "Berry can follow black in blackberry and is food, but whiteberry is not a common term.", fact: "Blackberries are aggregate fruits, meaning each berry is made of many tiny drupelets." },
+      { label: "Chocolate", correctSlot: "S3", logicNote: "Chocolate can follow white in white chocolate and is food, but black chocolate is not the usual phrase — we say dark chocolate.", fact: "White chocolate contains cocoa butter but not cocoa solids." },
+      { label: "Board", correctSlot: "S1", logicNote: "Board can follow both black and white in blackboard and whiteboard, but it is not food.", fact: "Whiteboards became common in classrooms and offices as dry-erase markers improved." },
+      { label: "Pepper", correctSlot: "S4", logicNote: "Pepper can follow both black and white, and both black pepper and white pepper are foods or spices.", fact: "Black and white pepper both come from the same pepper plant, processed at different stages." },
+      { label: "Hole", correctSlot: null },
+      { label: "House", correctSlot: null },
+      { label: "Banana", correctSlot: null },
+      { label: "Ladder", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-14",
+  easy: {
+    title: "Sport + Ball + Played Indoors",
+    difficultyEstimate: 81,
+    labels: { A: "Sport", B: "Ball", C: "Played Indoors" },
+    tiles: [
+      { label: "Golf", correctSlot: "S1", logicNote: "Golf is a sport played with a ball, but it is played outdoors on open courses.", fact: "Golf grew up on the coastal links of Scotland, where the Old Course at St Andrews is known as the home of golf." },
+      { label: "Boxing", correctSlot: "S2", logicNote: "Boxing is a sport usually held indoors in arenas, but it is not played with a ball.", fact: "Modern boxing rules trace to the Queensberry rules of the 1860s, which required gloves and timed rounds." },
+      { label: "Globe", correctSlot: "S3", logicNote: "A globe is a ball you keep indoors, but spinning one is not a sport.", fact: "The oldest surviving globe was made in 1492, just before news of Columbus's voyage spread, so the Americas are missing from it." },
+      { label: "Bowling", correctSlot: "S4", logicNote: "Bowling is a sport played with a ball inside bowling alleys.", fact: "A perfect game in bowling is 12 strikes in a row for a score of exactly 300." },
+      { label: "Marathon", correctSlot: null },
+      { label: "Beach Ball", correctSlot: null },
+      { label: "Elevator", correctSlot: null },
+      { label: "Cactus", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Candy + Chocolate + Contains Peanuts",
+    difficultyEstimate: 50,
+    labels: { A: "Candy", B: "Chocolate", C: "Contains Peanuts" },
+    tiles: [
+      { label: "Kit Kat", correctSlot: "S1", logicNote: "A Kit Kat is a chocolate candy, but its crunch comes from wafers rather than peanuts.", fact: "Japan has released hundreds of Kit Kat flavors, partly because the name sounds like 'kitto katsu,' a phrase meaning 'surely win.'" },
+      { label: "PayDay", correctSlot: "S2", logicNote: "A PayDay is a candy bar loaded with peanuts, but it famously contains no chocolate.", fact: "The PayDay bar debuted in 1932, reportedly named because it hit shelves around the day workers got paid." },
+      { label: "Reese's Puffs", correctSlot: "S3", logicNote: "Reese's Puffs combine chocolate and peanut butter, but they are a breakfast cereal rather than a candy.", fact: "Reese's Puffs cereal arrived in the 1990s, nearly 70 years after the original peanut butter cup debuted in 1928." },
+      { label: "Snickers", correctSlot: "S4", logicNote: "A Snickers is a chocolate candy bar packed with peanuts.", fact: "Snickers was named after a beloved horse owned by the Mars family." },
+      { label: "Skittles", correctSlot: null },
+      { label: "Brownie", correctSlot: null },
+      { label: "PB&J Sandwich", correctSlot: null },
+      { label: "Pretzel", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Founding Father + On U.S. Paper Money + Served as President",
+    difficultyEstimate: 37,
+    labels: { A: "Founding Father", B: "On U.S. Paper Money", C: "Served as President" },
+    tiles: [
+      { label: "Benjamin Franklin", correctSlot: "S1", logicNote: "Franklin was a Founding Father whose face is on the $100 bill, but despite a common misconception, he was never president.", fact: "Franklin is the only Founding Father who signed the Declaration of Independence, the Treaty of Paris, and the Constitution." },
+      { label: "John Adams", correctSlot: "S2", logicNote: "Adams was a Founding Father who became the second president, but his face has never appeared on U.S. paper money.", fact: "John Adams and Thomas Jefferson both died on July 4, 1826, the 50th anniversary of the Declaration of Independence." },
+      { label: "Abraham Lincoln", correctSlot: "S3", logicNote: "Lincoln is a president on the $5 bill, but he was born decades after the founding era, so he was not a Founding Father.", fact: "Lincoln is the only U.S. president to hold a patent, for a device to lift boats over shallow water." },
+      { label: "George Washington", correctSlot: "S4", logicNote: "Washington was a Founding Father and the first president, and his portrait anchors the $1 bill.", fact: "Washington's face on the $1 bill is based on the same unfinished Gilbert Stuart portrait that hangs in many classrooms." },
+      { label: "John Hancock", correctSlot: null },
+      { label: "Theodore Roosevelt", correctSlot: null },
+      { label: "Susan B. Anthony", correctSlot: null },
+      { label: "Betsy Ross", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-13",
+  easy: {
+    title: "Food + Round + Has Hole",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Round", C: "Has Hole" },
+    tiles: [
+      { label: "Pancake", correctSlot: "S1", logicNote: "A pancake is round food, but it does not have a hole.", fact: "Pancake-like flat cakes appear in many ancient food traditions." },
+      { label: "Swiss Cheese", correctSlot: "S2", logicNote: "Swiss cheese is food with holes, but it is not usually thought of as round.", fact: "The holes in Swiss cheese are often called eyes." },
+      { label: "Tire", correctSlot: "S3", logicNote: "A tire is round and has a hole, but it is not food.", fact: "Pneumatic rubber tires became common as bicycles and cars grew popular." },
+      { label: "Bagel", correctSlot: "S4", logicNote: "A bagel is round food with a hole.", fact: "Bagels are boiled before baking, which helps give them their chewy crust." },
+      { label: "Spaghetti", correctSlot: null },
+      { label: "Coin", correctSlot: null },
+      { label: "Keyhole", correctSlot: null },
+      { label: "Book", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Board Game + Uses Dice + Involves Money",
+    difficultyEstimate: 50,
+    labels: { A: "Board Game", B: "Uses Dice", C: "Involves Money" },
+    tiles: [
+      { label: "Risk", correctSlot: "S1", logicNote: "Risk is a board game played with dice, but its armies battle for territory rather than money.", fact: "Risk was invented by French filmmaker Albert Lamorisse, who also directed the classic short film The Red Balloon." },
+      { label: "The Game of Life", correctSlot: "S2", logicNote: "The Game of Life is a board game full of paydays and cash, but players move using a spinner rather than dice.", fact: "The Game of Life dates to 1860, when Milton Bradley sold it as The Checkered Game of Life." },
+      { label: "Craps", correctSlot: "S3", logicNote: "Craps is played with dice for money, but it is a casino table game rather than a board game.", fact: "Craps evolved from an old English dice game called hazard, which is mentioned in Chaucer's Canterbury Tales." },
+      { label: "Monopoly", correctSlot: "S4", logicNote: "Monopoly is a board game where players roll dice and chase money.", fact: "Monopoly traces back to The Landlord's Game, patented by Lizzie Magie in 1904 as a critique of monopolists." },
+      { label: "Chess", correctSlot: null },
+      { label: "Yahtzee", correctSlot: null },
+      { label: "Poker", correctSlot: null },
+      { label: "Dominoes", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. State + Has Been an Independent Country + Borders Mexico",
+    difficultyEstimate: 38,
+    labels: { A: "U.S. State", B: "Has Been an Independent Country", C: "Borders Mexico" },
+    tiles: [
+      { label: "Hawaii", correctSlot: "S1", logicNote: "Hawaii is a U.S. state that was once an independent kingdom, but it sits in the middle of the Pacific, nowhere near Mexico.", fact: "Iolani Palace in Honolulu, home of Hawaii's former monarchs, is the only royal palace on U.S. soil." },
+      { label: "Arizona", correctSlot: "S2", logicNote: "Arizona is a U.S. state that borders Mexico, but it was never an independent country.", fact: "Arizona was the last of the contiguous 48 states to join the Union, in 1912." },
+      { label: "Guatemala", correctSlot: "S3", logicNote: "Guatemala is an independent country that borders Mexico, but it is not a U.S. state.", fact: "Guatemala's border with Mexico stretches for more than 500 miles." },
+      { label: "Texas", correctSlot: "S4", logicNote: "Texas is a U.S. state that borders Mexico and spent nearly a decade as the independent Republic of Texas.", fact: "Texas was its own country from 1836 to 1845, complete with presidents, embassies, and its own currency." },
+      { label: "Alaska", correctSlot: null },
+      { label: "Cuba", correctSlot: null },
+      { label: "Rio Grande", correctSlot: null },
+      { label: "Ontario", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-12",
+  easy: {
+    title: "Animal + Farm + Flies",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Farm", C: "Flies" },
+    tiles: [
+      { label: "Cow", correctSlot: "S1", logicNote: "A cow is an animal found on farms, but it does not fly.", fact: "Cows have four-chambered stomachs that help them digest grass." },
+      { label: "Eagle", correctSlot: "S2", logicNote: "An eagle is an animal that flies, but it is not a farm animal.", fact: "Bald eagles build some of the largest nests of any North American bird." },
+      { label: "Crop Duster", correctSlot: "S3", logicNote: "A crop duster is connected to farms and flies, but it is a plane rather than an animal.", fact: "Crop-dusting planes are used to spread seed, fertilizer, or pest control over fields." },
+      { label: "Duck", correctSlot: "S4", logicNote: "A duck is an animal that can live on a farm and fly.", fact: "Domestic ducks are descended mostly from mallards." },
+      { label: "Lion", correctSlot: null },
+      { label: "Barn", correctSlot: null },
+      { label: "Kite", correctSlot: null },
+      { label: "Sandwich", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Sequel + Number in Title",
+    difficultyEstimate: 54,
+    labels: { A: "Movie", B: "Sequel", C: "Number in Title" },
+    tiles: [
+      { label: "The Dark Knight", correctSlot: "S1", logicNote: "The Dark Knight is a movie sequel, but its title does not contain a number.", fact: "The Dark Knight followed Batman Begins and became one of the defining superhero films of the 2000s." },
+      { label: "1917", correctSlot: "S2", logicNote: "1917 is a movie with a number in the title, but it is not a sequel.", fact: "1917 was filmed to look like it unfolds in a small number of very long takes." },
+      { label: "Super Mario Bros. 3", correctSlot: "S3", logicNote: "Super Mario Bros. 3 is a sequel with a number in the title, but it is a video game rather than a movie.", fact: "Super Mario Bros. 3 was one of the best-selling games on the original Nintendo Entertainment System." },
+      { label: "Toy Story 2", correctSlot: "S4", logicNote: "Toy Story 2 is a movie sequel with a number in its title.", fact: "Toy Story 2 began as a direct-to-video project before becoming a theatrical Pixar release." },
+      { label: "Casablanca", correctSlot: null },
+      { label: "Chapter 7", correctSlot: null },
+      { label: "Paperback Book", correctSlot: null },
+      { label: "Movie Poster", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Hosted Summer Olympics + Starts And Ends With A",
+    difficultyEstimate: 39,
+    labels: { A: "Country", B: "Hosted Summer Olympics", C: "Starts And Ends With A" },
+    tiles: [
+      { label: "Greece", correctSlot: "S1", logicNote: "Greece is a country that has hosted the Summer Olympics, but it does not start and end with A.", fact: "Athens hosted the first modern Olympic Games in 1896 and again in 2004." },
+      { label: "Algeria", correctSlot: "S2", logicNote: "Algeria is a country whose name starts and ends with A, but it has not hosted the Summer Olympics.", fact: "Algeria is the largest country in Africa by area." },
+      { label: "Atlanta", correctSlot: "S3", logicNote: "Atlanta hosted the Summer Olympics and starts and ends with A, but it is a city rather than a country.", fact: "Atlanta hosted the 1996 Summer Olympics." },
+      { label: "Australia", correctSlot: "S4", logicNote: "Australia is a country that has hosted the Summer Olympics and starts and ends with A.", fact: "Australia hosted the Summer Olympics in Melbourne in 1956, Sydney in 2000, and Brisbane is scheduled for 2032." },
+      { label: "Denmark", correctSlot: null },
+      { label: "Rome", correctSlot: null },
+      { label: "Arena", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-06-11",
   easy: {
     title: "Breakfast + Hot + Drink",
@@ -139,7 +427,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "LeBron James", correctSlot: "S1", logicNote: "LeBron James is a famous basketball player, but he is not chiefly associated with Chicago.", fact: "LeBron James entered the NBA straight from high school in 2003." },
       { label: "Oprah Winfrey", correctSlot: "S2", logicNote: "Oprah Winfrey is a famous person strongly tied to Chicago, but she is not known for basketball.", fact: "The Oprah Winfrey Show was taped in Chicago for most of its run." },
-      { label: "Chicago Bulls", correctSlot: "S3", logicNote: "The Chicago Bulls connect basketball and Chicago, but they are a team rather than a single famous person.", fact: "The Bulls won six NBA titles in the 1990s." },
+      { label: "United Center", correctSlot: "S3", logicNote: "The United Center has been the home arena for basketball in Chicago since 1994, but it is a building rather than a famous person.", fact: "The United Center opened in 1994 to replace the old Chicago Stadium, and a 12-foot bronze statue of a leaping Michael Jordan that stood outside its main entrance for years became one of the most-photographed landmarks in the city." },
       { label: "Michael Jordan", correctSlot: "S4", logicNote: "Michael Jordan is a famous basketball figure forever linked with the Chicago Bulls.", fact: "Jordan won six Finals MVP awards with Chicago." },
       { label: "Basketball Hoop", correctSlot: null },
       { label: "Windy City Sign", correctSlot: null },
@@ -166,18 +454,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-06-08",
   easy: {
-    title: "Color + Traffic + Light",
-    difficultyEstimate: 84,
-    labels: { A: "Color", B: "Traffic", C: "Light" },
+    title: "Bird + Yellow + Cartoon",
+    difficultyEstimate: 85,
+    labels: { A: "Bird", B: "Yellow", C: "Cartoon" },
     tiles: [
-      { label: "Stop Sign", correctSlot: "S1", logicNote: "A stop sign is red and used in traffic, but it is not a light.", fact: "Modern stop signs are red octagons so drivers can recognize them quickly." },
-      { label: "Red Laser", correctSlot: "S2", logicNote: "A red laser is a colored light, but it is not part of traffic control.", fact: "Laser light is unusually focused, which is why laser pointers make sharp dots." },
-      { label: "Streetlight", correctSlot: "S3", logicNote: "A streetlight is a light used along roads and traffic routes, but it is not a color.", fact: "Streetlights help drivers and pedestrians see roads more clearly at night." },
-      { label: "Red Light", correctSlot: "S4", logicNote: "A red light is a color, a traffic signal, and a light.", fact: "Red is used for stop signals partly because it is easy to see from far away." },
-      { label: "Blue Paint", correctSlot: null },
-      { label: "Road Map", correctSlot: null },
-      { label: "Flashlight", correctSlot: null },
-      { label: "Banana Peel", correctSlot: null }
+      { label: "Canary", correctSlot: "S1", logicNote: "A canary is a small bird with bright yellow plumage, but it is a real animal rather than a cartoon character.", fact: "Coal miners famously carried caged canaries into mines through the early 1900s because the birds' fast metabolism made them collapse from carbon monoxide long before humans noticed the gas — a low-tech warning system still in use in some British mines until 1986." },
+      { label: "Daffy Duck", correctSlot: "S2", logicNote: "Daffy Duck is a cartoon duck, but his feathers are clearly drawn as black rather than yellow.", fact: "Daffy debuted in the 1937 Looney Tunes short 'Porky's Duck Hunt,' where his manic, screwball antics shocked audiences used to tamer cartoon characters and helped redefine what an animated star could be." },
+      { label: "SpongeBob SquarePants", correctSlot: "S3", logicNote: "SpongeBob is a bright yellow cartoon star, but he is a sea sponge rather than a bird.", fact: "SpongeBob was created by marine biologist and animator Stephen Hillenburg, who based the character on a real sea sponge — and his Nickelodeon series, which premiered in 1999, has become one of the longest-running and highest-grossing animated franchises in television history." },
+      { label: "Woodstock", correctSlot: "S4", logicNote: "Woodstock is the tiny yellow bird from the Peanuts comic strip, so he is a bird, yellow, and a cartoon all at once.", fact: "Charles Schulz first introduced the little bird in 1967 and gave him the name Woodstock in 1970 — a nod to the famous 1969 music festival — and Snoopy and Woodstock's friendship became one of the most beloved pairings in American comic strip history." },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "Lemon", correctSlot: null },
+      { label: "Mickey Mouse", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
     ]
   },
   medium: {
@@ -196,66 +484,66 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "U.S. President + Mount Rushmore + On Money",
-    difficultyEstimate: 43,
-    labels: { A: "U.S. President", B: "Mount Rushmore", C: "On Money" },
+    title: "Band + British + 1960s",
+    difficultyEstimate: 46,
+    labels: { A: "Band", B: "British", C: "1960s" },
     tiles: [
-      { label: "Theodore Roosevelt", correctSlot: "S1", logicNote: "Theodore Roosevelt was a U.S. president on Mount Rushmore, but he is not on common everyday U.S. bills or coins.", fact: "Roosevelt helped create the modern national park system." },
-      { label: "Andrew Jackson", correctSlot: "S2", logicNote: "Andrew Jackson was a U.S. president on the twenty-dollar bill, but he is not on Mount Rushmore.", fact: "Jackson's image has appeared on the U.S. twenty-dollar bill since the 1920s." },
-      { label: "South Dakota Quarter", correctSlot: "S3", logicNote: "The South Dakota quarter shows Mount Rushmore and is money, but it is not a president.", fact: "South Dakota's state quarter features Mount Rushmore, wheat, and a pheasant." },
-      { label: "George Washington", correctSlot: "S4", logicNote: "George Washington was a U.S. president, appears on Mount Rushmore, and is on U.S. money.", fact: "Washington appears on the one-dollar bill and the quarter." },
-      { label: "White House", correctSlot: null },
-      { label: "Dollar Sign", correctSlot: null },
-      { label: "Black Hills", correctSlot: null },
-      { label: "Liberty Bell", correctSlot: null }
+      { label: "Queen", correctSlot: "S1", logicNote: "Queen is a celebrated British rock band, but the group came together in 1970 and broke through in the 1970s rather than the 1960s.", fact: "Queen formed in London in 1970 when guitarist Brian May and drummer Roger Taylor recruited a flamboyant art student named Farrokh Bulsara — better known to the world as Freddie Mercury — with bassist John Deacon joining the following year to complete the lineup." },
+      { label: "The Beach Boys", correctSlot: "S2", logicNote: "The Beach Boys are a band whose harmonies helped define mid-1960s music, but they are a California group rather than a British one.", fact: "Formed in Hawthorne, California in 1961 by the three Wilson brothers and their cousin Mike Love, the Beach Boys spent the 1960s in a friendly rivalry with the Beatles — and Brian Wilson's 1966 album 'Pet Sounds' is often credited with directly inspiring 'Sgt. Pepper's Lonely Hearts Club Band' the following year." },
+      { label: "Julie Andrews", correctSlot: "S3", logicNote: "Julie Andrews became one of the biggest British stars of the 1960s, but she is a solo actress and singer rather than a member of a band.", fact: "Andrews won the Academy Award for Best Actress for 'Mary Poppins' in 1964 and starred in 'The Sound of Music' the following year, which became the highest-grossing film in history at the time and held that record until it was overtaken by 'Gone with the Wind' on rerelease." },
+      { label: "The Beatles", correctSlot: "S4", logicNote: "The Beatles are a British band formed in Liverpool in 1960, so they fit all three categories.", fact: "The Beatles' February 1964 appearance on The Ed Sullivan Show drew an estimated 73 million American viewers — about 40 percent of the U.S. population — and is widely credited with kicking off the 'British Invasion' that reshaped popular music for the rest of the decade." },
+      { label: "ABBA", correctSlot: null },
+      { label: "Big Ben", correctSlot: null },
+      { label: "Apollo 11", correctSlot: null },
+      { label: "Cookbook", correctSlot: null }
     ]
   }
 },
   {
   date: "2026-06-07",
   easy: {
-    title: "Animal + Pet + Fish",
+    title: "Toy + Made of Plastic + Has Wheels",
     difficultyEstimate: 85,
-    labels: { A: "Animal", B: "Pet", C: "Fish" },
+    labels: { A: "Toy", B: "Made of Plastic", C: "Has Wheels" },
     tiles: [
-      { label: "Dog", correctSlot: "S1", logicNote: "A dog is an animal and a common pet, but it is not a fish.", fact: "Dogs were domesticated from wolves thousands of years ago." },
-      { label: "Salmon", correctSlot: "S2", logicNote: "A salmon is an animal and a fish, but it is not usually kept as a pet.", fact: "Many salmon swim from the ocean back to freshwater streams to spawn." },
-      { label: "Aquarium", correctSlot: "S3", logicNote: "An aquarium is used for pet fish, but it is a container rather than an animal.", fact: "Public aquariums became popular attractions in the 1800s." },
-      { label: "Goldfish", correctSlot: "S4", logicNote: "A goldfish is an animal, a fish, and a common pet.", fact: "Goldfish were first bred in China more than a thousand years ago." },
-      { label: "Zoo Sign", correctSlot: null },
-      { label: "Leash", correctSlot: null },
-      { label: "Fishing Rod", correctSlot: null },
-      { label: "Guitar", correctSlot: null }
+      { label: "Lego Brick", correctSlot: "S1", logicNote: "A Lego brick is a plastic toy, but a single brick doesn't roll around on wheels of its own.", fact: "Lego bricks are molded from ABS plastic to such tight tolerances that two bricks made decades apart still snap together cleanly." },
+      { label: "Red Wagon", correctSlot: "S2", logicNote: "A classic little red wagon is a kids' toy that rolls on four sturdy wheels, but it's built from steel rather than plastic.", fact: "The original Radio Flyer wagon was designed in 1920s Chicago by Italian immigrant Antonio Pasin, who named it after Marconi's radio and the era's fascination with flight." },
+      { label: "Suitcase", correctSlot: "S3", logicNote: "A modern roller suitcase has a hard plastic shell that rolls on built-in wheels, but it's a travel bag rather than a toy.", fact: "Suitcase wheels didn't become standard until 1987, when a Northwest Airlines pilot named Robert Plath bolted casters and a retractable handle onto his own bag, then turned the idea into the Travelpro brand." },
+      { label: "Tricycle", correctSlot: "S4", logicNote: "A modern kids' tricycle is a toy made mostly of plastic that rolls along on three wheels.", fact: "Tricycles took off in the early 1900s as a safer alternative to the towering penny-farthing bicycles of the 1870s, which were notorious for sending riders flying head-first over the handlebars." },
+      { label: "Teddy Bear", correctSlot: null },
+      { label: "Credit Card", correctSlot: null },
+      { label: "Newspaper", correctSlot: null },
+      { label: "Banana", correctSlot: null }
     ]
   },
   medium: {
-    title: "Movie + New York + Comedy",
-    difficultyEstimate: 59,
-    labels: { A: "Movie", B: "New York", C: "Comedy" },
+    title: "Country + Starts With C + Pacific Coast",
+    difficultyEstimate: 60,
+    labels: { A: "Country", B: "Starts With C", C: "Pacific Coast" },
     tiles: [
-      { label: "King Kong", correctSlot: "S1", logicNote: "King Kong is a movie strongly tied to New York, but it is not a comedy.", fact: "The original King Kong was released in 1933." },
-      { label: "Bridesmaids", correctSlot: "S2", logicNote: "Bridesmaids is a comedy movie, but it is not a New York story.", fact: "Bridesmaids helped make Melissa McCarthy a breakout movie star." },
-      { label: "Comedy Cellar", correctSlot: "S3", logicNote: "The Comedy Cellar is a famous New York comedy club, but it is not a movie.", fact: "The Comedy Cellar in Greenwich Village is known for surprise drop-ins by major comedians." },
-      { label: "Elf", correctSlot: "S4", logicNote: "Elf is a comedy movie with major scenes in New York City.", fact: "Elf stars Will Ferrell as Buddy, who travels to New York to find his father." },
-      { label: "Subway Map", correctSlot: null },
-      { label: "Movie Camera", correctSlot: null },
-      { label: "Punchline", correctSlot: null },
-      { label: "Snow Boots", correctSlot: null }
+      { label: "Cuba", correctSlot: "S1", logicNote: "Cuba is a country whose name starts with C, but it sits in the Caribbean Sea — not on the Pacific Ocean.", fact: "Cuba is the largest island in the Caribbean — roughly the same length as the U.S. East Coast from Boston down to Washington, D.C." },
+      { label: "Japan", correctSlot: "S2", logicNote: "Japan is a country with a long Pacific coastline, but its name doesn't start with the letter C.", fact: "Japan is an archipelago of nearly 7,000 islands, though most of its population lives on just four — Honshu, Hokkaido, Kyushu, and Shikoku." },
+      { label: "California", correctSlot: "S3", logicNote: "California's name starts with C and it stretches along the Pacific Ocean, but it's a U.S. state rather than a country.", fact: "California's economy is so large — powered by tech, agriculture, and entertainment — that if it stood alone as a nation it would rank among the top five in the world by GDP." },
+      { label: "Chile", correctSlot: "S4", logicNote: "Chile is a country whose name starts with C and that runs along the Pacific coast of South America.", fact: "Chile stretches more than 2,600 miles from desert in the north to glaciers and fjords in the south, yet averages only about 110 miles wide — one of the longest, narrowest countries on Earth." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Champagne", correctSlot: null },
+      { label: "Mt. Fuji", correctSlot: null },
+      { label: "Statue of Liberty", correctSlot: null }
     ]
   },
   hard: {
-    title: "Company + Tech + Fruit Word",
+    title: "U.S. President + 20th Century + Won Re-election",
     difficultyEstimate: 46,
-    labels: { A: "Company", B: "Tech", C: "Fruit Word" },
+    labels: { A: "U.S. President", B: "20th Century", C: "Won Re-election" },
     tiles: [
-      { label: "Microsoft", correctSlot: "S1", logicNote: "Microsoft is a technology company, but its name is not a fruit word.", fact: "Microsoft was founded by Bill Gates and Paul Allen in 1975." },
-      { label: "Banana Republic", correctSlot: "S2", logicNote: "Banana Republic is a company with a fruit word in its name, but it is not a technology company.", fact: "Banana Republic began as a safari-themed clothing store in California." },
-      { label: "Raspberry Pi", correctSlot: "S3", logicNote: "Raspberry Pi is a tech product with a fruit word in its name, but it is not the company itself.", fact: "Raspberry Pi computers are small, low-cost boards often used to learn programming." },
-      { label: "Apple", correctSlot: "S4", logicNote: "Apple is a technology company with a fruit word as its name.", fact: "Apple's first personal computer, the Apple I, was introduced in 1976." },
-      { label: "Laptop", correctSlot: null },
-      { label: "Banana Peel", correctSlot: null },
-      { label: "Office Building", correctSlot: null },
-      { label: "Soccer Ball", correctSlot: null }
+      { label: "Jimmy Carter", correctSlot: "S1", logicNote: "Jimmy Carter was a U.S. president who served in the 20th century, but he lost his 1980 re-election bid to Ronald Reagan.", fact: "After leaving the White House, Carter built one of the most active post-presidencies in American history, founding global health and election-monitoring programs and winning the Nobel Peace Prize in 2002." },
+      { label: "Abraham Lincoln", correctSlot: "S2", logicNote: "Abraham Lincoln won re-election as U.S. president, but he served in the 19th century — well before the 1900s began.", fact: "Lincoln won his 1864 re-election in the middle of the Civil War, defeating his former general George McClellan and carrying 22 of the 25 states that took part in the vote." },
+      { label: "Margaret Thatcher", correctSlot: "S3", logicNote: "Margaret Thatcher was a 20th-century leader who won re-election repeatedly, but she led Britain as prime minister rather than the United States.", fact: "Thatcher won three consecutive general elections — in 1979, 1983, and 1987 — making her the longest continuously serving British prime minister of the 20th century." },
+      { label: "Ronald Reagan", correctSlot: "S4", logicNote: "Ronald Reagan was a 20th-century U.S. president who won a landslide re-election in 1984.", fact: "Reagan's 1984 victory over Walter Mondale carried 49 of 50 states — one of the most lopsided electoral wins in American history, with Minnesota narrowly the only state Mondale managed to hold." },
+      { label: "Mt. Rushmore", correctSlot: null },
+      { label: "Napoleon", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Air Force One", correctSlot: null }
     ]
   }
 },
@@ -283,9 +571,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Paris", correctSlot: "S1", logicNote: "Paris is a city that has hosted the Olympics, but it is in France rather than Greece.", fact: "Paris hosted the Summer Olympics in 1900, 1924, and 2024." },
       { label: "Sparta", correctSlot: "S2", logicNote: "Sparta is a Greek city, but it is not the main city associated with the modern Olympics.", fact: "Ancient Sparta was famous for its military culture." },
-      { label: "Olympic Flame", correctSlot: "S3", logicNote: "The Olympic flame connects the Olympics and Greece, but it is not a city.", fact: "The Olympic flame is lit in Olympia, Greece before each modern Games." },
+      { label: "Olive Wreath", correctSlot: "S3", logicNote: "The olive wreath was the original prize awarded to victors at the ancient Greek games at Olympia and was revived at the Athens 2004 Olympics, but a wreath is a symbolic crown rather than a city.", fact: "Ancient champions at Olympia were crowned with the kotinos — a wreath cut with a golden sickle from a sacred wild olive tree said to have been planted by Hercules — and the tradition was honored again at the Athens 2004 Games, where every medalist was presented with an olive wreath alongside their medal." },
       { label: "Athens", correctSlot: "S4", logicNote: "Athens is a Greek city that hosted the modern Olympics.", fact: "Athens hosted the first modern Olympic Games in 1896." },
-      { label: "Marathon Medal", correctSlot: null },
+      { label: "Volleyball", correctSlot: null },
       { label: "Greek Salad", correctSlot: null },
       { label: "City Hall", correctSlot: null },
       { label: "Ski Jacket", correctSlot: null }
@@ -329,7 +617,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 60,
     labels: { A: "TV Show", B: "Family", C: "Animated" },
     tiles: [
-      { label: "Modern Family", correctSlot: "S1", logicNote: "Modern Family is a TV show about a family, but it is live-action rather than animated.", fact: "Modern Family won multiple Emmy Awards for Outstanding Comedy Series." },
+      { label: "Full House", correctSlot: "S1", logicNote: "Full House is a TV show centered on the Tanner household, but it is live-action rather than animated.", fact: "Full House aired on ABC from 1987 to 1995, following a widowed dad raising three daughters in San Francisco with help from his brother-in-law and best friend, and was popular enough to spawn the Netflix sequel 'Fuller House' in 2016." },
       { label: "Looney Tunes", correctSlot: "S2", logicNote: "Looney Tunes is animated television entertainment, but it is not mainly about one family.", fact: "Bugs Bunny became one of the most recognizable cartoon characters in American pop culture." },
       { label: "The Incredibles", correctSlot: "S3", logicNote: "The Incredibles is about an animated family, but it is a movie rather than a TV show.", fact: "The Incredibles follows a family of superheroes trying to live normal lives." },
       { label: "The Simpsons", correctSlot: "S4", logicNote: "The Simpsons is an animated TV show about a family.", fact: "The Simpsons is one of the longest-running scripted shows in television history." },
@@ -340,18 +628,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Country + Island + In Europe",
+    title: "Painter + 20th Century + Spanish",
     difficultyEstimate: 45,
-    labels: { A: "Country", B: "Island", C: "In Europe" },
+    labels: { A: "Painter", B: "20th Century", C: "Spanish" },
     tiles: [
-      { label: "Madagascar", correctSlot: "S1", logicNote: "Madagascar is an island country, but it is near Africa rather than in Europe.", fact: "Madagascar is home to lemurs, which live naturally nowhere else." },
-      { label: "Germany", correctSlot: "S2", logicNote: "Germany is a country in Europe, but it is not an island.", fact: "Germany has the largest population in the European Union." },
-      { label: "Sicily", correctSlot: "S3", logicNote: "Sicily is an island in Europe, but it is part of Italy rather than a country.", fact: "Sicily is the largest island in the Mediterranean Sea." },
-      { label: "Ireland", correctSlot: "S4", logicNote: "Ireland is a European island country.", fact: "Ireland is often called the Emerald Isle because of its green landscape." },
-      { label: "Passport", correctSlot: null },
-      { label: "Beach Towel", correctSlot: null },
-      { label: "Eiffel Tower", correctSlot: null },
-      { label: "Volcano", correctSlot: null }
+      { label: "Jackson Pollock", correctSlot: "S1", logicNote: "Jackson Pollock was a celebrated painter who worked in the mid-20th century, but he was American — born in Wyoming — rather than Spanish.", fact: "Pollock pioneered the 'drip' technique in the late 1940s, laying his canvases on the floor of a Long Island barn and flinging paint from sticks and hardened brushes; his 1948 work 'Number 1A' helped make Abstract Expressionism the first American art movement to gain global influence." },
+      { label: "Francisco Goya", correctSlot: "S2", logicNote: "Francisco Goya was one of Spain's most celebrated painters, but he worked from the late 1700s into the early 1800s rather than during the 20th century.", fact: "Goya served as court painter to four Spanish kings, and his haunting 'Black Paintings' — created directly on the plaster walls of his farmhouse outside Madrid in the 1820s — were not transferred to canvas or shown to the public until decades after his death in 1828." },
+      { label: "Antonio Banderas", correctSlot: "S3", logicNote: "Antonio Banderas is a Spanish star whose career took off in the late 20th century, but he is a film actor rather than a painter.", fact: "Banderas was born in Málaga in 1960 — the same coastal city as Pablo Picasso — and broke out in Pedro Almodóvar's films before crossing over to Hollywood roles like Zorro and the voice of Puss in Boots in the Shrek movies." },
+      { label: "Pablo Picasso", correctSlot: "S4", logicNote: "Pablo Picasso was a Spanish painter whose career stretched across most of the 20th century, so he fits all three categories.", fact: "Picasso was so prolific that scholars estimate he produced more than 20,000 works across his 91-year life, and his 1907 painting 'Les Demoiselles d'Avignon' is widely credited with kicking off the Cubist revolution in modern art." },
+      { label: "Beethoven", correctSlot: null },
+      { label: "Mona Lisa", correctSlot: null },
+      { label: "Don Quixote", correctSlot: null },
+      { label: "Albert Einstein", correctSlot: null }
     ]
   }
 },
@@ -6174,6 +6462,3 @@ window.COMMON_GROUND_DAILY_SETS = [
     }
   }
 ];
-
-
-
