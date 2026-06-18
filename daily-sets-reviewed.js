@@ -58,7 +58,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "The Godfather", correctSlot: "S1", logicNote: "The Godfather is a movie based on a book, but it is not set in the future.", fact: "Mario Puzo co-wrote the screenplay for The Godfather with director Francis Ford Coppola." },
       { label: "Back to the Future", correctSlot: "S2", logicNote: "Back to the Future is a movie with future travel, but it was not based on a book.", fact: "Back to the Future was released in 1985 and became one of the decade's defining comedies." },
-      { label: "1984 Novel", correctSlot: "S3", logicNote: "1984 is a book set in a future dystopia, but this tile refers to the novel rather than a movie.", fact: "George Orwell published Nineteen Eighty-Four in 1949." },
+      { label: "Nineteen Eighty-Four", correctSlot: "S3", logicNote: "Nineteen Eighty-Four is a book set in a future dystopia, but this tile refers to the novel rather than a movie.", fact: "George Orwell published Nineteen Eighty-Four in 1949." },
       { label: "Blade Runner", correctSlot: "S4", logicNote: "Blade Runner is a movie based on a book and set in the future.", fact: "Blade Runner was loosely based on Philip K. Dick's novel Do Androids Dream of Electric Sheep?" },
       { label: "Movie Camera", correctSlot: null },
       { label: "Library Card", correctSlot: null },
@@ -172,7 +172,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Swimming", correctSlot: "S1", logicNote: "Swimming is a water sport, but it does not use a board.", fact: "Swimming has been part of the modern Olympics since 1896." },
       { label: "Skateboarding", correctSlot: "S2", logicNote: "Skateboarding is a sport that uses a board, but it is not a water sport.", fact: "Skateboarding made its Olympic debut at the Tokyo Games." },
-      { label: "Surfboard", correctSlot: "S3", logicNote: "A surfboard is used in water and is a board, but it is equipment rather than the sport.", fact: "Modern surfboards are usually made from foam and fiberglass." },
+      { label: "Diving Board", correctSlot: "S3", logicNote: "A diving board is found at water and is a board, but it is pool equipment rather than a sport.", fact: "Diving boards are mounted at the edge of swimming pools and come in various heights." },
       { label: "Surfing", correctSlot: "S4", logicNote: "Surfing is a water sport that uses a board.", fact: "Surfing has deep roots in Polynesian culture." },
       { label: "Marathon", correctSlot: null },
       { label: "Lake", correctSlot: null },
@@ -190,7 +190,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Antarctica", correctSlot: "S3", logicNote: "Antarctica is in the Southern Hemisphere and starts with A, but it is a continent rather than a country.", fact: "Antarctica contains the geographic South Pole." },
       { label: "Australia", correctSlot: "S4", logicNote: "Australia is a country in the Southern Hemisphere that starts with A.", fact: "Australia is both a country and a continent in common geographic usage." },
       { label: "Norway", correctSlot: null },
-      { label: "Chile", correctSlot: null },
+      { label: "South Pole", correctSlot: null },
       { label: "Aardvark", correctSlot: null },
       { label: "Pencil", correctSlot: null }
     ]
@@ -200,8 +200,8 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 37,
     labels: { A: "Country", B: "Starts With P", C: "Has Atlantic Coast" },
     tiles: [
-      { label: "Morocco", correctSlot: "S1", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
-      { label: "Peru", correctSlot: "S2", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
+      { label: "Morocco", correctSlot: "S2", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
+      { label: "Peru", correctSlot: "S1", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
       { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico starts with P and has Atlantic coastline, but it is a U.S. territory rather than a country.", fact: "Puerto Rico sits between the Atlantic Ocean and the Caribbean Sea." },
       { label: "Portugal", correctSlot: "S4", logicNote: "Portugal is a country that starts with P and has Atlantic coastline.", fact: "Portugal's long Atlantic coast helped shape its history of exploration." },
       { label: "Laos", correctSlot: null },
@@ -235,7 +235,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Apollo 13", correctSlot: "S1", logicNote: "Apollo 13 is a movie based on a true story, but it is not about sports.", fact: "Apollo 13 dramatizes the real NASA mission that suffered an oxygen tank explosion." },
       { label: "Rocky", correctSlot: "S2", logicNote: "Rocky is a sports movie, but it is a fictional story rather than a true one.", fact: "Rocky won the Academy Award for Best Picture." },
-      { label: "1980 U.S. Hockey Team", correctSlot: "S3", logicNote: "The 1980 U.S. hockey team is a true sports story, but the tile is the team rather than a movie.", fact: "The team's win over the Soviet Union became known as the Miracle on Ice." },
+      { label: "Miracle on Ice", correctSlot: "S3", logicNote: "The Miracle on Ice is a true sports story, but the tile refers to the event rather than a movie.", fact: "The 1980 U.S. hockey team's upset win over the Soviet Union became known as the Miracle on Ice." },
       { label: "Remember the Titans", correctSlot: "S4", logicNote: "Remember the Titans is a sports movie based on a true story.", fact: "Remember the Titans is based on a Virginia high school football team in the early 1970s." },
       { label: "Star Wars", correctSlot: null },
       { label: "Biography", correctSlot: null },
@@ -267,7 +267,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Fruit", B: "Red", C: "Small" },
     tiles: [
       { label: "Apple", correctSlot: "S1", logicNote: "An apple is a red fruit, but it is not especially small.", fact: "Apple trees are part of the rose family." },
-      { label: "Blueberry", correctSlot: "S2", logicNote: "A blueberry is a small fruit, but it is blue rather than red.", fact: "Blueberries are native to North America." },
+      { label: "Grape", correctSlot: "S2", logicNote: "A grape is a small fruit, but it is green or purple rather than red.", fact: "Grapes have been cultivated for thousands of years and are used to make wine." },
       { label: "Fire Ant", correctSlot: "S3", logicNote: "A fire ant is red and small, but it is not a fruit.", fact: "Fire ants are named for their painful stings." },
       { label: "Cherry", correctSlot: "S4", logicNote: "A cherry is a small red fruit.", fact: "Cherries are related to peaches, plums, and almonds." },
       { label: "Banana", correctSlot: null },
@@ -297,7 +297,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "U.S. Author", B: "Nobel Prize", C: "Novelist" },
     tiles: [
       { label: "Toni Morrison", correctSlot: "S4", logicNote: "Toni Morrison was a U.S. author, Nobel Prize winner, and novelist.", fact: "Toni Morrison won the Nobel Prize in Literature in 1993." },
-      { label: "Jimmy Carter", correctSlot: "S1", logicNote: "Jimmy Carter was a U.S. author and Nobel Prize winner, but he is not mainly known as a novelist.", fact: "Jimmy Carter won the Nobel Peace Prize in 2002." },
+      { label: "Eugene O'Neill", correctSlot: "S1", logicNote: "Eugene O'Neill was a U.S. author and Nobel Prize winner, but he was a playwright rather than a novelist.", fact: "Eugene O'Neill won the Nobel Prize in Literature in 1936 and is considered the father of American drama." },
       { label: "Mark Twain", correctSlot: "S2", logicNote: "Mark Twain was a U.S. author and novelist, but he did not win a Nobel Prize.", fact: "Mark Twain wrote The Adventures of Tom Sawyer and Adventures of Huckleberry Finn." },
       { label: "Gabriel Garcia Marquez", correctSlot: "S3", logicNote: "Gabriel Garcia Marquez was a Nobel-winning novelist, but he was Colombian rather than a U.S. author.", fact: "Gabriel Garcia Marquez won the Nobel Prize in Literature in 1982." },
       { label: "Poetry Book", correctSlot: null },
