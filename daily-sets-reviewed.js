@@ -310,18 +310,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-06-18",
   easy: {
-    title: "Animal + Ocean + Large",
+    title: "Animal + Has Wings + Cannot Fly",
     difficultyEstimate: 82,
-    labels: { A: "Animal", B: "Ocean", C: "Large" },
+    labels: { A: "Animal", B: "Has Wings", C: "Cannot Fly" },
     tiles: [
-      { label: "Clownfish", correctSlot: "S1", logicNote: "A clownfish is an animal that lives in the ocean, but it is not large.", fact: "Clownfish can change sex — all are born male, and the dominant one becomes female." },
-      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is a large animal, but it does not live in the ocean.", fact: "Elephants are the only animals that can’t jump, but they can swim for up to six hours." },
-      { label: "Aircraft Carrier", correctSlot: "S3", logicNote: "An aircraft carrier is large and found in the ocean, but it is not an animal.", fact: "A Nimitz-class aircraft carrier is over 1,000 feet long — about as long as the Empire State Building is tall." },
-      { label: "Blue Whale", correctSlot: "S4", logicNote: "A blue whale is a large animal that lives in the ocean.", fact: "A blue whale’s heart is the size of a golf cart and can be heard beating from two miles away." },
-      { label: "Hamster", correctSlot: null, fact: "Hamsters can run up to 5.5 miles on their wheel in a single night." },
-      { label: "Seashell", correctSlot: null, fact: "If you hold a seashell to your ear, the ‘ocean sound’ is actually ambient noise resonating inside the shell." },
-      { label: "Skyscraper", correctSlot: null, fact: "The Empire State Building has its own zip code: 10118." },
-      { label: "Pencil", correctSlot: null, fact: "A single pencil can draw a line about 35 miles long." }
+      { label: "Eagle", correctSlot: "S1", logicNote: "An eagle is an animal with wings, but it can fly.", fact: "Eagles are known for excellent eyesight and powerful talons." },
+      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is an animal that cannot fly, but it does not have wings.", fact: "Elephants are the largest living land animals." },
+      { label: "Broken Airplane", correctSlot: "S3", logicNote: "A broken airplane has wings and cannot fly, but it is not an animal.", fact: "Airplanes rely on wings to generate lift as air moves over them." },
+      { label: "Ostrich", correctSlot: "S4", logicNote: "An ostrich is an animal with wings that cannot fly.", fact: "Ostriches are the world's largest birds and can run very fast." },
+      { label: "Dog", correctSlot: null },
+      { label: "Kite", correctSlot: null },
+      { label: "Rock", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
     ]
   },
   medium: {
