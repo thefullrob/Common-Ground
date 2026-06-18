@@ -26,13 +26,13 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 80,
     labels: { A: "Animal", B: "Lives in Water", C: "Has Shell" },
     tiles: [
-      { label: "Fish", correctSlot: "S1", logicNote: "A fish is an animal that lives in water, but it does not have a shell.", fact: "Fish breathe underwater by passing water over their gills." },
+      { label: "Shark", correctSlot: "S1", logicNote: "A fish is an animal that lives in water, but it does not have a shell.", fact: "Fish breathe underwater by passing water over their gills." },
       { label: "Tortoise", correctSlot: "S2", logicNote: "A tortoise is an animal with a shell, but it lives mostly on land rather than in water.", fact: "Tortoises are turtles adapted for life on land." },
-      { label: "Seashell", correctSlot: "S3", logicNote: "A seashell is connected to water and has a shell, but it is not an animal itself.", fact: "Many seashells are the hard outer coverings left behind by marine mollusks." },
+      { label: "Submarine", correctSlot: "S3", logicNote: "A seashell is connected to water and has a shell, but it is not an animal itself.", fact: "Many seashells are the hard outer coverings left behind by marine mollusks." },
       { label: "Sea Turtle", correctSlot: "S4", logicNote: "A sea turtle is an animal that lives in water and has a shell.", fact: "Sea turtles return to beaches to lay eggs even though they spend most of life in the ocean." },
       { label: "Cat", correctSlot: null },
       { label: "Ocean", correctSlot: null },
-      { label: "Helmet", correctSlot: null },
+      { label: "Walnut", correctSlot: null },
       { label: "Blanket", correctSlot: null }
     ]
   },
@@ -76,7 +76,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Chicken", correctSlot: "S1", logicNote: "A chicken is a farm animal, but it does not give milk.", fact: "Chickens are the most numerous domesticated birds in the world." },
       { label: "Whale", correctSlot: "S2", logicNote: "A whale is an animal that gives milk to its young, but it is not a farm animal.", fact: "Whales are mammals, so whale calves nurse from their mothers." },
-      { label: "Dairy Barn", correctSlot: "S3", logicNote: "A dairy barn is on a farm and is connected to milk, but it is not an animal.", fact: "Dairy barns are designed around milking, feeding, and caring for cows." },
+      { label: "Dairy Farm", correctSlot: "S3", logicNote: "A dairy barn is on a farm and is connected to milk, but it is not an animal.", fact: "Dairy barns are designed around milking, feeding, and caring for cows." },
       { label: "Cow", correctSlot: "S4", logicNote: "A cow is a farm animal that gives milk.", fact: "Dairy cows are bred and cared for specifically for milk production." },
       { label: "Lion", correctSlot: null },
       { label: "Tractor", correctSlot: null },
@@ -127,7 +127,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Coffee", correctSlot: "S3", logicNote: "Coffee is hot and strongly associated with breakfast, but it is a drink rather than food.", fact: "Coffee beans are seeds from the fruit of coffee plants." },
       { label: "Pancakes", correctSlot: "S4", logicNote: "Pancakes are hot breakfast food.", fact: "Pancakes are cooked on a hot griddle or pan." },
       { label: "Salad", correctSlot: null },
-      { label: "Alarm Clock", correctSlot: null },
+      { label: "Rooster", correctSlot: null },
       { label: "Fireplace", correctSlot: null },
       { label: "Envelope", correctSlot: null }
     ]
@@ -154,7 +154,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "France", correctSlot: "S1", logicNote: "France is a country that uses the euro, but it does not start with S.", fact: "France was one of the founding countries of the eurozone." },
       { label: "Switzerland", correctSlot: "S2", logicNote: "Switzerland is a country that starts with S, but it uses the Swiss franc rather than the euro.", fact: "Switzerland is surrounded by euro-using countries but kept its own currency." },
-      { label: "Strasbourg", correctSlot: "S3", logicNote: "Strasbourg starts with S and uses the euro, but it is a city rather than a country.", fact: "Strasbourg is a French city near the German border." },
+      { label: "Seville", correctSlot: "S3", logicNote: "Strasbourg starts with S and uses the euro, but it is a city rather than a country.", fact: "Strasbourg is a French city near the German border." },
       { label: "Spain", correctSlot: "S4", logicNote: "Spain is a country that starts with S and uses the euro.", fact: "Spain adopted the euro as physical currency in 2002." },
       { label: "Canada", correctSlot: null },
       { label: "Berlin", correctSlot: null },
@@ -172,7 +172,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Swimming", correctSlot: "S1", logicNote: "Swimming is a water sport, but it does not use a board.", fact: "Swimming has been part of the modern Olympics since 1896." },
       { label: "Skateboarding", correctSlot: "S2", logicNote: "Skateboarding is a sport that uses a board, but it is not a water sport.", fact: "Skateboarding made its Olympic debut at the Tokyo Games." },
-      { label: "Surfboard", correctSlot: "S3", logicNote: "A surfboard is used in water and is a board, but it is equipment rather than the sport.", fact: "Modern surfboards are usually made from foam and fiberglass." },
+      { label: "Diving Board", correctSlot: "S3", logicNote: "A surfboard is used in water and is a board, but it is equipment rather than the sport.", fact: "Modern surfboards are usually made from foam and fiberglass." },
       { label: "Surfing", correctSlot: "S4", logicNote: "Surfing is a water sport that uses a board.", fact: "Surfing has deep roots in Polynesian culture." },
       { label: "Marathon", correctSlot: null },
       { label: "Lake", correctSlot: null },
@@ -190,7 +190,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Antarctica", correctSlot: "S3", logicNote: "Antarctica is in the Southern Hemisphere and starts with A, but it is a continent rather than a country.", fact: "Antarctica contains the geographic South Pole." },
       { label: "Australia", correctSlot: "S4", logicNote: "Australia is a country in the Southern Hemisphere that starts with A.", fact: "Australia is both a country and a continent in common geographic usage." },
       { label: "Norway", correctSlot: null },
-      { label: "Chile", correctSlot: null },
+      { label: "Penguin", correctSlot: null },
       { label: "Aardvark", correctSlot: null },
       { label: "Pencil", correctSlot: null }
     ]
@@ -200,8 +200,8 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 37,
     labels: { A: "Country", B: "Starts With P", C: "Has Atlantic Coast" },
     tiles: [
-      { label: "Morocco", correctSlot: "S1", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
-      { label: "Peru", correctSlot: "S2", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
+      { label: "Morocco", correctSlot: "S2", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
+      { label: "Peru", correctSlot: "S1", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
       { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico starts with P and has Atlantic coastline, but it is a U.S. territory rather than a country.", fact: "Puerto Rico sits between the Atlantic Ocean and the Caribbean Sea." },
       { label: "Portugal", correctSlot: "S4", logicNote: "Portugal is a country that starts with P and has Atlantic coastline.", fact: "Portugal's long Atlantic coast helped shape its history of exploration." },
       { label: "Laos", correctSlot: null },
@@ -223,7 +223,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Pet Rock", correctSlot: "S3", logicNote: "A pet rock is a small novelty pet, but it is not an animal.", fact: "Pet Rocks became a brief toy craze in the 1970s." },
       { label: "Hamster", correctSlot: "S4", logicNote: "A hamster is a small animal often kept as a pet.", fact: "Hamsters store food in expandable cheek pouches." },
       { label: "Giraffe", correctSlot: null },
-      { label: "Dog Collar", correctSlot: null },
+      { label: "Fish Tank", correctSlot: null },
       { label: "Thumbtack", correctSlot: null },
       { label: "Sofa", correctSlot: null }
     ]
@@ -253,8 +253,8 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Hong Kong", correctSlot: "S3", logicNote: "Hong Kong was a British colony and drives on the left, but it is not a country.", fact: "Hong Kong was handed from Britain to China in 1997." },
       { label: "India", correctSlot: "S4", logicNote: "India is a country, was a British colony, and drives on the left.", fact: "India became independent from British rule in 1947." },
       { label: "Mexico", correctSlot: null },
-      { label: "Colony Ship", correctSlot: null },
-      { label: "Left Turn", correctSlot: null },
+      { label: "Crown", correctSlot: null },
+      { label: "Skateboard", correctSlot: null },
       { label: "Notebook", correctSlot: null }
     ]
   }
@@ -333,7 +333,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Madison", correctSlot: "S2", logicNote: "Madison is a city that starts with M, but it does not have an NBA team.", fact: "Madison is the capital of Wisconsin." },
       { label: "Mavericks", correctSlot: "S3", logicNote: "Mavericks starts with M and is an NBA team, but it is a team name rather than a city.", fact: "The Dallas Mavericks are often called the Mavs." },
       { label: "Miami", correctSlot: "S4", logicNote: "Miami is a city that starts with M and has an NBA team.", fact: "The Miami Heat have won multiple NBA championships." },
-      { label: "Denver", correctSlot: null },
+      { label: "Mountain", correctSlot: null },
       { label: "Basketball", correctSlot: null },
       { label: "Magazine", correctSlot: null },
       { label: "Lamp", correctSlot: null }
@@ -345,8 +345,8 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Musical", B: "Movie", C: "Set in New York" },
     tiles: [
       { label: "Chicago", correctSlot: "S1", logicNote: "Chicago is a musical and a movie, but it is set in Chicago rather than New York.", fact: "The film version of Chicago won Best Picture at the Academy Awards." },
-      { label: "Taxi Driver", correctSlot: "S2", logicNote: "Taxi Driver is a movie set in New York, but it is not a musical.", fact: "Taxi Driver follows a New York City cab driver played by Robert De Niro." },
-      { label: "Avenue Q", correctSlot: "S3", logicNote: "Avenue Q is a musical set in New York, but it is not a movie.", fact: "Avenue Q won the Tony Award for Best Musical." },
+      { label: "Taxi Driver", correctSlot: "S3", logicNote: "Taxi Driver is a movie set in New York, but it is not a musical.", fact: "Taxi Driver follows a New York City cab driver played by Robert De Niro." },
+      { label: "Avenue Q", correctSlot: "S2", logicNote: "Avenue Q is a musical set in New York, but it is not a movie.", fact: "Avenue Q won the Tony Award for Best Musical." },
       { label: "West Side Story", correctSlot: "S4", logicNote: "West Side Story is a musical, a movie, and set in New York.", fact: "West Side Story reimagines Romeo and Juliet among rival gangs in New York City." },
       { label: "Broadway Ticket", correctSlot: null },
       { label: "Movie Poster", correctSlot: null },
@@ -1615,7 +1615,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Toaster", correctSlot: "S2", logicNote: "A toaster is associated with morning and gets hot, but it is not a drink." },
       { label: "Mulled Wine", correctSlot: "S3", logicNote: "Mulled wine is a hot drink, but it is not a typical morning item." },
       { label: "Coffee", correctSlot: "S4", logicNote: "Coffee is a hot drink strongly associated with morning.", fact: "Coffee beans are seeds from the fruit of coffee plants." },
-      { label: "Alarm Clock", correctSlot: null },
+      { label: "Rooster", correctSlot: null },
       { label: "Soda Can", correctSlot: null },
       { label: "Fireplace Poker", correctSlot: null },
       { label: "Nightlight", correctSlot: null }
@@ -5538,7 +5538,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         { label: "Tank", correctSlot: "S4" },
         { label: "Trench Coat", correctSlot: null },
         { label: "Victory Medal", correctSlot: null },
-        { label: "Helmet", correctSlot: null },
+        { label: "Walnut", correctSlot: null },
         { label: "Periscope", correctSlot: null }
       ]
     }
