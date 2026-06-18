@@ -20,6 +20,342 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-06-24",
+  easy: {
+    title: "Animal + Lives in Water + Has Shell",
+    difficultyEstimate: 80,
+    labels: { A: "Animal", B: "Lives in Water", C: "Has Shell" },
+    tiles: [
+      { label: "Fish", correctSlot: "S1", logicNote: "A fish is an animal that lives in water, but it does not have a shell.", fact: "Fish breathe underwater by passing water over their gills." },
+      { label: "Tortoise", correctSlot: "S2", logicNote: "A tortoise is an animal with a shell, but it lives mostly on land rather than in water.", fact: "Tortoises are turtles adapted for life on land." },
+      { label: "Seashell", correctSlot: "S3", logicNote: "A seashell is connected to water and has a shell, but it is not an animal itself.", fact: "Many seashells are the hard outer coverings left behind by marine mollusks." },
+      { label: "Sea Turtle", correctSlot: "S4", logicNote: "A sea turtle is an animal that lives in water and has a shell.", fact: "Sea turtles return to beaches to lay eggs even though they spend most of life in the ocean." },
+      { label: "Cat", correctSlot: null },
+      { label: "Ocean", correctSlot: null },
+      { label: "Helmet", correctSlot: null },
+      { label: "Blanket", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "U.S. City + Hosted Olympics + Starts With L",
+    difficultyEstimate: 49,
+    labels: { A: "U.S. City", B: "Hosted Olympics", C: "Starts With L" },
+    tiles: [
+      { label: "Atlanta", correctSlot: "S1", logicNote: "Atlanta is a U.S. city that hosted the Olympics, but it does not start with L.", fact: "Atlanta hosted the 1996 Summer Olympics." },
+      { label: "Las Vegas", correctSlot: "S2", logicNote: "Las Vegas is a U.S. city that starts with L, but it has not hosted the Olympics.", fact: "Las Vegas is known for its casinos, shows, and large convention industry." },
+      { label: "London", correctSlot: "S3", logicNote: "London starts with L and has hosted the Olympics, but it is not a U.S. city.", fact: "London hosted the Summer Olympics in 1908, 1948, and 2012." },
+      { label: "Los Angeles", correctSlot: "S4", logicNote: "Los Angeles is a U.S. city that starts with L and has hosted the Olympics.", fact: "Los Angeles hosted the Summer Olympics in 1932 and 1984 and is scheduled for 2028." },
+      { label: "Philadelphia", correctSlot: null },
+      { label: "Athens", correctSlot: null },
+      { label: "Lemon", correctSlot: null },
+      { label: "Suitcase", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Movie + Based on Book + Set in Future",
+    difficultyEstimate: 37,
+    labels: { A: "Movie", B: "Based on Book", C: "Set in Future" },
+    tiles: [
+      { label: "The Godfather", correctSlot: "S1", logicNote: "The Godfather is a movie based on a book, but it is not set in the future.", fact: "Mario Puzo co-wrote the screenplay for The Godfather with director Francis Ford Coppola." },
+      { label: "Back to the Future", correctSlot: "S2", logicNote: "Back to the Future is a movie with future travel, but it was not based on a book.", fact: "Back to the Future was released in 1985 and became one of the decade's defining comedies." },
+      { label: "1984 Novel", correctSlot: "S3", logicNote: "1984 is a book set in a future dystopia, but this tile refers to the novel rather than a movie.", fact: "George Orwell published Nineteen Eighty-Four in 1949." },
+      { label: "Blade Runner", correctSlot: "S4", logicNote: "Blade Runner is a movie based on a book and set in the future.", fact: "Blade Runner was loosely based on Philip K. Dick's novel Do Androids Dream of Electric Sheep?" },
+      { label: "Movie Camera", correctSlot: null },
+      { label: "Library Card", correctSlot: null },
+      { label: "Time Capsule", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-23",
+  easy: {
+    title: "Animal + Farm + Gives Milk",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Farm", C: "Gives Milk" },
+    tiles: [
+      { label: "Chicken", correctSlot: "S1", logicNote: "A chicken is a farm animal, but it does not give milk.", fact: "Chickens are the most numerous domesticated birds in the world." },
+      { label: "Whale", correctSlot: "S2", logicNote: "A whale is an animal that gives milk to its young, but it is not a farm animal.", fact: "Whales are mammals, so whale calves nurse from their mothers." },
+      { label: "Dairy Barn", correctSlot: "S3", logicNote: "A dairy barn is on a farm and is connected to milk, but it is not an animal.", fact: "Dairy barns are designed around milking, feeding, and caring for cows." },
+      { label: "Cow", correctSlot: "S4", logicNote: "A cow is a farm animal that gives milk.", fact: "Dairy cows are bred and cared for specifically for milk production." },
+      { label: "Lion", correctSlot: null },
+      { label: "Tractor", correctSlot: null },
+      { label: "Milk Carton", correctSlot: null },
+      { label: "Book", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Brand + Fast Food + Starts With M",
+    difficultyEstimate: 50,
+    labels: { A: "Brand", B: "Fast Food", C: "Starts With M" },
+    tiles: [
+      { label: "Burger King", correctSlot: "S1", logicNote: "Burger King is a fast-food brand, but it does not start with M.", fact: "Burger King was founded in Florida in the 1950s." },
+      { label: "Microsoft", correctSlot: "S2", logicNote: "Microsoft is a brand that starts with M, but it is not fast food.", fact: "Microsoft was founded by Bill Gates and Paul Allen in 1975." },
+      { label: "McNugget", correctSlot: "S3", logicNote: "McNugget is fast food and starts with M, but it is a product rather than the brand itself.", fact: "Chicken McNuggets were introduced nationally by McDonald's in the 1980s." },
+      { label: "McDonald's", correctSlot: "S4", logicNote: "McDonald's is a fast-food brand that starts with M.", fact: "McDonald's golden arches are among the world's most recognizable brand symbols." },
+      { label: "Adidas", correctSlot: null },
+      { label: "French Fries", correctSlot: null },
+      { label: "Mountain", correctSlot: null },
+      { label: "Clock", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. State + Has NBA Team + Starts With M",
+    difficultyEstimate: 38,
+    labels: { A: "U.S. State", B: "Has NBA Team", C: "Starts With M" },
+    tiles: [
+      { label: "Texas", correctSlot: "S1", logicNote: "Texas is a U.S. state with NBA teams, but it does not start with M.", fact: "Texas has NBA teams in Dallas, Houston, and San Antonio." },
+      { label: "Montana", correctSlot: "S2", logicNote: "Montana is a U.S. state that starts with M, but it does not have an NBA team.", fact: "Montana is nicknamed Big Sky Country." },
+      { label: "Memphis", correctSlot: "S3", logicNote: "Memphis starts with M and has an NBA team, but it is a city rather than a state.", fact: "The Memphis Grizzlies moved from Vancouver to Memphis in 2001." },
+      { label: "Minnesota", correctSlot: "S4", logicNote: "Minnesota is a U.S. state that starts with M and has an NBA team.", fact: "The Minnesota Timberwolves began play in 1989." },
+      { label: "Alaska", correctSlot: null },
+      { label: "Lakers", correctSlot: null },
+      { label: "Maple Leaf", correctSlot: null },
+      { label: "Table", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-22",
+  easy: {
+    title: "Food + Breakfast + Served Hot",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Breakfast", C: "Served Hot" },
+    tiles: [
+      { label: "Cereal", correctSlot: "S1", logicNote: "Cereal is breakfast food, but it is usually served cold.", fact: "Ready-to-eat breakfast cereal became popular in the United States in the early 1900s." },
+      { label: "Soup", correctSlot: "S2", logicNote: "Soup is hot food, but it is not mainly thought of as breakfast.", fact: "Soup is eaten for breakfast in some cuisines, but not usually in the classic American breakfast lineup." },
+      { label: "Coffee", correctSlot: "S3", logicNote: "Coffee is hot and strongly associated with breakfast, but it is a drink rather than food.", fact: "Coffee beans are seeds from the fruit of coffee plants." },
+      { label: "Pancakes", correctSlot: "S4", logicNote: "Pancakes are hot breakfast food.", fact: "Pancakes are cooked on a hot griddle or pan." },
+      { label: "Salad", correctSlot: null },
+      { label: "Alarm Clock", correctSlot: null },
+      { label: "Fireplace", correctSlot: null },
+      { label: "Envelope", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Singer + Actor + First Name Starts With J",
+    difficultyEstimate: 49,
+    labels: { A: "Singer", B: "Actor", C: "First Name Starts With J" },
+    tiles: [
+      { label: "Lady Gaga", correctSlot: "S1", logicNote: "Lady Gaga is a singer and actor, but her first name is Stefani, not a J-name.", fact: "Lady Gaga was nominated for an acting Oscar for A Star Is Born." },
+      { label: "Justin Bieber", correctSlot: "S2", logicNote: "Justin Bieber is a singer whose first name starts with J, but he is not mainly known as an actor.", fact: "Justin Bieber became famous as a teenager after videos of him singing spread online." },
+      { label: "Jennifer Aniston", correctSlot: "S3", logicNote: "Jennifer Aniston is an actor whose first name starts with J, but she is not mainly known as a singer.", fact: "Jennifer Aniston played Rachel Green on Friends." },
+      { label: "Jennifer Lopez", correctSlot: "S4", logicNote: "Jennifer Lopez is a singer and actor whose first name starts with J.", fact: "Jennifer Lopez has had major careers in pop music, film, and television." },
+      { label: "Adele", correctSlot: null },
+      { label: "Tom Hanks", correctSlot: null },
+      { label: "Jupiter", correctSlot: null },
+      { label: "Telescope", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Uses Euro + Starts With S",
+    difficultyEstimate: 39,
+    labels: { A: "Country", B: "Uses Euro", C: "Starts With S" },
+    tiles: [
+      { label: "France", correctSlot: "S1", logicNote: "France is a country that uses the euro, but it does not start with S.", fact: "France was one of the founding countries of the eurozone." },
+      { label: "Switzerland", correctSlot: "S2", logicNote: "Switzerland is a country that starts with S, but it uses the Swiss franc rather than the euro.", fact: "Switzerland is surrounded by euro-using countries but kept its own currency." },
+      { label: "Strasbourg", correctSlot: "S3", logicNote: "Strasbourg starts with S and uses the euro, but it is a city rather than a country.", fact: "Strasbourg is a French city near the German border." },
+      { label: "Spain", correctSlot: "S4", logicNote: "Spain is a country that starts with S and uses the euro.", fact: "Spain adopted the euro as physical currency in 2002." },
+      { label: "Canada", correctSlot: null },
+      { label: "Berlin", correctSlot: null },
+      { label: "Saturn", correctSlot: null },
+      { label: "Folder", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-21",
+  easy: {
+    title: "Sport + Water + Uses Board",
+    difficultyEstimate: 80,
+    labels: { A: "Sport", B: "Water", C: "Uses Board" },
+    tiles: [
+      { label: "Swimming", correctSlot: "S1", logicNote: "Swimming is a water sport, but it does not use a board.", fact: "Swimming has been part of the modern Olympics since 1896." },
+      { label: "Skateboarding", correctSlot: "S2", logicNote: "Skateboarding is a sport that uses a board, but it is not a water sport.", fact: "Skateboarding made its Olympic debut at the Tokyo Games." },
+      { label: "Surfboard", correctSlot: "S3", logicNote: "A surfboard is used in water and is a board, but it is equipment rather than the sport.", fact: "Modern surfboards are usually made from foam and fiberglass." },
+      { label: "Surfing", correctSlot: "S4", logicNote: "Surfing is a water sport that uses a board.", fact: "Surfing has deep roots in Polynesian culture." },
+      { label: "Marathon", correctSlot: null },
+      { label: "Lake", correctSlot: null },
+      { label: "Cutting Board", correctSlot: null },
+      { label: "Candle", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Country + Southern Hemisphere + Starts With A",
+    difficultyEstimate: 50,
+    labels: { A: "Country", B: "Southern Hemisphere", C: "Starts With A" },
+    tiles: [
+      { label: "South Africa", correctSlot: "S1", logicNote: "South Africa is a country in the Southern Hemisphere, but it does not start with A.", fact: "South Africa is the southernmost country on the African mainland." },
+      { label: "Austria", correctSlot: "S2", logicNote: "Austria is a country that starts with A, but it is in the Northern Hemisphere.", fact: "Austria is a landlocked country in central Europe." },
+      { label: "Antarctica", correctSlot: "S3", logicNote: "Antarctica is in the Southern Hemisphere and starts with A, but it is a continent rather than a country.", fact: "Antarctica contains the geographic South Pole." },
+      { label: "Australia", correctSlot: "S4", logicNote: "Australia is a country in the Southern Hemisphere that starts with A.", fact: "Australia is both a country and a continent in common geographic usage." },
+      { label: "Norway", correctSlot: null },
+      { label: "Chile", correctSlot: null },
+      { label: "Aardvark", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Starts With P + Has Atlantic Coast",
+    difficultyEstimate: 37,
+    labels: { A: "Country", B: "Starts With P", C: "Has Atlantic Coast" },
+    tiles: [
+      { label: "Morocco", correctSlot: "S1", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
+      { label: "Peru", correctSlot: "S2", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
+      { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico starts with P and has Atlantic coastline, but it is a U.S. territory rather than a country.", fact: "Puerto Rico sits between the Atlantic Ocean and the Caribbean Sea." },
+      { label: "Portugal", correctSlot: "S4", logicNote: "Portugal is a country that starts with P and has Atlantic coastline.", fact: "Portugal's long Atlantic coast helped shape its history of exploration." },
+      { label: "Laos", correctSlot: null },
+      { label: "Paris", correctSlot: null },
+      { label: "Atlantic Ocean", correctSlot: null },
+      { label: "Snow Shovel", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-20",
+  easy: {
+    title: "Animal + Pet + Small",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Pet", C: "Small" },
+    tiles: [
+      { label: "Golden Retriever", correctSlot: "S1", logicNote: "A golden retriever is an animal kept as a pet, but it is not small.", fact: "Golden retrievers were first bred in Scotland as hunting dogs." },
+      { label: "Ant", correctSlot: "S2", logicNote: "An ant is a small animal, but it is not a pet.", fact: "Ant colonies can include thousands or even millions of ants." },
+      { label: "Pet Rock", correctSlot: "S3", logicNote: "A pet rock is a small novelty pet, but it is not an animal.", fact: "Pet Rocks became a brief toy craze in the 1970s." },
+      { label: "Hamster", correctSlot: "S4", logicNote: "A hamster is a small animal often kept as a pet.", fact: "Hamsters store food in expandable cheek pouches." },
+      { label: "Giraffe", correctSlot: null },
+      { label: "Dog Collar", correctSlot: null },
+      { label: "Thumbtack", correctSlot: null },
+      { label: "Sofa", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + True Story + Sports",
+    difficultyEstimate: 48,
+    labels: { A: "Movie", B: "True Story", C: "Sports" },
+    tiles: [
+      { label: "Apollo 13", correctSlot: "S1", logicNote: "Apollo 13 is a movie based on a true story, but it is not about sports.", fact: "Apollo 13 dramatizes the real NASA mission that suffered an oxygen tank explosion." },
+      { label: "Rocky", correctSlot: "S2", logicNote: "Rocky is a sports movie, but it is a fictional story rather than a true one.", fact: "Rocky won the Academy Award for Best Picture." },
+      { label: "1980 U.S. Hockey Team", correctSlot: "S3", logicNote: "The 1980 U.S. hockey team is a true sports story, but the tile is the team rather than a movie.", fact: "The team's win over the Soviet Union became known as the Miracle on Ice." },
+      { label: "Remember the Titans", correctSlot: "S4", logicNote: "Remember the Titans is a sports movie based on a true story.", fact: "Remember the Titans is based on a Virginia high school football team in the early 1970s." },
+      { label: "Star Wars", correctSlot: null },
+      { label: "Biography", correctSlot: null },
+      { label: "Tennis Ball", correctSlot: null },
+      { label: "Desk", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Former British Colony + Drives on Left",
+    difficultyEstimate: 36,
+    labels: { A: "Country", B: "Former British Colony", C: "Drives on Left" },
+    tiles: [
+      { label: "United States", correctSlot: "S1", logicNote: "The United States is a country formed from former British colonies, but it drives on the right, not the left.", fact: "The original thirteen U.S. states were formerly British colonies." },
+      { label: "Japan", correctSlot: "S2", logicNote: "Japan is a country that drives on the left, but it was not a British colony.", fact: "Japan is one of several countries outside the former British Empire that drives on the left." },
+      { label: "Hong Kong", correctSlot: "S3", logicNote: "Hong Kong was a British colony and drives on the left, but it is not a country.", fact: "Hong Kong was handed from Britain to China in 1997." },
+      { label: "India", correctSlot: "S4", logicNote: "India is a country, was a British colony, and drives on the left.", fact: "India became independent from British rule in 1947." },
+      { label: "Mexico", correctSlot: null },
+      { label: "Colony Ship", correctSlot: null },
+      { label: "Left Turn", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-19",
+  easy: {
+    title: "Fruit + Red + Small",
+    difficultyEstimate: 82,
+    labels: { A: "Fruit", B: "Red", C: "Small" },
+    tiles: [
+      { label: "Apple", correctSlot: "S1", logicNote: "An apple is a red fruit, but it is not especially small.", fact: "Apple trees are part of the rose family." },
+      { label: "Blueberry", correctSlot: "S2", logicNote: "A blueberry is a small fruit, but it is blue rather than red.", fact: "Blueberries are native to North America." },
+      { label: "Fire Ant", correctSlot: "S3", logicNote: "A fire ant is red and small, but it is not a fruit.", fact: "Fire ants are named for their painful stings." },
+      { label: "Cherry", correctSlot: "S4", logicNote: "A cherry is a small red fruit.", fact: "Cherries are related to peaches, plums, and almonds." },
+      { label: "Banana", correctSlot: null },
+      { label: "Stop Sign", correctSlot: null },
+      { label: "Button", correctSlot: null },
+      { label: "Ladder", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Brand + Founded in Seattle + Coffee",
+    difficultyEstimate: 50,
+    labels: { A: "Brand", B: "Founded in Seattle", C: "Coffee" },
+    tiles: [
+      { label: "Amazon", correctSlot: "S1", logicNote: "Amazon is a brand founded in Seattle, but it is not a coffee brand.", fact: "Amazon began as an online bookstore in the 1990s." },
+      { label: "Dunkin'", correctSlot: "S2", logicNote: "Dunkin' is a brand strongly associated with coffee, but it was founded in Massachusetts rather than Seattle.", fact: "Dunkin' began as a doughnut shop in Quincy, Massachusetts." },
+      { label: "Pike Place Roast", correctSlot: "S3", logicNote: "Pike Place Roast is coffee connected to Seattle, but it is a product rather than the brand.", fact: "Pike Place Roast is named for Seattle's Pike Place Market area." },
+      { label: "Starbucks", correctSlot: "S4", logicNote: "Starbucks is a coffee brand founded in Seattle.", fact: "The first Starbucks opened near Seattle's Pike Place Market in 1971." },
+      { label: "Nike", correctSlot: null },
+      { label: "Space Needle", correctSlot: null },
+      { label: "Espresso", correctSlot: null },
+      { label: "Chair", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. Author + Nobel Prize + Novelist",
+    difficultyEstimate: 37,
+    labels: { A: "U.S. Author", B: "Nobel Prize", C: "Novelist" },
+    tiles: [
+      { label: "Toni Morrison", correctSlot: "S4", logicNote: "Toni Morrison was a U.S. author, Nobel Prize winner, and novelist.", fact: "Toni Morrison won the Nobel Prize in Literature in 1993." },
+      { label: "Jimmy Carter", correctSlot: "S1", logicNote: "Jimmy Carter was a U.S. author and Nobel Prize winner, but he is not mainly known as a novelist.", fact: "Jimmy Carter won the Nobel Peace Prize in 2002." },
+      { label: "Mark Twain", correctSlot: "S2", logicNote: "Mark Twain was a U.S. author and novelist, but he did not win a Nobel Prize.", fact: "Mark Twain wrote The Adventures of Tom Sawyer and Adventures of Huckleberry Finn." },
+      { label: "Gabriel Garcia Marquez", correctSlot: "S3", logicNote: "Gabriel Garcia Marquez was a Nobel-winning novelist, but he was Colombian rather than a U.S. author.", fact: "Gabriel Garcia Marquez won the Nobel Prize in Literature in 1982." },
+      { label: "Poetry Book", correctSlot: null },
+      { label: "Peace Medal", correctSlot: null },
+      { label: "Novel Shelf", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-18",
+  easy: {
+    title: "Animal + Has Wings + Cannot Fly",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Has Wings", C: "Cannot Fly" },
+    tiles: [
+      { label: "Eagle", correctSlot: "S1", logicNote: "An eagle is an animal with wings, but it can fly.", fact: "Eagles are known for excellent eyesight and powerful talons." },
+      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is an animal that cannot fly, but it does not have wings.", fact: "Elephants are the largest living land animals." },
+      { label: "Broken Airplane", correctSlot: "S3", logicNote: "A broken airplane has wings and cannot fly, but it is not an animal.", fact: "Airplanes rely on wings to generate lift as air moves over them." },
+      { label: "Ostrich", correctSlot: "S4", logicNote: "An ostrich is an animal with wings that cannot fly.", fact: "Ostriches are the world's largest birds and can run very fast." },
+      { label: "Dog", correctSlot: null },
+      { label: "Kite", correctSlot: null },
+      { label: "Rock", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "City + Has NBA Team + Starts With M",
+    difficultyEstimate: 50,
+    labels: { A: "City", B: "Has NBA Team", C: "Starts With M" },
+    tiles: [
+      { label: "Dallas", correctSlot: "S1", logicNote: "Dallas is a city with an NBA team, but it does not start with M.", fact: "The Dallas Mavericks won the NBA championship in 2011." },
+      { label: "Madison", correctSlot: "S2", logicNote: "Madison is a city that starts with M, but it does not have an NBA team.", fact: "Madison is the capital of Wisconsin." },
+      { label: "Mavericks", correctSlot: "S3", logicNote: "Mavericks starts with M and is an NBA team, but it is a team name rather than a city.", fact: "The Dallas Mavericks are often called the Mavs." },
+      { label: "Miami", correctSlot: "S4", logicNote: "Miami is a city that starts with M and has an NBA team.", fact: "The Miami Heat have won multiple NBA championships." },
+      { label: "Denver", correctSlot: null },
+      { label: "Basketball", correctSlot: null },
+      { label: "Magazine", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Musical + Movie + Set in New York",
+    difficultyEstimate: 38,
+    labels: { A: "Musical", B: "Movie", C: "Set in New York" },
+    tiles: [
+      { label: "Chicago", correctSlot: "S1", logicNote: "Chicago is a musical and a movie, but it is set in Chicago rather than New York.", fact: "The film version of Chicago won Best Picture at the Academy Awards." },
+      { label: "Taxi Driver", correctSlot: "S2", logicNote: "Taxi Driver is a movie set in New York, but it is not a musical.", fact: "Taxi Driver follows a New York City cab driver played by Robert De Niro." },
+      { label: "Avenue Q", correctSlot: "S3", logicNote: "Avenue Q is a musical set in New York, but it is not a movie.", fact: "Avenue Q won the Tony Award for Best Musical." },
+      { label: "West Side Story", correctSlot: "S4", logicNote: "West Side Story is a musical, a movie, and set in New York.", fact: "West Side Story reimagines Romeo and Juliet among rival gangs in New York City." },
+      { label: "Broadway Ticket", correctSlot: null },
+      { label: "Movie Poster", correctSlot: null },
+      { label: "Times Square", correctSlot: null },
+      { label: "Baseball Glove", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-06-17",
   easy: {
     title: "Food + Green + Comes in Bunches",
