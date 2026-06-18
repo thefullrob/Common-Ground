@@ -1,21 +1,21 @@
 /**
- * COMMON GROUND DAILY SETS — Venn diagram puzzle data
+ * COMMON GROUND DAILY SETS â Venn diagram puzzle data
  *
  * Each puzzle has 3 sets (A, B, C) and 4 placement slots that map to the
  * Venn intersections as follows:
  *
- *   S1 = A ∩ B  (only A and B; NOT C)
- *   S2 = A ∩ C  (only A and C; NOT B)
- *   S3 = B ∩ C  (only B and C; NOT A)
- *   S4 = A ∩ B ∩ C  (all three)
+ *   S1 = A â© B  (only A and B; NOT C)
+ *   S2 = A â© C  (only A and C; NOT B)
+ *   S3 = B â© C  (only B and C; NOT A)
+ *   S4 = A â© B â© C  (all three)
  *
- * Tiles with `correctSlot: null` are distractors — they belong outside the
+ * Tiles with `correctSlot: null` are distractors â they belong outside the
  * 4 intersection regions (single-set members or unrelated red herrings).
  *
  * IMPORTANT for editors: when designing or fixing a puzzle, verify EACH
  * placed tile against its slot rule above by checking all three set
  * memberships explicitly. Do not rely on intuition about which slot is
- * which — confirm against this comment every time.
+ * which â confirm against this comment every time.
  */
 window.COMMON_GROUND_DAILY_SETS = [
 
@@ -310,18 +310,18 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-06-18",
   easy: {
-    title: "Animal + Has Wings + Cannot Fly",
+    title: "Animal + Ocean + Large",
     difficultyEstimate: 82,
-    labels: { A: "Animal", B: "Has Wings", C: "Cannot Fly" },
+    labels: { A: "Animal", B: "Ocean", C: "Large" },
     tiles: [
-      { label: "Eagle", correctSlot: "S1", logicNote: "An eagle is an animal with wings, but it can fly.", fact: "Eagles are known for excellent eyesight and powerful talons." },
-      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is an animal that cannot fly, but it does not have wings.", fact: "Elephants are the largest living land animals." },
-      { label: "Broken Airplane", correctSlot: "S3", logicNote: "A broken airplane has wings and cannot fly, but it is not an animal.", fact: "Airplanes rely on wings to generate lift as air moves over them." },
-      { label: "Ostrich", correctSlot: "S4", logicNote: "An ostrich is an animal with wings that cannot fly.", fact: "Ostriches are the world's largest birds and can run very fast." },
-      { label: "Dog", correctSlot: null },
-      { label: "Kite", correctSlot: null },
-      { label: "Rock", correctSlot: null },
-      { label: "Spoon", correctSlot: null }
+      { label: "Clownfish", correctSlot: "S1", logicNote: "A clownfish is an animal that lives in the ocean, but it is not large.", fact: "Clownfish can change sex — all are born male, and the dominant one becomes female." },
+      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is a large animal, but it does not live in the ocean.", fact: "Elephants are the only animals that can’t jump, but they can swim for up to six hours." },
+      { label: "Aircraft Carrier", correctSlot: "S3", logicNote: "An aircraft carrier is large and found in the ocean, but it is not an animal.", fact: "A Nimitz-class aircraft carrier is over 1,000 feet long — about as long as the Empire State Building is tall." },
+      { label: "Blue Whale", correctSlot: "S4", logicNote: "A blue whale is a large animal that lives in the ocean.", fact: "A blue whale’s heart is the size of a golf cart and can be heard beating from two miles away." },
+      { label: "Hamster", correctSlot: null, fact: "Hamsters can run up to 5.5 miles on their wheel in a single night." },
+      { label: "Seashell", correctSlot: null, fact: "If you hold a seashell to your ear, the ‘ocean sound’ is actually ambient noise resonating inside the shell." },
+      { label: "Skyscraper", correctSlot: null, fact: "The Empire State Building has its own zip code: 10118." },
+      { label: "Pencil", correctSlot: null, fact: "A single pencil can draw a line about 35 miles long." }
     ]
   },
   medium: {
@@ -362,7 +362,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 80,
     labels: { A: "Food", B: "Green", C: "Comes in Bunches" },
     tiles: [
-      { label: "Avocado", correctSlot: "S1", logicNote: "An avocado is a green food, but avocados are sold one at a time rather than in bunches.", fact: "Avocados do not ripen on the tree — they only begin to soften after they are picked." },
+      { label: "Avocado", correctSlot: "S1", logicNote: "An avocado is a green food, but avocados are sold one at a time rather than in bunches.", fact: "Avocados do not ripen on the tree â they only begin to soften after they are picked." },
       { label: "Carrots", correctSlot: "S2", logicNote: "Carrots are food classically sold in bunches, but the carrots themselves are orange, not green.", fact: "Centuries ago most carrots were purple or yellow; the orange carrot was popularized by Dutch growers." },
       { label: "Cash", correctSlot: "S3", logicNote: "Cash is green and comes in bunches, but you cannot eat it.", fact: "U.S. bills are printed on a blend of cotton and linen rather than regular paper." },
       { label: "Grapes", correctSlot: "S4", logicNote: "Grapes are food, the green variety fills supermarket shelves, and they grow in bunches.", fact: "A single grapevine can produce enough grapes each year to make dozens of bottles of wine." },
@@ -394,7 +394,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "The Godfather", correctSlot: "S1", logicNote: "The Godfather is both a book and a movie, but its title does not contain a color.", fact: "Mario Puzo's novel The Godfather was adapted into Francis Ford Coppola's 1972 film." },
       { label: "Green Eggs and Ham", correctSlot: "S2", logicNote: "Green Eggs and Ham is a book with a color in the title, but it is not mainly known as a movie.", fact: "Dr. Seuss wrote Green Eggs and Ham using only 50 different words." },
-      { label: "The Pink Panther", correctSlot: "S3", logicNote: "The Pink Panther is a movie with a color in the title, but it began on screen rather than on the page.", fact: "In the original 1963 film, the Pink Panther is actually a diamond with a panther-shaped flaw — the cartoon cat came from the title sequence." },
+      { label: "The Pink Panther", correctSlot: "S3", logicNote: "The Pink Panther is a movie with a color in the title, but it began on screen rather than on the page.", fact: "In the original 1963 film, the Pink Panther is actually a diamond with a panther-shaped flaw â the cartoon cat came from the title sequence." },
       { label: "A Clockwork Orange", correctSlot: "S4", logicNote: "A Clockwork Orange is a novel and a movie, and its title sneaks in a color where you expect a fruit.", fact: "Anthony Burgess published the novel in 1962, and Stanley Kubrick's film adaptation arrived in 1971." },
       { label: "Paperback", correctSlot: null },
       { label: "Movie Ticket", correctSlot: null },
@@ -489,7 +489,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Can Follow Black", B: "Can Follow White", C: "Food" },
     tiles: [
       { label: "Berry", correctSlot: "S2", logicNote: "Berry can follow black in blackberry and is food, but whiteberry is not a common term.", fact: "Blackberries are aggregate fruits, meaning each berry is made of many tiny drupelets." },
-      { label: "Chocolate", correctSlot: "S3", logicNote: "Chocolate can follow white in white chocolate and is food, but black chocolate is not the usual phrase — we say dark chocolate.", fact: "White chocolate contains cocoa butter but not cocoa solids." },
+      { label: "Chocolate", correctSlot: "S3", logicNote: "Chocolate can follow white in white chocolate and is food, but black chocolate is not the usual phrase â we say dark chocolate.", fact: "White chocolate contains cocoa butter but not cocoa solids." },
       { label: "Board", correctSlot: "S1", logicNote: "Board can follow both black and white in blackboard and whiteboard, but it is not food.", fact: "Whiteboards became common in classrooms and offices as dry-erase markers improved." },
       { label: "Pepper", correctSlot: "S4", logicNote: "Pepper can follow both black and white, and both black pepper and white pepper are foods or spices.", fact: "Black and white pepper both come from the same pepper plant, processed at different stages." },
       { label: "Hole", correctSlot: null },
@@ -776,7 +776,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 47,
     labels: { A: "Holiday", B: "Spring", C: "American" },
     tiles: [
-      { label: "Easter", correctSlot: "S1", logicNote: "Easter is a spring holiday, but it is a global Christian observance rather than something specifically American.", fact: "Easter does not fall on a fixed date — it lands on the first Sunday after the first full moon following the spring equinox, which is why it can move by more than a month between years." },
+      { label: "Easter", correctSlot: "S1", logicNote: "Easter is a spring holiday, but it is a global Christian observance rather than something specifically American.", fact: "Easter does not fall on a fixed date â it lands on the first Sunday after the first full moon following the spring equinox, which is why it can move by more than a month between years." },
       { label: "Thanksgiving", correctSlot: "S2", logicNote: "Thanksgiving is an American holiday, but it falls on the fourth Thursday of November rather than in spring.", fact: "President Abraham Lincoln declared the first national Thanksgiving in 1863, asking Americans to set aside the last Thursday in November even as the Civil War was still being fought." },
       { label: "Kentucky Derby", correctSlot: "S3", logicNote: "The Kentucky Derby is a quintessentially American spring tradition, but it is a horse race rather than a holiday.", fact: "The Kentucky Derby has been run every year at Churchill Downs in Louisville since 1875, making it the longest continuously held major sporting event in the United States." },
       { label: "Memorial Day", correctSlot: "S4", logicNote: "Memorial Day is an American holiday that falls in late May, so it fits all three categories.", fact: "Memorial Day grew out of post-Civil War remembrance ceremonies called Decoration Day, and Congress moved it to the last Monday in May in 1971 to create a reliable three-day weekend." },
@@ -794,10 +794,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 85,
     labels: { A: "Bird", B: "Yellow", C: "Cartoon" },
     tiles: [
-      { label: "Canary", correctSlot: "S1", logicNote: "A canary is a small bird with bright yellow plumage, but it is a real animal rather than a cartoon character.", fact: "Coal miners famously carried caged canaries into mines through the early 1900s because the birds' fast metabolism made them collapse from carbon monoxide long before humans noticed the gas — a low-tech warning system still in use in some British mines until 1986." },
+      { label: "Canary", correctSlot: "S1", logicNote: "A canary is a small bird with bright yellow plumage, but it is a real animal rather than a cartoon character.", fact: "Coal miners famously carried caged canaries into mines through the early 1900s because the birds' fast metabolism made them collapse from carbon monoxide long before humans noticed the gas â a low-tech warning system still in use in some British mines until 1986." },
       { label: "Daffy Duck", correctSlot: "S2", logicNote: "Daffy Duck is a cartoon duck, but his feathers are clearly drawn as black rather than yellow.", fact: "Daffy debuted in the 1937 Looney Tunes short 'Porky's Duck Hunt,' where his manic, screwball antics shocked audiences used to tamer cartoon characters and helped redefine what an animated star could be." },
-      { label: "SpongeBob SquarePants", correctSlot: "S3", logicNote: "SpongeBob is a bright yellow cartoon star, but he is a sea sponge rather than a bird.", fact: "SpongeBob was created by marine biologist and animator Stephen Hillenburg, who based the character on a real sea sponge — and his Nickelodeon series, which premiered in 1999, has become one of the longest-running and highest-grossing animated franchises in television history." },
-      { label: "Woodstock", correctSlot: "S4", logicNote: "Woodstock is the tiny yellow bird from the Peanuts comic strip, so he is a bird, yellow, and a cartoon all at once.", fact: "Charles Schulz first introduced the little bird in 1967 and gave him the name Woodstock in 1970 — a nod to the famous 1969 music festival — and Snoopy and Woodstock's friendship became one of the most beloved pairings in American comic strip history." },
+      { label: "SpongeBob SquarePants", correctSlot: "S3", logicNote: "SpongeBob is a bright yellow cartoon star, but he is a sea sponge rather than a bird.", fact: "SpongeBob was created by marine biologist and animator Stephen Hillenburg, who based the character on a real sea sponge â and his Nickelodeon series, which premiered in 1999, has become one of the longest-running and highest-grossing animated franchises in television history." },
+      { label: "Woodstock", correctSlot: "S4", logicNote: "Woodstock is the tiny yellow bird from the Peanuts comic strip, so he is a bird, yellow, and a cartoon all at once.", fact: "Charles Schulz first introduced the little bird in 1967 and gave him the name Woodstock in 1970 â a nod to the famous 1969 music festival â and Snoopy and Woodstock's friendship became one of the most beloved pairings in American comic strip history." },
       { label: "Bald Eagle", correctSlot: null },
       { label: "Lemon", correctSlot: null },
       { label: "Mickey Mouse", correctSlot: null },
@@ -824,10 +824,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 46,
     labels: { A: "Band", B: "British", C: "1960s" },
     tiles: [
-      { label: "Queen", correctSlot: "S1", logicNote: "Queen is a celebrated British rock band, but the group came together in 1970 and broke through in the 1970s rather than the 1960s.", fact: "Queen formed in London in 1970 when guitarist Brian May and drummer Roger Taylor recruited a flamboyant art student named Farrokh Bulsara — better known to the world as Freddie Mercury — with bassist John Deacon joining the following year to complete the lineup." },
-      { label: "The Beach Boys", correctSlot: "S2", logicNote: "The Beach Boys are a band whose harmonies helped define mid-1960s music, but they are a California group rather than a British one.", fact: "Formed in Hawthorne, California in 1961 by the three Wilson brothers and their cousin Mike Love, the Beach Boys spent the 1960s in a friendly rivalry with the Beatles — and Brian Wilson's 1966 album 'Pet Sounds' is often credited with directly inspiring 'Sgt. Pepper's Lonely Hearts Club Band' the following year." },
+      { label: "Queen", correctSlot: "S1", logicNote: "Queen is a celebrated British rock band, but the group came together in 1970 and broke through in the 1970s rather than the 1960s.", fact: "Queen formed in London in 1970 when guitarist Brian May and drummer Roger Taylor recruited a flamboyant art student named Farrokh Bulsara â better known to the world as Freddie Mercury â with bassist John Deacon joining the following year to complete the lineup." },
+      { label: "The Beach Boys", correctSlot: "S2", logicNote: "The Beach Boys are a band whose harmonies helped define mid-1960s music, but they are a California group rather than a British one.", fact: "Formed in Hawthorne, California in 1961 by the three Wilson brothers and their cousin Mike Love, the Beach Boys spent the 1960s in a friendly rivalry with the Beatles â and Brian Wilson's 1966 album 'Pet Sounds' is often credited with directly inspiring 'Sgt. Pepper's Lonely Hearts Club Band' the following year." },
       { label: "Julie Andrews", correctSlot: "S3", logicNote: "Julie Andrews became one of the biggest British stars of the 1960s, but she is a solo actress and singer rather than a member of a band.", fact: "Andrews won the Academy Award for Best Actress for 'Mary Poppins' in 1964 and starred in 'The Sound of Music' the following year, which became the highest-grossing film in history at the time and held that record until it was overtaken by 'Gone with the Wind' on rerelease." },
-      { label: "The Beatles", correctSlot: "S4", logicNote: "The Beatles are a British band formed in Liverpool in 1960, so they fit all three categories.", fact: "The Beatles' February 1964 appearance on The Ed Sullivan Show drew an estimated 73 million American viewers — about 40 percent of the U.S. population — and is widely credited with kicking off the 'British Invasion' that reshaped popular music for the rest of the decade." },
+      { label: "The Beatles", correctSlot: "S4", logicNote: "The Beatles are a British band formed in Liverpool in 1960, so they fit all three categories.", fact: "The Beatles' February 1964 appearance on The Ed Sullivan Show drew an estimated 73 million American viewers â about 40 percent of the U.S. population â and is widely credited with kicking off the 'British Invasion' that reshaped popular music for the rest of the decade." },
       { label: "ABBA", correctSlot: null },
       { label: "Big Ben", correctSlot: null },
       { label: "Apollo 11", correctSlot: null },
@@ -857,10 +857,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 60,
     labels: { A: "Country", B: "Starts With C", C: "Pacific Coast" },
     tiles: [
-      { label: "Cuba", correctSlot: "S1", logicNote: "Cuba is a country whose name starts with C, but it sits in the Caribbean Sea — not on the Pacific Ocean.", fact: "Cuba is the largest island in the Caribbean — roughly the same length as the U.S. East Coast from Boston down to Washington, D.C." },
-      { label: "Japan", correctSlot: "S2", logicNote: "Japan is a country with a long Pacific coastline, but its name doesn't start with the letter C.", fact: "Japan is an archipelago of nearly 7,000 islands, though most of its population lives on just four — Honshu, Hokkaido, Kyushu, and Shikoku." },
-      { label: "California", correctSlot: "S3", logicNote: "California's name starts with C and it stretches along the Pacific Ocean, but it's a U.S. state rather than a country.", fact: "California's economy is so large — powered by tech, agriculture, and entertainment — that if it stood alone as a nation it would rank among the top five in the world by GDP." },
-      { label: "Chile", correctSlot: "S4", logicNote: "Chile is a country whose name starts with C and that runs along the Pacific coast of South America.", fact: "Chile stretches more than 2,600 miles from desert in the north to glaciers and fjords in the south, yet averages only about 110 miles wide — one of the longest, narrowest countries on Earth." },
+      { label: "Cuba", correctSlot: "S1", logicNote: "Cuba is a country whose name starts with C, but it sits in the Caribbean Sea â not on the Pacific Ocean.", fact: "Cuba is the largest island in the Caribbean â roughly the same length as the U.S. East Coast from Boston down to Washington, D.C." },
+      { label: "Japan", correctSlot: "S2", logicNote: "Japan is a country with a long Pacific coastline, but its name doesn't start with the letter C.", fact: "Japan is an archipelago of nearly 7,000 islands, though most of its population lives on just four â Honshu, Hokkaido, Kyushu, and Shikoku." },
+      { label: "California", correctSlot: "S3", logicNote: "California's name starts with C and it stretches along the Pacific Ocean, but it's a U.S. state rather than a country.", fact: "California's economy is so large â powered by tech, agriculture, and entertainment â that if it stood alone as a nation it would rank among the top five in the world by GDP." },
+      { label: "Chile", correctSlot: "S4", logicNote: "Chile is a country whose name starts with C and that runs along the Pacific coast of South America.", fact: "Chile stretches more than 2,600 miles from desert in the north to glaciers and fjords in the south, yet averages only about 110 miles wide â one of the longest, narrowest countries on Earth." },
       { label: "Brazil", correctSlot: null },
       { label: "Champagne", correctSlot: null },
       { label: "Mt. Fuji", correctSlot: null },
@@ -873,9 +873,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "U.S. President", B: "20th Century", C: "Won Re-election" },
     tiles: [
       { label: "Jimmy Carter", correctSlot: "S1", logicNote: "Jimmy Carter was a U.S. president who served in the 20th century, but he lost his 1980 re-election bid to Ronald Reagan.", fact: "After leaving the White House, Carter built one of the most active post-presidencies in American history, founding global health and election-monitoring programs and winning the Nobel Peace Prize in 2002." },
-      { label: "Abraham Lincoln", correctSlot: "S2", logicNote: "Abraham Lincoln won re-election as U.S. president, but he served in the 19th century — well before the 1900s began.", fact: "Lincoln won his 1864 re-election in the middle of the Civil War, defeating his former general George McClellan and carrying 22 of the 25 states that took part in the vote." },
-      { label: "Margaret Thatcher", correctSlot: "S3", logicNote: "Margaret Thatcher was a 20th-century leader who won re-election repeatedly, but she led Britain as prime minister rather than the United States.", fact: "Thatcher won three consecutive general elections — in 1979, 1983, and 1987 — making her the longest continuously serving British prime minister of the 20th century." },
-      { label: "Ronald Reagan", correctSlot: "S4", logicNote: "Ronald Reagan was a 20th-century U.S. president who won a landslide re-election in 1984.", fact: "Reagan's 1984 victory over Walter Mondale carried 49 of 50 states — one of the most lopsided electoral wins in American history, with Minnesota narrowly the only state Mondale managed to hold." },
+      { label: "Abraham Lincoln", correctSlot: "S2", logicNote: "Abraham Lincoln won re-election as U.S. president, but he served in the 19th century â well before the 1900s began.", fact: "Lincoln won his 1864 re-election in the middle of the Civil War, defeating his former general George McClellan and carrying 22 of the 25 states that took part in the vote." },
+      { label: "Margaret Thatcher", correctSlot: "S3", logicNote: "Margaret Thatcher was a 20th-century leader who won re-election repeatedly, but she led Britain as prime minister rather than the United States.", fact: "Thatcher won three consecutive general elections â in 1979, 1983, and 1987 â making her the longest continuously serving British prime minister of the 20th century." },
+      { label: "Ronald Reagan", correctSlot: "S4", logicNote: "Ronald Reagan was a 20th-century U.S. president who won a landslide re-election in 1984.", fact: "Reagan's 1984 victory over Walter Mondale carried 49 of 50 states â one of the most lopsided electoral wins in American history, with Minnesota narrowly the only state Mondale managed to hold." },
       { label: "Mt. Rushmore", correctSlot: null },
       { label: "Napoleon", correctSlot: null },
       { label: "Eiffel Tower", correctSlot: null },
@@ -907,7 +907,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Paris", correctSlot: "S1", logicNote: "Paris is a city that has hosted the Olympics, but it is in France rather than Greece.", fact: "Paris hosted the Summer Olympics in 1900, 1924, and 2024." },
       { label: "Sparta", correctSlot: "S2", logicNote: "Sparta is a Greek city, but it is not the main city associated with the modern Olympics.", fact: "Ancient Sparta was famous for its military culture." },
-      { label: "Olive Wreath", correctSlot: "S3", logicNote: "The olive wreath was the original prize awarded to victors at the ancient Greek games at Olympia and was revived at the Athens 2004 Olympics, but a wreath is a symbolic crown rather than a city.", fact: "Ancient champions at Olympia were crowned with the kotinos — a wreath cut with a golden sickle from a sacred wild olive tree said to have been planted by Hercules — and the tradition was honored again at the Athens 2004 Games, where every medalist was presented with an olive wreath alongside their medal." },
+      { label: "Olive Wreath", correctSlot: "S3", logicNote: "The olive wreath was the original prize awarded to victors at the ancient Greek games at Olympia and was revived at the Athens 2004 Olympics, but a wreath is a symbolic crown rather than a city.", fact: "Ancient champions at Olympia were crowned with the kotinos â a wreath cut with a golden sickle from a sacred wild olive tree said to have been planted by Hercules â and the tradition was honored again at the Athens 2004 Games, where every medalist was presented with an olive wreath alongside their medal." },
       { label: "Athens", correctSlot: "S4", logicNote: "Athens is a Greek city that hosted the modern Olympics.", fact: "Athens hosted the first modern Olympic Games in 1896." },
       { label: "Volleyball", correctSlot: null },
       { label: "Greek Salad", correctSlot: null },
@@ -968,9 +968,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 45,
     labels: { A: "Painter", B: "20th Century", C: "Spanish" },
     tiles: [
-      { label: "Jackson Pollock", correctSlot: "S1", logicNote: "Jackson Pollock was a celebrated painter who worked in the mid-20th century, but he was American — born in Wyoming — rather than Spanish.", fact: "Pollock pioneered the 'drip' technique in the late 1940s, laying his canvases on the floor of a Long Island barn and flinging paint from sticks and hardened brushes; his 1948 work 'Number 1A' helped make Abstract Expressionism the first American art movement to gain global influence." },
-      { label: "Francisco Goya", correctSlot: "S2", logicNote: "Francisco Goya was one of Spain's most celebrated painters, but he worked from the late 1700s into the early 1800s rather than during the 20th century.", fact: "Goya served as court painter to four Spanish kings, and his haunting 'Black Paintings' — created directly on the plaster walls of his farmhouse outside Madrid in the 1820s — were not transferred to canvas or shown to the public until decades after his death in 1828." },
-      { label: "Antonio Banderas", correctSlot: "S3", logicNote: "Antonio Banderas is a Spanish star whose career took off in the late 20th century, but he is a film actor rather than a painter.", fact: "Banderas was born in Málaga in 1960 — the same coastal city as Pablo Picasso — and broke out in Pedro Almodóvar's films before crossing over to Hollywood roles like Zorro and the voice of Puss in Boots in the Shrek movies." },
+      { label: "Jackson Pollock", correctSlot: "S1", logicNote: "Jackson Pollock was a celebrated painter who worked in the mid-20th century, but he was American â born in Wyoming â rather than Spanish.", fact: "Pollock pioneered the 'drip' technique in the late 1940s, laying his canvases on the floor of a Long Island barn and flinging paint from sticks and hardened brushes; his 1948 work 'Number 1A' helped make Abstract Expressionism the first American art movement to gain global influence." },
+      { label: "Francisco Goya", correctSlot: "S2", logicNote: "Francisco Goya was one of Spain's most celebrated painters, but he worked from the late 1700s into the early 1800s rather than during the 20th century.", fact: "Goya served as court painter to four Spanish kings, and his haunting 'Black Paintings' â created directly on the plaster walls of his farmhouse outside Madrid in the 1820s â were not transferred to canvas or shown to the public until decades after his death in 1828." },
+      { label: "Antonio Banderas", correctSlot: "S3", logicNote: "Antonio Banderas is a Spanish star whose career took off in the late 20th century, but he is a film actor rather than a painter.", fact: "Banderas was born in MÃ¡laga in 1960 â the same coastal city as Pablo Picasso â and broke out in Pedro AlmodÃ³var's films before crossing over to Hollywood roles like Zorro and the voice of Puss in Boots in the Shrek movies." },
       { label: "Pablo Picasso", correctSlot: "S4", logicNote: "Pablo Picasso was a Spanish painter whose career stretched across most of the 20th century, so he fits all three categories.", fact: "Picasso was so prolific that scholars estimate he produced more than 20,000 works across his 91-year life, and his 1907 painting 'Les Demoiselles d'Avignon' is widely credited with kicking off the Cubist revolution in modern art." },
       { label: "Beethoven", correctSlot: null },
       { label: "Mona Lisa", correctSlot: null },
@@ -1017,9 +1017,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Book", B: "Movie", C: "Fantasy" },
     tiles: [
       { label: "Pride and Prejudice", correctSlot: "S1", logicNote: "Pride and Prejudice is a famous book adapted into films many times, but it is a Regency-era romance rather than a fantasy.", fact: "Jane Austen's 1813 novel was first published anonymously as 'by the Author of Sense and Sensibility,' and the BBC's 1995 adaptation starring Colin Firth sparked a worldwide Austen revival." },
-      { label: "Game of Thrones", correctSlot: "S2", logicNote: "George R.R. Martin's Game of Thrones books are a sweeping fantasy series, but their only screen version is HBO's TV show — not a theatrical movie.", fact: "The first novel, A Game of Thrones, was published in 1996, and HBO's TV adaptation went on to win 59 Emmy Awards, more than any other prime-time scripted series." },
+      { label: "Game of Thrones", correctSlot: "S2", logicNote: "George R.R. Martin's Game of Thrones books are a sweeping fantasy series, but their only screen version is HBO's TV show â not a theatrical movie.", fact: "The first novel, A Game of Thrones, was published in 1996, and HBO's TV adaptation went on to win 59 Emmy Awards, more than any other prime-time scripted series." },
       { label: "Pan's Labyrinth", correctSlot: "S3", logicNote: "Pan's Labyrinth is a dark fantasy movie, but it was an original screenplay by Guillermo del Toro rather than an adaptation of a book.", fact: "Set against the brutal aftermath of the Spanish Civil War in 1944, Pan's Labyrinth won three Academy Awards in 2007 for Cinematography, Art Direction, and Makeup." },
-      { label: "The Lord of the Rings", correctSlot: "S4", logicNote: "The Lord of the Rings is a celebrated book trilogy and movie trilogy, and it is a foundational work of fantasy, so it fits all three categories.", fact: "J.R.R. Tolkien spent more than a decade writing the trilogy, first published in 1954–55, and Peter Jackson's films ended their run by sweeping all 11 Oscars The Return of the King was nominated for in 2004." },
+      { label: "The Lord of the Rings", correctSlot: "S4", logicNote: "The Lord of the Rings is a celebrated book trilogy and movie trilogy, and it is a foundational work of fantasy, so it fits all three categories.", fact: "J.R.R. Tolkien spent more than a decade writing the trilogy, first published in 1954â55, and Peter Jackson's films ended their run by sweeping all 11 Oscars The Return of the King was nominated for in 2004." },
       { label: "The Catcher in the Rye", correctSlot: null },
       { label: "Casablanca", correctSlot: null },
       { label: "Magic Wand", correctSlot: null },
@@ -1066,8 +1066,8 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "New York Daily News", correctSlot: "S1", logicNote: "The New York Daily News is a famous American newspaper, but it was founded in 1919 rather than before 1900.", fact: "The Daily News was the first U.S. paper printed in the tabloid format, and its 1975 headline 'FORD TO CITY: DROP DEAD' is often credited with reshaping the federal bailout debate during New York City's near-bankruptcy." },
       { label: "The Times of London", correctSlot: "S2", logicNote: "The Times of London is a newspaper founded well before 1900, but it is British rather than American.", fact: "Founded in 1785, The Times of London was nicknamed 'The Thunderer' in the 19th century for its forceful editorials and has been one of Britain's papers of record ever since." },
-      { label: "Statue of Liberty", correctSlot: "S3", logicNote: "The Statue of Liberty is an American landmark dedicated in 1886, but it is a monument rather than a newspaper.", fact: "The statue was a gift from France marking the centennial of American independence, and her copper skin — once shiny like a penny — turned green over about 30 years as it weathered into a protective patina." },
-      { label: "The New York Times", correctSlot: "S4", logicNote: "The New York Times is an American newspaper founded in 1851, so it fits all three categories.", fact: "The Times has won more Pulitzer Prizes than any other news organization — well over 130 — and its motto 'All the News That's Fit to Print' has appeared on its front page since 1897." },
+      { label: "Statue of Liberty", correctSlot: "S3", logicNote: "The Statue of Liberty is an American landmark dedicated in 1886, but it is a monument rather than a newspaper.", fact: "The statue was a gift from France marking the centennial of American independence, and her copper skin â once shiny like a penny â turned green over about 30 years as it weathered into a protective patina." },
+      { label: "The New York Times", correctSlot: "S4", logicNote: "The New York Times is an American newspaper founded in 1851, so it fits all three categories.", fact: "The Times has won more Pulitzer Prizes than any other news organization â well over 130 â and its motto 'All the News That's Fit to Print' has appeared on its front page since 1897." },
       { label: "Le Monde", correctSlot: null },
       { label: "Empire State Building", correctSlot: null },
       { label: "Mona Lisa", correctSlot: null },
@@ -1082,7 +1082,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 84,
     labels: { A: "Plant", B: "Sharp", C: "Desert" },
     tiles: [
-      { label: "Rose Bush", correctSlot: "S1", logicNote: "A rose bush is a plant with sharp thorns, but it grows in temperate gardens rather than the desert.", fact: "Rose thorns are technically called prickles — outgrowths of the stem's outer layer, distinct from the true thorns of plants like hawthorn that grow from the wood itself." },
+      { label: "Rose Bush", correctSlot: "S1", logicNote: "A rose bush is a plant with sharp thorns, but it grows in temperate gardens rather than the desert.", fact: "Rose thorns are technically called prickles â outgrowths of the stem's outer layer, distinct from the true thorns of plants like hawthorn that grow from the wood itself." },
       { label: "Tumbleweed", correctSlot: "S2", logicNote: "A tumbleweed is a desert plant that rolls across dry land, but its dried branches are brittle rather than sharp.", fact: "The classic tumbleweed of Western movies is mostly Russian thistle, an invasive species that arrived in South Dakota around 1873, likely as a contaminant in flax seed shipments." },
       { label: "Scorpion Stinger", correctSlot: "S3", logicNote: "A scorpion's stinger is sharp and lives in deserts around the world, but it is part of an animal rather than a plant.", fact: "A scorpion's venom-tipped stinger is called a telson, and the deathstalker of North African deserts is considered one of the most dangerous species, though its sting is rarely fatal to healthy adults." },
       { label: "Cactus", correctSlot: "S4", logicNote: "A cactus is a plant covered in sharp spines that thrives in the desert, so it fits all three categories.", fact: "A saguaro cactus of the Sonoran Desert can live more than 150 years and grow over 40 feet tall, but a ten-year-old saguaro is often less than two inches high." },
@@ -1099,7 +1099,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Toy Story", correctSlot: "S1", logicNote: "Toy Story is a Disney/Pixar movie, but its leads are talking toys rather than a princess.", fact: "Toy Story was released in 1995 as the first feature film made entirely with computer animation, and its success helped cement Pixar as a major animation studio." },
       { label: "Shrek", correctSlot: "S2", logicNote: "Shrek is a movie featuring Princess Fiona, but it was made by DreamWorks rather than Disney.", fact: "Shrek opened in 2001 and won the very first Academy Award for Best Animated Feature, beating both Monsters, Inc. and Jimmy Neutron: Boy Genius." },
-      { label: "Cinderella Castle", correctSlot: "S3", logicNote: "Cinderella Castle is a Disney landmark themed around a princess, but it is a building in the Magic Kingdom rather than a movie.", fact: "Cinderella Castle at Walt Disney World stands 189 feet tall and uses forced perspective — each upper story is built progressively smaller — to look taller than it really is." },
+      { label: "Cinderella Castle", correctSlot: "S3", logicNote: "Cinderella Castle is a Disney landmark themed around a princess, but it is a building in the Magic Kingdom rather than a movie.", fact: "Cinderella Castle at Walt Disney World stands 189 feet tall and uses forced perspective â each upper story is built progressively smaller â to look taller than it really is." },
       { label: "Frozen", correctSlot: "S4", logicNote: "Frozen is a Disney movie centered on Princess Anna and her sister Queen Elsa, so it fits all three categories.", fact: "Released in 2013, Frozen became the highest-grossing animated film of its time, and its theme song 'Let It Go' won the Academy Award for Best Original Song." },
       { label: "Citizen Kane", correctSlot: null },
       { label: "Mickey Mouse Ears", correctSlot: null },
@@ -1112,7 +1112,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 44,
     labels: { A: "Singer", B: "Country Music", C: "Texas" },
     tiles: [
-      { label: "Dolly Parton", correctSlot: "S1", logicNote: "Dolly Parton is a celebrated country singer, but she grew up in the Smoky Mountains of east Tennessee rather than in Texas.", fact: "Parton was born in Sevier County, Tennessee in 1946, and her Imagination Library — launched there in 1995 — has now mailed more than 200 million free books to children around the world." },
+      { label: "Dolly Parton", correctSlot: "S1", logicNote: "Dolly Parton is a celebrated country singer, but she grew up in the Smoky Mountains of east Tennessee rather than in Texas.", fact: "Parton was born in Sevier County, Tennessee in 1946, and her Imagination Library â launched there in 1995 â has now mailed more than 200 million free books to children around the world." },
       { label: "Janis Joplin", correctSlot: "S2", logicNote: "Janis Joplin was a Texas-born singer, but her psychedelic rock and blues belt-outs were a world away from country music.", fact: "Joplin grew up in the oil refinery town of Port Arthur, Texas, and her brief, blazing career produced only four studio albums before her death in 1970 at age 27." },
       { label: "Austin City Limits", correctSlot: "S3", logicNote: "Austin City Limits is a Texas institution showcasing country and Americana acts, but it is a television program and festival rather than a singer.", fact: "Austin City Limits debuted on PBS in 1976 with Willie Nelson as its very first guest, and it is now the longest-running music program in American television history." },
       { label: "Willie Nelson", correctSlot: "S4", logicNote: "Willie Nelson is a country singer who was born and raised in Texas, so he fits all three categories.", fact: "Nelson was born in the tiny town of Abbott, Texas in 1933, and his trademark guitar, nicknamed 'Trigger,' has a hole worn through its top from decades of finger-picking." },
@@ -1130,10 +1130,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 84,
     labels: { A: "Vehicle", B: "Loud", C: "Sky" },
     tiles: [
-      { label: "Motorcycle", correctSlot: "S1", logicNote: "A motorcycle is a loud vehicle, but it travels on the ground rather than through the sky.", fact: "The Harley-Davidson V-twin engine's distinctive uneven idle — the so-called 'potato-potato' sound — is so iconic the company once tried to register it as a trademarked sound mark." },
-      { label: "Hot Air Balloon", correctSlot: "S2", logicNote: "A hot air balloon is a vehicle that travels through the sky, but it drifts almost silently rather than loudly.", fact: "The first manned hot air balloon flight lifted off near Paris in 1783, carrying two passengers for about 25 minutes — a public spectacle that reportedly drew a crowd of around 400,000 onlookers." },
-      { label: "Thunder", correctSlot: "S3", logicNote: "Thunder is a loud sound that comes from the sky, but it is a weather phenomenon rather than a vehicle.", fact: "Thunder is the sound of air rapidly expanding along the path of a lightning bolt, which can briefly heat the surrounding atmosphere to about 50,000 degrees Fahrenheit — five times hotter than the surface of the Sun." },
-      { label: "Helicopter", correctSlot: "S4", logicNote: "A helicopter is a loud flying vehicle, so it fits all three categories.", fact: "Igor Sikorsky's VS-300, which first hovered in 1939, became the template for modern single-rotor helicopters — though Leonardo da Vinci had sketched a vertical-flight machine more than 450 years earlier." },
+      { label: "Motorcycle", correctSlot: "S1", logicNote: "A motorcycle is a loud vehicle, but it travels on the ground rather than through the sky.", fact: "The Harley-Davidson V-twin engine's distinctive uneven idle â the so-called 'potato-potato' sound â is so iconic the company once tried to register it as a trademarked sound mark." },
+      { label: "Hot Air Balloon", correctSlot: "S2", logicNote: "A hot air balloon is a vehicle that travels through the sky, but it drifts almost silently rather than loudly.", fact: "The first manned hot air balloon flight lifted off near Paris in 1783, carrying two passengers for about 25 minutes â a public spectacle that reportedly drew a crowd of around 400,000 onlookers." },
+      { label: "Thunder", correctSlot: "S3", logicNote: "Thunder is a loud sound that comes from the sky, but it is a weather phenomenon rather than a vehicle.", fact: "Thunder is the sound of air rapidly expanding along the path of a lightning bolt, which can briefly heat the surrounding atmosphere to about 50,000 degrees Fahrenheit â five times hotter than the surface of the Sun." },
+      { label: "Helicopter", correctSlot: "S4", logicNote: "A helicopter is a loud flying vehicle, so it fits all three categories.", fact: "Igor Sikorsky's VS-300, which first hovered in 1939, became the template for modern single-rotor helicopters â though Leonardo da Vinci had sketched a vertical-flight machine more than 450 years earlier." },
       { label: "Bicycle", correctSlot: null },
       { label: "Cymbals", correctSlot: null },
       { label: "Cloud", correctSlot: null },
@@ -1145,7 +1145,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 60,
     labels: { A: "Drink", B: "Coffee", C: "Italian" },
     tiles: [
-      { label: "Café au Lait", correctSlot: "S1", logicNote: "Café au lait is a coffee drink, but it is French rather than Italian.", fact: "Café au lait — literally 'coffee with milk' — became the standard Parisian breakfast in the 19th century, often served in shallow bowls wide enough to dunk a croissant in." },
+      { label: "CafÃ© au Lait", correctSlot: "S1", logicNote: "CafÃ© au lait is a coffee drink, but it is French rather than Italian.", fact: "CafÃ© au lait â literally 'coffee with milk' â became the standard Parisian breakfast in the 19th century, often served in shallow bowls wide enough to dunk a croissant in." },
       { label: "Limoncello", correctSlot: "S2", logicNote: "Limoncello is a classic Italian drink, but it is a lemon liqueur rather than a coffee.", fact: "Limoncello is traditionally made from Sorrento lemons grown along Italy's Amalfi Coast, where the rind is steeped in alcohol for weeks before sugar syrup is added." },
       { label: "Moka Pot", correctSlot: "S3", logicNote: "A Moka pot is an Italian device for brewing coffee, but it is a stovetop tool rather than a drink itself.", fact: "The eight-sided aluminum Moka pot was patented by Alfonso Bialetti in 1933, and one is reportedly still found in roughly 90 percent of Italian households." },
       { label: "Espresso", correctSlot: "S4", logicNote: "Espresso is an Italian coffee drink, so it fits all three categories.", fact: "An espresso is brewed by forcing nearly boiling water through finely ground beans at about nine atmospheres of pressure, producing a concentrated shot in roughly 25 seconds." },
@@ -1161,7 +1161,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Author", B: "Mystery", C: "Female" },
     tiles: [
       { label: "Edgar Allan Poe", correctSlot: "S1", logicNote: "Edgar Allan Poe was an author who essentially invented the modern detective story, but he was not female.", fact: "Poe's 1841 tale 'The Murders in the Rue Morgue' introduced the detective C. Auguste Dupin and is widely credited as the first modern detective story, predating Sherlock Holmes by nearly half a century." },
-      { label: "Jane Austen", correctSlot: "S2", logicNote: "Jane Austen was a celebrated female author, but she wrote social romances rather than mysteries.", fact: "Austen published her novels anonymously during her lifetime — the title pages credited only 'A Lady' — and her authorship was confirmed publicly only after her death in 1817." },
+      { label: "Jane Austen", correctSlot: "S2", logicNote: "Jane Austen was a celebrated female author, but she wrote social romances rather than mysteries.", fact: "Austen published her novels anonymously during her lifetime â the title pages credited only 'A Lady' â and her authorship was confirmed publicly only after her death in 1817." },
       { label: "Nancy Drew", correctSlot: "S3", logicNote: "Nancy Drew is a famous female mystery solver, but she is a fictional teenage detective rather than a real author.", fact: "Nancy Drew first appeared in 1930 and has been written over the decades by many different ghostwriters under the shared pen name Carolyn Keene, with the series selling more than 80 million copies worldwide." },
       { label: "Agatha Christie", correctSlot: "S4", logicNote: "Agatha Christie was a female author of mystery novels, so she fits all three categories.", fact: "Agatha Christie is the best-selling novelist in history, with about 2 billion copies of her roughly 66 detective novels sold in more than 100 languages." },
       { label: "Sherlock Holmes", correctSlot: null },
@@ -1178,10 +1178,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 85,
     labels: { A: "Fruit", B: "Red", C: "Round" },
     tiles: [
-      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is a red fruit, but it is heart-shaped with a pointy tip rather than round.", fact: "Strawberries are the only common fruit with their seeds on the outside — a single berry carries around 200 of them, which are technically the plant's true fruits." },
-      { label: "Orange", correctSlot: "S2", logicNote: "An orange is a round fruit, but it is orange in color rather than red.", fact: "The color name 'orange' came from the fruit, not the other way around — before oranges spread through Europe, English speakers usually described the shade as 'yellow-red.'" },
+      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is a red fruit, but it is heart-shaped with a pointy tip rather than round.", fact: "Strawberries are the only common fruit with their seeds on the outside â a single berry carries around 200 of them, which are technically the plant's true fruits." },
+      { label: "Orange", correctSlot: "S2", logicNote: "An orange is a round fruit, but it is orange in color rather than red.", fact: "The color name 'orange' came from the fruit, not the other way around â before oranges spread through Europe, English speakers usually described the shade as 'yellow-red.'" },
       { label: "Christmas Ornament", correctSlot: "S3", logicNote: "A red Christmas ornament is red and round, but it is a decoration rather than a fruit.", fact: "Glass Christmas ornaments were first crafted in the German town of Lauscha in the 1840s by glassblowers who had previously made bottles and beads." },
-      { label: "Cherry", correctSlot: "S4", logicNote: "A cherry is a red fruit and is round, so it fits all three categories.", fact: "Cherry trees bloom for only about two weeks in spring, and Washington, D.C.'s Tidal Basin holds roughly 3,800 of them — a gift from the city of Tokyo in 1912." },
+      { label: "Cherry", correctSlot: "S4", logicNote: "A cherry is a red fruit and is round, so it fits all three categories.", fact: "Cherry trees bloom for only about two weeks in spring, and Washington, D.C.'s Tidal Basin holds roughly 3,800 of them â a gift from the city of Tokyo in 1912." },
       { label: "Banana", correctSlot: null },
       { label: "Soccer Ball", correctSlot: null },
       { label: "Carrot", correctSlot: null },
@@ -1196,7 +1196,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Burj Khalifa", correctSlot: "S1", logicNote: "The Burj Khalifa is a famous building, but its glass-and-steel facade reads as silver rather than white.", fact: "At 2,717 feet, the Burj Khalifa in Dubai has been the world's tallest building since it opened in 2010, with more than 160 occupied floors above ground." },
       { label: "Greek Villa", correctSlot: "S2", logicNote: "A Greek villa is a building traditionally painted bright white, but it is a vernacular style rather than a single famous landmark.", fact: "The whitewashed walls of the Cyclades, like those on Santorini, were widely required by Greek health regulations in the 1930s because lime wash acts as a natural disinfectant in hot weather." },
       { label: "Moby Dick", correctSlot: "S3", logicNote: "Moby Dick is a famous white whale from Herman Melville's novel, but a whale is not a building.", fact: "Melville based the white whale partly on Mocha Dick, a real albino sperm whale that survived dozens of harpoon attacks off the coast of Chile in the early 1800s." },
-      { label: "Taj Mahal", correctSlot: "S4", logicNote: "The Taj Mahal is a building, it is world-famous, and it is made of gleaming white marble — so it fits all three categories.", fact: "The Taj Mahal was built by Mughal emperor Shah Jahan between 1632 and 1653 as a tomb for his wife Mumtaz Mahal, and its marble appears to shift color from pink at dawn to gold at dusk." },
+      { label: "Taj Mahal", correctSlot: "S4", logicNote: "The Taj Mahal is a building, it is world-famous, and it is made of gleaming white marble â so it fits all three categories.", fact: "The Taj Mahal was built by Mughal emperor Shah Jahan between 1632 and 1653 as a tomb for his wife Mumtaz Mahal, and its marble appears to shift color from pink at dawn to gold at dusk." },
       { label: "Mt. Rushmore", correctSlot: null },
       { label: "Snowflake", correctSlot: null },
       { label: "Garden Shed", correctSlot: null },
@@ -1210,7 +1210,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Madrid", correctSlot: "S1", logicNote: "Madrid is the European capital of Spain, but it sits inland on a high central plateau rather than on the coast.", fact: "At about 2,150 feet above sea level, Madrid is the highest capital city in the European Union, perched on the Meseta Central more than 200 miles from the nearest beach." },
       { label: "Tokyo", correctSlot: "S2", logicNote: "Tokyo is a capital city on a coast, but it is in Asia rather than Europe.", fact: "Tokyo sits on Tokyo Bay along the Pacific Ocean, and its greater metropolitan area is the most populous on Earth, with about 37 million residents." },
-      { label: "Barcelona", correctSlot: "S3", logicNote: "Barcelona is a European city on the Mediterranean coast, but it is not a national capital — Spain's capital is Madrid.", fact: "Barcelona is the capital of the autonomous region of Catalonia, but not of Spain — a distinction at the heart of Catalan independence campaigns that flared repeatedly through the 2010s." },
+      { label: "Barcelona", correctSlot: "S3", logicNote: "Barcelona is a European city on the Mediterranean coast, but it is not a national capital â Spain's capital is Madrid.", fact: "Barcelona is the capital of the autonomous region of Catalonia, but not of Spain â a distinction at the heart of Catalan independence campaigns that flared repeatedly through the 2010s." },
       { label: "Lisbon", correctSlot: "S4", logicNote: "Lisbon is the European capital of Portugal and sits on the Atlantic coast, so it fits all three categories.", fact: "Lisbon is one of the oldest cities in Western Europe, predating London and Paris by centuries, and was almost destroyed by an enormous earthquake and tsunami on All Saints' Day in 1755." },
       { label: "Eiffel Tower", correctSlot: null },
       { label: "Sydney Opera House", correctSlot: null },
@@ -1256,10 +1256,10 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 45,
     labels: { A: "Brand", B: "Auto", C: "German" },
     tiles: [
-      { label: "Ford", correctSlot: "S1", logicNote: "Ford is a well-known auto brand, but the company is American rather than German.", fact: "Henry Ford did not invent the automobile — he revolutionized how it was built, introducing the moving assembly line in 1913 and cutting the time to assemble a Model T from over 12 hours to about 90 minutes." },
-      { label: "Adidas", correctSlot: "S2", logicNote: "Adidas is a German brand, but it makes athletic shoes and apparel rather than automobiles.", fact: "Adidas was founded in 1949 by Adolf 'Adi' Dassler in the Bavarian town of Herzogenaurach — the same village where his estranged brother Rudolf founded the rival sportswear company Puma." },
+      { label: "Ford", correctSlot: "S1", logicNote: "Ford is a well-known auto brand, but the company is American rather than German.", fact: "Henry Ford did not invent the automobile â he revolutionized how it was built, introducing the moving assembly line in 1913 and cutting the time to assemble a Model T from over 12 hours to about 90 minutes." },
+      { label: "Adidas", correctSlot: "S2", logicNote: "Adidas is a German brand, but it makes athletic shoes and apparel rather than automobiles.", fact: "Adidas was founded in 1949 by Adolf 'Adi' Dassler in the Bavarian town of Herzogenaurach â the same village where his estranged brother Rudolf founded the rival sportswear company Puma." },
       { label: "Michael Schumacher", correctSlot: "S3", logicNote: "Michael Schumacher is a German figure of the auto world, but he is a racing driver rather than a brand.", fact: "Schumacher won seven Formula 1 world championships, a record held alone for 16 years until Britain's Lewis Hamilton matched it in 2020." },
-      { label: "BMW", correctSlot: "S4", logicNote: "BMW is a German brand of automobiles, so it fits all three categories.", fact: "BMW's blue-and-white roundel is often described as a spinning propeller — a nod to the company's roots building aircraft engines in Bavaria during the First World War." },
+      { label: "BMW", correctSlot: "S4", logicNote: "BMW is a German brand of automobiles, so it fits all three categories.", fact: "BMW's blue-and-white roundel is often described as a spinning propeller â a nod to the company's roots building aircraft engines in Bavaria during the First World War." },
       { label: "Bratwurst", correctSlot: null },
       { label: "Speedometer", correctSlot: null },
       { label: "Logo Design", correctSlot: null },
@@ -1275,9 +1275,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Weather", B: "White", C: "Falling" },
     tiles: [
       { label: "Cloud", correctSlot: "S1", logicNote: "A cloud is part of the weather and is typically pictured as white, but a cloud itself drifts on rising warm air rather than falling.", fact: "A medium cumulus cloud can weigh more than a million pounds, yet its water droplets are so tiny that rising warm air keeps them suspended in the sky." },
-      { label: "Rain", correctSlot: "S2", logicNote: "Rain is a weather event that comes down from the sky, but it is clear rather than white.", fact: "Raindrops are not actually teardrop-shaped — small ones are nearly spherical, and larger ones flatten on the bottom as they push through the air on the way down." },
+      { label: "Rain", correctSlot: "S2", logicNote: "Rain is a weather event that comes down from the sky, but it is clear rather than white.", fact: "Raindrops are not actually teardrop-shaped â small ones are nearly spherical, and larger ones flatten on the bottom as they push through the air on the way down." },
       { label: "Powdered Sugar", correctSlot: "S3", logicNote: "Powdered sugar is white and comes down in a soft shower when sifted onto food, but it is not a weather event.", fact: "Powdered sugar is regular granulated sugar ground into a fine dust, usually with a small amount of cornstarch mixed in to keep it from clumping." },
-      { label: "Snow", correctSlot: "S4", logicNote: "Snow is white, it comes down from the sky, and it is a weather event — so it fits all three categories.", fact: "Snowflakes form their distinctive six-sided shapes because of how water molecules bond as they freeze, and the largest flakes ever reported fell in Montana in 1887 — about 15 inches across." },
+      { label: "Snow", correctSlot: "S4", logicNote: "Snow is white, it comes down from the sky, and it is a weather event â so it fits all three categories.", fact: "Snowflakes form their distinctive six-sided shapes because of how water molecules bond as they freeze, and the largest flakes ever reported fell in Montana in 1887 â about 15 inches across." },
       { label: "Heat Wave", correctSlot: null },
       { label: "Printer Paper", correctSlot: null },
       { label: "Dropped Keys", correctSlot: null },
@@ -1304,9 +1304,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 44,
     labels: { A: "Invention", B: "American", C: "1800s" },
     tiles: [
-      { label: "iPhone", correctSlot: "S1", logicNote: "The iPhone is an American invention, but it was released in 2007 — long after the 1800s.", fact: "Apple unveiled the original iPhone in January 2007, and it went on sale that June with no app store and no copy-paste function." },
-      { label: "Bicycle", correctSlot: "S2", logicNote: "The bicycle was developed during the 1800s, but its earliest forms came from Germany and France rather than the United States.", fact: "Karl Drais of Germany patented the Draisine in 1817 — a two-wheeled push-along machine that historians consider the direct ancestor of the bicycle." },
-      { label: "Mark Twain", correctSlot: "S3", logicNote: "Mark Twain was an American figure of the 1800s, but he was a writer rather than an invention.", fact: "Twain was born in 1835, the year Halley's Comet appeared, and died in 1910 when it returned — a coincidence he had publicly predicted." },
+      { label: "iPhone", correctSlot: "S1", logicNote: "The iPhone is an American invention, but it was released in 2007 â long after the 1800s.", fact: "Apple unveiled the original iPhone in January 2007, and it went on sale that June with no app store and no copy-paste function." },
+      { label: "Bicycle", correctSlot: "S2", logicNote: "The bicycle was developed during the 1800s, but its earliest forms came from Germany and France rather than the United States.", fact: "Karl Drais of Germany patented the Draisine in 1817 â a two-wheeled push-along machine that historians consider the direct ancestor of the bicycle." },
+      { label: "Mark Twain", correctSlot: "S3", logicNote: "Mark Twain was an American figure of the 1800s, but he was a writer rather than an invention.", fact: "Twain was born in 1835, the year Halley's Comet appeared, and died in 1910 when it returned â a coincidence he had publicly predicted." },
       { label: "Light Bulb", correctSlot: "S4", logicNote: "The light bulb is an American invention from the 1800s, so it fits all three categories.", fact: "Thomas Edison's 1879 design used a long-lasting carbonized bamboo filament, finally making electric lighting practical for ordinary homes." },
       { label: "Bald Eagle", correctSlot: null },
       { label: "Hoop Skirt", correctSlot: null },
@@ -1352,7 +1352,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 44,
     labels: { A: "Painter", B: "Spanish", C: "20th Century" },
     tiles: [
-      { label: "Francisco Goya", correctSlot: "S1", logicNote: "Goya was a Spanish painter, but he worked in the late 1700s and early 1800s — well before the 20th century.", fact: "Goya's haunting 'Black Paintings' were originally murals he applied directly to the walls of his own home outside Madrid, and were only later transferred to canvas after his death." },
+      { label: "Francisco Goya", correctSlot: "S1", logicNote: "Goya was a Spanish painter, but he worked in the late 1700s and early 1800s â well before the 20th century.", fact: "Goya's haunting 'Black Paintings' were originally murals he applied directly to the walls of his own home outside Madrid, and were only later transferred to canvas after his death." },
       { label: "Jackson Pollock", correctSlot: "S2", logicNote: "Pollock was a famous 20th-century painter, but he was American rather than Spanish.", fact: "Pollock pioneered the 'drip technique,' laying huge canvases flat on the floor and flinging or pouring paint across them from above." },
       { label: "Antoni Gaudi", correctSlot: "S3", logicNote: "Gaudi was a celebrated Spanish creative figure working into the early 20th century, but he was an architect rather than a painter.", fact: "Gaudi spent more than 40 years on Barcelona's Sagrada Familia basilica, which is still under construction more than a century after his death." },
       { label: "Salvador Dali", correctSlot: "S4", logicNote: "Dali was a Spanish painter whose most famous works belong to the 20th century, so he fits all three categories.", fact: "Dali's iconic 'The Persistence of Memory,' with its melting clocks draped across a desolate landscape, was completed in 1931." },
@@ -1883,9 +1883,9 @@ window.COMMON_GROUND_DAILY_SETS = [
     labels: { A: "Painter", B: "Spanish", C: "Surrealist" },
     tiles: [
       { label: "Francisco Goya", correctSlot: "S1" },
-      { label: "René Magritte", correctSlot: "S2" },
-      { label: "Luis Buñuel", correctSlot: "S3" },
-      { label: "Salvador Dalí", correctSlot: "S4" },
+      { label: "RenÃ© Magritte", correctSlot: "S2" },
+      { label: "Luis BuÃ±uel", correctSlot: "S3" },
+      { label: "Salvador DalÃ­", correctSlot: "S4" },
       { label: "Andy Warhol", correctSlot: null },
       { label: "Flamenco Dance", correctSlot: null },
       { label: "Daydream", correctSlot: null },
@@ -1963,7 +1963,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     difficultyEstimate: 60,
     labels: { A: "Cheese", B: "French", C: "Soft" },
     tiles: [
-      { label: "Comté", correctSlot: "S1" },
+      { label: "ComtÃ©", correctSlot: "S1" },
       { label: "Mozzarella", correctSlot: "S2" },
       { label: "Croissant", correctSlot: "S3" },
       { label: "Brie", correctSlot: "S4" },
@@ -2029,7 +2029,7 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Adele", correctSlot: "S1" },
       { label: "Taylor Swift", correctSlot: "S2" },
       { label: "Oprah", correctSlot: "S3" },
-      { label: "Beyoncé", correctSlot: "S4" },
+      { label: "BeyoncÃ©", correctSlot: "S4" },
       { label: "Justin Bieber", correctSlot: null },
       { label: "Statue of Liberty", correctSlot: null },
       { label: "Cleopatra", correctSlot: null },
@@ -2664,19 +2664,19 @@ window.COMMON_GROUND_DAILY_SETS = [
     },
     tiles: [
       {
-        label: "Diego Velázquez",
+        label: "Diego VelÃ¡zquez",
         correctSlot: "S1"
       },
       {
-        label: "Luis Buñuel",
+        label: "Luis BuÃ±uel",
         correctSlot: "S2"
       },
       {
-        label: "René Magritte",
+        label: "RenÃ© Magritte",
         correctSlot: "S3"
       },
       {
-        label: "Salvador Dalí",
+        label: "Salvador DalÃ­",
         correctSlot: "S4"
       },
       {
@@ -2684,7 +2684,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: null
       },
       {
-        label: "André Breton",
+        label: "AndrÃ© Breton",
         correctSlot: null
       },
       {
@@ -3197,11 +3197,11 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S1"
       },
       {
-        label: "Asunción",
+        label: "AsunciÃ³n",
         correctSlot: "S2"
       },
       {
-        label: "Medellín",
+        label: "MedellÃ­n",
         correctSlot: "S3"
       },
       {
@@ -3690,7 +3690,7 @@ window.COMMON_GROUND_DAILY_SETS = [
         correctSlot: "S3"
       },
       {
-        label: "Beyoncé's Lemonade",
+        label: "BeyoncÃ©'s Lemonade",
         correctSlot: "S4"
       },
       {
@@ -5682,14 +5682,14 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 82,
       labels: { A: "Animal", B: "Ocean", C: "Danger" },
       tiles: [
-        { label: "🐬", revealLabel: "Dolphin", correctSlot: "S1" },
-        { label: "🦂", revealLabel: "Scorpion", correctSlot: "S2" },
-        { label: "🌊⚠️", revealLabel: "Rip Current", correctSlot: "S3" },
-        { label: "🦈", revealLabel: "Shark", correctSlot: "S4" },
-        { label: "🐚", revealLabel: "Seashell", correctSlot: null },
-        { label: "⛵", revealLabel: "Sailboat", correctSlot: null },
-        { label: "🐢", revealLabel: "Turtle", correctSlot: null },
-        { label: "🛟", revealLabel: "Life Ring", correctSlot: null }
+        { label: "ð¬", revealLabel: "Dolphin", correctSlot: "S1" },
+        { label: "ð¦", revealLabel: "Scorpion", correctSlot: "S2" },
+        { label: "ðâ ï¸", revealLabel: "Rip Current", correctSlot: "S3" },
+        { label: "ð¦", revealLabel: "Shark", correctSlot: "S4" },
+        { label: "ð", revealLabel: "Seashell", correctSlot: null },
+        { label: "âµ", revealLabel: "Sailboat", correctSlot: null },
+        { label: "ð¢", revealLabel: "Turtle", correctSlot: null },
+        { label: "ð", revealLabel: "Life Ring", correctSlot: null }
       ]
     },
     hard: {
@@ -5697,14 +5697,14 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 53,
       labels: { A: "Night", B: "Travel", C: "City" },
       tiles: [
-        { label: "🌙🚆", revealLabel: "Midnight Express", correctSlot: "S1" },
-        { label: "🌃✨", revealLabel: "City Lights", correctSlot: "S2" },
-        { label: "🚇🗺️", revealLabel: "Metro Map", correctSlot: "S3" },
-        { label: "😴✈️🗽", revealLabel: "Red-Eye to New York", correctSlot: "S4" },
-        { label: "🍸🌙", revealLabel: "Nightcap", correctSlot: null },
-        { label: "🧳🏨", revealLabel: "Hotel Stay", correctSlot: null },
-        { label: "🕰️🌆", revealLabel: "Twilight", correctSlot: null },
-        { label: "🚕💵", revealLabel: "Cab Fare", correctSlot: null }
+        { label: "ðð", revealLabel: "Midnight Express", correctSlot: "S1" },
+        { label: "ðâ¨", revealLabel: "City Lights", correctSlot: "S2" },
+        { label: "ððºï¸", revealLabel: "Metro Map", correctSlot: "S3" },
+        { label: "ð´âï¸ð½", revealLabel: "Red-Eye to New York", correctSlot: "S4" },
+        { label: "ð¸ð", revealLabel: "Nightcap", correctSlot: null },
+        { label: "ð§³ð¨", revealLabel: "Hotel Stay", correctSlot: null },
+        { label: "ð°ï¸ð", revealLabel: "Twilight", correctSlot: null },
+        { label: "ððµ", revealLabel: "Cab Fare", correctSlot: null }
       ]
     }
   },
@@ -5748,14 +5748,14 @@ window.COMMON_GROUND_DAILY_SETS = [
       difficultyEstimate: 83,
       labels: { A: "Movie", B: "Travel", C: "Time" },
       tiles: [
-        { label: "✈️🚆🚗", revealLabel: "Planes, Trains and Automobiles", correctSlot: "S1" },
-        { label: "🦫⏰🔁", revealLabel: "Groundhog Day", correctSlot: "S2" },
-        { label: "✈️😵‍💫", revealLabel: "Jet Lag", correctSlot: "S3" },
-        { label: "🌍✈️8️⃣0️⃣", revealLabel: "Around the World in 80 Days", correctSlot: "S4" },
-        { label: "🍿🎥", revealLabel: "Movie Night", correctSlot: null },
-        { label: "🧳🛂", revealLabel: "Passport Control", correctSlot: null },
-        { label: "⌛🕰️", revealLabel: "Timepiece", correctSlot: null },
-        { label: "🚉🎫", revealLabel: "Train Ticket", correctSlot: null }
+        { label: "âï¸ðð", revealLabel: "Planes, Trains and Automobiles", correctSlot: "S1" },
+        { label: "ð¦«â°ð", revealLabel: "Groundhog Day", correctSlot: "S2" },
+        { label: "âï¸ðµâð«", revealLabel: "Jet Lag", correctSlot: "S3" },
+        { label: "ðâï¸8ï¸â£0ï¸â£", revealLabel: "Around the World in 80 Days", correctSlot: "S4" },
+        { label: "ð¿ð¥", revealLabel: "Movie Night", correctSlot: null },
+        { label: "ð§³ð", revealLabel: "Passport Control", correctSlot: null },
+        { label: "âð°ï¸", revealLabel: "Timepiece", correctSlot: null },
+        { label: "ðð«", revealLabel: "Train Ticket", correctSlot: null }
       ]
     },
     hard: {
