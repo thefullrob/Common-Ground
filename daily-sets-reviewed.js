@@ -20,20 +20,452 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-07-03",
+  easy: {
+    title: "Plant + Yellow in Color + Grown for Food",
+    difficultyEstimate: 82,
+    labels: { A: "Plant", B: "Yellow in Color", C: "Grown for Food" },
+    tiles: [
+      { label: "Daffodil", correctSlot: "S1", logicNote: "A daffodil is a yellow plant, but it is grown for its flowers rather than as food.", fact: "Daffodil bulbs contain toxic compounds that taste so bitter that squirrels and deer almost always leave spring gardens alone after one bite." },
+      { label: "Spinach", correctSlot: "S2", logicNote: "Spinach is a plant grown for food, but it is green rather than yellow.", fact: "Spinach was Catherine de Medici's favorite vegetable — when she became queen of France in the 1500s, dishes served on a bed of spinach were named 'Florentine' in her honor." },
+      { label: "Cheddar Cheese", correctSlot: "S3", logicNote: "Cheddar cheese is yellow and used as food, but it is a dairy product rather than a plant.", fact: "Cheddar's familiar orange-yellow color comes from a flavorless dye called annatto, made from the seeds of a tropical Latin American tree." },
+      { label: "Corn", correctSlot: "S4", logicNote: "Corn is a yellow plant that is grown for food.", fact: "Modern corn was bred from a wild grass called teosinte over thousands of years — early teosinte ears were less than an inch long and held only a few hard kernels." },
+      { label: "Oak Tree", correctSlot: null },
+      { label: "Sun", correctSlot: null },
+      { label: "Hamburger", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Famous Person + From Italy + Lived Before 1600",
+    difficultyEstimate: 47,
+    labels: { A: "Famous Person", B: "From Italy", C: "Lived Before 1600" },
+    tiles: [
+      { label: "Sophia Loren", correctSlot: "S1", logicNote: "Sophia Loren is a famous person from Italy, but she was born in 1934 — long after 1600.", fact: "Sophia Loren was the first actress to win an Academy Award for a role in a non-English-language film, for the 1960 Italian drama Two Women." },
+      { label: "Genghis Khan", correctSlot: "S2", logicNote: "Genghis Khan was a famous person who lived well before 1600, but he was a Mongol leader, not Italian.", fact: "Genghis Khan's Mongol empire became the largest contiguous land empire in history — at its peak it stretched from the Pacific Ocean to Eastern Europe." },
+      { label: "Roman Colosseum", correctSlot: "S3", logicNote: "The Roman Colosseum is in Italy and was built well before 1600, but it is a building rather than a person.", fact: "The Roman Colosseum could hold up to 80,000 spectators and was even flooded for staged naval battles in its earliest years." },
+      { label: "Leonardo da Vinci", correctSlot: "S4", logicNote: "Leonardo da Vinci was a famous person from Italy who lived from 1452 to 1519 — well before 1600.", fact: "Da Vinci's notebooks contain designs for flying machines, tanks, parachutes, and even contact lenses centuries before any of them were actually invented." },
+      { label: "Pablo Picasso", correctSlot: null },
+      { label: "Ferrari", correctSlot: null },
+      { label: "Pyramids of Giza", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + In the European Union + Borders the Mediterranean Sea",
+    difficultyEstimate: 37,
+    labels: { A: "Country", B: "In the European Union", C: "Borders the Mediterranean Sea" },
+    tiles: [
+      { label: "Germany", correctSlot: "S1", logicNote: "Germany is a country in the European Union, but it does not border the Mediterranean Sea.", fact: "Germany's coastlines only reach the North Sea and the Baltic Sea — to get to the Mediterranean from Berlin, you would have to cross at least one other country." },
+      { label: "Tunisia", correctSlot: "S2", logicNote: "Tunisia is a country with Mediterranean coastline, but it is not in the European Union.", fact: "Tunisia's capital Tunis sits across the Mediterranean from Sicily, less than 100 miles away — closer than New York City is to Boston." },
+      { label: "Sicily", correctSlot: "S3", logicNote: "Sicily borders the Mediterranean and is in the European Union as part of Italy, but it is a region rather than its own country.", fact: "Sicily is the largest island in the Mediterranean and home to Mount Etna, Europe's most active volcano." },
+      { label: "Italy", correctSlot: "S4", logicNote: "Italy is a European Union country with a long Mediterranean coastline.", fact: "Italy's boot-shaped peninsula juts so far south into the Mediterranean that Sicily is actually closer to Tunisia than to Rome." },
+      { label: "Norway", correctSlot: null },
+      { label: "Olive Tree", correctSlot: null },
+      { label: "Euro Coin", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-02",
+  easy: {
+    title: "Sport + Uses a Stick + Played on Ice",
+    difficultyEstimate: 81,
+    labels: { A: "Sport", B: "Uses a Stick", C: "Played on Ice" },
+    tiles: [
+      { label: "Lacrosse", correctSlot: "S1", logicNote: "Lacrosse is a sport played with a long stick, but it is played on grass rather than ice.", fact: "Lacrosse is one of North America's oldest sports — it was invented and refined by Indigenous nations centuries before European contact, sometimes with games involving hundreds of players." },
+      { label: "Speed Skating", correctSlot: "S2", logicNote: "Speed skating is a sport played on ice, but it does not use a stick.", fact: "Top speed skaters can reach over 35 miles per hour — fast enough to outrun most house cats and roughly the speed limit on a city street." },
+      { label: "Popsicle", correctSlot: "S3", logicNote: "A popsicle is held by a stick and is made of frozen ice, but eating one is not a sport.", fact: "The popsicle was invented by accident in 1905 by an 11-year-old who left a cup of sugary soda with a stirring stick outside on a freezing night." },
+      { label: "Ice Hockey", correctSlot: "S4", logicNote: "Ice hockey is a sport played on ice with a stick.", fact: "Pucks are frozen to about minus 14 degrees Fahrenheit before games — a frozen puck slides cleanly on the ice, while a warm one would bounce unpredictably." },
+      { label: "Tennis", correctSlot: null },
+      { label: "Walking Cane", correctSlot: null },
+      { label: "Ice Cube", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Space + Released in 1970s",
+    difficultyEstimate: 46,
+    labels: { A: "Movie", B: "Space", C: "Released in 1970s" },
+    tiles: [
+      { label: "Apollo 13", correctSlot: "S1", logicNote: "Apollo 13 is a movie about space, but it was released in the 1990s rather than the 1970s.", fact: "Apollo 13 dramatizes the real NASA mission that suffered an oxygen tank explosion in 1970." },
+      { label: "Rocky", correctSlot: "S2", logicNote: "Rocky is a movie released in the 1970s, but it is about boxing rather than space.", fact: "Rocky won Best Picture for films released in 1976." },
+      { label: "Voyager 1", correctSlot: "S3", logicNote: "Voyager 1 is space-related and launched in the 1970s, but it is not a movie.", fact: "Voyager 1 launched in 1977 and later became the first human-made object to enter interstellar space." },
+      { label: "Star Wars", correctSlot: "S4", logicNote: "Star Wars is a space movie released in the 1970s.", fact: "The original Star Wars opened in 1977 and became one of the most influential blockbusters ever made." },
+      { label: "Movie Ticket", correctSlot: null },
+      { label: "Moon", correctSlot: null },
+      { label: "Disco Ball", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Speaks Spanish + In South America",
+    difficultyEstimate: 37,
+    labels: { A: "Country", B: "Speaks Spanish", C: "In South America" },
+    tiles: [
+      { label: "Mexico", correctSlot: "S1", logicNote: "Mexico is a Spanish-speaking country, but it is in North America rather than South America.", fact: "Mexico is the world's most populous Spanish-speaking country." },
+      { label: "Brazil", correctSlot: "S2", logicNote: "Brazil is a country in South America, but Portuguese is its official language rather than Spanish.", fact: "Brazil is the largest country in South America by both area and population." },
+      { label: "Buenos Aires", correctSlot: "S3", logicNote: "Buenos Aires is Spanish-speaking and in South America, but it is a city rather than a country.", fact: "Buenos Aires is the capital of Argentina and one of the largest cities in the Americas." },
+      { label: "Argentina", correctSlot: "S4", logicNote: "Argentina is a Spanish-speaking country in South America.", fact: "Argentina stretches from subtropical regions in the north to Patagonia near Antarctica in the south." },
+      { label: "Canada", correctSlot: null },
+      { label: "Spanish Dictionary", correctSlot: null },
+      { label: "Amazon River", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-01",
+  easy: {
+    title: "Food + Red + Round",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Red", C: "Round" },
+    tiles: [
+      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is red food, but it is usually heart-shaped rather than round.", fact: "Strawberries are the only fruits with seeds on the outside." },
+      { label: "Bagel", correctSlot: "S2", logicNote: "A bagel is round food, but it is not red.", fact: "Bagels are boiled before they are baked, which gives them their chewy crust." },
+      { label: "Christmas Ornament", correctSlot: "S3", logicNote: "Many Christmas ornaments are red and round, but they are decorations rather than food.", fact: "Hand-blown glass Christmas ornaments first became popular in 1840s Germany, where families hung them on evergreen trees lit by real wax candles." },
+      { label: "Tomato", correctSlot: "S4", logicNote: "A tomato is red, round food.", fact: "Tomatoes are botanically fruits, but they are usually treated as vegetables in cooking." },
+      { label: "Bread", correctSlot: null },
+      { label: "Firetruck", correctSlot: null },
+      { label: "Plate", correctSlot: null },
+      { label: "Shoe", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Famous Painter + Known for Landscapes + From the Netherlands",
+    difficultyEstimate: 47,
+    labels: { A: "Famous Painter", B: "Known for Landscapes", C: "From the Netherlands" },
+    tiles: [
+      { label: "Bob Ross", correctSlot: "S1", logicNote: "Bob Ross was a famous painter known for landscapes, but he was American rather than Dutch.", fact: "Bob Ross painted three versions of every scene on The Joy of Painting — one before filming, one during the show, and one detailed reference for his teaching books." },
+      { label: "Johannes Vermeer", correctSlot: "S2", logicNote: "Johannes Vermeer was a famous Dutch painter, but he is best known for quiet interior scenes rather than landscapes.", fact: "Vermeer painted only about 35 known works in his lifetime — partly because he ground his own pigments from rare materials like ground-up lapis lazuli stone." },
+      { label: "Tulip Field", correctSlot: "S3", logicNote: "A tulip field is a classic Dutch landscape, but a field of flowers is not itself a painter.", fact: "Tulip mania in 1630s Holland sent a single rare bulb's price above the cost of a townhouse, before the bubble suddenly collapsed and bankrupted many families." },
+      { label: "Vincent van Gogh", correctSlot: "S4", logicNote: "Vincent van Gogh was a famous Dutch painter known for landscapes like Starry Night and Wheatfield with Crows.", fact: "Van Gogh sold only one painting during his lifetime — The Red Vineyard, which sold for about 400 francs to a fellow artist the year before he died." },
+      { label: "Pablo Picasso", correctSlot: null },
+      { label: "Wooden Clog", correctSlot: null },
+      { label: "Easel", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Island Nation + British Colonial History",
+    difficultyEstimate: 35,
+    labels: { A: "Country", B: "Island Nation", C: "British Colonial History" },
+    tiles: [
+      { label: "India", correctSlot: "S1", logicNote: "India is a country with British colonial history, but it is not an island nation.", fact: "India became independent from British rule in 1947." },
+      { label: "Iceland", correctSlot: "S2", logicNote: "Iceland is a country and island nation, but it does not have British colonial history.", fact: "Iceland sits on the Mid-Atlantic Ridge, where the North American and Eurasian tectonic plates meet." },
+      { label: "Bermuda", correctSlot: "S3", logicNote: "Bermuda is an island with British colonial history, but it is a British Overseas Territory rather than a country.", fact: "Bermuda's first English settlers arrived by accident in 1609 when their ship Sea Venture wrecked en route to Virginia — survivors built two new ships from the wreckage, an event believed to have partly inspired Shakespeare's The Tempest." },
+      { label: "Jamaica", correctSlot: "S4", logicNote: "Jamaica is a country, an island nation, and has British colonial history.", fact: "Jamaica became independent from Britain in 1962." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Island Map", correctSlot: null },
+      { label: "Crown", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-30",
+  easy: {
+    title: "Game + Uses a Deck of Cards + Played at Casinos",
+    difficultyEstimate: 82,
+    labels: { A: "Game", B: "Uses a Deck of Cards", C: "Played at Casinos" },
+    tiles: [
+      { label: "Solitaire", correctSlot: "S1", logicNote: "Solitaire is a game played with a deck of cards, but it is played alone at home rather than at casinos.", fact: "Solitaire became one of the most-played computer games in history after Microsoft bundled it with Windows in 1990 — partly to teach new users how to drag and drop with a mouse." },
+      { label: "Roulette", correctSlot: "S2", logicNote: "Roulette is a game played at casinos, but it uses a spinning wheel and a ball rather than cards.", fact: "The numbers on a standard roulette wheel add up to exactly 666, which is why the game is sometimes nicknamed 'The Devil's Wheel.'" },
+      { label: "Las Vegas", correctSlot: "S3", logicNote: "Las Vegas is famous for card games and casinos, but it is a city rather than a game itself.", fact: "Las Vegas has more hotel rooms than any other city in the world, and the city's casinos collectively use more electricity than many small countries." },
+      { label: "Poker", correctSlot: "S4", logicNote: "Poker is a game played with a deck of cards and is widely played at casinos.", fact: "The largest poker prize ever awarded was over $18 million, won by Hossein Ensan at the 2019 World Series of Poker Main Event in Las Vegas." },
+      { label: "Chess", correctSlot: null },
+      { label: "Slot Machine", correctSlot: null },
+      { label: "Tarot Cards", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Country + Has Won the FIFA World Cup + In Europe",
+    difficultyEstimate: 46,
+    labels: { A: "Country", B: "Has Won the FIFA World Cup", C: "In Europe" },
+    tiles: [
+      { label: "Brazil", correctSlot: "S1", logicNote: "Brazil is a country that has won the FIFA World Cup, but it is in South America rather than Europe.", fact: "Brazil has won the FIFA World Cup five times, more than any other country, and is the only nation to play in every World Cup tournament since the competition began in 1930." },
+      { label: "Sweden", correctSlot: "S2", logicNote: "Sweden is a European country, but it has never won the FIFA World Cup.", fact: "Sweden has reached the World Cup final once, in 1958, where they lost at home to a 17-year-old Pele and his Brazilian teammates." },
+      { label: "Wembley Stadium", correctSlot: "S3", logicNote: "Wembley Stadium has hosted a World Cup final and is in Europe, but it is a stadium rather than a country.", fact: "Wembley Stadium hosted the 1966 World Cup Final, where England's controversial third goal — which may not have crossed the line — helped them beat West Germany." },
+      { label: "Germany", correctSlot: "S4", logicNote: "Germany is a European country that has won the FIFA World Cup.", fact: "Germany has won the FIFA World Cup four times, including a famous 7-1 semifinal demolition of host Brazil at the 2014 tournament — the worst loss in Brazil's World Cup history." },
+      { label: "Japan", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. State + Great Lakes Shoreline + Starts With M",
+    difficultyEstimate: 36,
+    labels: { A: "U.S. State", B: "Great Lakes Shoreline", C: "Starts With M" },
+    tiles: [
+      { label: "Ohio", correctSlot: "S1", logicNote: "Ohio is a U.S. state with Great Lakes shoreline, but it does not start with M.", fact: "Ohio borders Lake Erie along its northern edge." },
+      { label: "Missouri", correctSlot: "S2", logicNote: "Missouri is a U.S. state that starts with M, but it has no Great Lakes shoreline.", fact: "Missouri is named after the Missouri River, the longest river in North America." },
+      { label: "Milwaukee", correctSlot: "S3", logicNote: "Milwaukee starts with M and sits on a Great Lake, but it is a city rather than a U.S. state.", fact: "Milwaukee was once known as the beer capital of America — Miller, Schlitz, Pabst, and Blatz were all headquartered there at the same time during the city's brewing boom." },
+      { label: "Michigan", correctSlot: "S4", logicNote: "Michigan is a U.S. state that starts with M and has Great Lakes shoreline.", fact: "Michigan touches four of the five Great Lakes." },
+      { label: "Texas", correctSlot: null },
+      { label: "Lake Erie", correctSlot: null },
+      { label: "Magazine", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-29",
+  easy: {
+    title: "Instrument + Has Strings + Used in Rock Music",
+    difficultyEstimate: 82,
+    labels: { A: "Instrument", B: "Has Strings", C: "Used in Rock Music" },
+    tiles: [
+      { label: "Violin", correctSlot: "S1", logicNote: "A violin is an instrument with strings, but it is used mainly in classical music rather than rock.", fact: "Violins built by 17th-century maker Antonio Stradivari can sell for tens of millions of dollars — and no modern luthier has fully replicated his sound, despite centuries of trying." },
+      { label: "Drums", correctSlot: "S2", logicNote: "Drums are instruments used in rock music, but they do not have strings.", fact: "Led Zeppelin's John Bonham played so loudly that producers once recorded his drum kit in a stairwell, with mics three stories up, to capture the natural echo." },
+      { label: "Guitar Pick", correctSlot: "S3", logicNote: "A guitar pick is used to play strings in rock music, but it is an accessory rather than an instrument itself.", fact: "Picks were originally made from tortoise shell until international trade in it was banned in 1973 — most modern picks are made from celluloid or nylon." },
+      { label: "Electric Guitar", correctSlot: "S4", logicNote: "An electric guitar is an instrument with strings that is central to rock music.", fact: "The electric guitar was invented in the 1930s so guitar players in big-band orchestras could finally be heard over the loud horns." },
+      { label: "Tuba", correctSlot: null },
+      { label: "Microphone", correctSlot: null },
+      { label: "Triangle", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Actor + Played Superhero + First Name Starts With C",
+    difficultyEstimate: 47,
+    labels: { A: "Actor", B: "Played Superhero", C: "First Name Starts With C" },
+    tiles: [
+      { label: "Robert Downey Jr.", correctSlot: "S1", logicNote: "Robert Downey Jr. is an actor who played a superhero, but his first name does not start with C.", fact: "Marvel executives initially refused to cast Robert Downey Jr. as Iron Man because of his past struggles with addiction — director Jon Favreau had to fight the studio to give him the role." },
+      { label: "Cameron Diaz", correctSlot: "S2", logicNote: "Cameron Diaz is an actor whose first name starts with C, but she has not played a comic-book superhero.", fact: "Cameron Diaz landed her first acting role in The Mask at age 21 — even though she had no acting experience, having modeled high fashion since age 17." },
+      { label: "Captain America", correctSlot: "S3", logicNote: "Captain America is a superhero whose name starts with C, but he is a comic-book character rather than an actor.", fact: "Captain America was created in 1941 — the cover of his first comic showed him punching Adolf Hitler in the face, almost a year before the U.S. entered World War II." },
+      { label: "Chris Evans", correctSlot: "S4", logicNote: "Chris Evans is an actor, played a superhero, and has a first name that starts with C.", fact: "Chris Evans turned down the role of Captain America three times before director Joe Johnston convinced him to accept, fearing the long contract would consume his career." },
+      { label: "Tom Hanks", correctSlot: null },
+      { label: "Spider-Man", correctSlot: null },
+      { label: "Cactus", correctSlot: null },
+      { label: "Wallet", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Speaks French Officially + In Africa",
+    difficultyEstimate: 36,
+    labels: { A: "Country", B: "Speaks French Officially", C: "In Africa" },
+    tiles: [
+      { label: "France", correctSlot: "S1", logicNote: "France is a country where French is the official language, but it is in Europe rather than Africa.", fact: "France has been a republic five different times — the current Fifth Republic has lasted since 1958, the longest of all five." },
+      { label: "Egypt", correctSlot: "S2", logicNote: "Egypt is an African country, but its official language is Arabic rather than French.", fact: "Modern Egyptians still farm along the same Nile floodplain that fed the pharaohs' civilization more than 5,000 years ago." },
+      { label: "Marrakech", correctSlot: "S3", logicNote: "Marrakech is in Africa and French is widely spoken there, but it is a city rather than a country.", fact: "Marrakech's central square Jemaa el-Fnaa transforms every evening into one of the world's largest open-air food markets, with storytellers and snake charmers among the cooks." },
+      { label: "Senegal", correctSlot: "S4", logicNote: "Senegal is an African country whose official language is French.", fact: "Senegal's first president, Leopold Sedar Senghor, was a celebrated French-language poet — and the first African elected to the Academie Francaise, France's elite literary council." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Sahara Desert", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-28",
+  easy: {
+    title: "Vehicle + Travels on Water + Used for Recreation",
+    difficultyEstimate: 81,
+    labels: { A: "Vehicle", B: "Travels on Water", C: "Used for Recreation" },
+    tiles: [
+      { label: "Cargo Ship", correctSlot: "S1", logicNote: "A cargo ship is a vehicle that travels on water, but it carries shipping containers rather than vacationers.", fact: "The largest cargo ships can carry over 24,000 shipping containers at once — stacked end to end, those containers would stretch more than 90 miles." },
+      { label: "Roller Coaster", correctSlot: "S2", logicNote: "A roller coaster is a vehicle used for recreation, but it runs on rails rather than water.", fact: "The world's fastest roller coaster, Formula Rossa in Abu Dhabi, accelerates from 0 to 149 miles per hour in under five seconds — riders must wear safety goggles to protect their eyes from the wind." },
+      { label: "Surfboard", correctSlot: "S3", logicNote: "A surfboard travels across the water and is used for recreation, but it is equipment ridden by a person rather than a vehicle that carries one.", fact: "The longest recorded ride on a surfboard lasted three hours and twenty minutes — set on a perpetual river wave in the Amazon called the pororoca, which rolls inland up the river twice a day at the spring tides." },
+      { label: "Jet Ski", correctSlot: "S4", logicNote: "A jet ski is a vehicle that travels on water and is used for recreation.", fact: "The first commercially successful Jet Ski was released by Kawasaki in 1972 — riders had to stand up to operate it, with the sit-down model not arriving for another decade." },
+      { label: "Forklift", correctSlot: null },
+      { label: "Aquarium", correctSlot: null },
+      { label: "Movie Theater", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Famous Person + Plays Soccer + From Brazil",
+    difficultyEstimate: 47,
+    labels: { A: "Famous Person", B: "Plays Soccer", C: "From Brazil" },
+    tiles: [
+      { label: "Cristiano Ronaldo", correctSlot: "S1", logicNote: "Cristiano Ronaldo is a famous soccer player, but he is from Portugal rather than Brazil.", fact: "Cristiano Ronaldo was named after Ronald Reagan — his father was a big fan of the former U.S. president's films from years before Reagan entered politics." },
+      { label: "Gisele Bundchen", correctSlot: "S2", logicNote: "Gisele Bundchen is a famous person from Brazil, but she is a supermodel rather than a soccer player.", fact: "At her peak, Gisele Bundchen earned more than any other model in the world for over a decade straight — once making more than the top ten male models combined." },
+      { label: "Maracana Stadium", correctSlot: "S3", logicNote: "Maracana Stadium is at the heart of Brazilian soccer, but it is a stadium rather than a person.", fact: "Maracana Stadium hosted the 1950 World Cup Final with an estimated crowd of 200,000 fans — still the largest attendance for any soccer match in history." },
+      { label: "Pele", correctSlot: "S4", logicNote: "Pele is a famous person from Brazil and the most celebrated soccer player in the country's history.", fact: "Pele is the only player to win three FIFA World Cups — for Brazil in 1958, 1962, and 1970 — and scored more than 1,000 career goals across his playing days." },
+      { label: "LeBron James", correctSlot: null },
+      { label: "Soccer Cleat", correctSlot: null },
+      { label: "Amazon Rainforest", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Former Spanish Colony + In Asia",
+    difficultyEstimate: 35,
+    labels: { A: "Country", B: "Former Spanish Colony", C: "In Asia" },
+    tiles: [
+      { label: "Mexico", correctSlot: "S1", logicNote: "Mexico is a country that was a Spanish colony, but it is in North America rather than Asia.", fact: "Mexico's independence movement began on September 16, 1810 with a rallying call from a priest named Hidalgo — still celebrated as Mexico's Independence Day, and often confused by outsiders with Cinco de Mayo." },
+      { label: "Thailand", correctSlot: "S2", logicNote: "Thailand is a country in Asia, but it was not a Spanish colony.", fact: "Thailand was historically called Siam — the name was changed in 1939, and the word 'Thai' itself means 'free,' a nod to the country's history of avoiding direct European colonization." },
+      { label: "Manila", correctSlot: "S3", logicNote: "Manila is in Asia and has Spanish colonial history, but it is a city rather than a country.", fact: "For 250 years the Manila Galleons sailed across the Pacific each year, carrying silk and spices from Asia to Mexico — one of the world's first regular intercontinental trade routes." },
+      { label: "Philippines", correctSlot: "S4", logicNote: "The Philippines is a country in Asia that was a Spanish colony.", fact: "The Philippines was named in 1543 for Spain's then-prince Philip — who later became King Philip II and ruled over an empire so vast that the sun never set on it." },
+      { label: "Spain", correctSlot: null },
+      { label: "Spanish Language", correctSlot: null },
+      { label: "Great Wall", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-27",
+  easy: {
+    title: "Animal + Farm-Related + Has a Horn",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Farm-Related", C: "Has a Horn" },
+    tiles: [
+      { label: "Chicken", correctSlot: "S1", logicNote: "A chicken is an animal found on farms, but it does not have a horn.", fact: "Chickens can recognize dozens of other chickens in their flock." },
+      { label: "Rhino", correctSlot: "S2", logicNote: "A rhino is an animal with a horn, but it is not farm-related.", fact: "A rhinoceros horn is made of keratin, the same protein found in hair and fingernails." },
+      { label: "Tractor", correctSlot: "S3", logicNote: "A tractor is farm-related and has a horn, but it is not an animal.", fact: "Modern tractors can use GPS guidance to help farmers plant and harvest more precisely." },
+      { label: "Goat", correctSlot: "S4", logicNote: "A goat is a farm animal that can have horns.", fact: "Goats have horizontal, rectangular pupils that give them nearly 320-degree vision — useful for spotting predators sneaking up from almost any direction." },
+      { label: "Penguin", correctSlot: null },
+      { label: "Barn", correctSlot: null },
+      { label: "Trumpet", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Company + Car-Related + Japanese",
+    difficultyEstimate: 46,
+    labels: { A: "Company", B: "Car-Related", C: "Japanese" },
+    tiles: [
+      { label: "Ford", correctSlot: "S1", logicNote: "Ford is a car-related company, but it is American rather than Japanese.", fact: "Ford introduced the Model T in 1908, helping make cars affordable to many Americans." },
+      { label: "Sony", correctSlot: "S2", logicNote: "Sony is a Japanese company, but it is not mainly car-related.", fact: "Sony began in postwar Tokyo and became famous for electronics like the Walkman." },
+      { label: "Prius", correctSlot: "S3", logicNote: "The Prius is Japanese and car-related, but it is a model rather than a company.", fact: "The Toyota Prius helped popularize hybrid cars around the world." },
+      { label: "Toyota", correctSlot: "S4", logicNote: "Toyota is a Japanese company and is car-related.", fact: "Toyota grew from a loom-making business into one of the world's largest automakers." },
+      { label: "Apple", correctSlot: null },
+      { label: "Steering Wheel", correctSlot: null },
+      { label: "Sushi", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Capital City + Borders the Sea + In Europe",
+    difficultyEstimate: 36,
+    labels: { A: "Capital City", B: "Borders the Sea", C: "In Europe" },
+    tiles: [
+      { label: "Beirut", correctSlot: "S1", logicNote: "Beirut is a capital city on the Mediterranean coast, but it sits in the Middle East rather than Europe.", fact: "Beirut has been continuously inhabited for at least 5,000 years and has been destroyed and rebuilt at least seven times across its history." },
+      { label: "Madrid", correctSlot: "S2", logicNote: "Madrid is a European capital city, but it sits inland on a high plateau and does not border any sea.", fact: "Madrid is the highest capital city in the European Union, sitting about 2,200 feet above sea level — a quirk that gives it noticeably cooler summer nights than coastal Spain." },
+      { label: "Naples", correctSlot: "S3", logicNote: "Naples sits on the Mediterranean coast in Europe, but Rome is Italy's capital — not Naples.", fact: "The Bay of Naples sits in the shadow of Mount Vesuvius — still classified as an active volcano almost 2,000 years after it buried Pompeii in 79 AD." },
+      { label: "Athens", correctSlot: "S4", logicNote: "Athens is the capital of Greece, borders the Mediterranean, and is in Europe.", fact: "The marathon's 26.2-mile distance is based on the legendary run from the town of Marathon to Athens — made by a Greek soldier in 490 BC to announce the Greeks' surprise victory over the Persians." },
+      { label: "Beijing", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Sailboat", correctSlot: null },
+      { label: "Toaster", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-26",
+  easy: {
+    title: "Food + Round + Morning",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Round", C: "Morning" },
+    tiles: [
+      { label: "Pizza", correctSlot: "S1", logicNote: "Pizza is round food, but it is not mainly associated with morning.", fact: "Pizza was an Italian street food until soldiers returning from World War II brought back a taste for it — turning it into one of America's most popular foods within a decade." },
+      { label: "Bacon", correctSlot: "S2", logicNote: "Bacon is food associated with morning, but it is not round.", fact: "Bacon and eggs became a classic American breakfast partly through 20th-century advertising." },
+      { label: "Alarm Clock", correctSlot: "S3", logicNote: "An alarm clock is round and associated with morning, but it is not food.", fact: "Mechanical alarm clocks became common household items in the 1800s." },
+      { label: "Bagel", correctSlot: "S4", logicNote: "A bagel is round food often eaten in the morning.", fact: "Bagels are boiled before baking, which helps create their chewy texture." },
+      { label: "Broccoli", correctSlot: null },
+      { label: "Dinner Plate", correctSlot: null },
+      { label: "Sunrise", correctSlot: null },
+      { label: "Shoelace", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Medical + Set in Seattle",
+    difficultyEstimate: 46,
+    labels: { A: "TV Show", B: "Medical", C: "Set in Seattle" },
+    tiles: [
+      { label: "House", correctSlot: "S1", logicNote: "House is a medical TV show, but it is set in New Jersey, not Seattle.", fact: "House was inspired by Sherlock Holmes — both characters live at 221B, use deductive reasoning, fight addiction, and rely on a 'Watson' (Dr. Wilson) as their closest confidant." },
+      { label: "Frasier", correctSlot: "S2", logicNote: "Frasier is a TV show set in Seattle, but it is not a medical drama.", fact: "Frasier was a Cheers spinoff and won many Emmy Awards." },
+      { label: "Grey Sloan Memorial", correctSlot: "S3", logicNote: "Grey Sloan Memorial is medical and set in Seattle, but it is a fictional hospital rather than the TV show itself.", fact: "Grey Sloan Memorial Hospital is the central workplace in Grey's Anatomy." },
+      { label: "Grey's Anatomy", correctSlot: "S4", logicNote: "Grey's Anatomy is a medical TV show set in Seattle.", fact: "Grey's Anatomy was named after Gray's Anatomy, the famous 1858 medical textbook by Henry Gray — still used by medical students today, more than 160 years and 41 editions later." },
+      { label: "The Office", correctSlot: null },
+      { label: "Stethoscope", correctSlot: null },
+      { label: "Space Needle", correctSlot: null },
+      { label: "Baseball Cap", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. State + Famous for Wine + In the West",
+    difficultyEstimate: 36,
+    labels: { A: "U.S. State", B: "Famous for Wine", C: "In the West" },
+    tiles: [
+      { label: "New York", correctSlot: "S1", logicNote: "New York is a U.S. state famous for wine from the Finger Lakes and Long Island, but it is on the East Coast rather than in the West.", fact: "New York is the third-largest wine-producing state in the U.S., and its Finger Lakes region grows Riesling that often beats European labels in international tastings." },
+      { label: "Nevada", correctSlot: "S2", logicNote: "Nevada is a U.S. state in the West, but it is more famous for deserts and casinos than for wine.", fact: "Nevada is the driest state in the U.S., averaging just nine inches of rain per year — too little for most traditional vineyards to thrive without irrigation." },
+      { label: "Napa Valley", correctSlot: "S3", logicNote: "Napa Valley is famous for wine and sits in the western U.S., but it is a region within California rather than its own state.", fact: "Napa Valley produces only about four percent of California's wine but accounts for over a quarter of the state's wine sales by value — its luxury bottles command premium prices." },
+      { label: "California", correctSlot: "S4", logicNote: "California is a U.S. state in the West that is famous for wine.", fact: "California produces nearly 90 percent of all wine made in the U.S., and if it were a country, it would rank as the world's fourth-largest wine producer." },
+      { label: "Florida", correctSlot: null },
+      { label: "Wine Cellar", correctSlot: null },
+      { label: "Pacific Ocean", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-06-25",
+  easy: {
+    title: "Animal + Ocean + Large",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Ocean", C: "Large" },
+    tiles: [
+      { label: "Clownfish", correctSlot: "S1", logicNote: "A clownfish is an ocean animal, but it is not large.", fact: "Clownfish can live safely among sea anemones because a mucus coating protects them from stings." },
+      { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is a large animal, but it does not live in the ocean.", fact: "Elephants can recognize themselves in mirrors and have been observed visiting the bones of dead family members — behaviors that suggest a deep awareness of self and of loss." },
+      { label: "Cruise Ship", correctSlot: "S3", logicNote: "A cruise ship is large and travels on the ocean, but it is not an animal.", fact: "The largest cruise ships are longer than three football fields." },
+      { label: "Whale", correctSlot: "S4", logicNote: "A whale is a large ocean animal.", fact: "Blue whales are the largest animals ever known to have lived." },
+      { label: "Cat", correctSlot: null },
+      { label: "Seashell", correctSlot: null },
+      { label: "Boulder", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Set in England + Has Magic",
+    difficultyEstimate: 46,
+    labels: { A: "Movie", B: "Set in England", C: "Has Magic" },
+    tiles: [
+      { label: "Notting Hill", correctSlot: "S1", logicNote: "Notting Hill is a movie set in England, but it does not have magic.", fact: "Notting Hill's iconic blue door at 280 Westbourne Park Road became so famous after the 1999 film that the original was eventually sold at auction for charity — and a replacement door was installed in its place." },
+      { label: "The Wizard of Oz", correctSlot: "S2", logicNote: "The Wizard of Oz is a movie with magic, but it is not set in England.", fact: "The Wizard of Oz was released in 1939 and became famous for its switch from sepia-toned Kansas to Technicolor Oz." },
+      { label: "Merlin", correctSlot: "S3", logicNote: "Merlin is tied to English legend and magic, but he is a character rather than a movie.", fact: "Merlin is the legendary wizard connected to King Arthur stories." },
+      { label: "Harry Potter", correctSlot: "S4", logicNote: "Harry Potter is a movie series set largely in England and centered on magic.", fact: "The first Harry Potter film was released in 2001." },
+      { label: "Titanic", correctSlot: null },
+      { label: "Big Ben", correctSlot: null },
+      { label: "Magic Wand", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. President + Nobel Peace Prize + Democrat",
+    difficultyEstimate: 35,
+    labels: { A: "U.S. President", B: "Nobel Peace Prize", C: "Democrat" },
+    tiles: [
+      { label: "Theodore Roosevelt", correctSlot: "S1", logicNote: "Theodore Roosevelt was a U.S. president and Nobel Peace Prize winner, but he was a Republican rather than a Democrat.", fact: "Theodore Roosevelt won the Nobel Peace Prize for helping negotiate the end of the Russo-Japanese War." },
+      { label: "Franklin D. Roosevelt", correctSlot: "S2", logicNote: "Franklin D. Roosevelt was a Democratic U.S. president, but he did not win the Nobel Peace Prize.", fact: "Franklin D. Roosevelt was elected president four times." },
+      { label: "Al Gore", correctSlot: "S3", logicNote: "Al Gore is a Democrat and Nobel Peace Prize winner, but he was vice president rather than president.", fact: "Al Gore shared the 2007 Nobel Peace Prize for climate-change advocacy." },
+      { label: "Barack Obama", correctSlot: "S4", logicNote: "Barack Obama was a Democratic U.S. president and won the Nobel Peace Prize.", fact: "Barack Obama received the Nobel Peace Prize in 2009." },
+      { label: "George Washington", correctSlot: null },
+      { label: "Nobel Medal", correctSlot: null },
+      { label: "Democratic Donkey", correctSlot: null },
+      { label: "Microscope", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-06-24",
   easy: {
-    title: "Animal + Lives in Water + Has Shell",
+    title: "Animal + Lives in Water + Has a Tail",
     difficultyEstimate: 80,
-    labels: { A: "Animal", B: "Lives in Water", C: "Has Shell" },
+    labels: { A: "Animal", B: "Lives in Water", C: "Has a Tail" },
     tiles: [
-      { label: "Shark", correctSlot: "S1", logicNote: "A fish is an animal that lives in water, but it does not have a shell.", fact: "Fish breathe underwater by passing water over their gills." },
-      { label: "Tortoise", correctSlot: "S2", logicNote: "A tortoise is an animal with a shell, but it lives mostly on land rather than in water.", fact: "Tortoises are turtles adapted for life on land." },
-      { label: "Submarine", correctSlot: "S3", logicNote: "A seashell is connected to water and has a shell, but it is not an animal itself.", fact: "Many seashells are the hard outer coverings left behind by marine mollusks." },
-      { label: "Sea Turtle", correctSlot: "S4", logicNote: "A sea turtle is an animal that lives in water and has a shell.", fact: "Sea turtles return to beaches to lay eggs even though they spend most of life in the ocean." },
-      { label: "Cat", correctSlot: null },
-      { label: "Ocean", correctSlot: null },
-      { label: "Walnut", correctSlot: null },
-      { label: "Blanket", correctSlot: null }
+      { label: "Octopus", correctSlot: "S1", logicNote: "An octopus is an animal that lives in water, but it has eight arms rather than a tail.", fact: "Octopuses have three hearts and blue blood, and can squeeze through any opening larger than their hard beak." },
+      { label: "Lion", correctSlot: "S2", logicNote: "A lion is an animal with a long tail, but it lives on the African savanna rather than in water.", fact: "A male lion's roar can be heard up to five miles away and is used to mark territory and call the pride back together." },
+      { label: "Mermaid", correctSlot: "S3", logicNote: "A mermaid lives in water and has a long fish tail, but mermaids are mythical rather than real animals.", fact: "Christopher Columbus reported spotting three mermaids during his 1493 voyage — most historians now think he was actually looking at manatees." },
+      { label: "Whale", correctSlot: "S4", logicNote: "A whale is an animal that lives in water and has a powerful tail.", fact: "Blue whales are the largest animals ever known to have existed — even bigger than the largest dinosaurs — and their hearts are the size of small cars." },
+      { label: "Spider", correctSlot: null },
+      { label: "Kite", correctSlot: null },
+      { label: "Sailboat", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
     ]
   },
   medium: {
@@ -52,66 +484,66 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Movie + Based on Book + Set in Future",
-    difficultyEstimate: 37,
-    labels: { A: "Movie", B: "Based on Book", C: "Set in Future" },
+    title: "Country + Has Been Communist + In Europe",
+    difficultyEstimate: 38,
+    labels: { A: "Country", B: "Has Been Communist", C: "In Europe" },
     tiles: [
-      { label: "The Godfather", correctSlot: "S1", logicNote: "The Godfather is a movie based on a book, but it is not set in the future.", fact: "Mario Puzo co-wrote the screenplay for The Godfather with director Francis Ford Coppola." },
-      { label: "Back to the Future", correctSlot: "S2", logicNote: "Back to the Future is a movie with future travel, but it was not based on a book.", fact: "Back to the Future was released in 1985 and became one of the decade's defining comedies." },
-      { label: "1984 Novel", correctSlot: "S3", logicNote: "1984 is a book set in a future dystopia, but this tile refers to the novel rather than a movie.", fact: "George Orwell published Nineteen Eighty-Four in 1949." },
-      { label: "Blade Runner", correctSlot: "S4", logicNote: "Blade Runner is a movie based on a book and set in the future.", fact: "Blade Runner was loosely based on Philip K. Dick's novel Do Androids Dream of Electric Sheep?" },
-      { label: "Movie Camera", correctSlot: null },
-      { label: "Library Card", correctSlot: null },
-      { label: "Time Capsule", correctSlot: null },
-      { label: "Coffee Mug", correctSlot: null }
+      { label: "Cuba", correctSlot: "S1", logicNote: "Cuba is a country with a communist government, but it sits in the Caribbean rather than Europe.", fact: "Cuba's communist government, established by Fidel Castro after the 1959 revolution, is the only Soviet-era one-party communist state still standing in the Americas." },
+      { label: "Sweden", correctSlot: "S2", logicNote: "Sweden is a European country, but it has stayed a parliamentary democracy and has never had a communist government.", fact: "Sweden has not been at war since 1814, the longest streak of any country in modern Europe." },
+      { label: "Berlin Wall", correctSlot: "S3", logicNote: "The Berlin Wall stood in communist Europe, but it was a wall rather than a country.", fact: "The Berlin Wall stood for 28 years before crowds tore it down on the night of November 9, 1989, ending the most visible symbol of the Cold War." },
+      { label: "Poland", correctSlot: "S4", logicNote: "Poland is a European country that was communist from the end of World War II until 1989.", fact: "Poland's Solidarity movement, started in 1980 by shipyard electrician Lech Walesa, helped bring down communism across Eastern Europe." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Hammer and Sickle", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Picture Frame", correctSlot: null }
     ]
   }
 },
   {
   date: "2026-06-23",
   easy: {
-    title: "Animal + Farm + Gives Milk",
-    difficultyEstimate: 82,
-    labels: { A: "Animal", B: "Farm", C: "Gives Milk" },
+    title: "Vegetable + Orange in Color + Eaten Raw",
+    difficultyEstimate: 80,
+    labels: { A: "Vegetable", B: "Orange in Color", C: "Eaten Raw" },
     tiles: [
-      { label: "Chicken", correctSlot: "S1", logicNote: "A chicken is a farm animal, but it does not give milk.", fact: "Chickens are the most numerous domesticated birds in the world." },
-      { label: "Whale", correctSlot: "S2", logicNote: "A whale is an animal that gives milk to its young, but it is not a farm animal.", fact: "Whales are mammals, so whale calves nurse from their mothers." },
-      { label: "Dairy Farm", correctSlot: "S3", logicNote: "A dairy barn is on a farm and is connected to milk, but it is not an animal.", fact: "Dairy barns are designed around milking, feeding, and caring for cows." },
-      { label: "Cow", correctSlot: "S4", logicNote: "A cow is a farm animal that gives milk.", fact: "Dairy cows are bred and cared for specifically for milk production." },
-      { label: "Lion", correctSlot: null },
-      { label: "Tractor", correctSlot: null },
-      { label: "Milk Carton", correctSlot: null },
-      { label: "Book", correctSlot: null }
+      { label: "Pumpkin", correctSlot: "S1", logicNote: "A pumpkin is an orange vegetable, but its flesh is almost always cooked rather than eaten raw.", fact: "Pumpkins are technically fruits in botanical terms — they are very large berries from the same family as cucumbers and watermelons." },
+      { label: "Cucumber", correctSlot: "S2", logicNote: "A cucumber is a vegetable eaten raw in salads, but it is green rather than orange.", fact: "Cucumbers are about 95 percent water and were first cultivated in India over 3,000 years ago." },
+      { label: "Cantaloupe", correctSlot: "S3", logicNote: "Cantaloupe has bright orange flesh and is eaten raw, but it is a fruit rather than a vegetable.", fact: "Cantaloupes get their name from Cantalupo, a town near Rome where Italian growers first cultivated the melons in Europe in the 1700s." },
+      { label: "Carrot", correctSlot: "S4", logicNote: "A carrot is an orange vegetable that is commonly eaten raw.", fact: "Carrots were originally purple, white, or yellow — the orange carrot only became common in the 1600s, possibly bred by Dutch growers to honor the House of Orange." },
+      { label: "Strawberry", correctSlot: null },
+      { label: "Basketball", correctSlot: null },
+      { label: "Pencil", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
     ]
   },
   medium: {
-    title: "Brand + Fast Food + Starts With M",
+    title: "Company + In the Tech Industry + Founded in California",
     difficultyEstimate: 50,
-    labels: { A: "Brand", B: "Fast Food", C: "Starts With M" },
+    labels: { A: "Company", B: "In the Tech Industry", C: "Founded in California" },
     tiles: [
-      { label: "Burger King", correctSlot: "S1", logicNote: "Burger King is a fast-food brand, but it does not start with M.", fact: "Burger King was founded in Florida in the 1950s." },
-      { label: "Microsoft", correctSlot: "S2", logicNote: "Microsoft is a brand that starts with M, but it is not fast food.", fact: "Microsoft was founded by Bill Gates and Paul Allen in 1975." },
-      { label: "McNugget", correctSlot: "S3", logicNote: "McNugget is fast food and starts with M, but it is a product rather than the brand itself.", fact: "Chicken McNuggets were introduced nationally by McDonald's in the 1980s." },
-      { label: "McDonald's", correctSlot: "S4", logicNote: "McDonald's is a fast-food brand that starts with M.", fact: "McDonald's golden arches are among the world's most recognizable brand symbols." },
-      { label: "Adidas", correctSlot: null },
-      { label: "French Fries", correctSlot: null },
-      { label: "Mountain", correctSlot: null },
-      { label: "Clock", correctSlot: null }
+      { label: "IBM", correctSlot: "S1", logicNote: "IBM is a tech company, but it was founded in New York rather than California.", fact: "IBM started in 1911 as the Computing-Tabulating-Recording Company in New York and became one of the original giants of the computer industry." },
+      { label: "Levi's", correctSlot: "S2", logicNote: "Levi's is a company founded in California, but it makes blue jeans rather than tech products.", fact: "Levi Strauss patented the riveted blue jean in 1873 to sell sturdier work pants to California gold-rush miners." },
+      { label: "Stanford", correctSlot: "S3", logicNote: "Stanford is a major tech-research hub in California, but the institution itself is a university rather than a company.", fact: "Stanford alumni and faculty have founded thousands of companies — including Google, HP, Nike, and Netflix — with combined value estimated in the trillions of dollars." },
+      { label: "Google", correctSlot: "S4", logicNote: "Google is a tech company founded in California.", fact: "Google started as a Stanford research project called 'BackRub' before being renamed and incorporated in a Menlo Park garage in 1998." },
+      { label: "Toyota", correctSlot: null },
+      { label: "Smartphone", correctSlot: null },
+      { label: "Hollywood Sign", correctSlot: null },
+      { label: "Wastebasket", correctSlot: null }
     ]
   },
   hard: {
-    title: "U.S. State + Has NBA Team + Starts With M",
+    title: "Capital City + South of the Equator + In Africa",
     difficultyEstimate: 38,
-    labels: { A: "U.S. State", B: "Has NBA Team", C: "Starts With M" },
+    labels: { A: "Capital City", B: "South of the Equator", C: "In Africa" },
     tiles: [
-      { label: "Texas", correctSlot: "S1", logicNote: "Texas is a U.S. state with NBA teams, but it does not start with M.", fact: "Texas has NBA teams in Dallas, Houston, and San Antonio." },
-      { label: "Montana", correctSlot: "S2", logicNote: "Montana is a U.S. state that starts with M, but it does not have an NBA team.", fact: "Montana is nicknamed Big Sky Country." },
-      { label: "Memphis", correctSlot: "S3", logicNote: "Memphis starts with M and has an NBA team, but it is a city rather than a state.", fact: "The Memphis Grizzlies moved from Vancouver to Memphis in 2001." },
-      { label: "Minnesota", correctSlot: "S4", logicNote: "Minnesota is a U.S. state that starts with M and has an NBA team.", fact: "The Minnesota Timberwolves began play in 1989." },
-      { label: "Alaska", correctSlot: null },
-      { label: "Lakers", correctSlot: null },
-      { label: "Maple Leaf", correctSlot: null },
-      { label: "Table", correctSlot: null }
+      { label: "Buenos Aires", correctSlot: "S1", logicNote: "Buenos Aires is a capital city well south of the equator, but it is in South America rather than Africa.", fact: "Buenos Aires translates as 'good airs' — a nod to the fair winds that helped colonial sailors reach its port." },
+      { label: "Cairo", correctSlot: "S2", logicNote: "Cairo is a capital city in Africa, but it sits north of the equator near the Mediterranean.", fact: "Cairo is one of the oldest continuously inhabited capital cities in the world, founded next to the Nile more than a thousand years ago." },
+      { label: "Mount Kilimanjaro", correctSlot: "S3", logicNote: "Mount Kilimanjaro is in Africa just south of the equator, but it is a mountain rather than a capital city.", fact: "Mount Kilimanjaro is the world's tallest free-standing mountain at 19,341 feet, and even though it stands near the equator, its summit holds glaciers." },
+      { label: "Nairobi", correctSlot: "S4", logicNote: "Nairobi is the capital of Kenya, sits just south of the equator, and is in Africa.", fact: "Nairobi is the only capital city in the world with a major national park inside its city limits, where lions and rhinos roam within sight of the skyline." },
+      { label: "London", correctSlot: null },
+      { label: "Antarctica", correctSlot: null },
+      { label: "Sahara Desert", correctSlot: null },
+      { label: "Soccer Cleat", correctSlot: null }
     ]
   }
 },
@@ -148,36 +580,36 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Country + Uses Euro + Starts With S",
-    difficultyEstimate: 39,
-    labels: { A: "Country", B: "Uses Euro", C: "Starts With S" },
+    title: "Country + Has a Royal Family + In Europe",
+    difficultyEstimate: 38,
+    labels: { A: "Country", B: "Has a Royal Family", C: "In Europe" },
     tiles: [
-      { label: "France", correctSlot: "S1", logicNote: "France is a country that uses the euro, but it does not start with S.", fact: "France was one of the founding countries of the eurozone." },
-      { label: "Switzerland", correctSlot: "S2", logicNote: "Switzerland is a country that starts with S, but it uses the Swiss franc rather than the euro.", fact: "Switzerland is surrounded by euro-using countries but kept its own currency." },
-      { label: "Seville", correctSlot: "S3", logicNote: "Strasbourg starts with S and uses the euro, but it is a city rather than a country.", fact: "Strasbourg is a French city near the German border." },
-      { label: "Spain", correctSlot: "S4", logicNote: "Spain is a country that starts with S and uses the euro.", fact: "Spain adopted the euro as physical currency in 2002." },
-      { label: "Canada", correctSlot: null },
-      { label: "Berlin", correctSlot: null },
-      { label: "Saturn", correctSlot: null },
-      { label: "Folder", correctSlot: null }
+      { label: "Saudi Arabia", correctSlot: "S1", logicNote: "Saudi Arabia is a country ruled by a royal family, but it sits in the Middle East rather than Europe.", fact: "The House of Saud is one of the largest royal families in the world — an estimated 15,000 descendants of founder Ibn Saud carry the title prince or princess." },
+      { label: "France", correctSlot: "S2", logicNote: "France is a country in Europe, but it abolished its monarchy and has been a republic for over 150 years.", fact: "France's last monarch, Napoleon III, was driven from power in 1870, ending more than a thousand years of French kings and emperors." },
+      { label: "Buckingham Palace", correctSlot: "S3", logicNote: "Buckingham Palace is in Europe and is the home of a royal family, but it is a building rather than a country.", fact: "Buckingham Palace has 775 rooms, including 78 bathrooms, and the Royal Standard flies above the roof whenever the British monarch is inside." },
+      { label: "United Kingdom", correctSlot: "S4", logicNote: "The United Kingdom is a country in Europe with a famous royal family.", fact: "Queen Elizabeth II reigned for 70 years — longer than any other British monarch and the second-longest verified reign in world history." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Crown", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Lampshade", correctSlot: null }
     ]
   }
 },
   {
   date: "2026-06-21",
   easy: {
-    title: "Sport + Water + Uses Board",
+    title: "Animal + Black and White + Lives in the Cold",
     difficultyEstimate: 80,
-    labels: { A: "Sport", B: "Water", C: "Uses Board" },
+    labels: { A: "Animal", B: "Black and White", C: "Lives in the Cold" },
     tiles: [
-      { label: "Swimming", correctSlot: "S1", logicNote: "Swimming is a water sport, but it does not use a board.", fact: "Swimming has been part of the modern Olympics since 1896." },
-      { label: "Skateboarding", correctSlot: "S2", logicNote: "Skateboarding is a sport that uses a board, but it is not a water sport.", fact: "Skateboarding made its Olympic debut at the Tokyo Games." },
-      { label: "Diving Board", correctSlot: "S3", logicNote: "A surfboard is used in water and is a board, but it is equipment rather than the sport.", fact: "Modern surfboards are usually made from foam and fiberglass." },
-      { label: "Surfing", correctSlot: "S4", logicNote: "Surfing is a water sport that uses a board.", fact: "Surfing has deep roots in Polynesian culture." },
-      { label: "Marathon", correctSlot: null },
-      { label: "Lake", correctSlot: null },
-      { label: "Cutting Board", correctSlot: null },
-      { label: "Candle", correctSlot: null }
+      { label: "Skunk", correctSlot: "S1", logicNote: "A skunk is a black-and-white animal, but it lives in temperate forests rather than cold polar regions.", fact: "Skunks can accurately spray their defensive scent up to ten feet, and the smell can drift for over a mile downwind." },
+      { label: "Polar Bear", correctSlot: "S2", logicNote: "A polar bear is an animal that lives in the cold Arctic, but its fur is all white rather than black and white.", fact: "Polar bears actually have black skin under their fur, which helps them absorb the sun's warmth in freezing climates." },
+      { label: "Snowman", correctSlot: "S3", logicNote: "A snowman has black-and-white coloring from snow, coal, and a hat, and lives in the cold, but it is not an animal.", fact: "The world-record snowman, built in Bethel, Maine in 2008, stood over 122 feet tall and was named Olympia after a real-life Maine senator." },
+      { label: "Penguin", correctSlot: "S4", logicNote: "A penguin is a black-and-white animal that lives in the cold.", fact: "Emperor penguins are the only animals known to breed during the Antarctic winter, when temperatures can drop below minus 40 degrees." },
+      { label: "Lion", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null },
+      { label: "Sunshine", correctSlot: null },
+      { label: "Lampshade", correctSlot: null }
     ]
   },
   medium: {
@@ -196,18 +628,18 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Country + Starts With P + Has Atlantic Coast",
-    difficultyEstimate: 37,
-    labels: { A: "Country", B: "Starts With P", C: "Has Atlantic Coast" },
+    title: "Country + Has an Active Volcano + In the Americas",
+    difficultyEstimate: 38,
+    labels: { A: "Country", B: "Has an Active Volcano", C: "In the Americas" },
     tiles: [
-      { label: "Morocco", correctSlot: "S2", logicNote: "Morocco is a country with Atlantic coastline, but it does not start with P.", fact: "Morocco has coastline on both the Atlantic Ocean and the Mediterranean Sea." },
-      { label: "Peru", correctSlot: "S1", logicNote: "Peru is a country that starts with P, but its coastline is on the Pacific, not the Atlantic.", fact: "Peru's coast runs along the Pacific Ocean." },
-      { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico starts with P and has Atlantic coastline, but it is a U.S. territory rather than a country.", fact: "Puerto Rico sits between the Atlantic Ocean and the Caribbean Sea." },
-      { label: "Portugal", correctSlot: "S4", logicNote: "Portugal is a country that starts with P and has Atlantic coastline.", fact: "Portugal's long Atlantic coast helped shape its history of exploration." },
-      { label: "Laos", correctSlot: null },
-      { label: "Paris", correctSlot: null },
-      { label: "Atlantic Ocean", correctSlot: null },
-      { label: "Snow Shovel", correctSlot: null }
+      { label: "Italy", correctSlot: "S1", logicNote: "Italy is a country with active volcanoes like Etna and Vesuvius, but it sits in Europe rather than the Americas.", fact: "Mount Etna on Sicily is Europe's most active volcano and has been erupting in some form for at least 2,700 years." },
+      { label: "Canada", correctSlot: "S2", logicNote: "Canada is a country in the Americas, but its volcanic peaks have been dormant for thousands of years.", fact: "Canada has more than 200 volcanic vents, yet has never recorded a deadly volcanic eruption in its history." },
+      { label: "Mount St. Helens", correctSlot: "S3", logicNote: "Mount St. Helens is an active volcano in the Americas, but it is a mountain rather than a country.", fact: "Mount St. Helens' 1980 eruption blew off the top 1,300 feet of the mountain in a single morning." },
+      { label: "Mexico", correctSlot: "S4", logicNote: "Mexico is a country in the Americas with active volcanoes, including Popocatepetl near Mexico City.", fact: "Popocatepetl is so active that roughly 25 million people now live within sight of its smoking summit." },
+      { label: "France", correctSlot: null },
+      { label: "Mount Fuji", correctSlot: null },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "Toaster", correctSlot: null }
     ]
   }
 },
@@ -318,25 +750,25 @@ window.COMMON_GROUND_DAILY_SETS = [
       { label: "Elephant", correctSlot: "S2", logicNote: "An elephant is an animal that cannot fly, but it does not have wings.", fact: "Elephants are the largest living land animals." },
       { label: "Broken Airplane", correctSlot: "S3", logicNote: "A broken airplane has wings and cannot fly, but it is not an animal.", fact: "Airplanes rely on wings to generate lift as air moves over them." },
       { label: "Ostrich", correctSlot: "S4", logicNote: "An ostrich is an animal with wings that cannot fly.", fact: "Ostriches are the world's largest birds and can run very fast." },
-      { label: "Dog", correctSlot: null },
+      { label: "Helicopter", correctSlot: null },
       { label: "Kite", correctSlot: null },
       { label: "Rock", correctSlot: null },
       { label: "Spoon", correctSlot: null }
     ]
   },
   medium: {
-    title: "City + Has NBA Team + Starts With M",
+    title: "Capital City + In Asia + On a Coast",
     difficultyEstimate: 50,
-    labels: { A: "City", B: "Has NBA Team", C: "Starts With M" },
+    labels: { A: "Capital City", B: "In Asia", C: "On a Coast" },
     tiles: [
-      { label: "Dallas", correctSlot: "S1", logicNote: "Dallas is a city with an NBA team, but it does not start with M.", fact: "The Dallas Mavericks won the NBA championship in 2011." },
-      { label: "Madison", correctSlot: "S2", logicNote: "Madison is a city that starts with M, but it does not have an NBA team.", fact: "Madison is the capital of Wisconsin." },
-      { label: "Mavericks", correctSlot: "S3", logicNote: "Mavericks starts with M and is an NBA team, but it is a team name rather than a city.", fact: "The Dallas Mavericks are often called the Mavs." },
-      { label: "Miami", correctSlot: "S4", logicNote: "Miami is a city that starts with M and has an NBA team.", fact: "The Miami Heat have won multiple NBA championships." },
-      { label: "Mountain", correctSlot: null },
-      { label: "Basketball", correctSlot: null },
-      { label: "Magazine", correctSlot: null },
-      { label: "Lamp", correctSlot: null }
+      { label: "New Delhi", correctSlot: "S1", logicNote: "New Delhi is a capital city in Asia, but it sits well inland rather than on a coast.", fact: "New Delhi was purpose-built as a planned capital in the 1920s and sits more than 600 miles from India's nearest shoreline." },
+      { label: "Lisbon", correctSlot: "S2", logicNote: "Lisbon is a coastal capital city, but it is in Europe rather than Asia.", fact: "From Lisbon's Atlantic harbor, Portuguese sailors set out on many of the great Age of Discovery voyages." },
+      { label: "Mumbai", correctSlot: "S3", logicNote: "Mumbai is a coastal city in Asia, but it is not India's capital — New Delhi is.", fact: "Mumbai was originally seven separate islands that were gradually joined together with landfill into the single coastal city seen today." },
+      { label: "Tokyo", correctSlot: "S4", logicNote: "Tokyo is the capital of Japan, sits in Asia, and lies on the coast of Tokyo Bay.", fact: "Tokyo became the first Asian city to host the Summer Olympics in 1964, and hosted again in 2020." },
+      { label: "Berlin", correctSlot: null },
+      { label: "Mount Everest", correctSlot: null },
+      { label: "Lighthouse", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
     ]
   },
   hard: {
