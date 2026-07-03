@@ -22,14 +22,14 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-07-03",
   easy: {
-    title: "Plant + Yellow in Color + Grown for Food",
+    title: "Plant + Yellow in Color + Eaten as Food",
     difficultyEstimate: 82,
-    labels: { A: "Plant", B: "Yellow in Color", C: "Grown for Food" },
+    labels: { A: "Plant", B: "Yellow in Color", C: "Eaten as Food" },
     tiles: [
-      { label: "Daffodil", correctSlot: "S1", logicNote: "A daffodil is a yellow plant, but it is grown for its flowers rather than as food.", fact: "Daffodil bulbs contain toxic compounds that taste so bitter that squirrels and deer almost always leave spring gardens alone after one bite." },
-      { label: "Spinach", correctSlot: "S2", logicNote: "Spinach is a plant grown for food, but it is green rather than yellow.", fact: "Spinach was Catherine de Medici's favorite vegetable — when she became queen of France in the 1500s, dishes served on a bed of spinach were named 'Florentine' in her honor." },
-      { label: "Cheddar Cheese", correctSlot: "S3", logicNote: "Cheddar cheese is yellow and used as food, but it is a dairy product rather than a plant.", fact: "Cheddar's familiar orange-yellow color comes from a flavorless dye called annatto, made from the seeds of a tropical Latin American tree." },
-      { label: "Corn", correctSlot: "S4", logicNote: "Corn is a yellow plant that is grown for food.", fact: "Modern corn was bred from a wild grass called teosinte over thousands of years — early teosinte ears were less than an inch long and held only a few hard kernels." },
+      { label: "Daffodil", correctSlot: "S1", logicNote: "A daffodil is a yellow plant, but it is grown for its flowers rather than eaten as food.", fact: "Daffodil bulbs contain toxic compounds that taste so bitter that squirrels and deer almost always leave spring gardens alone after one bite." },
+      { label: "Spinach", correctSlot: "S2", logicNote: "Spinach is a plant eaten as food, but it is green rather than yellow.", fact: "Spinach was Catherine de Medici's favorite vegetable — when she became queen of France in the 1500s, dishes served on a bed of spinach were named 'Florentine' in her honor." },
+      { label: "Cheddar Cheese", correctSlot: "S3", logicNote: "Cheddar cheese is yellow and eaten as food, but it is a dairy product rather than a plant.", fact: "Cheddar's familiar orange-yellow color comes from a flavorless dye called annatto, made from the seeds of a tropical Latin American tree." },
+      { label: "Corn", correctSlot: "S4", logicNote: "Corn is a yellow plant that is eaten as food.", fact: "Modern corn was bred from a wild grass called teosinte over thousands of years — early teosinte ears were less than an inch long and held only a few hard kernels." },
       { label: "Oak Tree", correctSlot: null },
       { label: "Sun", correctSlot: null },
       { label: "Hamburger", correctSlot: null },
@@ -37,13 +37,13 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Famous Person + From Italy + Lived Before 1600",
+    title: "Famous Person + From Italy + From Before 1600",
     difficultyEstimate: 47,
-    labels: { A: "Famous Person", B: "From Italy", C: "Lived Before 1600" },
+    labels: { A: "Famous Person", B: "From Italy", C: "From Before 1600" },
     tiles: [
       { label: "Sophia Loren", correctSlot: "S1", logicNote: "Sophia Loren is a famous person from Italy, but she was born in 1934 — long after 1600.", fact: "Sophia Loren was the first actress to win an Academy Award for a role in a non-English-language film, for the 1960 Italian drama Two Women." },
-      { label: "Genghis Khan", correctSlot: "S2", logicNote: "Genghis Khan was a famous person who lived well before 1600, but he was a Mongol leader, not Italian.", fact: "Genghis Khan's Mongol empire became the largest contiguous land empire in history — at its peak it stretched from the Pacific Ocean to Eastern Europe." },
-      { label: "Roman Colosseum", correctSlot: "S3", logicNote: "The Roman Colosseum is in Italy and was built well before 1600, but it is a building rather than a person.", fact: "The Roman Colosseum could hold up to 80,000 spectators and was even flooded for staged naval battles in its earliest years." },
+      { label: "Genghis Khan", correctSlot: "S2", logicNote: "Genghis Khan was a famous person from before 1600, but he was a Mongol leader rather than an Italian.", fact: "Genghis Khan's Mongol empire became the largest contiguous land empire in history — at its peak it stretched from the Pacific Ocean to Eastern Europe." },
+      { label: "Roman Colosseum", correctSlot: "S3", logicNote: "The Roman Colosseum is in Italy and dates from before 1600, but it is a building rather than a person.", fact: "The Roman Colosseum could hold up to 80,000 spectators and was even flooded for staged naval battles in its earliest years." },
       { label: "Leonardo da Vinci", correctSlot: "S4", logicNote: "Leonardo da Vinci was a famous person from Italy who lived from 1452 to 1519 — well before 1600.", fact: "Da Vinci's notebooks contain designs for flying machines, tanks, parachutes, and even contact lenses centuries before any of them were actually invented." },
       { label: "Pablo Picasso", correctSlot: null },
       { label: "Ferrari", correctSlot: null },
@@ -70,14 +70,14 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-07-02",
   easy: {
-    title: "Sport + Uses a Stick + Played on Ice",
+    title: "Sport + Uses a Stick + Involves Ice",
     difficultyEstimate: 81,
-    labels: { A: "Sport", B: "Uses a Stick", C: "Played on Ice" },
+    labels: { A: "Sport", B: "Uses a Stick", C: "Involves Ice" },
     tiles: [
-      { label: "Lacrosse", correctSlot: "S1", logicNote: "Lacrosse is a sport played with a long stick, but it is played on grass rather than ice.", fact: "Lacrosse is one of North America's oldest sports — it was invented and refined by Indigenous nations centuries before European contact, sometimes with games involving hundreds of players." },
-      { label: "Speed Skating", correctSlot: "S2", logicNote: "Speed skating is a sport played on ice, but it does not use a stick.", fact: "Top speed skaters can reach over 35 miles per hour — fast enough to outrun most house cats and roughly the speed limit on a city street." },
+      { label: "Lacrosse", correctSlot: "S1", logicNote: "Lacrosse is a sport played with a long stick, but it is played on grass and does not involve ice.", fact: "Lacrosse is one of North America's oldest sports — it was invented and refined by Indigenous nations centuries before European contact, sometimes with games involving hundreds of players." },
+      { label: "Speed Skating", correctSlot: "S2", logicNote: "Speed skating is a sport that involves ice, but it does not use a stick.", fact: "Top speed skaters can reach over 35 miles per hour — fast enough to outrun most house cats and roughly the speed limit on a city street." },
       { label: "Popsicle", correctSlot: "S3", logicNote: "A popsicle is held by a stick and is made of frozen ice, but eating one is not a sport.", fact: "The popsicle was invented by accident in 1905 by an 11-year-old who left a cup of sugary soda with a stirring stick outside on a freezing night." },
-      { label: "Ice Hockey", correctSlot: "S4", logicNote: "Ice hockey is a sport played on ice with a stick.", fact: "Pucks are frozen to about minus 14 degrees Fahrenheit before games — a frozen puck slides cleanly on the ice, while a warm one would bounce unpredictably." },
+      { label: "Ice Hockey", correctSlot: "S4", logicNote: "Ice hockey is a sport played with a stick that involves ice.", fact: "Pucks are frozen to about minus 14 degrees Fahrenheit before games — a frozen puck slides cleanly on the ice, while a warm one would bounce unpredictably." },
       { label: "Tennis", correctSlot: null },
       { label: "Walking Cane", correctSlot: null },
       { label: "Ice Cube", correctSlot: null },
@@ -148,14 +148,14 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Country + Island Nation + British Colonial History",
+    title: "Country + British Colonial History + Island",
     difficultyEstimate: 35,
-    labels: { A: "Country", B: "Island Nation", C: "British Colonial History" },
+    labels: { A: "Country", B: "British Colonial History", C: "Island" },
     tiles: [
-      { label: "India", correctSlot: "S1", logicNote: "India is a country with British colonial history, but it is not an island nation.", fact: "India became independent from British rule in 1947." },
-      { label: "Iceland", correctSlot: "S2", logicNote: "Iceland is a country and island nation, but it does not have British colonial history.", fact: "Iceland sits on the Mid-Atlantic Ridge, where the North American and Eurasian tectonic plates meet." },
+      { label: "India", correctSlot: "S1", logicNote: "India is a country with British colonial history, but the mainland is not an island.", fact: "India became independent from British rule in 1947." },
+      { label: "Iceland", correctSlot: "S2", logicNote: "Iceland is a country and an island, but it does not have British colonial history.", fact: "Iceland sits on the Mid-Atlantic Ridge, where the North American and Eurasian tectonic plates meet." },
       { label: "Bermuda", correctSlot: "S3", logicNote: "Bermuda is an island with British colonial history, but it is a British Overseas Territory rather than a country.", fact: "Bermuda's first English settlers arrived by accident in 1609 when their ship Sea Venture wrecked en route to Virginia — survivors built two new ships from the wreckage, an event believed to have partly inspired Shakespeare's The Tempest." },
-      { label: "Jamaica", correctSlot: "S4", logicNote: "Jamaica is a country, an island nation, and has British colonial history.", fact: "Jamaica became independent from Britain in 1962." },
+      { label: "Jamaica", correctSlot: "S4", logicNote: "Jamaica is a country, an island, and has British colonial history.", fact: "Jamaica became independent from Britain in 1962." },
       { label: "Brazil", correctSlot: null },
       { label: "Island Map", correctSlot: null },
       { label: "Crown", correctSlot: null },
@@ -172,7 +172,7 @@ window.COMMON_GROUND_DAILY_SETS = [
     tiles: [
       { label: "Solitaire", correctSlot: "S1", logicNote: "Solitaire is a game played with a deck of cards, but it is played alone at home rather than at casinos.", fact: "Solitaire became one of the most-played computer games in history after Microsoft bundled it with Windows in 1990 — partly to teach new users how to drag and drop with a mouse." },
       { label: "Roulette", correctSlot: "S2", logicNote: "Roulette is a game played at casinos, but it uses a spinning wheel and a ball rather than cards.", fact: "The numbers on a standard roulette wheel add up to exactly 666, which is why the game is sometimes nicknamed 'The Devil's Wheel.'" },
-      { label: "Las Vegas", correctSlot: "S3", logicNote: "Las Vegas is famous for card games and casinos, but it is a city rather than a game itself.", fact: "Las Vegas has more hotel rooms than any other city in the world, and the city's casinos collectively use more electricity than many small countries." },
+      { label: "Blackjack Table", correctSlot: "S3", logicNote: "A blackjack table uses a deck of cards and is a fixture at casinos, but the table itself is furniture rather than a game.", fact: "Blackjack tables are laid out in a half-circle with the dealer on the flat edge — the design lets one dealer reach and manage cards for up to seven players at once." },
       { label: "Poker", correctSlot: "S4", logicNote: "Poker is a game played with a deck of cards and is widely played at casinos.", fact: "The largest poker prize ever awarded was over $18 million, won by Hossein Ensan at the 2019 World Series of Poker Main Event in Las Vegas." },
       { label: "Chess", correctSlot: null },
       { label: "Slot Machine", correctSlot: null },
@@ -181,15 +181,15 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Country + Has Won the FIFA World Cup + In Europe",
+    title: "Country + Has Hosted the FIFA World Cup + In Europe",
     difficultyEstimate: 46,
-    labels: { A: "Country", B: "Has Won the FIFA World Cup", C: "In Europe" },
+    labels: { A: "Country", B: "Has Hosted the FIFA World Cup", C: "In Europe" },
     tiles: [
-      { label: "Brazil", correctSlot: "S1", logicNote: "Brazil is a country that has won the FIFA World Cup, but it is in South America rather than Europe.", fact: "Brazil has won the FIFA World Cup five times, more than any other country, and is the only nation to play in every World Cup tournament since the competition began in 1930." },
-      { label: "Sweden", correctSlot: "S2", logicNote: "Sweden is a European country, but it has never won the FIFA World Cup.", fact: "Sweden has reached the World Cup final once, in 1958, where they lost at home to a 17-year-old Pele and his Brazilian teammates." },
-      { label: "Wembley Stadium", correctSlot: "S3", logicNote: "Wembley Stadium has hosted a World Cup final and is in Europe, but it is a stadium rather than a country.", fact: "Wembley Stadium hosted the 1966 World Cup Final, where England's controversial third goal — which may not have crossed the line — helped them beat West Germany." },
-      { label: "Germany", correctSlot: "S4", logicNote: "Germany is a European country that has won the FIFA World Cup.", fact: "Germany has won the FIFA World Cup four times, including a famous 7-1 semifinal demolition of host Brazil at the 2014 tournament — the worst loss in Brazil's World Cup history." },
-      { label: "Japan", correctSlot: null },
+      { label: "Brazil", correctSlot: "S1", logicNote: "Brazil is a country that has hosted the FIFA World Cup, but it is in South America rather than Europe.", fact: "Brazil hosted the World Cup in 1950 and again in 2014 — the 2014 tournament ended with a stunning 7-1 semifinal loss to Germany, the worst defeat in Brazil's World Cup history." },
+      { label: "Norway", correctSlot: "S2", logicNote: "Norway is a European country, but it has never hosted the FIFA World Cup.", fact: "Norway's only trip to a World Cup quarterfinal came in 1938 — the team hasn't gotten past the round of 16 in any tournament since." },
+      { label: "Wembley Stadium", correctSlot: "S3", logicNote: "Wembley Stadium has hosted a World Cup final and is in Europe, but it is a stadium rather than a country.", fact: "Wembley Stadium hosted the 1966 World Cup Final, where England's controversial third goal — which may not have fully crossed the line — helped them beat West Germany 4-2." },
+      { label: "Germany", correctSlot: "S4", logicNote: "Germany is a European country that has hosted the FIFA World Cup.", fact: "Germany has hosted the World Cup twice — as West Germany in 1974 and again as a reunified country in 2006, which is remembered for the 'Summer Fairy Tale' festival atmosphere across the country." },
+      { label: "Australia", correctSlot: null },
       { label: "Soccer Ball", correctSlot: null },
       { label: "Eiffel Tower", correctSlot: null },
       { label: "Notebook", correctSlot: null }
@@ -214,14 +214,14 @@ window.COMMON_GROUND_DAILY_SETS = [
   {
   date: "2026-06-29",
   easy: {
-    title: "Instrument + Has Strings + Used in Rock Music",
+    title: "Instrument + Uses Strings + Used in Rock Music",
     difficultyEstimate: 82,
-    labels: { A: "Instrument", B: "Has Strings", C: "Used in Rock Music" },
+    labels: { A: "Instrument", B: "Uses Strings", C: "Used in Rock Music" },
     tiles: [
-      { label: "Violin", correctSlot: "S1", logicNote: "A violin is an instrument with strings, but it is used mainly in classical music rather than rock.", fact: "Violins built by 17th-century maker Antonio Stradivari can sell for tens of millions of dollars — and no modern luthier has fully replicated his sound, despite centuries of trying." },
-      { label: "Drums", correctSlot: "S2", logicNote: "Drums are instruments used in rock music, but they do not have strings.", fact: "Led Zeppelin's John Bonham played so loudly that producers once recorded his drum kit in a stairwell, with mics three stories up, to capture the natural echo." },
-      { label: "Guitar Pick", correctSlot: "S3", logicNote: "A guitar pick is used to play strings in rock music, but it is an accessory rather than an instrument itself.", fact: "Picks were originally made from tortoise shell until international trade in it was banned in 1973 — most modern picks are made from celluloid or nylon." },
-      { label: "Electric Guitar", correctSlot: "S4", logicNote: "An electric guitar is an instrument with strings that is central to rock music.", fact: "The electric guitar was invented in the 1930s so guitar players in big-band orchestras could finally be heard over the loud horns." },
+      { label: "Violin", correctSlot: "S1", logicNote: "A violin is a string instrument, but it is used mainly in classical music rather than rock.", fact: "Violins built by 17th-century maker Antonio Stradivari can sell for tens of millions of dollars — and no modern luthier has fully replicated his sound, despite centuries of trying." },
+      { label: "Drums", correctSlot: "S2", logicNote: "Drums are instruments used in rock music, but they do not use strings.", fact: "Led Zeppelin's John Bonham played so loudly that producers once recorded his drum kit in a stairwell, with mics three stories up, to capture the natural echo." },
+      { label: "Guitar Pick", correctSlot: "S3", logicNote: "A guitar pick is used to play strings in rock music, but it is an accessory rather than an instrument.", fact: "Picks were originally made from tortoise shell until international trade in it was banned in 1973 — most modern picks are made from celluloid or nylon." },
+      { label: "Electric Guitar", correctSlot: "S4", logicNote: "An electric guitar is a string instrument that is central to rock music.", fact: "The electric guitar was invented in the 1930s so guitar players in big-band orchestras could finally be heard over the loud horns." },
       { label: "Tuba", correctSlot: null },
       { label: "Microphone", correctSlot: null },
       { label: "Triangle", correctSlot: null },
@@ -229,14 +229,14 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Actor + Played Superhero + First Name Starts With C",
+    title: "Actor + Superhero Role + First Name Starts With C",
     difficultyEstimate: 47,
-    labels: { A: "Actor", B: "Played Superhero", C: "First Name Starts With C" },
+    labels: { A: "Actor", B: "Superhero Role", C: "First Name Starts With C" },
     tiles: [
-      { label: "Robert Downey Jr.", correctSlot: "S1", logicNote: "Robert Downey Jr. is an actor who played a superhero, but his first name does not start with C.", fact: "Marvel executives initially refused to cast Robert Downey Jr. as Iron Man because of his past struggles with addiction — director Jon Favreau had to fight the studio to give him the role." },
-      { label: "Cameron Diaz", correctSlot: "S2", logicNote: "Cameron Diaz is an actor whose first name starts with C, but she has not played a comic-book superhero.", fact: "Cameron Diaz landed her first acting role in The Mask at age 21 — even though she had no acting experience, having modeled high fashion since age 17." },
-      { label: "Captain America", correctSlot: "S3", logicNote: "Captain America is a superhero whose name starts with C, but he is a comic-book character rather than an actor.", fact: "Captain America was created in 1941 — the cover of his first comic showed him punching Adolf Hitler in the face, almost a year before the U.S. entered World War II." },
-      { label: "Chris Evans", correctSlot: "S4", logicNote: "Chris Evans is an actor, played a superhero, and has a first name that starts with C.", fact: "Chris Evans turned down the role of Captain America three times before director Joe Johnston convinced him to accept, fearing the long contract would consume his career." },
+      { label: "Robert Downey Jr.", correctSlot: "S1", logicNote: "Robert Downey Jr. is an actor famous for a superhero role, but his first name does not start with C.", fact: "Marvel executives initially refused to cast Robert Downey Jr. as Iron Man because of his past struggles with addiction — director Jon Favreau had to fight the studio to give him the role." },
+      { label: "Cameron Diaz", correctSlot: "S2", logicNote: "Cameron Diaz is an actor whose first name starts with C, but she has not taken a comic-book superhero role.", fact: "Cameron Diaz landed her first acting role in The Mask at age 21 — even though she had no acting experience, having modeled high fashion since age 17." },
+      { label: "Captain America", correctSlot: "S3", logicNote: "Captain America is a superhero role whose name starts with C, but the character is played by an actor rather than being an actor himself.", fact: "Captain America was created in 1941 — the cover of his first comic showed him punching Adolf Hitler in the face, almost a year before the U.S. entered World War II." },
+      { label: "Chris Evans", correctSlot: "S4", logicNote: "Chris Evans is an actor whose first name starts with C and who has famously taken on a superhero role.", fact: "Chris Evans turned down the role of Captain America three times before director Joe Johnston convinced him to accept, fearing the long contract would consume his career." },
       { label: "Tom Hanks", correctSlot: null },
       { label: "Spider-Man", correctSlot: null },
       { label: "Cactus", correctSlot: null },
@@ -244,14 +244,14 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   hard: {
-    title: "Country + Speaks French Officially + In Africa",
+    title: "Country + Where French is Widely Spoken + In Africa",
     difficultyEstimate: 36,
-    labels: { A: "Country", B: "Speaks French Officially", C: "In Africa" },
+    labels: { A: "Country", B: "Where French is Widely Spoken", C: "In Africa" },
     tiles: [
-      { label: "France", correctSlot: "S1", logicNote: "France is a country where French is the official language, but it is in Europe rather than Africa.", fact: "France has been a republic five different times — the current Fifth Republic has lasted since 1958, the longest of all five." },
-      { label: "Egypt", correctSlot: "S2", logicNote: "Egypt is an African country, but its official language is Arabic rather than French.", fact: "Modern Egyptians still farm along the same Nile floodplain that fed the pharaohs' civilization more than 5,000 years ago." },
+      { label: "France", correctSlot: "S1", logicNote: "France is a country where French is the main language, but it is in Europe rather than Africa.", fact: "France has been a republic five different times — the current Fifth Republic has lasted since 1958, the longest of all five." },
+      { label: "Egypt", correctSlot: "S2", logicNote: "Egypt is an African country, but its main language is Arabic rather than French.", fact: "Modern Egyptians still farm along the same Nile floodplain that fed the pharaohs' civilization more than 5,000 years ago." },
       { label: "Marrakech", correctSlot: "S3", logicNote: "Marrakech is in Africa and French is widely spoken there, but it is a city rather than a country.", fact: "Marrakech's central square Jemaa el-Fnaa transforms every evening into one of the world's largest open-air food markets, with storytellers and snake charmers among the cooks." },
-      { label: "Senegal", correctSlot: "S4", logicNote: "Senegal is an African country whose official language is French.", fact: "Senegal's first president, Leopold Sedar Senghor, was a celebrated French-language poet — and the first African elected to the Academie Francaise, France's elite literary council." },
+      { label: "Senegal", correctSlot: "S4", logicNote: "Senegal is an African country where French is the main and administrative language.", fact: "Senegal's first president, Leopold Sedar Senghor, was a celebrated French-language poet — and the first African elected to the Academie Francaise, France's elite literary council." },
       { label: "Brazil", correctSlot: null },
       { label: "Eiffel Tower", correctSlot: null },
       { label: "Sahara Desert", correctSlot: null },
@@ -277,13 +277,13 @@ window.COMMON_GROUND_DAILY_SETS = [
     ]
   },
   medium: {
-    title: "Famous Person + Plays Soccer + From Brazil",
+    title: "Famous Person + Associated with Soccer + From Brazil",
     difficultyEstimate: 47,
-    labels: { A: "Famous Person", B: "Plays Soccer", C: "From Brazil" },
+    labels: { A: "Famous Person", B: "Associated with Soccer", C: "From Brazil" },
     tiles: [
       { label: "Cristiano Ronaldo", correctSlot: "S1", logicNote: "Cristiano Ronaldo is a famous soccer player, but he is from Portugal rather than Brazil.", fact: "Cristiano Ronaldo was named after Ronald Reagan — his father was a big fan of the former U.S. president's films from years before Reagan entered politics." },
-      { label: "Gisele Bundchen", correctSlot: "S2", logicNote: "Gisele Bundchen is a famous person from Brazil, but she is a supermodel rather than a soccer player.", fact: "At her peak, Gisele Bundchen earned more than any other model in the world for over a decade straight — once making more than the top ten male models combined." },
-      { label: "Maracana Stadium", correctSlot: "S3", logicNote: "Maracana Stadium is at the heart of Brazilian soccer, but it is a stadium rather than a person.", fact: "Maracana Stadium hosted the 1950 World Cup Final with an estimated crowd of 200,000 fans — still the largest attendance for any soccer match in history." },
+      { label: "Gisele Bundchen", correctSlot: "S2", logicNote: "Gisele Bundchen is a famous person from Brazil, but she is best known as a supermodel and has no strong ties to soccer.", fact: "At her peak, Gisele Bundchen earned more than any other model in the world for over a decade straight — once making more than the top ten male models combined." },
+      { label: "Maracana Stadium", correctSlot: "S3", logicNote: "Maracana Stadium is closely tied to Brazilian soccer and sits in Brazil, but it is a stadium rather than a person.", fact: "Maracana Stadium hosted the 1950 World Cup Final with an estimated crowd of 200,000 fans — still the largest attendance for any soccer match in history." },
       { label: "Pele", correctSlot: "S4", logicNote: "Pele is a famous person from Brazil and the most celebrated soccer player in the country's history.", fact: "Pele is the only player to win three FIFA World Cups — for Brazil in 1958, 1962, and 1970 — and scored more than 1,000 career goals across his playing days." },
       { label: "LeBron James", correctSlot: null },
       { label: "Soccer Cleat", correctSlot: null },
