@@ -419,6 +419,7 @@ const tutorialEl = document.getElementById("tutorial");
 const tutorialStartBtn = document.getElementById("tutorial-start");
 const tutorialSkipBtn = document.getElementById("tutorial-skip");
 const tutorialVideoEl = document.getElementById("tutorial-video");
+const tutorialPlayFallbackEl = document.getElementById("tutorial-play-fallback");
 const tutorialCaptionEl = document.getElementById("tutorial-caption");
 const statsModalEl = document.getElementById("stats-modal");
 const statsGridEl = document.getElementById("stats-grid");
@@ -573,7 +574,7 @@ function getAvailableStages(day = getActiveDate()) { const set = DAILY_SETS.find
 function isStageUnlocked(stage, day = getActiveDate()) { const stages = getAvailableStages(day); const index = stages.indexOf(stage); if (index <= 0) return index === 0; return Boolean(getStageRecord(day, stages[index - 1])?.status === "solved"); }
 function getFirstAvailableStage(day = getActiveDate()) { return getAvailableStages(day)[0] || "easy"; }
 function getNextAvailableStage(stage = activeStage, day = getActiveDate()) { const stages = getAvailableStages(day); const index = stages.indexOf(stage); return index === -1 ? null : stages[index + 1] || null; }
-function getBestStageForDay(day = getActiveDate()) { const stages = getAvailableStages(day); return stages.find((stage) => isStageUnlocked(stage, day) && getStageRecord(day, stage)?.status !== "solved") || stages.at(-1) || "easy"; }
+function getBestStageForDay(day = getActiveDate()) { const stages = getAvailableStages(day); return stages.find((stage) => isStageUnlocked(stage, day) && getStageRecord(day, stage)?.status !== "solved") || stages[stages.length - 1] || "easy"; }
 function isDailySetSolved(record, day = getActiveDate()) { const stages = getAvailableStages(day); return Boolean(stages.length && stages.every((stage) => record?.[stage]?.status === "solved")); }
 function isHardUnlocked(day = getActiveDate()) { return isStageUnlocked("hard", day); }
 function getActiveMaxLives() { return STAGE_TRIES[activeStage] || BASE_LIVES; }
@@ -1426,11 +1427,23 @@ function resetTutorialPlayback(shouldPlay = false) {
     tutorialCaptionEl.textContent = "";
     tutorialCaptionEl.hidden = true;
   }
+  if (tutorialPlayFallbackEl) tutorialPlayFallbackEl.hidden = true;
   if (shouldPlay) {
-    tutorialVideoEl.play().catch(() => {});
+    const playAttempt = tutorialVideoEl.play();
+    if (playAttempt && typeof playAttempt.then === "function") {
+      playAttempt
+        .then(() => { if (tutorialPlayFallbackEl) tutorialPlayFallbackEl.hidden = true; })
+        .catch(() => { if (tutorialPlayFallbackEl) tutorialPlayFallbackEl.hidden = false; });
+    }
     window.setTimeout(syncTutorialCaption, 120);
   }
 }
+tutorialPlayFallbackEl?.addEventListener("click", () => {
+  if (!tutorialVideoEl) return;
+  tutorialVideoEl.play()
+    .then(() => { tutorialPlayFallbackEl.hidden = true; })
+    .catch(() => {});
+});
 function openTutorial() {
   closeLaunchScreen();
   tutorialEl.hidden = false;

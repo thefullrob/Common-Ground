@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -58,8 +58,9 @@
       font-family: "Avenir Next", "Segoe UI", sans-serif;
       padding: 10px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     .app {
@@ -81,6 +82,7 @@
 
     .launch-screen {
       position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
       inset: 0;
       background:
         radial-gradient(circle at top, rgba(255,255,255,0.72) 0, transparent 34%),
@@ -311,8 +313,8 @@
     }
 
     #circle-A { top: 24px; left: 50%; transform: translateX(-50%); background: rgba(96, 165, 250, var(--a-alpha)); }
-    #circle-B { top: 130px; left: 72px; background: rgba(244, 114, 182, var(--b-alpha)); }
-    #circle-C { top: 130px; right: 72px; background: rgba(134, 239, 172, var(--c-alpha)); }
+    #circle-B { top: 130px; left: calc(50% - 146px); background: rgba(244, 114, 182, var(--b-alpha)); }
+    #circle-C { top: 130px; right: calc(50% - 146px); background: rgba(134, 239, 172, var(--c-alpha)); }
 
     .board.failed .circle {
       border-color: #7f1d1d;
@@ -344,8 +346,16 @@
     }
 
     #label-A { top: 74px; left: 50%; transform: translateX(-50%); }
-    #label-B { top: 220px; left: 30px; text-align: center; }
-    #label-C { top: 220px; right: 30px; text-align: center; }
+    #label-B { top: 220px; left: 16px; text-align: center; }
+    #label-C { top: 220px; right: 16px; text-align: center; }
+    /* Keep side labels inside their own half (clear of the bottom-center tile) and wrap instead of colliding. */
+    #label-B, #label-C {
+      width: max-content;
+      max-width: calc(50% - 62px);
+      white-space: normal;
+      border-radius: 12px;
+      text-wrap: balance;
+    }
 
     .slot {
       position: absolute;
@@ -468,10 +478,10 @@
       padding: 4px 3px 5px;
     }
 
-    #slot-S1 .tile { transform: translate(-114%, -96%); }
-    #slot-S2 .tile { transform: translate(14%, -96%); }
-    #slot-S3 .tile { transform: translate(-50%, 12%); }
-    #slot-S4 .tile { transform: translate(-50%, -122%); }
+    #slot-S1 .tile { transform: translate(-85%, -98%); }
+    #slot-S2 .tile { transform: translate(-15%, -98%); }
+    #slot-S3 .tile { transform: translate(-50%, 8%); }
+    #slot-S4 .tile { transform: translate(-50%, -46%); }
 
     .text {
       font-size: 0.72rem;
@@ -556,6 +566,7 @@
 
     .stats-modal {
       position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
       inset: 0;
       background: rgba(22, 32, 51, 0.52);
       display: flex;
@@ -784,6 +795,7 @@
 
     .tutorial {
       position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
       inset: 0;
       background: rgba(22, 32, 51, 0.52);
       display: flex;
@@ -801,6 +813,7 @@
     .tutorial-card {
       width: min(460px, 100%);
       max-height: min(92vh, 860px);
+      max-height: min(92dvh, 860px);
       overflow-y: auto;
       background: #fffdf8;
       border: 1px solid var(--line);
@@ -849,6 +862,36 @@
       display: block;
       object-fit: cover;
       background: #111827;
+    }
+
+    /* iOS < 15 has no aspect-ratio: reserve the video's height with padding instead. */
+    @supports not (aspect-ratio: 1 / 1) {
+      .tutorial-video-wrap { height: 0; padding-top: 217.2%; }
+      .tutorial-video { position: absolute; top: 0; left: 0; }
+    }
+
+    .tutorial-play-fallback {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.92);
+      color: #243042;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+      z-index: 6;
+    }
+
+    .tutorial-play-fallback[hidden] {
+      display: none;
     }
 
     .tutorial-caption {
@@ -1174,6 +1217,15 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: -16px;
+      margin: 0 -16px -16px;
+      padding: 10px 16px 16px;
+      background: #fffdf8;
+      border-top: 1px solid var(--line-soft);
+      border-radius: 0 0 22px 22px;
+      z-index: 7;
     }
 
     .tutorial-primary {
@@ -1204,22 +1256,22 @@
       .board { height: 318px; }
       .circle { width: 180px; height: 180px; }
       #circle-A { top: 20px; }
-      #circle-B { top: 122px; left: 62px; }
-      #circle-C { top: 122px; right: 62px; }
+      #circle-B { top: 122px; left: calc(50% - 138px); }
+      #circle-C { top: 122px; right: calc(50% - 138px); }
       .label { font-size: 0.62rem; padding: 3px 9px; }
       #label-A { top: 72px; }
-      #label-B { top: 216px; left: 20px; }
-      #label-C { top: 216px; right: 20px; }
+      #label-B { top: 214px; left: 10px; }
+      #label-C { top: 214px; right: 10px; }
 
       .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tile { padding: 7px 7px; min-height: 44px; }
       .slot .tile { width: 70px; min-height: 44px; padding: 4px 4px 5px; }
       .slot .tile.long-text { width: 82px; min-height: 46px; }
       .slot .tile.very-long-text { width: 92px; min-height: 48px; padding: 4px 3px 5px; }
-      #slot-S1 .tile { transform: translate(-120%, -98%); }
-      #slot-S2 .tile { transform: translate(20%, -98%); }
-      #slot-S3 .tile { transform: translate(-50%, 16%); }
-      #slot-S4 .tile { transform: translate(-50%, -126%); }
+      #slot-S1 .tile { transform: translate(-85%, -98%); }
+      #slot-S2 .tile { transform: translate(-15%, -98%); }
+      #slot-S3 .tile { transform: translate(-50%, 8%); }
+      #slot-S4 .tile { transform: translate(-50%, -46%); }
       .text { font-size: 0.74rem; }
       .tile.emoji-face .text { font-size: 1.38rem; }
       .slot .tile.emoji-face .text { font-size: 1.5rem; }
@@ -1229,7 +1281,8 @@
       button { font-size: 0.8rem; padding: 10px 8px; }
       .summary { font-size: 0.76rem; }
       .tutorial { padding: 12px; }
-      .tutorial-card { padding: 14px; max-height: 94vh; }
+      .tutorial-card { padding: 14px; max-height: 94vh; max-height: 94dvh; }
+      .tutorial-actions { bottom: -14px; margin: 0 -14px -14px; padding: 10px 14px 14px; }
       .tutorial-caption { left: 10px; right: 10px; bottom: 10px; font-size: 0.78rem; padding: 8px 10px; }
       .tutorial-flow-hud { grid-template-columns: 1fr; }
       .tutorial-demo-check { grid-template-columns: 1fr; }
@@ -1432,10 +1485,11 @@
       <div class="tutorial-copy">Watch one quick example, then try it yourself.</div>
       <div class="tutorial-video-shell">
         <div class="tutorial-video-wrap">
-          <video id="tutorial-video" class="tutorial-video" muted playsinline loop preload="metadata">
-            <source src="Tutorial.MP4?v=20260405c" type="video/mp4" />
+          <video id="tutorial-video" class="tutorial-video" muted playsinline loop preload="auto" poster="tutorial-poster.jpg?v=20261015a">
+            <source src="tutorial-720.mp4?v=20261015a" type="video/mp4" />
             <track id="tutorial-track" src="tutorial-subtitles.vtt?v=20260405c" kind="subtitles" srclang="en" label="English" default />
           </video>
+          <button id="tutorial-play-fallback" class="tutorial-play-fallback" type="button" aria-label="Play tutorial video" hidden>&#9654;</button>
           <div class="tutorial-caption" id="tutorial-caption" hidden></div>
         </div>
         <div class="tutorial-support-copy">Drag each tile to the overlap that matches the categories. When all 4 answers are placed, the board checks automatically.</div>
@@ -1526,7 +1580,7 @@
   </div>
 
   <script src="daily-sets-reviewed.js"></script>
-  <script src="app.js?v=20260525logicmodal"></script>
+  <script src="app.js?v=20261015a"></script>
   </body>
   </html>
 

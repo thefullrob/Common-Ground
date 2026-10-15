@@ -1,4 +1,4 @@
-const CACHE_NAME = 'common-ground-v40';
+const CACHE_NAME = 'common-ground-v41';
 const ASSETS = [
   '/icon-192.png?v=20260320a',
   '/icon-512.png?v=20260320a'
@@ -19,6 +19,17 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
+  // Never intercept media: iOS Safari streams video with Range requests, and
+  // answering those from a cache-first handler breaks playback (black video).
+  const lowerPath = url.pathname.toLowerCase();
+  if (
+    event.request.headers.has('range') ||
+    event.request.destination === 'video' ||
+    event.request.destination === 'audio' ||
+    lowerPath.endsWith('.mp4') ||
+    lowerPath.endsWith('.m4a') ||
+    lowerPath.endsWith('.mov')
+  ) return;
   const isSameOrigin = url.origin === self.location.origin;
   const isFreshnessCritical =
     isSameOrigin &&
