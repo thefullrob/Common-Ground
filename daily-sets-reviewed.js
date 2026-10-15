@@ -20,6 +20,678 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-10-21",
+  easy: {
+    title: "Animal + Slow + Green",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Slow", C: "Green" },
+    tiles: [
+      { label: "Sloth", correctSlot: "S1", logicNote: "A sloth is a famously slow animal, but its fur is brownish-gray rather than green.", fact: "Sloths can take up to a month to fully digest a single meal." },
+      { label: "Frog", correctSlot: "S2", logicNote: "A frog is a green animal, but it is a quick little jumper, not a slow mover.", fact: "A group of frogs is called an army." },
+      { label: "Grass", correctSlot: "S3", logicNote: "Grass is green and grows so slowly that 'watching grass grow' means boredom, but it is a plant, not an animal.", fact: "Lawns cover so much ground that grass is one of the largest irrigated 'crops' in the United States." },
+      { label: "Turtle", correctSlot: "S4", logicNote: "A turtle is a slow-moving animal, and green turtles are among the best-known of all.", fact: "Sea turtles have roamed the oceans for more than 100 million years, since the age of the dinosaurs." },
+      { label: "Shark", correctSlot: null },
+      { label: "Dial-Up Internet", correctSlot: null },
+      { label: "Lime", correctSlot: null },
+      { label: "Bookshelf", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Famous Landmark + In the United States + Made of Stone",
+    difficultyEstimate: 48,
+    labels: { A: "Famous Landmark", B: "In the United States", C: "Made of Stone" },
+    tiles: [
+      { label: "Golden Gate Bridge", correctSlot: "S1", logicNote: "The Golden Gate Bridge is a famous American landmark, but it is built of steel, not stone.", fact: "The Golden Gate Bridge's color is officially called international orange, chosen partly so it stays visible in fog." },
+      { label: "Great Sphinx", correctSlot: "S2", logicNote: "The Great Sphinx is a famous landmark carved from stone, but it stands in Egypt, not the United States.", fact: "The Great Sphinx was carved from a single mass of limestone around 4,500 years ago." },
+      { label: "Pet Rock", correctSlot: "S3", logicNote: "The Pet Rock was an American fad and is literally made of stone, but it is a novelty toy, not a landmark.", fact: "The Pet Rock craze of 1975 made its creator, Gary Dahl, a millionaire in about six months." },
+      { label: "Mount Rushmore", correctSlot: "S4", logicNote: "Mount Rushmore is a famous American landmark carved directly into stone.", fact: "Workers removed about 450,000 tons of granite to carve Mount Rushmore, and not a single worker died during the project." },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Bald Eagle", correctSlot: null },
+      { label: "Marble", correctSlot: null },
+      { label: "Passport", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Author + Known by a Pen or Stage Name + British",
+    difficultyEstimate: 36,
+    labels: { A: "Author", B: "Known by a Pen or Stage Name", C: "British" },
+    tiles: [
+      { label: "Mark Twain", correctSlot: "S1", logicNote: "Mark Twain was an author known by a pen name — his real name was Samuel Clemens — but he was American, not British.", fact: "'Mark twain' was a riverboat call meaning two fathoms deep, in other words safe water for a steamboat." },
+      { label: "J.R.R. Tolkien", correctSlot: "S2", logicNote: "Tolkien was a British author, but he wrote under his real name rather than a pen name.", fact: "Before The Hobbit, Tolkien worked on the Oxford English Dictionary, researching words beginning with W." },
+      { label: "Sting", correctSlot: "S3", logicNote: "Sting is British and known by a stage name — he was born Gordon Sumner — but he is a musician, not an author.", fact: "Sting got his nickname from a black-and-yellow striped sweater that made bandmates say he looked like a bee." },
+      { label: "George Orwell", correctSlot: "S4", logicNote: "George Orwell was a British author known by a pen name — his real name was Eric Blair.", fact: "Eric Blair reportedly chose 'Orwell' after the River Orwell in the English county of Suffolk." },
+      { label: "Ernest Hemingway", correctSlot: null },
+      { label: "Lady Gaga", correctSlot: null },
+      { label: "David Beckham", correctSlot: null },
+      { label: "Typewriter", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-20",
+  easy: {
+    title: "You Wear It + For Your Head + Keeps You Dry",
+    difficultyEstimate: 79,
+    labels: { A: "You Wear It", B: "For Your Head", C: "Keeps You Dry" },
+    tiles: [
+      { label: "Party Hat", correctSlot: "S1", logicNote: "A party hat is worn on your head, but it will not keep you dry in the rain.", fact: "Cone-shaped celebration hats go back centuries — pointed hats appear in European festival art from the Middle Ages." },
+      { label: "Rubber Boots", correctSlot: "S2", logicNote: "Rubber boots are worn and keep you dry, but they go on your feet, not your head.", fact: "In Britain rubber boots are called wellies, after the Duke of Wellington, who made the style famous." },
+      { label: "Umbrella", correctSlot: "S3", logicNote: "An umbrella goes over your head and keeps you dry, but you hold it rather than wear it.", fact: "Umbrellas were used in ancient Egypt and China mostly for shade — the word comes from the Latin for shadow." },
+      { label: "Hood", correctSlot: "S4", logicNote: "A hood is worn, covers your head, and keeps the rain off.", fact: "Hooded garments go back to medieval monks' robes, but the word 'hoodie' only entered dictionaries in the 1990s." },
+      { label: "Necklace", correctSlot: null },
+      { label: "Shampoo", correctSlot: null },
+      { label: "Towel", correctSlot: null },
+      { label: "Calendar", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Holiday + Candy Plays a Big Role + Happens in the Fall",
+    difficultyEstimate: 54,
+    labels: { A: "Holiday", B: "Candy Plays a Big Role", C: "Happens in the Fall" },
+    tiles: [
+      { label: "Easter", correctSlot: "S1", logicNote: "Easter is a holiday full of candy baskets, but it comes in the spring, not the fall.", fact: "Americans buy tens of millions of chocolate bunnies each Easter — and surveys say most people bite the ears off first." },
+      { label: "Thanksgiving", correctSlot: "S2", logicNote: "Thanksgiving is a fall holiday, but it is about the feast — candy is not the star.", fact: "Thanksgiving's date was fixed by Congress in 1941 as the fourth Thursday of November." },
+      { label: "Caramel Apple", correctSlot: "S3", logicNote: "A caramel apple is a candy-coated fall treat, but it is a snack, not a holiday.", fact: "Caramel apples were popularized by a Kraft employee experimenting with leftover Halloween caramels in the 1950s." },
+      { label: "Halloween", correctSlot: "S4", logicNote: "Halloween is a fall holiday where candy is the whole point of the night.", fact: "Halloween traces back to Samhain, an ancient Celtic festival marking the end of the harvest." },
+      { label: "Fourth of July", correctSlot: null },
+      { label: "Pumpkin", correctSlot: null },
+      { label: "Chocolate Bar", correctSlot: null },
+      { label: "Snowman", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Famous Prison + On an Island + Major Tourist Attraction",
+    difficultyEstimate: 37,
+    labels: { A: "Famous Prison", B: "On an Island", C: "Major Tourist Attraction" },
+    tiles: [
+      { label: "Rikers", correctSlot: "S1", logicNote: "Rikers is a famous jail complex on an island in New York's East River, but it is an active facility, not a tourist stop.", fact: "Rikers sits so close to LaGuardia Airport that planes pass low over the jail on approach." },
+      { label: "Tower of London", correctSlot: "S2", logicNote: "The Tower of London was a famous prison and is a major tourist attraction, but it sits on the bank of the Thames, not on an island.", fact: "The Tower's prisoners ranged from future queens to the Kray twins, who were among the last people held there in 1952." },
+      { label: "Statue of Liberty", correctSlot: "S3", logicNote: "The Statue of Liberty stands on an island and draws millions of tourists, but it was never a prison.", fact: "The Statue of Liberty crossed the Atlantic from France in 350 pieces packed into more than 200 crates." },
+      { label: "Alcatraz", correctSlot: "S4", logicNote: "Alcatraz was a famous prison on an island, and today it is one of San Francisco's biggest tourist attractions.", fact: "No Alcatraz escapee was ever confirmed to survive, though three men who vanished in 1962 were never found." },
+      { label: "Sing Sing", correctSlot: null },
+      { label: "Madagascar", correctSlot: null },
+      { label: "Disney World", correctSlot: null },
+      { label: "Handcuffs", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-19",
+  easy: {
+    title: "Weather + Wet + Makes Noise",
+    difficultyEstimate: 84,
+    labels: { A: "Weather", B: "Wet", C: "Makes Noise" },
+    tiles: [
+      { label: "Drizzle", correctSlot: "S1", logicNote: "Drizzle is wet weather, but it falls so lightly you can barely hear it.", fact: "Meteorologists only call it drizzle when the drops are smaller than about half a millimeter." },
+      { label: "Wind", correctSlot: "S2", logicNote: "Wind is weather that howls and whistles, but wind itself is not wet.", fact: "The fastest wind gust ever recorded at the Earth's surface was 253 miles per hour, during a cyclone in Australia." },
+      { label: "Waterfall", correctSlot: "S3", logicNote: "A waterfall is wet and roars loudly, but it is a landform, not weather.", fact: "Angel Falls in Venezuela drops so far that much of its water turns to mist before reaching the bottom." },
+      { label: "Thunderstorm", correctSlot: "S4", logicNote: "A thunderstorm is wet, noisy weather.", fact: "You can estimate a storm's distance by counting seconds between lightning and thunder — about five seconds per mile." },
+      { label: "Sunshine", correctSlot: null },
+      { label: "Sponge", correctSlot: null },
+      { label: "Fire Alarm", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Animated + Set in the Future",
+    difficultyEstimate: 49,
+    labels: { A: "TV Show", B: "Animated", C: "Set in the Future" },
+    tiles: [
+      { label: "The Simpsons", correctSlot: "S1", logicNote: "The Simpsons is an animated TV show, but Springfield is set in the present day, not the future.", fact: "The Simpsons is the longest-running American scripted prime-time TV series." },
+      { label: "Star Trek", correctSlot: "S2", logicNote: "Star Trek is a TV show set in the future, but it is live-action rather than animated.", fact: "The original Star Trek was nearly canceled after two seasons, but a fan letter-writing campaign helped win it a third." },
+      { label: "WALL-E", correctSlot: "S3", logicNote: "WALL-E is animated and set in the future, but it is a movie, not a TV show.", fact: "WALL-E's robot 'voice' was created by Ben Burtt, the same sound designer who gave R2-D2 its beeps." },
+      { label: "The Jetsons", correctSlot: "S4", logicNote: "The Jetsons is an animated TV show set in a future of flying cars and robot maids.", fact: "The Jetsons originally ran for just one season in 1962-63, yet it shaped how generations picture the future." },
+      { label: "Jeopardy!", correctSlot: null },
+      { label: "Shrek", correctSlot: null },
+      { label: "Flying Car", correctSlot: null },
+      { label: "Remote Control", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Food + Named After a Real Person + Italian",
+    difficultyEstimate: 38,
+    labels: { A: "Food", B: "Named After a Real Person", C: "Italian" },
+    tiles: [
+      { label: "Granny Smith Apple", correctSlot: "S1", logicNote: "The Granny Smith is a food named after a real person, but she was Australian, not Italian.", fact: "Granny Smith apples really come from a granny — Maria Ann Smith, who found the first seedling in her Australian orchard in the 1860s." },
+      { label: "Spaghetti", correctSlot: "S2", logicNote: "Spaghetti is an Italian food, but its name means 'little strings,' not a person's name.", fact: "In 1957 the BBC fooled viewers with an April Fools' report showing Swiss farmers harvesting spaghetti from trees." },
+      { label: "Ferrari", correctSlot: "S3", logicNote: "Ferrari is Italian and named after a real person, Enzo Ferrari, but it is a car company, not a food.", fact: "Enzo Ferrari raced for Alfa Romeo for years before building cars under his own name." },
+      { label: "Margherita Pizza", correctSlot: "S4", logicNote: "The Margherita is an Italian food named after a real person, Queen Margherita of Italy.", fact: "Legend says the Margherita was created in 1889, its tomato, mozzarella, and basil chosen to match the Italian flag." },
+      { label: "Sushi", correctSlot: null },
+      { label: "Leaning Tower of Pisa", correctSlot: null },
+      { label: "Ford", correctSlot: null },
+      { label: "Telescope", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-18",
+  easy: {
+    title: "A Drink + Served Hot + Made from Beans",
+    difficultyEstimate: 83,
+    labels: { A: "A Drink", B: "Served Hot", C: "Made from Beans" },
+    tiles: [
+      { label: "Tea", correctSlot: "S1", logicNote: "Tea is a hot drink, but it is brewed from leaves, not beans.", fact: "After plain water, tea is the most-consumed drink in the world." },
+      { label: "Soy Milk", correctSlot: "S2", logicNote: "Soy milk is a drink made from soybeans, but it is usually served cold.", fact: "Soy milk has been made in China for centuries, long before it showed up in modern coffee shops." },
+      { label: "Chili", correctSlot: "S3", logicNote: "Chili is hot and full of beans, but you eat it with a spoon — it is not a drink.", fact: "Chili con carne is the official state dish of Texas." },
+      { label: "Cocoa", correctSlot: "S4", logicNote: "Cocoa is a hot drink made from cocoa beans.", fact: "The Aztecs prized cacao beans so highly that they used them as money." },
+      { label: "Lemonade", correctSlot: null },
+      { label: "Sauna", correctSlot: null },
+      { label: "Hummus", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Superhero + From DC Comics + Has No Superpowers",
+    difficultyEstimate: 51,
+    labels: { A: "Superhero", B: "From DC Comics", C: "Has No Superpowers" },
+    tiles: [
+      { label: "Superman", correctSlot: "S1", logicNote: "Superman is a DC superhero, but he is packed with superpowers, from flight to heat vision.", fact: "Superman's creators, two teenagers from Cleveland, sold the rights to the character in 1938 for $130." },
+      { label: "Iron Man", correctSlot: "S2", logicNote: "Iron Man is a superhero with no actual superpowers — his abilities come from a high-tech suit — but he belongs to Marvel, not DC.", fact: "Robert Downey Jr. improvised the 'I am Iron Man' line that ends the 2008 movie." },
+      { label: "The Joker", correctSlot: "S3", logicNote: "The Joker is a DC character with no superpowers, but he is a villain, not a superhero.", fact: "The Joker was supposed to die in his very first 1940 comic, but an editor changed the ending and kept him around." },
+      { label: "Batman", correctSlot: "S4", logicNote: "Batman is a DC superhero whose only 'powers' are training, gadgets, and money.", fact: "Batman debuted in Detective Comics #27 in 1939 — and 'DC' itself comes from the name Detective Comics." },
+      { label: "Spider-Man", correctSlot: null },
+      { label: "Krypton", correctSlot: null },
+      { label: "Magician", correctSlot: null },
+      { label: "Cape", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Shakespeare Title Character + Royalty + Real Historical Person",
+    difficultyEstimate: 39,
+    labels: { A: "Shakespeare Title Character", B: "Royalty", C: "Real Historical Person" },
+    tiles: [
+      { label: "Hamlet", correctSlot: "S1", logicNote: "Hamlet is a Shakespeare title character and a prince, but he comes from legend rather than documented history.", fact: "Hamlet is Shakespeare's longest play — performed uncut, it runs about four hours." },
+      { label: "Julius Caesar", correctSlot: "S2", logicNote: "Julius Caesar is a Shakespeare title character and a real historical person, but he was a Roman dictator who famously refused a crown — not royalty.", fact: "'Et tu, Brute?' is Shakespeare's invention — ancient sources suggest Caesar said nothing, or possibly a Greek phrase." },
+      { label: "Queen Victoria", correctSlot: "S3", logicNote: "Queen Victoria was real royalty, but Shakespeare never wrote a play about her — she lived centuries after him.", fact: "Queen Victoria reigned nearly 64 years, a record among British monarchs until Elizabeth II passed it." },
+      { label: "Macbeth", correctSlot: "S4", logicNote: "Macbeth is a Shakespeare title character, a king, and a real historical person.", fact: "The real Macbeth ruled Scotland for 17 years in the 11th century and was regarded as a reasonably good king." },
+      { label: "Othello", correctSlot: null },
+      { label: "William Shakespeare", correctSlot: null },
+      { label: "Princess Leia", correctSlot: null },
+      { label: "Globe Theatre", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-17",
+  easy: {
+    title: "Dessert + Baked + Has Frosting",
+    difficultyEstimate: 80,
+    labels: { A: "Dessert", B: "Baked", C: "Has Frosting" },
+    tiles: [
+      { label: "Apple Pie", correctSlot: "S1", logicNote: "Apple pie is a baked dessert, but it has a crust on top, not frosting.", fact: "'As American as apple pie' aside, apple pie recipes go back to medieval England." },
+      { label: "Ice Cream Cake", correctSlot: "S2", logicNote: "An ice cream cake is a frosted dessert, but it is frozen, not baked.", fact: "Ice cream cakes trace back to fancy Victorian molded desserts called bombes." },
+      { label: "Cinnamon Roll", correctSlot: "S3", logicNote: "A cinnamon roll is baked and topped with icing, but it is eaten as a breakfast treat more than a dessert.", fact: "Sweden takes cinnamon rolls so seriously that it celebrates Cinnamon Bun Day every October 4." },
+      { label: "Birthday Cake", correctSlot: "S4", logicNote: "A birthday cake is a baked dessert covered in frosting.", fact: "Lighting candles on round cakes may go back to the ancient Greeks, who honored Artemis, goddess of the moon." },
+      { label: "Jello", correctSlot: null },
+      { label: "Croissant", correctSlot: null },
+      { label: "Pickle", correctSlot: null },
+      { label: "Watermelon", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Dance + From Latin America + Also a Food",
+    difficultyEstimate: 53,
+    labels: { A: "A Dance", B: "From Latin America", C: "Also a Food" },
+    tiles: [
+      { label: "Tango", correctSlot: "S1", logicNote: "The tango is a dance from Latin America, but tango is not something you eat.", fact: "The tango began in the working-class ports of Argentina and Uruguay and is now on UNESCO's cultural heritage list." },
+      { label: "Mashed Potato", correctSlot: "S2", logicNote: "The Mashed Potato is a dance and a food, but the dance craze came from 1960s America, not Latin America.", fact: "The Mashed Potato dance took off in 1962 alongside Dee Dee Sharp's hit 'Mashed Potato Time.'" },
+      { label: "Taco", correctSlot: "S3", logicNote: "The taco is a Latin American food, but there is no taco dance.", fact: "The word 'taco' originally referred to the paper-wrapped gunpowder charges used by Mexican silver miners." },
+      { label: "Salsa", correctSlot: "S4", logicNote: "Salsa is a dance with Latin American roots, and salsa is also a food.", fact: "In the 1990s, salsa famously overtook ketchup as America's best-selling condiment." },
+      { label: "Waltz", correctSlot: null },
+      { label: "Sombrero", correctSlot: null },
+      { label: "Pancake", correctSlot: null },
+      { label: "Trophy", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Famous Painting + Has Been Stolen + Housed in the Louvre",
+    difficultyEstimate: 36,
+    labels: { A: "Famous Painting", B: "Has Been Stolen", C: "Housed in the Louvre" },
+    tiles: [
+      { label: "The Scream", correctSlot: "S1", logicNote: "The Scream is a famous painting that has been stolen — twice — but it hangs in Oslo, not the Louvre.", fact: "Versions of The Scream were stolen from Oslo museums in 1994 and 2004, and recovered both times." },
+      { label: "Liberty Leading the People", correctSlot: "S2", logicNote: "Delacroix's Liberty Leading the People is a famous Louvre painting, but it has never been stolen.", fact: "Liberty Leading the People has appeared on French banknotes, postage stamps, and even a Coldplay album cover." },
+      { label: "French Crown Jewels", correctSlot: "S3", logicNote: "The French crown jewels were stolen from the Louvre, but they are jewelry, not a painting.", fact: "In October 2025, thieves used a lift truck to reach the Louvre's Apollo Gallery in daylight and escaped with crown jewels in under eight minutes." },
+      { label: "Mona Lisa", correctSlot: "S4", logicNote: "The Mona Lisa is a famous Louvre painting that was once stolen.", fact: "The Mona Lisa was stolen in 1911 by a former Louvre worker, Vincenzo Peruggia — the theft helped make it the world's most famous painting." },
+      { label: "Starry Night", correctSlot: null },
+      { label: "Venus de Milo", correctSlot: null },
+      { label: "Hope Diamond", correctSlot: null },
+      { label: "Easel", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-16",
+  easy: {
+    title: "Toy + Made of Plastic + You Build With It",
+    difficultyEstimate: 81,
+    labels: { A: "Toy", B: "Made of Plastic", C: "You Build With It" },
+    tiles: [
+      { label: "Barbie", correctSlot: "S1", logicNote: "Barbie is a plastic toy, but she is for dressing and posing, not building.", fact: "Barbie's full name is Barbara Millicent Roberts." },
+      { label: "Lincoln Logs", correctSlot: "S2", logicNote: "Lincoln Logs are a building toy, but they are made of wood rather than plastic.", fact: "Lincoln Logs were invented by John Lloyd Wright, son of the architect Frank Lloyd Wright." },
+      { label: "PVC Pipe", correctSlot: "S3", logicNote: "PVC pipe is plastic and used for building, but it is plumbing material, not a toy.", fact: "PVC is one of the world's most-produced plastics — vinyl records are made from it too." },
+      { label: "Lego", correctSlot: "S4", logicNote: "Lego is a plastic toy made for building.", fact: "The name Lego comes from the Danish phrase 'leg godt,' meaning 'play well.'" },
+      { label: "Teddy Bear", correctSlot: null },
+      { label: "Credit Card", correctSlot: null },
+      { label: "Hammer", correctSlot: null },
+      { label: "Cloud", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Dog Breed + Small + Originated in Germany",
+    difficultyEstimate: 52,
+    labels: { A: "Dog Breed", B: "Small", C: "Originated in Germany" },
+    tiles: [
+      { label: "Chihuahua", correctSlot: "S1", logicNote: "The Chihuahua is a small dog breed, but it comes from Mexico, not Germany.", fact: "The Chihuahua is named after the Mexican state of Chihuahua." },
+      { label: "Great Dane", correctSlot: "S2", logicNote: "Despite the name, the Great Dane is a German breed — but small it is not.", fact: "In Germany the Great Dane is called the Deutsche Dogge, or German mastiff — Denmark had little to do with it." },
+      { label: "Gummy Bear", correctSlot: "S3", logicNote: "Gummy bears are small and were invented in Germany, but they are candy, not a dog breed.", fact: "Gummy bears were created in the 1920s by Hans Riegel, the German founder of Haribo." },
+      { label: "Dachshund", correctSlot: "S4", logicNote: "The Dachshund is a small dog breed that originated in Germany.", fact: "Dachshund means 'badger dog' in German — they were bred to tunnel into badger burrows." },
+      { label: "Golden Retriever", correctSlot: null },
+      { label: "Hamster", correctSlot: null },
+      { label: "BMW", correctSlot: null },
+      { label: "Surfboard", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Fictional Detective + Created by Agatha Christie + British",
+    difficultyEstimate: 37,
+    labels: { A: "Fictional Detective", B: "Created by Agatha Christie", C: "British" },
+    tiles: [
+      { label: "Hercule Poirot", correctSlot: "S1", logicNote: "Poirot is a fictional detective created by Agatha Christie, but he is famously Belgian, not British.", fact: "Christie grew so tired of Poirot that she privately called him 'a detestable, bombastic, tiresome little creature' — but kept writing him because readers loved him." },
+      { label: "Sherlock Holmes", correctSlot: "S2", logicNote: "Sherlock Holmes is a British fictional detective, but he was created by Arthur Conan Doyle, not Agatha Christie.", fact: "Holmes never says 'Elementary, my dear Watson' in any of Conan Doyle's original stories." },
+      { label: "The Mousetrap", correctSlot: "S3", logicNote: "The Mousetrap is an Agatha Christie work and a British institution, but it is a play, not a detective.", fact: "The Mousetrap has been running in London's West End since 1952 — the longest run of any play in history." },
+      { label: "Miss Marple", correctSlot: "S4", logicNote: "Miss Marple is a British fictional detective created by Agatha Christie.", fact: "Christie said Miss Marple was inspired partly by her own grandmother's circle of sharp-eyed village friends." },
+      { label: "Nancy Drew", correctSlot: null },
+      { label: "Paddington Bear", correctSlot: null },
+      { label: "Clue", correctSlot: null },
+      { label: "Magnifying Glass", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-15",
+  easy: {
+    title: "Red + A Fruit + A Pizza Topping",
+    difficultyEstimate: 82,
+    labels: { A: "Red", B: "A Fruit", C: "A Pizza Topping" },
+    tiles: [
+      { label: "Cherry", correctSlot: "S1", logicNote: "A cherry is a red fruit, but you will not find cherries on a pizza.", fact: "George Washington's cherry tree story was invented by a biographer after his death." },
+      { label: "Pepperoni", correctSlot: "S2", logicNote: "Pepperoni is red and a classic pizza topping, but it is meat, not fruit.", fact: "Pepperoni is an American invention — ask for 'peperoni' in Italy and you will get bell peppers." },
+      { label: "Pineapple", correctSlot: "S3", logicNote: "Pineapple is a fruit and a famous (and controversial) pizza topping, but it is yellow, not red.", fact: "Hawaiian pizza, the pineapple-topped kind, was invented in Canada by a Greek immigrant in 1962." },
+      { label: "Tomato", correctSlot: "S4", logicNote: "A tomato is red, botanically a fruit, and tops nearly every pizza as sauce or slices.", fact: "In 1893 the U.S. Supreme Court ruled tomatoes count as vegetables for tariff purposes, even though botanically they are fruits." },
+      { label: "Mushroom", correctSlot: null },
+      { label: "Banana", correctSlot: null },
+      { label: "Fire Hydrant", correctSlot: null },
+      { label: "Guitar", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Fictional Character + Lives Underwater + Wears Clothes",
+    difficultyEstimate: 50,
+    labels: { A: "Fictional Character", B: "Lives Underwater", C: "Wears Clothes" },
+    tiles: [
+      { label: "Nemo", correctSlot: "S1", logicNote: "Nemo is a fictional character who lives underwater, but as a clownfish he wears nothing at all.", fact: "Finding Nemo was the first Pixar film to win the Oscar for Best Animated Feature." },
+      { label: "Mickey Mouse", correctSlot: "S2", logicNote: "Mickey Mouse is a fictional character who wears clothes, but he lives on dry land.", fact: "Walt Disney himself was the voice of Mickey Mouse for nearly two decades." },
+      { label: "Scuba Diver", correctSlot: "S3", logicNote: "A scuba diver spends time underwater wearing a wetsuit, but divers are real people, not fictional characters.", fact: "The word scuba started as an acronym: self-contained underwater breathing apparatus." },
+      { label: "SpongeBob", correctSlot: "S4", logicNote: "SpongeBob is a fictional character who lives underwater and famously wears square pants.", fact: "SpongeBob was created by Stephen Hillenburg, a former marine biology teacher." },
+      { label: "Garfield", correctSlot: null },
+      { label: "Coral", correctSlot: null },
+      { label: "Mannequin", correctSlot: null },
+      { label: "Toaster", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Musician + Goes by One Name + 1980s Icon",
+    difficultyEstimate: 38,
+    labels: { A: "Musician", B: "Goes by One Name", C: "1980s Icon" },
+    tiles: [
+      { label: "Adele", correctSlot: "S1", logicNote: "Adele is a musician who goes by one name, but she rose to fame in the 2010s, long after the 1980s.", fact: "Adele titled her albums 19, 21, 25, and 30 after the ages she was when she wrote them." },
+      { label: "Michael Jackson", correctSlot: "S2", logicNote: "Michael Jackson was a defining musician of the 1980s, but he went by his full name, not a single one.", fact: "Michael Jackson's Thriller remains the best-selling studio album of all time." },
+      { label: "Mr. T", correctSlot: "S3", logicNote: "Mr. T is a one-name 1980s icon from The A-Team and Rocky III, but he is an actor, not a musician.", fact: "Mr. T has said he chose his name so that the first word anyone said to him would be 'Mister.'" },
+      { label: "Madonna", correctSlot: "S4", logicNote: "Madonna is a musician, goes by one name, and defined 1980s pop.", fact: "Madonna is her real first name — she was born Madonna Louise Ciccone." },
+      { label: "Taylor Swift", correctSlot: null },
+      { label: "Pelé", correctSlot: null },
+      { label: "Rubik's Cube", correctSlot: null },
+      { label: "Lighthouse", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-10",
+  easy: {
+    title: "Animal + Can Fly + Active at Night",
+    difficultyEstimate: 82,
+    labels: { A: "Animal", B: "Can Fly", C: "Active at Night" },
+    tiles: [
+      { label: "Butterfly", correctSlot: "S1", logicNote: "A butterfly is an animal that can fly, but most butterflies are active during the day rather than at night.", fact: "Butterflies taste with their feet, using chemical sensors to decide whether a leaf is the right place to lay eggs." },
+      { label: "Raccoon", correctSlot: "S2", logicNote: "A raccoon is an animal that is active at night, but it cannot fly.", fact: "Raccoons have unusually sensitive front paws and often dunk food in water because wet paws help them feel texture better." },
+      { label: "Red-Eye Flight", correctSlot: "S3", logicNote: "A red-eye flight flies at night, but it is an airplane trip rather than an animal.", fact: "Red-eye flights get their name from the tired, bloodshot eyes passengers may have after flying overnight instead of sleeping in a bed." },
+      { label: "Bat", correctSlot: "S4", logicNote: "A bat is an animal that can fly and is active at night.", fact: "Bats are the only mammals capable of true powered flight; flying squirrels only glide." },
+      { label: "Dog", correctSlot: null },
+      { label: "Kite", correctSlot: null },
+      { label: "Moon", correctSlot: null },
+      { label: "Chair", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Company + Car-Related + Founded in Germany",
+    difficultyEstimate: 48,
+    labels: { A: "Company", B: "Car-Related", C: "Founded in Germany" },
+    tiles: [
+      { label: "Toyota", correctSlot: "S1", logicNote: "Toyota is a car-related company, but it was founded in Japan rather than Germany.", fact: "Toyota began as part of a loom-making business before becoming one of the world's largest automakers." },
+      { label: "Adidas", correctSlot: "S2", logicNote: "Adidas is a company founded in Germany, but it is known for athletic gear rather than cars.", fact: "Adidas and Puma were founded by feuding brothers from the same small German town, Herzogenaurach." },
+      { label: "Autobahn", correctSlot: "S3", logicNote: "The Autobahn is car-related and German, but it is a highway system rather than a company.", fact: "Some Autobahn stretches have no general speed limit, but they still have strict rules about passing and lane discipline." },
+      { label: "Volkswagen", correctSlot: "S4", logicNote: "Volkswagen is a car-related company founded in Germany.", fact: "Volkswagen means 'people's car' in German, and the Beetle became one of the most-produced car designs in history." },
+      { label: "Nike", correctSlot: null },
+      { label: "Steering Wheel", correctSlot: null },
+      { label: "Berlin Wall", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Hosted Summer Olympics + Southern Hemisphere",
+    difficultyEstimate: 36,
+    labels: { A: "Country", B: "Hosted Summer Olympics", C: "Southern Hemisphere" },
+    tiles: [
+      { label: "Greece", correctSlot: "S1", logicNote: "Greece is a country that has hosted the Summer Olympics, but it is in the Northern Hemisphere.", fact: "Athens hosted the first modern Olympics in 1896 and hosted again in 2004." },
+      { label: "New Zealand", correctSlot: "S2", logicNote: "New Zealand is a country in the Southern Hemisphere, but it has not hosted the Summer Olympics.", fact: "New Zealand has won Olympic medals in sports as varied as rowing, sailing, rugby sevens, and trampolining." },
+      { label: "Sydney", correctSlot: "S3", logicNote: "Sydney is in the Southern Hemisphere and hosted the Summer Olympics, but it is a city rather than a country.", fact: "The 2000 Sydney Olympics opened with a celebration of Australia's Indigenous history and featured Cathy Freeman lighting the cauldron." },
+      { label: "Australia", correctSlot: "S4", logicNote: "Australia is a country in the Southern Hemisphere that has hosted the Summer Olympics.", fact: "Australia has hosted the Summer Olympics twice, in Melbourne in 1956 and Sydney in 2000, with Brisbane scheduled for 2032." },
+      { label: "Norway", correctSlot: null },
+      { label: "Olympic Torch", correctSlot: null },
+      { label: "Antarctica", correctSlot: null },
+      { label: "Backpack", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-09",
+  easy: {
+    title: "Fruit + Red + Grows on Trees",
+    difficultyEstimate: 82,
+    labels: { A: "Fruit", B: "Red", C: "Grows on Trees" },
+    tiles: [
+      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is a red fruit, but it grows on low plants rather than trees.", fact: "Strawberries are the only common fruit with seeds on the outside, and each berry can carry about 200 seeds." },
+      { label: "Pear", correctSlot: "S2", logicNote: "A pear is a fruit that grows on trees, but most pears are green, yellow, or brown rather than red.", fact: "Pears ripen best off the tree; if left to soften on the branch, they often turn mushy from the inside out." },
+      { label: "Maple Leaf", correctSlot: "S3", logicNote: "A maple leaf can be red and grows on trees, but it is a leaf rather than a fruit.", fact: "The red maple leaf became Canada's official flag symbol in 1965, after nearly 6,000 flag designs were considered." },
+      { label: "Apple", correctSlot: "S4", logicNote: "An apple is a red fruit that grows on trees.", fact: "There are more than 7,500 named apple varieties, but grocery stores usually sell only a small handful because they ship and store well." },
+      { label: "Blueberry", correctSlot: null },
+      { label: "Stop Sign", correctSlot: null },
+      { label: "Basket", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Song + Disney Movie-Related + About Snow or Ice",
+    difficultyEstimate: 47,
+    labels: { A: "Song", B: "Disney Movie-Related", C: "About Snow or Ice" },
+    tiles: [
+      { label: "Circle of Life", correctSlot: "S1", logicNote: "Circle of Life is a song from a Disney movie, but it is not about snow or ice.", fact: "Circle of Life opens The Lion King with Zulu lyrics written by South African composer Lebo M." },
+      { label: "Winter Wonderland", correctSlot: "S2", logicNote: "Winter Wonderland is a song about snow and winter, but it was not written for a Disney movie.", fact: "Winter Wonderland was written in 1934 after lyricist Dick Smith looked out from a Pennsylvania tuberculosis sanatorium at a snowy park." },
+      { label: "Frozen", correctSlot: "S3", logicNote: "Frozen is Disney movie-related and about snow and ice, but the tile is the movie rather than a song.", fact: "Frozen was loosely inspired by Hans Christian Andersen's fairy tale The Snow Queen, though Disney changed nearly everything about the plot." },
+      { label: "Let It Go", correctSlot: "S4", logicNote: "Let It Go is a song from the Disney movie Frozen and is about ice powers.", fact: "Let It Go changed Elsa from a villain into a sympathetic character after the songwriters gave her a defiant, self-accepting anthem." },
+      { label: "Radio", correctSlot: null },
+      { label: "Mickey Mouse", correctSlot: null },
+      { label: "Snowman", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Novel + Written by Woman + Set During War",
+    difficultyEstimate: 36,
+    labels: { A: "Novel", B: "Written by Woman", C: "Set During War" },
+    tiles: [
+      { label: "Catch-22", correctSlot: "S2", logicNote: "Catch-22 is a novel set during war, but it was written by Joseph Heller rather than by a woman.", fact: "Catch-22 gave English a new phrase: a 'catch-22' is a trap where the rules make escape impossible." },
+      { label: "Pride and Prejudice", correctSlot: "S1", logicNote: "Pride and Prejudice is a novel written by Jane Austen, but it is not set during war.", fact: "Jane Austen originally titled Pride and Prejudice First Impressions before revising and publishing it in 1813." },
+      { label: "Anne Frank's Diary", correctSlot: "S3", logicNote: "Anne Frank's Diary was written by a girl during World War II, but it is a real diary rather than a novel.", fact: "Anne Frank got the diary as a 13th birthday present on June 12, 1942, three weeks before her family went into hiding — the last entry was written just three days before their arrest." },
+      { label: "Gone with the Wind", correctSlot: "S4", logicNote: "Gone with the Wind is a novel written by Margaret Mitchell and set during the Civil War era.", fact: "Margaret Mitchell wrote Gone with the Wind while recovering from an ankle injury and kept the manuscript hidden around her apartment for years." },
+      { label: "Moby-Dick", correctSlot: null },
+      { label: "Queen Victoria", correctSlot: null },
+      { label: "Battlefield", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-08",
+  easy: {
+    title: "Food + Made from Apples + Served Hot",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Made from Apples", C: "Served Hot" },
+    tiles: [
+      { label: "Applesauce", correctSlot: "S1", logicNote: "Applesauce is food made from apples, but it is usually served cold or at room temperature.", fact: "Applesauce was once a practical way to preserve apples through winter before refrigeration was common." },
+      { label: "Soup", correctSlot: "S2", logicNote: "Soup is food often served hot, but it is not usually made from apples.", fact: "The oldest known soup evidence comes from pottery in China dating back about 20,000 years." },
+      { label: "Mulled Cider", correctSlot: "S3", logicNote: "Mulled cider is made from apples and warmed with spices, but it is a drink rather than food.", fact: "Mulling cider by warming it with cinnamon, cloves, and orange peel dates back centuries in England, where the drink was believed to ward off winter chills and bad spirits." },
+      { label: "Apple Pie", correctSlot: "S4", logicNote: "Apple pie is food made from apples and is often served hot.", fact: "The phrase 'as American as apple pie' is funny historically: apple pie recipes existed in England centuries before the United States." },
+      { label: "Bread", correctSlot: null },
+      { label: "Orchard", correctSlot: null },
+      { label: "Fireplace", correctSlot: null },
+      { label: "Fork", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Company + Phone-Related + South Korean",
+    difficultyEstimate: 47,
+    labels: { A: "Company", B: "Phone-Related", C: "South Korean" },
+    tiles: [
+      { label: "Apple", correctSlot: "S1", logicNote: "Apple is a company strongly linked to phones, but it is American rather than South Korean.", fact: "The first iPhone in 2007 had no App Store; third-party apps arrived a year later with iPhone OS 2." },
+      { label: "Hyundai", correctSlot: "S2", logicNote: "Hyundai is a South Korean company, but it is best known for cars rather than phones.", fact: "Hyundai began as a construction company in 1947 before becoming a major automaker." },
+      { label: "Galaxy S", correctSlot: "S3", logicNote: "Galaxy S is a South Korean phone line, but it is a product line rather than a company.", fact: "Samsung's first Galaxy S phone launched in 2010 and helped turn Android into a true iPhone rival." },
+      { label: "Samsung", correctSlot: "S4", logicNote: "Samsung is a South Korean company strongly linked to phones.", fact: "Samsung began in 1938 as a trading company selling dried fish, noodles, and groceries before moving into electronics decades later." },
+      { label: "Toyota", correctSlot: null },
+      { label: "Smartphone", correctSlot: null },
+      { label: "Seoul", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Nobel Prize Winner + Scientist + Woman",
+    difficultyEstimate: 35,
+    labels: { A: "Nobel Prize Winner", B: "Scientist", C: "Woman" },
+    tiles: [
+      { label: "Albert Einstein", correctSlot: "S1", logicNote: "Albert Einstein was a Nobel Prize-winning scientist, but he was not a woman.", fact: "Einstein won the Nobel Prize for explaining the photoelectric effect, not for relativity." },
+      { label: "Malala Yousafzai", correctSlot: "S2", logicNote: "Malala Yousafzai is a woman who won a Nobel Prize, but she is an education activist rather than a scientist.", fact: "Malala was 17 when she received the Nobel Peace Prize, making her the youngest Nobel laureate ever." },
+      { label: "Rosalind Franklin", correctSlot: "S3", logicNote: "Rosalind Franklin was a woman scientist, but she did not receive a Nobel Prize.", fact: "Franklin's X-ray image known as Photo 51 helped reveal DNA's double-helix structure, but she died before the Nobel Prize for the discovery was awarded." },
+      { label: "Marie Curie", correctSlot: "S4", logicNote: "Marie Curie was a woman scientist who won Nobel Prizes.", fact: "Marie Curie is still the only person to win Nobel Prizes in two different sciences: physics and chemistry." },
+      { label: "Isaac Newton", correctSlot: null },
+      { label: "Peace Medal", correctSlot: null },
+      { label: "Queen Victoria", correctSlot: null },
+      { label: "Microscope", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-07",
+  easy: {
+    title: "Food + Frozen + Served on a Stick",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Frozen", C: "Served on a Stick" },
+    tiles: [
+      { label: "Ice Cream Scoop", correctSlot: "S1", logicNote: "An ice cream scoop is frozen food, but it is usually served in a cone or bowl rather than on a stick.", fact: "The first ice cream cones became famous at the 1904 St. Louis World's Fair, where vendors reportedly improvised cones when dishes ran short." },
+      { label: "Corn Dog", correctSlot: "S2", logicNote: "A corn dog is food served on a stick, but it is served hot rather than frozen.", fact: "Corn dogs became a fairground staple because the stick made them easy to eat while walking." },
+      { label: "Icicle", correctSlot: "S3", logicNote: "An icicle is frozen and shaped like a stick, but it is not food.", fact: "Icicles form when melting snow refreezes at the roof edge, which can signal poor insulation in a house." },
+      { label: "Fudgesicle", correctSlot: "S4", logicNote: "A Fudgesicle is frozen chocolate food served on a stick.", fact: "The Fudgsicle debuted in 1928 when Popsicle Corp. added a chocolate variety to its lineup — it uses cocoa and milk solids instead of fruit syrup, giving it a softer, creamier bite than a fruit popsicle." },
+      { label: "Salad", correctSlot: null },
+      { label: "Ice Cube", correctSlot: null },
+      { label: "Toothpick", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Involves Shakespeare + High School-Related",
+    difficultyEstimate: 47,
+    labels: { A: "Movie", B: "Involves Shakespeare", C: "High School-Related" },
+    tiles: [
+      { label: "Romeo + Juliet", correctSlot: "S1", logicNote: "Romeo + Juliet is a movie that adapts Shakespeare's play, but it is not set in a high school.", fact: "Baz Luhrmann kept Shakespeare's original dialogue in Romeo + Juliet while moving the story to a neon, gun-filled modern city." },
+      { label: "Mean Girls", correctSlot: "S2", logicNote: "Mean Girls is a high school-related movie, but it does not involve Shakespeare.", fact: "Mean Girls was partly inspired by a nonfiction parenting book called Queen Bees and Wannabes." },
+      { label: "Freshman English Class", correctSlot: "S3", logicNote: "Freshman English classes routinely involve Shakespeare and happen in high school, but a class is not a movie.", fact: "Romeo and Juliet became a standard freshman English text partly because the play's teenage protagonists and short length let students finish it in a single term." },
+      { label: "10 Things I Hate About You", correctSlot: "S4", logicNote: "10 Things I Hate About You is a high-school movie that involves Shakespeare — it retells The Taming of the Shrew.", fact: "10 Things I Hate About You filmed at a real public high school in Tacoma, Washington, whose castle-like building became part of the movie's look." },
+      { label: "Popcorn", correctSlot: null },
+      { label: "Hamlet", correctSlot: null },
+      { label: "Locker", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Uses Dollar Currency + In the Caribbean",
+    difficultyEstimate: 36,
+    labels: { A: "Country", B: "Uses Dollar Currency", C: "In the Caribbean" },
+    tiles: [
+      { label: "United States", correctSlot: "S1", logicNote: "The United States is a country that uses a dollar currency, but it is not in the Caribbean.", fact: "The U.S. dollar's green color was chosen partly because green ink resisted chemical changes and made counterfeiting harder in the 1800s." },
+      { label: "Cuba", correctSlot: "S2", logicNote: "Cuba is a country in the Caribbean, but it uses the Cuban peso rather than a dollar currency.", fact: "Cuba is the largest island in the Caribbean and sits only about 90 miles from Florida." },
+      { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico is in the Caribbean and uses the U.S. dollar, but it is a U.S. territory rather than a country.", fact: "Puerto Rico has its own Olympic team even though Puerto Ricans are U.S. citizens." },
+      { label: "Jamaica", correctSlot: "S4", logicNote: "Jamaica is a Caribbean country that uses a dollar currency, the Jamaican dollar.", fact: "Jamaica's dollar symbol is J$, used to distinguish it from other dollar currencies around the world." },
+      { label: "Mexico", correctSlot: null },
+      { label: "Dollar Bill", correctSlot: null },
+      { label: "Island Beach", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-06",
+  easy: {
+    title: "Vehicle + Has Wheels + Powered by Human",
+    difficultyEstimate: 82,
+    labels: { A: "Vehicle", B: "Has Wheels", C: "Powered by Human" },
+    tiles: [
+      { label: "Car", correctSlot: "S1", logicNote: "A car is a vehicle with wheels, but it is powered by an engine rather than by a human.", fact: "The first long-distance automobile trip was made in 1888 by Bertha Benz, who drove about 65 miles to prove her husband's car was practical." },
+      { label: "Kayak", correctSlot: "S2", logicNote: "A kayak is a vehicle powered by a human paddler, but it does not have wheels.", fact: "Traditional kayaks were developed by Arctic Indigenous peoples and often used seal skins stretched over a driftwood or whalebone frame." },
+      { label: "Shopping Cart", correctSlot: "S3", logicNote: "A shopping cart has wheels and is pushed by a person, but it is not a vehicle.", fact: "The shopping cart was invented in 1937 by Oklahoma grocer Sylvan Goldman, who first had to hire models to push them so customers would not feel embarrassed using one." },
+      { label: "Bicycle", correctSlot: "S4", logicNote: "A bicycle is a vehicle with wheels that is powered by a human.", fact: "Early bicycles with giant front wheels were called penny-farthings because the two wheels looked like a large penny beside a tiny farthing coin." },
+      { label: "Boat", correctSlot: null },
+      { label: "Wheel", correctSlot: null },
+      { label: "Jogger", correctSlot: null },
+      { label: "Chair", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Capital City + Starts With B + In South America",
+    difficultyEstimate: 47,
+    labels: { A: "Capital City", B: "Starts With B", C: "In South America" },
+    tiles: [
+      { label: "Lima", correctSlot: "S2", logicNote: "Lima is a capital city in South America, but it does not start with B.", fact: "Lima is one of the driest capital cities in the world, despite sitting beside the Pacific Ocean." },
+      { label: "Berlin", correctSlot: "S1", logicNote: "Berlin is a capital city that starts with B, but it is in Europe rather than South America.", fact: "Berlin has more bridges than Venice, thanks to its rivers, canals, and lakes." },
+      { label: "Brazil", correctSlot: "S3", logicNote: "Brazil starts with B and is in South America, but it is a country rather than a capital city.", fact: "Brazil is so large that it borders every South American country except Chile and Ecuador." },
+      { label: "Bogota", correctSlot: "S4", logicNote: "Bogota is a capital city in South America that starts with B.", fact: "Bogota sits high in the Andes at about 8,660 feet above sea level, making it one of the world's highest major capitals." },
+      { label: "Paris", correctSlot: null },
+      { label: "Book", correctSlot: null },
+      { label: "Andes Mountains", correctSlot: null },
+      { label: "Notebook", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Constitutional Monarchy + In Europe",
+    difficultyEstimate: 36,
+    labels: { A: "Country", B: "Constitutional Monarchy", C: "In Europe" },
+    tiles: [
+      { label: "Japan", correctSlot: "S1", logicNote: "Japan is a country with a constitutional monarchy, but it is in Asia rather than Europe.", fact: "Japan's emperor is often described as the world's oldest continuous hereditary monarchy, with traditional origins stretching back more than 2,000 years." },
+      { label: "France", correctSlot: "S2", logicNote: "France is a country in Europe, but it is a republic rather than a constitutional monarchy.", fact: "France's last monarch, Napoleon III, was overthrown in 1870 after defeat in the Franco-Prussian War." },
+      { label: "Buckingham Palace", correctSlot: "S3", logicNote: "Buckingham Palace is tied to a constitutional monarchy and is in Europe, but it is a building rather than a country.", fact: "Buckingham Palace has 775 rooms, including 78 bathrooms, and the Royal Standard flies above it when the monarch is inside." },
+      { label: "United Kingdom", correctSlot: "S4", logicNote: "The United Kingdom is a European country with a constitutional monarchy.", fact: "Britain's monarch reigns but does not rule; the elected Parliament and prime minister hold political power." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Crown", correctSlot: null },
+      { label: "Eiffel Tower", correctSlot: null },
+      { label: "Desk", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-05",
+  easy: {
+    title: "Food + Yellow + Long",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Yellow", C: "Long" },
+    tiles: [
+      { label: "Lemon", correctSlot: "S1", logicNote: "A lemon is yellow food, but it is round or oval rather than long.", fact: "British sailors were nicknamed 'limeys' because citrus fruit helped prevent scurvy on long voyages." },
+      { label: "Celery Stick", correctSlot: "S2", logicNote: "A celery stick is long food, but it is green rather than yellow.", fact: "Celery has been found in ancient Egyptian tombs, but it became a fashionable crunchy table vegetable in Europe much later." },
+      { label: "Pencil", correctSlot: "S3", logicNote: "A pencil is yellow and long, but it is not food.", fact: "Yellow pencils became popular in the 1890s because yellow paint signaled high-quality graphite from China, where yellow was associated with royalty." },
+      { label: "Banana", correctSlot: "S4", logicNote: "A banana is yellow, long food.", fact: "Bananas are technically berries, and the plants they grow on are giant herbs rather than trees." },
+      { label: "Apple", correctSlot: null },
+      { label: "Sun", correctSlot: null },
+      { label: "Rope", correctSlot: null },
+      { label: "Chair", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "TV Show + Set in Workplace + Mockumentary",
+    difficultyEstimate: 48,
+    labels: { A: "TV Show", B: "Set in Workplace", C: "Mockumentary" },
+    tiles: [
+      { label: "Grey's Anatomy", correctSlot: "S1", logicNote: "Grey's Anatomy is a TV show set in a workplace, but it is not a mockumentary.", fact: "Grey's Anatomy was named after both the medical textbook Gray's Anatomy and lead character Meredith Grey." },
+      { label: "Modern Family", correctSlot: "S2", logicNote: "Modern Family is a TV mockumentary, but it is mainly about home and family life rather than a workplace.", fact: "Modern Family never explains who the characters are supposedly speaking to in its documentary-style interviews." },
+      { label: "Dunder Mifflin", correctSlot: "S3", logicNote: "Dunder Mifflin is a workplace presented in a mockumentary style, but it is a fictional company rather than a TV show.", fact: "The Dunder Mifflin paper company was named after two imaginary founders; neither Dunder nor Mifflin ever appears on The Office." },
+      { label: "The Office", correctSlot: "S4", logicNote: "The Office is a TV show set in a workplace and filmed as a mockumentary.", fact: "The Office used a real documentary camera style so actors could make eye contact with the camera after awkward moments, turning silent reactions into punchlines." },
+      { label: "Friends", correctSlot: null },
+      { label: "Cubicle", correctSlot: null },
+      { label: "Camera Crew", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Capital City + On an Island + In Europe",
+    difficultyEstimate: 36,
+    labels: { A: "Capital City", B: "On an Island", C: "In Europe" },
+    tiles: [
+      { label: "Havana", correctSlot: "S1", logicNote: "Havana is a capital city on an island, but it is in the Caribbean rather than Europe.", fact: "Havana's old city still contains Spanish colonial fortresses built to protect ships carrying silver across the Atlantic." },
+      { label: "Paris", correctSlot: "S2", logicNote: "Paris is a capital city in Europe, but it is not on an island.", fact: "Paris began on the Ile de la Cite, a small island in the Seine, but the modern capital spreads far beyond it." },
+      { label: "Iceland", correctSlot: "S3", logicNote: "Iceland is an island in Europe, but it is a country rather than a capital city.", fact: "Iceland runs almost entirely on renewable electricity, mainly hydropower and geothermal energy." },
+      { label: "Reykjavik", correctSlot: "S4", logicNote: "Reykjavik is a capital city on an island in Europe.", fact: "Reykjavik means 'smoky bay,' a name tied to the steam early settlers saw rising from nearby geothermal hot springs." },
+      { label: "Cairo", correctSlot: null },
+      { label: "Madagascar", correctSlot: null },
+      { label: "Euro Coin", correctSlot: null },
+      { label: "Backpack", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-07-04",
+  easy: {
+    title: "Food + Cookout Item + Served Hot",
+    difficultyEstimate: 82,
+    labels: { A: "Food", B: "Cookout Item", C: "Served Hot" },
+    tiles: [
+      { label: "Potato Salad", correctSlot: "S1", logicNote: "Potato salad is food served at cookouts, but it is usually served cold.", fact: "American potato salad became popular through German immigrant communities, who brought vinegar-and-potato dishes to the United States." },
+      { label: "Soup", correctSlot: "S2", logicNote: "Soup is food that is served hot, but it is not a typical cookout item.", fact: "Archaeologists have found evidence of soup-making in pottery from China dating back about 20,000 years." },
+      { label: "Grill", correctSlot: "S3", logicNote: "A grill is a cookout item that gets hot, but it is not food.", fact: "Charcoal grilling gets its smoky flavor from wood compounds that vaporize and settle back onto the food as it cooks." },
+      { label: "Hot Dog", correctSlot: "S4", logicNote: "A hot dog is food, a cookout item, and served hot.", fact: "Americans eat an estimated 150 million hot dogs on the Fourth of July alone, enough to stretch from Washington, D.C. to Los Angeles several times." },
+      { label: "Apple", correctSlot: null },
+      { label: "Picnic Blanket", correctSlot: null },
+      { label: "Campfire", correctSlot: null },
+      { label: "Sunglasses", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Movie + Set in New York + Christmas",
+    difficultyEstimate: 47,
+    labels: { A: "Movie", B: "Set in New York", C: "Christmas" },
+    tiles: [
+      { label: "Taxi Driver", correctSlot: "S1", logicNote: "Taxi Driver is a movie set in New York, but it is not a Christmas story.", fact: "Taxi Driver captured a grittier 1970s New York, with Robert De Niro actually getting a cab license to prepare for the role." },
+      { label: "The Polar Express", correctSlot: "S2", logicNote: "The Polar Express is a Christmas movie, but it is not set in New York.", fact: "The Polar Express was one of the first major films made entirely with motion-capture performance technology." },
+      { label: "Rockefeller Center Tree", correctSlot: "S3", logicNote: "The Rockefeller Center Tree is in New York and tied to Christmas, but it is not a movie.", fact: "The first Rockefeller Center Christmas tree was put up by construction workers in 1931 during the Great Depression." },
+      { label: "Miracle on 34th Street", correctSlot: "S4", logicNote: "Miracle on 34th Street is a Christmas movie set in New York.", fact: "Miracle on 34th Street was released in May, not December, because the studio thought more people went to movies in warm weather." },
+      { label: "Casablanca", correctSlot: null },
+      { label: "Times Square", correctSlot: null },
+      { label: "Santa Hat", correctSlot: null },
+      { label: "Fork", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "U.S. State + Atlantic Coast + Starts With N",
+    difficultyEstimate: 36,
+    labels: { A: "U.S. State", B: "Atlantic Coast", C: "Starts With N" },
+    tiles: [
+      { label: "Florida", correctSlot: "S1", logicNote: "Florida is a U.S. state on the Atlantic Coast, but it does not start with N.", fact: "Florida has the longest coastline in the contiguous United States, stretching along both the Atlantic Ocean and the Gulf of Mexico." },
+      { label: "Nebraska", correctSlot: "S2", logicNote: "Nebraska is a U.S. state that starts with N, but it has no Atlantic Coast.", fact: "Nebraska is the only triply landlocked U.S. state, meaning you must cross at least three states to reach an ocean." },
+      { label: "New York City", correctSlot: "S3", logicNote: "New York City starts with N and sits on the Atlantic Coast, but it is a city rather than a U.S. state.", fact: "New York Harbor was once protected by giant oyster reefs; before pollution and overharvesting, the harbor held roughly half the world's oysters." },
+      { label: "New Jersey", correctSlot: "S4", logicNote: "New Jersey is a U.S. state on the Atlantic Coast that starts with N.", fact: "New Jersey has more than 130 miles of Atlantic shoreline, and its boardwalk in Atlantic City opened in 1870 to keep beach sand out of hotel lobbies." },
+      { label: "California", correctSlot: null },
+      { label: "Beach Umbrella", correctSlot: null },
+      { label: "Notebook", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-07-03",
   easy: {
     title: "Plant + Yellow in Color + Eaten as Food",
