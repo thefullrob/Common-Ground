@@ -20,6 +20,342 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-10-28",
+  easy: {
+    title: "A Snack + Salty + Comes in a Bag",
+    difficultyEstimate: 81,
+    labels: { A: "A Snack", B: "Salty", C: "Comes in a Bag" },
+    tiles: [
+      { label: "Soft Pretzel", correctSlot: "S1", logicNote: "A soft pretzel is a salty snack, but it is handed over warm on a sheet of paper, not sold in a bag.", fact: "Legend says medieval monks shaped pretzels to look like arms folded in prayer." },
+      { label: "Gummy Bears", correctSlot: "S2", logicNote: "Gummy bears are a snack that comes in a bag, but they are sweet, not salty.", fact: "Gummy bears were invented in Germany in 1922 by Hans Riegel, whose company name, Haribo, comes from HAns RIegel BOnn." },
+      { label: "Rock Salt", correctSlot: "S3", logicNote: "Rock salt is salty and comes in a bag, but it is for melting ice on the driveway, not for snacking.", fact: "Road salt lowers the freezing point of water, which is why it stops working in bitter cold, below about 15 degrees Fahrenheit." },
+      { label: "Potato Chips", correctSlot: "S4", logicNote: "Potato chips are a salty snack sold in a bag.", fact: "Potato chips were reportedly invented in 1853 in Saratoga Springs, New York, by a cook fed up with a customer complaining his fries were too thick." },
+      { label: "Ice Cream Cone", correctSlot: null },
+      { label: "Ocean", correctSlot: null },
+      { label: "Mulch", correctSlot: null },
+      { label: "Piano", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Country + Starts and Ends With the Same Letter + In Africa",
+    difficultyEstimate: 51,
+    labels: { A: "A Country", B: "Starts and Ends With the Same Letter", C: "In Africa" },
+    tiles: [
+      { label: "Australia", correctSlot: "S1", logicNote: "Australia is a country that starts and ends with A, but it is its own continent, nowhere near Africa.", fact: "Australia is the only country that is also a continent." },
+      { label: "Kenya", correctSlot: "S2", logicNote: "Kenya is a country in Africa, but it starts with K and ends with A.", fact: "Kenya is named after Mount Kenya, the second-highest peak in Africa." },
+      { label: "Addis Ababa", correctSlot: "S3", logicNote: "Addis Ababa is in Africa and starts and ends with A, but it is Ethiopia's capital city, not a country.", fact: "Addis Ababa means 'new flower' in Amharic, and at about 7,700 feet it is one of the highest capitals in the world." },
+      { label: "Algeria", correctSlot: "S4", logicNote: "Algeria is an African country that starts and ends with the letter A.", fact: "Algeria is the largest country in Africa by area, and more than 80 percent of it is Sahara desert." },
+      { label: "Brazil", correctSlot: null },
+      { label: "Alaska", correctSlot: null },
+      { label: "Cairo", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Comes After the Word 'Great' + Found in the Ocean + A Living Thing",
+    difficultyEstimate: 36,
+    labels: { A: "Comes After the Word 'Great'", B: "Found in the Ocean", C: "A Living Thing" },
+    tiles: [
+      { label: "Great Pacific Garbage Patch", correctSlot: "S1", logicNote: "The Great Pacific Garbage Patch follows 'Great' and floats in the ocean, but it is a mass of plastic, not a living thing.", fact: "The Great Pacific Garbage Patch is mostly tiny plastic fragments rather than a floating island, which is why it is hard to spot from a boat." },
+      { label: "Great Dane", correctSlot: "S2", logicNote: "A Great Dane follows 'Great' and is very much alive, but it is a dog, not an ocean dweller.", fact: "The tallest dog ever recorded was a Great Dane named Zeus, who stood 44 inches at the shoulder." },
+      { label: "Dolphin", correctSlot: "S3", logicNote: "A dolphin is a living thing found in the ocean, but nobody calls it a 'Great Dolphin.'", fact: "Dolphins sleep with one half of their brain at a time so they can keep surfacing to breathe." },
+      { label: "Great Barrier Reef", correctSlot: "S4", logicNote: "The Great Barrier Reef follows 'Great,' sits in the ocean, and is built from living coral.", fact: "The Great Barrier Reef is the largest structure on Earth built by living organisms, and it can be seen from space." },
+      { label: "The Great Gatsby", correctSlot: null },
+      { label: "Titanic", correctSlot: null },
+      { label: "Oak Tree", correctSlot: null },
+      { label: "Typewriter", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-27",
+  easy: {
+    title: "Yellow + An Animal + Found on a Farm",
+    difficultyEstimate: 84,
+    labels: { A: "Yellow", B: "An Animal", C: "Found on a Farm" },
+    tiles: [
+      { label: "Canary", correctSlot: "S1", logicNote: "A canary is a bright yellow animal, but it is a pet songbird, not a farm animal.", fact: "Canaries were carried into coal mines because they showed signs of gas poisoning long before the miners did." },
+      { label: "Hay Bale", correctSlot: "S2", logicNote: "A hay bale is yellow and found on every farm, but it is dried grass, not an animal.", fact: "A single round hay bale can weigh more than 1,000 pounds, far too heavy to lift by hand." },
+      { label: "Cow", correctSlot: "S3", logicNote: "A cow is a farm animal, but cows come in black, brown, and white, not yellow.", fact: "Researchers have found that cows have best friends and get stressed when separated from them." },
+      { label: "Chick", correctSlot: "S4", logicNote: "A chick is a fluffy yellow animal found on the farm.", fact: "A chick uses a tiny 'egg tooth' on its beak to crack out of the shell, and the tooth falls off a few days later." },
+      { label: "School Bus", correctSlot: null },
+      { label: "Shark", correctSlot: null },
+      { label: "Barn", correctSlot: null },
+      { label: "Keyboard", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Color + A Flower + A Girl's Name",
+    difficultyEstimate: 50,
+    labels: { A: "A Color", B: "A Flower", C: "A Girl's Name" },
+    tiles: [
+      { label: "Lilac", correctSlot: "S1", logicNote: "Lilac is a color and a flower, but it is almost never used as a girl's name.", fact: "Lilacs belong to the olive family and can live for more than 100 years." },
+      { label: "Amber", correctSlot: "S2", logicNote: "Amber is a color and a popular girl's name, but it is fossilized tree resin, not a flower.", fact: "Some pieces of amber hold insects that were trapped in sticky resin tens of millions of years ago." },
+      { label: "Daisy", correctSlot: "S3", logicNote: "Daisy is a flower and a girl's name, but there is no color called daisy.", fact: "The name 'daisy' comes from 'day's eye,' because the flower opens at dawn and closes at night." },
+      { label: "Violet", correctSlot: "S4", logicNote: "Violet is a color, a flower, and a girl's name.", fact: "Violets are edible, and candied violets have decorated cakes and desserts since at least the 1600s." },
+      { label: "Maroon", correctSlot: null },
+      { label: "Tulip", correctSlot: null },
+      { label: "Rebecca", correctSlot: null },
+      { label: "Spatula", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Beatles Song Title + Contains a Color + Contains an Animal",
+    difficultyEstimate: 37,
+    labels: { A: "A Beatles Song Title", B: "Contains a Color", C: "Contains an Animal" },
+    tiles: [
+      { label: "Yellow Submarine", correctSlot: "S1", logicNote: "'Yellow Submarine' is a Beatles title with a color in it, but a submarine is not an animal.", fact: "Paul McCartney wrote 'Yellow Submarine' mainly as a children's song for Ringo to sing." },
+      { label: "I Am the Walrus", correctSlot: "S2", logicNote: "'I Am the Walrus' is a Beatles title with an animal in it, but no color.", fact: "John Lennon's walrus came from Lewis Carroll's poem 'The Walrus and the Carpenter.'" },
+      { label: "The Pink Panther", correctSlot: "S3", logicNote: "The Pink Panther has a color and an animal in its name, but it is a film and cartoon, not a Beatles song.", fact: "The Pink Panther was originally a diamond in the 1963 film; the cartoon cat was created for the opening credits." },
+      { label: "Blackbird", correctSlot: "S4", logicNote: "'Blackbird' is a Beatles title that hides both a color and an animal in a single word.", fact: "Paul McCartney has said 'Blackbird' was inspired by the civil rights struggle in the American South, with 'bird' being British slang for a girl." },
+      { label: "Hey Jude", correctSlot: null },
+      { label: "Purple Rain", correctSlot: null },
+      { label: "Eye of the Tiger", correctSlot: null },
+      { label: "Stairway to Heaven", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-26",
+  easy: {
+    title: "Made of Metal + Fits in Your Pocket + Round",
+    difficultyEstimate: 81,
+    labels: { A: "Made of Metal", B: "Fits in Your Pocket", C: "Round" },
+    tiles: [
+      { label: "Keys", correctSlot: "S1", logicNote: "Keys are metal and live in your pocket, but they are jagged, not round.", fact: "The pin tumbler lock that most house keys open was patented by Linus Yale Jr. in the 1860s, and the basic design has barely changed since." },
+      { label: "Manhole Cover", correctSlot: "S2", logicNote: "A manhole cover is a round slab of metal, but it weighs far too much to fit in any pocket.", fact: "Manhole covers are round so they can never fall through their own opening, no matter which way they are turned." },
+      { label: "Marble", correctSlot: "S3", logicNote: "A marble is round and fits in your pocket, but it is made of glass, not metal.", fact: "Marbles were once actually carved from marble and other stone; nearly all modern ones are glass." },
+      { label: "Quarter", correctSlot: "S4", logicNote: "A quarter is a round metal coin that fits in your pocket.", fact: "A U.S. quarter has 119 ridges around its edge, a design originally added to stop people from shaving off slivers of silver." },
+      { label: "Anchor", correctSlot: null },
+      { label: "Wallet", correctSlot: null },
+      { label: "Pizza", correctSlot: null },
+      { label: "Rainbow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Nursery Rhyme Character + An Animal + Water Plays a Part",
+    difficultyEstimate: 49,
+    labels: { A: "Nursery Rhyme Character", B: "An Animal", C: "Water Plays a Part" },
+    tiles: [
+      { label: "Black Sheep", correctSlot: "S1", logicNote: "The black sheep of 'Baa Baa Black Sheep' is a nursery rhyme animal, but the rhyme is about wool, with no water in sight.", fact: "'Baa Baa Black Sheep' dates to at least 1744 and is sung to the same tune as 'Twinkle, Twinkle, Little Star.'" },
+      { label: "Jack and Jill", correctSlot: "S2", logicNote: "Jack and Jill went up the hill to fetch a pail of water, but they are children, not animals.", fact: "One popular theory holds that Jack and Jill were named for two old English liquid measures, the jack and the gill." },
+      { label: "Otter", correctSlot: "S3", logicNote: "An otter is an animal that spends its life in the water, but it has no nursery rhyme of its own.", fact: "Sea otters hold hands while they sleep so they do not drift apart." },
+      { label: "Itsy Bitsy Spider", correctSlot: "S4", logicNote: "The itsy bitsy spider is a nursery rhyme animal that gets washed out by the rain.", fact: "In Britain and Australia the same rhyme is sung as 'Incy Wincy Spider.'" },
+      { label: "Humpty Dumpty", correctSlot: null },
+      { label: "Camel", correctSlot: null },
+      { label: "Garden Hose", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Horse + Fictional + Won a Famous Race",
+    difficultyEstimate: 37,
+    labels: { A: "A Horse", B: "Fictional", C: "Won a Famous Race" },
+    tiles: [
+      { label: "Black Beauty", correctSlot: "S1", logicNote: "Black Beauty is a fictional horse, but his story is about hard work and kindness, with no big race to win.", fact: "Anna Sewell wrote Black Beauty in 1877 as a plea for kinder treatment of horses, and died just five months after it was published." },
+      { label: "Secretariat", correctSlot: "S2", logicNote: "Secretariat is a horse that won the Triple Crown, but he was very real, not fictional.", fact: "Secretariat won the 1973 Belmont Stakes by 31 lengths, a record that still stands." },
+      { label: "Aesop's Tortoise", correctSlot: "S3", logicNote: "The tortoise is fictional and famously won his race against the hare, but he is a tortoise, not a horse.", fact: "Aesop's fables are more than 2,500 years old, and 'slow and steady wins the race' remains their most famous moral." },
+      { label: "The Black Stallion", correctSlot: "S4", logicNote: "The Black Stallion is a fictional horse who wins a famous match race at the climax of his story.", fact: "Walter Farley began writing The Black Stallion as a teenager, published it in 1941, and saw it become a 1979 film produced by Francis Ford Coppola." },
+      { label: "Clydesdale", correctSlot: null },
+      { label: "Sherlock Holmes", correctSlot: null },
+      { label: "Usain Bolt", correctSlot: null },
+      { label: "Horseshoe", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-25",
+  easy: {
+    title: "Kitchen Appliance + Gets Hot + Has a Door",
+    difficultyEstimate: 82,
+    labels: { A: "Kitchen Appliance", B: "Gets Hot", C: "Has a Door" },
+    tiles: [
+      { label: "Toaster", correctSlot: "S1", logicNote: "A toaster is a kitchen appliance that gets hot, but the bread drops in from the top; there is no door.", fact: "The pop-up toaster was patented in 1921, seven years before sliced bread reached store shelves." },
+      { label: "Refrigerator", correctSlot: "S2", logicNote: "A refrigerator is a kitchen appliance with a door, but its whole job is to stay cold.", fact: "Before electric refrigerators, the 'iceman' delivered blocks of ice to homes for their iceboxes." },
+      { label: "Clothes Dryer", correctSlot: "S3", logicNote: "A clothes dryer gets hot and has a door, but it lives in the laundry room, not the kitchen.", fact: "Dryer lint is so flammable that campers use it as fire starter, and clogged dryer vents cause thousands of house fires a year." },
+      { label: "Oven", correctSlot: "S4", logicNote: "An oven is a kitchen appliance that gets hot and has a door.", fact: "The word 'oven' is one of the oldest in English, going back more than a thousand years to the Old English 'ofen.'" },
+      { label: "Blender", correctSlot: null },
+      { label: "Candle", correctSlot: null },
+      { label: "Mailbox", correctSlot: null },
+      { label: "Snowman", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Famous Duo + Animals + Cartoon",
+    difficultyEstimate: 52,
+    labels: { A: "A Famous Duo", B: "Animals", C: "Cartoon" },
+    tiles: [
+      { label: "Kermit and Miss Piggy", correctSlot: "S1", logicNote: "Kermit and Miss Piggy are a famous duo and a frog and a pig, but they are puppets, not cartoons.", fact: "Jim Henson built the very first Kermit in 1955 out of his mother's old coat and halves of a ping-pong ball." },
+      { label: "Rick and Morty", correctSlot: "S2", logicNote: "Rick and Morty are a famous cartoon duo, but they are a grandfather and grandson, not animals.", fact: "Rick and Morty started out as a crude parody of Doc Brown and Marty McFly from Back to the Future." },
+      { label: "The Lion King", correctSlot: "S3", logicNote: "The Lion King is a cartoon full of animals, but it has a whole cast, not a duo.", fact: "The Lion King is still the highest-grossing hand-drawn animated film ever made." },
+      { label: "Tom and Jerry", correctSlot: "S4", logicNote: "Tom and Jerry are a famous duo, a cat and a mouse, and a cartoon.", fact: "Tom and Jerry shorts won seven Academy Awards, tying Disney's Silly Symphonies for the most ever." },
+      { label: "Simon & Garfunkel", correctSlot: null },
+      { label: "Giraffe", correctSlot: null },
+      { label: "Homer Simpson", correctSlot: null },
+      { label: "Skateboard", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Planet + Has at Least One Moon + Smaller Than Earth",
+    difficultyEstimate: 38,
+    labels: { A: "A Planet", B: "Has at Least One Moon", C: "Smaller Than Earth" },
+    tiles: [
+      { label: "Jupiter", correctSlot: "S1", logicNote: "Jupiter is a planet with dozens of moons, but it is the biggest planet in the solar system, not smaller than Earth.", fact: "Jupiter has more than 90 known moons, and its largest, Ganymede, is bigger than the planet Mercury." },
+      { label: "Mercury", correctSlot: "S2", logicNote: "Mercury is a planet smaller than Earth, but it has no moons at all.", fact: "Mercury has no moons and almost no atmosphere, yet it is not the hottest planet; Venus is." },
+      { label: "Pluto", correctSlot: "S3", logicNote: "Pluto has five moons and is far smaller than Earth, but it was demoted from planet to dwarf planet in 2006.", fact: "Pluto is smaller than Earth's Moon, and its largest moon, Charon, is about half Pluto's size." },
+      { label: "Mars", correctSlot: "S4", logicNote: "Mars is a planet, it has two moons, and it is about half the size of Earth.", fact: "Mars's two moons, Phobos and Deimos, are named after the Greek words for fear and panic." },
+      { label: "The Sun", correctSlot: null },
+      { label: "The Moon", correctSlot: null },
+      { label: "Halley's Comet", correctSlot: null },
+      { label: "Milky Way", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-24",
+  easy: {
+    title: "In the Sky + Gives Off Light + Seen Only at Night",
+    difficultyEstimate: 83,
+    labels: { A: "In the Sky", B: "Gives Off Light", C: "Seen Only at Night" },
+    tiles: [
+      { label: "Sun", correctSlot: "S1", logicNote: "The Sun is in the sky and gives off light, but it is the one thing you only see in the daytime.", fact: "Light from the Sun takes about eight minutes to reach Earth." },
+      { label: "Bat", correctSlot: "S2", logicNote: "A bat flies through the night sky, but it gives off no light of its own.", fact: "Bats are the only mammals capable of true, sustained flight." },
+      { label: "Firefly", correctSlot: "S3", logicNote: "A firefly glows and comes out only after dark, but it hovers low over lawns and meadows, not up in the sky.", fact: "A firefly's glow is nearly 100 percent efficient, giving off almost no heat, unlike a light bulb." },
+      { label: "Stars", correctSlot: "S4", logicNote: "Stars are in the sky, shine with their own light, and only come out at night.", fact: "On a clear, dark night you can see a few thousand stars with the naked eye, out of hundreds of billions in our galaxy." },
+      { label: "Kite", correctSlot: null },
+      { label: "Flashlight", correctSlot: null },
+      { label: "Pajamas", correctSlot: null },
+      { label: "Sandwich", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Ice Cream Flavor + A Color + A Fruit",
+    difficultyEstimate: 50,
+    labels: { A: "Ice Cream Flavor", B: "A Color", C: "A Fruit" },
+    tiles: [
+      { label: "Mint", correctSlot: "S1", logicNote: "Mint is an ice cream flavor and a color, but it is an herb, not a fruit.", fact: "Mint chocolate chip was reportedly created in 1973 by a British culinary student for Princess Anne's wedding." },
+      { label: "Banana", correctSlot: "S2", logicNote: "Banana is an ice cream flavor and a fruit, but 'banana' is not a color name.", fact: "Botanically speaking, bananas are berries, while strawberries are not." },
+      { label: "Olive", correctSlot: "S3", logicNote: "Olive is a color and, botanically, a fruit, but nobody scoops olive ice cream.", fact: "Olives straight off the tree are so bitter that they have to be cured before anyone can eat them." },
+      { label: "Peach", correctSlot: "S4", logicNote: "Peach is an ice cream flavor, a color, and a fruit.", fact: "Georgia is the Peach State, but California grows far more peaches than Georgia does." },
+      { label: "Rocky Road", correctSlot: null },
+      { label: "Teal", correctSlot: null },
+      { label: "Kiwi", correctSlot: null },
+      { label: "Bicycle", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Capital City + Named After a Real Person + In the Americas",
+    difficultyEstimate: 37,
+    labels: { A: "Capital City", B: "Named After a Real Person", C: "In the Americas" },
+    tiles: [
+      { label: "Wellington", correctSlot: "S1", logicNote: "Wellington is a capital named after the Duke of Wellington, but it is in New Zealand, not the Americas.", fact: "Wellington is the southernmost national capital in the world." },
+      { label: "Ottawa", correctSlot: "S2", logicNote: "Ottawa is a capital in the Americas, but its name comes from an Algonquin word for trade, not a person.", fact: "Each winter Ottawa's Rideau Canal freezes into the world's largest skating rink, nearly five miles long." },
+      { label: "Bolivia", correctSlot: "S3", logicNote: "Bolivia is in the Americas and named after Simón Bolívar, but it is a country, not a capital city.", fact: "Bolivia has two capitals: Sucre is the constitutional capital and La Paz is the seat of government." },
+      { label: "Washington, D.C.", correctSlot: "S4", logicNote: "Washington, D.C. is a capital in the Americas named after George Washington.", fact: "By law, no building in Washington, D.C. may be taller than the width of the street in front of it plus 20 feet." },
+      { label: "Paris", correctSlot: null },
+      { label: "Ferris Wheel", correctSlot: null },
+      { label: "Amazon River", correctSlot: null },
+      { label: "Snowflake", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-23",
+  easy: {
+    title: "Furniture + You Sit On It + Found in a Classroom",
+    difficultyEstimate: 80,
+    labels: { A: "Furniture", B: "You Sit On It", C: "Found in a Classroom" },
+    tiles: [
+      { label: "Sofa", correctSlot: "S1", logicNote: "A sofa is furniture you sit on, but you will not find one in a typical classroom.", fact: "The word 'sofa' comes from the Arabic 'suffah,' a raised bench covered with cushions." },
+      { label: "Bookshelf", correctSlot: "S2", logicNote: "A bookshelf is furniture found in classrooms, but nobody sits on it.", fact: "Before the printing press, books were so precious that medieval libraries chained them to the shelves." },
+      { label: "Rug", correctSlot: "S3", logicNote: "Kids sit on the classroom rug for story time, but a rug is a floor covering, not furniture.", fact: "The oldest surviving rug, the Pazyryk carpet, was found frozen in a Siberian tomb and is about 2,500 years old." },
+      { label: "Chair", correctSlot: "S4", logicNote: "A chair is furniture, you sit on it, and every classroom is full of them.", fact: "For most of history chairs were reserved for the powerful, which is why someone still 'chairs' a meeting." },
+      { label: "Dresser", correctSlot: null },
+      { label: "Chalk", correctSlot: null },
+      { label: "Saddle", correctSlot: null },
+      { label: "Umbrella", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Body Part + Also a Verb + Part of a Shoe",
+    difficultyEstimate: 51,
+    labels: { A: "Body Part", B: "Also a Verb", C: "Part of a Shoe" },
+    tiles: [
+      { label: "Elbow", correctSlot: "S1", logicNote: "An elbow is a body part and you can elbow your way through a crowd, but shoes have no elbows.", fact: "'Elbow grease' has been slang for hard physical work since the 1600s." },
+      { label: "Sole", correctSlot: "S2", logicNote: "The sole of your foot and the sole of your shoe, but you do not 'sole' anything.", fact: "The skin on the sole of your foot is among the thickest on the body, yet it is packed with nerve endings." },
+      { label: "Lace", correctSlot: "S3", logicNote: "You lace up your shoes and a lace is part of a shoe, but a lace is not a body part.", fact: "The little plastic tips on shoelaces are called aglets, from the French word for 'little needle.'" },
+      { label: "Toe", correctSlot: "S4", logicNote: "A toe is a body part, you can toe the line, and a shoe has a toe.", fact: "'Toe the line' is thought to come from sailors lining up with their toes on a deck seam for inspection." },
+      { label: "Ear", correctSlot: null },
+      { label: "Jump", correctSlot: null },
+      { label: "Cleat", correctSlot: null },
+      { label: "Window", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Country + Flag Is Only Red and White + An Island",
+    difficultyEstimate: 38,
+    labels: { A: "Country", B: "Flag Is Only Red and White", C: "An Island" },
+    tiles: [
+      { label: "Switzerland", correctSlot: "S1", logicNote: "Switzerland is a country with a flag of only red and white, but it is landlocked in the Alps, not an island.", fact: "Switzerland's flag is one of only two square national flags in the world; the other belongs to Vatican City." },
+      { label: "Cuba", correctSlot: "S2", logicNote: "Cuba is an island country, but its flag has blue stripes along with the red and white.", fact: "Cuba is the largest island in the Caribbean, close to the size of Pennsylvania." },
+      { label: "Greenland", correctSlot: "S3", logicNote: "Greenland is an island with a red-and-white flag, but it is a territory of Denmark, not a country.", fact: "Greenland is the world's largest island, yet fewer than 60,000 people live there." },
+      { label: "Japan", correctSlot: "S4", logicNote: "Japan is an island country whose flag is a red circle on a white field.", fact: "Japan's flag is officially the Nisshoki, but most people call it the Hinomaru, 'circle of the sun.'" },
+      { label: "France", correctSlot: null },
+      { label: "Manhattan", correctSlot: null },
+      { label: "Candy Cane", correctSlot: null },
+      { label: "Zebra", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-22",
+  easy: {
+    title: "Round + You Eat It + Has a Hole in the Middle",
+    difficultyEstimate: 82,
+    labels: { A: "Round", B: "You Eat It", C: "Has a Hole in the Middle" },
+    tiles: [
+      { label: "Meatball", correctSlot: "S1", logicNote: "A meatball is round and you eat it, but it is solid all the way through with no hole.", fact: "IKEA sells roughly one billion meatballs a year worldwide." },
+      { label: "Hula Hoop", correctSlot: "S2", logicNote: "A hula hoop is round with a big hole in the middle, but nobody eats one.", fact: "Wham-O sold about 25 million hula hoops in the first four months after launching them in 1958." },
+      { label: "Penne", correctSlot: "S3", logicNote: "Penne is food with a hole running through the middle, but it is a straight tube, not round.", fact: "Penne takes its name from the Italian word for 'quill' or 'pen,' because of its angled, pen-nib ends." },
+      { label: "Donut", correctSlot: "S4", logicNote: "A donut is round, edible, and famous for the hole in its middle.", fact: "The donut hole is often credited to 19th-century sea captain Hanson Gregory, who said he punched out the soggy center." },
+      { label: "Steak", correctSlot: null },
+      { label: "Basketball", correctSlot: null },
+      { label: "Tunnel", correctSlot: null },
+      { label: "Ladder", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Can Follow 'Fire' + Can Follow 'Water' + You Can Hold It in Your Hand",
+    difficultyEstimate: 50,
+    labels: { A: "Can Follow 'Fire'", B: "Can Follow 'Water'", C: "You Can Hold It in Your Hand" },
+    tiles: [
+      { label: "Proof", correctSlot: "S1", logicNote: "Fireproof and waterproof are both everyday words, but 'proof' is not a thing you can hold in your hand.", fact: "Waterproof watches got their start with the 1926 Rolex Oyster, which made headlines when a swimmer wore one across the English Channel." },
+      { label: "Ball", correctSlot: "S2", logicNote: "Fireball is a word and you can hold a ball, but 'waterball' is not a thing.", fact: "A fireball brighter than Venus is called a bolide, and thousands of them streak through Earth's atmosphere every year." },
+      { label: "Melon", correctSlot: "S3", logicNote: "Watermelon is a word and you can hold a melon, but there is no such thing as a 'firemelon.'", fact: "Watermelons are about 92 percent water, which is exactly how they earned their name." },
+      { label: "Hose", correctSlot: "S4", logicNote: "Fire hose, water hose, and a hose is something you hold in your hand.", fact: "A charged fire hose is so stiff and heavy that it often takes two firefighters just to hold it steady." },
+      { label: "Place", correctSlot: null },
+      { label: "Park", correctSlot: null },
+      { label: "Spoon", correctSlot: null },
+      { label: "Cloud", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Greek Letter + Everyday English Word + A Well-Known Brand",
+    difficultyEstimate: 37,
+    labels: { A: "Greek Letter", B: "Everyday English Word", C: "A Well-Known Brand" },
+    tiles: [
+      { label: "Iota", correctSlot: "S1", logicNote: "Iota is a Greek letter and an everyday English word, as in 'not one iota,' but it is not a brand.", fact: "'Not one iota' traces back to a fourth-century church dispute over a single Greek letter in one word." },
+      { label: "Omega", correctSlot: "S2", logicNote: "Omega is a Greek letter and a famous Swiss watch brand, but outside of 'omega-3' it is not an everyday English word.", fact: "An Omega Speedmaster was the first watch worn on the Moon, on Buzz Aldrin's wrist in 1969." },
+      { label: "Apple", correctSlot: "S3", logicNote: "Apple is an everyday word and a giant brand, but it is not a Greek letter.", fact: "Apple's very first logo, from 1976, showed Isaac Newton sitting under an apple tree." },
+      { label: "Delta", correctSlot: "S4", logicNote: "Delta is a Greek letter, an everyday word for a river mouth, and the name of a major airline.", fact: "Delta Air Lines began in the 1920s as a crop-dusting outfit fighting boll weevils over the Mississippi Delta." },
+      { label: "Theta", correctSlot: null },
+      { label: "Nike", correctSlot: null },
+      { label: "Hammock", correctSlot: null },
+      { label: "Tesla", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-10-21",
   easy: {
     title: "Animal + Slow + Green",
