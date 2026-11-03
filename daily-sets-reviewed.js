@@ -20,6 +20,346 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-11-04",
+  easy: {
+    title: "A Vegetable + Green + Grows on a Vine",
+    difficultyEstimate: 82,
+    labels: { A: "A Vegetable", B: "Green", C: "Grows on a Vine" },
+    tiles: [
+      { label: "Broccoli", correctSlot: "S1", logicNote: "Broccoli is a green vegetable, but it grows on a thick upright stalk, not a vine.", fact: "The part of broccoli we eat is actually a cluster of hundreds of tiny unopened flower buds." },
+      { label: "Butternut Squash", correctSlot: "S2", logicNote: "Butternut squash is a vegetable that grows on a sprawling vine, but it is tan on the outside and orange inside, not green.", fact: "Butternut squash is a fairly modern vegetable, bred in Massachusetts in the 1940s by a farmer who wanted a squash that was easier to peel." },
+      { label: "Ivy", correctSlot: "S3", logicNote: "Ivy is a green plant that grows as a vine, but it is not something you would put on your dinner plate.", fact: "English ivy clings to walls with tiny root-like hairs that release a natural glue, which is why it can damage old brickwork." },
+      { label: "Cucumber", correctSlot: "S4", logicNote: "A cucumber is a green vegetable that grows on a vine.", fact: "Cucumbers are about 95 percent water and belong to the same plant family as pumpkins, watermelons, and zucchini." },
+      { label: "Radish", correctSlot: null },
+      { label: "Emerald", correctSlot: null },
+      { label: "Purple Grapes", correctSlot: null },
+      { label: "Doorknob", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Called a Nut + Grows on a Tree + Made Into a Spread",
+    difficultyEstimate: 50,
+    labels: { A: "Called a Nut", B: "Grows on a Tree", C: "Made Into a Spread" },
+    tiles: [
+      { label: "Walnut", correctSlot: "S1", logicNote: "A walnut is a nut that grows on a tree, but nobody buys a jar of walnut butter at the grocery store.", fact: "The wrinkled walnut looks so much like a brain that ancient doctors prescribed it for headaches." },
+      { label: "Peanut", correctSlot: "S2", logicNote: "Peanuts are called nuts and are famously made into peanut butter, but they are legumes that grow underground, not on a tree.", fact: "It takes about 540 peanuts to make one 12-ounce jar of peanut butter." },
+      { label: "Cocoa Bean", correctSlot: "S3", logicNote: "Cocoa beans grow on trees and are made into chocolate spread, but a cocoa bean is a seed, never called a nut.", fact: "Cocoa pods grow directly out of the trunk and thick branches of the tree, not from the tips of twigs like most fruit." },
+      { label: "Almond", correctSlot: "S4", logicNote: "Almonds are called nuts, grow on trees, and are made into almond butter.", fact: "About 80 percent of the world's almonds are grown in California, and the orchards need more than a million beehives trucked in each spring to pollinate them." },
+      { label: "Cherry Blossom", correctSlot: null },
+      { label: "Sunflower Seed", correctSlot: null },
+      { label: "Chickpea", correctSlot: null },
+      { label: "Bowling Pin", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A US State + Named After a Person + Has an Ocean Coastline",
+    difficultyEstimate: 38,
+    labels: { A: "A US State", B: "Named After a Person", C: "Has an Ocean Coastline" },
+    tiles: [
+      { label: "Pennsylvania", correctSlot: "S1", logicNote: "Pennsylvania is a state named after William Penn's family, but it is landlocked apart from a stretch of Lake Erie, which is not an ocean.", fact: "William Penn wanted to call his colony just 'Sylvania,' Latin for woods, but King Charles II insisted on adding 'Penn' to honor Penn's father." },
+      { label: "California", correctSlot: "S2", logicNote: "California is a state with a long Pacific coastline, but it is named after a mythical island in a 16th-century Spanish novel, not a real person.", fact: "California's economy is so large that, if it were a country, it would rank among the five biggest in the world." },
+      { label: "Charleston", correctSlot: "S3", logicNote: "Charleston is named after King Charles II and sits on the Atlantic coast, but it is a city in South Carolina, not a state.", fact: "The first shots of the Civil War were fired at Fort Sumter in Charleston Harbor in April 1861." },
+      { label: "Washington", correctSlot: "S4", logicNote: "Washington is a state named after George Washington with a Pacific Ocean coastline.", fact: "Washington is the only US state named after a president, and it was nearly named Columbia instead." },
+      { label: "Nevada", correctSlot: null },
+      { label: "Mount Everest", correctSlot: null },
+      { label: "Miami", correctSlot: null },
+      { label: "Doorbell", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-03",
+  easy: {
+    title: "Sweet + White + Cold",
+    difficultyEstimate: 84,
+    labels: { A: "Sweet", B: "White", C: "Cold" },
+    tiles: [
+      { label: "Wedding Cake", correctSlot: "S1", logicNote: "A wedding cake is sweet and traditionally white, but it is served at room temperature, not cold.", fact: "Queen Victoria's 1840 wedding cake helped make white icing fashionable, which is why it is still called royal icing." },
+      { label: "Popsicle", correctSlot: "S2", logicNote: "A popsicle is sweet and cold, but it comes in bright colors like cherry red and grape purple, not white.", fact: "The Popsicle was invented by accident in 1905 by an 11-year-old who left a cup of soda with a stirring stick outside on a freezing night." },
+      { label: "Polar Bear", correctSlot: "S3", logicNote: "A polar bear is white and lives in the cold, but it is a predator, not a sweet treat.", fact: "A polar bear's fur is not actually white; each hair is hollow and clear, and its skin underneath is black." },
+      { label: "Vanilla Ice Cream", correctSlot: "S4", logicNote: "Vanilla ice cream is sweet, white, and served cold.", fact: "Vanilla is still the best-selling ice cream flavor in America, and the vanilla orchid is the only orchid that produces an edible fruit." },
+      { label: "Honey", correctSlot: null },
+      { label: "Paper", correctSlot: null },
+      { label: "Icicle", correctSlot: null },
+      { label: "Lawn Mower", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Can Precede 'Ball' + Can Precede 'Board' + A Body Part",
+    difficultyEstimate: 49,
+    labels: { A: "Can Precede 'Ball'", B: "Can Precede 'Board'", C: "A Body Part" },
+    tiles: [
+      { label: "Snow", correctSlot: "S1", logicNote: "Snowball and snowboard are both words, but snow is not a body part.", fact: "The largest snowball fight on record involved more than 7,600 people in Saskatoon, Canada, in 2016." },
+      { label: "Eye", correctSlot: "S2", logicNote: "Eyeball is a word and the eye is a body part, but there is no such thing as an eyeboard.", fact: "The human eye can distinguish roughly 10 million different colors." },
+      { label: "Head", correctSlot: "S3", logicNote: "Headboard is a word and the head is a body part, but there is no such thing as a headball.", fact: "The human head weighs about 10 to 11 pounds, roughly the same as a bowling ball." },
+      { label: "Foot", correctSlot: "S4", logicNote: "Football and footboard are both words, and the foot is a body part.", fact: "The foot was a unit of measure long before it was standardized; the modern 12-inch foot was fixed by international agreement in 1959 at exactly 0.3048 meters." },
+      { label: "Meat", correctSlot: null },
+      { label: "Dash", correctSlot: null },
+      { label: "Nose", correctSlot: null },
+      { label: "Lamp", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Country + Also a First Name + Landlocked",
+    difficultyEstimate: 38,
+    labels: { A: "A Country", B: "Also a First Name", C: "Landlocked" },
+    tiles: [
+      { label: "Jordan", correctSlot: "S1", logicNote: "Jordan is a country and a common first name, but it is not landlocked; it touches the Red Sea at the port of Aqaba.", fact: "Jordan's entire coastline is only about 16 miles long, all of it on the Gulf of Aqaba." },
+      { label: "Mongolia", correctSlot: "S2", logicNote: "Mongolia is a landlocked country, but nobody names a baby Mongolia.", fact: "Mongolia is the most sparsely populated country in the world, with about five people per square mile." },
+      { label: "Florence", correctSlot: "S3", logicNote: "Florence is a first name and an inland city with no coastline, but it is a city in Italy, not a country.", fact: "Florence Nightingale was named after the city where she was born in 1820, and the name became hugely popular because of her." },
+      { label: "Chad", correctSlot: "S4", logicNote: "Chad is a landlocked country in central Africa and a common first name.", fact: "Chad is named after Lake Chad, which has shrunk by roughly 90 percent since the 1960s." },
+      { label: "Nebraska", correctSlot: null },
+      { label: "Peru", correctSlot: null },
+      { label: "Brooklyn", correctSlot: null },
+      { label: "Hockey Puck", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-02",
+  easy: {
+    title: "Has Strings + Made of Wood + A Toy",
+    difficultyEstimate: 81,
+    labels: { A: "Has Strings", B: "Made of Wood", C: "A Toy" },
+    tiles: [
+      { label: "Cello", correctSlot: "S1", logicNote: "A cello has strings and is made of wood, but it is a serious instrument, not a toy.", fact: "Yo-Yo Ma's main cello, made in Venice in 1733, is nicknamed 'Petunia' after a student suggested the name." },
+      { label: "Kite", correctSlot: "S2", logicNote: "A kite is a toy on a string, but it is made of fabric or plastic stretched over a light frame, not wood.", fact: "Kites were invented in China more than 2,000 years ago, and the earliest ones were made of silk and bamboo." },
+      { label: "Jenga", correctSlot: "S3", logicNote: "Jenga is a toy made of wood blocks, but there is not a string in sight.", fact: "Jenga was created by Leslie Scott, who grew up in Africa, and its name comes from the Swahili word for 'build.'" },
+      { label: "Marionette", correctSlot: "S4", logicNote: "A marionette is a wooden toy puppet worked by strings.", fact: "The word marionette comes from French for 'little Mary,' because the earliest string puppets were used to act out Bible stories in church." },
+      { label: "Tennis Racket", correctSlot: null },
+      { label: "Picnic Table", correctSlot: null },
+      { label: "Rubber Duck", correctSlot: null },
+      { label: "Thermometer", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Cheese + Named After a Place + Italian",
+    difficultyEstimate: 52,
+    labels: { A: "A Cheese", B: "Named After a Place", C: "Italian" },
+    tiles: [
+      { label: "Cheddar", correctSlot: "S1", logicNote: "Cheddar is a cheese named after the village of Cheddar in England, so it is not Italian.", fact: "Cheddar was first made in the caves of Cheddar Gorge in Somerset, England, in the 1100s." },
+      { label: "Mozzarella", correctSlot: "S2", logicNote: "Mozzarella is an Italian cheese, but its name comes from the Italian word for 'cut off,' not from a place.", fact: "Traditional mozzarella di bufala is made from the milk of water buffalo, not cows." },
+      { label: "Bologna", correctSlot: "S3", logicNote: "Bologna is an Italian food named after the city of Bologna, but it is a sausage, not a cheese.", fact: "The sausage Americans call bologna is a descendant of mortadella, which was so prized in Bologna that a 1661 decree by the city's cardinal set strict rules for how it had to be made." },
+      { label: "Parmesan", correctSlot: "S4", logicNote: "Parmesan is an Italian cheese named after the city of Parma.", fact: "Wheels of Parmigiano-Reggiano are so valuable that some Italian banks accept them as collateral for loans." },
+      { label: "Feta", correctSlot: null },
+      { label: "Lasagna", correctSlot: null },
+      { label: "Hamburger", correctSlot: null },
+      { label: "Sneaker", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Assassinated + A US President + Has a Memorial in D.C.",
+    difficultyEstimate: 36,
+    labels: { A: "Assassinated", B: "A US President", C: "Has a Memorial in D.C." },
+    tiles: [
+      { label: "William McKinley", correctSlot: "S1", logicNote: "William McKinley was a president who was assassinated in 1901, but Washington has no McKinley Memorial.", fact: "It was McKinley's assassination that led the Secret Service to take on full-time protection of the president." },
+      { label: "Martin Luther King Jr.", correctSlot: "S2", logicNote: "Martin Luther King Jr. was assassinated and has a memorial on the National Mall, but he was never president.", fact: "The MLK Memorial's 30-foot statue is called the Stone of Hope, a phrase from his 'I Have a Dream' speech." },
+      { label: "Thomas Jefferson", correctSlot: "S3", logicNote: "Thomas Jefferson was a president with a memorial in Washington, but he died peacefully at home on July 4, 1826.", fact: "Jefferson and John Adams both died on July 4, 1826, the 50th anniversary of the Declaration of Independence." },
+      { label: "Abraham Lincoln", correctSlot: "S4", logicNote: "Abraham Lincoln was a president, was assassinated, and has the most famous memorial in Washington.", fact: "The Lincoln Memorial's statue would stand about 28 feet tall if Lincoln rose from his chair." },
+      { label: "Julius Caesar", correctSlot: null },
+      { label: "Amelia Earhart", correctSlot: null },
+      { label: "Jimmy Carter", correctSlot: null },
+      { label: "Hot Air Balloon", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-01",
+  easy: {
+    title: "A Fruit + Red + Grows on a Tree",
+    difficultyEstimate: 82,
+    labels: { A: "A Fruit", B: "Red", C: "Grows on a Tree" },
+    tiles: [
+      { label: "Strawberry", correctSlot: "S1", logicNote: "A strawberry is a red fruit, but it grows on a low plant near the ground, not on a tree.", fact: "Strawberries are the only common fruit that wear their seeds on the outside, about 200 per berry." },
+      { label: "Lemon", correctSlot: "S2", logicNote: "A lemon is a fruit that grows on a tree, but it is yellow, not red.", fact: "A single lemon tree can produce around 600 pounds of lemons in a year." },
+      { label: "Maple Leaf", correctSlot: "S3", logicNote: "A maple leaf turns red in the fall and grows on a tree, but it is a leaf, not a fruit.", fact: "A red maple leaf has been on Canada's flag only since 1965; before that the country flew a version of the British Red Ensign." },
+      { label: "Pomegranate", correctSlot: "S4", logicNote: "A pomegranate is a red fruit that grows on a tree.", fact: "A single pomegranate can hold more than 600 juicy seeds, called arils." },
+      { label: "Fire Truck", correctSlot: null },
+      { label: "Carrot", correctSlot: null },
+      { label: "Pine Cone", correctSlot: null },
+      { label: "Corn", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Pixar Movie + One-Word Title + Hero Isn't Human",
+    difficultyEstimate: 51,
+    labels: { A: "A Pixar Movie", B: "One-Word Title", C: "Hero Isn't Human" },
+    tiles: [
+      { label: "Up", correctSlot: "S1", logicNote: "Up is a Pixar movie with a one-word title, but its hero, Carl Fredricksen, is a very human 78-year-old.", fact: "Up was the first animated film ever chosen to open the Cannes Film Festival." },
+      { label: "Finding Nemo", correctSlot: "S2", logicNote: "Finding Nemo is a Pixar movie about a clownfish, but its title is two words.", fact: "After Finding Nemo came out, demand for pet clownfish jumped so much that it put pressure on wild reef populations." },
+      { label: "Bambi", correctSlot: "S3", logicNote: "Bambi is a one-word title about a deer, but it is a 1942 Disney film made long before Pixar existed.", fact: "Walt Disney's animators studied two live fawns kept at the studio so they could draw Bambi's movements accurately." },
+      { label: "Cars", correctSlot: "S4", logicNote: "Cars is a Pixar movie with a one-word title whose hero, Lightning McQueen, is a race car.", fact: "Lightning McQueen's number 95 honors 1995, the year Pixar released Toy Story." },
+      { label: "Frozen", correctSlot: null },
+      { label: "Kung Fu Panda", correctSlot: null },
+      { label: "The Incredibles", correctSlot: null },
+      { label: "Casablanca", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A US State Capital + A President's Last Name + A Popular First Name",
+    difficultyEstimate: 33,
+    labels: { A: "A US State Capital", B: "A President's Last Name", C: "A Popular First Name" },
+    tiles: [
+      { label: "Jefferson City", correctSlot: "S1", logicNote: "Jefferson City is Missouri's capital and carries President Jefferson's last name, but nobody is named Jefferson City.", fact: "Jefferson City is one of only four state capitals that is not served by an interstate highway." },
+      { label: "Austin", correctSlot: "S2", logicNote: "Austin is the capital of Texas and a popular first name, but there has never been a President Austin.", fact: "Austin is named for Stephen F. Austin, the 'Father of Texas,' and it was briefly the capital of an independent nation, the Republic of Texas." },
+      { label: "Tyler", correctSlot: "S3", logicNote: "Tyler is a popular first name and the last name of President John Tyler, but no state capital is named Tyler.", fact: "John Tyler, born in 1790, still had a living grandson as recently as 2020, thanks to two generations of very late fatherhood." },
+      { label: "Madison", correctSlot: "S4", logicNote: "Madison is Wisconsin's capital, President James Madison's last name, and one of the most popular girls' names of the past 30 years.", fact: "Madison was almost never used as a girl's name until the 1984 movie Splash, in which a mermaid names herself after Madison Avenue." },
+      { label: "Franklin", correctSlot: null },
+      { label: "Denver", correctSlot: null },
+      { label: "Cleveland", correctSlot: null },
+      { label: "Charlotte", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-31",
+  theme: "Halloween Week",
+  easy: {
+    title: "Striped + An Animal + Black and White",
+    difficultyEstimate: 83,
+    labels: { A: "Striped", B: "An Animal", C: "Black and White" },
+    tiles: [
+      { label: "Tiger", correctSlot: "S1", logicNote: "A tiger is a striped animal, but its stripes are black on orange, not black and white.", fact: "No two tigers have the same stripe pattern, and the stripes are on the skin as well as the fur." },
+      { label: "Crosswalk", correctSlot: "S2", logicNote: "A crosswalk is painted in black and white stripes, but it is part of the road, not an animal.", fact: "The striped crosswalk is called a zebra crossing in Britain, and the one the Beatles walked across on the Abbey Road cover is now a protected landmark." },
+      { label: "Panda", correctSlot: "S3", logicNote: "A panda is a black and white animal, but it comes in patches, not stripes.", fact: "A giant panda spends up to 14 hours a day eating bamboo, which makes up about 99 percent of its diet." },
+      { label: "Skunk", correctSlot: "S4", logicNote: "A skunk is a black and white animal with stripes down its back.", fact: "A skunk can spray its scent accurately at a target up to about 10 feet away, and the smell can be noticed a mile downwind." },
+      { label: "Barber Pole", correctSlot: null },
+      { label: "Kangaroo", correctSlot: null },
+      { label: "Chessboard", correctSlot: null },
+      { label: "Pumpkin Pie", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Can Follow 'Black' + Can Follow 'Night' + Can Follow 'Sun'",
+    difficultyEstimate: 50,
+    labels: { A: "Can Follow 'Black'", B: "Can Follow 'Night'", C: "Can Follow 'Sun'" },
+    tiles: [
+      { label: "Hawk", correctSlot: "S1", logicNote: "Blackhawk and nighthawk are both words, but there is no such thing as a sunhawk.", fact: "The Black Hawk helicopter is named after Black Hawk, a Sauk war leader who fought the United States in 1832." },
+      { label: "Belt", correctSlot: "S2", logicNote: "Black belt and Sun Belt are both familiar terms, but nobody wears a night belt.", fact: "The Sun Belt, the warm stretch of states from Florida to California, got its name from a 1969 book about American politics." },
+      { label: "Shade", correctSlot: "S3", logicNote: "Nightshade and sunshade are both words, but there is no such thing as a blackshade.", fact: "Tomatoes, potatoes, and eggplants all belong to the nightshade family, and Europeans once feared tomatoes were poisonous because of the relation." },
+      { label: "Light", correctSlot: "S4", logicNote: "Blacklight, nightlight, and sunlight are all words.", fact: "Sunlight takes about eight minutes and twenty seconds to travel from the Sun to the Earth." },
+      { label: "Mare", correctSlot: null },
+      { label: "Hole", correctSlot: null },
+      { label: "Flower", correctSlot: null },
+      { label: "Violin", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Horror Movie Villain + Wears a Mask + Carries a Blade",
+    difficultyEstimate: 37,
+    labels: { A: "Horror Movie Villain", B: "Wears a Mask", C: "Carries a Blade" },
+    tiles: [
+      { label: "Hannibal Lecter", correctSlot: "S1", logicNote: "Hannibal Lecter is a horror villain famous for his muzzle-like mask, but his weapon is his teeth, not a blade.", fact: "Anthony Hopkins won the Best Actor Oscar for The Silence of the Lambs with only about 16 minutes of screen time." },
+      { label: "Freddy Krueger", correctSlot: "S2", logicNote: "Freddy Krueger is a horror villain who carries blades on his glove, but he shows his scarred face with no mask.", fact: "Wes Craven named Freddy Krueger after a boy who bullied him in school." },
+      { label: "Darth Vader", correctSlot: "S3", logicNote: "Darth Vader wears a mask and carries a lightsaber blade, but Star Wars is science fiction, not horror.", fact: "Darth Vader was played by bodybuilder David Prowse, voiced by James Earl Jones, and unmasked as actor Sebastian Shaw, three different men in one role." },
+      { label: "Michael Myers", correctSlot: "S4", logicNote: "Michael Myers of Halloween is a horror villain who wears a mask and carries a kitchen knife.", fact: "Michael Myers's mask in the original Halloween was a Captain Kirk mask bought for about two dollars and spray-painted white." },
+      { label: "Pennywise", correctSlot: null },
+      { label: "The Lone Ranger", correctSlot: null },
+      { label: "Edward Scissorhands", correctSlot: null },
+      { label: "Jack Skellington", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-30",
+  theme: "Halloween Week",
+  easy: {
+    title: "Black + An Animal + Has Wings",
+    difficultyEstimate: 83,
+    labels: { A: "Black", B: "An Animal", C: "Has Wings" },
+    tiles: [
+      { label: "Panther", correctSlot: "S1", logicNote: "A panther is a black animal, but it has four legs and no wings.", fact: "A black panther is not its own species; it is simply a leopard or jaguar with extra dark pigment, and its spots are still faintly visible." },
+      { label: "Stealth Bomber", correctSlot: "S2", logicNote: "A stealth bomber is black and has wings, but it is a machine, not an animal.", fact: "The B-2 stealth bomber has a wingspan of 172 feet, yet on radar it appears about the size of a bird." },
+      { label: "Flamingo", correctSlot: "S3", logicNote: "A flamingo is an animal with wings, but it is pink, not black.", fact: "Flamingos are born gray and turn pink from pigments in the shrimp and algae they eat." },
+      { label: "Crow", correctSlot: "S4", logicNote: "A crow is a black animal with wings.", fact: "Crows can recognize individual human faces and will hold a grudge for years against a person who has bothered them." },
+      { label: "Coal", correctSlot: null },
+      { label: "Goldfish", correctSlot: null },
+      { label: "Airplane", correctSlot: null },
+      { label: "Marshmallow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "You Carve It + Made of Wood + Has a Face",
+    difficultyEstimate: 52,
+    labels: { A: "You Carve It", B: "Made of Wood", C: "Has a Face" },
+    tiles: [
+      { label: "Canoe", correctSlot: "S1", logicNote: "A traditional dugout canoe is carved from a single log of wood, but it has no face.", fact: "The oldest boat ever found is a dugout canoe from the Netherlands that is about 10,000 years old." },
+      { label: "Jack-o'-Lantern", correctSlot: "S2", logicNote: "A jack-o'-lantern is carved and has a face, but it is made from a pumpkin, not wood.", fact: "The first jack-o'-lanterns in Ireland and Scotland were carved from turnips; pumpkins took over once the tradition reached America." },
+      { label: "Grandfather Clock", correctSlot: "S3", logicNote: "A grandfather clock is made of wood and has a face, a clock face, but it is built by a cabinetmaker, not carved.", fact: "Tall pendulum clocks were simply called longcase clocks until an 1876 song, 'My Grandfather's Clock,' gave them their nickname." },
+      { label: "Totem Pole", correctSlot: "S4", logicNote: "A totem pole is carved from a wooden log and is covered in faces.", fact: "Totem poles are carved by Indigenous peoples of the Pacific Northwest, usually from western red cedar, and some stand more than 100 feet tall." },
+      { label: "Turkey", correctSlot: null },
+      { label: "Firewood", correctSlot: null },
+      { label: "Emoji", correctSlot: null },
+      { label: "Trampoline", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Classic Movie Monster + From a 19th-Century Novel + Changes Form",
+    difficultyEstimate: 37,
+    labels: { A: "Classic Movie Monster", B: "From a 19th-Century Novel", C: "Changes Form" },
+    tiles: [
+      { label: "Frankenstein", correctSlot: "S1", logicNote: "Frankenstein, or strictly the creature Dr. Frankenstein builds, is a classic movie monster from Mary Shelley's 1818 novel, but once he is built, he stays exactly as he is.", fact: "Mary Shelley began writing Frankenstein at age 18 during a rainy summer ghost-story contest with Lord Byron and Percy Shelley in 1816." },
+      { label: "The Wolf Man", correctSlot: "S2", logicNote: "The Wolf Man is a classic movie monster who changes form under the full moon, but he was invented for a 1941 film, not a novel.", fact: "The 1941 film The Wolf Man invented much of the werewolf lore we take for granted, including the idea that only silver can kill one." },
+      { label: "Pinocchio", correctSlot: "S3", logicNote: "Pinocchio comes from an 1883 novel and changes form, sprouting donkey ears and finally becoming a real boy, but he is no movie monster.", fact: "In Carlo Collodi's original story, Pinocchio squashes the talking cricket with a mallet in the first few chapters." },
+      { label: "Dracula", correctSlot: "S4", logicNote: "Dracula is a classic movie monster from Bram Stoker's 1897 novel who changes form into a bat, a wolf, and even mist.", fact: "Bela Lugosi, who played Dracula in the 1931 film, was buried wearing one of his Dracula capes." },
+      { label: "Godzilla", correctSlot: null },
+      { label: "Pride and Prejudice", correctSlot: null },
+      { label: "Caterpillar", correctSlot: null },
+      { label: "Haunted House", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-10-29",
+  theme: "Halloween Week",
+  easy: {
+    title: "Orange + You Can Eat It + Round",
+    difficultyEstimate: 82,
+    labels: { A: "Orange", B: "You Can Eat It", C: "Round" },
+    tiles: [
+      { label: "Candy Corn", correctSlot: "S1", logicNote: "Candy corn is orange and you can eat it, but each piece is a little triangle, not round.", fact: "Candy corn has been made since the 1880s, and its three colored stripes were originally poured by hand, one layer at a time." },
+      { label: "Basketball", correctSlot: "S2", logicNote: "A basketball is orange and round, but you would not want to eat one.", fact: "Basketballs were brown until the late 1950s, when coach Tony Hinkle pushed for an orange ball that players and fans could see more easily." },
+      { label: "Blueberry", correctSlot: "S3", logicNote: "A blueberry is round and you can eat it, but it is blue, not orange.", fact: "Blueberries are one of the few foods that are naturally blue, and the United States grows more of them than any other country." },
+      { label: "Clementine", correctSlot: "S4", logicNote: "A clementine is orange, round, and perfectly good to eat.", fact: "Clementines are usually seedless because they are grown far from other citrus trees, which keeps the blossoms from being cross-pollinated." },
+      { label: "Traffic Cone", correctSlot: null },
+      { label: "Celery", correctSlot: null },
+      { label: "Soccer Ball", correctSlot: null },
+      { label: "Broomstick", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Wears a Mask + Fictional + A Hero",
+    difficultyEstimate: 50,
+    labels: { A: "Wears a Mask", B: "Fictional", C: "A Hero" },
+    tiles: [
+      { label: "Jason Voorhees", correctSlot: "S1", logicNote: "Jason Voorhees is a fictional character who wears a hockey mask, but he is the villain of Friday the 13th, not a hero.", fact: "Jason did not pick up his famous hockey mask until the third Friday the 13th film in 1982; before that he wore a burlap sack." },
+      { label: "Firefighter", correctSlot: "S2", logicNote: "A firefighter wears a breathing mask and is a real-life hero, but there is nothing fictional about the job.", fact: "Benjamin Franklin helped found one of America's first volunteer fire companies in Philadelphia in 1736." },
+      { label: "Harry Potter", correctSlot: "S3", logicNote: "Harry Potter is a fictional hero, but he fights with a wand and glasses, never a mask.", fact: "J.K. Rowling has said the idea for Harry Potter came to her fully formed on a delayed train from Manchester to London in 1990." },
+      { label: "Zorro", correctSlot: "S4", logicNote: "Zorro is a fictional hero who hides his face behind a black mask.", fact: "Zorro first appeared in a 1919 magazine serial, and his masked double life helped inspire the creation of Batman two decades later." },
+      { label: "Hockey Goalie", correctSlot: null },
+      { label: "Rosa Parks", correctSlot: null },
+      { label: "Captain Hook", correctSlot: null },
+      { label: "Garden Gnome", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Has Fangs + Venomous + Nocturnal",
+    difficultyEstimate: 36,
+    labels: { A: "Has Fangs", B: "Venomous", C: "Nocturnal" },
+    tiles: [
+      { label: "King Cobra", correctSlot: "S1", logicNote: "A king cobra has fangs and a venomous bite, but it hunts by day, so it is not nocturnal.", fact: "The king cobra is the longest venomous snake in the world and is the only snake known to build a nest for its eggs." },
+      { label: "Vampire", correctSlot: "S2", logicNote: "A vampire has fangs and only comes out at night, but its bite is not venomous; it just drinks your blood.", fact: "Bram Stoker's Dracula never actually turns to dust in sunlight in the novel; that weakness was invented by the 1922 silent film Nosferatu." },
+      { label: "Scorpion", correctSlot: "S3", logicNote: "A scorpion is venomous and nocturnal, but its venom comes from a tail stinger, not fangs.", fact: "Scorpions glow blue-green under ultraviolet light, which is how researchers find them in the desert at night." },
+      { label: "Black Widow", correctSlot: "S4", logicNote: "A black widow spider bites with fangs, is venomous, and does its hunting at night.", fact: "Despite the name, female black widows only occasionally eat their mates, and the males often escape unharmed." },
+      { label: "Owl", correctSlot: null },
+      { label: "Jellyfish", correctSlot: null },
+      { label: "Walrus", correctSlot: null },
+      { label: "Garlic", correctSlot: null }
+    ]
+  }
+},
+
+  {
   date: "2026-10-28",
   easy: {
     title: "A Snack + Salty + Comes in a Bag",
