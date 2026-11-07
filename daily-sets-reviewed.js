@@ -20,6 +20,342 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-11-11",
+  easy: {
+    title: "A Flower + Red + Smells Nice",
+    difficultyEstimate: 81,
+    labels: { A: "A Flower", B: "Red", C: "Smells Nice" },
+    tiles: [
+      { label: "Poppy", correctSlot: "S1", logicNote: "A poppy is a red flower, but it has almost no scent.", fact: "Red poppies became the symbol of remembrance for fallen soldiers after they bloomed across the battlefields of World War I, which is why they are worn on Veterans Day and Remembrance Day." },
+      { label: "Lavender", correctSlot: "S2", logicNote: "Lavender is a flower famous for its scent, but it is purple, not red.", fact: "Lavender's name comes from the Latin word lavare, to wash, because the Romans added it to their baths." },
+      { label: "Cherry Pie", correctSlot: "S3", logicNote: "A cherry pie is red and smells wonderful coming out of the oven, but it is a dessert, not a flower.", fact: "Most of the tart cherries used in American cherry pies come from Michigan, which grows about three quarters of the national crop." },
+      { label: "Rose", correctSlot: "S4", logicNote: "A rose is a red flower with a famous fragrance.", fact: "It takes roughly 10,000 pounds of rose petals to produce a single pound of rose oil, which is why real rose perfume is so expensive." },
+      { label: "Sunflower", correctSlot: null },
+      { label: "Stop Sign", correctSlot: null },
+      { label: "Fresh Bread", correctSlot: null },
+      { label: "Scissors", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Computer Term + An Animal + Also a Verb",
+    difficultyEstimate: 50,
+    labels: { A: "A Computer Term", B: "An Animal", C: "Also a Verb" },
+    tiles: [
+      { label: "Python", correctSlot: "S1", logicNote: "Python is a popular programming language and a snake, but it is not a verb.", fact: "The Python programming language is named after Monty Python's Flying Circus, not the snake; its creator was a fan of the show." },
+      { label: "Crash", correctSlot: "S2", logicNote: "A computer can crash and you can crash a party, but a crash is not an animal.", fact: "The 1988 Morris worm, one of the first major internet crashes, knocked out about 10 percent of all computers connected to the internet at the time." },
+      { label: "Hog", correctSlot: "S3", logicNote: "A hog is an animal and you can hog the remote, but hog is not a computer term.", fact: "Pigs are among the smartest domestic animals; in studies they have learned to play simple video games using a joystick with their snouts." },
+      { label: "Bug", correctSlot: "S4", logicNote: "A bug is a computer glitch, an insect, and a verb meaning to annoy.", fact: "In 1947, engineers found an actual moth stuck in a relay of the Harvard Mark II computer and taped it into the logbook as the first case of a bug being found." },
+      { label: "Laptop", correctSlot: null },
+      { label: "Koala", correctSlot: null },
+      { label: "Whisper", correctSlot: null },
+      { label: "Bucket", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Roman Numeral + A Chemical Symbol + A Vitamin",
+    difficultyEstimate: 36,
+    labels: { A: "A Roman Numeral", B: "A Chemical Symbol", C: "A Vitamin" },
+    tiles: [
+      { label: "I", correctSlot: "S1", logicNote: "I is the Roman numeral for one and the chemical symbol for iodine, but there is no vitamin I.", fact: "Iodine was discovered by accident in 1811 when a French chemist added too much acid to seaweed ash and saw a violet vapor rise up." },
+      { label: "D", correctSlot: "S2", logicNote: "D is the Roman numeral for 500 and the sunshine vitamin, but no element on the periodic table uses D as its symbol.", fact: "Your skin makes vitamin D from sunlight, and in winter people in northern cities like Boston cannot make any at all from November to February." },
+      { label: "K", correctSlot: "S3", logicNote: "K is the chemical symbol for potassium and a vitamin needed for blood clotting, but it is not a Roman numeral.", fact: "Vitamin K got its letter from the German word Koagulation, because the Danish scientist who discovered it published in a German journal." },
+      { label: "C", correctSlot: "S4", logicNote: "C is the Roman numeral for 100, the chemical symbol for carbon, and the vitamin in orange juice.", fact: "Humans are among the few mammals that cannot make their own vitamin C, which is why sailors on long voyages once came down with scurvy." },
+      { label: "M", correctSlot: null },
+      { label: "O", correctSlot: null },
+      { label: "E", correctSlot: null },
+      { label: "Z", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-10",
+  easy: {
+    title: "A Bird + Lives Near Water + Has a Long Neck",
+    difficultyEstimate: 82,
+    labels: { A: "A Bird", B: "Lives Near Water", C: "Has a Long Neck" },
+    tiles: [
+      { label: "Duck", correctSlot: "S1", logicNote: "A duck is a bird that lives on ponds and lakes, but its neck is short.", fact: "A duck's feathers are so waterproof that its downy under-layer stays completely dry even when the duck dives." },
+      { label: "Ostrich", correctSlot: "S2", logicNote: "An ostrich is a long-necked bird, but it lives on dry African savanna, nowhere near the water.", fact: "An ostrich's eye is bigger than its brain, and at about two inches across it is the largest eye of any land animal." },
+      { label: "Loch Ness Monster", correctSlot: "S3", logicNote: "The Loch Ness Monster supposedly lives in a lake and is always drawn with a long neck, but it is no bird.", fact: "The famous 1934 Surgeon's Photograph of the Loch Ness Monster was revealed in 1994 to be a toy submarine fitted with a sculpted head." },
+      { label: "Swan", correctSlot: "S4", logicNote: "A swan is a long-necked bird that lives on lakes and rivers.", fact: "Swans usually mate for life, and a swan's neck has more vertebrae than a giraffe's, around 24 compared to the giraffe's 7." },
+      { label: "Robin", correctSlot: null },
+      { label: "Trout", correctSlot: null },
+      { label: "Brontosaurus", correctSlot: null },
+      { label: "Wristwatch", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Kitchen Tool + Also a Verb + Has a Handle",
+    difficultyEstimate: 50,
+    labels: { A: "A Kitchen Tool", B: "Also a Verb", C: "Has a Handle" },
+    tiles: [
+      { label: "Scale", correctSlot: "S1", logicNote: "A kitchen scale weighs ingredients and you can scale a recipe up or down, but a scale has no handle.", fact: "Professional bakers weigh flour instead of measuring it by the cup, because a cup of flour can vary by more than an ounce depending on how it is scooped." },
+      { label: "Spatula", correctSlot: "S2", logicNote: "A spatula is a kitchen tool with a handle, but there is no verb to spatula.", fact: "The word spatula comes from the Latin for a little broad sword, which is roughly what the flat blade looks like." },
+      { label: "Rake", correctSlot: "S3", logicNote: "You can rake leaves and a rake has a long handle, but it belongs in the garden shed, not the kitchen.", fact: "The expression rake in money comes from gambling houses, where the dealer used a small rake to pull chips across the table." },
+      { label: "Whisk", correctSlot: "S4", logicNote: "A whisk is a kitchen tool with a handle, and to whisk eggs is a verb.", fact: "A balloon whisk works because its many wires drag air into the liquid, and a copper bowl helps egg whites hold that air even better." },
+      { label: "Cutting Board", correctSlot: null },
+      { label: "Jump", correctSlot: null },
+      { label: "Suitcase", correctSlot: null },
+      { label: "Mountain", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Famous Ship + Fictional + Sank",
+    difficultyEstimate: 38,
+    labels: { A: "A Famous Ship", B: "Fictional", C: "Sank" },
+    tiles: [
+      { label: "Millennium Falcon", correctSlot: "S1", logicNote: "The Millennium Falcon is one of the most famous ships in fiction, but it flies through space and never went to the bottom of anything.", fact: "The Millennium Falcon's round shape came from a last-minute redesign; the original model was reused as the Blockade Runner that opens Star Wars." },
+      { label: "Titanic", correctSlot: "S2", logicNote: "The Titanic is a famous ship that sank, but it was all too real.", fact: "The Titanic's wreck was not found until 1985, and it lies in two pieces about 12,500 feet down in the North Atlantic." },
+      { label: "Atlantis", correctSlot: "S3", logicNote: "Atlantis is a fictional place that sank beneath the sea, but it was a whole island, not a ship.", fact: "Atlantis comes from just two of Plato's dialogues, written around 360 BC, and no earlier source mentions it at all." },
+      { label: "The Pequod", correctSlot: "S4", logicNote: "The Pequod is the famous whaling ship in Moby-Dick, which is fiction, and the white whale sinks it in the final chapter.", fact: "Herman Melville based the sinking of the Pequod on the real whaleship Essex, which was rammed and sunk by a sperm whale in 1820." },
+      { label: "Mayflower", correctSlot: null },
+      { label: "Hogwarts", correctSlot: null },
+      { label: "Compass", correctSlot: null },
+      { label: "Iceberg", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-09",
+  easy: {
+    title: "A Dairy Product + Yellow + Spreadable",
+    difficultyEstimate: 82,
+    labels: { A: "A Dairy Product", B: "Yellow", C: "Spreadable" },
+    tiles: [
+      { label: "American Cheese", correctSlot: "S1", logicNote: "American cheese is a yellow dairy product, but it comes in slices, not something you spread with a knife.", fact: "American cheese is often orange or yellow because of annatto, a natural dye from the seeds of a tropical tree." },
+      { label: "Cream Cheese", correctSlot: "S2", logicNote: "Cream cheese is a spreadable dairy product, but it is white.", fact: "Philadelphia cream cheese has never been made in Philadelphia; it was created in upstate New York in 1872 and named for the city's reputation for fine food." },
+      { label: "Mustard", correctSlot: "S3", logicNote: "Mustard is yellow and spreadable, but it is made from seeds, not milk.", fact: "The bright yellow of American mustard comes from turmeric, not from the mustard seeds themselves." },
+      { label: "Butter", correctSlot: "S4", logicNote: "Butter is a yellow, spreadable dairy product.", fact: "Butter is yellow because of beta-carotene from the grass cows eat, which is why butter from grass-fed cows is a deeper gold." },
+      { label: "Milk", correctSlot: null },
+      { label: "Taxi Cab", correctSlot: null },
+      { label: "Jam", correctSlot: null },
+      { label: "Fork", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Musical + Based on a Book + Set in Paris",
+    difficultyEstimate: 52,
+    labels: { A: "A Musical", B: "Based on a Book", C: "Set in Paris" },
+    tiles: [
+      { label: "Wicked", correctSlot: "S1", logicNote: "Wicked is a musical adapted from Gregory Maguire's novel, but it takes place in the Land of Oz, not Paris.", fact: "Wicked opened on Broadway in 2003 to mixed reviews and no Tony for Best Musical, yet it went on to gross more than a billion dollars." },
+      { label: "Moulin Rouge!", correctSlot: "S2", logicNote: "Moulin Rouge! is a musical set in Paris, but its story was an original screenplay, not a book.", fact: "The real Moulin Rouge cabaret opened in Paris in 1889, the same year as the Eiffel Tower, and its red windmill still turns today." },
+      { label: "The Da Vinci Code", correctSlot: "S3", logicNote: "The Da Vinci Code is a novel that opens in Paris, but nobody has turned it into a musical.", fact: "The Da Vinci Code has sold more than 80 million copies, and the Louvre saw a surge of visitors asking to see the spots described in the book." },
+      { label: "Les Misérables", correctSlot: "S4", logicNote: "Les Misérables is a musical based on Victor Hugo's novel and set in Paris.", fact: "Victor Hugo's novel Les Misérables runs more than 1,400 pages, and the stage musical has been seen by over 130 million people worldwide." },
+      { label: "Hamilton", correctSlot: null },
+      { label: "The Louvre", correctSlot: null },
+      { label: "1984", correctSlot: null },
+      { label: "Grease", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Novel + Title Is a Character's Name + Written in the 1800s",
+    difficultyEstimate: 38,
+    labels: { A: "A Novel", B: "Title Is a Character's Name", C: "Written in the 1800s" },
+    tiles: [
+      { label: "Matilda", correctSlot: "S1", logicNote: "Matilda is a novel named for its heroine, but Roald Dahl wrote it in 1988.", fact: "Roald Dahl wrote Matilda in a garden shed, and his first draft had Matilda as a wicked child before he rewrote her as the hero." },
+      { label: "Little Women", correctSlot: "S2", logicNote: "Little Women is an 1868 novel, but its title describes the four March sisters rather than naming one.", fact: "Louisa May Alcott wrote Little Women in about ten weeks, and it sold out its first printing of 2,000 copies in two weeks." },
+      { label: "Aida", correctSlot: "S3", logicNote: "Aida is named for its heroine and premiered in 1871, but it is a Verdi opera, not a novel.", fact: "Verdi's Aida premiered in Cairo in 1871, having been commissioned by the ruler of Egypt for the city's new opera house." },
+      { label: "Jane Eyre", correctSlot: "S4", logicNote: "Jane Eyre is an 1847 novel whose title is the name of its narrator.", fact: "Charlotte Brontë published Jane Eyre under the pen name Currer Bell, and many early critics assumed the author was a man." },
+      { label: "The Hobbit", correctSlot: null },
+      { label: "Romeo and Juliet", correctSlot: null },
+      { label: "Gettysburg Address", correctSlot: null },
+      { label: "Mona Lisa", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-08",
+  easy: {
+    title: "A Toy + Round + Bounces",
+    difficultyEstimate: 81,
+    labels: { A: "A Toy", B: "Round", C: "Bounces" },
+    tiles: [
+      { label: "Yo-Yo", correctSlot: "S1", logicNote: "A yo-yo is a round toy, but it spins up and down its string rather than bouncing.", fact: "Yo-yos are one of the oldest toys in the world, and a Greek vase from about 440 BC shows a boy playing with one." },
+      { label: "Pogo Stick", correctSlot: "S2", logicNote: "A pogo stick is a toy built for bouncing, but it is a long straight pole, not a round object.", fact: "The pogo stick was patented in the United States in 1919, and pogo-jumping fads swept through the 1920s and again in the 1970s." },
+      { label: "Car Tire", correctSlot: "S3", logicNote: "A car tire is round and bounces when dropped, but it is a car part, not a toy.", fact: "Tires are black because carbon black is added to the rubber for strength; early tires were off-white, the natural color of rubber." },
+      { label: "Beach Ball", correctSlot: "S4", logicNote: "A beach ball is a round toy that bounces.", fact: "The classic six-panel beach ball was introduced in California in 1938, and the panels are typically white alternating with bright colors." },
+      { label: "Jigsaw Puzzle", correctSlot: null },
+      { label: "Dinner Plate", correctSlot: null },
+      { label: "Spring", correctSlot: null },
+      { label: "Toothbrush", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Sitcom + Set in New York City + One-Word Title",
+    difficultyEstimate: 51,
+    labels: { A: "A Sitcom", B: "Set in New York City", C: "One-Word Title" },
+    tiles: [
+      { label: "How I Met Your Mother", correctSlot: "S1", logicNote: "How I Met Your Mother is a sitcom set in Manhattan, but its title runs five words long.", fact: "The bar at the center of How I Met Your Mother, MacLaren's, was named after a production assistant on the show, Carl MacLaren." },
+      { label: "Cheers", correctSlot: "S2", logicNote: "Cheers is a one-word sitcom, but its bar is in Boston, not New York.", fact: "The pilot episode of Cheers finished nearly last in the ratings in 1982, yet the show went on to run for eleven seasons." },
+      { label: "Ghostbusters", correctSlot: "S3", logicNote: "Ghostbusters is a one-word title set in New York City, but it is a movie, not a sitcom.", fact: "The Ghostbusters firehouse headquarters is a real working fire station in Lower Manhattan, Hook and Ladder Company 8." },
+      { label: "Friends", correctSlot: "S4", logicNote: "Friends is a one-word sitcom set in New York City.", fact: "The apartment numbers in Friends were changed from 4 and 5 to 19 and 20 after the first few episodes, because the hallway window showed they were on a high floor." },
+      { label: "The Office", correctSlot: null },
+      { label: "Jaws", correctSlot: null },
+      { label: "Central Park", correctSlot: null },
+      { label: "Rocky", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Fly' + Can Precede 'Fish' + A Color",
+    difficultyEstimate: 33,
+    labels: { A: "Can Precede 'Fly'", B: "Can Precede 'Fish'", C: "A Color" },
+    tiles: [
+      { label: "Blow", correctSlot: "S1", logicNote: "Blowfly and blowfish are both real creatures, but blow is not a color.", fact: "The blowfish, or pufferfish, carries a toxin in its organs that is more than a thousand times deadlier than cyanide, yet trained chefs serve it in Japan as fugu." },
+      { label: "Green", correctSlot: "S2", logicNote: "A greenfly is a garden aphid and green is a color, but there is no greenfish.", fact: "Greenflies can give birth to live young that are already pregnant, which is how a single aphid can produce thousands of descendants in a summer." },
+      { label: "Gold", correctSlot: "S3", logicNote: "Goldfish is a word and gold is a color, but goldfly is not a thing.", fact: "Goldfish do not have a three-second memory; studies show they can remember things for months and even learn to push levers for food." },
+      { label: "White", correctSlot: "S4", logicNote: "Whitefly and whitefish are both real creatures, and white is a color.", fact: "Whitefish is one of the traditional fish used to make gefilte fish, and smoked whitefish is a staple of New York bagel shops." },
+      { label: "Sword", correctSlot: null },
+      { label: "House", correctSlot: null },
+      { label: "Jelly", correctSlot: null },
+      { label: "Purple", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-07",
+  easy: {
+    title: "A Reptile + Has a Shell + Lives in Water",
+    difficultyEstimate: 82,
+    labels: { A: "A Reptile", B: "Has a Shell", C: "Lives in Water" },
+    tiles: [
+      { label: "Tortoise", correctSlot: "S1", logicNote: "A tortoise is a reptile with a shell, but it lives entirely on dry land.", fact: "Giant tortoises can live well past 150 years, and one named Jonathan on the island of St. Helena is thought to be the oldest living land animal." },
+      { label: "Crocodile", correctSlot: "S2", logicNote: "A crocodile is a reptile that spends its life in rivers and swamps, but it has tough scales rather than a shell.", fact: "Crocodiles cannot stick out their tongues, because a membrane holds the tongue to the floor of the mouth." },
+      { label: "Clam", correctSlot: "S3", logicNote: "A clam has a shell and lives in the water, but it is a mollusk, not a reptile.", fact: "An ocean quahog clam dredged up off Iceland in 2006 was 507 years old, making it the longest-lived animal ever confirmed." },
+      { label: "Sea Turtle", correctSlot: "S4", logicNote: "A sea turtle is a reptile with a shell that lives in the ocean.", fact: "Female sea turtles return to lay their eggs on the very same beach where they hatched, sometimes decades earlier and thousands of miles away." },
+      { label: "Snail", correctSlot: null },
+      { label: "Eel", correctSlot: null },
+      { label: "Lizard", correctSlot: null },
+      { label: "Helmet", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Kind of Bread + Named After a Place + Round",
+    difficultyEstimate: 50,
+    labels: { A: "A Kind of Bread", B: "Named After a Place", C: "Round" },
+    tiles: [
+      { label: "Texas Toast", correctSlot: "S1", logicNote: "Texas toast is a bread named for the Lone Star State, but its thick slices are square.", fact: "Texas toast is simply white bread sliced twice as thick as usual, buttered on both sides, and grilled, a style that spread from Texas diners in the 1940s." },
+      { label: "Bagel", correctSlot: "S2", logicNote: "A bagel is a round bread, but its name comes from a Yiddish word for ring, not a place.", fact: "Bagels are boiled before they are baked, which is what gives them their shiny, chewy crust." },
+      { label: "Belgian Waffle", correctSlot: "S3", logicNote: "A Belgian waffle is round and named after Belgium, but a waffle is a batter cake, not a bread.", fact: "Belgian waffles became famous in America at the 1964 New York World's Fair, where they were sold topped with strawberries and whipped cream." },
+      { label: "English Muffin", correctSlot: "S4", logicNote: "An English muffin is a round bread named after England.", fact: "English muffins were invented in New York in 1880 by an English immigrant baker named Samuel Bath Thomas, whose name is still on the package." },
+      { label: "Baguette", correctSlot: null },
+      { label: "Frisbee", correctSlot: null },
+      { label: "Swiss Cheese", correctSlot: null },
+      { label: "Lantern", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "An NFL Team Name + A Bird + An MLB Team Name",
+    difficultyEstimate: 37,
+    labels: { A: "An NFL Team Name", B: "A Bird", C: "An MLB Team Name" },
+    tiles: [
+      { label: "Eagles", correctSlot: "S1", logicNote: "The Eagles play football in Philadelphia and an eagle is a bird, but no baseball team goes by that name.", fact: "The Philadelphia Eagles were named in 1933 after the blue eagle symbol of the National Recovery Administration, a New Deal program." },
+      { label: "Giants", correctSlot: "S2", logicNote: "There are Giants in both the NFL and Major League Baseball, but a giant is not a bird.", fact: "Both Giants teams started in New York; the baseball Giants moved to San Francisco in 1958 while the football Giants stayed put." },
+      { label: "Blue Jays", correctSlot: "S3", logicNote: "The Blue Jays play baseball in Toronto and a blue jay is a bird, but there is no NFL team by that name.", fact: "A blue jay's feathers contain no blue pigment at all; the color comes from the way tiny structures in the feathers scatter light." },
+      { label: "Cardinals", correctSlot: "S4", logicNote: "The Cardinals are an NFL team in Arizona and an MLB team in St. Louis, and a cardinal is a bird.", fact: "The Arizona Cardinals are the oldest continuously run professional football team in America, with roots going back to a Chicago club founded in 1898." },
+      { label: "Penguins", correctSlot: null },
+      { label: "Cowboys", correctSlot: null },
+      { label: "Dodgers", correctSlot: null },
+      { label: "Lakers", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-06",
+  easy: {
+    title: "At a Birthday Party + Round + You Can Eat It",
+    difficultyEstimate: 83,
+    labels: { A: "At a Birthday Party", B: "Round", C: "You Can Eat It" },
+    tiles: [
+      { label: "Balloon", correctSlot: "S1", logicNote: "Balloons are round and show up at every birthday party, but you definitely cannot eat one.", fact: "The first rubber balloons were made in 1824 by scientist Michael Faraday, who used them to hold hydrogen for experiments." },
+      { label: "Pizza Slice", correctSlot: "S2", logicNote: "A pizza slice is party food you can eat, but a slice is a triangle, not a circle.", fact: "Americans eat about 100 acres of pizza every day, which works out to roughly 350 slices a second." },
+      { label: "Orange", correctSlot: "S3", logicNote: "An orange is round and edible, but it is not what anyone serves at a birthday party.", fact: "Oranges were originally green when ripe in their native Southeast Asia, and they only turn orange in climates with cool nights." },
+      { label: "Cupcake", correctSlot: "S4", logicNote: "A cupcake is round, edible, and a birthday party favorite.", fact: "The name cupcake comes from the 1800s, when the batter was measured by the cup and often baked in actual teacups." },
+      { label: "Birthday Card", correctSlot: null },
+      { label: "Button", correctSlot: null },
+      { label: "Sandwich", correctSlot: null },
+      { label: "Scarf", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Can Precede 'House' + Can Precede 'Dog' + An Animal",
+    difficultyEstimate: 51,
+    labels: { A: "Can Precede 'House'", B: "Can Precede 'Dog'", C: "An Animal" },
+    tiles: [
+      { label: "Hot", correctSlot: "S1", logicNote: "Hothouse and hot dog are both familiar, but hot is not an animal.", fact: "Nobody knows for sure who coined the term hot dog, but it was already slang on college campuses by the 1890s." },
+      { label: "Hen", correctSlot: "S2", logicNote: "Henhouse is a word and a hen is an animal, but there is no such thing as a hen dog.", fact: "A hen can lay eggs without a rooster around; the rooster is only needed if the eggs are meant to hatch." },
+      { label: "Bull", correctSlot: "S3", logicNote: "Bulldog is a word and a bull is an animal, but bullhouse is not a thing.", fact: "Bulls are colorblind to red, so it is the movement of the matador's cape, not its color, that provokes the charge." },
+      { label: "Bird", correctSlot: "S4", logicNote: "Birdhouse and bird dog are both real terms, and a bird is an animal.", fact: "A bird dog is a hunting dog trained to find and retrieve game birds, which is why the phrase also means to track something down." },
+      { label: "Light", correctSlot: null },
+      { label: "Under", correctSlot: null },
+      { label: "Goat", correctSlot: null },
+      { label: "Tree", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Musical Instrument + Also a Verb + Has Strings",
+    difficultyEstimate: 37,
+    labels: { A: "A Musical Instrument", B: "Also a Verb", C: "Has Strings" },
+    tiles: [
+      { label: "Drum", correctSlot: "S1", logicNote: "A drum is an instrument and you can drum your fingers, but a drum has a skin, not strings.", fact: "The world's oldest known drums are alligator-skin drums from China that are more than 5,000 years old." },
+      { label: "Cello", correctSlot: "S2", logicNote: "A cello is a stringed instrument, but there is no verb to cello.", fact: "The cello is usually the instrument closest in range to the human voice, which is why composers hand it the singing melodies." },
+      { label: "Bow", correctSlot: "S3", logicNote: "You can bow to an audience and an archer's bow has a string, but a bow by itself is not a musical instrument.", fact: "The English longbow had a draw weight of over 100 pounds, and skeletons of medieval archers show visibly enlarged left arms from years of practice." },
+      { label: "Fiddle", correctSlot: "S4", logicNote: "A fiddle is a stringed instrument, and to fiddle with something is a common verb.", fact: "A fiddle and a violin are the same instrument; the only real difference is the style of music being played on it." },
+      { label: "Flute", correctSlot: null },
+      { label: "Jog", correctSlot: null },
+      { label: "Tea Bag", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-05",
+  easy: {
+    title: "Has Wheels + You Can Ride It + Has a Motor",
+    difficultyEstimate: 82,
+    labels: { A: "Has Wheels", B: "You Can Ride It", C: "Has a Motor" },
+    tiles: [
+      { label: "Bicycle", correctSlot: "S1", logicNote: "A bicycle has wheels and you ride it, but your legs are the only engine.", fact: "The first pedal bicycles of the 1860s were nicknamed boneshakers because their iron tires rattled riders over cobblestones." },
+      { label: "Remote-Control Car", correctSlot: "S2", logicNote: "A remote-control car has wheels and a little electric motor, but it is far too small for anyone to ride.", fact: "Many hobby-grade remote-control cars can top 60 miles per hour, faster than most real cars are driven in town." },
+      { label: "Jet Ski", correctSlot: "S3", logicNote: "A jet ski has a motor and you ride it across the water, but it has no wheels.", fact: "Jet Ski is actually a Kawasaki brand name that became the everyday word for every personal watercraft, much like Kleenex for tissues." },
+      { label: "Golf Cart", correctSlot: "S4", logicNote: "A golf cart has wheels, carries riders, and runs on an electric or gas motor.", fact: "In some Florida and Arizona retirement communities, golf carts are street-legal and outnumber cars on the local roads." },
+      { label: "Horse", correctSlot: null },
+      { label: "Blender", correctSlot: null },
+      { label: "Sled", correctSlot: null },
+      { label: "Teapot", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Can Follow 'Snow' + Can Follow 'Sand' + Can Follow 'Wind'",
+    difficultyEstimate: 50,
+    labels: { A: "Can Follow 'Snow'", B: "Can Follow 'Sand'", C: "Can Follow 'Wind'" },
+    tiles: [
+      { label: "Bank", correctSlot: "S1", logicNote: "Snowbank and sandbank are both real words, but there is no such thing as a windbank.", fact: "A sandbank can appear and vanish with the tides, which is why old sea charts marked them as one of a sailor's greatest dangers." },
+      { label: "Fall", correctSlot: "S2", logicNote: "Snowfall and windfall both work, but sandfall is not a word.", fact: "The word windfall originally meant fruit or wood blown down by the wind, which peasants were allowed to keep without paying the landowner." },
+      { label: "Bag", correctSlot: "S3", logicNote: "Sandbag and windbag are both words, but nobody talks about a snowbag.", fact: "Sandbags have been used to hold back floods since at least the 1700s, and a single bag of wet sand can weigh more than 40 pounds." },
+      { label: "Storm", correctSlot: "S4", logicNote: "Snowstorm, sandstorm, and windstorm are all common words.", fact: "A big Saharan sandstorm can carry dust all the way across the Atlantic Ocean, feeding nutrients to the Amazon rainforest." },
+      { label: "Castle", correctSlot: null },
+      { label: "Plow", correctSlot: null },
+      { label: "Mill", correctSlot: null },
+      { label: "Shield", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Board Game + Played With Dice + Over 100 Years Old",
+    difficultyEstimate: 37,
+    labels: { A: "A Board Game", B: "Played With Dice", C: "Over 100 Years Old" },
+    tiles: [
+      { label: "Risk", correctSlot: "S1", logicNote: "Risk is a board game decided by rolling dice, but it only dates to the late 1950s.", fact: "Risk was invented by French filmmaker Albert Lamorisse, who also directed the Oscar-winning short film The Red Balloon." },
+      { label: "Checkers", correctSlot: "S2", logicNote: "Checkers is a board game that goes back thousands of years, but it never uses dice.", fact: "A checkers program called Chinook became the first computer to win a human world championship in any game, back in 1994." },
+      { label: "Craps", correctSlot: "S3", logicNote: "Craps is a dice game with roots in the early 1800s, but it is played on a table layout, not a board game.", fact: "Craps grew out of an old English dice game called Hazard and was popularized in New Orleans in the early 19th century." },
+      { label: "Backgammon", correctSlot: "S4", logicNote: "Backgammon is a board game, every move depends on dice, and versions of it are about 5,000 years old.", fact: "A board game nearly identical to backgammon was found in the ancient city of Ur in modern Iraq, dating to around 2600 BC." },
+      { label: "Poker", correctSlot: null },
+      { label: "Sudoku", correctSlot: null },
+      { label: "Dominoes", correctSlot: null },
+      { label: "Yahtzee", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-11-04",
   easy: {
     title: "A Vegetable + Green + Grows on a Vine",
