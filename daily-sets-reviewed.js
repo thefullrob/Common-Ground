@@ -20,6 +20,681 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-11-25",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "A Way to Travel + Has Wheels + Runs on a Schedule",
+    difficultyEstimate: 82,
+    labels: { A: "A Way to Travel", B: "Has Wheels", C: "Runs on a Schedule" },
+    tiles: [
+      { label: "Car", correctSlot: "S1", logicNote: "A car gets you home for the holidays on four wheels, but it leaves whenever you decide to, not on a timetable.", fact: "The day before Thanksgiving is one of the busiest travel days of the year, and AAA estimates that nearly 90 percent of holiday travelers go by car." },
+      { label: "Ferry", correctSlot: "S2", logicNote: "A ferry carries travelers on a fixed schedule, but it floats on a hull instead of rolling on wheels.", fact: "The Staten Island Ferry carries about 25 million passengers a year, and it has been free to ride since 1997." },
+      { label: "Garbage Truck", correctSlot: "S3", logicNote: "A garbage truck has wheels and comes by on a schedule, but it is not how anyone gets to Grandma's house.", fact: "A typical garbage truck can hold the trash of about 800 to 850 homes before it needs to unload." },
+      { label: "Train", correctSlot: "S4", logicNote: "A train is a way to travel, rolls on steel wheels, and runs on a published timetable.", fact: "The first railroad timetables in the 1840s forced Britain to adopt a single standard time, since every town had been setting its clocks by its own local noon." },
+      { label: "Horseback", correctSlot: null },
+      { label: "Office Chair", correctSlot: null },
+      { label: "School Bell", correctSlot: null },
+      { label: "Scarecrow", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "In a Cornucopia + A Fruit + Comes in Bunches",
+    difficultyEstimate: 50,
+    labels: { A: "In a Cornucopia", B: "A Fruit", C: "Comes in Bunches" },
+    tiles: [
+      { label: "Pear", correctSlot: "S1", logicNote: "Pears spill out of every harvest cornucopia and are fruit, but each one hangs on the tree by itself.", fact: "Pears ripen from the inside out, which is why a pear that feels soft on the outside is often already mushy in the middle." },
+      { label: "Wheat", correctSlot: "S2", logicNote: "Sheaves of wheat are a classic cornucopia filler and come in bunches, but wheat is a grain, not a fruit.", fact: "Wheat is grown on more of the Earth's land than any other crop, about 540 million acres." },
+      { label: "Cherries", correctSlot: "S3", logicNote: "Cherries are fruit that grow in clusters, but they are a summer crop, not part of the autumn harvest display.", fact: "The stems on a bunch of cherries are the key to freshness; cherries with green, flexible stems were picked most recently." },
+      { label: "Grapes", correctSlot: "S4", logicNote: "Grapes are fruit, grow in bunches, and tumble out of nearly every cornucopia painting.", fact: "Grape vines can keep producing for more than 100 years, and the oldest known vine still bearing fruit, in Maribor, Slovenia, is more than 400 years old." },
+      { label: "Gourd", correctSlot: null },
+      { label: "Mango", correctSlot: null },
+      { label: "Keys", correctSlot: null },
+      { label: "Paintbrush", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Pie' + Can Precede 'Juice' + Can Precede 'Tree'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Precede 'Pie'", B: "Can Precede 'Juice'", C: "Can Precede 'Tree'" },
+    tiles: [
+      { label: "Blueberry", correctSlot: "S1", logicNote: "Blueberry pie and blueberry juice are both real, but blueberries grow on bushes, so there is no blueberry tree.", fact: "Blueberries are one of the few fruits native to North America, and Maine grows almost all of the country's wild blueberries." },
+      { label: "Pecan", correctSlot: "S2", logicNote: "Pecan pie and the pecan tree are both Southern icons, but nobody squeezes pecan juice.", fact: "A pecan tree can take 10 years to bear its first good crop, but it can then keep producing for 300 years." },
+      { label: "Pomegranate", correctSlot: "S3", logicNote: "Pomegranate juice fills grocery coolers and pomegranates grow on small trees, but nobody bakes a pomegranate pie.", fact: "The pomegranate gave the grenade its name; French soldiers thought the early hand bombs packed with shot looked like the seed-filled fruit." },
+      { label: "Apple", correctSlot: "S4", logicNote: "Apple pie, apple juice, and the apple tree all check out.", fact: "There are more than 7,500 varieties of apples grown around the world, and it would take about 20 years to try a new one every day." },
+      { label: "Pot", correctSlot: null },
+      { label: "Prune", correctSlot: null },
+      { label: "Palm", correctSlot: null },
+      { label: "Kazoo", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-24",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "A Dessert + Made With Fruit + Served Warm",
+    difficultyEstimate: 82,
+    labels: { A: "A Dessert", B: "Made With Fruit", C: "Served Warm" },
+    tiles: [
+      { label: "Ambrosia", correctSlot: "S1", logicNote: "Ambrosia is a fruit salad dessert with marshmallows and coconut, but it comes to the Thanksgiving table chilled.", fact: "Ambrosia takes its name from the food of the Greek gods, and the dish became a Southern holiday staple in the late 1800s when oranges and coconuts first became affordable." },
+      { label: "Lava Cake", correctSlot: "S2", logicNote: "A molten lava cake is a dessert served warm so the center oozes, but there is no fruit in it.", fact: "Chef Jean-Georges Vongerichten says he invented the molten chocolate cake by accident in 1987 when he pulled a batch of cakes out of the oven too early." },
+      { label: "Mulled Cider", correctSlot: "S3", logicNote: "Mulled cider is a warm drink made from apples, but you sip it rather than eat it for dessert.", fact: "Mulled cider is the modern descendant of wassail, the spiced drink English villagers carried from orchard to orchard in winter to toast the apple trees for a good harvest." },
+      { label: "Apple Crisp", correctSlot: "S4", logicNote: "Apple crisp is a fruit dessert served warm from the oven, usually with ice cream melting on top.", fact: "The apple crisp first appeared in American cookbooks in the 1920s, when the buttery oat topping became a cheap shortcut for cooks who did not want to roll out pie crust." },
+      { label: "Cheesecake", correctSlot: null },
+      { label: "Grapefruit", correctSlot: null },
+      { label: "Campfire", correctSlot: null },
+      { label: "Ice Skates", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Bird + A Holiday Dinner Dish + A Mild Insult",
+    difficultyEstimate: 51,
+    labels: { A: "A Bird", B: "A Holiday Dinner Dish", C: "A Mild Insult" },
+    tiles: [
+      { label: "Cornish Hen", correctSlot: "S1", logicNote: "A Cornish hen is a bird that shows up on holiday tables, but nobody uses it as an insult.", fact: "Despite the name, Cornish game hens are not game birds and are often male; they are simply young chickens harvested at about five weeks old." },
+      { label: "Chicken", correctSlot: "S2", logicNote: "A chicken is a bird and calling someone a chicken means they are a coward, but roast chicken is everyday dinner, not a holiday centerpiece.", fact: "There are about three chickens for every human on Earth, making them the most numerous bird on the planet." },
+      { label: "Fruitcake", correctSlot: "S3", logicNote: "Fruitcake is a holiday dish and a word for someone a little nutty, but it has no feathers.", fact: "A properly soaked fruitcake can last for years; one family in Michigan has kept a fruitcake baked in 1878 as an heirloom." },
+      { label: "Turkey", correctSlot: "S4", logicNote: "A turkey is a bird, the star of the Thanksgiving table, and a teasing word for someone who did something foolish.", fact: "Wild turkeys can fly short bursts at up to 55 miles per hour, but the domestic birds bred for Thanksgiving are too heavy to get off the ground." },
+      { label: "Flamingo", correctSlot: null },
+      { label: "Latkes", correctSlot: null },
+      { label: "Jerk", correctSlot: null },
+      { label: "Napkin", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Classic Rock Song + A Restaurant Chain + Has a Day of the Week",
+    difficultyEstimate: 37,
+    labels: { A: "A Classic Rock Song", B: "A Restaurant Chain", C: "Has a Day of the Week" },
+    tiles: [
+      { label: "Margaritaville", correctSlot: "S1", logicNote: "Margaritaville is Jimmy Buffett's signature song and his chain of restaurants, but there is no day of the week in it.", fact: "Jimmy Buffett wrote Margaritaville in about six minutes after a margarita lunch in Austin, and it grew into a business empire worth more than a billion dollars." },
+      { label: "Sunday Bloody Sunday", correctSlot: "S2", logicNote: "Sunday Bloody Sunday is a U2 classic with a day of the week in its title, but nobody has opened a restaurant by that name.", fact: "Bono famously introduced Sunday Bloody Sunday in concert by insisting that it was not a rebel song, a line captured on the band's 1983 live album Under a Blood Red Sky." },
+      { label: "TGI Fridays", correctSlot: "S3", logicNote: "TGI Fridays is a restaurant chain with a day of the week in its name, but it is not a song.", fact: "The first TGI Fridays opened in Manhattan in 1965 as a singles bar, and it is credited with inventing the loaded potato skin." },
+      { label: "Ruby Tuesday", correctSlot: "S4", logicNote: "Ruby Tuesday is a Rolling Stones hit, a restaurant chain, and a day of the week all at once.", fact: "The Ruby Tuesday restaurant chain was founded in 1972 by college students in Knoxville, Tennessee, who named it after the Rolling Stones song." },
+      { label: "Hotel California", correctSlot: null },
+      { label: "Olive Garden", correctSlot: null },
+      { label: "Wednesday", correctSlot: null },
+      { label: "Doormat", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-23",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "A Thanksgiving Food + Has a Crust + Made From a Vegetable",
+    difficultyEstimate: 81,
+    labels: { A: "A Thanksgiving Food", B: "Has a Crust", C: "Made From a Vegetable" },
+    tiles: [
+      { label: "Pecan Pie", correctSlot: "S1", logicNote: "Pecan pie is a Thanksgiving classic with a flaky crust, but pecans are nuts, not vegetables.", fact: "The pecan is the only major tree nut native to North America, and the pie did not become popular until the makers of Karo syrup printed a recipe on the bottle in the 1930s." },
+      { label: "Mashed Potatoes", correctSlot: "S2", logicNote: "Mashed potatoes are a Thanksgiving staple made from a vegetable, but there is no crust on a fluffy pile of potatoes.", fact: "Americans eat more potatoes on Thanksgiving than on any other day of the year." },
+      { label: "Rhubarb Pie", correctSlot: "S3", logicNote: "Rhubarb pie has a crust and is made from a vegetable, since rhubarb is a stalk, not a fruit, but it is a springtime treat, not a Thanksgiving dish.", fact: "A New York court legally declared rhubarb a fruit in 1947 so that importers could pay the lower tariff charged on fruit." },
+      { label: "Pumpkin Pie", correctSlot: "S4", logicNote: "Pumpkin pie is the signature Thanksgiving dessert, baked in a crust and made from a vegetable in the squash family.", fact: "Most canned pumpkin is not the round orange jack-o'-lantern kind at all, but a tan squash called Dickinson pumpkin grown almost entirely in Illinois." },
+      { label: "Stuffing", correctSlot: null },
+      { label: "Key Lime Pie", correctSlot: null },
+      { label: "Spinach", correctSlot: null },
+      { label: "Football", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "On the Thanksgiving Table + Comes in a Can + Sweet",
+    difficultyEstimate: 50,
+    labels: { A: "On the Thanksgiving Table", B: "Comes in a Can", C: "Sweet" },
+    tiles: [
+      { label: "Green Beans", correctSlot: "S1", logicNote: "Green beans come in a can and show up on the Thanksgiving table in a casserole, but they are not sweet.", fact: "Green bean casserole was invented in 1955 in the Campbell Soup Company test kitchen, and the company says about 20 million households serve it every Thanksgiving." },
+      { label: "Apple Cider", correctSlot: "S2", logicNote: "Apple cider is a sweet Thanksgiving drink, but it comes in a jug, not a can.", fact: "In colonial America, cider was safer to drink than water, and even children drank a watered-down version called ciderkin." },
+      { label: "Root Beer", correctSlot: "S3", logicNote: "Root beer is sweet and comes in a can, but it is not part of the traditional Thanksgiving spread.", fact: "Root beer floats were invented in 1893 by a Colorado brewery owner who thought the snowy peaks outside looked like ice cream floating in soda." },
+      { label: "Cranberry Sauce", correctSlot: "S4", logicNote: "Cranberry sauce is sweet, comes in a can, and slides onto the Thanksgiving table with the ridges still showing.", fact: "Americans buy about 80 million cans of jellied cranberry sauce a year, and the can is filled upside down so the rounded end comes out first." },
+      { label: "Dinner Rolls", correctSlot: null },
+      { label: "Tomato Soup", correctSlot: null },
+      { label: "Maple Syrup", correctSlot: null },
+      { label: "Snow Globe", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A US President + A Thanksgiving Connection + On US Currency",
+    difficultyEstimate: 38,
+    labels: { A: "A US President", B: "A Thanksgiving Connection", C: "On US Currency" },
+    tiles: [
+      { label: "George H.W. Bush", correctSlot: "S1", logicNote: "Bush was president and started the official turkey pardon in 1989, but his face is not on any American money.", fact: "Bush's 1989 pardon was the first official one, but the tradition has roots in a story about Lincoln's son Tad begging his father to spare a Christmas turkey." },
+      { label: "Andrew Jackson", correctSlot: "S2", logicNote: "Jackson was president and is on the 20 dollar bill, but he played no part in Thanksgiving history.", fact: "Jackson is on the 20 dollar bill despite having hated paper money and fought to shut down the national bank." },
+      { label: "Benjamin Franklin", correctSlot: "S3", logicNote: "Franklin is on the 100 dollar bill and famously praised the turkey over the bald eagle, but he was never president.", fact: "In a 1784 letter to his daughter, Franklin called the bald eagle a bird of bad moral character and praised the turkey as a much more respectable bird." },
+      { label: "Franklin D. Roosevelt", correctSlot: "S4", logicNote: "FDR was president, moved Thanksgiving up a week in 1939 to stretch the shopping season, and appears on the dime.", fact: "FDR's 1939 date change was so unpopular that critics called it Franksgiving, and half the states refused to go along until Congress settled on the fourth Thursday in 1941." },
+      { label: "Richard Nixon", correctSlot: null },
+      { label: "Squanto", correctSlot: null },
+      { label: "Susan B. Anthony", correctSlot: null },
+      { label: "Wheelbarrow", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-22",
+  easy: {
+    title: "A Weather Event + Spins + Happens Over Water",
+    difficultyEstimate: 82,
+    labels: { A: "A Weather Event", B: "Spins", C: "Happens Over Water" },
+    tiles: [
+      { label: "Tornado", correctSlot: "S1", logicNote: "A tornado is a spinning weather event, but it tears across land, not open water.", fact: "The United States sees more tornadoes than any other country, about 1,200 a year, most of them in the spring." },
+      { label: "Sea Breeze", correctSlot: "S2", logicNote: "A sea breeze is a gentle weather event that blows in off the water, but it does not spin.", fact: "A sea breeze forms because land heats up faster than water during the day, pulling cooler air in from the sea." },
+      { label: "Whirlpool", correctSlot: "S3", logicNote: "A whirlpool spins and happens in water, but it is caused by currents, not weather.", fact: "The famous Maelstrom off Norway's coast inspired tales by Edgar Allan Poe and Jules Verne, though real whirlpools rarely swallow ships." },
+      { label: "Hurricane", correctSlot: "S4", logicNote: "A hurricane is a spinning weather event that forms over warm ocean water.", fact: "Hurricanes spin counterclockwise north of the equator and clockwise south of it, because of the Earth's rotation." },
+      { label: "Blizzard", correctSlot: null },
+      { label: "Merry-Go-Round", correctSlot: null },
+      { label: "Cruise Ship", correctSlot: null },
+      { label: "Stapler", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Sport + Also an English Place + Played With a Ball",
+    difficultyEstimate: 51,
+    labels: { A: "A Sport", B: "Also an English Place", C: "Played With a Ball" },
+    tiles: [
+      { label: "Badminton", correctSlot: "S1", logicNote: "Badminton is a sport named after Badminton House in England, but it is played with a shuttlecock, not a ball.", fact: "A badminton shuttlecock can leave the racket at more than 300 miles per hour, faster than any ball in sports." },
+      { label: "Cricket", correctSlot: "S2", logicNote: "Cricket is a sport played with a ball, but there is no English town called Cricket.", fact: "A single cricket test match can last five days and still end in a draw." },
+      { label: "Wimbledon", correctSlot: "S3", logicNote: "Wimbledon is a London district and a tennis tournament played with balls, but it is an event, not a sport itself.", fact: "Wimbledon goes through about 55,000 tennis balls every year, and the used ones are sold to spectators for charity." },
+      { label: "Rugby", correctSlot: "S4", logicNote: "Rugby is a sport played with a ball, named after the English town where it was born at Rugby School.", fact: "Legend credits a Rugby School student named William Webb Ellis with inventing the game in 1823 by picking up the ball during a soccer match and running with it." },
+      { label: "Swimming", correctSlot: null },
+      { label: "Liverpool", correctSlot: null },
+      { label: "Marble", correctSlot: null },
+      { label: "Trombone", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Spielberg Movie + Based on a Novel + Set During WWII",
+    difficultyEstimate: 33,
+    labels: { A: "A Spielberg Movie", B: "Based on a Novel", C: "Set During WWII" },
+    tiles: [
+      { label: "Jurassic Park", correctSlot: "S1", logicNote: "Jurassic Park is a Spielberg film based on Michael Crichton's novel, but its dinosaurs have nothing to do with World War II.", fact: "The T. rex roar in Jurassic Park was a mix of a baby elephant, a tiger, and an alligator." },
+      { label: "Saving Private Ryan", correctSlot: "S2", logicNote: "Saving Private Ryan is a Spielberg film set in World War II, but it came from an original screenplay, not a book.", fact: "The 25-minute D-Day opening was filmed on a beach in Ireland with hundreds of Irish Army reservists as extras." },
+      { label: "Catch-22", correctSlot: "S3", logicNote: "Catch-22 is a World War II story adapted from Joseph Heller's novel, but Mike Nichols directed the film, not Spielberg.", fact: "Joseph Heller originally called his novel Catch-18, but changed the number to avoid confusion with another war novel published the same year." },
+      { label: "Schindler's List", correctSlot: "S4", logicNote: "Schindler's List is a Spielberg film set during World War II and based on the novel Schindler's Ark.", fact: "Spielberg refused to accept a salary for Schindler's List, calling it blood money, and donated his profits to found the Shoah Foundation." },
+      { label: "E.T.", correctSlot: null },
+      { label: "Dunkirk", correctSlot: null },
+      { label: "The Godfather", correctSlot: null },
+      { label: "Toy Story", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-21",
+  easy: {
+    title: "A Sea Animal + Has Fins + Breathes Air",
+    difficultyEstimate: 82,
+    labels: { A: "A Sea Animal", B: "Has Fins", C: "Breathes Air" },
+    tiles: [
+      { label: "Tuna", correctSlot: "S1", logicNote: "A tuna is a sea animal with fins, but it breathes through gills, not lungs.", fact: "Bluefin tuna are warm-blooded and can cross the entire Atlantic Ocean in less than two months." },
+      { label: "Walrus", correctSlot: "S2", logicNote: "A walrus is a sea animal that comes up for air, but it hauls itself around on flippers and tusks rather than fins.", fact: "A walrus can slow its heartbeat to survive in frigid water and uses its tusks like ice picks to haul its two-ton body out of the sea." },
+      { label: "Snorkeler", correctSlot: "S3", logicNote: "A snorkeler straps on fins and breathes air through a tube, but a person is not a sea animal.", fact: "The oldest known snorkels were hollow reeds used by Cretan sponge divers more than 2,000 years ago." },
+      { label: "Dolphin", correctSlot: "S4", logicNote: "A dolphin is a sea animal with fins that surfaces to breathe air through its blowhole.", fact: "Dolphins sleep with only half their brain at a time, keeping one eye open so they remember to surface for air." },
+      { label: "Crab", correctSlot: null },
+      { label: "Surfboard", correctSlot: null },
+      { label: "Giraffe", correctSlot: null },
+      { label: "Calculator", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Uses a Net + Uses a Racket + Usually Played Indoors",
+    difficultyEstimate: 50,
+    labels: { A: "Uses a Net", B: "Uses a Racket", C: "Usually Played Indoors" },
+    tiles: [
+      { label: "Tennis", correctSlot: "S1", logicNote: "Tennis is played over a net with rackets, but the classic game happens on an outdoor court.", fact: "Tennis balls were white until 1972, when they were switched to yellow so viewers could follow them on color television." },
+      { label: "Basketball", correctSlot: "S2", logicNote: "Basketball is played indoors and the ball swishes through a net, but nobody carries a racket.", fact: "The first basketball games in 1891 used peach baskets with the bottoms still in them, so someone had to climb a ladder to get the ball out after every score." },
+      { label: "Squash", correctSlot: "S3", logicNote: "Squash is played indoors with rackets, but the ball bounces off walls instead of over a net.", fact: "Squash was invented at the Harrow School in England in the 1830s, when students discovered a punctured ball that squashed against the wall made for a trickier game." },
+      { label: "Table Tennis", correctSlot: "S4", logicNote: "Table tennis is played indoors with small rackets over a little net.", fact: "Table tennis is the national sport of China, and Chinese players have won more than half of all the Olympic medals ever awarded in the sport." },
+      { label: "Bowling", correctSlot: null },
+      { label: "Soccer", correctSlot: null },
+      { label: "Fishing", correctSlot: null },
+      { label: "Golf", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Country + The Equator Crosses It + Spanish-Speaking",
+    difficultyEstimate: 38,
+    labels: { A: "A Country", B: "The Equator Crosses It", C: "Spanish-Speaking" },
+    tiles: [
+      { label: "Brazil", correctSlot: "S1", logicNote: "Brazil is a country the equator runs through, but its language is Portuguese, not Spanish.", fact: "Brazil is the only country in the world that the equator and a tropic line both cross, and it touches every South American nation except Chile and Ecuador." },
+      { label: "Argentina", correctSlot: "S2", logicNote: "Argentina is a Spanish-speaking country, but it sits far south of the equator.", fact: "Argentina's name comes from the Latin word for silver, argentum, because early explorers believed the land was full of it." },
+      { label: "Galápagos Islands", correctSlot: "S3", logicNote: "The equator runs right through the Spanish-speaking Galápagos, but the islands belong to Ecuador rather than being a country of their own.", fact: "Charles Darwin spent only five weeks in the Galápagos in 1835, but the finches he collected there helped shape his theory of evolution." },
+      { label: "Ecuador", correctSlot: "S4", logicNote: "Ecuador is a Spanish-speaking country named for the equator that runs through it.", fact: "Because the Earth bulges at the equator, the summit of Ecuador's Mount Chimborazo is the farthest point from the center of the planet, beating Everest by more than a mile." },
+      { label: "Canada", correctSlot: null },
+      { label: "Lake Victoria", correctSlot: null },
+      { label: "Havana", correctSlot: null },
+      { label: "Tambourine", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-20",
+  easy: {
+    title: "Found at School + Has Pages + You Write On It",
+    difficultyEstimate: 81,
+    labels: { A: "Found at School", B: "Has Pages", C: "You Write On It" },
+    tiles: [
+      { label: "Textbook", correctSlot: "S1", logicNote: "A textbook is full of pages and found in every classroom, but writing in one usually gets you in trouble.", fact: "The first widely used American textbook was the New England Primer, which taught the alphabet with rhyming Bible lessons in the late 1600s." },
+      { label: "Whiteboard", correctSlot: "S2", logicNote: "A whiteboard hangs at the front of a classroom and you write on it, but it has no pages.", fact: "The whiteboard was invented in the late 1950s by a Korean War veteran who noticed how easily he could wipe marker off photographic film." },
+      { label: "Diary", correctSlot: "S3", logicNote: "A diary has pages that you write on, but it stays hidden at home, not at school.", fact: "Anne Frank's famous diary began as a red-and-white checkered autograph book she received for her 13th birthday." },
+      { label: "Notebook", correctSlot: "S4", logicNote: "A notebook has pages, you write on them, and it lives in every school backpack.", fact: "The black-and-white marble composition notebook has barely changed its look since the late 1800s." },
+      { label: "Desk", correctSlot: null },
+      { label: "Magazine", correctSlot: null },
+      { label: "Cast", correctSlot: null },
+      { label: "Sailboat", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Body of Water + Has a Color in Its Name + Touches Europe",
+    difficultyEstimate: 51,
+    labels: { A: "A Body of Water", B: "Has a Color in Its Name", C: "Touches Europe" },
+    tiles: [
+      { label: "Red Sea", correctSlot: "S1", logicNote: "The Red Sea is a body of water with a color in its name, but it lies between Africa and Asia, nowhere near Europe.", fact: "The Red Sea is one of the saltiest bodies of water on Earth, partly because almost no rivers flow into it." },
+      { label: "Mediterranean Sea", correctSlot: "S2", logicNote: "The Mediterranean washes the shores of southern Europe, but there is no color in its name; it means middle of the land.", fact: "About six million years ago the Mediterranean nearly dried up completely, leaving a salt desert more than a mile below sea level." },
+      { label: "Red Square", correctSlot: "S3", logicNote: "Red Square sits in the heart of Moscow, Europe, and has a color in its name, but it is a plaza, not a body of water.", fact: "Red Square's name has nothing to do with communism; the old Russian word for red also meant beautiful." },
+      { label: "Black Sea", correctSlot: "S4", logicNote: "The Black Sea is a body of water with a color in its name, and it borders Bulgaria, Romania, and Ukraine in Europe.", fact: "Below about 500 feet the Black Sea has no oxygen, so ancient shipwrecks on its floor are preserved almost perfectly, down to the wood and rope." },
+      { label: "Lake Michigan", correctSlot: null },
+      { label: "Orange Juice", correctSlot: null },
+      { label: "Paris", correctSlot: null },
+      { label: "Hanger", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Bird + A US Military Jet + A Superhero",
+    difficultyEstimate: 38,
+    labels: { A: "A Bird", B: "A US Military Jet", C: "A Superhero" },
+    tiles: [
+      { label: "Raptor", correctSlot: "S1", logicNote: "A raptor is a bird of prey and the F-22 Raptor is a stealth fighter, but there is no superhero by that name.", fact: "The F-22 Raptor is so advanced that Congress banned its export, so no other country has ever been allowed to buy one." },
+      { label: "Raven", correctSlot: "S2", logicNote: "A raven is a bird and Raven is the cloaked hero of the Teen Titans, but no fighter jet carries the name.", fact: "Ravens are among the smartest birds on Earth; they can solve multi-step puzzles, remember human faces for years, and even use gestures to communicate." },
+      { label: "Hornet", correctSlot: "S3", logicNote: "The F/A-18 Hornet is the Navy's workhorse jet and the Green Hornet is a classic superhero, but a hornet is an insect, not a bird.", fact: "Bruce Lee got his first big American role playing Kato, the Green Hornet's sidekick, in the 1966 TV series." },
+      { label: "Falcon", correctSlot: "S4", logicNote: "A falcon is a bird, the F-16 Fighting Falcon is a fighter jet, and the Falcon is Captain America's winged partner in the Marvel movies.", fact: "The peregrine falcon is the fastest animal on Earth, reaching more than 240 miles per hour in a dive." },
+      { label: "Sparrow", correctSlot: null },
+      { label: "Tomcat", correctSlot: null },
+      { label: "Batman", correctSlot: null },
+      { label: "Thimble", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-19",
+  easy: {
+    title: "A Vehicle + Has Wings + Carries Passengers",
+    difficultyEstimate: 82,
+    labels: { A: "A Vehicle", B: "Has Wings", C: "Carries Passengers" },
+    tiles: [
+      { label: "Fighter Jet", correctSlot: "S1", logicNote: "A fighter jet is a winged vehicle, but it carries a pilot and weapons, not passengers.", fact: "The F-22 Raptor can fly faster than the speed of sound without using its afterburners, a trick called supercruise." },
+      { label: "Bus", correctSlot: "S2", logicNote: "A bus is a vehicle built to carry passengers, but it has no wings.", fact: "The word bus is short for omnibus, Latin for for all, because the first horse-drawn buses in 1820s Paris were open to everyone." },
+      { label: "Pegasus", correctSlot: "S3", logicNote: "Pegasus has wings and carried the hero Bellerophon into battle, but a mythical horse is not a vehicle.", fact: "In Greek myth, Pegasus sprang from the neck of Medusa after the hero Perseus cut off her head." },
+      { label: "Jumbo Jet", correctSlot: "S4", logicNote: "A jumbo jet is a winged vehicle built to carry hundreds of passengers at a time.", fact: "The original Boeing 747 jumbo jet was so large that Boeing had to build the biggest building in the world by volume, in Everett, Washington, just to assemble it." },
+      { label: "Unicycle", correctSlot: null },
+      { label: "Butterfly", correctSlot: null },
+      { label: "Elevator", correctSlot: null },
+      { label: "Lampshade", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Math Term + A Music Term + A Food Word",
+    difficultyEstimate: 52,
+    labels: { A: "A Math Term", B: "A Music Term", C: "A Food Word" },
+    tiles: [
+      { label: "Chord", correctSlot: "S1", logicNote: "A chord is a line segment in geometry and a stack of notes in music, but it is not something you eat.", fact: "The word chord in music comes from accord, meaning notes sounding in agreement, while the geometry chord comes from the Greek word for a string." },
+      { label: "Prime", correctSlot: "S2", logicNote: "Prime numbers belong to math and prime rib belongs on a plate, but prime is not a music term.", fact: "The largest known prime number has more than 41 million digits and was found in 2024 by a former Nvidia engineer using cloud computing." },
+      { label: "Pop", correctSlot: "S3", logicNote: "Pop is a music genre and pop is what Midwesterners call soda, but there is no pop in math class.", fact: "Whether Americans say pop, soda, or coke depends almost entirely on where they grew up; pop dominates the Midwest and Pacific Northwest, while the South says coke for any soft drink." },
+      { label: "Root", correctSlot: "S4", logicNote: "A square root is math, the root is the foundation note of a chord, and root vegetables and root beer are food.", fact: "Root beer was originally brewed from the root of the sassafras tree, until the FDA banned sassafras oil as a food additive in 1960." },
+      { label: "Fraction", correctSlot: null },
+      { label: "Tempo", correctSlot: null },
+      { label: "Burrito", correctSlot: null },
+      { label: "Shoelace", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Famous Landmark + In Paris + From the 1800s",
+    difficultyEstimate: 37,
+    labels: { A: "A Famous Landmark", B: "In Paris", C: "From the 1800s" },
+    tiles: [
+      { label: "Notre-Dame", correctSlot: "S1", logicNote: "Notre-Dame is a Paris landmark, but construction began in 1163, centuries before the 1800s.", fact: "Notre-Dame's famous gargoyles are not medieval; most were added in the 1840s during a restoration inspired by Victor Hugo's novel." },
+      { label: "Brooklyn Bridge", correctSlot: "S2", logicNote: "The Brooklyn Bridge is a famous landmark completed in 1883, but it spans the East River in New York, not the Seine.", fact: "To prove the bridge was safe, P.T. Barnum marched 21 elephants across it in 1884." },
+      { label: "Impressionism", correctSlot: "S3", logicNote: "Impressionism was born in Paris in the 1870s, but it is an art movement, not a landmark.", fact: "The name Impressionism began as an insult, coined by a critic mocking Monet's painting Impression, Sunrise." },
+      { label: "Eiffel Tower", correctSlot: "S4", logicNote: "The Eiffel Tower is a Paris landmark completed in 1889.", fact: "The Eiffel Tower was meant to be torn down after 20 years, but it was saved because its height made it valuable as a radio antenna." },
+      { label: "Colosseum", correctSlot: null },
+      { label: "Escargot", correctSlot: null },
+      { label: "Telephone", correctSlot: null },
+      { label: "Lawn Chair", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-18",
+  easy: {
+    title: "A Drink + Has Caffeine + Served Cold",
+    difficultyEstimate: 82,
+    labels: { A: "A Drink", B: "Has Caffeine", C: "Served Cold" },
+    tiles: [
+      { label: "Coffee", correctSlot: "S1", logicNote: "Coffee is a caffeinated drink, but the classic cup is served piping hot.", fact: "Legend says coffee was discovered by an Ethiopian goat herder who noticed his goats dancing after eating red berries from a certain bush." },
+      { label: "Lemonade", correctSlot: "S2", logicNote: "Lemonade is a cold drink, but it has no caffeine in it.", fact: "Lemonade stands are so iconic that several states have passed laws protecting kids' right to run one without a permit." },
+      { label: "Tiramisu", correctSlot: "S3", logicNote: "Tiramisu is served chilled and gets a caffeine kick from espresso-soaked ladyfingers, but it is a dessert you eat with a fork.", fact: "Tiramisu means pick me up in Italian, a nod to the espresso and sugar packed into every slice." },
+      { label: "Iced Tea", correctSlot: "S4", logicNote: "Iced tea is a caffeinated drink served cold.", fact: "Iced tea became a national sensation at the 1904 World's Fair in St. Louis, where a tea vendor poured his hot tea over ice to attract sweltering fairgoers." },
+      { label: "Water", correctSlot: null },
+      { label: "Cocoa Powder", correctSlot: null },
+      { label: "Snowball", correctSlot: null },
+      { label: "Hat", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "An Island + A Country + In the Caribbean",
+    difficultyEstimate: 50,
+    labels: { A: "An Island", B: "A Country", C: "In the Caribbean" },
+    tiles: [
+      { label: "Iceland", correctSlot: "S1", logicNote: "Iceland is an island nation, but it sits in the North Atlantic, about as far from the Caribbean as you can get.", fact: "Iceland has no mosquitoes at all, one of the only places on Earth where that is true." },
+      { label: "Costa Rica", correctSlot: "S2", logicNote: "Costa Rica is a country with a Caribbean coastline, but it is part of the Central American mainland, not an island.", fact: "Costa Rica abolished its army in 1948 and has not had one since, spending the money on schools and health care instead." },
+      { label: "Puerto Rico", correctSlot: "S3", logicNote: "Puerto Rico is a Caribbean island, but it is a US territory, not an independent country.", fact: "Puerto Ricans have been US citizens since 1917, but residents of the island cannot vote for president." },
+      { label: "Cuba", correctSlot: "S4", logicNote: "Cuba is an island, a country, and the largest landmass in the Caribbean.", fact: "Cuba is home to the world's smallest bird, the bee hummingbird, which weighs less than a penny." },
+      { label: "Long Island", correctSlot: null },
+      { label: "Switzerland", correctSlot: null },
+      { label: "Reggae", correctSlot: null },
+      { label: "Abacus", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Band + Animal in the Name + From the UK",
+    difficultyEstimate: 37,
+    labels: { A: "A Band", B: "Animal in the Name", C: "From the UK" },
+    tiles: [
+      { label: "Counting Crows", correctSlot: "S1", logicNote: "Counting Crows is a band with a bird in its name, but it formed in California.", fact: "The band took its name from an old English nursery rhyme about counting magpies to tell your fortune." },
+      { label: "Rolling Stones", correctSlot: "S2", logicNote: "The Rolling Stones are a British band, but there is no animal in the name, just a rock.", fact: "The Rolling Stones took their name from a Muddy Waters song, and the band has been touring for more than 60 years." },
+      { label: "Bulldog", correctSlot: "S3", logicNote: "The bulldog is an animal so tied to Britain that it became a national symbol, but it is not a band.", fact: "Bulldogs were originally bred to fight bulls in a blood sport that England outlawed in 1835." },
+      { label: "Beatles", correctSlot: "S4", logicNote: "The Beatles were a British band whose name is a pun on beetles.", fact: "The Beatles spelled their name with an A as a nod to beat music, and John Lennon joked the idea came to him in a vision from a man on a flaming pie." },
+      { label: "Nirvana", correctSlot: null },
+      { label: "Zebra", correctSlot: null },
+      { label: "Big Ben", correctSlot: null },
+      { label: "Pretzel", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-17",
+  easy: {
+    title: "An Instrument + You Hit It + Made of Metal",
+    difficultyEstimate: 82,
+    labels: { A: "An Instrument", B: "You Hit It", C: "Made of Metal" },
+    tiles: [
+      { label: "Bongo", correctSlot: "S1", logicNote: "A bongo is an instrument you strike with your hands, but it is made of wood and animal skin, not metal.", fact: "Bongos are always played as a pair, and the smaller drum is traditionally called the macho while the larger one is the hembra." },
+      { label: "Trumpet", correctSlot: "S2", logicNote: "A trumpet is a brass instrument, but you blow into it rather than hit it.", fact: "Trumpets found in King Tutankhamun's tomb were played on a BBC broadcast in 1939, more than 3,000 years after they were made." },
+      { label: "Nail", correctSlot: "S3", logicNote: "A nail is a piece of metal you hit with a hammer, but it is hardware, not an instrument.", fact: "Before machines made them cheap in the 1800s, nails were so valuable that people sometimes burned down abandoned houses just to collect them." },
+      { label: "Cymbal", correctSlot: "S4", logicNote: "A cymbal is a metal instrument that you hit with a stick or crash against another cymbal.", fact: "The best cymbals are still made from a secret bronze alloy that one Turkish family, the Zildjians, has guarded since 1623." },
+      { label: "Accordion", correctSlot: null },
+      { label: "Piñata", correctSlot: null },
+      { label: "Coin", correctSlot: null },
+      { label: "Blanket", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Jewelry + Worn on Hand or Arm + A Boxing Term",
+    difficultyEstimate: 51,
+    labels: { A: "Jewelry", B: "Worn on Hand or Arm", C: "A Boxing Term" },
+    tiles: [
+      { label: "Bracelet", correctSlot: "S1", logicNote: "A bracelet is jewelry worn on the wrist, but it means nothing in a boxing match.", fact: "Charm bracelets go back to ancient Egypt, where charms were worn as protective amulets." },
+      { label: "Crown", correctSlot: "S2", logicNote: "A crown is jewelry and boxers fight for the heavyweight crown, but it sits on a head, not a hand.", fact: "Britain's Imperial State Crown holds nearly 3,000 diamonds, including the 317-carat Cullinan II." },
+      { label: "Glove", correctSlot: "S3", logicNote: "A boxing glove is worn on the hand, but it is padding, not jewelry.", fact: "Modern boxing gloves were required by the Marquess of Queensberry rules in 1867, ending the bare-knuckle era." },
+      { label: "Ring", correctSlot: "S4", logicNote: "A ring is jewelry worn on a finger, and the ring is where boxers fight.", fact: "Boxing rings are called rings because early bare-knuckle fights took place inside a circle of spectators before square roped platforms were introduced." },
+      { label: "Earring", correctSlot: null },
+      { label: "Mitten", correctSlot: null },
+      { label: "Knockout", correctSlot: null },
+      { label: "Teacup", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Follow 'Hot' + Can Follow 'Cold' + Can Follow 'Sweet'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Follow 'Hot'", B: "Can Follow 'Cold'", C: "Can Follow 'Sweet'" },
+    tiles: [
+      { label: "War", correctSlot: "S1", logicNote: "A hot war and a cold war are both real terms, but there is no such thing as a sweet war.", fact: "The phrase Cold War was popularized by columnist Walter Lippmann, whose 1947 book of that title helped fix the term in everyday speech." },
+      { label: "Pepper", correctSlot: "S2", logicNote: "Hot peppers and sweet peppers fill the produce aisle, but nobody sells a cold pepper.", fact: "Bell peppers are the only members of the pepper family that produce no capsaicin, which is why they have no heat at all." },
+      { label: "Cream", correctSlot: "S3", logicNote: "Cold cream is a skin cleanser and sweet cream is what butter is churned from, but hot cream is not a phrase.", fact: "Cold cream was invented by the Greek physician Galen in the second century, and his basic recipe of water, oil, and wax is still used today." },
+      { label: "Spot", correctSlot: "S4", logicNote: "A hot spot, a cold spot, and a sweet spot are all everyday phrases.", fact: "The sweet spot on a baseball bat is the point where hitting the ball produces almost no vibration in the handle, which is why a perfect hit feels effortless." },
+      { label: "Dog", correctSlot: null },
+      { label: "Shoulder", correctSlot: null },
+      { label: "Tooth", correctSlot: null },
+      { label: "Garage", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-16",
+  easy: {
+    title: "Has Feathers + Swims + Lives Where It's Cold",
+    difficultyEstimate: 82,
+    labels: { A: "Has Feathers", B: "Swims", C: "Lives Where It's Cold" },
+    tiles: [
+      { label: "Pelican", correctSlot: "S1", logicNote: "A pelican is a feathered bird that paddles and dives for fish, but it lives along warm coasts, not in the cold.", fact: "A pelican's throat pouch can hold about three gallons of water, more than its stomach can." },
+      { label: "Snowy Owl", correctSlot: "S2", logicNote: "A snowy owl is a bird of the Arctic, but it hunts from the air and does not swim.", fact: "Unlike most owls, snowy owls hunt in broad daylight, because the Arctic summer sun never sets." },
+      { label: "Seal", correctSlot: "S3", logicNote: "A seal swims in icy water, but it is covered in fur, not feathers.", fact: "Seals can sleep underwater, surfacing to breathe without fully waking up." },
+      { label: "Penguin", correctSlot: "S4", logicNote: "A penguin is a feathered bird that swims through frigid Antarctic seas.", fact: "Emperor penguins can dive deeper than 1,800 feet and stay underwater for more than 20 minutes." },
+      { label: "Eagle", correctSlot: null },
+      { label: "Clownfish", correctSlot: null },
+      { label: "Igloo", correctSlot: null },
+      { label: "Toaster", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Wind Instrument + Made of Wood + In an Orchestra",
+    difficultyEstimate: 50,
+    labels: { A: "A Wind Instrument", B: "Made of Wood", C: "In an Orchestra" },
+    tiles: [
+      { label: "Recorder", correctSlot: "S1", logicNote: "A recorder is a wooden wind instrument, but it lives in elementary school classrooms, not symphony orchestras.", fact: "The recorder was a serious instrument in the Baroque era; Bach and Handel both wrote for it before the flute pushed it aside." },
+      { label: "French Horn", correctSlot: "S2", logicNote: "A French horn is an orchestral wind instrument, but it is made of brass, not wood.", fact: "Uncoiled, the tubing of a French horn stretches more than 12 feet, which is why it is wound into such a tight spiral." },
+      { label: "Double Bass", correctSlot: "S3", logicNote: "A double bass is a wooden orchestral instrument, but you bow or pluck it rather than blow into it.", fact: "The double bass is the largest instrument in the string family, standing about six feet tall, and most players perform standing up or perched on a tall stool." },
+      { label: "Oboe", correctSlot: "S4", logicNote: "An oboe is a wooden wind instrument and a fixture of every orchestra.", fact: "The oboe plays the tuning note before every orchestra concert because its pitch is stable and its piercing sound cuts through the whole ensemble." },
+      { label: "Harmonica", correctSlot: null },
+      { label: "Baseball Bat", correctSlot: null },
+      { label: "Conductor", correctSlot: null },
+      { label: "Microwave", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Nobel Peace Prize Winner + Held a US Office + Born Outside the US",
+    difficultyEstimate: 38,
+    labels: { A: "Nobel Peace Prize Winner", B: "Held a US Office", C: "Born Outside the US" },
+    tiles: [
+      { label: "Barack Obama", correctSlot: "S1", logicNote: "Obama won the Nobel Peace Prize and served as president, but he was born in Honolulu, Hawaii.", fact: "Obama was awarded the Nobel Peace Prize in 2009, less than nine months into his first term." },
+      { label: "Nelson Mandela", correctSlot: "S2", logicNote: "Mandela won the Nobel Peace Prize and was born in South Africa, but he never held office in the United States.", fact: "Mandela spent 27 years in prison before being elected South Africa's first Black president in 1994." },
+      { label: "Arnold Schwarzenegger", correctSlot: "S3", logicNote: "Schwarzenegger was born in Austria and served as governor of California, but he has no Nobel Prize.", fact: "Schwarzenegger won his first Mr. Universe title at age 20, the youngest ever at the time." },
+      { label: "Henry Kissinger", correctSlot: "S4", logicNote: "Kissinger was born in Germany, served as US secretary of state, and shared the 1973 Nobel Peace Prize.", fact: "Kissinger's 1973 Nobel Prize was so controversial that two members of the Nobel committee resigned in protest." },
+      { label: "Jane Addams", correctSlot: null },
+      { label: "Hillary Clinton", correctSlot: null },
+      { label: "Albert Einstein", correctSlot: null },
+      { label: "Mount Rushmore", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-15",
+  easy: {
+    title: "At a Picnic + Red + Comes in a Bottle",
+    difficultyEstimate: 82,
+    labels: { A: "At a Picnic", B: "Red", C: "Comes in a Bottle" },
+    tiles: [
+      { label: "Checkered Blanket", correctSlot: "S1", logicNote: "A red checkered blanket is the classic picnic spread, but it certainly does not come in a bottle.", fact: "The red-and-white check pattern is called gingham, a word that came into English from a Malay word meaning striped." },
+      { label: "Sunscreen", correctSlot: "S2", logicNote: "Sunscreen comes in a bottle and goes on at every picnic, but it squeezes out white, not red.", fact: "The SPF number tells you how much longer you can stay in the sun before burning, so SPF 30 blocks about 97 percent of UVB rays, only a little more than SPF 15." },
+      { label: "Hot Sauce", correctSlot: "S3", logicNote: "Hot sauce is red and comes in a bottle, but it is a kitchen table staple rather than a picnic basket item.", fact: "Tabasco sauce has been made on Avery Island, Louisiana, by the same family since 1868, and the peppers are aged in oak barrels for up to three years." },
+      { label: "Ketchup", correctSlot: "S4", logicNote: "Ketchup is red, comes in a bottle, and gets squeezed onto every picnic hot dog.", fact: "Ketchup flows out of a glass bottle at about 0.028 miles per hour, and Heinz says if it pours any faster the batch is rejected." },
+      { label: "Wicker Basket", correctSlot: null },
+      { label: "Ladybug", correctSlot: null },
+      { label: "Shampoo", correctSlot: null },
+      { label: "Hairbrush", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Spice + Brown + Also a Color Name",
+    difficultyEstimate: 50,
+    labels: { A: "A Spice", B: "Brown", C: "Also a Color Name" },
+    tiles: [
+      { label: "Cumin", correctSlot: "S1", logicNote: "Cumin is a brown spice, but nobody paints a wall cumin.", fact: "Cumin is often ranked the second most popular spice in the world after black pepper, thanks to its role in Indian, Mexican, and Middle Eastern cooking." },
+      { label: "Paprika", correctSlot: "S2", logicNote: "Paprika is a spice and a color name, but the color is red, not brown.", fact: "Paprika is made from ground peppers that originally came from the Americas, yet Hungary adopted it so completely that it became the signature flavor of goulash." },
+      { label: "Chocolate", correctSlot: "S3", logicNote: "Chocolate is a brown color name, but it is a sweet, not a spice.", fact: "The Aztecs valued cacao beans so highly that they used them as currency; a turkey could cost about 100 beans." },
+      { label: "Cinnamon", correctSlot: "S4", logicNote: "Cinnamon is a brown spice and a common color name for everything from paint to hair dye.", fact: "True cinnamon comes from the inner bark of a tree native to Sri Lanka, which is peeled and dried until it curls into quills." },
+      { label: "Oregano", correctSlot: null },
+      { label: "Teal", correctSlot: null },
+      { label: "Tree Bark", correctSlot: null },
+      { label: "Saxophone", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Novel + A Movie + Title Is a Real Place",
+    difficultyEstimate: 33,
+    labels: { A: "A Novel", B: "A Movie", C: "Title Is a Real Place" },
+    tiles: [
+      { label: "The Shining", correctSlot: "S1", logicNote: "The Shining is a Stephen King novel and a Kubrick film, but its title is not a place.", fact: "Stephen King disliked Kubrick's film so much that he wrote and produced his own TV miniseries version in 1997." },
+      { label: "Middlesex", correctSlot: "S2", logicNote: "Middlesex is a Pulitzer-winning novel named for a real county, but it has never been made into a movie.", fact: "Jeffrey Eugenides took nine years to write Middlesex, which won the Pulitzer Prize for Fiction in 2003." },
+      { label: "Fargo", correctSlot: "S3", logicNote: "Fargo is a Coen brothers film named after a real North Dakota city, but it came from an original screenplay, not a novel.", fact: "Fargo opens by claiming it is a true story, but the Coen brothers later admitted they made the whole thing up; the famous wood chipper now sits in the Fargo visitors center." },
+      { label: "Cold Mountain", correctSlot: "S4", logicNote: "Cold Mountain is a bestselling novel, an Oscar-winning film, and a real peak in North Carolina.", fact: "Cold Mountain is a real 6,030-foot summit in the Blue Ridge Mountains, but the movie was filmed mostly in Romania because it was cheaper." },
+      { label: "Infinite Jest", correctSlot: null },
+      { label: "Inception", correctSlot: null },
+      { label: "Lake Tahoe", correctSlot: null },
+      { label: "Thermos", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-14",
+  easy: {
+    title: "A Pet + Has Fur + Fits in One Hand",
+    difficultyEstimate: 81,
+    labels: { A: "A Pet", B: "Has Fur", C: "Fits in One Hand" },
+    tiles: [
+      { label: "Labrador", correctSlot: "S1", logicNote: "A Labrador is a furry family pet, but good luck holding one in a single hand.", fact: "The Labrador retriever was America's most popular dog breed for 31 straight years before the French bulldog took the top spot in 2022." },
+      { label: "Hermit Crab", correctSlot: "S2", logicNote: "A hermit crab is a tiny pet that fits in your palm, but it has a hard shell, not fur.", fact: "Hermit crabs do not grow their own shells; they move into empty snail shells and trade up for bigger ones as they grow, sometimes lining up by size to swap shells all at once." },
+      { label: "Chipmunk", correctSlot: "S3", logicNote: "A chipmunk is furry and small enough to cup in one hand, but it is a wild animal, not a pet.", fact: "A chipmunk's cheek pouches can stretch to three times the size of its head when stuffed with seeds." },
+      { label: "Hamster", correctSlot: "S4", logicNote: "A hamster is a furry pet that fits comfortably in one hand.", fact: "Nearly every pet golden hamster in the world descends from a single mother and her litter captured in Syria in 1930." },
+      { label: "Grizzly Bear", correctSlot: null },
+      { label: "Paperclip", correctSlot: null },
+      { label: "Aquarium", correctSlot: null },
+      { label: "Ladder", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Big Cat + A Car or Truck Name + An NFL Team",
+    difficultyEstimate: 51,
+    labels: { A: "A Big Cat", B: "A Car or Truck Name", C: "An NFL Team" },
+    tiles: [
+      { label: "Cougar", correctSlot: "S1", logicNote: "The cougar is a big cat and the Mercury Cougar was a classic car, but no NFL team is called the Cougars.", fact: "The cougar holds the Guinness record for the animal with the most names, including puma, mountain lion, panther, and catamount." },
+      { label: "Lions", correctSlot: "S2", logicNote: "Lions are big cats and Detroit's NFL team, but no car has carried the name.", fact: "The Detroit Lions have hosted a Thanksgiving Day game nearly every year since 1934." },
+      { label: "Ram", correctSlot: "S3", logicNote: "Ram is a truck brand and Los Angeles has the Rams, but a ram is a sheep, not a cat.", fact: "The Rams were the first NFL team to put a logo on their helmets, when a player painted horns on them in 1948." },
+      { label: "Jaguar", correctSlot: "S4", logicNote: "The jaguar is a big cat, a British luxury car, and the NFL team in Jacksonville.", fact: "The jaguar has the strongest bite of any big cat relative to its size, powerful enough to pierce a turtle's shell." },
+      { label: "Leopard", correctSlot: null },
+      { label: "Toyota", correctSlot: null },
+      { label: "Packers", correctSlot: null },
+      { label: "Mustang", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Cake' + Can Precede 'Bread' + A Fruit",
+    difficultyEstimate: 37,
+    labels: { A: "Can Precede 'Cake'", B: "Can Precede 'Bread'", C: "A Fruit" },
+    tiles: [
+      { label: "Short", correctSlot: "S1", logicNote: "Shortcake and shortbread are both bakery classics, but short is not a fruit.", fact: "The short in shortbread refers to the old baking sense of the word, meaning crumbly, because the high butter content keeps gluten strands short." },
+      { label: "Pineapple", correctSlot: "S2", logicNote: "Pineapple upside-down cake is famous and pineapple is a fruit, but pineapple bread is not a thing people bake.", fact: "A pineapple is not one fruit but dozens of individual berries that fuse together around a central core as they grow." },
+      { label: "Raisin", correctSlot: "S3", logicNote: "Raisin bread is a breakfast staple and a raisin is a dried fruit, but there is no classic dish called raisin cake.", fact: "It takes more than four pounds of fresh grapes to make a single pound of raisins." },
+      { label: "Banana", correctSlot: "S4", logicNote: "Banana cake, banana bread, and the banana itself all check out.", fact: "Banana bread became an American favorite during the Great Depression, when thrifty cooks looked for ways to use overripe bananas instead of throwing them out." },
+      { label: "Cup", correctSlot: null },
+      { label: "Pita", correctSlot: null },
+      { label: "Papaya", correctSlot: null },
+      { label: "Pillow", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-13",
+  easy: {
+    title: "A Breakfast Food + Round + Sweet",
+    difficultyEstimate: 82,
+    labels: { A: "A Breakfast Food", B: "Round", C: "Sweet" },
+    tiles: [
+      { label: "Fried Egg", correctSlot: "S1", logicNote: "A fried egg is a round breakfast classic, but it is savory, not sweet.", fact: "The color of an egg's yolk depends on the hen's diet; more marigold petals or corn in the feed means a deeper orange yolk." },
+      { label: "French Toast", correctSlot: "S2", logicNote: "French toast is a sweet breakfast, but the slices are square or rectangular, not round.", fact: "French toast predates France; a Roman cookbook from the 4th or 5th century already describes bread soaked in milk and fried." },
+      { label: "Lollipop", correctSlot: "S3", logicNote: "A lollipop is round and sweet, but nobody calls it breakfast.", fact: "The Tootsie Pop's famous question about how many licks it takes to reach the center has been tested by engineering students, who averaged a few hundred licks." },
+      { label: "Pancake", correctSlot: "S4", logicNote: "A pancake is a round, sweet breakfast favorite, especially under a pour of syrup.", fact: "The world's largest pancake, made in England in 1994, measured about 49 feet across and weighed around three tons." },
+      { label: "Bacon", correctSlot: null },
+      { label: "Wheel", correctSlot: null },
+      { label: "Cotton Candy", correctSlot: null },
+      { label: "Toothpaste", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A US State + Borders Another Country + On an Ocean",
+    difficultyEstimate: 50,
+    labels: { A: "A US State", B: "Borders Another Country", C: "On an Ocean" },
+    tiles: [
+      { label: "Montana", correctSlot: "S1", logicNote: "Montana is a state that shares a long border with Canada, but it is landlocked, hundreds of miles from any ocean.", fact: "Montana's border with Canada runs about 545 miles, the longest of any state's border with Canada other than Alaska's." },
+      { label: "Oregon", correctSlot: "S2", logicNote: "Oregon is a state with a Pacific coastline, but it touches only other states, not another country.", fact: "Oregon's entire 363-mile coastline is public land, thanks to a 1967 law that guaranteed free access to every beach." },
+      { label: "Mexico", correctSlot: "S3", logicNote: "Mexico borders the United States and has long Pacific and Gulf coasts, but it is a country, not a US state.", fact: "Mexico has coastlines on both the Pacific Ocean and the Gulf of Mexico, giving it more than 5,000 miles of shoreline." },
+      { label: "Maine", correctSlot: "S4", logicNote: "Maine is a state that borders Canada and sits on the Atlantic Ocean.", fact: "Maine is the only state that borders exactly one other state, New Hampshire, and its jagged coastline is longer than California's." },
+      { label: "Kansas", correctSlot: null },
+      { label: "Tennessee", correctSlot: null },
+      { label: "Japan", correctSlot: null },
+      { label: "Nepal", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Spelled Same Backward + A First Name + A Music Artist",
+    difficultyEstimate: 37,
+    labels: { A: "Spelled Same Backward", B: "A First Name", C: "A Music Artist" },
+    tiles: [
+      { label: "Otto", correctSlot: "S1", logicNote: "Otto reads the same backward and is a first name, but no famous musician goes by it.", fact: "Otto von Bismarck, the 19th-century German chancellor, introduced the world's first state pension system." },
+      { label: "Abba", correctSlot: "S2", logicNote: "ABBA is a palindrome and a legendary pop group, but it is not anyone's first name; it comes from the members' initials.", fact: "ABBA turned down a reported one billion dollar offer to reunite for a tour in 2000." },
+      { label: "Elvis", correctSlot: "S3", logicNote: "Elvis is a first name and a music legend, but spelled backward it is sivlE.", fact: "Elvis Presley never performed a concert outside North America, largely because his manager was an illegal immigrant who feared he could not re-enter the country." },
+      { label: "Eve", correctSlot: "S4", logicNote: "Eve is a palindrome, a first name, and the Grammy-winning rapper behind Let Me Blow Ya Mind.", fact: "Eve was the first female rapper to top the Billboard 200 with a debut album, in 1999." },
+      { label: "Level", correctSlot: null },
+      { label: "Kevin", correctSlot: null },
+      { label: "Coldplay", correctSlot: null },
+      { label: "Faucet", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-12",
+  easy: {
+    title: "A Bird + Can Talk + Colorful",
+    difficultyEstimate: 82,
+    labels: { A: "A Bird", B: "Can Talk", C: "Colorful" },
+    tiles: [
+      { label: "Starling", correctSlot: "S1", logicNote: "A starling is a bird that can mimic human speech, but its feathers are glossy black, not colorful.", fact: "Mozart kept a pet starling that could whistle the opening of his Piano Concerto No. 17, and he gave it a full funeral when it died." },
+      { label: "Peacock", correctSlot: "S2", logicNote: "A peacock is a spectacularly colorful bird, but it only screeches; it cannot talk.", fact: "A peacock's tail feathers have no blue or green pigment at all; the colors come from microscopic structures that bend light." },
+      { label: "Clown", correctSlot: "S3", logicNote: "A clown talks and dresses in loud colors, but a clown is a person, not a bird.", fact: "Ringling Bros. ran a Clown College in Florida from 1968 to 1997 that accepted only about 30 students a year out of thousands of applicants." },
+      { label: "Parrot", correctSlot: "S4", logicNote: "A parrot is a colorful bird famous for repeating what people say.", fact: "An African grey parrot named Alex learned more than 100 words and could identify colors, shapes, and numbers, and his last words to his trainer were You be good, I love you." },
+      { label: "Pigeon", correctSlot: null },
+      { label: "Tie-Dye Shirt", correctSlot: null },
+      { label: "Radio", correctSlot: null },
+      { label: "Brick", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A National Capital + A Food Is Named for It + In Europe",
+    difficultyEstimate: 49,
+    labels: { A: "A National Capital", B: "A Food Is Named for It", C: "In Europe" },
+    tiles: [
+      { label: "Lima", correctSlot: "S1", logicNote: "Lima is the capital of Peru and gave its name to the lima bean, but it is in South America.", fact: "Lima beans take their name from the Peruvian capital, where the beans had been grown for thousands of years before Europeans began exporting them." },
+      { label: "Madrid", correctSlot: "S2", logicNote: "Madrid is a European capital, but no food is named after it.", fact: "Madrid is the highest capital city in the European Union, sitting about 2,100 feet above sea level." },
+      { label: "Hamburg", correctSlot: "S3", logicNote: "Hamburg is a European city that gave the hamburger its name, but Germany's capital is Berlin.", fact: "German immigrants brought the Hamburg steak to America in the 1800s, and someone eventually put it between two slices of bread." },
+      { label: "Brussels", correctSlot: "S4", logicNote: "Brussels is the capital of Belgium, in Europe, and lends its name to Brussels sprouts.", fact: "Brussels sprouts have been grown around Brussels since at least the 1200s, and Belgium is also where the French fry was likely invented." },
+      { label: "Tokyo", correctSlot: null },
+      { label: "Buffalo", correctSlot: null },
+      { label: "Munich", correctSlot: null },
+      { label: "Stethoscope", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Best Picture Winner + A Musical + Based on Shakespeare",
+    difficultyEstimate: 37,
+    labels: { A: "A Best Picture Winner", B: "A Musical", C: "Based on Shakespeare" },
+    tiles: [
+      { label: "Chicago", correctSlot: "S1", logicNote: "Chicago won Best Picture in 2003 and is a musical, but its story comes from a 1920s play about real murder trials, not from Shakespeare.", fact: "Chicago was the first musical to win Best Picture since Oliver! in 1969, a gap of more than three decades." },
+      { label: "Hamlet", correctSlot: "S2", logicNote: "Laurence Olivier's Hamlet won Best Picture in 1949 and is obviously Shakespeare, but nobody sings in it.", fact: "Olivier's Hamlet was the first British film to win Best Picture, and Olivier was the first person to direct himself to a Best Actor Oscar, a feat matched only by Roberto Benigni 50 years later." },
+      { label: "Kiss Me, Kate", correctSlot: "S3", logicNote: "Kiss Me, Kate is a Cole Porter musical built around The Taming of the Shrew, but the 1953 film never won Best Picture.", fact: "Kiss Me, Kate won the very first Tony Award for Best Musical in 1949." },
+      { label: "West Side Story", correctSlot: "S4", logicNote: "West Side Story is a musical retelling of Romeo and Juliet, and the 1961 film won Best Picture.", fact: "The 1961 West Side Story won 10 Oscars, still the most ever for a musical, and Natalie Wood's singing was dubbed by Marni Nixon." },
+      { label: "Gladiator", correctSlot: null },
+      { label: "Cats", correctSlot: null },
+      { label: "10 Things I Hate About You", correctSlot: null },
+      { label: "Microscope", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-11-11",
   easy: {
     title: "A Flower + Red + Smells Nice",
