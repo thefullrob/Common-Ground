@@ -20,6 +20,681 @@
 window.COMMON_GROUND_DAILY_SETS = [
 
   {
+  date: "2026-12-09",
+  easy: {
+    title: "In a Bathroom + Has Bristles + Plugs In",
+    difficultyEstimate: 81,
+    labels: { A: "In a Bathroom", B: "Has Bristles", C: "Plugs In" },
+    tiles: [
+      { label: "Toilet Brush", correctSlot: "S1", logicNote: "A toilet brush lives in the bathroom and is all bristles, but it needs no electricity.", fact: "Thomas Crapper was a real Victorian plumber who popularized the flush toilet's inner workings, though he did not invent the toilet itself." },
+      { label: "Hair Dryer", correctSlot: "S2", logicNote: "A hair dryer plugs into the bathroom outlet, but it blows air with no bristles involved.", fact: "The first handheld hair dryers of the 1920s weighed about two pounds and put out roughly 100 watts, a tenth of today's models." },
+      { label: "Vacuum Cleaner", correctSlot: "S3", logicNote: "A vacuum cleaner plugs in and spins a bristled brush, but it stays out of the bathroom.", fact: "The first powered vacuum cleaner, built in London in 1901, was so large it was pulled by horses and parked in the street while hoses ran into the house." },
+      { label: "Electric Toothbrush", correctSlot: "S4", logicNote: "An electric toothbrush has bristles, charges from an outlet, and lives by the bathroom sink.", fact: "The first electric toothbrush, the Broxodent, was invented in Switzerland in 1954 and plugged straight into a wall outlet." },
+      { label: "Bath Mat", correctSlot: null },
+      { label: "Broom", correctSlot: null },
+      { label: "Television", correctSlot: null },
+      { label: "Rowboat", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A US State + Has a Two-Word Name + West of the Mississippi",
+    difficultyEstimate: 50,
+    labels: { A: "A US State", B: "Has a Two-Word Name", C: "West of the Mississippi" },
+    tiles: [
+      { label: "Rhode Island", correctSlot: "S1", logicNote: "Rhode Island is a two-word state, but it sits on the Atlantic, far east of the Mississippi.", fact: "Rhode Island is the smallest state, yet until 2020 it had the longest official name: the State of Rhode Island and Providence Plantations." },
+      { label: "Nevada", correctSlot: "S2", logicNote: "Nevada is a western state, but its name is a single word.", fact: "Nevada rushed into statehood in 1864 by sending its entire constitution to Washington by telegraph, the longest telegram of its day." },
+      { label: "Las Vegas", correctSlot: "S3", logicNote: "Las Vegas has a two-word name and lies west of the Mississippi, but it is a city, not a state.", fact: "Las Vegas means 'the meadows' in Spanish, named for the springs that once watered the desert valley." },
+      { label: "New Mexico", correctSlot: "S4", logicNote: "New Mexico is a two-word state well west of the Mississippi.", fact: "Spanish explorers named New Mexico in the 1560s, more than 250 years before the country of Mexico took that name." },
+      { label: "Ohio", correctSlot: null },
+      { label: "New England", correctSlot: null },
+      { label: "Hollywood", correctSlot: null },
+      { label: "Zucchini", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Follow 'Blue' + Can Follow 'Green' + Can Follow 'Black'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Follow 'Blue'", B: "Can Follow 'Green'", C: "Can Follow 'Black'" },
+    tiles: [
+      { label: "Zone", correctSlot: "S1", logicNote: "Blue zones are where people live longest and the Green Zone was Baghdad's fortified district, but there is no black zone.", fact: "The term 'blue zones' was coined after researchers circled the world's longest-lived regions, like Sardinia and Okinawa, in blue ink on a map." },
+      { label: "Berry", correctSlot: "S2", logicNote: "Blueberry and blackberry are both fruit, but a green berry is just one that isn't ripe.", fact: "Botanically speaking, a banana is a berry and a strawberry is not." },
+      { label: "Tea", correctSlot: "S3", logicNote: "Green tea and black tea fill the grocery aisle, but blue tea is not a thing.", fact: "Green and black tea come from the same plant, Camellia sinensis; black tea is simply oxidized longer before drying." },
+      { label: "Belt", correctSlot: "S4", logicNote: "Blue belt, green belt, and black belt are all martial arts ranks.", fact: "Judo founder Jigoro Kano introduced the black belt in the 1880s; the colored belts for lower ranks were added in Europe in the 1930s." },
+      { label: "Print", correctSlot: null },
+      { label: "Thumb", correctSlot: null },
+      { label: "Sheep", correctSlot: null },
+      { label: "Paperweight", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-08",
+  easy: {
+    title: "On a Playground + You Climb It + Made of Metal",
+    difficultyEstimate: 82,
+    labels: { A: "On a Playground", B: "You Climb It", C: "Made of Metal" },
+    tiles: [
+      { label: "Rock Wall", correctSlot: "S1", logicNote: "A playground rock wall is made for climbing, but its holds are plastic or wood, not metal.", fact: "Sport climbing made its Olympic debut at the Tokyo Games in 2021." },
+      { label: "Swing Set", correctSlot: "S2", logicNote: "A swing set is a metal playground fixture, but it is built for swinging, not climbing.", fact: "Swings are ancient; Greek vases from around 400 BC show children swinging." },
+      { label: "Fire Escape", correctSlot: "S3", logicNote: "A fire escape is a metal structure you climb, but it hangs off a building, not a playground.", fact: "New York required outdoor fire escapes on tenements after an 1860 law, and they became a signature of the city's streetscape." },
+      { label: "Monkey Bars", correctSlot: "S4", logicNote: "Monkey bars are metal playground equipment that exist entirely to be climbed.", fact: "Monkey bars were patented in 1920 by a Chicago lawyer, Sebastian Hinton, whose father had built a bamboo climbing frame to teach his kids geometry." },
+      { label: "Sandbox", correctSlot: null },
+      { label: "Beanstalk", correctSlot: null },
+      { label: "Horseshoe", correctSlot: null },
+      { label: "Waffle", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Sauce or Paste + Named After a Place + Spicy",
+    difficultyEstimate: 51,
+    labels: { A: "A Sauce or Paste", B: "Named After a Place", C: "Spicy" },
+    tiles: [
+      { label: "Worcestershire", correctSlot: "S1", logicNote: "Worcestershire sauce is named for the English county where it was first bottled, but it is tangy and savory rather than spicy.", fact: "Worcestershire sauce was a failed batch left in a cellar for 18 months; when the chemists Lea and Perrins tasted it again, it had mellowed into a hit." },
+      { label: "Wasabi", correctSlot: "S2", logicNote: "Wasabi is a fiery paste, but its name comes from the Japanese plant, not a place.", fact: "Most wasabi served outside Japan is actually horseradish dyed green, because real wasabi is hard to grow and loses its kick minutes after grating." },
+      { label: "Jalapeño", correctSlot: "S3", logicNote: "The jalapeño is spicy and named for the Mexican city of Xalapa, but it is a pepper, not a sauce.", fact: "The jalapeño was the first pepper to fly in space, carried aboard a 1982 shuttle flight." },
+      { label: "Tabasco", correctSlot: "S4", logicNote: "Tabasco is a spicy sauce named after the Mexican state of Tabasco.", fact: "Tabasco sauce has been made on Avery Island, Louisiana, since 1868, and the mashed peppers age in oak barrels for up to three years." },
+      { label: "Ranch", correctSlot: null },
+      { label: "Bikini", correctSlot: null },
+      { label: "Ghost Pepper", correctSlot: null },
+      { label: "Sombrero", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Hides an Animal + Hides a Body Part + Hides a Color",
+    difficultyEstimate: 36,
+    labels: { A: "Hides an Animal", B: "Hides a Body Part", C: "Hides a Color" },
+    tiles: [
+      { label: "Elegant", correctSlot: "S1", logicNote: "ELEGANT hides a LEG and an ANT, but no color is tucked inside.", fact: "The word 'elegant' comes from the Latin eligere, to choose, so an elegant person was originally a choosy one." },
+      { label: "Earl Grey", correctSlot: "S2", logicNote: "EARL GREY hides an EAR and wears the color GREY, but there is no animal in it.", fact: "Earl Grey tea is flavored with bergamot, a citrus fruit grown mostly in Calabria, Italy, and is named for a British prime minister of the 1830s." },
+      { label: "Important", correctSlot: "S3", logicNote: "IMPORTANT hides an ANT and the color TAN, but no body part.", fact: "An ant can carry 10 to 50 times its own body weight, which is like a person hoisting a car." },
+      { label: "Bluebeard", correctSlot: "S4", logicNote: "BLUEBEARD hides a BEAR, an EAR, and the color BLUE.", fact: "Bluebeard first appeared in Charles Perrault's 1697 collection of fairy tales, the same book that gave us Cinderella and Puss in Boots." },
+      { label: "Scowl", correctSlot: null },
+      { label: "Mistletoe", correctSlot: null },
+      { label: "Credit", correctSlot: null },
+      { label: "Pencil", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-07",
+  easy: {
+    title: "A Flower + Yellow + You Can Eat It",
+    difficultyEstimate: 82,
+    labels: { A: "A Flower", B: "Yellow", C: "You Can Eat It" },
+    tiles: [
+      { label: "Daffodil", correctSlot: "S1", logicNote: "A daffodil is a yellow flower, but every part of it is toxic, so keep it off the plate.", fact: "Daffodil bulbs are poisonous, which is one reason squirrels and deer leave them alone in the garden." },
+      { label: "Lavender", correctSlot: "S2", logicNote: "Lavender is a flower used in shortbread and lemonade, but it is purple, not yellow.", fact: "Lavender's name comes from the Latin 'lavare,' to wash, because the Romans scented their baths with it." },
+      { label: "Lemon", correctSlot: "S3", logicNote: "A lemon is yellow and edible, but it is a fruit, not a flower.", fact: "A single mature lemon tree can produce as much as 600 pounds of lemons in a year." },
+      { label: "Dandelion", correctSlot: "S4", logicNote: "A dandelion is a yellow flower, and its leaves, petals, and roots are all edible.", fact: "The dandelion's name comes from the French 'dent de lion,' lion's tooth, for its jagged leaves." },
+      { label: "Poinsettia", correctSlot: null },
+      { label: "School Bus", correctSlot: null },
+      { label: "Steak", correctSlot: null },
+      { label: "Snowboard", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Gem + Comes From an Animal + White",
+    difficultyEstimate: 49,
+    labels: { A: "A Gem", B: "Comes From an Animal", C: "White" },
+    tiles: [
+      { label: "Coral", correctSlot: "S1", logicNote: "Coral is carved into jewelry and is built by tiny animals, but the precious kind is red or pink.", fact: "Red coral has been carved into jewelry for thousands of years, and Mediterranean coral was traded as far as India in Roman times." },
+      { label: "Diamond", correctSlot: "S2", logicNote: "A diamond is a gem that jewelers grade as white, but it forms from carbon deep underground, not from any creature.", fact: "A diamond is pure carbon, the same element as pencil graphite, just squeezed into a tighter crystal." },
+      { label: "Ivory", correctSlot: "S3", logicNote: "Ivory is white and comes from elephant tusks, but it is not a gemstone.", fact: "Billiard balls were made of ivory until the 1860s, when a $10,000 prize for a substitute led to the first commercial plastic." },
+      { label: "Pearl", correctSlot: "S4", logicNote: "A pearl is a white gem made inside an oyster.", fact: "A pearl forms when an oyster coats an irritant with layer after layer of nacre, the same material that lines its shell." },
+      { label: "Ruby", correctSlot: null },
+      { label: "Leather", correctSlot: null },
+      { label: "Cotton Ball", correctSlot: null },
+      { label: "Garden Hose", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Commands a Ship + A Pirate + A Real Person",
+    difficultyEstimate: 38,
+    labels: { A: "Commands a Ship", B: "A Pirate", C: "A Real Person" },
+    tiles: [
+      { label: "Captain Hook", correctSlot: "S1", logicNote: "Captain Hook commands the Jolly Roger and is every inch a pirate, but he exists only in Neverland.", fact: "In J.M. Barrie's original play, the actor who plays Mr. Darling traditionally doubles as Captain Hook." },
+      { label: "Captain Cook", correctSlot: "S2", logicNote: "James Cook was a real ship's captain, but he explored for the Royal Navy rather than plundering.", fact: "Captain Cook kept scurvy off his second voyage by making his crew eat sauerkraut, and he lost no sailors to the disease." },
+      { label: "Anne Bonny", correctSlot: "S3", logicNote: "Anne Bonny was a real pirate, but she sailed as crew under Calico Jack rather than commanding her own ship.", fact: "Anne Bonny sailed with Calico Jack Rackham in 1720 and escaped the gallows because she was pregnant." },
+      { label: "Blackbeard", correctSlot: "S4", logicNote: "Blackbeard was a real pirate who captained the Queen Anne's Revenge.", fact: "Blackbeard reportedly tucked slow-burning fuses under his hat so smoke curled around his face in battle." },
+      { label: "Captain Kirk", correctSlot: null },
+      { label: "Smee", correctSlot: null },
+      { label: "Marie Curie", correctSlot: null },
+      { label: "Treasure Chest", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-06",
+  easy: {
+    title: "A Sandwich + Served Hot + Has Cheese",
+    difficultyEstimate: 82,
+    labels: { A: "A Sandwich", B: "Served Hot", C: "Has Cheese" },
+    tiles: [
+      { label: "Sloppy Joe", correctSlot: "S1", logicNote: "A sloppy joe is a hot sandwich, but the classic version is just saucy beef on a bun with no cheese.", fact: "One origin story credits a cook named Joe at a Sioux City, Iowa, café in the 1930s with inventing the sloppy joe." },
+      { label: "Italian Sub", correctSlot: "S2", logicNote: "An Italian sub is a sandwich layered with provolone, but it is served cold.", fact: "The sub goes by at least a dozen regional names, including hoagie in Philadelphia, grinder in New England, and hero in New York." },
+      { label: "Pizza", correctSlot: "S3", logicNote: "Pizza is hot and covered in cheese, but it is not a sandwich.", fact: "Americans eat roughly three billion pizzas a year, and pepperoni is the most popular topping by a wide margin." },
+      { label: "Reuben", correctSlot: "S4", logicNote: "A Reuben is a grilled sandwich served hot with melted Swiss cheese.", fact: "The Reuben's origin is disputed between an Omaha grocer named Reuben Kulakofsky and a New York deli owner named Arnold Reuben." },
+      { label: "PB&J", correctSlot: null },
+      { label: "Soup", correctSlot: null },
+      { label: "Cheddar", correctSlot: null },
+      { label: "Roller Coaster", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Bear + Named After a Place + Fictional",
+    difficultyEstimate: 50,
+    labels: { A: "A Bear", B: "Named After a Place", C: "Fictional" },
+    tiles: [
+      { label: "Kodiak", correctSlot: "S1", logicNote: "The Kodiak is a very real bear named for Alaska's Kodiak Island.", fact: "Kodiak bears live only on Alaska's Kodiak Archipelago, and the biggest males can top 1,500 pounds." },
+      { label: "Yogi", correctSlot: "S2", logicNote: "Yogi is a fictional bear, but he is named after baseball's Yogi Berra, not a place.", fact: "Yogi Bear debuted in 1958 as a supporting character on The Huckleberry Hound Show before getting his own series." },
+      { label: "Indiana Jones", correctSlot: "S3", logicNote: "Indiana Jones is fictional and named after a state, but he is an archaeologist, not a bear.", fact: "Indiana Jones was named after George Lucas's Alaskan malamute, Indiana, a joke the films acknowledge in The Last Crusade." },
+      { label: "Paddington", correctSlot: "S4", logicNote: "Paddington is a fictional bear named for the London train station where he was found.", fact: "Michael Bond bought a lone teddy bear at Selfridges on Christmas Eve 1956 and named it for nearby Paddington station." },
+      { label: "Grizzly", correctSlot: null },
+      { label: "Boston Terrier", correctSlot: null },
+      { label: "Sherlock Holmes", correctSlot: null },
+      { label: "Snowplow", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Chess Term + A Tennis Term + A Romance Word",
+    difficultyEstimate: 32,
+    labels: { A: "A Chess Term", B: "A Tennis Term", C: "A Romance Word" },
+    tiles: [
+      { label: "Draw", correctSlot: "S1", logicNote: "A chess game can end in a draw and tennis players wait to see the tournament draw, but nobody calls a sweetheart a draw.", fact: "The longest game in world chess championship history ran 136 moves in 2021, and after nearly eight hours Magnus Carlsen won it outright rather than drawing." },
+      { label: "Mate", correctSlot: "S2", logicNote: "Mate ends a chess game and describes a life partner, but it is not a tennis term.", fact: "'Checkmate' comes from the Persian phrase 'shah mat,' usually translated as 'the king is helpless.'" },
+      { label: "Love", correctSlot: "S3", logicNote: "Love is zero in tennis and everything in romance, but it means nothing in chess.", fact: "Tennis's 'love' for zero may come from the French 'l'oeuf,' the egg, for its round shape, though word historians still argue about it." },
+      { label: "Match", correctSlot: "S4", logicNote: "You can play a chess match, win a tennis match, and meet your perfect match.", fact: "The 'match' you play and the 'match' you strike come from different roots; the fire-starter traces back to a Greek word for lamp wick." },
+      { label: "Blitz", correctSlot: null },
+      { label: "Ace", correctSlot: null },
+      { label: "Catch", correctSlot: null },
+      { label: "Lighthouse", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-05",
+  easy: {
+    title: "Found in a Bedroom + Soft + You Sleep With It",
+    difficultyEstimate: 81,
+    labels: { A: "Found in a Bedroom", B: "Soft", C: "You Sleep With It" },
+    tiles: [
+      { label: "Rug", correctSlot: "S1", logicNote: "A soft rug sits beside plenty of beds, but nobody tucks it in with them at night.", fact: "The oldest known carpet, the Pazyryk rug, was found frozen in a Siberian tomb and is about 2,500 years old." },
+      { label: "Retainer", correctSlot: "S2", logicNote: "A retainer waits on the nightstand and goes in before you sleep, but it is hard plastic and wire, not soft.", fact: "The classic wire retainer is called a Hawley retainer, after the orthodontist Charles Hawley, who designed it in 1919." },
+      { label: "Sleeping Bag", correctSlot: "S3", logicNote: "A sleeping bag is soft and you sleep in it, but it belongs at a campsite, not in a bedroom.", fact: "The first commercial sleeping bag, the Euklisia Rug, was sold by a Welsh mail-order pioneer in the 1870s." },
+      { label: "Teddy Bear", correctSlot: "S4", logicNote: "A teddy bear is soft, lives in the bedroom, and gets cuddled to sleep.", fact: "The teddy bear is named for Theodore Roosevelt, after a 1902 cartoon showed him refusing to shoot a captured bear." },
+      { label: "Closet", correctSlot: null },
+      { label: "Marshmallow", correctSlot: null },
+      { label: "Snorkel", correctSlot: null },
+      { label: "Traffic Cone", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Disney or Pixar Movie + Has a Princess + Set in a Real Country",
+    difficultyEstimate: 51,
+    labels: { A: "A Disney or Pixar Movie", B: "Has a Princess", C: "Set in a Real Country" },
+    tiles: [
+      { label: "Frozen", correctSlot: "S1", logicNote: "Frozen is a Disney movie about two princesses, but Arendelle is a made-up kingdom.", fact: "'Let It Go' was written in a single day, and it persuaded the filmmakers to rewrite Elsa from a villain into a sympathetic heroine." },
+      { label: "Ratatouille", correctSlot: "S2", logicNote: "Ratatouille is a Pixar movie set in Paris, but there is not a princess in sight, just a rat who cooks.", fact: "Chef Thomas Keller consulted on Ratatouille and designed the layered version of the dish that Remy serves at the end." },
+      { label: "Roman Holiday", correctSlot: "S3", logicNote: "Roman Holiday follows a runaway princess through Rome, but it is a 1953 Paramount film, not Disney.", fact: "Audrey Hepburn won the Best Actress Oscar for Roman Holiday, her first starring role in a Hollywood film." },
+      { label: "Brave", correctSlot: "S4", logicNote: "Brave is a Pixar movie about Princess Merida, and it is set in medieval Scotland.", fact: "Merida's wild red curls took Pixar roughly three years of software development to animate convincingly." },
+      { label: "Cars", correctSlot: null },
+      { label: "Shrek", correctSlot: null },
+      { label: "Amélie", correctSlot: null },
+      { label: "Lawn Gnome", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Named for Its Founder + Has an Ampersand + Something to Eat",
+    difficultyEstimate: 37,
+    labels: { A: "Named for Its Founder", B: "Has an Ampersand", C: "Something to Eat" },
+    tiles: [
+      { label: "Procter & Gamble", correctSlot: "S1", logicNote: "Procter & Gamble is named for its two founders and has an ampersand, but it sells soap and razors, not food.", fact: "William Procter, a candlemaker, and James Gamble, a soapmaker, went into business together in 1837 after marrying sisters." },
+      { label: "Hershey's", correctSlot: "S2", logicNote: "Hershey's is named for founder Milton Hershey and is something to eat, but there is no ampersand in the name.", fact: "Milton Hershey built an entire town around his chocolate factory, complete with an amusement park for his workers." },
+      { label: "Mac & Cheese", correctSlot: "S3", logicNote: "Mac & cheese has an ampersand and is something to eat, but it is a dish, not a company named for anyone.", fact: "Thomas Jefferson served a macaroni and cheese dish at a White House dinner in 1802 after encountering pasta in Europe." },
+      { label: "Ben & Jerry's", correctSlot: "S4", logicNote: "Ben & Jerry's is named for Ben Cohen and Jerry Greenfield, has an ampersand, and is ice cream.", fact: "Ben Cohen and Jerry Greenfield learned ice cream making from a $5 correspondence course before opening their first shop in Burlington, Vermont, in 1978." },
+      { label: "Rolls-Royce", correctSlot: null },
+      { label: "AT&T", correctSlot: null },
+      { label: "Oreo", correctSlot: null },
+      { label: "Yoga Mat", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-04",
+  easy: {
+    title: "In a Toolbox + Has a Handle + Made of Metal",
+    difficultyEstimate: 82,
+    labels: { A: "In a Toolbox", B: "Has a Handle", C: "Made of Metal" },
+    tiles: [
+      { label: "Rubber Mallet", correctSlot: "S1", logicNote: "A rubber mallet lives in the toolbox and has a handle, but its head is rubber, not metal.", fact: "Tile and flooring installers use a rubber mallet because it taps pieces into place without leaving dents or marks." },
+      { label: "Tape Measure", correctSlot: "S2", logicNote: "A tape measure is a metal-bladed toolbox essential, but it has a case, not a handle.", fact: "The slight curve across a tape measure's blade is what lets it stand out straight for several feet without flopping over." },
+      { label: "Frying Pan", correctSlot: "S3", logicNote: "A frying pan is metal with a handle, but it belongs in the kitchen, not the toolbox.", fact: "Teflon was discovered by accident in 1938 by a DuPont chemist working on refrigerants, and the first nonstick pan went on sale in France in 1956." },
+      { label: "Hammer", correctSlot: "S4", logicNote: "A hammer is a toolbox staple with a handle and a metal head.", fact: "The claw hammer dates back to ancient Rome, and its basic design has barely changed in 2,000 years." },
+      { label: "Sandpaper", correctSlot: null },
+      { label: "Coffee Mug", correctSlot: null },
+      { label: "Soda Can", correctSlot: null },
+      { label: "Cloud", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Queen + English + Was Executed",
+    difficultyEstimate: 50,
+    labels: { A: "A Queen", B: "English", C: "Was Executed" },
+    tiles: [
+      { label: "Elizabeth I", correctSlot: "S1", logicNote: "Elizabeth I was an English queen, but she died of natural causes after a 44-year reign.", fact: "Elizabeth I never married, and her long reign gave its name to the Elizabethan age of Shakespeare and Marlowe." },
+      { label: "Marie Antoinette", correctSlot: "S2", logicNote: "Marie Antoinette was a queen who went to the guillotine, but she was Austrian-born and reigned in France.", fact: "There is no evidence Marie Antoinette ever said 'Let them eat cake'; the line appeared in Rousseau's writing when she was still a child in Austria." },
+      { label: "Charles I", correctSlot: "S3", logicNote: "Charles I was an English monarch who was executed, but he was a king, not a queen.", fact: "Charles I is the only English king ever tried and executed by his own subjects, in January 1649." },
+      { label: "Anne Boleyn", correctSlot: "S4", logicNote: "Anne Boleyn was an English queen executed on the orders of her husband, Henry VIII.", fact: "Henry VIII had a swordsman brought over from Calais for Anne Boleyn's execution in 1536 instead of using the usual axe." },
+      { label: "Cleopatra", correctSlot: null },
+      { label: "Shakespeare", correctSlot: null },
+      { label: "Joan of Arc", correctSlot: null },
+      { label: "Paella", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Country + Was Officially Renamed + In Asia",
+    difficultyEstimate: 38,
+    labels: { A: "A Country", B: "Was Officially Renamed", C: "In Asia" },
+    tiles: [
+      { label: "Zimbabwe", correctSlot: "S1", logicNote: "Zimbabwe is a country that was Rhodesia until 1980, but it is in southern Africa.", fact: "Zimbabwe takes its name from Great Zimbabwe, the ruins of a medieval stone city whose name means 'houses of stone' in Shona." },
+      { label: "South Korea", correctSlot: "S2", logicNote: "South Korea is an Asian country, but it has carried the same name since its founding in 1948.", fact: "Seoul, the capital of South Korea, is one of the few capitals whose name simply means 'capital' in the local language." },
+      { label: "Mumbai", correctSlot: "S3", logicNote: "Mumbai is in Asia and was officially renamed from Bombay, but it is a city, not a country.", fact: "Bombay officially became Mumbai in 1995, taking its name from Mumbadevi, the city's patron goddess." },
+      { label: "Thailand", correctSlot: "S4", logicNote: "Thailand is an Asian country that was officially called Siam until 1939.", fact: "Siam became Thailand in 1939, and the new name means 'land of the free.'" },
+      { label: "France", correctSlot: null },
+      { label: "St. Petersburg", correctSlot: null },
+      { label: "Great Wall of China", correctSlot: null },
+      { label: "Lasagna", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-03",
+  easy: {
+    title: "At a Carnival + Sweet + On a Stick",
+    difficultyEstimate: 82,
+    labels: { A: "At a Carnival", B: "Sweet", C: "On a Stick" },
+    tiles: [
+      { label: "Funnel Cake", correctSlot: "S1", logicNote: "Funnel cake is a sweet carnival classic, but it comes on a paper plate, not a stick.", fact: "Funnel cake came to America with the Pennsylvania Dutch, who poured batter through a funnel into hot fat." },
+      { label: "Corn Dog", correctSlot: "S2", logicNote: "A corn dog is carnival food on a stick, but it is savory, not sweet.", fact: "The corn dog was popularized at the 1942 Texas State Fair, where it was sold as the Corny Dog." },
+      { label: "Cake Pop", correctSlot: "S3", logicNote: "A cake pop is sweet and served on a stick, but it is a bakery treat, not a midway one.", fact: "Cake pops took off in 2008 after the baking blogger Bakerella posted them, and Starbucks added them to its menu in 2011." },
+      { label: "Candy Apple", correctSlot: "S4", logicNote: "A candy apple is sweet, comes on a stick, and is a carnival staple.", fact: "Candy apples were invented in 1908 by Newark candymaker William Kolb, who was experimenting with red cinnamon candy for Christmas." },
+      { label: "Ferris Wheel", correctSlot: null },
+      { label: "Chocolate Bar", correctSlot: null },
+      { label: "Kebab", correctSlot: null },
+      { label: "Bulldozer", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "An Olympic Sport + Done on Skates + Set to Music",
+    difficultyEstimate: 52,
+    labels: { A: "An Olympic Sport", B: "Done on Skates", C: "Set to Music" },
+    tiles: [
+      { label: "Hockey", correctSlot: "S1", logicNote: "Hockey is an Olympic sport played on skates, but the only music is the goal horn.", fact: "Olympic hockey pucks are frozen before games so they slide better and bounce less." },
+      { label: "Rhythmic Gymnastics", correctSlot: "S2", logicNote: "Rhythmic gymnastics is an Olympic sport performed to music, but on a carpet, not skates.", fact: "Rhythmic gymnastics has been a women's-only Olympic event since it debuted in 1984." },
+      { label: "Roller Disco", correctSlot: "S3", logicNote: "Roller disco is done on skates to music, but nobody is handing out medals for it.", fact: "Roller disco peaked in the late 1970s, and Brooklyn's Empire Roller Skating Center is often called its birthplace." },
+      { label: "Ice Dancing", correctSlot: "S4", logicNote: "Ice dancing is an Olympic sport performed on skates and choreographed to music.", fact: "Ice dancing grew out of ballroom dancing, and unlike pairs skating it forbids throws and most overhead lifts." },
+      { label: "Archery", correctSlot: null },
+      { label: "Roller Derby", correctSlot: null },
+      { label: "Piano", correctSlot: null },
+      { label: "Treadmill", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Man' + Can Precede 'Storm' + Can Precede 'Boot'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Precede 'Man'", B: "Can Precede 'Storm'", C: "Can Precede 'Boot'" },
+    tiles: [
+      { label: "Sand", correctSlot: "S1", logicNote: "The Sandman and a sandstorm are both real, but nobody wears a sand boot.", fact: "The Sandman, who sprinkles sand to bring on sleep, comes from Northern European folklore and explains the grit in the corners of your eyes each morning." },
+      { label: "Work", correctSlot: "S2", logicNote: "Workman and work boot both fit, but there is no such thing as a workstorm.", fact: "Labor Day became a US federal holiday in 1894, rushed through Congress just days after the Pullman railroad strike." },
+      { label: "Desert", correctSlot: "S3", logicNote: "Operation Desert Storm and the desert boot both work, but desert man is not a phrase.", fact: "Operation Desert Storm began on January 17, 1991, and its ground war lasted just 100 hours." },
+      { label: "Snow", correctSlot: "S4", logicNote: "Snowman, snowstorm, and snow boot all check out.", fact: "The largest snowflake on record, reported in Fort Keogh, Montana, in 1887, was said to be 15 inches across." },
+      { label: "Spider", correctSlot: null },
+      { label: "Brain", correctSlot: null },
+      { label: "Cowboy", correctSlot: null },
+      { label: "Cactus", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-02",
+  easy: {
+    title: "A Tree + Loses Its Leaves in Fall + Gives Us Food",
+    difficultyEstimate: 82,
+    labels: { A: "A Tree", B: "Loses Its Leaves in Fall", C: "Gives Us Food" },
+    tiles: [
+      { label: "Elm", correctSlot: "S1", logicNote: "An elm is a tree that drops its leaves every autumn, but it produces nothing we eat.", fact: "Dutch elm disease, spread by bark beetles, killed tens of millions of American elms during the 20th century." },
+      { label: "Pine", correctSlot: "S2", logicNote: "A pine is a tree that gives us pine nuts, but it is an evergreen that keeps its needles all year.", fact: "Pine nuts are harvested from the cones of a few pine species, and a tree can take 15 to 25 years before it produces a worthwhile crop." },
+      { label: "Grapevine", correctSlot: "S3", logicNote: "A grapevine drops its leaves in fall and gives us grapes, but it is a vine, not a tree.", fact: "The phrase 'heard it through the grapevine' dates to the Civil War, when tangled telegraph wires were compared to vines." },
+      { label: "Maple", correctSlot: "S4", logicNote: "A maple is a tree, sheds its leaves in a blaze of color each fall, and gives us maple syrup.", fact: "It takes about 40 gallons of maple sap, boiled down, to make a single gallon of syrup." },
+      { label: "Redwood", correctSlot: null },
+      { label: "Hydrangea", correctSlot: null },
+      { label: "Beehive", correctSlot: null },
+      { label: "Skateboard", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Beatle's First Name + A President's First Name + An Apostle in the Bible",
+    difficultyEstimate: 50,
+    labels: { A: "A Beatle's First Name", B: "A President's First Name", C: "An Apostle in the Bible" },
+    tiles: [
+      { label: "George", correctSlot: "S1", logicNote: "George Harrison and George Washington check two boxes, but there is no Apostle George.", fact: "George Harrison wrote 'Here Comes the Sun' in Eric Clapton's garden while skipping a business meeting at Apple Records." },
+      { label: "Paul", correctSlot: "S2", logicNote: "Paul McCartney and the Apostle Paul both fit, but no US president has been named Paul.", fact: "Paul McCartney said the melody of 'Yesterday' came to him in a dream, and he spent weeks asking people whether he had unknowingly copied it." },
+      { label: "Andrew", correctSlot: "S3", logicNote: "Andrew Jackson and Andrew Johnson were presidents and Andrew was an apostle, but no Beatle went by Andrew.", fact: "Andrew Jackson survived the first assassination attempt on a sitting president in 1835, when both of the gunman's pistols misfired." },
+      { label: "John", correctSlot: "S4", logicNote: "John Lennon, John Adams, and the Apostle John cover all three.", fact: "John Lennon's middle name was Winston, after Churchill; he later changed it to Ono." },
+      { label: "Ringo", correctSlot: null },
+      { label: "Abraham", correctSlot: null },
+      { label: "Peter", correctSlot: null },
+      { label: "Yoko", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Body of Water + Named After an Explorer + In North America",
+    difficultyEstimate: 38,
+    labels: { A: "A Body of Water", B: "Named After an Explorer", C: "In North America" },
+    tiles: [
+      { label: "Strait of Magellan", correctSlot: "S1", logicNote: "The Strait of Magellan is a waterway named for an explorer, but it sits at the tip of South America.", fact: "Magellan's fleet took 38 days to thread the strait in 1520, and he named the calm ocean on the far side the Pacific." },
+      { label: "Gulf of Mexico", correctSlot: "S2", logicNote: "The Gulf of Mexico is a North American body of water, but it is named for the country, not an explorer.", fact: "The Gulf of Mexico is the largest gulf in the world, and its warm Loop Current helps feed the Gulf Stream." },
+      { label: "Vancouver", correctSlot: "S3", logicNote: "Vancouver is a North American city named for explorer George Vancouver, but it is land, not water.", fact: "George Vancouver charted the Pacific Northwest coast in the 1790s, and both Vancouver, Canada, and Vancouver, Washington, carry his name." },
+      { label: "Hudson Bay", correctSlot: "S4", logicNote: "Hudson Bay is a body of water in North America named for explorer Henry Hudson.", fact: "Henry Hudson's crew mutinied in 1611 and set him adrift in the bay that now bears his name; he was never seen again." },
+      { label: "Amazon River", correctSlot: null },
+      { label: "Tasmania", correctSlot: null },
+      { label: "Rocky Mountains", correctSlot: null },
+      { label: "Banjo", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-12-01",
+  easy: {
+    title: "Found in a Kitchen + Made of Glass + Holds Liquid",
+    difficultyEstimate: 81,
+    labels: { A: "Found in a Kitchen", B: "Made of Glass", C: "Holds Liquid" },
+    tiles: [
+      { label: "Salt Shaker", correctSlot: "S1", logicNote: "A salt shaker lives in the kitchen and is usually glass, but it holds salt, not liquid.", fact: "Salt shakers only became practical in 1911, when Morton added an anti-caking agent so salt would pour even in humid weather." },
+      { label: "Kettle", correctSlot: "S2", logicNote: "A kettle is a kitchen item that holds water, but it is made of metal, not glass.", fact: "Britain's power grid braces for surges called TV pickups when millions of electric kettles switch on at the end of popular programs." },
+      { label: "Perfume Bottle", correctSlot: "S3", logicNote: "A perfume bottle is glass and holds liquid, but it belongs on a dresser, not in the kitchen.", fact: "Chanel No. 5 launched in 1921 in a plain, pharmacy-style bottle, a deliberate break from the ornate perfume flasks of the day." },
+      { label: "Mason Jar", correctSlot: "S4", logicNote: "A mason jar is a glass kitchen staple that holds everything from pickle brine to lemonade.", fact: "John Landis Mason patented his screw-top glass jar in 1858, and it transformed home canning." },
+      { label: "Colander", correctSlot: null },
+      { label: "Window", correctSlot: null },
+      { label: "Bathtub", correctSlot: null },
+      { label: "Hammock", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Breakfast Cereal + Has a Mascot + Named for Its Shape",
+    difficultyEstimate: 50,
+    labels: { A: "A Breakfast Cereal", B: "Has a Mascot", C: "Named for Its Shape" },
+    tiles: [
+      { label: "Rice Krispies", correctSlot: "S1", logicNote: "Rice Krispies is a cereal with three mascots, but the name describes the sound and crispness, not a shape.", fact: "Snap, Crackle, and Pop debuted in 1933, and for a short stretch in the 1950s they had a fourth brother named Pow." },
+      { label: "Chex", correctSlot: "S2", logicNote: "Chex is a cereal named for its checkerboard shape, but it has never had a mascot.", fact: "Chex Mix started as a 1950s recipe printed on the cereal box, decades before it was sold in bags." },
+      { label: "Goldfish", correctSlot: "S3", logicNote: "Goldfish crackers are named for their shape and have a mascot named Finn, but they are a snack, not a breakfast cereal.", fact: "Goldfish crackers were invented in Switzerland in 1958, and Pepperidge Farm brought them to the United States in 1962." },
+      { label: "Froot Loops", correctSlot: "S4", logicNote: "Froot Loops is a cereal shaped like loops with Toucan Sam as its mascot.", fact: "Despite the rainbow of colors, every Froot Loop is the same flavor." },
+      { label: "Grape-Nuts", correctSlot: null },
+      { label: "Pillsbury Doughboy", correctSlot: null },
+      { label: "Fish Sticks", correctSlot: null },
+      { label: "Snow Tire", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Wine + A Place + A Color",
+    difficultyEstimate: 38,
+    labels: { A: "A Wine", B: "A Place", C: "A Color" },
+    tiles: [
+      { label: "Chianti", correctSlot: "S1", logicNote: "Chianti is a wine named for a region of Tuscany, but it is not a color.", fact: "Chianti was once sold in a round bottle wrapped in a straw basket called a fiasco." },
+      { label: "Rosé", correctSlot: "S2", logicNote: "Rosé is a wine and a pinkish color, but it is not a place.", fact: "Rosé gets its blush from only a few hours of contact with red grape skins before the juice is drained off." },
+      { label: "Cognac", correctSlot: "S3", logicNote: "Cognac is a town in France and a warm brown color, but the drink is a brandy, not a wine.", fact: "A brandy can only be called cognac if it is made in the Cognac region of France and aged at least two years in oak." },
+      { label: "Champagne", correctSlot: "S4", logicNote: "Champagne is a wine, a region of France, and a pale golden color.", fact: "A champagne bottle holds about 90 pounds per square inch of pressure, roughly three times a car tire." },
+      { label: "Napa", correctSlot: null },
+      { label: "Beige", correctSlot: null },
+      { label: "Moscato", correctSlot: null },
+      { label: "Corkscrew", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-30",
+  easy: {
+    title: "A Pizza Topping + A Vegetable + Green",
+    difficultyEstimate: 82,
+    labels: { A: "A Pizza Topping", B: "A Vegetable", C: "Green" },
+    tiles: [
+      { label: "Onion", correctSlot: "S1", logicNote: "Onions are a vegetable and a classic pizza topping, but they are white, yellow, or red, never green.", fact: "Cutting an onion releases a sulfur compound that forms a mild acid when it reaches your eyes, which is why you cry." },
+      { label: "Basil", correctSlot: "S2", logicNote: "Fresh basil tops every Margherita pizza and is green, but it is an herb, not a vegetable.", fact: "Basil's name comes from the Greek word for king, and the plant is a member of the mint family." },
+      { label: "Celery", correctSlot: "S3", logicNote: "Celery is a green vegetable, but it has no business on a pizza.", fact: "Celery was so prized in Victorian England that wealthy households showed it off on the table in special glass vases." },
+      { label: "Artichoke", correctSlot: "S4", logicNote: "Artichoke hearts are a green vegetable that shows up on plenty of pizzas.", fact: "An artichoke is actually a flower bud, and if left unpicked it blooms into a big purple thistle." },
+      { label: "Pepperoni", correctSlot: null },
+      { label: "Carrot", correctSlot: null },
+      { label: "Frog", correctSlot: null },
+      { label: "Mailbox", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "Built in Ancient Times + Still Standing Today + In Egypt",
+    difficultyEstimate: 50,
+    labels: { A: "Built in Ancient Times", B: "Still Standing Today", C: "In Egypt" },
+    tiles: [
+      { label: "Parthenon", correctSlot: "S1", logicNote: "The Parthenon is an ancient temple still standing today, but it is in Athens, not Egypt.", fact: "The Parthenon survived largely intact until 1687, when a Venetian shell hit the gunpowder the Ottomans had stored inside it." },
+      { label: "Lighthouse of Alexandria", correctSlot: "S2", logicNote: "The Lighthouse of Alexandria was an ancient Egyptian wonder, but earthquakes brought it down centuries ago.", fact: "The Lighthouse of Alexandria stood more than 300 feet tall for roughly 1,500 years before earthquakes finished it off in the 1300s." },
+      { label: "Aswan High Dam", correctSlot: "S3", logicNote: "The Aswan High Dam stands in Egypt today, but it was built in the 1960s, not antiquity.", fact: "Building the Aswan High Dam meant cutting the temples of Abu Simbel into blocks and reassembling them 200 feet higher up the cliff." },
+      { label: "Great Pyramid of Giza", correctSlot: "S4", logicNote: "The Great Pyramid is ancient, Egyptian, and very much still standing.", fact: "The Great Pyramid of Giza was the tallest man-made structure on Earth for about 3,800 years." },
+      { label: "Troy", correctSlot: null },
+      { label: "Golden Gate Bridge", correctSlot: null },
+      { label: "Suez Canal", correctSlot: null },
+      { label: "Sandcastle", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Card' + Can Precede 'Light' + Can Precede 'Tape'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Precede 'Card'", B: "Can Precede 'Light'", C: "Can Precede 'Tape'" },
+    tiles: [
+      { label: "Flash", correctSlot: "S1", logicNote: "Flash card and flashlight are everyday words, but there is no such thing as flash tape.", fact: "The flashlight got its name because early models could only give off brief flashes before their weak batteries needed a rest." },
+      { label: "Video", correctSlot: "S2", logicNote: "Video card and videotape are both real things, but video light is not a phrase.", fact: "The first commercially successful videotape recorder, made by Ampex in 1956, cost about $50,000 and was the size of a desk." },
+      { label: "Caution", correctSlot: "S3", logicNote: "Caution light and caution tape both exist, but nobody hands out a caution card.", fact: "Caution tape is yellow and black because that pairing is one of the highest-contrast color combinations the human eye can pick out." },
+      { label: "Red", correctSlot: "S4", logicNote: "Red card, red light, and red tape all work.", fact: "The phrase 'red tape' comes from the red ribbon that British and Spanish officials once used to bind official documents." },
+      { label: "Gift", correctSlot: null },
+      { label: "Candle", correctSlot: null },
+      { label: "Duct", correctSlot: null },
+      { label: "Spoon", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-29",
+  easy: {
+    title: "A Superhero + Wears a Cape + Can Fly",
+    difficultyEstimate: 82,
+    labels: { A: "A Superhero", B: "Wears a Cape", C: "Can Fly" },
+    tiles: [
+      { label: "Robin", correctSlot: "S1", logicNote: "Batman's sidekick is a caped superhero, but he gets around by grappling hook, not flight.", fact: "Robin was introduced in 1940 to give Batman someone to talk to, and sales of Detective Comics nearly doubled." },
+      { label: "Iron Man", correctSlot: "S2", logicNote: "Iron Man is a superhero who flies on repulsor jets, but his armor has no cape.", fact: "Stan Lee said he created Iron Man, a weapons maker, in 1963 as a challenge to make readers who hated the military love a hero anyway." },
+      { label: "Dracula", correctSlot: "S3", logicNote: "Dracula wears a cape and can fly by turning into a bat, but he is a villain, not a superhero.", fact: "Bram Stoker borrowed the name Dracula from Vlad III of Wallachia, whose father belonged to a knightly order called the Order of the Dragon." },
+      { label: "Superman", correctSlot: "S4", logicNote: "Superman is a caped superhero who flies, the original package deal.", fact: "In his first comics Superman could not fly at all; he could only leap an eighth of a mile, and flight was added for the 1940s animated shorts." },
+      { label: "Spider-Man", correctSlot: null },
+      { label: "Little Red Riding Hood", correctSlot: null },
+      { label: "Hummingbird", correctSlot: null },
+      { label: "Bowling Ball", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Singer With One Name + From the UK + Has Won a Grammy",
+    difficultyEstimate: 52,
+    labels: { A: "A Singer With One Name", B: "From the UK", C: "Has Won a Grammy" },
+    tiles: [
+      { label: "Dido", correctSlot: "S1", logicNote: "Dido is a one-named British singer, but despite several nominations she has never won a Grammy.", fact: "Dido's 'Thank You' became famous worldwide after Eminem sampled it for his 2000 hit 'Stan.'" },
+      { label: "Beyoncé", correctSlot: "S2", logicNote: "Beyoncé goes by one name and has a mountain of Grammys, but she is from Houston, Texas.", fact: "Beyoncé holds the record for the most Grammy wins by any artist, passing conductor Georg Solti in 2023." },
+      { label: "Ed Sheeran", correctSlot: "S3", logicNote: "Ed Sheeran is a British Grammy winner, but he uses two names.", fact: "Ed Sheeran's 'Shape of You' was the most-streamed song on Spotify for several years and has passed three billion plays." },
+      { label: "Adele", correctSlot: "S4", logicNote: "Adele is a one-named singer from London with more than a dozen Grammys.", fact: "Adele named her albums 19, 21, 25, and 30 after her age when she wrote them." },
+      { label: "Kesha", correctSlot: null },
+      { label: "Robbie Williams", correctSlot: null },
+      { label: "Taylor Swift", correctSlot: null },
+      { label: "Windmill", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A Girl's First Name + A Month + Named for a Roman God",
+    difficultyEstimate: 32,
+    labels: { A: "A Girl's First Name", B: "A Month", C: "Named for a Roman God" },
+    tiles: [
+      { label: "April", correctSlot: "S1", logicNote: "April is a girl's name and a month, but it is thought to come from the Latin word for opening, not from a god.", fact: "April is the one spring month the Romans did not name after a god; the name may come from the Latin aperire, to open, as buds do." },
+      { label: "Diana", correctSlot: "S2", logicNote: "Diana is a girl's name taken from the Roman goddess of the hunt, but it is not a month.", fact: "The Temple of Diana at Ephesus, the Greek Artemis to the locals, was one of the Seven Wonders of the Ancient World." },
+      { label: "March", correctSlot: "S3", logicNote: "March is a month named for Mars, the Roman god of war, but it is not a girl's name.", fact: "March was the first month of the early Roman calendar, which is why September, October, November, and December are named for seven, eight, nine, and ten." },
+      { label: "June", correctSlot: "S4", logicNote: "June is a girl's name and a month, and it is named for Juno, queen of the Roman gods.", fact: "Juno was the Roman goddess of marriage, which is one reason June weddings became a tradition." },
+      { label: "Autumn", correctSlot: null },
+      { label: "October", correctSlot: null },
+      { label: "Jupiter", correctSlot: null },
+      { label: "Caesar Salad", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-28",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "An Animal + Lives in the Arctic + White",
+    difficultyEstimate: 82,
+    labels: { A: "An Animal", B: "Lives in the Arctic", C: "White" },
+    tiles: [
+      { label: "Caribou", correctSlot: "S1", logicNote: "Caribou roam the Arctic tundra, but their coats are brown and gray.", fact: "Caribou are the only deer species in which both males and females grow antlers." },
+      { label: "Dove", correctSlot: "S2", logicNote: "A dove is a white animal, but it lives in temperate places, not the frozen north.", fact: "Doves and pigeons belong to the same family, and both feed their chicks crop milk, a secretion from the parent's throat." },
+      { label: "Glacier", correctSlot: "S3", logicNote: "A glacier is white and found across the Arctic, but it is ice, not an animal.", fact: "Glaciers and ice caps hold about 69 percent of all the fresh water on Earth." },
+      { label: "Beluga", correctSlot: "S4", logicNote: "The beluga is a white whale that lives in Arctic and sub-Arctic waters.", fact: "Beluga whales are born gray and turn white as they mature, and their flexible necks let them nod and turn their heads." },
+      { label: "Camel", correctSlot: null },
+      { label: "Northern Lights", correctSlot: null },
+      { label: "Wedding Dress", correctSlot: null },
+      { label: "Guitar", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Macy's Parade Balloon + A Dog + From a Comic Strip",
+    difficultyEstimate: 52,
+    labels: { A: "A Macy's Parade Balloon", B: "A Dog", C: "From a Comic Strip" },
+    tiles: [
+      { label: "Bluey", correctSlot: "S1", logicNote: "Bluey is a dog and has floated over the Macy's parade since 2022, but she comes from a TV cartoon, not the funny pages.", fact: "Bluey is a Blue Heeler, a cattle dog breed developed in Australia in the 1800s to work in rough outback conditions." },
+      { label: "Charlie Brown", correctSlot: "S2", logicNote: "Charlie Brown is a Macy's balloon and a comic strip character, but he is the boy, not the dog.", fact: "Charles Schulz drew every one of the nearly 18,000 Peanuts strips himself, from 1950 until 2000." },
+      { label: "Marmaduke", correctSlot: "S3", logicNote: "Marmaduke is a Great Dane from a long-running comic strip, but he has never been a Macy's balloon.", fact: "Marmaduke debuted in 1954, making it one of the longest-running comic strips in American newspapers." },
+      { label: "Snoopy", correctSlot: "S4", logicNote: "Snoopy is a dog, a comic strip star, and the most frequent balloon in Macy's parade history.", fact: "Snoopy has flown in the Macy's Thanksgiving Day Parade more times than any other character, starting in 1968." },
+      { label: "Pikachu", correctSlot: null },
+      { label: "Lassie", correctSlot: null },
+      { label: "Calvin and Hobbes", correctSlot: null },
+      { label: "The Rockettes", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "Can Precede 'Bird' + Can Precede 'Dog' + Can Precede 'Cat'",
+    difficultyEstimate: 37,
+    labels: { A: "Can Precede 'Bird'", B: "Can Precede 'Dog'", C: "Can Precede 'Cat'" },
+    tiles: [
+      { label: "Sea", correctSlot: "S1", logicNote: "Seabird and sea dog are both real, but there is no sea cat.", fact: "A sea dog originally meant a seal; only later did the term become slang for a weathered old sailor." },
+      { label: "Thunder", correctSlot: "S2", logicNote: "The Ford Thunderbird and the ThunderCats cartoon both work, but nobody says thunder dog.", fact: "The Ford Thunderbird debuted in 1955 as Ford's answer to the Corvette, marketed as a personal luxury car rather than a sports car." },
+      { label: "Top", correctSlot: "S3", logicNote: "Top dog and Top Cat both check out, but there is no such thing as a top bird.", fact: "Top Cat ran for just 30 episodes in 1961 and 1962, yet it stayed on television in reruns for decades." },
+      { label: "Black", correctSlot: "S4", logicNote: "Blackbird, black dog, and black cat are all everyday phrases.", fact: "Paul McCartney wrote the Beatles' 'Blackbird' in 1968 as a response to the civil rights struggle in the American South." },
+      { label: "Hound", correctSlot: null },
+      { label: "Watch", correctSlot: null },
+      { label: "Early", correctSlot: null },
+      { label: "Copy", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-27",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "A Department Store + Sells Groceries + Has a Red Logo",
+    difficultyEstimate: 81,
+    labels: { A: "A Department Store", B: "Sells Groceries", C: "Has a Red Logo" },
+    tiles: [
+      { label: "Walmart", correctSlot: "S1", logicNote: "Walmart is a discount department store with a full grocery section, but its logo is blue and yellow.", fact: "Walmart is the largest private employer on Earth, with roughly 2.1 million workers worldwide." },
+      { label: "JCPenney", correctSlot: "S2", logicNote: "JCPenney is a classic department store with a red logo, but you cannot buy a gallon of milk there.", fact: "James Cash Penney opened his first store in Kemmerer, Wyoming, in 1902 and called it The Golden Rule." },
+      { label: "Trader Joe's", correctSlot: "S3", logicNote: "Trader Joe's has a red logo and sells groceries, but it is a grocery store, not a department store.", fact: "The bells you hear at Trader Joe's registers are a signal system: one ring calls another cashier, two rings mean a question, and three summon a manager." },
+      { label: "Target", correctSlot: "S4", logicNote: "Target is a department store with a grocery section and a red bullseye logo, so it hits all three.", fact: "Target's bullseye logo debuted in 1962, and the company's mascot, Bullseye, is a white bull terrier." },
+      { label: "Kohl's", correctSlot: null },
+      { label: "Whole Foods", correctSlot: null },
+      { label: "Netflix", correctSlot: null },
+      { label: "Lawn Mower", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Mall Store + Named After a Person + Sells Clothes",
+    difficultyEstimate: 51,
+    labels: { A: "A Mall Store", B: "Named After a Person", C: "Sells Clothes" },
+    tiles: [
+      { label: "Gap", correctSlot: "S1", logicNote: "Gap is a mall clothing staple, but it is named for the generation gap, not a founder.", fact: "The first Gap opened in San Francisco in 1969 and sold only Levi's jeans and records." },
+      { label: "Auntie Anne's", correctSlot: "S2", logicNote: "Auntie Anne's is a mall fixture named after founder Anne Beiler, but it sells pretzels, not clothes.", fact: "Auntie Anne's started in 1988 as a single stand at a Pennsylvania farmers market." },
+      { label: "Hanes", correctSlot: "S3", logicNote: "Hanes is a clothing brand named after founder Pleasant Hanes, but it has no stores at the mall; it sells through other retailers.", fact: "Hanes was founded in Winston-Salem, North Carolina, in 1901, and Michael Jordan has appeared in its ads since 1989." },
+      { label: "Macy's", correctSlot: "S4", logicNote: "Macy's anchors malls across the country, sells clothes, and is named after founder Rowland Hussey Macy.", fact: "The Macy's Thanksgiving Day Parade began in 1924, and its first giant balloon, Felix the Cat, floated in 1927." },
+      { label: "Wendy's", correctSlot: null },
+      { label: "Cinnabon", correctSlot: null },
+      { label: "Fruit of the Loom", correctSlot: null },
+      { label: "Lego", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "An NHL Team + A Singular Team Name + Named for Weather",
+    difficultyEstimate: 38,
+    labels: { A: "An NHL Team", B: "A Singular Team Name", C: "Named for Weather" },
+    tiles: [
+      { label: "Wild", correctSlot: "S1", logicNote: "The Minnesota Wild is an NHL team with a singular name, but it is named for wilderness, not weather.", fact: "The Minnesota Wild joined the NHL in 2000, seven years after the North Stars left the state for Dallas." },
+      { label: "Hurricanes", correctSlot: "S2", logicNote: "The Carolina Hurricanes are an NHL team named for a storm, but the name is plural.", fact: "The Carolina Hurricanes were the Hartford Whalers until 1997 and won the Stanley Cup in 2006." },
+      { label: "Heat", correctSlot: "S3", logicNote: "The Miami Heat has a singular name inspired by South Florida weather, but it plays basketball, not hockey.", fact: "The Miami Heat has won three NBA championships, in 2006, 2012, and 2013." },
+      { label: "Lightning", correctSlot: "S4", logicNote: "The Tampa Bay Lightning is an NHL team with a singular name taken straight from a thunderstorm.", fact: "The Tampa Bay Lightning won back-to-back Stanley Cups in 2020 and 2021, the first of them inside the pandemic bubble in Edmonton." },
+      { label: "Jazz", correctSlot: null },
+      { label: "Bruins", correctSlot: null },
+      { label: "Hailstorm", correctSlot: null },
+      { label: "Bookshelf", correctSlot: null }
+    ]
+  }
+},
+  {
+  date: "2026-11-26",
+  theme: "Thanksgiving Week",
+  easy: {
+    title: "On the Thanksgiving Table + You Pour It + Brown",
+    difficultyEstimate: 82,
+    labels: { A: "On the Thanksgiving Table", B: "You Pour It", C: "Brown" },
+    tiles: [
+      { label: "Merlot", correctSlot: "S1", logicNote: "Merlot gets poured at plenty of Thanksgiving tables, but it is deep red, not brown.", fact: "Merlot sales in the US dipped after the 2004 film Sideways, in which the main character loudly refuses to drink it." },
+      { label: "Wishbone", correctSlot: "S2", logicNote: "The wishbone comes to the table inside the roast turkey and is brown, but nobody pours it.", fact: "The wishbone tradition goes back to the Etruscans, who believed chickens could tell the future and dried their collarbones for luck." },
+      { label: "Motor Oil", correctSlot: "S3", logicNote: "Motor oil is brown and you pour it, but please keep it far from the Thanksgiving table.", fact: "Motor oil does not wear out, it just gets dirty, which is why used oil can be re-refined into new motor oil again and again." },
+      { label: "Gravy", correctSlot: "S4", logicNote: "Gravy is brown, you pour it, and it sits on every Thanksgiving table.", fact: "In Britain, Yorkshire puddings were traditionally served first with plenty of gravy so diners would fill up before the expensive meat arrived." },
+      { label: "Candles", correctSlot: null },
+      { label: "Orange Juice", correctSlot: null },
+      { label: "Acorn", correctSlot: null },
+      { label: "Snow Shovel", correctSlot: null }
+    ]
+  },
+  medium: {
+    title: "A Part of a Turkey + Also a Verb + Also a Human Body Part",
+    difficultyEstimate: 50,
+    labels: { A: "A Part of a Turkey", B: "Also a Verb", C: "Also a Human Body Part" },
+    tiles: [
+      { label: "Wing", correctSlot: "S1", logicNote: "A turkey has wings and you can wing a speech, but people do not have wings.", fact: "Buffalo wings were invented at the Anchor Bar in Buffalo, New York, in 1964, reportedly as a late-night snack for the owner's son and his friends." },
+      { label: "Thigh", correctSlot: "S2", logicNote: "Thigh is a turkey part and a human body part, but nobody uses it as a verb.", fact: "Thigh meat is darker than breast meat because those hardworking leg muscles store more oxygen-carrying myoglobin." },
+      { label: "Elbow", correctSlot: "S3", logicNote: "You can elbow your way through a crowd and you have two elbows, but elbow is not a cut you will find on a turkey.", fact: "The funny bone is not a bone at all; the tingle comes from the ulnar nerve, which runs exposed behind the elbow." },
+      { label: "Skin", correctSlot: "S4", logicNote: "Crispy skin is the best part of a roast turkey, you can skin a knee, and skin covers your whole body.", fact: "Skin is the body's largest organ, and an adult's skin weighs roughly eight pounds and covers about 22 square feet." },
+      { label: "Drumstick", correctSlot: null },
+      { label: "Ankle", correctSlot: null },
+      { label: "Gobble", correctSlot: null },
+      { label: "Pilgrim Hat", correctSlot: null }
+    ]
+  },
+  hard: {
+    title: "A US Federal Holiday + Always Falls on a Monday + Happens in the Fall",
+    difficultyEstimate: 37,
+    labels: { A: "A US Federal Holiday", B: "Always Falls on a Monday", C: "Happens in the Fall" },
+    tiles: [
+      { label: "Memorial Day", correctSlot: "S1", logicNote: "Memorial Day is a federal holiday fixed to the last Monday in May, which puts it in late spring, not fall.", fact: "Memorial Day began as Decoration Day after the Civil War, and the Uniform Monday Holiday Act moved it to the last Monday in May starting in 1971." },
+      { label: "Thanksgiving", correctSlot: "S2", logicNote: "Thanksgiving is a federal holiday in the fall, but it always lands on a Thursday.", fact: "Franklin D. Roosevelt moved Thanksgiving up a week in 1939 to stretch the holiday shopping season, and critics mocked the change as Franksgiving." },
+      { label: "Canadian Thanksgiving", correctSlot: "S3", logicNote: "Canada's Thanksgiving is always the second Monday of October, squarely in the fall, but it is not a US federal holiday.", fact: "Canadian Thanksgiving falls on the same day as Columbus Day in the United States, and many Canadians serve the very same turkey and pumpkin pie." },
+      { label: "Columbus Day", correctSlot: "S4", logicNote: "Columbus Day is a US federal holiday that always falls on the second Monday of October, in the heart of fall.", fact: "Columbus Day became a federal holiday in 1937, and the 1971 Uniform Monday Holiday Act pinned it to the second Monday in October." },
+      { label: "Halloween", correctSlot: null },
+      { label: "Juneteenth", correctSlot: null },
+      { label: "Easter Monday", correctSlot: null },
+      { label: "April Fools' Day", correctSlot: null }
+    ]
+  }
+},
+  {
   date: "2026-11-25",
   theme: "Thanksgiving Week",
   easy: {
